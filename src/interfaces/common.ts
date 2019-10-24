@@ -1,5 +1,4 @@
 import echarts from 'echarts';
-import { NavigationScreenProp, NavigationRoute } from 'react-navigation';
 
 // 与后台接口约定返回的配置项
 export interface BaseChartOption {
@@ -54,4 +53,14 @@ export interface ChildrenProps {
 export interface ActionProps {
   type: string;
   value: string;
+}
+
+export interface SelectOption {
+  label: string;
+  value: valueType;
+  unit?: string;
+}
+
+export interface CascadeDataType extends SelectOption {
+  children?: CascadeDataType[];
 }
