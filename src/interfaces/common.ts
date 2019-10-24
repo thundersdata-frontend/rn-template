@@ -55,12 +55,6 @@ export interface ActionProps {
   value: string;
 }
 
-export interface SelectOption {
-  label: string;
-  value: valueType;
-  unit?: string;
-}
-
 export interface CascadeDataType extends SelectOption {
   children?: CascadeDataType[];
 }
