@@ -7,3 +7,4 @@
  * @LastEditTime: 2019-10-09 21:11:04
  */
 type Merge<M, N> = Omit<M, Extract<keyof M, keyof N>> & N;
+declare module 'rc-form';

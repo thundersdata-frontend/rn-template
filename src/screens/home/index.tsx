@@ -9,10 +9,15 @@ import Iconfont from '../../components/Iconfont';
 import { useRefresh } from '../../hooks/useRefresh';
 import stores from '../../stores';
 import { checkNet } from '../../utils/check';
+import { createForm } from 'rc-form';
+import CustomInput from '../../components/CustomInput';
+import FormItem from '../../components/FormItem';
+import { Form } from '../../interfaces/form';
 
 const { px } = Size;
 interface HomeProps {
   navigation: NavigationScreenProp<NavigationLeafRoute>;
+  form: Form;
 }
 interface NavItemProps {
   title: string;
@@ -22,6 +27,8 @@ interface NavItemProps {
 }
 
 const Home = (props: HomeProps) => {
+  const { form } = props;
+  // const { getFieldDecorator, getFieldError } = form;
   const todoStore = stores.useStore('todoStore') as TodoStore;
   const { dataSource, refreshList } = todoStore;
   const [refreshing, refresh] = useRefresh();
@@ -73,6 +80,32 @@ const Home = (props: HomeProps) => {
           </View>
           <View style={styles.container}>
             <Text>{dataSource.length}</Text>
+            <FormItem
+              form={form}
+              name="phone"
+              rules={[
+                { required: true, message: '请输入手机号!' },
+                {
+                  pattern: /^1\d{10}$/,
+                  message: '请输入正确的手机号!',
+                },
+              ]}
+            >
+              <CustomInput placeholder="请输入手机号" autoCompleteType="off" keyboardType="phone-pad" icon="shield" />
+            </FormItem>
+            <FormItem
+              form={form}
+              name="phone2"
+              rules={[
+                { required: true, message: '请输入手机号!' },
+                {
+                  pattern: /^1\d{10}$/,
+                  message: '请输入正确的手机号!',
+                },
+              ]}
+            >
+              <CustomInput placeholder="请输入手机号" autoCompleteType="off" keyboardType="phone-pad" icon="shield" />
+            </FormItem>
           </View>
         </View>
       </ScrollView>
@@ -119,4 +152,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default withNavigation(Home);
+export default createForm()(withNavigation(Home));
