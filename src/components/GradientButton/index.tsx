@@ -13,7 +13,7 @@ const GradientButton: React.FC<GradientButtonProps> = ({ text, style, onPress })
     start={{ x: 0, y: 0 }}
     end={{ x: 1, y: 0 }}
     colors={['#0189FB', '#79BCFF']}
-    style={[styles.button, style]}
+    style={[styles.button, style] as StyleProp<ViewStyle>}
   >
     <TouchableOpacity onPress={onPress}>
       <Text style={styles.text}>{text}</Text>

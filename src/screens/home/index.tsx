@@ -12,7 +12,7 @@ import { checkNet } from '../../utils/check';
 import { createForm } from 'rc-form';
 import CustomInput from '../../components/CustomInput';
 import FormItem from '../../components/FormItem';
-import { Form } from '../../interfaces/form';
+import { Form } from '../../../form';
 
 const { px } = Size;
 interface HomeProps {

@@ -15,7 +15,7 @@ export type CustomInputProps = Merge<
 >;
 
 const CustomInput: React.FC<CustomInputProps> = props => {
-  const { style, onChange, value, error, icon, ...restProps } = props;
+  const { style, onChange, value, icon, ...restProps } = props;
   const [useValue, setUseValue] = useState('');
 
   useEffect(() => {

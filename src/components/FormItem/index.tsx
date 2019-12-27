@@ -10,7 +10,7 @@ import React from 'react';
 import { View, StyleSheet, ViewStyle } from 'react-native';
 import { Colors } from '../../config';
 import ShowError from '../ShowError';
-import { Form, ValidationRule } from '../../interfaces/form';
+import { Form, ValidationRule } from '../../../form';
 
 export interface FormItemProps {
   style?: ViewStyle;

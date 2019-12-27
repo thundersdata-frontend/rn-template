@@ -34,7 +34,7 @@ const TabDemo = () => {
       ],
     });
     setOption(option);
-  }, [getBaseTrendOption]);
+  }, []);
 
   const changeOption = () => {
     setOption(
@@ -42,7 +42,11 @@ const TabDemo = () => {
         series: [
           {
             type: 'pie',
-            data: [{ name: '前端', value: 40 }, { name: '后端', value: 50 }, { name: '测试的名字很长', value: 10 }],
+            data: [
+              { name: '前端', value: 40 },
+              { name: '后端', value: 50 },
+              { name: '测试的名字很长', value: 10 },
+            ],
           },
         ],
       }),

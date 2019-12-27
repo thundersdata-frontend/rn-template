@@ -174,7 +174,7 @@ export const SignedOut = createStackNavigator({
   },
 });
 
-export const createRootNavigator = (_signedIn = false) =>
+export const createRootNavigator = (signedIn = false) =>
   createSwitchNavigator(
     {
       SignedIn: {
@@ -185,7 +185,6 @@ export const createRootNavigator = (_signedIn = false) =>
       },
     },
     {
-      // initialRouteName: signedIn ? 'SignedIn' : 'SignedOut',
-      initialRouteName: 'SignedIn',
+      initialRouteName: signedIn ? 'SignedIn' : 'SignedOut',
     },
   );

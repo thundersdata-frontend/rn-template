@@ -17,7 +17,7 @@ const TabDemo = () => {
         ],
       }),
     );
-  }, [getBaseMapOption]);
+  }, []);
 
   const changeOption = () => {
     setOption(
