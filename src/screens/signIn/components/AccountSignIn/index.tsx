@@ -2,156 +2,156 @@
  * @文件描述: 账号密码登录页面
  * @公司: thundersdata
  * @作者: 陈杰
- * @LastEditors: 陈杰
+ * @LastEditors: 黄姗姗
  * @Date: 2019-04-24 15:50:09
- * @LastEditTime: 2019-10-16 14:34:57
+ * @LastEditTime: 2020-04-26 16:46:55
  */
-import React, { useState } from 'react';
-import { StyleSheet, View, Text } from 'react-native';
-import { Colors, Size } from '../../../../config';
-import { withNavigation, NavigationInjectedProps } from 'react-navigation';
+import React, { useContext } from 'react';
+import { StyleSheet, View } from 'react-native';
+import { Toast, Portal, Flex } from '@ant-design/react-native';
+import { Color, Size } from '../../../../config';
 import Input from '../../../../components/Input';
 import GradientButton from '../../../../components/GradientButton';
 import Iconfont from '../../../../components/Iconfont';
-import { toastFail, FETCH_OPTIONS, AUTH_PARAMS } from '../../../../stores/common';
-import { saveToken, saveUserInfo } from '../../../../utils/auth';
-import request from '../../../../utils/request';
-import { PersonInfo } from '../../../../interfaces/person';
-import { useNetInfo } from '@react-native-community/netinfo';
 import { MAX_LENGTH_USERNAME, MAX_LENGTH_PASSWORD } from '../../../../utils/validation';
+import { toastFail } from '../../../../common';
+import { saveToken, saveUserInfo } from '../../../../utils/auth';
+import { UserInfoInter } from '../../../../interfaces/user';
+import { SignInContext } from '../../../../context/SignInContext';
+import { extend } from 'umi-request';
+import { AjaxResponse } from '../../../../utils/type';
+import Form, { useForm, Field } from 'rc-field-form';
+import { Store, ValidateErrorEntity } from 'rc-field-form/lib/interface';
+import store from '../../../../store';
+import NetInfo from '@react-native-community/netinfo';
 
-interface AccountSignInProps extends NavigationInjectedProps {
-  onToggle: (type: string) => void;
-}
-
-const inputValidate = (username: string, password: string) => {
-  if (!username) {
-    toastFail('请输入账号');
-    return false;
-  } else if (!password) {
-    toastFail('请输入密码');
-    return false;
-  } else {
-    return true;
+const request = extend({
+  prefix: '',
+  method: 'post',
+  headers: {
+    'Content-Type': 'application/json'
   }
-};
+});
 
-const AccountSignIn: React.FC<AccountSignInProps> = props => {
-  const netInfo = useNetInfo();
-  const [username, setUsername] = useState('');
-  const [password, setPassword] = useState('');
+const AccountSignIn: React.FC = () => {
+  const { setSignedIn, setCheckedSignIn } = useContext(SignInContext);
+  const [form] = useForm();
+  const [, { setName, setToken }] = store.useModel('user');
 
-  const login = async () => {
+  // eslint-disable-next-line complexity
+  const handleFinish = async ({ username, password }: Store) => {
+    const netInfo = await NetInfo.fetch();
     if (!netInfo.isConnected) {
-      toastFail('设备未联网，请检查');
+      toastFail('设备未连接网络');
       return;
     }
-    if (inputValidate(username, password)) {
-      try {
-        const response = await request.authForm<{ access_token: string }>(FETCH_OPTIONS.mine.login.url, {
+    const key = Toast.loading('加载中', 0, () => {}, true);
+    try {
+      const { data, message, success } = await request.post<AjaxResponse<UserInfoInter>>('', {
+        params: {
           username,
-          password,
-          scope: AUTH_PARAMS.scope,
-          client_id: AUTH_PARAMS.clientId,
-          client_secret: AUTH_PARAMS.clientSecret,
-          grant_type: 'password',
-          appVersion: AUTH_PARAMS.appVersion,
-        });
-        if (response.success) {
-          const { result } = response;
-          // 将token保存，同时获取用户信息
-          saveToken(result.access_token);
-          const userInfo = await request.authGet<PersonInfo>(FETCH_OPTIONS.mine.info.url, {
-            access_token: result.access_token,
-            requestClientId: AUTH_PARAMS.clientId,
-            appVersion: AUTH_PARAMS.appVersion,
-          });
-          if (userInfo.success) {
-            saveUserInfo(userInfo.result);
-            props.navigation.navigate('SignedIn');
-          } else {
-            toastFail('获取用户信息失败');
-          }
-        } else {
-          toastFail('用户名或密码错误');
+          password
         }
-      } catch (error) {
-        toastFail('用户名或密码错误');
+      });
+      if (success) {
+        const { token = '', name = '' } = data;
+        saveToken(token);
+        setToken(token);
+
+        saveUserInfo({ name });
+        setName(name);
+
+        setSignedIn(true);
+        setCheckedSignIn(true);
+      } else {
+        throw {
+          message,
+          success
+        };
       }
+    } catch (error) {
+      toastFail(error.message || '获取数据失败');
+    }
+    Portal.remove(key);
+  };
+
+  const handleFinishFailed = ({ errorFields }: ValidateErrorEntity) => {
+    if (errorFields.length > 0) {
+      toastFail(errorFields[0].errors[0]);
     }
   };
 
   return (
-    <View style={styles.content}>
-      <View style={styles.item}>
-        <Iconfont style={styles.icon} name="user" size={Size.px(16)} color={Colors.labelColor} />
-        <Input
-          style={styles.input}
-          value={username}
-          onChangeText={value => setUsername(value.trim())}
-          placeholder="请输入账号"
-          maxLength={MAX_LENGTH_USERNAME}
-        />
+    <Form component={false} onFinish={handleFinish} onFinishFailed={handleFinishFailed} form={form}>
+      <View style={styles.content}>
+        <Flex style={styles.item}>
+          <Iconfont style={styles.icon} name="loginAccount" size={Size.px(16)} color={Color.labelColor} />
+          <Field
+            name="username"
+            rules={[
+              { required: true, message: '请输入账号' },
+              { max: 16, message: '长度不能超过16位' }
+            ]}
+            trigger="onChangeText"
+            validateTrigger="onChangeText">
+            <Input style={styles.input} placeholder={'请输入账号'} maxLength={MAX_LENGTH_USERNAME} />
+          </Field>
+        </Flex>
+        <Flex style={styles.item}>
+          <Iconfont style={styles.icon} name="loginPassword" size={Size.px(16)} color={Color.labelColor} />
+          <Field
+            name="password"
+            rules={[
+              { required: true, message: '请输入密码' },
+              { max: 16, message: '长度不能超过16位' }
+            ]}
+            trigger="onChangeText">
+            <Input style={styles.input} secureTextEntry placeholder={'请输入密码'} maxLength={MAX_LENGTH_PASSWORD} />
+          </Field>
+        </Flex>
+        <GradientButton style={styles.loginBtn} text={'登 录'} onPress={() => form.submit()} />
       </View>
-      <View style={styles.item}>
-        <Iconfont style={styles.icon} name="lock" size={Size.px(16)} color={Colors.labelColor} />
-        <Input
-          style={styles.narrowInput}
-          secureTextEntry
-          value={password}
-          onChangeText={value => setPassword(value.trim())}
-          placeholder="请输入密码"
-          maxLength={MAX_LENGTH_PASSWORD}
-        />
-        <Text style={styles.extraText} onPress={() => props.navigation.navigate('ForgetPass')}>
-          忘记密码?
-        </Text>
-      </View>
-      <GradientButton style={styles.loginBtn} text="登 录" onPress={() => login()} />
-    </View>
+    </Form>
   );
 };
 
-export default withNavigation(AccountSignIn);
+export default AccountSignIn;
 
 const styles = StyleSheet.create({
   content: {
     flex: 1,
-    padding: Size.px(15),
-    backgroundColor: Colors.white,
+    padding: Size.px(15)
   },
   item: {
-    flexDirection: 'row',
-    alignItems: 'flex-end',
     height: Size.px(56),
     paddingLeft: Size.px(12),
     paddingBottom: Size.px(5),
-    borderBottomWidth: Size.ONE_PIXEL,
-    borderBottomColor: Colors.borderColor,
+    backgroundColor: 'rgba(0, 0, 0, 0.05)',
+    marginBottom: Size.px(16)
   },
   icon: {
     flex: 1,
     height: Size.px(40),
-    lineHeight: Size.px(40),
+    lineHeight: Size.px(40)
   },
   input: {
     flex: 9,
-    fontSize: Size.px(16),
+    fontSize: Size.px(16)
   },
   narrowInput: {
     flex: 6,
-    fontSize: Size.px(16),
+    fontSize: Size.px(16)
   },
   extraText: {
     flex: 3,
     textAlign: 'right',
-    color: Colors.primary,
+    color: Color.primary,
     paddingRight: Size.px(10),
     fontSize: Size.px(12),
     height: Size.px(40),
-    lineHeight: Size.px(40),
+    lineHeight: Size.px(40)
   },
   loginBtn: {
-    marginTop: Size.px(92),
-  },
+    marginTop: Size.px(60)
+  }
 });

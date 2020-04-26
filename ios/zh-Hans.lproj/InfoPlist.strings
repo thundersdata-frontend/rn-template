@@ -1,0 +1,10 @@
+/* 
+  InfoPlist.strings
+  luneng
+
+  Created by D先生 on 2020/4/15.
+  Copyright © 2020 Facebook. All rights reserved.
+*/
+"CFBundleDisplayName" = "鲁能足球";
+"NSCameraUsageDescription" = "授予应用访问摄像头的权限";
+"NSCameraUsageDescription" = "授予应用访问图库的权限";

@@ -14,7 +14,7 @@ export default class RAF {
   public constructor() {
     this._timerIdMap = {
       timeout: {},
-      interval: {},
+      interval: {}
     };
   }
 

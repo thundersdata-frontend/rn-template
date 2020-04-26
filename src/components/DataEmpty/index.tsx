@@ -3,12 +3,12 @@
  * @公司: thundersdata
  * @作者: 廖军
  * @Date: 2019-10-11 09:46:00
- * @LastEditors: 廖军
- * @LastEditTime: 2019-10-11 14:21:00
+ * @LastEditors: 黄姗姗
+ * @LastEditTime: 2020-04-26 16:50:41
  */
 import React from 'react';
 import { View, Text, StyleSheet, ViewStyle, Image } from 'react-native';
-import { Colors, Size } from '../../config';
+import { Color, Size } from '../../config';
 
 export interface DataEmptyProps {
   visible: boolean;
@@ -21,7 +21,11 @@ export const DataEmpty: React.FC<DataEmptyProps> = props => {
     <View>
       {visible ? (
         <View style={[styles.container, style]}>
-          <Image source={require('../../assets/pic_empty.png')} />
+          <Image
+            style={{ width: Size.px(140), height: Size.px(140) }}
+            source={require('../../assets/pic_empty.png')}
+            resizeMode="contain"
+          />
           <Text style={styles.text}>暂无数据</Text>
         </View>
       ) : (
@@ -36,12 +40,12 @@ const styles = StyleSheet.create({
     height: Size.px(300),
     justifyContent: 'center',
     alignItems: 'center',
-    backgroundColor: Colors.white,
+    backgroundColor: Color.white
   },
   text: {
     fontSize: Size.px(16),
-    color: '#dcdcdc',
-  },
+    color: '#dcdcdc'
+  }
 });
 
 export default DataEmpty;
