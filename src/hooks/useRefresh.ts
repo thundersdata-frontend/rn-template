@@ -1,51 +1,70 @@
 /*
- * @文件描述:
+ * @文件描述: 抽取分页逻辑
  * @公司: thundersdata
  * @作者: 陈杰
  * @Date: 2019-10-12 10:23:27
- * @LastEditors: 陈杰
- * @LastEditTime: 2019-10-18 15:38:12
+ * @LastEditors: 黄姗姗
+ * @LastEditTime: 2020-04-26 16:34:36
  */
-import { useState, useCallback, useRef, useLayoutEffect } from 'react';
+import { useState, useCallback, useContext } from 'react';
+import { RefreshState } from '../components/RefreshListView';
+import { PAGE, FETCH_ERROR } from '../common';
+import isEmpty from 'lodash/isEmpty';
+import { Pagination } from '../utils/type';
+import useRequest from '@umijs/use-request';
+import { SignInContext } from '../context/SignInContext';
 
-export function useRefresh() {
-  const [refreshing, setRefreshing] = useState(true);
+export function useRefresh<T>(fetchOption: { url: string; initialData: Pagination<T> }, params?: object) {
+  const [refreshState, setRefreshState] = useState(RefreshState.HeaderRefreshing);
+  const { setSignedIn } = useContext(SignInContext);
 
-  const refresh = useCallback(
-    (nextValue: boolean) => {
-      setRefreshing(nextValue);
+  const asyncFn = useCallback(
+    async (page = 1) => {
+      if (page !== PAGE) {
+        setRefreshState(RefreshState.FooterRefreshing);
+      }
+      if (!isEmpty(params)) {
+        // return fetchData(fetchOption, {
+        //   params: { ...params, page }
+        // });
+        return fetchOption.initialData;
+      }
+      return fetchOption.initialData;
     },
-    [setRefreshing],
+    [params, fetchOption]
   );
 
-  return [refreshing, refresh] as const;
-}
+  const { data, reload, loadMore } = useRequest(
+    (d: Pagination<T> | undefined) => asyncFn(d?.list.length ? d.page + 1 : 1),
+    {
+      loadMore: true,
+      refreshDeps: [asyncFn],
+      onSuccess: data => {
+        const { total, page, pageSize } = data;
+        if (total === 0) {
+          setRefreshState(RefreshState.EmptyData);
+        } else if (page * pageSize >= total) {
+          setRefreshState(RefreshState.NoMoreData);
+        } else {
+          setRefreshState(RefreshState.Idle);
+        }
+      },
+      onError: (error: Error) => {
+        setRefreshState(RefreshState.Failure);
+        if (error?.message === FETCH_ERROR.EXPIRED) {
+          setSignedIn(false);
+        }
+      }
+    }
+  );
 
-/**
- * 下拉刷新时判断子组件请求是否全部返回
- * maxCount 所有需要的的请求数量
- * count 当前完成的数量
- * isComplete 是否全部返回
- * increase 自增
- * reSetCount 重置
- * */
-export function useIncrease(maxCount: number) {
-  const [count, setCount] = useState(0);
-  const countRef = useRef<number>(0);
+  const { list = [] } = data || {};
 
-  useLayoutEffect(() => {
-    countRef.current = count;
-  });
-
-  const increase = useCallback(() => {
-    setCount(countRef.current + 1);
-  }, [setCount, countRef]);
-
-  const reSetCount = useCallback(() => {
-    setCount(0);
-  }, [setCount]);
-
-  const isComplete = maxCount !== 0 && maxCount === count;
-
-  return [isComplete, increase, reSetCount] as const;
+  return {
+    list,
+    refreshState,
+    setRefreshState,
+    headerRefresh: reload,
+    footerRefresh: loadMore
+  };
 }

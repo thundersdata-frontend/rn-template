@@ -3,20 +3,19 @@
  * @公司: thundersdata
  * @作者: 廖军
  * @Date: 2019-10-08 14:28:00
- * @LastEditors: 廖军
- * @LastEditTime: 2019-10-17 16:34:00
+ * @LastEditors: 陈杰
+ * @LastEditTime: 2020-03-02 16:23:28
  */
 import React, { useState, useEffect } from 'react';
 import { View, Text, StyleSheet, TouchableOpacity, ViewStyle } from 'react-native';
 import { IconOutline } from '@ant-design/icons-react-native';
 import { Picker } from '@ant-design/react-native';
-import { Colors, Size } from '../../config';
+import { Color, Size } from '../../config';
 import { CascadeDataType, valuesType } from '../../interfaces/common';
 import { textEllipsis } from '../../utils/string';
-import { withNavigation, NavigationScreenProp, NavigationRoute } from 'react-navigation';
+import { useNavigation } from '@react-navigation/native';
 
 export interface CascadePickerProps {
-  navigation: NavigationScreenProp<NavigationRoute>;
   data: CascadeDataType[];
   value?: valuesType;
   onChange?: (value: valuesType, labelArray: string[]) => void;
@@ -48,19 +47,24 @@ const CascadePicker: React.FC<CascadePickerProps> = props => {
   const { data, value, onChange, placeholder, visible, style, cols, width } = props;
   const [useVisible, setVisible] = useState(false);
   const [useValue, setValue] = useState<valuesType>([]);
+  const navigation = useNavigation();
+
   // 选择框显示的内容
   const text = useValue.length > 0 ? textEllipsis(getLabelArray(data, useValue).join('-'), 8) : placeholder;
   const isDataEmpty = data.length > 0;
 
   // 绑定监听
   useEffect(() => {
-    const listener = props.navigation.addListener('willBlur', () => {
+    navigation.addListener('blur', () => {
       setVisible(false);
     });
+
     return () => {
-      listener.remove();
+      navigation.removeListener('blur', () => {
+        setVisible(false);
+      });
     };
-  }, [props.navigation]);
+  }, [navigation]);
 
   // 内部和父组件都可以控制显隐
   useEffect(() => {
@@ -87,11 +91,11 @@ const CascadePicker: React.FC<CascadePickerProps> = props => {
   return (
     <View style={style}>
       <TouchableOpacity
+        activeOpacity={0.8}
         onPress={() => (isDataEmpty ? setVisible(true) : null)}
-        style={[styles.picker, width ? { width } : {}]}
-      >
+        style={[styles.picker, width ? { width } : {}]}>
         <Text style={styles.picked}>{isDataEmpty ? text : '暂无数据'}</Text>
-        <IconOutline name="caret-down" color={Colors.dark} />
+        <IconOutline name="caret-down" color={Color.dark} />
       </TouchableOpacity>
       <Picker
         visible={useVisible}
@@ -110,7 +114,7 @@ const CascadePicker: React.FC<CascadePickerProps> = props => {
 
 CascadePicker.defaultProps = {
   placeholder: '请选择',
-  cols: 2,
+  cols: 2
 };
 
 const styles = StyleSheet.create({
@@ -121,21 +125,21 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     alignItems: 'center',
     borderWidth: Size.ONE_PIXEL,
-    borderColor: Colors.borderColor,
+    borderColor: Color.borderColor,
     borderRadius: Size.px(2),
     overflow: 'hidden',
-    paddingHorizontal: Size.px(2),
+    paddingHorizontal: Size.px(2)
   },
   pickerItem: {
     paddingTop: Size.px(10),
-    paddingBottom: Size.px(10),
+    paddingBottom: Size.px(10)
   },
   picked: {
-    color: Colors.dark,
+    color: Color.dark,
     fontSize: Size.px(14),
     marginRight: Size.px(4),
-    paddingHorizontal: Size.px(4),
-  },
+    paddingHorizontal: Size.px(4)
+  }
 });
 
-export default withNavigation(CascadePicker);
+export default CascadePicker;

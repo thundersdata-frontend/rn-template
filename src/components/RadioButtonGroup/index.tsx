@@ -8,7 +8,7 @@
  */
 import React, { useState, useEffect } from 'react';
 import { View, Text, StyleSheet, TouchableOpacity, ViewStyle } from 'react-native';
-import { Colors, Size } from '../../config';
+import { Color, Size } from '../../config';
 import { SelectOption } from '../../interfaces/common';
 
 type valueType = string | number;
@@ -70,12 +70,12 @@ const RadioButtonGroup: React.FC<RadioButtonGroupProps> = props => {
   const renderButton = (list: SelectOption[]) =>
     list.map((item, index) => (
       <TouchableOpacity
+        activeOpacity={0.8}
         key={item.value}
         onPress={() => onGroupChange(item.value, item)}
-        style={getButtonStyle(item.value, index)}
-      >
+        style={getButtonStyle(item.value, index)}>
         <View style={getButtonTextStyle(item.value, index)}>
-          <Text style={{ color: item.value === useValue ? Colors.dark : '#cccccc' }}>{item.label}</Text>
+          <Text style={{ color: item.value === useValue ? Color.dark : '#cccccc' }}>{item.label}</Text>
         </View>
       </TouchableOpacity>
     ));
@@ -87,32 +87,32 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     padding: Size.px(4),
     borderRadius: Size.px(4),
-    backgroundColor: '#f2f2f2',
+    backgroundColor: '#f2f2f2'
   },
   first: {
     borderTopLeftRadius: Size.px(4),
-    borderBottomLeftRadius: Size.px(4),
+    borderBottomLeftRadius: Size.px(4)
   },
   last: {
     borderTopRightRadius: Size.px(4),
-    borderBottomRightRadius: Size.px(4),
+    borderBottomRightRadius: Size.px(4)
   },
   select: {
-    backgroundColor: Colors.white,
+    backgroundColor: Color.backgroundColor,
     borderRadius: Size.px(4),
     shadowOffset: { width: -2, height: 2 },
-    shadowColor: Colors.dark,
-    shadowOpacity: 0.1,
+    shadowColor: Color.dark,
+    shadowOpacity: 0.1
   },
   button: {
     height: Size.px(24),
     flexDirection: 'row',
     justifyContent: 'center',
-    alignItems: 'center',
+    alignItems: 'center'
   },
   borderLeft: {
     borderLeftWidth: Size.px(1),
-    borderLeftColor: '#e8e8e8',
+    borderLeftColor: '#e8e8e8'
   },
   buttonText: {
     fontSize: Size.px(14),
@@ -121,8 +121,8 @@ const styles = StyleSheet.create({
     paddingRight: Size.px(12),
     flexDirection: 'row',
     justifyContent: 'center',
-    alignItems: 'center',
-  },
+    alignItems: 'center'
+  }
 });
 
 export default RadioButtonGroup;

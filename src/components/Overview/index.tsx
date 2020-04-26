@@ -9,7 +9,7 @@
 import React from 'react';
 import { WingBlank, Card, Flex } from '@ant-design/react-native';
 import { Text, StyleSheet, View } from 'react-native';
-import { Colors, Size } from '../../config';
+import { Color, Size } from '../../config';
 import { SelectOption } from '../../interfaces/common';
 import Iconfont from '../Iconfont';
 
@@ -27,7 +27,7 @@ export interface OverviewProps {
 const Overview: React.FC<OverviewProps> = ({ title, list, icon }) => {
   const header = (
     <View style={styles.titleItem}>
-      {icon && <Iconfont style={{ marginRight: Size.px(8) }} name={icon} size={Size.px(20)} color={Colors.primary} />}
+      {icon && <Iconfont style={{ marginRight: Size.px(8) }} name={icon} size={Size.px(20)} color={Color.primary} />}
       <Text style={styles.title}>{title}</Text>
     </View>
   );
@@ -37,7 +37,7 @@ const Overview: React.FC<OverviewProps> = ({ title, list, icon }) => {
       <Card style={{ borderColor: 'rgba(0, 0, 0, 0)' }}>
         <Card.Header title={header} style={styles.header} />
         <Card.Body style={{ borderTopColor: '#f3f3f3' }}>
-          <Flex direction="row" justify="between" align="center" style={styles.body}>
+          <Flex justify="between" align="center" style={styles.body}>
             {list.map((item, index) => (
               <Flex.Item key={index}>
                 <Flex direction="column" justify="center" align="center">
@@ -58,29 +58,29 @@ export default Overview;
 const styles = StyleSheet.create({
   header: {
     height: Size.px(45),
-    lineHeight: Size.px(45),
+    lineHeight: Size.px(45)
   },
   body: {
-    height: Size.px(95),
+    height: Size.px(95)
   },
   label: {
-    color: Colors.labelColor,
+    color: Color.labelColor,
     fontSize: Size.px(12),
-    lineHeight: Size.px(15),
+    lineHeight: Size.px(15)
   },
   value: {
-    color: Colors.black,
+    color: Color.black,
     fontSize: Size.px(20),
     fontWeight: 'bold',
     height: Size.px(28),
-    lineHeight: Size.px(28),
+    lineHeight: Size.px(28)
   },
   titleItem: {
     flexDirection: 'row',
     justifyContent: 'flex-start',
-    alignItems: 'center',
+    alignItems: 'center'
   },
   title: {
-    fontSize: Size.px(16),
-  },
+    fontSize: Size.px(16)
+  }
 });

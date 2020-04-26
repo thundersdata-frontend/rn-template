@@ -22,5 +22,5 @@ async function removeStorage(key: string) {
 export default {
   setStorage,
   getStorage,
-  removeStorage,
+  removeStorage
 };

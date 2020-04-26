@@ -9,7 +9,7 @@
 
 import React from 'react';
 import { StyleSheet, View, Text, ViewStyle } from 'react-native';
-import { Colors, Size } from '../../config';
+import { Color, Size } from '../../config';
 import { BaseQuotaType } from '../../interfaces/common';
 import { valueFormat } from '../../utils/string';
 import { WingBlank } from '@ant-design/react-native';
@@ -73,69 +73,69 @@ export default React.memo(HorizontalBarChart, (prev, next) => {
 
 const styles = StyleSheet.create({
   container: {
-    backgroundColor: Colors.white,
+    backgroundColor: Color.backgroundColor
   },
   item: {
     flexDirection: 'row',
     justifyContent: 'space-between',
     height: Size.px(35),
-    marginBottom: Size.px(16),
+    marginBottom: Size.px(16)
   },
   number: {
     width: Size.px(40),
     flexDirection: 'row',
     justifyContent: 'center',
     alignItems: 'center',
-    paddingRight: Size.px(12),
+    paddingRight: Size.px(12)
   },
   numberIcon: {
     width: Size.px(16),
     height: Size.px(16),
     lineHeight: Size.px(16),
     borderRadius: Size.px(8),
-    color: Colors.white,
+    color: Color.white,
     backgroundColor: '#86c6f4',
     textAlign: 'center',
-    overflow: 'hidden',
+    overflow: 'hidden'
   },
   topNum: {
     width: Size.px(20),
     height: Size.px(20),
     borderRadius: Size.px(10),
-    color: Colors.white,
+    color: Color.white,
     textAlign: 'center',
     borderWidth: Size.px(3),
-    overflow: 'hidden',
+    overflow: 'hidden'
   },
   first: {
     backgroundColor: '#fddb8a',
-    borderColor: '#fcbb1f',
+    borderColor: '#fcbb1f'
   },
   second: {
     backgroundColor: '#cecece',
-    borderColor: '#b8b8b8',
+    borderColor: '#b8b8b8'
   },
   third: {
     backgroundColor: '#fbb78a',
-    borderColor: '#f9751d',
+    borderColor: '#f9751d'
   },
   itemContent: {
-    flex: 1,
+    flex: 1
   },
   itemText: {
     flexDirection: 'row',
     justifyContent: 'space-between',
-    marginBottom: Size.px(8),
+    marginBottom: Size.px(8)
   },
   percentBack: {
     height: Size.px(8),
     backgroundColor: '#f3f9fe',
-    width: '100%',
+    width: '100%'
   },
   percent: {
     backgroundColor: '#218ee9',
     height: Size.px(8),
     borderTopRightRadius: Size.px(4),
-    borderBottomRightRadius: Size.px(4),
-  },
+    borderBottomRightRadius: Size.px(4)
+  }
 });

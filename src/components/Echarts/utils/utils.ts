@@ -7,7 +7,7 @@
  * @LastEditTime: 2019-10-10 18:40:58
  */
 const toString = (obj: echarts.EChartOption) => {
-  let result = JSON.stringify(obj, function(_, val) {
+  let result = JSON.stringify(obj, function (_, val) {
     if (typeof val === 'function') {
       return `~--demo--~${val}~--demo--~`;
     }

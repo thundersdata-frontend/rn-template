@@ -1,23 +1,27 @@
 import React from 'react';
-import Colors from './colors';
+import Color from './color';
 import Size from './size';
-import { StatusBar, View } from 'react-native';
-import { isIOS } from './size';
+import { View } from 'react-native';
+import Iconfont from '../components/Iconfont';
 
 export default {
-  headerStyle: {
-    backgroundColor: Colors.headerColor,
-    elevation: 0,
-    paddingTop: isIOS() ? 0 : StatusBar.currentHeight,
-    borderBottomWidth: 0,
-    height: isIOS() ? Size.px(36) : Size.px(74),
-  },
-  headerTitleStyle: {
-    alignSelf: 'center',
-    textAlign: 'center',
-    flex: 1,
-    color: Colors.black,
-    fontWeight: 'normal',
-  },
-  headerRight: <View />,
+  // 主色调的配置
+  primaryStyle: {
+    headerStyle: {
+      backgroundColor: 'transparent'
+    },
+    headerTitleStyle: {
+      alignSelf: 'center',
+      textAlign: 'center',
+      flex: 1,
+      color: Color.white,
+      fontWeight: 'normal',
+      fontSize: Size.px(18)
+    },
+    headerBackTitle: null,
+    headerRight: <View />,
+    headerBackImage: (
+      <Iconfont name="navBack" color={Color.white} size={Size.px(18)} style={{ marginLeft: Size.px(3) }} />
+    )
+  }
 };

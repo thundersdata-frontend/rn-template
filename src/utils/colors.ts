@@ -1,7 +1,7 @@
 import { generate } from '@ant-design/colors';
 
 // 10种基础颜色
-const BASE_COLORS = ['red', 'green', 'blue', 'pink', 'orange', 'purple', 'yellow', 'cyan', 'magenta', 'lime'];
+const BASE_COLORS = ['red', 'green', 'blue', 'gray', 'orange', 'purple', 'yellow', 'cyan', 'magenta', 'lime'];
 const START_INDEX = 3;
 const END_INDEX = 9;
 const ROW_NUMBER = END_INDEX - START_INDEX;
@@ -20,8 +20,8 @@ BASE_COLORS.forEach((color, index) => {
       .filter((_color, i) => i % 2 === 0)
       .map((filterColor, i) => ({
         color: filterColor,
-        sortValue: index + i * ROW_NUMBER,
-      })),
+        sortValue: index + i * ROW_NUMBER
+      }))
   );
 });
 

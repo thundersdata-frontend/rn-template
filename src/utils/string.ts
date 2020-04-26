@@ -1,3 +1,11 @@
+/*
+ * @文件描述:
+ * @公司: thundersdata
+ * @作者: 黄姗姗
+ * @Date: 2019-12-23 16:38:47
+ * @LastEditors: 黄姗姗
+ * @LastEditTime: 2020-04-26 15:21:53
+ */
 /**
  * 根据数的大小进行单位转换
  * 这个函数不能引入外部变量或方法，否则会引起echarts图表异常！
@@ -23,9 +31,9 @@ export const fillZero = (num: string | number) => (/^[0-9]$/.test('' + num) ? `0
 /**
  * 用于字符长度超过指定个数自动截取并添加...
  */
-export const textEllipsis = (text: string, length: number) => {
+export const textEllipsis = (text: string, length = 12) => {
   if (text.length > length && length > 0) {
-    return `${text.substring(0, length)}...`;
+    return `${text.substr(0, length)}...`;
   }
   return text;
 };

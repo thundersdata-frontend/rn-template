@@ -1,0 +1,10 @@
+/* 
+  InfoPlist.strings
+  luneng
+
+  Created by D先生 on 2020/4/15.
+  Copyright © 2020 Facebook. All rights reserved.
+*/
+"CFBundleDisplayName" = "Luneng Football Lab";
+"NSCameraUsageDescription" = "Access to take a photo by camera";
+"NSCameraUsageDescription" = "Access to pick a photo";

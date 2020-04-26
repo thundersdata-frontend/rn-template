@@ -22,7 +22,8 @@
     "downlevelIteration": true,
     "resolveJsonModule": true,
     "skipLibCheck": true,
-    "incremental": true
+    "incremental": false
   },
+  "include": ["./src/services/api.d.ts", "./src/**/*", "./typings.d.ts"],
   "exclude": ["node_modules", "scripts", "babel.config.js", "metro.config.js", "jest.config.js"]
 }
