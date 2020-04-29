@@ -4,7 +4,7 @@
  * @作者: 阮旭松
  * @Date: 2019-09-27 16:49:40
  * @LastEditors: 于效仟
- * @LastEditTime: 2020-04-29 14:20:13
+ * @LastEditTime: 2020-04-29 15:07:35
  */
 export default {
   success: '#53C41B',
@@ -23,7 +23,7 @@ export default {
   iron: '#335687',
 
   // 边框颜色
-  borderColor: '#dddddd',
+  borderColor: 'rgba(0, 0, 0, 0.1)',
   // 灰色的背景色
   backgroundColor: 'rgba(0, 0, 0, 0.04)',
   // 黑灰色的背景
@@ -35,12 +35,5 @@ export default {
   mainTextColor: 'rgba(0, 0, 0, 0.8)',
   middleTextColor: 'rgba(0, 0, 0, 0.6)',
   helpTextColor: 'rgba(0, 0, 0, 0.4)',
-  placeholderTextColor: 'rgba(0, 0, 0, 0.2)',
-
-  // 酸痛度打分颜色
-  score: {
-    bad: 'rgba(234,51,35,0.8)',
-    normal: 'rgba(255,186,21,0.8)',
-    good: 'rgba(79,147,80,0.8)'
-  }
+  placeholderTextColor: 'rgba(0, 0, 0, 0.2)'
 };
