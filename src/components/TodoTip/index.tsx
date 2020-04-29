@@ -9,8 +9,7 @@ import React from 'react';
 import { View, Text, TouchableOpacity, StyleSheet } from 'react-native';
 import { Icon } from '@ant-design/react-native';
 import { useNavigation } from '@react-navigation/native';
-import { Size } from '../../config';
-import color from '../../config/color';
+import { Size, Color } from '../../config';
 
 const { px } = Size;
 
@@ -24,24 +23,21 @@ export default function TodoTip(props: TodoTipProps) {
   const { text, navigateTo } = props;
 
   return (
-    <View style={styles.warnWrap}>
-      <TouchableOpacity style={styles.warn} onPress={() => navigation.navigate(navigateTo)}>
-        <View style={styles.warningWrap}>
-          <Icon name="bell" color={color.warning} />
-          <Text style={styles.warnContent}>{text}</Text>
-        </View>
-        <View style={styles.arrowSign}>
-          <Text style={styles.arrowSignText}>
-            <Icon name="right" color={color.warning} />
-          </Text>
-        </View>
-      </TouchableOpacity>
-    </View>
+    <TouchableOpacity style={styles.warn} onPress={() => navigation.navigate(navigateTo)}>
+      <View style={styles.warningWrap}>
+        <Icon name="bell" color={Color.warning} />
+        <Text style={styles.warnContent}>{text}</Text>
+      </View>
+      <View style={styles.arrowSign}>
+        <Text style={styles.arrowSignText}>
+          <Icon name="right" color={Color.warning} />
+        </Text>
+      </View>
+    </TouchableOpacity>
   );
 }
 
 const styles = StyleSheet.create({
-  warnWrap: {},
   warn: {
     flexDirection: 'row',
     alignItems: 'center',
@@ -61,7 +57,7 @@ const styles = StyleSheet.create({
     marginLeft: px(10)
   },
   arrowSignText: {
-    color: color.red,
+    color: Color.red,
     fontSize: px(22)
   },
   warningWrap: {

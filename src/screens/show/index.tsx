@@ -4,7 +4,7 @@
  * @作者: 于效仟
  * @Date: 2020-04-28 10:47:39
  * @LastEditors: 于效仟
- * @LastEditTime: 2020-04-29 14:25:53
+ * @LastEditTime: 2020-04-29 14:37:47
  */
 
 import React from 'react';
@@ -19,6 +19,9 @@ import { StackHeaderProps } from '@react-navigation/stack';
 import { DrawerActions } from '@react-navigation/native';
 import store from '../../store';
 import List from './components/List';
+import Chart from './components/Chart';
+import Card from './components/Card';
+import Setting from './components/Setting';
 
 const { px } = Size;
 const tabs = [{ title: '列表' }, { title: '卡片' }, { title: '图表' }, { title: '设置' }];
@@ -47,9 +50,9 @@ const Profile = (props: StackHeaderProps) => {
       </BackgroundImgHeader>
       <Tabs tabs={tabs} swipeable={false}>
         <List />
-        {/* <Card /> */}
-        {/* <Module /> */}
-        {/* <Setting /> */}
+        <Card />
+        <Chart />
+        <Setting />
       </Tabs>
     </Container>
   );
