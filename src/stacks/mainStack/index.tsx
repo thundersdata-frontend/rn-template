@@ -32,7 +32,7 @@ export const MainStack = () => {
     );
 
     switch (routeName) {
-      case 'Homepage':
+      case 'HomePage':
       default:
         return {
           headerTitle: '首页',
@@ -51,6 +51,11 @@ export const MainStack = () => {
           headerLeft
         };
 
+      case 'Show':
+        return {
+          header: () => null,
+          headerLeft
+        };
       case 'Mine':
         return {
           header: () => null

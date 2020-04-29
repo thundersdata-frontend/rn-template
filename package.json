@@ -116,7 +116,7 @@
     "jetifier": "^1.6.5",
     "lint-staged": "^10.1.1",
     "metro-react-native-babel-preset": "^0.59.0",
-    "pont-engine": "1.0.3",
+    "pont-engine": "^1.0.3",
     "prettier": "^2.0.2",
     "react": "^16.13.1",
     "react-test-renderer": "^16.13.1",

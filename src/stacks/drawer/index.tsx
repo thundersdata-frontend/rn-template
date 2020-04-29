@@ -9,6 +9,7 @@ import HomePage from '../../screens/home';
 import Teams from '../../screens/team';
 import LeagueHome from '../../screens/league';
 import Mine from '../../screens/mine';
+import Show from '../../screens/show';
 
 const Drawer = createDrawerNavigator();
 export default function DrawerStack() {
@@ -19,6 +20,12 @@ export default function DrawerStack() {
       component: HomePage,
       label: '首页',
       icon: require('../../assets/icons/drawer_home.png')
+    },
+    {
+      name: 'Show',
+      component: Show,
+      label: '展示',
+      icon: require('../../assets/icons/drawer_me.png')
     },
     {
       name: 'Team',
