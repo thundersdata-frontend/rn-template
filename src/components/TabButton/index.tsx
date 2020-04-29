@@ -4,11 +4,12 @@
  * @作者: 黄姗姗
  * @LastEditors: 黄姗姗
  * @Date: 2020-01-07 15:35:12
- * @LastEditTime: 2020-04-29 10:55:15
+ * @LastEditTime: 2020-04-29 14:57:04
  */
 import React, { useState, useEffect } from 'react';
 import { View, StyleSheet, Text, ViewStyle, TouchableOpacity } from 'react-native';
 import { Color, Size } from '../../config';
+import { WingBlank } from '@ant-design/react-native';
 
 interface TabButtonProps {
   tabs: { title: string }[];
@@ -28,7 +29,7 @@ const TabButton: React.FC<TabButtonProps> = ({ key, tabs, style, children }) => 
   }, [key]);
 
   return (
-    <>
+    <WingBlank>
       <View style={[styles.nav, style]}>
         <View style={styles.wrap}>
           {tabs.map(item => (
@@ -53,7 +54,7 @@ const TabButton: React.FC<TabButtonProps> = ({ key, tabs, style, children }) => 
           return <View style={activeKey === tabs[index].title ? styles.tab : styles.none}>{child}</View>;
         })}
       </View>
-    </>
+    </WingBlank>
   );
 };
 
@@ -61,7 +62,6 @@ const styles = StyleSheet.create({
   nav: {
     backgroundColor: Color.white,
     paddingVertical: px(12),
-    paddingHorizontal: px(16)
   },
   wrap: {
     height: px(32),

@@ -49,6 +49,7 @@ export const MainStack = () => {
       case 'League':
         return {
           ...linearGradientStackOptions,
+          headerTitle: '联赛',
           headerLeft: () => (
             <TouchableOpacity
               activeOpacity={0.8}
