@@ -60,6 +60,11 @@ export const MainStack = () => {
           )
         };
 
+      case 'Show':
+        return {
+          header: () => null,
+          headerLeft
+        };
       case 'Mine':
         return {
           header: () => null
