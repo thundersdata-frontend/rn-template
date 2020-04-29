@@ -4,13 +4,13 @@
  * @作者: 黄姗姗
  * @LastEditors: 黄姗姗
  * @Date: 2020-01-13 20:17:32
- * @LastEditTime: 2020-04-29 11:49:02
+ * @LastEditTime: 2020-04-29 14:20:42
  */
 import React from 'react';
 import { Text, View, StyleSheet } from 'react-native';
 import Container from '../../components/Container';
 import { useNavigation } from '@react-navigation/native';
-import { Tabs, WhiteSpace, Carousel, WingBlank } from '@ant-design/react-native';
+import { Tabs, WhiteSpace, Carousel, WingBlank, Flex } from '@ant-design/react-native';
 import { Color, Size } from '../../config';
 import GridItems from '../../components/GridItems';
 // import useRequest from '@umijs/use-request';
@@ -50,15 +50,24 @@ const Home = () => {
             afterChange={handleChange}
             dotStyle={{ backgroundColor: Color.white }}
             dotActiveStyle={{ backgroundColor: Color.primary }}>
-            <View style={[styles.containerHorizontal, { backgroundColor: Color.primary }]}>
+            <Flex
+              align="center"
+              justify="center"
+              style={[styles.containerHorizontal, { backgroundColor: Color.primary }]}>
               <Text>Carousel 1</Text>
-            </View>
-            <View style={[styles.containerHorizontal, { backgroundColor: Color.orange }]}>
+            </Flex>
+            <Flex
+              align="center"
+              justify="center"
+              style={[styles.containerHorizontal, { backgroundColor: Color.orange }]}>
               <Text>Carousel 2</Text>
-            </View>
-            <View style={[styles.containerHorizontal, { backgroundColor: Color.success }]}>
+            </Flex>
+            <Flex
+              align="center"
+              justify="center"
+              style={[styles.containerHorizontal, { backgroundColor: Color.success }]}>
               <Text>Carousel 3</Text>
-            </View>
+            </Flex>
           </Carousel>
         </WingBlank>
         <GridItems list={itemList} />
@@ -73,19 +82,16 @@ const Home = () => {
 
 const styles = StyleSheet.create({
   wrapper: {
-    backgroundColor: '#fff',
+    backgroundColor: Color.backgroundColor,
     borderRadius: px(6)
   },
   containerHorizontal: {
-    flexGrow: 1,
-    alignItems: 'center',
-    justifyContent: 'center',
     height: px(144),
     borderRadius: px(6)
   },
   text: {
-    color: '#fff',
-    fontSize: 36
+    color: Color.mainTextColor,
+    fontSize: px(36)
   }
 });
 
