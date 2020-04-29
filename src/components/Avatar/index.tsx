@@ -3,8 +3,8 @@
  * @公司: thundersdata
  * @作者: 陈杰
  * @Date: 2020-01-15 10:17:42
- * @LastEditors: 黄姗姗
- * @LastEditTime: 2020-04-26 16:53:31
+ * @LastEditors: 于效仟
+ * @LastEditTime: 2020-04-28 14:34:54
  */
 import React from 'react';
 import { Image, ImageStyle } from 'react-native';

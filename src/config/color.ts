@@ -3,12 +3,12 @@
  * @公司: thundersdata
  * @作者: 阮旭松
  * @Date: 2019-09-27 16:49:40
- * @LastEditors: 黄姗姗
- * @LastEditTime: 2020-04-29 14:11:53
+ * @LastEditors: 于效仟
+ * @LastEditTime: 2020-04-29 15:07:35
  */
 export default {
   success: '#53C41B',
-  warning: '#FAAD14',
+  warning: '#F0412C',
   fail: '#F5222D',
   primary: '#409EFF',
   white: '#ffffff',
