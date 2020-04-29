@@ -15,12 +15,12 @@ export default function ShowList() {
   return (
     <Container>
       <ScrollView>
-        <TodoTip totalNumber={10} navigateTo={'HomePage'} />
+        <TodoTip text="有10条预警消息，请及时处理" navigateTo={'HomePage'} />
         <List renderHeader={'List header'}>
           <CustomItem
-            title={'主要信息'}
+            title="主要信息"
             thumb="https://os.alipayobjects.com/rmsportal/mOoPurdIfmcuqtr.png"
-            extra={'描述信息'}
+            extra="描述信息"
           />
           <SwipeAction
             autoClose
@@ -35,19 +35,19 @@ export default function ShowList() {
             <List.Item extra="左滑删除">信息</List.Item>
           </SwipeAction>
           <CustomItem
-            title={'主要信息'}
-            navigateTo={'Show'}
+            title="主要信息"
+            navigateTo="Show"
             thumb="https://os.alipayobjects.com/rmsportal/mOoPurdIfmcuqtr.png"
           />
           <CustomItem
-            title={'主要信息'}
-            brief={'附标题'}
+            title="主要信息"
+            brief="附标题"
             thumb="https://os.alipayobjects.com/rmsportal/mOoPurdIfmcuqtr.png"
           />
           <CustomItem
-            title={'主要信息'}
-            brief={'附标题'}
-            navigateTo={'Show'}
+            title="主要信息"
+            brief="附标题"
+            navigateTo="Show"
             style={{ minHeight: Size.px(70) }}
             thumb={
               <Image
@@ -67,16 +67,17 @@ export default function ShowList() {
               style: {},
               content: (
                 <List>
-                  <CustomItem title={'主要信息'} style={{ backgroundColor: color.backgroundColor }} />
+                  <CustomItem title="主要信息" style={{ backgroundColor: color.backgroundColor }} />
                   <CustomItem
-                    title={'主要信息'}
+                    title="主要信息"
                     style={{ backgroundColor: color.backgroundColor }}
                     thumb="https://os.alipayobjects.com/rmsportal/mOoPurdIfmcuqtr.png"
                   />
                 </List>
               )
             }
-          ]}></CustomAccordion>
+          ]}
+        />
         <CustomAccordion
           activeSections={activeSections2}
           onChange={setActiveSections2}
@@ -94,7 +95,8 @@ export default function ShowList() {
                 </WingBlank>
               )
             }
-          ]}></CustomAccordion>
+          ]}
+        />
         <WhiteSpace />
       </ScrollView>
     </Container>

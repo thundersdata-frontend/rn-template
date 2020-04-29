@@ -4,13 +4,13 @@
  * @作者: 于效仟
  * @Date: 2020-04-28 10:47:39
  * @LastEditors: 于效仟
- * @LastEditTime: 2020-04-29 10:48:48
+ * @LastEditTime: 2020-04-29 14:25:53
  */
 
 import React from 'react';
-import { View, Text } from 'react-native';
+import { Text } from 'react-native';
 import { Color, Size } from '../../config';
-import { Tabs } from '@ant-design/react-native';
+import { Tabs, Flex } from '@ant-design/react-native';
 import Container from '../../components/Container';
 import BackgroundImgHeader from '../../components/BackgroundImgHeader';
 import Iconfont from '../../components/Iconfont';
@@ -21,6 +21,8 @@ import store from '../../store';
 import List from './components/List';
 
 const { px } = Size;
+const tabs = [{ title: '列表' }, { title: '卡片' }, { title: '图表' }, { title: '设置' }];
+
 const Profile = (props: StackHeaderProps) => {
   const [state] = store.useModel('user');
 
@@ -32,7 +34,7 @@ const Profile = (props: StackHeaderProps) => {
         leftIcon={<Iconfont name="navMenu" size={Size.px(20)} color={Color.white} />}
         onPress={() => props.navigation.dispatch(DrawerActions.toggleDrawer())}
         {...props}>
-        <View style={{ justifyContent: 'center', alignItems: 'center' }}>
+        <Flex justify="center" align="center">
           <Avatar
             uri={state.avatar}
             width={px(54)}
@@ -41,9 +43,9 @@ const Profile = (props: StackHeaderProps) => {
           <Text style={{ fontSize: px(18), fontWeight: '500', color: Color.white, marginTop: Size.px(10) }}>
             {state.name || '用户名'}
           </Text>
-        </View>
+        </Flex>
       </BackgroundImgHeader>
-      <Tabs tabs={[{ title: '列表' }, { title: '卡片' }, { title: '图表' }, { title: '设置' }]} swipeable={false}>
+      <Tabs tabs={tabs} swipeable={false}>
         <List />
         {/* <Card /> */}
         {/* <Module /> */}
