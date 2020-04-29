@@ -48,6 +48,8 @@
     "@react-native-community/async-storage": "^1.9.0",
     "@react-native-community/masked-view": "^0.1.6",
     "@react-native-community/netinfo": "^5.7.0",
+    "@react-native-community/viewpager": "^4.0.0",
+    "@react-navigation/bottom-tabs": "^5.2.8",
     "@react-navigation/drawer": "^5.4.0",
     "@react-navigation/native": "^5.1.4",
     "@react-navigation/stack": "^5.2.9",

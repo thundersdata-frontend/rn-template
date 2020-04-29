@@ -5,11 +5,12 @@ import { RouteProp, DrawerActions } from '@react-navigation/native';
 import zhCN from '@ant-design/react-native/es/locale-provider/zh_CN';
 import Iconfont from '../../components/Iconfont';
 import { Size, Color } from '../../config';
-import { commonStackOptions } from '../../common';
+import { commonStackOptions, linearGradientStackOptions } from '../../common';
 import { RootParamList, State } from '../../interfaces/root';
 import { TouchableOpacity } from 'react-native';
 
 import DrawerStack from '../drawer';
+import TabStack from '../tab';
 
 const Stack = createStackNavigator();
 export const MainStack = () => {
@@ -21,18 +22,18 @@ export const MainStack = () => {
     route: RouteProp<RootParamList, 'Drawer'> & { state?: State };
     navigation: StackNavigationProp<RootParamList>;
   }): StackNavigationOptions {
-    const routeName = route.state ? route.state.routeNames[route.state.index] : 'Homepage';
+    const routeName = route.state ? route.state.routeNames[route.state.index] : 'HomePage';
     const headerLeft = () => (
       <TouchableOpacity
         activeOpacity={0.8}
         style={{ marginLeft: Size.px(5), padding: Size.px(10) }}
         onPress={() => navigation.dispatch(DrawerActions.toggleDrawer())}>
-        <Iconfont name="navMenu" size={Size.px(20)} color={Color.white} />
+        <Iconfont name="navMenu" size={Size.px(20)} color={Color.primary} />
       </TouchableOpacity>
     );
 
     switch (routeName) {
-      case 'Homepage':
+      case 'HomePage':
       default:
         return {
           headerTitle: '首页',
@@ -47,13 +48,40 @@ export const MainStack = () => {
 
       case 'League':
         return {
-          headerTitle: '联赛',
-          headerLeft
+          ...linearGradientStackOptions,
+          headerLeft: () => (
+            <TouchableOpacity
+              activeOpacity={0.8}
+              style={{ marginLeft: Size.px(5), padding: Size.px(10) }}
+              onPress={() => navigation.dispatch(DrawerActions.toggleDrawer())}>
+              <Iconfont name="navMenu" size={Size.px(20)} color={Color.white} />
+            </TouchableOpacity>
+          )
         };
 
       case 'Mine':
         return {
           header: () => null
+        };
+    }
+  }
+
+  function getTabHeaderTitle({
+    route
+  }: {
+    route: RouteProp<RootParamList, 'Tab'> & { state?: State };
+  }): StackNavigationOptions {
+    const routeName = route.state ? route.state.routeNames[route.state.index] : 'Test1';
+    switch (routeName) {
+      case 'Test1':
+      default:
+        return {
+          headerTitle: 'Test1'
+        };
+
+      case 'Test2':
+        return {
+          headerTitle: 'Test2'
         };
     }
   }
@@ -77,6 +105,7 @@ export const MainStack = () => {
         screenOptions={commonStackOptions}
         headerMode="screen">
         <Stack.Screen name="Drawer" component={DrawerStack} options={props => getDrawerHeaderTitle(props)} />
+        <Stack.Screen name="Tab" component={TabStack} options={props => getTabHeaderTitle(props)} />
       </Stack.Navigator>
     </Provider>
   );

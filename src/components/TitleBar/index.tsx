@@ -4,7 +4,7 @@
  * @作者: 黄姗姗
  * @LastEditors: 黄姗姗
  * @Date: 2020-01-13 15:24:29
- * @LastEditTime: 2020-03-27 15:24:17
+ * @LastEditTime: 2020-04-28 10:12:41
  */
 import React from 'react';
 import LinearGradient from 'react-native-linear-gradient';
@@ -15,7 +15,7 @@ const TitleBar = (props: StackHeaderProps) => {
     <LinearGradient
       start={{ x: 0, y: 0 }}
       end={{ x: 1, y: 0 }}
-      colors={['#434343', '#1C1A19']}
+      colors={['#69C0FF', '#096DD9']}
       style={{ padding: 0, margin: 0 }}>
       <Header {...props} />
     </LinearGradient>

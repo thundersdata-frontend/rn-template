@@ -4,7 +4,7 @@
  * @作者: 陈杰
  * @Date: 2020-01-15 16:41:51
  * @LastEditors: 黄姗姗
- * @LastEditTime: 2020-04-26 17:35:51
+ * @LastEditTime: 2020-04-29 10:39:55
  */
 import React from 'react';
 import { ScrollView, Text } from 'react-native';

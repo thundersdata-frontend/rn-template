@@ -4,7 +4,7 @@
  * @作者: 陈杰
  * @Date: 2020-01-15 17:00:10
  * @LastEditors: 黄姗姗
- * @LastEditTime: 2020-04-26 16:54:13
+ * @LastEditTime: 2020-04-28 11:00:21
  */
 import React from 'react';
 import { StatusBar, ViewStyle, StyleProp } from 'react-native';

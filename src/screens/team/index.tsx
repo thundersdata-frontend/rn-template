@@ -4,18 +4,33 @@
  * @作者: 黄姗姗
  * @LastEditors: 黄姗姗
  * @Date: 2020-01-07 15:35:12
- * @LastEditTime: 2020-04-26 17:36:05
+ * @LastEditTime: 2020-04-29 10:56:40
  */
 import React from 'react';
-import { Text, ScrollView } from 'react-native';
+import { Text, View } from 'react-native';
 import Container from '../../components/Container';
+import TabButton from '../../components/TabButton';
+import { WhiteSpace } from '@ant-design/react-native';
 
 const Teams = () => {
+  const tabs = [{ title: '选项1' }, { title: '选项2' }, { title: '选项3' }, { title: '选项4' }];
   return (
     <Container>
-      <ScrollView>
-        <Text>球队</Text>
-      </ScrollView>
+      <WhiteSpace />
+      <TabButton tabs={tabs}>
+        <View>
+          <Text>选项1</Text>
+        </View>
+        <View>
+          <Text>选项2</Text>
+        </View>
+        <View>
+          <Text>选项3</Text>
+        </View>
+        <View>
+          <Text>选项4</Text>
+        </View>
+      </TabButton>
     </Container>
   );
 };
