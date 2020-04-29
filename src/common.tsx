@@ -1,5 +1,5 @@
 import React from 'react';
-import { TouchableOpacity } from 'react-native';
+import { TouchableOpacity, View } from 'react-native';
 import Toast from 'react-native-root-toast';
 import { IconOutline } from '@ant-design/icons-react-native';
 import { StackHeaderProps, StackHeaderLeftButtonProps, StackNavigationOptions, Header } from '@react-navigation/stack';
@@ -25,30 +25,41 @@ export const initialPagination = {
 };
 
 export const commonStackOptions: StackNavigationOptions = {
+  header: (props: StackHeaderProps) => (
+    <View style={{ backgroundColor: Color.white }}>
+      <Header {...props} />
+    </View>
+  ),
+  headerTitleStyle: {
+    fontWeight: '500',
+    color: Color.mainTextColor,
+    fontSize: Size.px(18)
+  },
+  headerTransparent: true,
+  headerTitleAlign: 'center',
+  headerLeft: (props: StackHeaderLeftButtonProps) =>
+    props.canGoBack && (
+      <TouchableOpacity activeOpacity={0.8} onPress={props.onPress} style={{ marginLeft: 0, padding: 10 }}>
+        <IconOutline name="left" size={24} color={Color.primary} />
+      </TouchableOpacity>
+    )
+};
+
+export const linearGradientStackOptions: StackNavigationOptions = {
   header: (props: StackHeaderProps) => <TitleBar {...props} />,
   headerTitleStyle: {
-    fontWeight: 'bold',
+    fontWeight: '500',
     color: Color.white,
     fontSize: Size.px(18)
   },
   headerTransparent: true,
   headerTitleAlign: 'center',
-  headerStyle: {
-    backgroundColor: 'transparent'
-  },
   headerLeft: (props: StackHeaderLeftButtonProps) =>
     props.canGoBack && (
-      <TouchableOpacity activeOpacity={0.8} onPress={props.onPress} style={{ marginLeft: 5, padding: 10 }}>
+      <TouchableOpacity activeOpacity={0.8} onPress={props.onPress} style={{ marginLeft: 0, padding: 10 }}>
         <IconOutline name="left" size={24} color={Color.white} />
       </TouchableOpacity>
     )
-};
-
-export const transparentHeaderOptions: StackNavigationOptions = {
-  header: (props: StackHeaderProps) => <Header {...props} />,
-  headerTransparent: true,
-  headerTitleAlign: 'center',
-  headerStyle: { borderWidth: 1, borderColor: 'red' }
 };
 
 export enum FETCH_ERROR {

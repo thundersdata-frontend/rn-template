@@ -2,9 +2,9 @@
  * @文件描述: tab切换组件，形式为button
  * @公司: thundersdata
  * @作者: 黄姗姗
- * @LastEditors: 陈杰
+ * @LastEditors: 黄姗姗
  * @Date: 2020-01-07 15:35:12
- * @LastEditTime: 2020-02-28 14:10:28
+ * @LastEditTime: 2020-04-29 10:55:15
  */
 import React, { useState, useEffect } from 'react';
 import { View, StyleSheet, Text, ViewStyle, TouchableOpacity } from 'react-native';
@@ -59,7 +59,7 @@ const TabButton: React.FC<TabButtonProps> = ({ key, tabs, style, children }) => 
 
 const styles = StyleSheet.create({
   nav: {
-    backgroundColor: Color.backgroundColor,
+    backgroundColor: Color.white,
     paddingVertical: px(12),
     paddingHorizontal: px(16)
   },
@@ -93,7 +93,7 @@ const styles = StyleSheet.create({
     flex: 1
   },
   tab: {
-    backgroundColor: Color.backgroundColor,
+    backgroundColor: Color.white,
     width: '100%',
     height: '100%'
   },
