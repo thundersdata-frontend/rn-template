@@ -18,7 +18,7 @@ export default ({ onPress, text, disabled = false }: BottomButtonProps) => {
         borderTopWidth: Size.ONE_PIXEL,
         borderTopColor: Color.borderColor
       }}>
-      <GradientButton style={{ margin: Size.px(10) }} text={text} onPress={onPress} disabled={disabled} />
+      <GradientButton style={{ margin: Size.px(12) }} text={text} onPress={onPress} disabled={disabled} />
     </View>
   );
 };

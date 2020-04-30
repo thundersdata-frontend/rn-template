@@ -60,6 +60,12 @@ export const MainStack = () => {
           )
         };
 
+      case 'form':
+        return {
+          headerTitle: '表单',
+          headerLeft
+        };
+
       case 'Show':
         return {
           header: () => null,

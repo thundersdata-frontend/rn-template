@@ -4,7 +4,7 @@
  * @作者: 陈杰
  * @Date: 2020-04-15 10:33:56
  * @LastEditors: 黄姗姗
- * @LastEditTime: 2020-04-26 16:49:16
+ * @LastEditTime: 2020-04-30 16:24:56
  */
 import React from 'react';
 import CustomPicker, { CustomPickerProps } from '../CustomPicker';
@@ -17,6 +17,7 @@ interface CustomListItemPickerProps extends CustomPickerProps, Pick<ListItemProp
   onPress?: () => void;
   text: string;
   required?: boolean;
+  isError?: boolean;
 }
 export default function CustomListItemPicker({
   cols = 1,
@@ -29,7 +30,8 @@ export default function CustomListItemPicker({
   arrow = 'horizontal',
   onPress,
   text,
-  required = false
+  required = false,
+  isError
 }: CustomListItemPickerProps) {
   const _extra = data.length > 0 ? '请选择' : '暂无数据';
 
@@ -54,7 +56,7 @@ export default function CustomListItemPicker({
             return;
           }
         }}>
-        <ListItemText text={text} required={required} />
+        <ListItemText isError={isError} text={text} required={required} />
       </List.Item>
     </CustomPicker>
   );

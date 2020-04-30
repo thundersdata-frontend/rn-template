@@ -4,7 +4,7 @@
  * @作者: 黄姗姗
  * @LastEditors: 黄姗姗
  * @Date: 2020-01-13 20:17:32
- * @LastEditTime: 2020-04-29 14:20:42
+ * @LastEditTime: 2020-04-30 14:52:27
  */
 import React from 'react';
 import { Text, View, StyleSheet } from 'react-native';
@@ -23,9 +23,7 @@ const Home = () => {
   // useRequest(() => API.recruitment.apply.delApply.fetch({ applyCode: '1' }));
   const navigation = useNavigation();
 
-  const handleChange = (index: number) => {
-    console.log(index);
-  };
+  const handleChange = () => {};
 
   const itemList = [
     { id: 1, name: '名字1' },

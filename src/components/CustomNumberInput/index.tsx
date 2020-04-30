@@ -4,7 +4,7 @@
  * @作者: 陈杰
  * @Date: 2020-04-10 16:06:31
  * @LastEditors: 黄姗姗
- * @LastEditTime: 2020-04-26 16:50:15
+ * @LastEditTime: 2020-04-29 17:02:37
  */
 import React, { useState, useEffect } from 'react';
 import { TouchableOpacity } from 'react-native';
@@ -176,7 +176,7 @@ const CustomNumberInput: React.FC<CustomNumberInputProps> = ({
               <TouchableOpacity
                 activeOpacity={0.8}
                 onPress={handleConfirm}
-                style={[styles.block, { height: px(100), backgroundColor: Color.green }]}>
+                style={[styles.block, { height: px(100), backgroundColor: Color.primary }]}>
                 <Text style={styles.button}>确定</Text>
               </TouchableOpacity>
             </View>

@@ -4,7 +4,7 @@
  * @作者: 阮旭松
  * @Date: 2020-01-15 15:56:46
  * @LastEditors: 黄姗姗
- * @LastEditTime: 2020-04-26 16:27:49
+ * @LastEditTime: 2020-04-30 14:08:25
  */
 import RNFetchBlob from 'rn-fetch-blob';
 import React, { useState } from 'react';
@@ -16,7 +16,7 @@ import { toastFail, toastSuccess } from '../../common';
 import { getToken } from '../../utils/auth';
 import { isIOS } from '../../config/size';
 import { request, PERMISSIONS, RESULTS } from 'react-native-permissions';
-import { Toast, Portal } from '@ant-design/react-native';
+import { Toast, Portal, WingBlank } from '@ant-design/react-native';
 
 const { px } = Size;
 
@@ -122,7 +122,7 @@ const CustomImagePicker: React.FC<CustomImagePickerProps> = props => {
     const token = await getToken();
     const resultData = await RNFetchBlob.fetch(
       'POST',
-      ``,
+      '',
       {
         'Content-Type': 'multipart/form-data',
         Authorization: token
@@ -141,9 +141,11 @@ const CustomImagePicker: React.FC<CustomImagePickerProps> = props => {
 
   return (
     <TouchableOpacity onPress={checkBeforeUpload}>
-      <ImageBackground source={currentImgSource || imgSource} style={styles.backgroundImg} resizeMode="contain">
-        {!currentImgSource && <Text style={styles.titleText}>{title}</Text>}
-      </ImageBackground>
+      <WingBlank>
+        <ImageBackground source={currentImgSource || imgSource} style={styles.backgroundImg} resizeMode="contain">
+          {!currentImgSource && <Text style={styles.titleText}>{title}</Text>}
+        </ImageBackground>
+      </WingBlank>
     </TouchableOpacity>
   );
 };
@@ -152,7 +154,7 @@ const styles = StyleSheet.create({
   backgroundImg: {
     width: px(64),
     height: px(64),
-    marginLeft: px(28),
+    // marginLeft: px(28),
     zIndex: 0
   },
   addImg: {

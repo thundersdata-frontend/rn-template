@@ -3,8 +3,8 @@
  * @公司: thundersdata
  * @作者: 陈杰
  * @Date: 2020-04-10 15:09:39
- * @LastEditors: 陈杰
- * @LastEditTime: 2020-04-16 16:28:27
+ * @LastEditors: 黄姗姗
+ * @LastEditTime: 2020-04-29 18:07:41
  */
 import React, { useState, useEffect } from 'react';
 import { Switch, SwitchProps } from 'react-native-switch';
@@ -40,7 +40,7 @@ const CustomSwitch: React.FC<CustomSwitchProps> = props => {
   );
 };
 CustomSwitch.defaultProps = {
-  backgroundActive: Color.orange,
+  backgroundActive: Color.primary,
   backgroundInactive: Color.backgroundColor,
   circleActiveColor: Color.white,
   circleInActiveColor: Color.white,

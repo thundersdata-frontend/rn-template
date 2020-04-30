@@ -34,7 +34,7 @@ const LeagueHome = () => {
                 height: px(144),
                 marginTop: px(10),
                 justifyContent: 'center',
-                alignItems: 'center',
+                alignItems: 'center'
               }}
             />
           </WingBlank>
