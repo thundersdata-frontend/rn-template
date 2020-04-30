@@ -103,3 +103,10 @@ export function toastFail(message: string) {
     backgroundColor: Color.fail
   });
 }
+// 时间RadioGroup的data常量
+export const FILTER_OPTION_DAY_MONTH_QUARTER_YEAR = Object.freeze([
+  { label: '日', value: 'day' },
+  { label: '月', value: 'month' },
+  { label: '季', value: 'quarter' },
+  { label: '年', value: 'year' }
+]);

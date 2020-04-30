@@ -2,9 +2,9 @@
  * @文件描述: 首页
  * @公司: thundersdata
  * @作者: 黄姗姗
- * @LastEditors: 黄姗姗
+ * @LastEditors: 于效仟
  * @Date: 2020-01-13 20:17:32
- * @LastEditTime: 2020-04-29 14:20:42
+ * @LastEditTime: 2020-04-29 15:31:18
  */
 import React from 'react';
 import { Text, View, StyleSheet } from 'react-native';
@@ -23,8 +23,8 @@ const Home = () => {
   // useRequest(() => API.recruitment.apply.delApply.fetch({ applyCode: '1' }));
   const navigation = useNavigation();
 
-  const handleChange = (index: number) => {
-    console.log(index);
+  const handleChange = () => {
+    // console.log(1);
   };
 
   const itemList = [

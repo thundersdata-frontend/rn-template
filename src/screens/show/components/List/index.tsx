@@ -16,6 +16,7 @@ export default function ShowList() {
     <Container>
       <ScrollView>
         <TodoTip text="有10条预警消息，请及时处理" navigateTo={'HomePage'} />
+
         <List renderHeader={'List header'}>
           <CustomItem
             title="主要信息"

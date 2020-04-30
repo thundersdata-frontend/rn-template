@@ -580,3 +580,101 @@ export const getYAxisFormatterConfig = (config: echarts.EChartOption.YAxis) => {
   }
   return config;
 };
+
+/** 获取基础趋势图的配置项（折线、柱图） */
+// eslint-disable-next-line complexity
+export const getBaseTrendOption = (fetchOption: BaseChartOption, showDataZoom = true, rowNumber?: number) => {
+  const { xAxis = [], yAxis = [], series = [] } = fetchOption || {};
+  const colors =
+    getLegendData(series).length > 6
+      ? chartColors
+      : ['rgba(51,86,135,1)', 'rgba(127,149,180,1)', 'rgba(16,142,233,1)', 'rgba(16,142,2330.6)'];
+  // series的通用默认配置
+  const seriesConfig: object = {
+    barMaxWidth: 30,
+    barGap: 0,
+    itemStyle: {
+      normal: {
+        // bar 上面两个圆角
+        barBorderRadius: [5, 5, 0, 0]
+      }
+    },
+    symbolSize: 8
+  };
+  // x轴的通用默认配置
+  const xAxisConfig: echarts.EChartOption.XAxis = {
+    axisTick: { show: false },
+    axisLine: { show: false },
+    axisLabel: {
+      color: '#bec0c1',
+      fontSize: 14
+    }
+  };
+
+  // y轴的通用默认配置
+  const yAxisConfig: echarts.EChartOption.YAxis = {
+    splitLine: { show: true, lineStyle: { color: ['#f2f2f2'] } },
+    axisTick: { show: false },
+    axisLine: { show: false },
+    axisLabel: {
+      show: true,
+      color: '#bcbdbd'
+    }
+  };
+
+  const option: EChartOption = {
+    grid: {
+      top: '10%',
+      left: hasYAxis(series, 0) ? '15%' : 0,
+      right: hasYAxis(series, 1) ? '10%' : '5%'
+    },
+    tooltip: {
+      trigger: 'axis',
+      formatter: function (params: echarts.EChartOption.Tooltip.Format[] | echarts.EChartOption.Tooltip.Format) {
+        if (!Array.isArray(params)) {
+          return '';
+        }
+        const str = params.length > 0 ? `${params[0].axisValue}<br />` : '';
+        return (
+          str + params.map(({ seriesName, data, marker }) => `${marker}${seriesName}：${data.value}`).join('<br />')
+        );
+      },
+      // 修复tooltip被遮挡问题
+      confine: true,
+      // 选中时的辅助线
+      axisPointer: {
+        type: 'line',
+        lineStyle: {
+          width: 30,
+          opacity: 0.2
+        }
+      }
+    },
+    legend: createLegendsFromSeries(series, rowNumber || 3),
+    xAxis: xAxis.map(data => {
+      const config: echarts.EChartOption.XAxis = getXAxisFormatterConfig({ ...xAxisConfig, ...data });
+      delete config.name;
+      return config;
+    }),
+    yAxis: yAxis.map(data => getYAxisFormatterConfig({ ...yAxisConfig, ...data })),
+    series: series.map(data => ({ ...seriesConfig, ...data })),
+    color: colors
+  };
+  option.grid!['bottom'] = getGridBottom(option, showDataZoom);
+  if (showDataZoom) {
+    return {
+      ...option,
+      dataZoom: [
+        {
+          type: 'slider',
+          bottom: getLegendHeight(option) + BASE_PADDING
+        },
+
+        {
+          type: 'inside'
+        }
+      ]
+    };
+  }
+  return option;
+};

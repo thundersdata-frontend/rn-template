@@ -4,13 +4,13 @@
  * @作者: 于效仟
  * @Date: 2020-04-28 10:47:39
  * @LastEditors: 于效仟
- * @LastEditTime: 2020-04-29 14:37:47
+ * @LastEditTime: 2020-04-29 15:59:37
  */
 
 import React from 'react';
-import { Text } from 'react-native';
+import { Text, View } from 'react-native';
 import { Color, Size } from '../../config';
-import { Tabs, Flex } from '@ant-design/react-native';
+import { Tabs } from '@ant-design/react-native';
 import Container from '../../components/Container';
 import BackgroundImgHeader from '../../components/BackgroundImgHeader';
 import Iconfont from '../../components/Iconfont';
@@ -37,7 +37,7 @@ const Profile = (props: StackHeaderProps) => {
         leftIcon={<Iconfont name="navMenu" size={Size.px(20)} color={Color.white} />}
         onPress={() => props.navigation.dispatch(DrawerActions.toggleDrawer())}
         {...props}>
-        <Flex justify="center" align="center">
+        <View style={{ justifyContent: 'center', alignItems: 'center' }}>
           <Avatar
             uri={state.avatar}
             width={px(54)}
@@ -46,7 +46,7 @@ const Profile = (props: StackHeaderProps) => {
           <Text style={{ fontSize: px(18), fontWeight: '500', color: Color.white, marginTop: Size.px(10) }}>
             {state.name || '用户名'}
           </Text>
-        </Flex>
+        </View>
       </BackgroundImgHeader>
       <Tabs tabs={tabs} swipeable={false}>
         <List />
