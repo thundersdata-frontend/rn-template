@@ -4,7 +4,7 @@
  * @作者: 阮旭松
  * @Date: 2020-01-15 15:56:46
  * @LastEditors: 黄姗姗
- * @LastEditTime: 2020-04-30 14:08:25
+ * @LastEditTime: 2020-04-30 16:31:28
  */
 import RNFetchBlob from 'rn-fetch-blob';
 import React, { useState } from 'react';
@@ -154,7 +154,6 @@ const styles = StyleSheet.create({
   backgroundImg: {
     width: px(64),
     height: px(64),
-    // marginLeft: px(28),
     zIndex: 0
   },
   addImg: {
