@@ -3,10 +3,12 @@
  * 注意：formatter类方法里面不可以引入外部变量 否则会引起图表渲染异常
  */
 import echarts from 'echarts';
-import { BaseChartOption, EChartOption } from '../interfaces/common';
+import { BaseChartOption, EChartOption, MetadataType } from '../interfaces/common';
 import { isObject } from 'lodash';
 import { chartColors } from './colors';
 import { Color, Size } from '../config';
+import { valueFormat } from './string';
+import { provinceList } from '../common';
 
 // 图表初始化标准高度
 const BASE_HEIGHT = 300;
@@ -676,5 +678,100 @@ export const getBaseTrendOption = (fetchOption: BaseChartOption, showDataZoom = 
       ]
     };
   }
+  return option;
+};
+
+/** 获取基础地图的配置项 */
+export const getBaseMapOption = (fetchOption: BaseChartOption, metadata?: MetadataType) => {
+  const { series = [] } = fetchOption || {};
+  const { maxCount = 200 } = metadata || {};
+  // series的通用默认配置
+  const seriesConfig: echarts.EChartOption.Series = {
+    type: 'map',
+    map: 'china',
+    geoIndex: 0,
+    aspectScale: 0.75, //长宽比
+    showLegendSymbol: false, // 存在legend时显示
+    label: {
+      normal: {
+        show: true
+      },
+      emphasis: {
+        show: false,
+        textStyle: {
+          color: '#fff'
+        }
+      }
+    },
+    roam: true,
+    itemStyle: {
+      normal: {
+        areaColor: '#ccc',
+        borderColor: '#3B5077'
+      },
+      emphasis: {
+        areaColor: '#ccc'
+      }
+    },
+    animation: false
+  };
+  const option: EChartOption = {
+    legend: {
+      top: 0
+    },
+    visualMap: [
+      {
+        type: 'continuous',
+        show: true,
+        min: 0,
+        max: maxCount,
+        formatter: valueFormat,
+        itemHeight: 80,
+        left: 0,
+        top: 'bottom',
+        calculable: true,
+        seriesIndex: [0],
+        inRange: {
+          color: ['#fcdd2d', '#f95820']
+        }
+      }
+    ],
+    geo: {
+      show: true,
+      silent: true,
+      roam: false,
+      map: 'china',
+      zoom: 1.1,
+      center: [100, 36.5],
+      label: {
+        normal: {
+          show: false
+        },
+        emphasis: {
+          show: false
+        }
+      },
+      itemStyle: {
+        normal: {
+          areaColor: '#ccc',
+          borderColor: '#fff'
+        },
+        emphasis: {
+          areaColor: '#ccc'
+        }
+      }
+    },
+    series: (series as echarts.EChartOption.SeriesMap[]).map(({ data, ...rest }) => {
+      const config: object = {
+        ...seriesConfig,
+        ...rest,
+        data: (data as echarts.EChartOption.SeriesMap.DataObject[])?.map(({ name, value }) => ({
+          name: provinceList.find(item => item.province_name === name)?.simpleName,
+          value
+        }))
+      };
+      return config;
+    })
+  };
   return option;
 };

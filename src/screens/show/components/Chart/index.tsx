@@ -1,11 +1,12 @@
 import React from 'react';
 import { ScrollView } from 'react-native';
 import Container from '../../../../components/Container';
+import ChartWrap from '../../../../components/ChartWrap';
 import ChartTable from './components/ChartTable';
 import BaseTrendChart from './components/BaseTrendChart';
 import Top5Chart from './components/Top5Chart';
 import PieChart from './components/PieChart';
-import ChartWrap from '../../../../components/ChartWrap';
+import MapChart from './components/MapChart';
 
 export default function Chart() {
   return (
@@ -22,6 +23,9 @@ export default function Chart() {
         </ChartWrap>
         <ChartWrap title="Pie图">
           <PieChart />
+        </ChartWrap>
+        <ChartWrap title="MapChart">
+          <MapChart />
         </ChartWrap>
       </ScrollView>
     </Container>

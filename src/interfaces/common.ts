@@ -4,7 +4,7 @@
  * @作者: 陈杰
  * @Date: 2020-01-14 11:16:15
  * @LastEditors: 于效仟
- * @LastEditTime: 2020-04-29 18:28:26
+ * @LastEditTime: 2020-04-30 11:36:24
  */
 import echarts from 'echarts';
 import { InternalNamePath } from 'rc-field-form/lib/interface';
@@ -79,3 +79,11 @@ export type ErrorField = {
   name: InternalNamePath;
   errors: string[];
 };
+
+export interface MetadataType {
+  // for map
+  minCount?: number;
+  maxCount?: number;
+  // 携带的指标类信息
+  quotaData?: BaseQuotaType[];
+}
