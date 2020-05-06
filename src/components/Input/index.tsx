@@ -3,15 +3,19 @@ import { TextInput, TextInputProps, StyleSheet, StyleProp, TextStyle } from 'rea
 import { Size, Color } from '../../config';
 
 const Input: React.FC<TextInputProps> = ({ style, ...props }) => (
-  <TextInput style={[styles.input, style] as StyleProp<TextStyle>} {...props} />
+  <TextInput
+    placeholderTextColor={Color.placeholderTextColor}
+    style={[styles.input, style] as StyleProp<TextStyle>}
+    {...props}
+  />
 );
 
 export default Input;
 
 const styles = StyleSheet.create({
   input: {
-    color: Color.black,
-    height: Size.px(40),
+    color: Color.mainTextColor,
+    height: Size.px(44),
     padding: 0
   }
 });

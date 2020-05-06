@@ -4,7 +4,7 @@
  * @作者: 于效仟
  * @Date: 2020-04-29 10:37:52
  * @LastEditors: 黄姗姗
- * @LastEditTime: 2020-04-30 16:32:13
+ * @LastEditTime: 2020-05-06 14:32:15
  */
 import React, { ReactNode } from 'react';
 import { StyleProp, ViewStyle } from 'react-native';
@@ -28,6 +28,15 @@ const CustomItem = ({ title, brief, thumb, onPress, style, extra, navigateTo, is
   const Brief = Item.Brief;
   const navigation = useNavigation();
 
+  const childrenComp = brief ? (
+    <>
+      {typeof title === 'string' ? <ListItemText isError={isError} text={title} /> : title}
+      <Brief>{brief}</Brief>
+    </>
+  ) : (
+    <>{typeof title === 'string' ? <ListItemText isError={isError} text={title} /> : title}</>
+  );
+
   return (
     <Item
       style={style}
@@ -35,8 +44,7 @@ const CustomItem = ({ title, brief, thumb, onPress, style, extra, navigateTo, is
       extra={extra}
       arrow={(navigateTo || onPress) && 'horizontal'}
       onPress={navigateTo ? () => navigation.navigate(navigateTo) : onPress}>
-      {typeof title === 'string' ? <ListItemText isError={isError} text={title} /> : title}
-      {brief && <Brief>{brief}</Brief>}
+      {childrenComp}
     </Item>
   );
 };

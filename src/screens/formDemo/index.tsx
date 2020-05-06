@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Text, ScrollView, View } from 'react-native';
+import { Text, ScrollView, View, TouchableOpacity } from 'react-native';
 import Title from '../../components/Title';
 import Container from '../../components/Container';
 import CustomNumberInput from '../../components/CustomNumberInput';
@@ -15,7 +15,8 @@ import {
   Flex,
   Stepper,
   Button,
-  Popover
+  Popover,
+  ActionSheet
 } from '@ant-design/react-native';
 import { Color, Size } from '../../config';
 import ListItemText from '../../components/ListItemText';
@@ -29,9 +30,10 @@ import ListItem from '../../components/ListItem';
 import CustomImagePicker from '../../components/CustomImagePicker';
 import BottomButton from '../../components/BottomButton';
 import { ValidateErrorEntity, InternalNamePath } from 'rc-field-form/lib/interface';
-import { toastFail } from '../../common';
+import { toastFail, toastSuccess } from '../../common';
 import { isError } from '../../utils/validation';
 import CustomListItemPicker from '../../components/CustomListItemPicker';
+import { useNavigation } from '@react-navigation/native';
 
 const { px } = Size;
 
@@ -46,8 +48,11 @@ const list = [
   { id: 3, name: '3班' }
 ];
 
+const BUTTONS = ['操作A', '操作B', '操作C', '删除', '取消'];
+
 export default () => {
   const [form] = useForm();
+  const navigation = useNavigation();
 
   const [activeSections, setActiveSections] = useState<number[]>([]);
   const [selectedItems, setSelectedItems] = useState<number[]>([]);
@@ -65,7 +70,20 @@ export default () => {
     }
   };
 
-  const handleFieldsChange = () => {};
+  const openActionSheet = () => {
+    ActionSheet.showActionSheetWithOptions(
+      {
+        title: '我是标题',
+        message: '我是描述',
+        options: BUTTONS,
+        cancelButtonIndex: 4,
+        destructiveButtonIndex: 3
+      },
+      buttonIndex => {
+        toastSuccess(BUTTONS[buttonIndex]);
+      }
+    );
+  };
 
   const renderHeader = (_: AccordionHeader, __: number, isActive: boolean) => (
     <ListItem>
@@ -119,14 +137,26 @@ export default () => {
 
   return (
     <Container>
-      <ScrollView>
+      <ScrollView keyboardShouldPersistTaps="always">
+        <WhiteSpace />
+        <WingBlank>
+          <TouchableOpacity onPress={() => navigation.navigate('SearchPage')}>
+            <Flex
+              justify="center"
+              align="center"
+              style={{
+                height: px(30),
+                backgroundColor: Color.backgroundColor,
+                borderRadius: px(2)
+              }}>
+              <Icon name="search" color={Color.placeholderTextColor} />
+              <Text style={{ color: Color.placeholderTextColor, fontSize: px(14) }}>搜索商品名称</Text>
+            </Flex>
+          </TouchableOpacity>
+        </WingBlank>
+        <WhiteSpace />
         <Title title="输入列表" />
-        <Form
-          component={false}
-          form={form}
-          onFinish={handleFinish}
-          onFinishFailed={handleFinishFailed}
-          onFieldsChange={handleFieldsChange}>
+        <Form component={false} form={form} onFinish={handleFinish} onFinishFailed={handleFinishFailed}>
           <List>
             <Field
               name="name"
@@ -147,7 +177,7 @@ export default () => {
               <CustomNumberInput text="身高（厘米）" />
             </Field>
             <Field name="password">
-              <InputItem placeholder="请输入" extra={<Icon name="eye-invisible" />}>
+              <InputItem clear placeholder="请输入" type="password">
                 <ListItemText text="登录密码" />
               </InputItem>
             </Field>
@@ -169,6 +199,21 @@ export default () => {
                 <ListItemText text="邮箱" isError={isError(errorNames, 'email')} />
               </InputItem>
             </Field>
+            {/* TODO: 会换行，待解决 */}
+            <CustomListItem
+              title="数字区间"
+              extra={
+                <Flex>
+                  <View style={{ width: px(60) }}>
+                    <InputItem />
+                  </View>
+                  <Text>-</Text>
+                  <View style={{ width: px(60) }}>
+                    <InputItem />
+                  </View>
+                </Flex>
+              }
+            />
             <Field name="account">
               <InputItem placeholder="不可编辑" disabled>
                 <ListItemText text="账号" />
@@ -228,8 +273,11 @@ export default () => {
                 />
               }
             />
+            <CustomListItem title="动作面板" onPress={openActionSheet} />
             <Title title="图片上传" />
+            <WhiteSpace />
             <CustomImagePicker />
+            <WhiteSpace />
           </List>
           <WhiteSpace />
           <WingBlank>
