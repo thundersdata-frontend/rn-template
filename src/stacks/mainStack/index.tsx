@@ -49,6 +49,7 @@ export const MainStack = () => {
       case 'League':
         return {
           ...linearGradientStackOptions,
+          headerTitle: '联赛',
           headerLeft: () => (
             <TouchableOpacity
               activeOpacity={0.8}
@@ -57,6 +58,12 @@ export const MainStack = () => {
               <Iconfont name="navMenu" size={Size.px(20)} color={Color.white} />
             </TouchableOpacity>
           )
+        };
+
+      case 'form':
+        return {
+          headerTitle: '表单',
+          headerLeft
         };
 
       case 'Show':

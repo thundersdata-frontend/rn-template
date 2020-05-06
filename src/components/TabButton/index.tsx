@@ -4,7 +4,7 @@
  * @作者: 黄姗姗
  * @LastEditors: 黄姗姗
  * @Date: 2020-01-07 15:35:12
- * @LastEditTime: 2020-04-29 10:55:15
+ * @LastEditTime: 2020-04-29 15:57:47
  */
 import React, { useState, useEffect } from 'react';
 import { View, StyleSheet, Text, ViewStyle, TouchableOpacity } from 'react-native';
@@ -61,7 +61,7 @@ const styles = StyleSheet.create({
   nav: {
     backgroundColor: Color.white,
     paddingVertical: px(12),
-    paddingHorizontal: px(16)
+    marginHorizontal: px(12)
   },
   wrap: {
     height: px(32),

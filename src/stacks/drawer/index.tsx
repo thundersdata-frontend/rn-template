@@ -1,7 +1,7 @@
 import React from 'react';
 import { Text, Image, View } from 'react-native';
 import { createDrawerNavigator } from '@react-navigation/drawer';
-
+import { IconOutline } from '@ant-design/icons-react-native';
 import CustomDrawerContent from '../../CustomDrawerContent';
 import { Size, Color } from '../../config';
 
@@ -10,9 +10,10 @@ import Teams from '../../screens/team';
 import LeagueHome from '../../screens/league';
 import Mine from '../../screens/mine';
 import Show from '../../screens/show';
-import { IconOutline } from '@ant-design/icons-react-native';
+import FormDemo from '../../screens/formDemo';
 
 const Drawer = createDrawerNavigator();
+
 export default function DrawerStack() {
   /* 左滑抽屉的label和icon的匹配 */
   const drawerItems = [
@@ -38,6 +39,13 @@ export default function DrawerStack() {
       name: 'League',
       component: LeagueHome,
       label: '联赛',
+      rightIcon: <IconOutline name="right" size={18} color={Color.placeholderTextColor} />,
+      icon: require('../../assets/icons/drawer_match.png')
+    },
+    {
+      name: 'Form',
+      component: FormDemo,
+      label: '表单',
       rightIcon: <IconOutline name="right" size={18} color={Color.placeholderTextColor} />,
       icon: require('../../assets/icons/drawer_match.png')
     },

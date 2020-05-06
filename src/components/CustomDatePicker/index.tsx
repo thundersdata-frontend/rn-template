@@ -16,6 +16,7 @@ const CustomDatePicker: React.FC<CustomDatePickerProps> = ({ children, ...restPr
       okText={'确定'}
       dismissText={'取消'}
       styles={pickerStyles}
+      defaultDate={new Date()}
       itemStyle={{ paddingTop: Size.px(10), paddingBottom: Size.px(10) }}>
       {children}
     </DatePicker>

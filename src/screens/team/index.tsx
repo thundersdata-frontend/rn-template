@@ -4,7 +4,7 @@
  * @作者: 黄姗姗
  * @LastEditors: 黄姗姗
  * @Date: 2020-01-07 15:35:12
- * @LastEditTime: 2020-04-29 10:56:40
+ * @LastEditTime: 2020-04-29 15:56:22
  */
 import React from 'react';
 import { Text, View } from 'react-native';
