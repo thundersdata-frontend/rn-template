@@ -3,8 +3,8 @@
  * @公司: thundersdata
  * @作者: 陈杰
  * @Date: 2020-01-14 11:16:15
- * @LastEditors: 黄姗姗
- * @LastEditTime: 2020-04-26 15:40:31
+ * @LastEditors: 于效仟
+ * @LastEditTime: 2020-04-30 11:36:24
  */
 import echarts from 'echarts';
 import { InternalNamePath } from 'rc-field-form/lib/interface';
@@ -44,6 +44,11 @@ export type valueType = string | number;
 
 export type valuesType = Array<string | number>;
 
+export interface PickerDataType extends SelectOption {
+  name?: string;
+  children?: PickerDataType[];
+}
+
 export interface SelectOption {
   label: string;
   value: valueType;
@@ -74,3 +79,11 @@ export type ErrorField = {
   name: InternalNamePath;
   errors: string[];
 };
+
+export interface MetadataType {
+  // for map
+  minCount?: number;
+  maxCount?: number;
+  // 携带的指标类信息
+  quotaData?: BaseQuotaType[];
+}

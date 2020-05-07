@@ -3,8 +3,8 @@
  * @公司: thundersdata
  * @作者: 廖军
  * @Date: 2019-09-29 19:25:00
- * @LastEditors: 陈杰
- * @LastEditTime: 2019-10-18 17:29:55
+ * @LastEditors: 于效仟
+ * @LastEditTime: 2020-04-29 21:16:19
  */
 
 import React from 'react';
@@ -51,7 +51,10 @@ const HorizontalBarChart: React.FC<HorizontalBarChartProps> = props => {
         <View style={styles.itemContent}>
           <View style={styles.itemText}>
             <Text>{name}</Text>
-            <Text>{`${valueFormat(value)}${unit}`}</Text>
+            <Text>
+              {`${valueFormat(value)}${unit}`}
+              <Text style={styles.percentText}>({percentage}%)</Text>
+            </Text>
           </View>
           <View style={styles.percentBack}>
             <View style={{ ...styles.percent, width: `${percentage}%` }} />
@@ -126,6 +129,9 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     justifyContent: 'space-between',
     marginBottom: Size.px(8)
+  },
+  percentText: {
+    color: Color.grey
   },
   percentBack: {
     height: Size.px(8),
