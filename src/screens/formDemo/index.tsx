@@ -34,6 +34,7 @@ import { toastFail, toastSuccess } from '../../common';
 import { isError } from '../../utils/validation';
 import CustomListItemPicker from '../../components/CustomListItemPicker';
 import { useNavigation } from '@react-navigation/native';
+import { emailReg } from '../../utils/regex-utils';
 
 const { px } = Size;
 
@@ -185,7 +186,7 @@ export default () => {
               name="email"
               rules={[
                 {
-                  pattern: /^[a-z0-9]+([._\\-]*[a-z0-9])*@([a-z0-9]+[-a-z0-9]*[a-z0-9]+.){1,63}[a-z0-9]+$/,
+                  pattern: emailReg,
                   message: '请正确填写邮箱'
                 }
               ]}>

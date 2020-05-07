@@ -4,7 +4,7 @@
  * @作者: 陈杰
  * @LastEditors: 黄姗姗
  * @Date: 2019-04-24 15:50:09
- * @LastEditTime: 2020-05-06 16:47:23
+ * @LastEditTime: 2020-05-07 09:51:46
  */
 import React, { useContext } from 'react';
 import { StyleSheet, View, Text } from 'react-native';
@@ -56,7 +56,7 @@ const AccountSignIn: React.FC = () => {
             name="username"
             rules={[
               { required: true, message: '请输入账号' },
-              { max: 16, message: '长度不能超过16位' }
+              { max: 16, message: `长度不能超过${MAX_LENGTH_USERNAME}位` }
             ]}
             trigger="onChangeText"
             validateTrigger="onChangeText">
@@ -69,7 +69,7 @@ const AccountSignIn: React.FC = () => {
             name="password"
             rules={[
               { required: true, message: '请输入密码' },
-              { max: 16, message: '长度不能超过16位' }
+              { max: 16, message: `长度不能超过${MAX_LENGTH_PASSWORD}位` }
             ]}
             trigger="onChangeText">
             <Input style={styles.input} secureTextEntry placeholder="请输入密码" maxLength={MAX_LENGTH_PASSWORD} />

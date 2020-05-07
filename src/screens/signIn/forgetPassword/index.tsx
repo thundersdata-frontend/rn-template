@@ -61,7 +61,7 @@ const ForgetPassword = () => {
               name="password"
               rules={[
                 { required: true, message: '请输入密码' },
-                { max: 16, message: '长度不能超过16位' }
+                { max: 16, message: `长度不能超过${MAX_LENGTH_PASSWORD}位` }
               ]}
               trigger="onChangeText">
               <Input style={styles.input} secureTextEntry placeholder="请输入密码" maxLength={MAX_LENGTH_PASSWORD} />

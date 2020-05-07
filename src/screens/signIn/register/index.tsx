@@ -14,6 +14,7 @@ import Form, { useForm, Field } from 'rc-field-form';
 import Iconfont from '../../../components/Iconfont';
 import { useNavigation } from '@react-navigation/native';
 import useSmsSend from '../../../hooks/useSmsSend';
+import { phoneReg } from '../../../utils/regex-utils';
 
 const { px } = Size;
 
@@ -74,7 +75,7 @@ const Register = () => {
                   validateTrigger="onChangeText"
                   rules={[
                     { required: true, message: '请输入账号' },
-                    { max: 16, message: '长度不能超过16位' }
+                    { max: 16, message: `长度不能超过${MAX_LENGTH_USERNAME}位` }
                   ]}>
                   <Input style={styles.input} placeholder="请输入账号" maxLength={MAX_LENGTH_USERNAME} />
                 </Field>
@@ -87,7 +88,7 @@ const Register = () => {
                   validateTrigger="onChangeText"
                   rules={[
                     { required: true, message: '请输入密码' },
-                    { max: 16, message: '长度不能超过16位' }
+                    { max: 16, message: `长度不能超过${MAX_LENGTH_PASSWORD}位` }
                   ]}>
                   <Input
                     style={styles.input}
@@ -106,7 +107,7 @@ const Register = () => {
                   rules={[
                     { required: true, message: '请输入手机号' },
                     {
-                      pattern: /^0?(13[0-9]|15[012356789]|17[013678]|18[0-9]|14[57])[0-9]{8}$/,
+                      pattern: phoneReg,
                       message: '请输入正确的手机号'
                     }
                   ]}>
