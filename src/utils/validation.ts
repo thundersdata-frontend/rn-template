@@ -6,7 +6,7 @@ import { Rule, InternalNamePath } from 'rc-field-form/lib/interface';
  * @作者: 陈杰
  * @Date: 2019-06-27 17:43:30
  * @LastEditors: 黄姗姗
- * @LastEditTime: 2020-04-30 16:13:14
+ * @LastEditTime: 2020-05-07 10:26:28
  */
 export const MAX_LENGTH_USERNAME = 16;
 export const MAX_LENGTH_PASSWORD = 16;
@@ -16,6 +16,7 @@ export const MAX_LENGTH_DESC = 200;
 export const MAX_LENGTH_COMMENT = 100;
 export const MAX_LENGTH_PHONE = 11;
 export const MAX_LENGTH_SMS = 6;
+export const LABEL_NUMBER = 5;
 
 /**
  * 评分校验规则

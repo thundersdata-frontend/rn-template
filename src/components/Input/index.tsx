@@ -16,6 +16,7 @@ const styles = StyleSheet.create({
   input: {
     color: Color.mainTextColor,
     height: Size.px(44),
-    padding: 0
+    padding: 0,
+    fontSize: Size.px(14)
   }
 });

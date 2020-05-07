@@ -3,7 +3,7 @@ import Container from '../../../components/Container';
 import { Text, StyleSheet } from 'react-native';
 import Form, { useForm, Field } from 'rc-field-form';
 import { ValidateErrorEntity } from 'rc-field-form/lib/interface';
-import { toastFail } from '../../../common';
+import { toastFail, toastSuccess } from '../../../common';
 import { Flex, Button, WingBlank, WhiteSpace } from '@ant-design/react-native';
 import Input from '../../../components/Input';
 import { Size, Color } from '../../../config';
@@ -11,14 +11,20 @@ import useSmsSend from '../../../hooks/useSmsSend';
 import ListItemText from '../../../components/ListItemText';
 import { MAX_LENGTH_PASSWORD } from '../../../utils/validation';
 import { ScrollView } from 'react-native-gesture-handler';
+import { phoneReg } from '../../../utils/regex-utils';
+import { useNavigation } from '@react-navigation/native';
 
 const { px } = Size;
 
 const ForgetPassword = () => {
   const [form] = useForm();
   const { smsText, sendSms } = useSmsSend();
+  const navigation = useNavigation();
 
-  const handleFinish = () => {};
+  const handleFinish = () => {
+    toastSuccess('密码重置成功');
+    navigation.navigate('SignIn');
+  };
 
   const handleFinishFailed = ({ errorFields }: ValidateErrorEntity) => {
     if (errorFields.length > 0) {
@@ -36,7 +42,13 @@ const ForgetPassword = () => {
               name="phone"
               trigger="onChangeText"
               validateTrigger="onChangeText"
-              rules={[{ required: true, message: '请输入手机号' }]}>
+              rules={[
+                { required: true, message: '请输入手机号' },
+                {
+                  pattern: phoneReg,
+                  message: '请输入正确的手机号'
+                }
+              ]}>
               <Input style={styles.input} placeholder="请输入手机号" />
             </Field>
           </Flex>
@@ -47,13 +59,11 @@ const ForgetPassword = () => {
               trigger="onChangeText"
               validateTrigger="onChangeText"
               rules={[{ required: true, message: '请输入验证码' }]}>
-              <>
-                <Input style={[styles.input, { paddingLeft: px(17) }]} placeholder="请输入验证码" />
-                <Text style={styles.extraText} onPress={() => sendSms(form.getFieldValue('phone'))}>
-                  {smsText}
-                </Text>
-              </>
+              <Input style={[styles.input, { paddingLeft: px(17) }]} placeholder="请输入验证码" />
             </Field>
+            <Text style={styles.extraText} onPress={() => sendSms(form.getFieldValue('phone'))}>
+              {smsText}
+            </Text>
           </Flex>
           <Flex style={styles.item}>
             <ListItemText style={{ flex: 2 }} text="重置密码" />
@@ -71,7 +81,9 @@ const ForgetPassword = () => {
       </ScrollView>
       <WingBlank>
         <WhiteSpace />
-        <Button type="primary">确认重置</Button>
+        <Button type="primary" onPress={() => form.submit()}>
+          确认重置
+        </Button>
         <WhiteSpace />
       </WingBlank>
     </Container>
