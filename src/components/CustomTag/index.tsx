@@ -4,7 +4,7 @@
  * @作者: 于效仟
  * @Date: 2020-04-27 16:45:41
  * @LastEditors: 于效仟
- * @LastEditTime: 2020-05-07 10:48:13
+ * @LastEditTime: 2020-05-07 11:56:12
  */
 import React from 'react';
 import { View, Text, StyleSheet, StyleProp, ViewStyle } from 'react-native';
@@ -16,10 +16,10 @@ const px = Size.px;
 interface CustomTagProps {
   style?: StyleProp<ViewStyle>;
   type?: 'blue' | 'green' | 'yellow' | 'red';
-  children: React.ReactNode | string;
+  children: React.ReactNode;
 }
 
-const InternalTag: React.ForwardRefRenderFunction<unknown, CustomTagProps> = ({ children, style, type = 'blue' }) => {
+const InternalTag: React.FC<CustomTagProps> = ({ children, style, type = 'blue' }) => {
   const colorConfig = {
     blue: {
       bg: 'rgba(64,158,255,0.15)',
@@ -72,9 +72,9 @@ const InternalTag: React.ForwardRefRenderFunction<unknown, CustomTagProps> = ({ 
     </View>
   );
 };
-export interface TagType extends React.ForwardRefExoticComponent<CustomTagProps & React.RefAttributes<HTMLElement>> {
+export interface TagType extends React.ExoticComponent<CustomTagProps> {
   CheckableTag: typeof CheckableTag;
 }
-const CustomTag = React.forwardRef<unknown, CustomTagProps>(InternalTag) as TagType;
+const CustomTag = (InternalTag as unknown) as TagType;
 CustomTag.CheckableTag = CheckableTag;
 export default CustomTag;
