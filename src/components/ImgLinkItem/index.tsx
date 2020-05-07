@@ -3,14 +3,15 @@
  * @公司: thundersdata
  * @作者: 于效仟
  * @Date: 2020-05-06 16:56:48
- * @LastEditors: 于效仟
- * @LastEditTime: 2020-05-07 09:36:41
+ * @LastEditors: 黄姗姗
+ * @LastEditTime: 2020-05-07 16:47:01
  */
 import React from 'react';
 import { TouchableOpacity, Text, Image, ImageSourcePropType } from 'react-native';
 import { Size, Color } from '../../config';
 import { Flex } from '@ant-design/react-native';
 import { useNavigation } from '@react-navigation/native';
+import ListItemText from '../ListItemText';
 
 const px = Size.px;
 
@@ -25,7 +26,7 @@ const ImgLinkItem = ({ source, title, content, navigateTo }: BlockItemInter) => 
   const navigation = useNavigation();
 
   return (
-    <Flex direction="column" style={{ width: px(170), margin: px(5), alignItems: 'flex-start' }}>
+    <Flex direction="column" align="start" style={{ width: px(170), marginBottom: px(12) }}>
       <TouchableOpacity
         onPress={
           navigateTo
@@ -36,8 +37,8 @@ const ImgLinkItem = ({ source, title, content, navigateTo }: BlockItemInter) => 
         }>
         <Image source={source} width={px(80)} height={px(80)} style={{ width: px(170), height: px(170) }} />
       </TouchableOpacity>
-      <Text style={{ color: Color.mainTextColor, marginTop: px(6), marginBottom: px(2) }}>{title}</Text>
-      <Text style={{ color: Color.helpTextColor }}>{content}</Text>
+      <ListItemText style={{ marginTop: px(6) }} text={title} />
+      <Text style={{ color: Color.helpTextColor, fontSize: px(12), lineHeight: px(17) }}>{content}</Text>
     </Flex>
   );
 };

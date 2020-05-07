@@ -4,7 +4,7 @@
  * @作者: 陈杰
  * @LastEditors: 黄姗姗
  * @Date: 2019-09-25 19:25:00
- * @LastEditTime: 2020-04-26 16:51:55
+ * @LastEditTime: 2020-05-07 16:49:40
  */
 import React, { PureComponent } from 'react';
 import {
@@ -20,7 +20,7 @@ import {
   ScrollView,
   RefreshControl
 } from 'react-native';
-import { Size } from '../../config';
+import { Size, Color } from '../../config';
 import DataEmpty from '../DataEmpty';
 
 export const RefreshState = {
@@ -221,7 +221,7 @@ const styles = StyleSheet.create({
   },
   footerText: {
     fontSize: Size.px(12),
-    color: 'rgba(0, 0, 0, 0.2)'
+    color: Color.helpTextColor
   },
   emptyFooter: {
     flex: 1,

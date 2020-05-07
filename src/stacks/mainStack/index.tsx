@@ -104,6 +104,7 @@ export const MainStack = () => {
       locale={zhCN}
       theme={{
         brand_primary: Color.primary,
+        brand_warning: Color.fail,
         activeTextColor: Color.primary,
         tabs_color: Color.primary,
         color_text_placeholder: Color.helpTextColor,
