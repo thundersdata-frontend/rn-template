@@ -4,7 +4,7 @@
  * @作者: 于效仟
  * @Date: 2020-04-28 10:47:39
  * @LastEditors: 于效仟
- * @LastEditTime: 2020-04-29 14:37:47
+ * @LastEditTime: 2020-04-30 10:36:11
  */
 
 import React from 'react';
@@ -37,7 +37,7 @@ const Profile = (props: StackHeaderProps) => {
         leftIcon={<Iconfont name="navMenu" size={Size.px(20)} color={Color.white} />}
         onPress={() => props.navigation.dispatch(DrawerActions.toggleDrawer())}
         {...props}>
-        <Flex justify="center" align="center">
+        <Flex justify="center" align="center" direction="column">
           <Avatar
             uri={state.avatar}
             width={px(54)}

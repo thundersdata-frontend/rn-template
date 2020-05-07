@@ -3,8 +3,8 @@
  * @公司: thundersdata
  * @作者: 廖军
  * @Date: 2019-10-04 00:43:00
- * @LastEditors: 陈杰
- * @LastEditTime: 2019-10-18 18:27:22
+ * @LastEditors: 于效仟
+ * @LastEditTime: 2020-04-29 18:17:27
  */
 import React, { useState, useEffect } from 'react';
 import { View, Text, StyleSheet, TouchableOpacity, ViewStyle } from 'react-native';
@@ -98,7 +98,7 @@ const styles = StyleSheet.create({
     borderBottomRightRadius: Size.px(4)
   },
   select: {
-    backgroundColor: Color.backgroundColor,
+    backgroundColor: Color.white,
     borderRadius: Size.px(4),
     shadowOffset: { width: -2, height: 2 },
     shadowColor: Color.dark,

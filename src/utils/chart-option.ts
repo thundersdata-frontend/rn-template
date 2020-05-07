@@ -3,10 +3,12 @@
  * 注意：formatter类方法里面不可以引入外部变量 否则会引起图表渲染异常
  */
 import echarts from 'echarts';
-import { BaseChartOption, EChartOption } from '../interfaces/common';
+import { BaseChartOption, EChartOption, MetadataType } from '../interfaces/common';
 import { isObject } from 'lodash';
 import { chartColors } from './colors';
 import { Color, Size } from '../config';
+import { valueFormat } from './string';
+import { provinceList } from '../common';
 
 // 图表初始化标准高度
 const BASE_HEIGHT = 300;
@@ -579,4 +581,197 @@ export const getYAxisFormatterConfig = (config: echarts.EChartOption.YAxis) => {
     };
   }
   return config;
+};
+
+/** 获取基础趋势图的配置项（折线、柱图） */
+// eslint-disable-next-line complexity
+export const getBaseTrendOption = (fetchOption: BaseChartOption, showDataZoom = true, rowNumber?: number) => {
+  const { xAxis = [], yAxis = [], series = [] } = fetchOption || {};
+  const colors =
+    getLegendData(series).length > 6
+      ? chartColors
+      : ['rgba(51,86,135,1)', 'rgba(127,149,180,1)', 'rgba(16,142,233,1)', 'rgba(16,142,2330.6)'];
+  // series的通用默认配置
+  const seriesConfig: object = {
+    barMaxWidth: 30,
+    barGap: 0,
+    itemStyle: {
+      normal: {
+        // bar 上面两个圆角
+        barBorderRadius: [5, 5, 0, 0]
+      }
+    },
+    symbolSize: 8
+  };
+  // x轴的通用默认配置
+  const xAxisConfig: echarts.EChartOption.XAxis = {
+    axisTick: { show: false },
+    axisLine: { show: false },
+    axisLabel: {
+      color: '#bec0c1',
+      fontSize: 14
+    }
+  };
+
+  // y轴的通用默认配置
+  const yAxisConfig: echarts.EChartOption.YAxis = {
+    splitLine: { show: true, lineStyle: { color: ['#f2f2f2'] } },
+    axisTick: { show: false },
+    axisLine: { show: false },
+    axisLabel: {
+      show: true,
+      color: '#bcbdbd'
+    }
+  };
+
+  const option: EChartOption = {
+    grid: {
+      top: '10%',
+      left: hasYAxis(series, 0) ? '15%' : 0,
+      right: hasYAxis(series, 1) ? '10%' : '5%'
+    },
+    tooltip: {
+      trigger: 'axis',
+      formatter: function (params: echarts.EChartOption.Tooltip.Format[] | echarts.EChartOption.Tooltip.Format) {
+        if (!Array.isArray(params)) {
+          return '';
+        }
+        const str = params.length > 0 ? `${params[0].axisValue}<br />` : '';
+        return (
+          str + params.map(({ seriesName, data, marker }) => `${marker}${seriesName}：${data.value}`).join('<br />')
+        );
+      },
+      // 修复tooltip被遮挡问题
+      confine: true,
+      // 选中时的辅助线
+      axisPointer: {
+        type: 'line',
+        lineStyle: {
+          width: 30,
+          opacity: 0.2
+        }
+      }
+    },
+    legend: createLegendsFromSeries(series, rowNumber || 3),
+    xAxis: xAxis.map(data => {
+      const config: echarts.EChartOption.XAxis = getXAxisFormatterConfig({ ...xAxisConfig, ...data });
+      delete config.name;
+      return config;
+    }),
+    yAxis: yAxis.map(data => getYAxisFormatterConfig({ ...yAxisConfig, ...data })),
+    series: series.map(data => ({ ...seriesConfig, ...data })),
+    color: colors
+  };
+  option.grid!['bottom'] = getGridBottom(option, showDataZoom);
+  if (showDataZoom) {
+    return {
+      ...option,
+      dataZoom: [
+        {
+          type: 'slider',
+          bottom: getLegendHeight(option) + BASE_PADDING
+        },
+
+        {
+          type: 'inside'
+        }
+      ]
+    };
+  }
+  return option;
+};
+
+/** 获取基础地图的配置项 */
+export const getBaseMapOption = (fetchOption: BaseChartOption, metadata?: MetadataType) => {
+  const { series = [] } = fetchOption || {};
+  const { maxCount = 200 } = metadata || {};
+  // series的通用默认配置
+  const seriesConfig: echarts.EChartOption.Series = {
+    type: 'map',
+    map: 'china',
+    geoIndex: 0,
+    aspectScale: 0.75, //长宽比
+    showLegendSymbol: false, // 存在legend时显示
+    label: {
+      normal: {
+        show: true
+      },
+      emphasis: {
+        show: false,
+        textStyle: {
+          color: '#fff'
+        }
+      }
+    },
+    roam: true,
+    itemStyle: {
+      normal: {
+        areaColor: '#ccc',
+        borderColor: '#3B5077'
+      },
+      emphasis: {
+        areaColor: '#ccc'
+      }
+    },
+    animation: false
+  };
+  const option: EChartOption = {
+    legend: {
+      top: 0
+    },
+    visualMap: [
+      {
+        type: 'continuous',
+        show: true,
+        min: 0,
+        max: maxCount,
+        formatter: valueFormat,
+        itemHeight: 80,
+        left: 0,
+        top: 'bottom',
+        calculable: true,
+        seriesIndex: [0],
+        inRange: {
+          color: ['#fcdd2d', '#f95820']
+        }
+      }
+    ],
+    geo: {
+      show: true,
+      silent: true,
+      roam: false,
+      map: 'china',
+      zoom: 1.1,
+      center: [100, 36.5],
+      label: {
+        normal: {
+          show: false
+        },
+        emphasis: {
+          show: false
+        }
+      },
+      itemStyle: {
+        normal: {
+          areaColor: '#ccc',
+          borderColor: '#fff'
+        },
+        emphasis: {
+          areaColor: '#ccc'
+        }
+      }
+    },
+    series: (series as echarts.EChartOption.SeriesMap[]).map(({ data, ...rest }) => {
+      const config: object = {
+        ...seriesConfig,
+        ...rest,
+        data: (data as echarts.EChartOption.SeriesMap.DataObject[])?.map(({ name, value }) => ({
+          name: provinceList.find(item => item.province_name === name)?.simpleName,
+          value
+        }))
+      };
+      return config;
+    })
+  };
+  return option;
 };

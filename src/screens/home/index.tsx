@@ -2,9 +2,9 @@
  * @文件描述: 首页
  * @公司: thundersdata
  * @作者: 黄姗姗
- * @LastEditors: 黄姗姗
+ * @LastEditors: 于效仟
  * @Date: 2020-01-13 20:17:32
- * @LastEditTime: 2020-04-30 14:52:27
+ * @LastEditTime: 2020-05-06 18:12:51
  */
 import React from 'react';
 import { Text, View, StyleSheet } from 'react-native';
