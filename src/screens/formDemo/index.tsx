@@ -31,9 +31,12 @@ import ListItem from '../../components/ListItem';
 import CustomImagePicker from '../../components/CustomImagePicker';
 import BottomButton from '../../components/BottomButton';
 import { ValidateErrorEntity, InternalNamePath, Store } from 'rc-field-form/lib/interface';
-import { toastFail, toastSuccess } from '../../common';
-import { isError, LABEL_NUMBER } from '../../utils/validation';
+import { toastFail, provinceList, toastSuccess } from '../../common';
 import CustomListItemPicker from '../../components/CustomListItemPicker';
+import MultiplePicker from '../../components/MultiplePicker';
+import { valuesType } from '../../interfaces/common';
+import SearchPicker from '../../components/SearchPicker';
+import { isError, LABEL_NUMBER } from '../../utils/validation';
 import { useNavigation } from '@react-navigation/native';
 import { emailReg } from '../../utils/regex-utils';
 import Input from '../../components/Input';
@@ -60,6 +63,8 @@ export default () => {
   const [activeSections, setActiveSections] = useState<number[]>([]);
   const [selectedItems, setSelectedItems] = useState<number[]>([]);
   const [errorNames, setErrorNames] = useState<InternalNamePath>([]);
+  const [pickerValue, setPickerValue] = useState<valuesType>(provinceList.map(item => item.province_name));
+  const [pickerValue2, setPickerValue2] = useState<valuesType>([...provinceList.map(item => item.province_name)]);
 
   const handleFinish = (values: Store) => {
     setErrorNames([]);
@@ -269,7 +274,34 @@ export default () => {
               />
             </Field>
             <Field>
-              <CustomListItem title="switch选中状态" extra={<CustomSwitch value={true} />} />
+              <CustomListItem
+                title="级联picker"
+                extra={
+                  <MultiplePicker
+                    data={provinceList.map(({ province_name }) => ({ label: province_name, value: province_name }))}
+                    value={pickerValue}
+                    onChange={setPickerValue}
+                    centerText="省市"
+                  />
+                }
+              />
+            </Field>
+            <Field>
+              <CustomListItem
+                title="搜索picker"
+                extra={
+                  <SearchPicker
+                    data={provinceList.map(({ province_name }) => ({ label: province_name, value: province_name }))}
+                    value={pickerValue2}
+                    onChange={setPickerValue2}
+                    centerText="省市"
+                    placeholder="搜索省市名称"
+                  />
+                }
+              />
+            </Field>
+            <Field>
+              <CustomListItem title="标签内容" extra={<CustomSwitch value={true} />} />
             </Field>
             <Field>
               <CustomListItem title="switch未选中状态" extra={<CustomSwitch value={false} />} />
