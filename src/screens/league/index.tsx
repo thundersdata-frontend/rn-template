@@ -4,7 +4,7 @@
  * @作者: 陈杰
  * @Date: 2020-01-15 16:41:51
  * @LastEditors: 黄姗姗
- * @LastEditTime: 2020-04-29 15:24:40
+ * @LastEditTime: 2020-05-07 14:02:00
  */
 import React from 'react';
 import { Text, View, ImageBackground } from 'react-native';
@@ -39,9 +39,9 @@ const LeagueHome = () => {
             />
           </WingBlank>
         </Flex>
-        <View>
+        <WingBlank>
           <Text>内容区</Text>
-        </View>
+        </WingBlank>
       </View>
     </Container>
   );

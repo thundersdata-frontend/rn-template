@@ -3,8 +3,8 @@
  * @公司: thundersdata
  * @作者: 于效仟
  * @Date: 2020-05-06 10:42:25
- * @LastEditors: 于效仟
- * @LastEditTime: 2020-05-07 11:06:24
+ * @LastEditors: 黄姗姗
+ * @LastEditTime: 2020-05-07 15:45:34
  */
 import React from 'react';
 import { TouchableOpacity, View, Text, StyleSheet, Image, StyleProp, ViewStyle } from 'react-native';
@@ -24,15 +24,14 @@ const CheckableTag = ({ isSelected, name, onPress, style, isWithIcon, size = 'no
   const styles = StyleSheet.create({
     wrap: {
       height: size === 'normal' ? Size.px(32) : Size.px(24),
-      width: size === 'normal' ? Size.px(108) : Size.px(80),
       lineHeight: Size.px(32),
       marginRight: Size.px(8),
       backgroundColor: Color.backgroundColor,
       textAlign: 'center',
       alignItems: 'center',
       justifyContent: 'center',
-      paddingHorizontal: Size.px(19),
-      marginBottom: Size.px(8)
+      paddingHorizontal: size === 'normal' ? Size.px(40) : Size.px(20),
+      marginBottom: Size.px(12)
     },
     selectedWrap: {
       backgroundColor: 'rgba(62,154,249,0.15)'

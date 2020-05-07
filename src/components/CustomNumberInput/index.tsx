@@ -4,7 +4,7 @@
  * @作者: 陈杰
  * @Date: 2020-04-10 16:06:31
  * @LastEditors: 黄姗姗
- * @LastEditTime: 2020-04-29 17:02:37
+ * @LastEditTime: 2020-05-07 11:50:37
  */
 import React, { useState, useEffect } from 'react';
 import { TouchableOpacity } from 'react-native';
@@ -76,7 +76,11 @@ const CustomNumberInput: React.FC<CustomNumberInputProps> = ({
 
   return (
     <>
-      <List.Item extra={<ListItemText text={val || '请输入'} />} onPress={() => setVisible(true)}>
+      <List.Item
+        extra={
+          <ListItemText style={{ color: val ? Color.mainTextColor : Color.helpTextColor }} text={val || '请输入'} />
+        }
+        onPress={() => setVisible(true)}>
         <ListItemText text={text} />
       </List.Item>
       <Modal

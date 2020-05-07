@@ -11,6 +11,7 @@ import { TouchableOpacity } from 'react-native';
 
 import DrawerStack from '../drawer';
 import TabStack from '../tab';
+import SearchPage from '../../screens/formDemo/searchPage';
 
 const Stack = createStackNavigator();
 export const MainStack = () => {
@@ -103,6 +104,7 @@ export const MainStack = () => {
       locale={zhCN}
       theme={{
         brand_primary: Color.primary,
+        brand_warning: Color.fail,
         activeTextColor: Color.primary,
         tabs_color: Color.primary,
         color_text_placeholder: Color.helpTextColor,
@@ -118,6 +120,7 @@ export const MainStack = () => {
         headerMode="screen">
         <Stack.Screen name="Drawer" component={DrawerStack} options={props => getDrawerHeaderTitle(props)} />
         <Stack.Screen name="Tab" component={TabStack} options={props => getTabHeaderTitle(props)} />
+        <Stack.Screen name="SearchPage" component={SearchPage} options={{ headerTitle: '搜索页面' }} />
       </Stack.Navigator>
     </Provider>
   );

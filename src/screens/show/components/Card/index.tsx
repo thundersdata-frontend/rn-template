@@ -3,10 +3,12 @@ import { ScrollView, View, Text } from 'react-native';
 import Container from '../../../../components/Container';
 import ChartWrap from '../../../../components/ChartWrap';
 import { Size, Color } from '../../../../config';
-import { Flex, WhiteSpace } from '@ant-design/react-native';
+import { Flex, WhiteSpace, WingBlank } from '@ant-design/react-native';
 import CustomTag from '../../../../components/CustomTag';
 import CustomCard from '../../../../components/CustomCard';
 import ImgLinkItem from '../../../../components/ImgLinkItem';
+import { THUMB_URL } from '../../../../common';
+import ListItemText from '../../../../components/ListItemText';
 const { CheckableTag } = CustomTag;
 
 const px = Size.px;
@@ -24,13 +26,13 @@ export default function CardPage() {
     }
   };
 
-  const tags = ['哈哈哈', '啦啦啦', '哒哒哒'];
+  const tags = ['哈哈', '啦啦啦', '哒哒哒哒'];
 
   return (
     <Container>
       <ScrollView>
         <ChartWrap title="标签">
-          <Flex wrap="wrap" style={{ marginVertical: Size.px(5) }}>
+          <Flex wrap="wrap">
             {tags.map((item, index) => (
               <CheckableTag
                 key={index}
@@ -41,7 +43,7 @@ export default function CardPage() {
               />
             ))}
           </Flex>
-          <Flex wrap="wrap" style={{ marginVertical: Size.px(5) }}>
+          <Flex wrap="wrap">
             {tags.map((item, index) => (
               <CheckableTag
                 key={index}
@@ -52,27 +54,31 @@ export default function CardPage() {
               />
             ))}
           </Flex>
-          <Flex wrap="wrap" style={{ marginVertical: Size.px(5) }}>
-            <CustomTag>blue</CustomTag>
-            <CustomTag type="green">green</CustomTag>
-            <CustomTag type="yellow"> yellow</CustomTag>
-            <CustomTag type="red"> red</CustomTag>
+          <Flex wrap="wrap">
+            <CustomTag>blue标签</CustomTag>
+            <CustomTag type="green">标签</CustomTag>
+            <CustomTag type="yellow"> 标签</CustomTag>
+            <CustomTag type="red"> 标签</CustomTag>
           </Flex>
         </ChartWrap>
         <ChartWrap title="默认卡片" padding={0}>
           <CustomCard
             title="标题"
             extra="2020/01/01 12:00"
+            thumb={THUMB_URL}
             content={
-              <View style={{ height: px(42) }}>
-                <Text style={{ marginLeft: px(16) }}>Card Content</Text>
-                <Text style={{ marginLeft: px(16), color: Color.middleTextColor, paddingHorizontal: px(8) }}>
-                  Card Content Card Content Card Content Card Content Card Content
-                </Text>
-              </View>
+              <WingBlank>
+                <View>
+                  <ListItemText style={{ marginVertical: px(8) }} text="我是标题" />
+                  <Text style={{ color: Color.middleTextColor, fontSize: px(14), lineHeight: px(22) }}>
+                    描述信息 描述信息 描述信息 描述信息 描述信息 描述信息 描述信息 描述信息 描述信息 描述信息 描述信息
+                    描述信息 描述信息 描述信息 描述信息
+                  </Text>
+                </View>
+              </WingBlank>
             }
             footer={
-              <Flex style={{ paddingVertical: px(6) }}>
+              <Flex style={{ marginVertical: px(12) }}>
                 <CustomTag>blue</CustomTag>
                 <CustomTag type="green">green</CustomTag>
                 <CustomTag type="yellow"> yellow</CustomTag>
@@ -80,26 +86,44 @@ export default function CardPage() {
             }
           />
 
-          <WhiteSpace style={{ backgroundColor: Color.grayBG }} />
+          <WhiteSpace style={{ backgroundColor: Color.backgroundColor }} />
           <CustomCard
-            title="审批"
-            extra="12分钟前"
             content={
-              <View>
-                <Text style={{ marginLeft: px(16) }}>公文审批:审批内容</Text>
-              </View>
+              <WingBlank>
+                <View>
+                  <ListItemText style={{ marginVertical: px(8) }} text="我是标题" />
+                  <Text style={{ color: Color.middleTextColor, fontSize: px(14), lineHeight: px(22) }}>
+                    描述信息 描述信息 描述信息 描述信息 描述信息 描述信息 描述信息 描述信息 描述信息 描述信息 描述信息
+                    描述信息 描述信息 描述信息 描述信息
+                  </Text>
+                </View>
+              </WingBlank>
             }
             onOk={() => console.log('ok')}
-            onCancle={() => console.log('cancle')}
+            onCancel={() => console.log('cancel')}
           />
         </ChartWrap>
-        <WhiteSpace style={{ backgroundColor: Color.grayBG }} />
-        <Flex wrap="wrap" style={{ paddingHorizontal: px(4) }}>
-          <ImgLinkItem title="标题" content="描述信息 描述信息" source={require('../../../../assets/pic_empty.png')} />
-          <ImgLinkItem title="标题" content="描述信息 描述信息" source={require('../../../../assets/pic_empty.png')} />
-          <ImgLinkItem title="标题" content="描述信息 描述信息" source={require('../../../../assets/pic_empty.png')} />
-        </Flex>
+        <WhiteSpace style={{ backgroundColor: Color.backgroundColor }} />
         <WhiteSpace />
+        <WingBlank>
+          <Flex wrap="wrap" justify="between">
+            <ImgLinkItem
+              title="标题"
+              content="描述信息 描述信息"
+              source={require('../../../../assets/pic_add_picture.png')}
+            />
+            <ImgLinkItem
+              title="标题"
+              content="描述信息 描述信息"
+              source={require('../../../../assets/pic_add_picture.png')}
+            />
+            <ImgLinkItem
+              title="标题"
+              content="描述信息 描述信息"
+              source={require('../../../../assets/pic_add_picture.png')}
+            />
+          </Flex>
+        </WingBlank>
       </ScrollView>
     </Container>
   );

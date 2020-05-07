@@ -4,7 +4,10 @@ import { Provider } from '@ant-design/react-native';
 import zhCN from '@ant-design/react-native/es/locale-provider/zh_CN';
 
 import SignIn from '../../screens/signIn';
+import Register from '../../screens/signIn/register';
+import ForgetPassword from '../../screens/signIn/forgetPassword';
 import { Color, Size } from '../../config';
+import { commonStackOptions } from '../../common';
 
 const Stack = createStackNavigator();
 export const SignInStack = () => {
@@ -23,6 +26,12 @@ export const SignInStack = () => {
       }}>
       <Stack.Navigator initialRouteName="SignIn" screenOptions={{ header: () => null }}>
         <Stack.Screen name="SignIn" component={SignIn} />
+        <Stack.Screen name="Register" component={Register} />
+        <Stack.Screen
+          name="ForgetPassword"
+          component={ForgetPassword}
+          options={{ ...commonStackOptions, headerTitle: '忘记密码' }}
+        />
       </Stack.Navigator>
     </Provider>
   );
