@@ -75,7 +75,7 @@ const Register = () => {
                   validateTrigger="onChangeText"
                   rules={[
                     { required: true, message: '请输入账号' },
-                    { max: 16, message: `长度不能超过${MAX_LENGTH_USERNAME}位` }
+                    { max: MAX_LENGTH_USERNAME, message: `长度不能超过${MAX_LENGTH_USERNAME}位` }
                   ]}>
                   <Input style={styles.input} placeholder="请输入账号" maxLength={MAX_LENGTH_USERNAME} />
                 </Field>
@@ -88,7 +88,7 @@ const Register = () => {
                   validateTrigger="onChangeText"
                   rules={[
                     { required: true, message: '请输入密码' },
-                    { max: 16, message: `长度不能超过${MAX_LENGTH_PASSWORD}位` }
+                    { max: MAX_LENGTH_PASSWORD, message: `长度不能超过${MAX_LENGTH_PASSWORD}位` }
                   ]}>
                   <Input
                     style={styles.input}
