@@ -4,7 +4,7 @@
  * @作者: 于效仟
  * @Date: 2019-11-28 16:40:22
  * @LastEditors: 于效仟
- * @LastEditTime: 2020-04-29 20:51:29
+ * @LastEditTime: 2020-05-07 17:38:33
  */
 import React, { useState } from 'react';
 import { View, StyleSheet } from 'react-native';
@@ -94,6 +94,7 @@ const BaseTrendChart = () => {
             ]}
             value={divisionId}
             onChange={selectDivision}
+            hasBorder={true}
           />
         </View>
         <View style={styles.filterRight}>

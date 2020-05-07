@@ -29,9 +29,12 @@ import ListItem from '../../components/ListItem';
 import CustomImagePicker from '../../components/CustomImagePicker';
 import BottomButton from '../../components/BottomButton';
 import { ValidateErrorEntity, InternalNamePath } from 'rc-field-form/lib/interface';
-import { toastFail } from '../../common';
+import { toastFail, provinceList } from '../../common';
 import { isError } from '../../utils/validation';
 import CustomListItemPicker from '../../components/CustomListItemPicker';
+import MultiplePicker from '../../components/MultiplePicker';
+import { valuesType } from '../../interfaces/common';
+import SearchPicker from '../../components/SearchPicker';
 
 const { px } = Size;
 
@@ -52,6 +55,8 @@ export default () => {
   const [activeSections, setActiveSections] = useState<number[]>([]);
   const [selectedItems, setSelectedItems] = useState<number[]>([]);
   const [errorNames, setErrorNames] = useState<InternalNamePath>([]);
+  const [pickerValue, setPickerValue] = useState<valuesType>(provinceList.map(item => item.province_name));
+  const [pickerValue2, setPickerValue2] = useState<valuesType>([...provinceList.map(item => item.province_name)]);
 
   const handleFinish = () => {
     setErrorNames([]);
@@ -198,6 +203,33 @@ export default () => {
                 ]}
                 isError={isError(errorNames, 'picker')}
                 required={true}
+              />
+            </Field>
+            <Field>
+              <CustomListItem
+                title="级联picker"
+                extra={
+                  <MultiplePicker
+                    data={provinceList.map(({ province_name }) => ({ label: province_name, value: province_name }))}
+                    value={pickerValue}
+                    onChange={setPickerValue}
+                    centerText="省市"
+                  />
+                }
+              />
+            </Field>
+            <Field>
+              <CustomListItem
+                title="搜索picker"
+                extra={
+                  <SearchPicker
+                    data={provinceList.map(({ province_name }) => ({ label: province_name, value: province_name }))}
+                    value={pickerValue2}
+                    onChange={setPickerValue2}
+                    centerText="省市"
+                    placeholder="搜索省市名称"
+                  />
+                }
               />
             </Field>
             <Field>
