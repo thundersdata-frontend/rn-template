@@ -2,15 +2,16 @@ import React, { useState } from 'react';
 import { ScrollView, View, Text } from 'react-native';
 import Container from '../../../../components/Container';
 import ChartWrap from '../../../../components/ChartWrap';
-import BlockItem from '../../../../components/BlockItem';
 import { Size, Color } from '../../../../config';
 import { Flex, WhiteSpace } from '@ant-design/react-native';
 import CustomTag from '../../../../components/CustomTag';
 import CustomCard from '../../../../components/CustomCard';
 import ImgLinkItem from '../../../../components/ImgLinkItem';
+const { CheckableTag } = CustomTag;
+
 const px = Size.px;
 
-export default function Cardd() {
+export default function CardPage() {
   const [selectedEvent, setSelectedEvent] = useState<number[]>([0]);
 
   const toggleSelectedEvent = (key: number) => {
@@ -31,24 +32,23 @@ export default function Cardd() {
         <ChartWrap title="标签">
           <Flex wrap="wrap" style={{ marginVertical: Size.px(5) }}>
             {tags.map((item, index) => (
-              <BlockItem
+              <CheckableTag
                 key={index}
                 name={item}
                 isSelected={selectedEvent.indexOf(index) > -1}
                 onPress={() => toggleSelectedEvent(index)}
-                style={{ width: Size.px(108) }}
                 isWithIcon={true}
               />
             ))}
           </Flex>
           <Flex wrap="wrap" style={{ marginVertical: Size.px(5) }}>
             {tags.map((item, index) => (
-              <BlockItem
+              <CheckableTag
                 key={index}
                 name={item}
                 isSelected={selectedEvent.indexOf(index) > -1}
                 onPress={() => toggleSelectedEvent(index)}
-                style={{ width: Size.px(80), height: Size.px(24) }}
+                size="small"
               />
             ))}
           </Flex>

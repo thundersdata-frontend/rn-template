@@ -4,21 +4,48 @@
  * @作者: 于效仟
  * @Date: 2020-05-06 10:42:25
  * @LastEditors: 于效仟
- * @LastEditTime: 2020-05-06 17:53:48
+ * @LastEditTime: 2020-05-07 11:06:24
  */
 import React from 'react';
 import { TouchableOpacity, View, Text, StyleSheet, Image, StyleProp, ViewStyle } from 'react-native';
 import { Size, Color } from '../../config';
 
-interface BlockItemInter {
+interface CheckableTagProps {
   isSelected: boolean;
   name: string;
   onPress: () => void;
   style?: StyleProp<ViewStyle>;
   isWithIcon?: boolean;
+  size?: 'normal' | 'small'; //默认normal
 }
 
-const BlockItem = ({ isSelected, name, onPress, style, isWithIcon }: BlockItemInter) => {
+// eslint-disable-next-line complexity
+const CheckableTag = ({ isSelected, name, onPress, style, isWithIcon, size = 'normal' }: CheckableTagProps) => {
+  const styles = StyleSheet.create({
+    wrap: {
+      height: size === 'normal' ? Size.px(32) : Size.px(24),
+      width: size === 'normal' ? Size.px(108) : Size.px(80),
+      lineHeight: Size.px(32),
+      marginRight: Size.px(8),
+      backgroundColor: Color.backgroundColor,
+      textAlign: 'center',
+      alignItems: 'center',
+      justifyContent: 'center',
+      paddingHorizontal: Size.px(19),
+      marginBottom: Size.px(8)
+    },
+    selectedWrap: {
+      backgroundColor: 'rgba(62,154,249,0.15)'
+    },
+    text: {
+      fontSize: Size.px(14),
+      color: Color.middleTextColor
+    },
+    selectedText: {
+      color: Color.primary
+    }
+  });
+
   return (
     <TouchableOpacity onPress={onPress}>
       <View style={[styles.wrap, isSelected && styles.selectedWrap, style]}>
@@ -40,28 +67,4 @@ const BlockItem = ({ isSelected, name, onPress, style, isWithIcon }: BlockItemIn
   );
 };
 
-const styles = StyleSheet.create({
-  wrap: {
-    height: Size.px(32),
-    lineHeight: Size.px(32),
-    marginRight: Size.px(8),
-    backgroundColor: Color.backgroundColor,
-    textAlign: 'center',
-    alignItems: 'center',
-    justifyContent: 'center',
-    paddingHorizontal: Size.px(19),
-    marginBottom: Size.px(8)
-  },
-  selectedWrap: {
-    backgroundColor: 'rgba(62,154,249,0.15)'
-  },
-  text: {
-    fontSize: Size.px(14),
-    color: Color.middleTextColor
-  },
-  selectedText: {
-    color: Color.primary
-  }
-});
-
-export default BlockItem;
+export default CheckableTag;

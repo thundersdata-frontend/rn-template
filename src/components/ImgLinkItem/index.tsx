@@ -1,3 +1,11 @@
+/*
+ * @文件描述: 带有预览图片的商品列表的item
+ * @公司: thundersdata
+ * @作者: 于效仟
+ * @Date: 2020-05-06 16:56:48
+ * @LastEditors: 于效仟
+ * @LastEditTime: 2020-05-07 09:36:41
+ */
 import React from 'react';
 import { TouchableOpacity, Text, Image, ImageSourcePropType } from 'react-native';
 import { Size, Color } from '../../config';
@@ -8,8 +16,8 @@ const px = Size.px;
 
 interface BlockItemInter {
   source: ImageSourcePropType; //图片url
-  title: string;
-  content: string;
+  title: string; //商品title
+  content: string; //商品描述
   navigateTo?: string; //跳转url
 }
 

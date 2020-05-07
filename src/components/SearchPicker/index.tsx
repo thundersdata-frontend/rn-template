@@ -5,9 +5,9 @@
  * @作者: 陈杰
  * @Date: 2020-01-08 11:28:00
  * @LastEditors: 于效仟
- * @LastEditTime: 2020-04-29 17:44:18
+ * @LastEditTime: 2020-05-07 09:47:25
  */
-import React, { useState, memo } from 'react';
+import React, { useState, memo, useMemo } from 'react';
 import { View, Text, StyleSheet, TouchableOpacity, ViewStyle } from 'react-native';
 import { IconOutline } from '@ant-design/icons-react-native';
 import { SearchBar, PickerView, Modal } from '@ant-design/react-native';
@@ -20,14 +20,14 @@ export interface SearchPickerProps {
   value?: valuesType;
   placeholder?: string;
   style?: ViewStyle;
-  width?: number | string;
+
   onChange: (value: valuesType) => void;
-  maxShowLength?: number;
+
   cols?: number;
   // 当个cols为多个时，对哪个col进行搜索筛选。 0:筛选第一个col 1: 筛选第二个col
   searchIndex?: number;
   afterSubmit?: (value: string) => void;
-  size?: string;
+  size?: 'small' | 'mid' | 'big';
 }
 
 const firstData: PickerDataType[] = [{ label: '请选择', value: '' }];
@@ -36,9 +36,7 @@ const SearchPicker: React.FC<SearchPickerProps> = ({
   value = [],
   placeholder,
   style,
-  width,
   onChange,
-  maxShowLength = 8,
   cols = 1,
   searchIndex = 0,
   afterSubmit,
@@ -47,6 +45,8 @@ const SearchPicker: React.FC<SearchPickerProps> = ({
   const [visible, setVisible] = useState(false);
   const [pickerValue, setPickerValue] = useState<valuesType>([]);
   const [keywords, setKeywords] = useState('');
+  let width;
+  let maxShowLength: number | undefined;
 
   // 现在APP只需要配置一个big的，后面出现特殊尺寸在增加
   const PICKER_SIZE = {
@@ -85,8 +85,8 @@ const SearchPicker: React.FC<SearchPickerProps> = ({
   };
 
   // 当cols为2时，根据searchIndex进行筛选
-  let listData =
-    cols === 1 || searchIndex === 0
+  let listData = useMemo(() => {
+    return cols === 1 || searchIndex === 0
       ? data.filter(item => item.label?.includes(keywords))
       : data.map(material => {
           return {
@@ -94,6 +94,7 @@ const SearchPicker: React.FC<SearchPickerProps> = ({
             children: material?.children?.filter(item => item.label?.includes(keywords))
           };
         });
+  }, [cols, data, keywords, searchIndex]);
 
   const handleSubmit = async (value: string) => {
     listData = [];

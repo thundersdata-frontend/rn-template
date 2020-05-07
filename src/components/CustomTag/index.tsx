@@ -4,18 +4,22 @@
  * @作者: 于效仟
  * @Date: 2020-04-27 16:45:41
  * @LastEditors: 于效仟
- * @LastEditTime: 2020-05-06 18:08:12
+ * @LastEditTime: 2020-05-07 10:48:13
  */
 import React from 'react';
 import { View, Text, StyleSheet, StyleProp, ViewStyle } from 'react-native';
 import { Size, Color } from '../../config';
+import CheckableTag from '../CheckableTag';
+
+const px = Size.px;
 
 interface CustomTagProps {
   style?: StyleProp<ViewStyle>;
   type?: 'blue' | 'green' | 'yellow' | 'red';
+  children: React.ReactNode | string;
 }
 
-const CustomTag: React.FC<CustomTagProps> = ({ children, style, type = 'blue' }) => {
+const InternalTag: React.ForwardRefRenderFunction<unknown, CustomTagProps> = ({ children, style, type = 'blue' }) => {
   const colorConfig = {
     blue: {
       bg: 'rgba(64,158,255,0.15)',
@@ -37,24 +41,24 @@ const CustomTag: React.FC<CustomTagProps> = ({ children, style, type = 'blue' })
 
   const styles = StyleSheet.create({
     tag: {
-      borderRadius: Size.px(12),
+      borderRadius: px(12),
       backgroundColor: colorConfig[type].bg,
       flexDirection: 'row',
-      padding: Size.px(2),
+      padding: px(2),
       overflow: 'visible',
-      marginRight: Size.px(8)
+      marginRight: px(8)
     },
     wrap: {
       overflow: 'hidden',
-      borderRadius: 2,
+      borderRadius: px(2),
       borderWidth: Size.ONE_PIXEL,
       borderStyle: 'solid',
       borderColor: Color.borderColor,
-      paddingVertical: 4,
-      paddingHorizontal: 4
+      paddingVertical: px(4),
+      paddingHorizontal: px(4)
     },
     text: {
-      fontSize: Size.px(12),
+      fontSize: px(12),
       textAlign: 'center',
       color: colorConfig[type].text
     }
@@ -68,5 +72,9 @@ const CustomTag: React.FC<CustomTagProps> = ({ children, style, type = 'blue' })
     </View>
   );
 };
-
+export interface TagType extends React.ForwardRefExoticComponent<CustomTagProps & React.RefAttributes<HTMLElement>> {
+  CheckableTag: typeof CheckableTag;
+}
+const CustomTag = React.forwardRef<unknown, CustomTagProps>(InternalTag) as TagType;
+CustomTag.CheckableTag = CheckableTag;
 export default CustomTag;

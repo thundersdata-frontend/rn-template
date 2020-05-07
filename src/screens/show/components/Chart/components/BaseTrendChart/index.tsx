@@ -87,7 +87,14 @@ const BaseTrendChart = () => {
     <Container>
       <View style={styles.filter}>
         <View>
-          <SearchPicker data={[{ value: 0, label: '数据' }]} value={divisionId} onChange={selectDivision} />
+          <SearchPicker
+            data={[
+              { value: 0, label: '数据' },
+              { value: 1, label: '这里现在是九个字哦' }
+            ]}
+            value={divisionId}
+            onChange={selectDivision}
+          />
         </View>
         <View style={styles.filterRight}>
           <RadioButtonGroup
