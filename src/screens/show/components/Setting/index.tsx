@@ -15,12 +15,12 @@ export default function Setting() {
         <CustomItem title="出生年月" extra="1972年04月03日" thumb={THUMB_URL} />
         <CustomItem title="籍贯" extra="浙江杭州" thumb={THUMB_URL} />
         <WhiteSpace />
-        <CustomItem title="修改密码" navigateTo="HomePage" />
+        {/* <CustomItem title="修改密码" navigateTo="HomePage" /> */}
         <WhiteSpace />
         <TouchableOpacity
           onPress={() => {}}
           style={{ backgroundColor: Color.white, height: size.px(54), alignItems: 'center', justifyContent: 'center' }}>
-          <Text style={{ fontSize: size.px(16), color: color.warning }}>Log Out</Text>
+          <Text style={{ fontSize: size.px(16), color: color.fail }}>Log Out</Text>
         </TouchableOpacity>
       </ScrollView>
     </Container>

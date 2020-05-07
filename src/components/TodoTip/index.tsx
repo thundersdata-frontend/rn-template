@@ -15,7 +15,7 @@ const { px } = Size;
 
 interface TodoTipProps {
   text: string; //预警文字
-  navigateTo: string; //跳转stackname
+  navigateTo: string; //跳转stackName
 }
 
 export default function TodoTip(props: TodoTipProps) {
@@ -25,7 +25,7 @@ export default function TodoTip(props: TodoTipProps) {
   return (
     <View style={styles.warn}>
       <NoticeBar
-        icon={<Icon name="bell" color={Color.warning} />}
+        icon={<Icon name="bell" size={px(16)} color={Color.fail} />}
         mode="link"
         onPress={() => navigation.navigate(navigateTo)}>
         {text}

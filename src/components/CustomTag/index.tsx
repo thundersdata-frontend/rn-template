@@ -3,13 +3,14 @@
  * @公司: thundersdata
  * @作者: 于效仟
  * @Date: 2020-04-27 16:45:41
- * @LastEditors: 于效仟
- * @LastEditTime: 2020-05-07 11:56:12
+ * @LastEditors: 黄姗姗
+ * @LastEditTime: 2020-05-07 15:56:50
  */
 import React from 'react';
-import { View, Text, StyleSheet, StyleProp, ViewStyle } from 'react-native';
+import { Text, StyleSheet, StyleProp, ViewStyle } from 'react-native';
 import { Size, Color } from '../../config';
 import CheckableTag from '../CheckableTag';
+import { Flex } from '@ant-design/react-native';
 
 const px = Size.px;
 
@@ -23,53 +24,40 @@ const InternalTag: React.FC<CustomTagProps> = ({ children, style, type = 'blue' 
   const colorConfig = {
     blue: {
       bg: 'rgba(64,158,255,0.15)',
-      text: '#409EFF'
+      text: Color.primary
     },
     green: {
       bg: 'rgba(6,179,91,0.15)',
-      text: '#06B35B'
+      text: Color.success
     },
     yellow: {
       bg: 'rgba(250,173,20,0.15)',
-      text: '#FAAD14'
+      text: Color.warning
     },
     red: {
       bg: 'rgba(219,46,17,0.15)',
-      text: '#DB2E11'
+      text: Color.fail
     }
   };
 
   const styles = StyleSheet.create({
-    tag: {
-      borderRadius: px(12),
-      backgroundColor: colorConfig[type].bg,
-      flexDirection: 'row',
-      padding: px(2),
-      overflow: 'visible',
-      marginRight: px(8)
-    },
     wrap: {
-      overflow: 'hidden',
-      borderRadius: px(2),
-      borderWidth: Size.ONE_PIXEL,
-      borderStyle: 'solid',
-      borderColor: Color.borderColor,
-      paddingVertical: px(4),
-      paddingHorizontal: px(4)
+      borderRadius: px(24),
+      paddingHorizontal: px(12),
+      height: px(24),
+      backgroundColor: colorConfig[type].bg,
+      marginRight: px(8)
     },
     text: {
       fontSize: px(12),
-      textAlign: 'center',
       color: colorConfig[type].text
     }
   });
 
   return (
-    <View style={[styles.tag, style]}>
-      <View style={styles.wrap}>
-        <Text style={styles.text}>{children}</Text>
-      </View>
-    </View>
+    <Flex style={[styles.wrap, style]} align="center" justify="center">
+      <Text style={styles.text}>{children}</Text>
+    </Flex>
   );
 };
 export interface TagType extends React.ExoticComponent<CustomTagProps> {

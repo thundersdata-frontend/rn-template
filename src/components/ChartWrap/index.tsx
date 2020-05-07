@@ -3,8 +3,8 @@
  * @公司: thundersdata
  * @作者: 于效仟
  * @Date: 2020-04-30 10:15:42
- * @LastEditors: 于效仟
- * @LastEditTime: 2020-04-30 10:34:03
+ * @LastEditors: 黄姗姗
+ * @LastEditTime: 2020-05-07 15:58:10
  */
 import React from 'react';
 import { View } from 'react-native';
@@ -19,7 +19,7 @@ const ChartWrap: React.FC<ChartWrapProps> = props => {
   const { title, padding = Size.px(12) } = props;
   return (
     <View>
-      <Title title={title}></Title>
+      <Title title={title} />
       <View style={{ padding: padding === 0 ? 0 : padding }}>{props.children}</View>
     </View>
   );
