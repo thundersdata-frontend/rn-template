@@ -121,13 +121,11 @@ const Register = () => {
                   trigger="onChangeText"
                   validateTrigger="onChangeText"
                   rules={[{ required: true, message: '请输入验证码' }]}>
-                  <>
-                    <Input style={styles.input} placeholder="请输入验证码" />
-                    <Text style={styles.extraText} onPress={() => sendSms(form.getFieldValue('phone'))}>
-                      {smsText}
-                    </Text>
-                  </>
+                  <Input style={styles.input} placeholder="请输入验证码" />
                 </Field>
+                <Text style={styles.extraText} onPress={() => sendSms(form.getFieldValue('phone'))}>
+                  {smsText}
+                </Text>
               </Flex>
               <Button type="primary" style={styles.loginBtn} onPress={() => form.submit()}>
                 注册并登录

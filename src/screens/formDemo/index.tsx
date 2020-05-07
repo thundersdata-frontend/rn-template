@@ -16,7 +16,8 @@ import {
   Stepper,
   Button,
   Popover,
-  ActionSheet
+  ActionSheet,
+  Modal
 } from '@ant-design/react-native';
 import { Color, Size } from '../../config';
 import ListItemText from '../../components/ListItemText';
@@ -29,12 +30,13 @@ import Iconfont from '../../components/Iconfont';
 import ListItem from '../../components/ListItem';
 import CustomImagePicker from '../../components/CustomImagePicker';
 import BottomButton from '../../components/BottomButton';
-import { ValidateErrorEntity, InternalNamePath } from 'rc-field-form/lib/interface';
+import { ValidateErrorEntity, InternalNamePath, Store } from 'rc-field-form/lib/interface';
 import { toastFail, toastSuccess } from '../../common';
-import { isError } from '../../utils/validation';
+import { isError, LABEL_NUMBER } from '../../utils/validation';
 import CustomListItemPicker from '../../components/CustomListItemPicker';
 import { useNavigation } from '@react-navigation/native';
 import { emailReg } from '../../utils/regex-utils';
+import Input from '../../components/Input';
 
 const { px } = Size;
 
@@ -59,8 +61,9 @@ export default () => {
   const [selectedItems, setSelectedItems] = useState<number[]>([]);
   const [errorNames, setErrorNames] = useState<InternalNamePath>([]);
 
-  const handleFinish = () => {
+  const handleFinish = (values: Store) => {
     setErrorNames([]);
+    console.log(values, '-----');
   };
 
   const handleFinishFailed = ({ errorFields }: ValidateErrorEntity) => {
@@ -86,10 +89,14 @@ export default () => {
     );
   };
 
+  const showModal = () => {
+    Modal.alert('标题', '我是填写说明', [{ text: '确定' }]);
+  };
+
   const renderHeader = (_: AccordionHeader, __: number, isActive: boolean) => (
     <ListItem>
       <Flex justify="between">
-        <ListItemText text="标签内容" />
+        <ListItemText text="手风琴" />
         <Flex>
           <ListItemText text={selectedItems.length ? `已选择${selectedItems.length}项` : '请选择'} />
           <Icon
@@ -165,26 +172,34 @@ export default () => {
                 { required: true, message: '请输入用户名' },
                 { len: 5, message: '请输入五个字' }
               ]}>
-              <InputItem placeholder="请输入用户名">
+              <InputItem placeholder="请输入用户名" labelNumber={LABEL_NUMBER}>
                 <ListItemText required={true} text="用户名" isError={isError(errorNames, 'name')} />
               </InputItem>
             </Field>
             <Field name="phoneNumber" rules={[{ required: true, message: '请输入联系电话' }]}>
-              <InputItem placeholder="请输入信息" extra={<Text style={{ color: Color.primary }}>填写说明</Text>}>
+              <InputItem
+                labelNumber={LABEL_NUMBER}
+                placeholder="请输入信息"
+                extra={
+                  <Text onPress={showModal} style={{ color: Color.primary }}>
+                    填写说明
+                  </Text>
+                }>
                 <ListItemText required text="联系电话" isError={isError(errorNames, 'phoneNumber')} />
               </InputItem>
             </Field>
             <Field name="weight">
               <CustomNumberInput text="身高（厘米）" />
             </Field>
-            <Field name="password">
-              <InputItem clear placeholder="请输入" type="password">
-                <ListItemText text="登录密码" />
+            <Field name="password" rules={[{ required: true, message: '请输入密码' }]}>
+              <InputItem labelNumber={LABEL_NUMBER} clear placeholder="请输入" type="password">
+                <ListItemText required text="登录密码" isError={isError(errorNames, 'password')} />
               </InputItem>
             </Field>
             <Field
               name="email"
               rules={[
+                { required: true, message: '请输入邮箱' },
                 {
                   pattern: emailReg,
                   message: '请正确填写邮箱'
@@ -192,34 +207,41 @@ export default () => {
               ]}>
               <InputItem
                 placeholder="请输入"
+                labelNumber={LABEL_NUMBER}
                 extra={
-                  <Popover overlay={<Text>邮箱校验规则</Text>}>
+                  <Popover overlay={<Text>请填写自己的邮箱</Text>}>
                     <Icon name="info-circle" />
                   </Popover>
                 }>
-                <ListItemText text="邮箱" isError={isError(errorNames, 'email')} />
+                <ListItemText required text="邮箱" isError={isError(errorNames, 'email')} />
               </InputItem>
             </Field>
-            {/* TODO: 会换行，待解决 */}
-            <CustomListItem
-              title="数字区间"
-              extra={
-                <Flex>
-                  <View style={{ width: px(60) }}>
-                    <InputItem />
-                  </View>
-                  <Text>-</Text>
-                  <View style={{ width: px(60) }}>
-                    <InputItem />
-                  </View>
-                </Flex>
-              }
-            />
             <Field name="account">
-              <InputItem placeholder="不可编辑" disabled>
-                <ListItemText text="账号" />
+              <InputItem
+                placeholderTextColor={Color.placeholderTextColor}
+                styles={{
+                  inputDisabled: {
+                    backgroundColor: Color.white
+                  }
+                }}
+                labelNumber={LABEL_NUMBER}
+                placeholder="不可编辑"
+                disabled>
+                <ListItemText text="账号" style={{ color: Color.placeholderTextColor }} />
               </InputItem>
             </Field>
+            <WingBlank>
+              <Flex>
+                <ListItemText text="数字区间" />
+                <Field name="number1" trigger="onChangeText" validateTrigger="onChangeText">
+                  <Input placeholder="请输入" style={{ width: px(80), marginLeft: px(20) }} />
+                </Field>
+                <Text> — </Text>
+                <Field name="number2" trigger="onChangeText" validateTrigger="onChangeText">
+                  <Input placeholder="请输入" style={{ width: px(80), marginLeft: px(20) }} />
+                </Field>
+              </Flex>
+            </WingBlank>
             <Title title="多文本输入" />
             <WingBlank>
               <WhiteSpace />
@@ -236,8 +258,8 @@ export default () => {
             </Field>
             <Field name="picker" rules={[{ required: true, message: '请选择picker' }]}>
               <CustomListItemPicker
-                text="标签内容"
-                title="标签内容"
+                text="popUp"
+                title="popUp"
                 data={[
                   { label: '杭州', value: 1 },
                   { label: '上海', value: 2 }
@@ -247,12 +269,12 @@ export default () => {
               />
             </Field>
             <Field>
-              <CustomListItem title="标签内容" extra={<CustomSwitch value={true} />} />
+              <CustomListItem title="switch选中状态" extra={<CustomSwitch value={true} />} />
             </Field>
             <Field>
-              <CustomListItem title="标签内容" extra={<CustomSwitch value={false} />} />
+              <CustomListItem title="switch未选中状态" extra={<CustomSwitch value={false} />} />
             </Field>
-            <CustomListItem title="单行单选" extra={<RadioGroup value={1} data={radioData} />} />
+            <CustomListItem title="单行单选（男不可选）" extra={<RadioGroup value={1} data={radioData} />} />
             <RadioGroup isOneLine={false} data={radioData} />
             <CustomAccordion
               sections={SECTIONS}
@@ -260,20 +282,22 @@ export default () => {
               activeSections={activeSections}
               renderHeader={renderHeader}
             />
-            <CustomListItem
-              title="步进器"
-              extra={
-                <Stepper
-                  max={10}
-                  min={1}
-                  defaultValue={3}
-                  inputStyle={{
-                    height: 28,
-                    lineHeight: 20
-                  }}
-                />
-              }
-            />
+            <Field name="stepper">
+              <CustomListItem
+                title="步进器"
+                extra={
+                  <Stepper
+                    max={10}
+                    min={1}
+                    defaultValue={3}
+                    inputStyle={{
+                      height: 28,
+                      lineHeight: 20
+                    }}
+                  />
+                }
+              />
+            </Field>
             <CustomListItem title="动作面板" onPress={openActionSheet} />
             <Title title="图片上传" />
             <WhiteSpace />

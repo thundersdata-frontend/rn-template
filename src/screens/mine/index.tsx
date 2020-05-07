@@ -47,11 +47,7 @@ const Profile = (props: StackHeaderProps) => {
         onPress={() => props.navigation.dispatch(DrawerActions.toggleDrawer())}
         {...props}>
         <View style={{ justifyContent: 'center', alignItems: 'center' }}>
-          <Avatar
-            uri={state.avatar}
-            width={px(54)}
-            style={{ borderWidth: px(3), borderColor: 'rgba(255,255,255,0.2)' }}
-          />
+          <Avatar uri={state.avatar} width={px(54)} />
           <Text style={{ fontSize: px(18), fontWeight: '500', color: Color.white, marginTop: Size.px(10) }}>
             {state.name}
           </Text>
