@@ -1,3 +1,73 @@
+# RN模板
+雷数科技前端app组件库及模板页面
+
+## 组件列表
+####   走马灯 Carousel
+具体API配置请参照antd
+示例页面： `/screens/home`
+
+####  宫格布局  GridItems
+类似于九宫格的布局，每行可配置为放置3/4个
+示例页面： `/screens/home`
+
+| 属性  | 说明  |  类型  | 默认值 |
+| -------- | -----  | ----  | ------- |
+| list |   传入的数据    | 可在components中根据实际情况自行定义 | [ ] |
+| rowNum |   每行数量，可选值为`3` / `4`   |   number   | `3` |
+
+####  抽屉导航 Drawer
+用于在屏幕边缘显示应用导航等内容的面板。
+可配置为三种形式：纯文字/带icon的文字/带icon的文字以及arrow，特殊情况可根据项目情况自行配置
+示例页面：`/stacks/mainStack`  `/stacks/drawer`
+
+#### 底部导航
+用于在屏幕底部显示应用导航等内容。
+可在 `/screens/home` 中选项4页面中跳转查看
+示例页面：`/stacks/mainStack`  `/stacks/tab`
+
+#### 标签页 Tabs
+用于让用户在不同的视图中进行切换。
+具体配置参照antd
+示例页面： `/screens/home`
+
+## demo页面
+#### 登录
+用账号、密码实现登录，目前可以输入任意账号密码登录成功，后续根据需要自行配置校验规则
+示例页面：`/screens/signIn`
+
+#### 忘记密码
+用手机号、验证码、密码实现找回密码功能
+示例页面： `/screens/signIn/forgetPassword`
+
+#### 注册
+用账号、密码、手机号、验证码实现注册
+示例页面：`/screens/signIn/register`
+
+#### 头部导航样式
+可分为三种：
+- 常规头部导航栏样式
+配置参照 `common.tsx` 中的commonStackOptions
+示例页面：首页
+- 头部导航栏与内容区自然衔接的样式
+配置参照 `common.tsx` 中的linearGradientStackOptions
+示例页面：联赛
+```typescript
+return {
+          ...linearGradientStackOptions,
+          headerTitle: '联赛',
+          headerLeft: () => (
+            <TouchableOpacity
+              activeOpacity={0.8}
+              style={{ marginLeft: Size.px(5), padding: Size.px(10) }}
+              onPress={() => navigation.dispatch(DrawerActions.toggleDrawer())}>
+              <Iconfont name="navMenu" size={Size.px(20)} color={Color.white} />
+            </TouchableOpacity>
+          )
+        };
+```
+- 以背景图片作为头部导航栏样式
+示例页面：我的 `/screens/mine`
+
 ## pont生成工具与umi的useRequest结合使用
 
 ### pont配置
