@@ -41,6 +41,8 @@ import { useNavigation } from '@react-navigation/native';
 import { emailReg } from '../../utils/regex-utils';
 import Input from '../../components/Input';
 
+import data from '@bang88/china-city-data';
+
 const { px } = Size;
 
 const radioData = [
@@ -263,8 +265,8 @@ export default () => {
             </Field>
             <Field name="picker" rules={[{ required: true, message: '请选择picker' }]}>
               <CustomListItemPicker
-                text="popUp"
-                title="popUp"
+                text="单选picker"
+                title="单选picker"
                 data={[
                   { label: '杭州', value: 1 },
                   { label: '上海', value: 2 }
@@ -272,6 +274,9 @@ export default () => {
                 isError={isError(errorNames, 'picker')}
                 required={true}
               />
+            </Field>
+            <Field name="location">
+              <CustomListItemPicker text="地区选择" title="地区选择" data={data} cols={3} />
             </Field>
             <Field>
               <CustomListItem
@@ -336,8 +341,7 @@ export default () => {
             <CustomImagePicker />
             <WhiteSpace />
           </List>
-          <WhiteSpace />
-          <WingBlank>
+          <ListItem>
             <Button type="primary">保存</Button>
             <WhiteSpace />
             <Button type="ghost">保存</Button>
@@ -353,8 +357,7 @@ export default () => {
                 不可操作
               </Button>
             </Flex>
-          </WingBlank>
-          <WhiteSpace />
+          </ListItem>
         </Form>
       </ScrollView>
       <BottomButton text="保存" onPress={() => form.submit()} />

@@ -3,8 +3,8 @@
  * @公司: thundersdata
  * @作者: 廖军
  * @Date: 2019-10-08 14:28:00
- * @LastEditors: 陈杰
- * @LastEditTime: 2020-03-02 16:23:28
+ * @LastEditors: 黄姗姗
+ * @LastEditTime: 2020-05-08 18:06:28
  */
 import React, { useState, useEffect } from 'react';
 import { View, Text, StyleSheet, TouchableOpacity, ViewStyle } from 'react-native';

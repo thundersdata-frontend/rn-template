@@ -1,10 +1,10 @@
 /*
- * @文件描述: 封装的头像组件
+ * @文件描述: 头像组件
  * @公司: thundersdata
  * @作者: 陈杰
  * @Date: 2020-01-15 10:17:42
  * @LastEditors: 黄姗姗
- * @LastEditTime: 2020-05-07 14:04:56
+ * @LastEditTime: 2020-05-08 17:38:58
  */
 import React from 'react';
 import { Image, ImageStyle } from 'react-native';
