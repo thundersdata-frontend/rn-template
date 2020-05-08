@@ -32,7 +32,7 @@ const Register = () => {
       return;
     }
     console.log(username, password);
-    const key = Toast.loading('加载中', 0, () => { }, true);
+    const key = Toast.loading('加载中', 0, () => {}, true);
     setSignedIn(true);
     setCheckedSignIn(true);
     Portal.remove(key);
