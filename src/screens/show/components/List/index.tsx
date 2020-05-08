@@ -64,7 +64,11 @@ export default function ShowList() {
               content: (
                 <List>
                   <CustomListItem title="主要信息" style={{ backgroundColor: color.backgroundColor }} />
-                  <CustomListItem title="主要信息" style={{ backgroundColor: color.backgroundColor }} thumb={THUMB_URL} />
+                  <CustomListItem
+                    title="主要信息"
+                    style={{ backgroundColor: color.backgroundColor }}
+                    thumb={THUMB_URL}
+                  />
                 </List>
               )
             }
