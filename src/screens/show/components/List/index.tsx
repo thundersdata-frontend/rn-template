@@ -6,7 +6,7 @@ import { List, SwipeAction, WingBlank, WhiteSpace } from '@ant-design/react-nati
 import CustomAccordion from '../../../../components/CustomAccordion';
 import color from '../../../../config/color';
 import { Size } from '../../../../config';
-import CustomItem from '../../../../components/CustomListItem';
+import CustomListItem from '../../../../components/CustomListItem';
 import { deleteModal } from '../../../../components/DeleteModal';
 import { THUMB_URL } from '../../../../common';
 
@@ -24,7 +24,7 @@ export default function ShowList() {
         <TodoTip text="有10条预警消息，请及时处理" navigateTo={'HomePage'} />
 
         <List renderHeader={'List header'}>
-          <CustomItem title="主要信息" thumb={THUMB_URL} extra="描述信息" />
+          <CustomListItem title="主要信息" thumb={THUMB_URL} extra="描述信息" />
 
           <SwipeAction
             autoClose
@@ -38,9 +38,9 @@ export default function ShowList() {
             ]}>
             <List.Item extra="左滑删除">信息</List.Item>
           </SwipeAction>
-          <CustomItem title="主要信息" navigateTo="Show" thumb={THUMB_URL} />
-          <CustomItem title="主要信息" brief="附标题" thumb={THUMB_URL} />
-          <CustomItem
+          <CustomListItem title="主要信息" navigateTo="Show" thumb={THUMB_URL} />
+          <CustomListItem title="主要信息" brief="附标题" thumb={THUMB_URL} />
+          <CustomListItem
             title="主要信息"
             brief="附标题"
             navigateTo="Show"
@@ -63,8 +63,8 @@ export default function ShowList() {
               style: {},
               content: (
                 <List>
-                  <CustomItem title="主要信息" style={{ backgroundColor: color.backgroundColor }} />
-                  <CustomItem title="主要信息" style={{ backgroundColor: color.backgroundColor }} thumb={THUMB_URL} />
+                  <CustomListItem title="主要信息" style={{ backgroundColor: color.backgroundColor }} />
+                  <CustomListItem title="主要信息" style={{ backgroundColor: color.backgroundColor }} thumb={THUMB_URL} />
                 </List>
               )
             }
