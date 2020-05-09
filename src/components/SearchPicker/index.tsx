@@ -5,7 +5,7 @@
  * @作者: 陈杰
  * @Date: 2020-01-08 11:28:00
  * @LastEditors: 于效仟
- * @LastEditTime: 2020-05-07 17:43:58
+ * @LastEditTime: 2020-05-09 11:31:03
  */
 import React, { useState, memo, useMemo } from 'react';
 import { View, Text, StyleSheet, TouchableOpacity, ViewStyle } from 'react-native';
@@ -135,18 +135,30 @@ const SearchPicker: React.FC<SearchPickerProps> = ({
 
   // 当cols为2时，根据searchIndex进行筛选
   let listData = useMemo(() => {
-    return cols === 1 || searchIndex === 0
-      ? data.filter(item => item.label?.includes(keywords))
-      : data.map(material => {
-          return {
-            ...material,
-            children: material?.children?.filter(item => item.label?.includes(keywords))
-          };
-        });
+    const arr: string[] = [];
+    const list =
+      cols === 1 || searchIndex === 0
+        ? data.filter(item => item.label?.includes(keywords))
+        : data.map(material => {
+            return {
+              ...material,
+              children: material?.children?.filter(item => item.label?.includes(keywords))
+            };
+          });
+
+    return list.filter((item: { label: string }) => {
+      if (arr.includes(item.label)) {
+        return false;
+      } else {
+        arr.push(item.label);
+        return true;
+      }
+    });
   }, [cols, data, keywords, searchIndex]);
 
   const handleSubmit = async (value: string) => {
     listData = [];
+    setPickerValue(['']);
     afterSubmit && (await afterSubmit(value));
     setKeywords(value);
   };
