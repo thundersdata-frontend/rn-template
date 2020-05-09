@@ -4,7 +4,7 @@
  * @作者: 黄姗姗
  * @Date: 2019-10-28 16:29:26
  * @LastEditors: 黄姗姗
- * @LastEditTime: 2020-04-26 18:53:14
+ * @LastEditTime: 2020-05-09 15:49:12
  */
 import * as Pont from 'pont-engine';
 import { CodeGenerator, Interface, Property } from 'pont-engine';
@@ -222,8 +222,12 @@ export default class MyGenerator extends CodeGenerator {
           },
           ${requestStr},
         });
-        if (!result.success) throw new Error(result.message);
-        return result.data || ${initValue};
+        if (result) {
+          if (!result.success) throw new Error(result.message);
+          return result.data || ${initValue};
+        } else {
+          throw new Error();
+        }
       }
     `;
   }
