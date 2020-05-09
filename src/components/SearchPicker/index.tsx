@@ -5,7 +5,7 @@
  * @作者: 陈杰
  * @Date: 2020-01-08 11:28:00
  * @LastEditors: 于效仟
- * @LastEditTime: 2020-05-07 17:43:58
+ * @LastEditTime: 2020-05-09 10:54:57
  */
 import React, { useState, memo, useMemo } from 'react';
 import { View, Text, StyleSheet, TouchableOpacity, ViewStyle } from 'react-native';
@@ -147,8 +147,24 @@ const SearchPicker: React.FC<SearchPickerProps> = ({
 
   const handleSubmit = async (value: string) => {
     listData = [];
+    setPickerValue(['']);
     afterSubmit && (await afterSubmit(value));
     setKeywords(value);
+  };
+
+  /**
+   * 筛掉数组中重复的对象
+   */
+  const filterDuplicateLabel = (list: PickerDataType[]) => {
+    const arr: string[] = [];
+    return list.filter((item: { label: string }) => {
+      if (arr.includes(item.label)) {
+        return false;
+      } else {
+        arr.push(item.label);
+        return true;
+      }
+    });
   };
 
   return (
@@ -190,7 +206,7 @@ const SearchPicker: React.FC<SearchPickerProps> = ({
             <PickerView
               onChange={setPickerValue}
               value={pickerValue}
-              data={firstData.concat(listData)}
+              data={filterDuplicateLabel(firstData.concat(listData))}
               cols={cols}
               itemStyle={styles.pickerItem}
             />
