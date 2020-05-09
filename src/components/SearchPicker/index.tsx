@@ -5,7 +5,7 @@
  * @作者: 陈杰
  * @Date: 2020-01-08 11:28:00
  * @LastEditors: 于效仟
- * @LastEditTime: 2020-05-09 10:54:57
+ * @LastEditTime: 2020-05-09 11:31:03
  */
 import React, { useState, memo, useMemo } from 'react';
 import { View, Text, StyleSheet, TouchableOpacity, ViewStyle } from 'react-native';
@@ -135,28 +135,17 @@ const SearchPicker: React.FC<SearchPickerProps> = ({
 
   // 当cols为2时，根据searchIndex进行筛选
   let listData = useMemo(() => {
-    return cols === 1 || searchIndex === 0
-      ? data.filter(item => item.label?.includes(keywords))
-      : data.map(material => {
-          return {
-            ...material,
-            children: material?.children?.filter(item => item.label?.includes(keywords))
-          };
-        });
-  }, [cols, data, keywords, searchIndex]);
-
-  const handleSubmit = async (value: string) => {
-    listData = [];
-    setPickerValue(['']);
-    afterSubmit && (await afterSubmit(value));
-    setKeywords(value);
-  };
-
-  /**
-   * 筛掉数组中重复的对象
-   */
-  const filterDuplicateLabel = (list: PickerDataType[]) => {
     const arr: string[] = [];
+    const list =
+      cols === 1 || searchIndex === 0
+        ? data.filter(item => item.label?.includes(keywords))
+        : data.map(material => {
+            return {
+              ...material,
+              children: material?.children?.filter(item => item.label?.includes(keywords))
+            };
+          });
+
     return list.filter((item: { label: string }) => {
       if (arr.includes(item.label)) {
         return false;
@@ -165,6 +154,13 @@ const SearchPicker: React.FC<SearchPickerProps> = ({
         return true;
       }
     });
+  }, [cols, data, keywords, searchIndex]);
+
+  const handleSubmit = async (value: string) => {
+    listData = [];
+    setPickerValue(['']);
+    afterSubmit && (await afterSubmit(value));
+    setKeywords(value);
   };
 
   return (
@@ -206,7 +202,7 @@ const SearchPicker: React.FC<SearchPickerProps> = ({
             <PickerView
               onChange={setPickerValue}
               value={pickerValue}
-              data={filterDuplicateLabel(firstData.concat(listData))}
+              data={firstData.concat(listData)}
               cols={cols}
               itemStyle={styles.pickerItem}
             />
