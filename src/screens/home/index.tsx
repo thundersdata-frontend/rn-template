@@ -2,25 +2,30 @@
  * @文件描述: 首页
  * @公司: thundersdata
  * @作者: 黄姗姗
- * @LastEditors: 于效仟
+ * @LastEditors: 黄姗姗
  * @Date: 2020-01-13 20:17:32
- * @LastEditTime: 2020-05-06 18:12:51
+ * @LastEditTime: 2020-05-09 15:38:07
  */
-import React from 'react';
+import React, { useMemo } from 'react';
 import { Text, View, StyleSheet } from 'react-native';
 import Container from '../../components/Container';
 import { useNavigation } from '@react-navigation/native';
 import { Tabs, WhiteSpace, Carousel, WingBlank, Flex } from '@ant-design/react-native';
 import { Color, Size } from '../../config';
 import GridItems from '../../components/GridItems';
-// import useRequest from '@umijs/use-request';
+import { useRefresh } from '../../hooks/useRefresh';
+import useRequest from '@umijs/use-request';
 
 const tabs = [{ title: '选项1' }, { title: '选项2' }, { title: '选项3' }, { title: '选项4' }];
 
 const { px } = Size;
 
 const Home = () => {
-  // useRequest(() => API.recruitment.apply.delApply.fetch({ applyCode: '1' }));
+  const { fetch, init } = API.recruitment.interview.queryApplyingInterviewList;
+  const params = useMemo(() => ({ pageSize: 10 }), []);
+
+  useRequest(() => API.recruitment.apply.delApply.fetch({ applyCode: '1' }));
+  useRefresh(fetch, init, params);
   const navigation = useNavigation();
 
   const handleChange = () => {};

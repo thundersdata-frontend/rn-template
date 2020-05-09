@@ -4,7 +4,7 @@
  * @作者: 陈杰
  * @Date: 2019-10-12 10:23:27
  * @LastEditors: 黄姗姗
- * @LastEditTime: 2020-04-26 16:35:11
+ * @LastEditTime: 2020-05-09 15:37:26
  */
 import { useState, useCallback, useEffect, useContext } from 'react';
 import { RefreshState } from '../components/RefreshListView';
@@ -15,7 +15,7 @@ import useRequest from '@umijs/use-request';
 import { useNavigation } from '@react-navigation/native';
 import { SignInContext } from '../context/SignInContext';
 
-export function useFocusRefresh<T>(fetchOption: { url: string; initialData: Pagination<T> }, params?: object) {
+export function useFocusRefresh<T>(fetch: Function, init: any, params?: object) {
   const navigation = useNavigation();
   const [refreshState, setRefreshState] = useState(RefreshState.HeaderRefreshing);
   const { setSignedIn } = useContext(SignInContext);
@@ -26,14 +26,11 @@ export function useFocusRefresh<T>(fetchOption: { url: string; initialData: Pagi
         setRefreshState(RefreshState.FooterRefreshing);
       }
       if (!isEmpty(params)) {
-        // return fetchData(fetchOption, {
-        //   params: { ...params, page }
-        // });
-        return fetchOption.initialData;
+        return await fetch({ ...params, page });
       }
-      return fetchOption.initialData;
+      return init;
     },
-    [params, fetchOption]
+    [fetch, init, params]
   );
 
   const { data, reload, loadMore } = useRequest(

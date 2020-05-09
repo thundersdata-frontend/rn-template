@@ -37,7 +37,7 @@
 | picker中的多选组件 | MultiplePicker | 在picker中可进行多选的操作 | `/screens/formDemo` 表单 | - |
 | 按钮形式的Radio | RadioButtonGroup | 单选按钮组合 | `/screens/show/components/Chart` 展示-图表 | - |
 | 圆圈形式的Radio | RadioGroup | 单选圆圈组件，可一行展示也可多行展示 | `/screens/formDemo` 表单 | - |
-| 下拉加载、上拉刷新的组件 | RefreshListView | - | 暂无 | 与hooks中的useRefresh结合使用 |
+| 下拉加载、上拉刷新的组件 | RefreshListView | - | `/screens/home` 首页 | 与hooks中的useRefresh结合使用 |
 | 带搜索功能的picker | SearchPicker | 可在picker中进行搜索 | `/screens/formDemo` 表单 | - |
 | 标题组件 | Title | 用于灰色背景色的title展示 | `/screens/formDemo` 表单 | `<Title title="选择列表" />` |
 | 渐变色的导航栏顶部 | TitleBar | - | `common.tsx` | - |
@@ -53,6 +53,7 @@
 | 登录 | `/screens/signIn` | 用账号、密码实现登录 | 目前可以输入任意账号密码登录成功，后续根据需要自行配置校验规则 |
 | 注册 | `/screens/signIn/register` | 用账号、密码、手机号、验证码实现注册 | - |
 | 忘记密码 | `/screens/signIn/forgetPassword` | 用手机号、验证码、密码实现找回密码功能 | - |
+| 表单demo页面 | `/screens/formDemo` | 通过rc-field-form与表单项结合实现表单的控制 | 基本涵盖了所有类型的表单项，可以实现校验不通过时表单的错误情况 |
 
 
 ## 头部导航
@@ -114,7 +115,7 @@ const [detail, setDetail] = useState<defs.gazelle.CompanyFinancialIndicatorDTO>(
 ```
 2. 与umi的useRequest结合使用
 
-我们自定义生成的请求方法的格式如下：当接口请求的success为false时，我们会把错误throw出去，在useRequest的onError中进行处理，此时返回的data是接口数据的默认值
+我们自定义生成的请求方法的格式如下：当接口请求的success为false时，我们会把错误throw出去，在useRequest的onError中进行处理
 ```typescript
 export async function fetch(params = {}) {
   const result = await request.get(
