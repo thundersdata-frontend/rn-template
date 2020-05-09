@@ -280,7 +280,7 @@ export default () => {
             </Field>
             <Field>
               <CustomListItem
-                title="级联picker"
+                title="多选picker"
                 extra={
                   <MultiplePicker
                     data={provinceList.map(({ province_name }) => ({ label: province_name, value: province_name }))}
