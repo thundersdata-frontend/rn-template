@@ -4,7 +4,7 @@
  * @作者: 于效仟
  * @Date: 2020-04-29 10:37:52
  * @LastEditors: 黄姗姗
- * @LastEditTime: 2020-05-06 14:32:15
+ * @LastEditTime: 2020-05-08 17:05:35
  */
 import React, { ReactNode } from 'react';
 import { StyleProp, ViewStyle } from 'react-native';
@@ -14,13 +14,13 @@ import ListItemText from '../ListItemText';
 
 interface CustomItemProps {
   title: ReactNode | string; // 主标题
-  extra?: ReactNode | string; //右面的文字
-  brief?: string; //主标题下面的附标题
-  thumb?: ReactNode | null; //图标
-  navigateTo?: string; //跳转的stackname
+  extra?: ReactNode | string; // 右面的文字
+  brief?: string; // 主标题下面的副标题
+  thumb?: ReactNode | null; // 图标
+  navigateTo?: string; // 跳转的stackName
   onPress?: () => void;
   style?: StyleProp<ViewStyle>; // 自定义style
-  isError?: boolean;
+  isError?: boolean; // 提交表单时是否处于error状态，为true时title会标记为红色
 }
 
 const CustomItem = ({ title, brief, thumb, onPress, style, extra, navigateTo, isError }: CustomItemProps) => {

@@ -116,16 +116,18 @@ const Register = () => {
               </Flex>
               <Flex style={styles.item}>
                 <Iconfont style={styles.icon} name="loginPassword" size={Size.px(16)} />
-                <Field
-                  name="code"
-                  trigger="onChangeText"
-                  validateTrigger="onChangeText"
-                  rules={[{ required: true, message: '请输入验证码' }]}>
-                  <Input style={styles.input} placeholder="请输入验证码" />
-                </Field>
-                <Text style={styles.extraText} onPress={() => sendSms(form.getFieldValue('phone'))}>
-                  {smsText}
-                </Text>
+                <Flex style={{ flex: 9 }}>
+                  <Field
+                    name="code"
+                    trigger="onChangeText"
+                    validateTrigger="onChangeText"
+                    rules={[{ required: true, message: '请输入验证码' }]}>
+                    <Input style={styles.input} placeholder="请输入验证码" />
+                  </Field>
+                  <Text style={styles.extraText} onPress={() => sendSms(form.getFieldValue('phone'))}>
+                    {smsText}
+                  </Text>
+                </Flex>
               </Flex>
               <Button type="primary" style={styles.loginBtn} onPress={() => form.submit()}>
                 注册并登录

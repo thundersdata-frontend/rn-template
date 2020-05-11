@@ -3,8 +3,8 @@
  * @公司: thundersdata
  * @作者: 陈杰
  * @Date: 2019-10-09 21:11:04
- * @LastEditors: 陈杰
- * @LastEditTime: 2020-04-20 15:58:42
+ * @LastEditors: 黄姗姗
+ * @LastEditTime: 2020-05-08 17:59:22
  */
 type Merge<M, N> = Omit<M, Extract<keyof M, keyof N>> & N;
 
@@ -16,6 +16,8 @@ declare module 'react-native-render-html' {
 
   export default class RenderHtml extends React.Component<RenderHtmlProps> {}
 }
+
+declare module '@bang88/china-city-data';
 
 declare module 'react-native-switch' {
   export interface SwitchProps {

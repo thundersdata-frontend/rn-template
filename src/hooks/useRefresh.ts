@@ -4,7 +4,7 @@
  * @作者: 陈杰
  * @Date: 2019-10-12 10:23:27
  * @LastEditors: 黄姗姗
- * @LastEditTime: 2020-04-26 16:34:36
+ * @LastEditTime: 2020-05-09 15:32:53
  */
 import { useState, useCallback, useContext } from 'react';
 import { RefreshState } from '../components/RefreshListView';
@@ -14,7 +14,7 @@ import { Pagination } from '../utils/type';
 import useRequest from '@umijs/use-request';
 import { SignInContext } from '../context/SignInContext';
 
-export function useRefresh<T>(fetchOption: { url: string; initialData: Pagination<T> }, params?: object) {
+export function useRefresh<T>(fetch: Function, init: any, params?: object) {
   const [refreshState, setRefreshState] = useState(RefreshState.HeaderRefreshing);
   const { setSignedIn } = useContext(SignInContext);
 
@@ -24,14 +24,11 @@ export function useRefresh<T>(fetchOption: { url: string; initialData: Paginatio
         setRefreshState(RefreshState.FooterRefreshing);
       }
       if (!isEmpty(params)) {
-        // return fetchData(fetchOption, {
-        //   params: { ...params, page }
-        // });
-        return fetchOption.initialData;
+        return await fetch({ ...params, page });
       }
-      return fetchOption.initialData;
+      return init;
     },
-    [params, fetchOption]
+    [fetch, init, params]
   );
 
   const { data, reload, loadMore } = useRequest(

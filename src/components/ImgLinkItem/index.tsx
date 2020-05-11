@@ -4,7 +4,7 @@
  * @作者: 于效仟
  * @Date: 2020-05-06 16:56:48
  * @LastEditors: 黄姗姗
- * @LastEditTime: 2020-05-07 16:47:01
+ * @LastEditTime: 2020-05-08 17:36:02
  */
 import React from 'react';
 import { TouchableOpacity, Text, Image, ImageSourcePropType } from 'react-native';
@@ -15,14 +15,14 @@ import ListItemText from '../ListItemText';
 
 const px = Size.px;
 
-interface BlockItemInter {
+interface ImgLinkItemInter {
   source: ImageSourcePropType; //图片url
   title: string; //商品title
   content: string; //商品描述
   navigateTo?: string; //跳转url
 }
 
-const ImgLinkItem = ({ source, title, content, navigateTo }: BlockItemInter) => {
+const ImgLinkItem = ({ source, title, content, navigateTo }: ImgLinkItemInter) => {
   const navigation = useNavigation();
 
   return (

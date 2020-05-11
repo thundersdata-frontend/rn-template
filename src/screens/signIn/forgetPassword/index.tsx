@@ -14,8 +14,6 @@ import { ScrollView } from 'react-native-gesture-handler';
 import { phoneReg } from '../../../utils/regex-utils';
 import { useNavigation } from '@react-navigation/native';
 
-const { px } = Size;
-
 const ForgetPassword = () => {
   const [form] = useForm();
   const { smsText, sendSms } = useSmsSend();
@@ -54,16 +52,18 @@ const ForgetPassword = () => {
           </Flex>
           <Flex style={styles.item}>
             <ListItemText style={{ flex: 2 }} text="验证码" />
-            <Field
-              name="code"
-              trigger="onChangeText"
-              validateTrigger="onChangeText"
-              rules={[{ required: true, message: '请输入验证码' }]}>
-              <Input style={[styles.input, { paddingLeft: px(17) }]} placeholder="请输入验证码" />
-            </Field>
-            <Text style={styles.extraText} onPress={() => sendSms(form.getFieldValue('phone'))}>
-              {smsText}
-            </Text>
+            <Flex style={{ flex: 9 }}>
+              <Field
+                name="code"
+                trigger="onChangeText"
+                validateTrigger="onChangeText"
+                rules={[{ required: true, message: '请输入验证码' }]}>
+                <Input style={styles.input} placeholder="请输入验证码" />
+              </Field>
+              <Text style={styles.extraText} onPress={() => sendSms(form.getFieldValue('phone'))}>
+                {smsText}
+              </Text>
+            </Flex>
           </Flex>
           <Flex style={styles.item}>
             <ListItemText style={{ flex: 2 }} text="重置密码" />

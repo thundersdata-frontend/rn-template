@@ -1,3 +1,96 @@
+# RN模板
+雷数科技前端app组件库及模板页面
+
+## 组件列表
+
+| 名称 | 组件 | 功能说明 | 示例页面 | 辅助说明 |
+| :----- | :--- | :------- | :------- | :------  |
+| 走马灯 | Carousel | 轮播图 | `/screens/home` 首页 | 此组件未进行二次封装，配置参考antd |
+| 宫格布局 | GridItems | 类似于九宫格的布局，每行可配置为放置3/4个 | `/screens/home` 首页 | - |
+| 标签页 | Tabs | 用于让用户在不同的视图中进行切换。 | `/screens/home` 首页 | 配置参考antd |
+| 预警消息 | TodoTip | 一般用作系统提醒、活动提醒等通知 | `/screens/show/components/List` 展示-列表 | - |
+| 列表项 | CustomListItem | 单个连续模块垂直排列，显示当前的内容、状态和可进行的操作。 | `/screens/show/components/List` 展示-列表 、 `/screens/formDemo` 表单 | - |
+| 通用手风琴组件 | CustomAccordion | 可以折叠/展开的内容区域。 | `/screens/show/components/List` 展示-列表 、 `/screens/formDemo` 表单 | - |
+| 标签 | CustomTag | 进行标记和分类的小标签，分为三种形态，是否可点击选中、是否为圆角 | `/screens/show/components/List` 展示-卡片 | - |
+| 卡片 | CustomCard | 作为一块信息展示的载体，可灵活配置，footer可配置为按钮组 | `/screens/show/components/List` 展示-卡片 | - |
+| 带有预览图片的商品列表的item | ImgLinkItem | 作为典型的图片加文字的展示项 | `/screens/show/components/List` 展示-卡片 | - |
+| 头像 | Avatar | 头像展示 | `/screens/mine` 我的 | `<Avatar uri={state.avatar} width={px(54)} />` |
+| 带背景图片的header | BackgroundImgHeader | 头部导航栏为背景图片加文字 | `/screens/mine` 我的 | - |
+| picker 级联组件 | CascadePicker | 封装后的级联组件，是picker和头部文字的结合体 | 暂无 | - |
+| 页面容器组件 | Container | 通用的页面容器组件，包含了SafeAreaView和StatusBar | `/screens/home` 首页 | - |
+| 日期选择组件 | CustomDatePicker | 样式改造后的datePicker组件 | `/screens/formDemo` 表单 | 可与field和CustomListItem结合使用 |
+| 图片上传组件 | CustomImagePicker | 进行图片上传 | `/screens/formDemo` 表单 | 实际使用时在组件中配置上传图片的接口 |
+| List.Item与picker的结合体 | CustomListItemPicker | 用于List.Item和CustomPicker组合的选择框，主要用于表单里选择数据 | `/screens/formDemo` 表单 | - |
+| 数字输入键盘 | CustomNumberInput | 自定义的数字输入组件 | `/screens/formDemo` 表单 | - |
+| picker组件 | CustomPicker | 根据antd的picker组件进行了样式改造 | `/screens/formDemo` 表单 | - |
+| 打分组件 | CustomRating | 用于评分，可编辑可展示 | 暂无 | - |
+| Switch | CustomSwitch | 自定义的开关组件 | `/screens/formDemo` 表单 | 暂不支持disable，后续持续关注 |
+| 表格table | CustomTable | 表格组件 | 暂无 | - |
+| 暂无数据组件 | DataEmpty | 没有数据时的展示情况 | 暂无 | - |
+| 删除弹窗组件 | deleteModal | - | `/screens/show/components/List` 展示-列表 | - |
+| 渐变按钮 | GradientButton | 可支持渐变颜色的按钮展示 | 暂无 | - |
+| 水平柱图 | HorizontalBarChart | - | `/screens/show/components/Chart` 展示-图表 | - |
+| 图标 | Iconfont | - | 暂无 | `<Iconfont style={{ marginRight: Size.px(8) }} name={icon} size={Size.px(20)} color={Color.primary} />` |
+| 输入组件 | Input | 样式改造后的input组件 | `/screens/signIn/register` | - |
+| 展示item组件 | ListItem | 封装的列表项组件，有统一的边距，有上下和左右留白 | `/screens/formDemo` 表单 | 建议有上下留白和左右留白的地方统一使用，有利于app整体的留白统一 |
+| 列表项文字组件 | ListItemText | 可作为表单中的label展示，可展示为该表单项是否必填，是否error，风格统一为14px+mainTextColor | `/screens/formDemo` 表单 | - |
+| picker中的多选组件 | MultiplePicker | 在picker中可进行多选的操作 | `/screens/formDemo` 表单 | - |
+| 按钮形式的Radio | RadioButtonGroup | 单选按钮组合 | `/screens/show/components/Chart` 展示-图表 | - |
+| 圆圈形式的Radio | RadioGroup | 单选圆圈组件，可一行展示也可多行展示 | `/screens/formDemo` 表单 | - |
+| 下拉加载、上拉刷新的组件 | RefreshListView | - | `/screens/home` 首页 | 与hooks中的useRefresh结合使用 |
+| 带搜索功能的picker | SearchPicker | 可在picker中进行搜索 | `/screens/formDemo` 表单 | - |
+| 标题组件 | Title | 用于灰色背景色的title展示 | `/screens/formDemo` 表单 | `<Title title="选择列表" />` |
+| 渐变色的导航栏顶部 | TitleBar | - | `common.tsx` | - |
+
+
+
+## demo页面
+
+| 名称 | 示例代码 | 功能说明 | 辅助说明 |
+| :--- | :--- | :------- | :------- |
+| 抽屉导航 | `/stacks/mainStack` 、 `/stacks/drawer` | 用于在屏幕边缘显示应用导航等内容的面板 | - |
+| 底部导航 | `/stacks/mainStack` 、 `/stacks/tab` | 用于在屏幕底部显示应用导航等内容。 | 可在首页中的选项四点击跳转查看 |
+| 登录 | `/screens/signIn` | 用账号、密码实现登录 | 目前可以输入任意账号密码登录成功，后续根据需要自行配置校验规则 |
+| 注册 | `/screens/signIn/register` | 用账号、密码、手机号、验证码实现注册 | - |
+| 忘记密码 | `/screens/signIn/forgetPassword` | 用手机号、验证码、密码实现找回密码功能 | - |
+| 表单demo页面 | `/screens/formDemo` | 通过rc-field-form与表单项结合实现表单的控制 | 基本涵盖了所有类型的表单项，可以实现校验不通过时表单的错误情况 |
+
+
+## 头部导航
+可分为三种：
+- 常规头部导航栏样式，配置参照 `common.tsx` 中的commonStackOptions，页面参考首页
+- 头部导航栏与内容区自然衔接的样式，配置参照 `common.tsx` 中的linearGradientStackOptions，页面参考联赛
+```typescript
+return {
+          ...linearGradientStackOptions,
+          headerTitle: '联赛',
+          headerLeft: () => (
+            <TouchableOpacity
+              activeOpacity={0.8}
+              style={{ marginLeft: Size.px(5), padding: Size.px(10) }}
+              onPress={() => navigation.dispatch(DrawerActions.toggleDrawer())}>
+              <Iconfont name="navMenu" size={Size.px(20)} color={Color.white} />
+            </TouchableOpacity>
+          )
+        };
+```
+- 以背景图片作为头部导航栏样式，示例页面：我的 `/screens/mine`
+```typescript
+<BackgroundImgHeader
+  showRadius={false}
+  backgroundImg={require('../../images/pic_my_head.png')}
+  leftIcon={<Iconfont name="navMenu" size={Size.px(20)} color={Color.white} />}
+  onPress={() => props.navigation.dispatch(DrawerActions.toggleDrawer())}
+  {...props}>
+  <View style={{ justifyContent: 'center', alignItems: 'center' }}>
+    <Avatar uri={state.avatar} width={px(54)} />
+    <Text style={{ fontSize: px(18), fontWeight: '500', color: Color.white, marginTop: Size.px(10) }}>
+      {state.name}
+    </Text>
+  </View>
+</BackgroundImgHeader>
+```
+
 ## pont生成工具与umi的useRequest结合使用
 
 ### pont配置
@@ -22,7 +115,7 @@ const [detail, setDetail] = useState<defs.gazelle.CompanyFinancialIndicatorDTO>(
 ```
 2. 与umi的useRequest结合使用
 
-我们自定义生成的请求方法的格式如下：当接口请求的success为false时，我们会把错误throw出去，在useRequest的onError中进行处理，此时返回的data是接口数据的默认值
+我们自定义生成的请求方法的格式如下：当接口请求的success为false时，我们会把错误throw出去，在useRequest的onError中进行处理
 ```typescript
 export async function fetch(params = {}) {
   const result = await request.get(
