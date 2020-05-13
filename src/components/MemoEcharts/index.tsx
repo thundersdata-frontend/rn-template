@@ -3,8 +3,8 @@
  * @公司: thundersdata
  * @作者: 廖军
  * @Date: 2019-10-14 16:52:00
- * @LastEditors: 陈杰
- * @LastEditTime: 2020-03-06 14:12:10
+ * @LastEditors: 于效仟
+ * @LastEditTime: 2020-05-13 14:15:38
  */
 import React from 'react';
 import { ECharts } from '../Echarts';
@@ -15,10 +15,13 @@ export interface MemoEchartsProps {
   option: EChartOption;
   rowNumber?: number;
   height?: number;
+  isHighlightFirst?: boolean; //是否高亮选中第一个
 }
 
-const MemoEcharts = ({ option, rowNumber = BASE_LEGEND_ROW_NUMBER, height }: MemoEchartsProps) => {
-  return <ECharts option={option} height={height || getChartHeight(option, rowNumber)} />;
+const MemoEcharts = ({ option, rowNumber = BASE_LEGEND_ROW_NUMBER, height, isHighlightFirst }: MemoEchartsProps) => {
+  return (
+    <ECharts option={option} height={height || getChartHeight(option, rowNumber)} isHighlightFirst={isHighlightFirst} />
+  );
 };
 
 export default React.memo(MemoEcharts, (prev, next) => {

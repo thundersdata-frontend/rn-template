@@ -24,7 +24,7 @@ export default function PieChart() {
   return (
     <Container>
       <DataEmpty visible={isOptionEmpty(chartOption)}>
-        <MemoEcharts option={chartOption} />
+        <MemoEcharts option={chartOption} isHighlightFirst={true} />
       </DataEmpty>
     </Container>
   );
