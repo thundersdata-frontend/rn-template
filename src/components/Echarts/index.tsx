@@ -11,6 +11,7 @@ export interface EChartsProps {
   height?: number;
   disabledSelect?: boolean;
   renderLoading?: () => JSX.Element;
+  isHighlightFirst?: boolean;
 }
 
 interface State {
@@ -60,7 +61,7 @@ class ECharts extends Component<EChartsProps> {
           style={{ backgroundColor: this.props.backgroundColor }} // 设置背景色透明，修复android闪白
           scrollEnabled={false}
           javaScriptEnabled={true}
-          injectedJavaScript={renderChart(this.props, true)}
+          injectedJavaScript={renderChart(this.props, true, this.props.isHighlightFirst)}
           startInLoadingState={false}
           source={Platform.OS === 'ios' ? require('./tmp/tpl.html') : { uri: 'file:///android_asset/tpl.html' }}
         />
