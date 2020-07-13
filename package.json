@@ -123,7 +123,7 @@
     "prettier": "^2.0.2",
     "react": "^16.13.1",
     "react-test-renderer": "^16.13.1",
-    "standard-version": "^7.1.0",
+    "standard-version": "^8.0.1",
     "typescript": "^3.8.3"
   },
   "jest": {
