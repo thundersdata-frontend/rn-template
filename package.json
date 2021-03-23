@@ -13,7 +13,8 @@
     "immer": "^9.0.1",
     "jotai": "^0.15.3",
     "react": "17.0.1",
-    "react-native": "0.64.0"
+    "react-native": "0.64.0",
+    "react-native-bootsplash": "^3.2.0"
   },
   "devDependencies": {
     "@babel/core": "^7.12.9",
