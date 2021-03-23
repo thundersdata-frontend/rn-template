@@ -28,6 +28,8 @@ import {
   ReloadInstructions,
 } from 'react-native/Libraries/NewAppScreen';
 
+import {API_URL} from '@env';
+
 const Section: React.FC<{
   title: string;
 }> = ({children, title}) => {
@@ -85,6 +87,7 @@ const App = () => {
           style={{
             backgroundColor: isDarkMode ? Colors.black : Colors.white,
           }}>
+          <Text>API_URL: {API_URL}</Text>
           <Section title="Step One">
             Edit <Text style={styles.highlight}>App.js</Text> to change this
             screen and then come back to see your edits.
