@@ -20,7 +20,8 @@
     "react": "17.0.1",
     "react-native": "0.64.0",
     "react-native-bootsplash": "^3.2.0",
-    "react-native-dotenv": "^2.5.3"
+    "react-native-dotenv": "^2.5.3",
+    "react-native-keyboard-aware-scroll-view": "^0.9.3"
   },
   "devDependencies": {
     "@babel/core": "^7.12.9",
