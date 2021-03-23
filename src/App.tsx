@@ -1,8 +1,8 @@
-import React, {useEffect} from 'react';
-import {Button, SafeAreaView, Text, View} from 'react-native';
+import React, { useEffect } from 'react';
+import { SafeAreaView, Text, View } from 'react-native';
 import RNBootSplash from 'react-native-bootsplash';
 
-import {API_URL} from '@env';
+import { API_URL } from '@env';
 import ErrorHandler from 'components/ErrorHandler';
 
 export default function App() {
@@ -12,7 +12,7 @@ export default function App() {
     };
 
     init().finally(async () => {
-      await RNBootSplash.hide({fade: true});
+      await RNBootSplash.hide({ fade: true });
       console.log('Bootsplash has been hidden successfully');
     });
   }, []);

@@ -60,3 +60,9 @@ buck-out/
 
 .env
 .env.development
+
+yarn.lock
+package-lock.json
+
+.mocks/
+.jest

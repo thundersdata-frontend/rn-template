@@ -1,0 +1,11 @@
+{
+  "outDir": "./src/api",
+  "templatePath": "./pontTemplate",
+  "usingMultipleOrigins": true,
+  "origins": [
+    {
+      "name": "authorization",
+      "originUrl": "http://authorization.dev.thundersdata.com/v2/api-docs"
+    }
+  ]
+}
