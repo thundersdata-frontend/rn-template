@@ -7581,6 +7581,11 @@ react-native-restart@^0.0.22:
   resolved "https://registry.yarnpkg.com/react-native-restart/-/react-native-restart-0.0.22.tgz#81fcb7f31e35951d85410c68b9556acf3ab88705"
   integrity sha512-XwCqAMAKsO8yCM3xACPFKvkDQZe41lcavOuO0gUEu803IuTLtciualCq/qs83ryRDCDh1jkXYRqFjsGjLMCN3Q==
 
+react-native-webp-format@^1.1.2:
+  version "1.1.2"
+  resolved "https://registry.yarnpkg.com/react-native-webp-format/-/react-native-webp-format-1.1.2.tgz#22b14f544191e9a5411c920b9874e532a6ea6c89"
+  integrity sha512-qs0oyLZOjoLdlTM9781Vr8WBwvtdkcwQuSJpCtA5KxspGl+YDDDZrW+tpwRQI0PSlB84O+IoK3bfmgHu1zqejQ==
+
 react-native@0.64.0:
   version "0.64.0"
   resolved "https://registry.yarnpkg.com/react-native/-/react-native-0.64.0.tgz#c3bde5b638bf8bcf12bae6e094930d39cb942ab7"
