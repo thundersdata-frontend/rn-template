@@ -37,16 +37,23 @@
     ]
   },
   "dependencies": {
+    "@react-native-community/masked-view": "^0.1.10",
     "immer": "^9.0.1",
     "jotai": "^0.15.3",
+    "rc-field-form": "^1.20.0",
     "react": "^17.0.2",
     "react-error-boundary": "^3.1.1",
     "react-native": "0.64.0",
     "react-native-bootsplash": "^3.2.0",
     "react-native-dotenv": "^2.5.3",
     "react-native-exception-handler": "^2.10.9",
+    "react-native-gesture-handler": "^1.10.3",
     "react-native-keyboard-aware-scroll-view": "^0.9.3",
+    "react-native-reanimated": "1.x",
+    "react-native-redash": "14.x",
     "react-native-restart": "^0.0.22",
+    "react-native-safe-area-context": "^3.2.0",
+    "react-native-screens": "^2.18.1",
     "react-native-webp-format": "^1.1.2"
   },
   "devDependencies": {

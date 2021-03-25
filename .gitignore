@@ -57,6 +57,7 @@ buck-out/
 
 # CocoaPods
 /ios/Pods/
+Podfile.lock
 
 .env
 .env.development

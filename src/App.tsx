@@ -4,6 +4,7 @@ import RNBootSplash from 'react-native-bootsplash';
 
 import { API_URL } from '@env';
 import ErrorHandler from 'components/ErrorHandler';
+import SignIn from 'modules/auth/screens/signIn';
 
 export default function App() {
   useEffect(() => {
@@ -17,23 +18,24 @@ export default function App() {
     });
   }, []);
 
-  return (
-    <SafeAreaView>
-      <View>
-        <Text>API_URL: {API_URL}</Text>
-        <Text>hello, rn template</Text>
-        <ErrorHandler>
-          <ErrorDemo />
-        </ErrorHandler>
-      </View>
-    </SafeAreaView>
-  );
+  // return (
+  //   <SafeAreaView>
+  //     <View>
+  //       <Text>API_URL: {API_URL}</Text>
+  //       <Text>hello, rn template</Text>
+  //       <ErrorHandler>
+  //         <ErrorDemo />
+  //       </ErrorHandler>
+  //     </View>
+  //   </SafeAreaView>
+  // );
+  return <SignIn />;
 }
 
 function ErrorDemo() {
   return (
     <View>
-      <Text>{test}</Text>
+      <Text>123</Text>
     </View>
   );
 }
