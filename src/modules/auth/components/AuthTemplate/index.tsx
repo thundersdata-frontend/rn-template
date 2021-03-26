@@ -5,6 +5,7 @@ import React, { FC, useEffect } from 'react';
 import { StyleSheet, Text, View } from 'react-native';
 import Animated, { SpringUtils } from 'react-native-reanimated';
 import { mix, useValue, withSpringTransition } from 'react-native-redash';
+import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view';
 
 import Container from 'modules/auth/components/Container';
 
@@ -19,15 +20,17 @@ const AuthTemplate: FC<{ title: string; subtitle?: string }> = ({ title, subtitl
     ...SpringUtils.makeDefaultConfig(),
     damping: 16,
   });
-  const translateY = mix(transition, 700, 40);
+  const translateY = mix(transition, 700, 30);
 
   return (
     <Container>
-      <View style={styles.textWrap}>
-        <Text style={styles.title}>{title}</Text>
-        {subtitle && <Text style={styles.subtitle}>{subtitle}</Text>}
-      </View>
-      <Animated.View style={[styles.card, { transform: [{ translateY }] }]}>{children}</Animated.View>
+      <KeyboardAwareScrollView enableOnAndroid contentContainerStyle={{ paddingBottom: 120 }}>
+        <View style={styles.textWrap}>
+          <Text style={styles.title}>{title}</Text>
+          {subtitle && <Text style={styles.subtitle}>{subtitle}</Text>}
+        </View>
+        <Animated.View style={[styles.card, { transform: [{ translateY }] }]}>{children}</Animated.View>
+      </KeyboardAwareScrollView>
     </Container>
   );
 };
@@ -36,7 +39,7 @@ export default AuthTemplate;
 
 const styles = StyleSheet.create({
   textWrap: {
-    marginTop: 125,
+    marginTop: 100,
     marginHorizontal: 30,
   },
   title: {

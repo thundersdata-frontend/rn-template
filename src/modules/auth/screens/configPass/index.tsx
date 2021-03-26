@@ -2,7 +2,8 @@
  * 通过手机号登录时，设置登录密码
  */
 import React from 'react';
-import { StyleSheet, Text, TextInput, TouchableOpacity, View } from 'react-native';
+import { StyleSheet, Text, TextInput } from 'react-native';
+import { TouchableOpacity } from 'react-native-gesture-handler';
 import Form, { Field, useForm } from 'rc-field-form';
 import { Store } from 'rc-field-form/es/interface';
 

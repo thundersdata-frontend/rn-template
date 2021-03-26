@@ -4,7 +4,7 @@ import { ErrorBoundary, FallbackProps } from 'react-error-boundary';
 
 const errorHandler = (error: Error) => {
   // 异常处理，比如用sentry上报
-  console.log('123', error);
+  console.log(error);
 };
 
 const ErrorFallback = ({ resetErrorBoundary }: FallbackProps) => (
