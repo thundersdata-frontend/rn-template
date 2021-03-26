@@ -6,12 +6,15 @@ import Form, { Field, useForm } from 'rc-field-form';
 import { Store } from 'rc-field-form/es/interface';
 
 import LoginTab from '../LoginTab';
+import { useNavigation } from '@react-navigation/core';
 
 const FormContent = ({ translateY, isSmsLogin }: { translateY: Animated.Node<number>; isSmsLogin: boolean }) => {
   const [form] = useForm();
+  const navigation = useNavigation();
 
   const handleFinish = (values: Store) => {
     console.log(values);
+    navigation.navigate('ConfigPass');
   };
 
   return (
