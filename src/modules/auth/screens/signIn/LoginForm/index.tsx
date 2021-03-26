@@ -7,14 +7,18 @@ import { Store } from 'rc-field-form/es/interface';
 
 import LoginTab from '../LoginTab';
 import { useNavigation } from '@react-navigation/core';
+import { useUpdateAtom } from 'jotai/utils';
+import authService from 'modules/auth/authService';
 
 const FormContent = ({ translateY, isSmsLogin }: { translateY: Animated.Node<number>; isSmsLogin: boolean }) => {
   const [form] = useForm();
   const navigation = useNavigation();
+  const updateAuth = useUpdateAtom(authService.authAtom);
 
   const handleFinish = (values: Store) => {
     console.log(values);
-    navigation.navigate('ConfigPass');
+    updateAuth({ signedIn: true });
+    // navigation.navigate('ConfigPass');
   };
 
   return (
@@ -25,13 +29,13 @@ const FormContent = ({ translateY, isSmsLogin }: { translateY: Animated.Node<num
             <Field name="phone" trigger="onChangeText">
               <TextInput
                 placeholder="请输入手机号"
-                style={{ borderWidth: 1, borderColor: '#e5e5e5', height: 48, marginBottom: 24 }}
+                style={{ borderWidth: 1, borderColor: '#e5e5e5', height: 48, marginBottom: 25 }}
               />
             </Field>
             <Field name="sms" trigger="onChangeText">
               <TextInput
                 placeholder="请输入验证码"
-                style={{ borderWidth: 1, borderColor: '#e5e5e5', height: 48, marginBottom: 24 }}
+                style={{ borderWidth: 1, borderColor: '#e5e5e5', height: 48, marginBottom: 25 }}
               />
             </Field>
           </>
@@ -40,15 +44,18 @@ const FormContent = ({ translateY, isSmsLogin }: { translateY: Animated.Node<num
             <Field name="username" trigger="onChangeText">
               <TextInput
                 placeholder="请输入用户名"
-                style={{ borderWidth: 1, borderColor: '#e5e5e5', height: 48, marginBottom: 24 }}
+                style={{ borderWidth: 1, borderColor: '#e5e5e5', height: 48, marginBottom: 25 }}
               />
             </Field>
             <Field name="password" trigger="onChangeText">
               <TextInput
                 placeholder="请输入密码"
-                style={{ borderWidth: 1, borderColor: '#e5e5e5', height: 48, marginBottom: 24 }}
+                style={{ borderWidth: 1, borderColor: '#e5e5e5', height: 48, marginBottom: 5 }}
               />
             </Field>
+            <TouchableOpacity onPress={() => navigation.navigate('ForgetPass')} style={{ alignItems: 'flex-end' }}>
+              <Text style={{ fontSize: 14, lineHeight: 20, color: '#999' }}>忘记密码?</Text>
+            </TouchableOpacity>
           </>
         )}
         <TouchableOpacity onPress={form.submit} style={styles.loginBtn}>
