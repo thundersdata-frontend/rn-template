@@ -8,9 +8,10 @@ import { initRequest } from '../../../../common';
 const backEndUrl = serverConfig()['authorization'];
 
 export const init = undefined;
+export const url = '/deployment/authz/getRoleIdToBusinessValue';
 
 export async function fetch(params = {}) {
-  const request = await initRequest();
+  const request = initRequest();
   const result = await request.get(
     backEndUrl + '/deployment/authz/getRoleIdToBusinessValue',
     {

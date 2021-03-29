@@ -8,9 +8,10 @@ import { initRequest } from '../../../../common';
 const backEndUrl = serverConfig()['authorization'];
 
 export const init = undefined;
+export const url = '/role/resource/save/addUser';
 
 export async function fetch(data = {}) {
-  const request = await initRequest();
+  const request = initRequest();
   const result = await request.post(
     backEndUrl + '/role/resource/save/addUser',
     {

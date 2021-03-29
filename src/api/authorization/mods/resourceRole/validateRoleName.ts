@@ -8,9 +8,10 @@ import { initRequest } from '../../../../common';
 const backEndUrl = serverConfig()['authorization'];
 
 export const init = [];
+export const url = '/role/resource/validateRoleName';
 
 export async function fetch(params = {}) {
-  const request = await initRequest();
+  const request = initRequest();
   const result = await request.get(
     backEndUrl + '/role/resource/validateRoleName',
     {

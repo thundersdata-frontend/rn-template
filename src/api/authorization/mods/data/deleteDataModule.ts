@@ -8,9 +8,10 @@ import { initRequest } from '../../../../common';
 const backEndUrl = serverConfig()['authorization'];
 
 export const init = undefined;
+export const url = '/data/module/delete';
 
 export async function fetch(params = {}) {
-  const request = await initRequest();
+  const request = initRequest();
   const result = await request.post(backEndUrl + '/data/module/delete', {
     headers: {
       'Content-Type': 'application/x-www-form-urlencoded',

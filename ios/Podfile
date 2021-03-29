@@ -1,7 +1,7 @@
 require_relative '../node_modules/react-native/scripts/react_native_pods'
 require_relative '../node_modules/@react-native-community/cli-platform-ios/native_modules'
 
-platform :ios, '10.0'
+platform :ios, '11.0'
 
 target 'rnTemplate' do
   config = use_native_modules!
@@ -13,6 +13,8 @@ target 'rnTemplate' do
   )
 
   pod 'RNVectorIcons', :path => '../node_modules/react-native-vector-icons'
+
+  pod 'RNReanimated', :path => '../node_modules/react-native-reanimated'
 
   target 'rnTemplateTests' do
     inherit! :complete

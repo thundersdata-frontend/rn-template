@@ -8,9 +8,10 @@ import { initRequest } from '../../../../common';
 const backEndUrl = serverConfig()['authorization'];
 
 export const init = new defs.authorization.ResourceDetails();
+export const url = '/resource/detail';
 
 export async function fetch(params = {}) {
-  const request = await initRequest();
+  const request = initRequest();
   const result = await request.get(backEndUrl + '/resource/detail', {
     headers: {
       'Content-Type': 'application/json',

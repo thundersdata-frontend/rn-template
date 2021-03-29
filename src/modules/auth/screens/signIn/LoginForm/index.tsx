@@ -8,18 +8,18 @@ import { Store } from 'rc-field-form/es/interface';
 
 import LoginTab from '../LoginTab';
 import { useNavigation } from '@react-navigation/core';
-// import { useUpdateAtom } from 'jotai/utils';
-// import authService from 'modules/auth/authService';
+import { useUpdateAtom } from 'jotai/utils';
+import authService from 'modules/auth/authService';
 
 const FormContent = ({ isSmsLogin }: { isSmsLogin: boolean }) => {
   const [form] = useForm();
   const navigation = useNavigation();
-  // const updateAuth = useUpdateAtom(authService.authAtom);
+  const updateAuth = useUpdateAtom(authService.authAtom);
 
   const handleFinish = (values: Store) => {
     console.log(values);
-    // updateAuth({ signedIn: true });
-    navigation.navigate('ConfigPass');
+    updateAuth({ signedIn: true });
+    // navigation.navigate('ConfigPass');
   };
 
   return (

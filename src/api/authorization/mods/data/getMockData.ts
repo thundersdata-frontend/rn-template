@@ -8,9 +8,10 @@ import { initRequest } from '../../../../common';
 const backEndUrl = serverConfig()['authorization'];
 
 export const init = [];
+export const url = '/data/mock';
 
 export async function fetch(params = {}) {
-  const request = await initRequest();
+  const request = initRequest();
   const result = await request.get(backEndUrl + '/data/mock', {
     headers: {
       'Content-Type': 'application/json',

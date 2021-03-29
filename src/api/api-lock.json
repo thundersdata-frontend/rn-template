@@ -3,6 +3,7 @@
     "mods": [
       {
         "description": "新的资源管理接口",
+        "name": "authResource",
         "interfaces": [
           {
             "consumes": [
@@ -84,11 +85,11 @@
               }
             ]
           }
-        ],
-        "name": "authResource"
+        ]
       },
       {
         "description": "新的ResourceRole管理接口",
+        "name": "authResourceRole",
         "interfaces": [
           {
             "description": "校验用户是否已经绑定该角色",
@@ -152,11 +153,11 @@
               }
             ]
           }
-        ],
-        "name": "authResourceRole"
+        ]
       },
       {
         "description": "客户端管理",
+        "name": "client",
         "interfaces": [
           {
             "description": "delete",
@@ -352,11 +353,11 @@
               }
             ]
           }
-        ],
-        "name": "client"
+        ]
       },
       {
         "description": "数据管理",
+        "name": "data",
         "interfaces": [
           {
             "consumes": [
@@ -816,11 +817,11 @@
               }
             ]
           }
-        ],
-        "name": "data"
+        ]
       },
       {
         "description": "数据角色管理",
+        "name": "dataRole",
         "interfaces": [
           {
             "consumes": [
@@ -1101,11 +1102,11 @@
               }
             ]
           }
-        ],
-        "name": "dataRole"
+        ]
       },
       {
         "description": "部署权限控制中心接口",
+        "name": "deploymentAuthz",
         "interfaces": [
           {
             "description": "获取角色访问businessValue列表",
@@ -1337,11 +1338,11 @@
               }
             ]
           }
-        ],
-        "name": "deploymentAuthz"
+        ]
       },
       {
         "description": "资源管理",
+        "name": "resource",
         "interfaces": [
           {
             "consumes": [
@@ -2250,11 +2251,11 @@
               }
             ]
           }
-        ],
-        "name": "resource"
+        ]
       },
       {
         "description": "ResourceRole管理",
+        "name": "resourceRole",
         "interfaces": [
           {
             "consumes": [
@@ -3402,11 +3403,11 @@
               }
             ]
           }
-        ],
-        "name": "resourceRole"
+        ]
       },
       {
         "description": "角色管理",
+        "name": "role",
         "interfaces": [
           {
             "consumes": [
@@ -3443,14 +3444,14 @@
               }
             ]
           }
-        ],
-        "name": "role"
+        ]
       }
     ],
     "name": "authorization",
     "baseClasses": [
       {
         "name": "BindUserDTO",
+        "templateArgs": [],
         "properties": [
           {
             "dataType": {
@@ -3504,11 +3505,11 @@
             "description": "用户id",
             "required": true
           }
-        ],
-        "templateArgs": []
+        ]
       },
       {
         "name": "BusinessQueryDTO",
+        "templateArgs": [],
         "properties": [
           {
             "dataType": {
@@ -3590,11 +3591,11 @@
             "description": "角色名称",
             "required": false
           }
-        ],
-        "templateArgs": []
+        ]
       },
       {
         "name": "ClientConfig",
+        "templateArgs": [],
         "properties": [
           {
             "dataType": {
@@ -3704,11 +3705,11 @@
             "name": "updatedAt",
             "required": false
           }
-        ],
-        "templateArgs": []
+        ]
       },
       {
         "name": "DataModule",
+        "templateArgs": [],
         "properties": [
           {
             "dataType": {
@@ -3801,11 +3802,11 @@
             "name": "updatedAt",
             "required": false
           }
-        ],
-        "templateArgs": []
+        ]
       },
       {
         "name": "DataRole",
+        "templateArgs": [],
         "properties": [
           {
             "dataType": {
@@ -3898,11 +3899,11 @@
             "name": "updatedAt",
             "required": false
           }
-        ],
-        "templateArgs": []
+        ]
       },
       {
         "name": "DataRoleInputDTO",
+        "templateArgs": [],
         "properties": [
           {
             "dataType": {
@@ -4018,11 +4019,11 @@
             "name": "updatedAt",
             "required": false
           }
-        ],
-        "templateArgs": []
+        ]
       },
       {
         "name": "DataRoleVO",
+        "templateArgs": [],
         "properties": [
           {
             "dataType": {
@@ -4138,11 +4139,11 @@
             "name": "updatedAt",
             "required": false
           }
-        ],
-        "templateArgs": []
+        ]
       },
       {
         "name": "DataRule",
+        "templateArgs": [],
         "properties": [
           {
             "dataType": {
@@ -4222,11 +4223,11 @@
             "name": "updatedAt",
             "required": false
           }
-        ],
-        "templateArgs": []
+        ]
       },
       {
         "name": "DataRuleDTO",
+        "templateArgs": [],
         "properties": [
           {
             "dataType": {
@@ -4381,11 +4382,11 @@
             "name": "updatedAt",
             "required": false
           }
-        ],
-        "templateArgs": []
+        ]
       },
       {
         "name": "DataRuleDefinition",
+        "templateArgs": [],
         "properties": [
           {
             "dataType": {
@@ -4491,11 +4492,11 @@
             "name": "updatedAt",
             "required": false
           }
-        ],
-        "templateArgs": []
+        ]
       },
       {
         "name": "DataScopeDTO",
+        "templateArgs": [],
         "properties": [
           {
             "dataType": {
@@ -4533,11 +4534,11 @@
             "name": "userId",
             "required": false
           }
-        ],
-        "templateArgs": []
+        ]
       },
       {
         "name": "OrgTreeDTO",
+        "templateArgs": [],
         "properties": [
           {
             "dataType": {
@@ -4657,11 +4658,21 @@
             "description": "人员列表",
             "required": false
           }
-        ],
-        "templateArgs": []
+        ]
       },
       {
         "name": "PagingEntity",
+        "templateArgs": [
+          {
+            "typeArgs": [],
+            "typeName": "ResourceObjects",
+            "isDefsType": true,
+            "templateIndex": -1,
+            "compileTemplateKeyword": "#/definitions/",
+            "enum": [],
+            "typeProperties": []
+          }
+        ],
         "properties": [
           {
             "dataType": {
@@ -4729,21 +4740,11 @@
             "description": "total",
             "required": true
           }
-        ],
-        "templateArgs": [
-          {
-            "typeArgs": [],
-            "typeName": "ResourceObjects",
-            "isDefsType": true,
-            "templateIndex": -1,
-            "compileTemplateKeyword": "#/definitions/",
-            "enum": [],
-            "typeProperties": []
-          }
         ]
       },
       {
         "name": "PersonListDTO",
+        "templateArgs": [],
         "properties": [
           {
             "dataType": {
@@ -4953,11 +4954,11 @@
             "description": "用户id",
             "required": false
           }
-        ],
-        "templateArgs": []
+        ]
       },
       {
         "name": "ResourceDetails",
+        "templateArgs": [],
         "properties": [
           {
             "dataType": {
@@ -5196,11 +5197,11 @@
             "description": "更新时间",
             "required": false
           }
-        ],
-        "templateArgs": []
+        ]
       },
       {
         "name": "ResourceObjects",
+        "templateArgs": [],
         "properties": [
           {
             "dataType": {
@@ -5425,11 +5426,11 @@
             "description": "更新时间",
             "required": false
           }
-        ],
-        "templateArgs": []
+        ]
       },
       {
         "name": "ResourcePageObject",
+        "templateArgs": [],
         "properties": [
           {
             "dataType": {
@@ -5618,11 +5619,11 @@
             "description": "用户id列表",
             "required": false
           }
-        ],
-        "templateArgs": []
+        ]
       },
       {
         "name": "ResourceRole",
+        "templateArgs": [],
         "properties": [
           {
             "dataType": {
@@ -5763,11 +5764,11 @@
             "description": "更新时间",
             "required": false
           }
-        ],
-        "templateArgs": []
+        ]
       },
       {
         "name": "ResourceTreeObject",
+        "templateArgs": [],
         "properties": [
           {
             "dataType": {
@@ -5971,11 +5972,11 @@
             "description": "类型",
             "required": false
           }
-        ],
-        "templateArgs": []
+        ]
       },
       {
         "name": "RoleDTO",
+        "templateArgs": [],
         "properties": [
           {
             "dataType": {
@@ -6164,11 +6165,11 @@
             "description": "用户id列表",
             "required": false
           }
-        ],
-        "templateArgs": []
+        ]
       },
       {
         "name": "UserQueryDTO",
+        "templateArgs": [],
         "properties": [
           {
             "dataType": {
@@ -6208,11 +6209,11 @@
             "description": "用户id列表",
             "required": false
           }
-        ],
-        "templateArgs": []
+        ]
       },
       {
         "name": "UserReduceRoleDTO",
+        "templateArgs": [],
         "properties": [
           {
             "dataType": {
@@ -6252,8 +6253,7 @@
             "description": "用户id",
             "required": true
           }
-        ],
-        "templateArgs": []
+        ]
       }
     ]
   }

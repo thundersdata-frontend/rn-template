@@ -8,9 +8,10 @@ import { initRequest } from '../../../../common';
 const backEndUrl = serverConfig()['authorization'];
 
 export const init = new defs.authorization.PagingEntity();
+export const url = '/role/resource/listByBusinessValueListPagination';
 
 export async function fetch(data = {}) {
-  const request = await initRequest();
+  const request = initRequest();
   const result = await request.post(
     backEndUrl + '/role/resource/listByBusinessValueListPagination',
     {

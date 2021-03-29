@@ -8,9 +8,10 @@ import { initRequest } from '../../../../common';
 const backEndUrl = serverConfig()['authorization'];
 
 export const init = undefined;
+export const url = '/resource/saveList';
 
 export async function fetch(params = {}) {
-  const request = await initRequest();
+  const request = initRequest();
   const result = await request.post(backEndUrl + '/resource/saveList', {
     headers: {
       'Content-Type': 'application/x-www-form-urlencoded',

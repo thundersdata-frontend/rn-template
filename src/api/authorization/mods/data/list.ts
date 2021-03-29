@@ -8,9 +8,10 @@ import { initRequest } from '../../../../common';
 const backEndUrl = serverConfig()['authorization'];
 
 export const init = [];
+export const url = '/data/rule/def/list';
 
 export async function fetch(params = {}) {
-  const request = await initRequest();
+  const request = initRequest();
   const result = await request.get(backEndUrl + '/data/rule/def/list', {
     headers: {
       'Content-Type': 'application/json',

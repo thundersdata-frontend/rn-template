@@ -1,4 +1,4 @@
-package com.rnTemplate;
+package com.rntemplate;
 
 import android.app.Activity;
 import android.graphics.Color;

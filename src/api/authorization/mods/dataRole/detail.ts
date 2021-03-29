@@ -8,9 +8,10 @@ import { initRequest } from '../../../../common';
 const backEndUrl = serverConfig()['authorization'];
 
 export const init = new defs.authorization.DataRoleVO();
+export const url = '/role/data/detail';
 
 export async function fetch(params = {}) {
-  const request = await initRequest();
+  const request = initRequest();
   const result = await request.get(backEndUrl + '/role/data/detail', {
     headers: {
       'Content-Type': 'application/json',

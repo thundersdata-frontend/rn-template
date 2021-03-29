@@ -622,7 +622,7 @@ declare namespace API {
         export type Response = number;
 
         export const init: Response;
-
+        export const url: string;
         export function fetch(
           bodyParams: defs.authorization.ResourceObjects,
         ): Promise<Response>;
@@ -638,7 +638,7 @@ declare namespace API {
         export type Response = any;
 
         export const init: Response;
-
+        export const url: string;
         export function fetch(
           bodyParams: Array<defs.authorization.ResourceObjects>,
         ): Promise<Response>;
@@ -666,7 +666,7 @@ declare namespace API {
         export type Response = boolean;
 
         export const init: Response;
-
+        export const url: string;
         export function fetch(params: Params): Promise<Response>;
       }
     }
@@ -688,7 +688,7 @@ declare namespace API {
         export type Response = any;
 
         export const init: Response;
-
+        export const url: string;
         export function fetch(params: Params): Promise<Response>;
       }
 
@@ -702,7 +702,7 @@ declare namespace API {
         export type Response = string;
 
         export const init: Response;
-
+        export const url: string;
         export function fetch(): Promise<Response>;
       }
 
@@ -721,7 +721,7 @@ declare namespace API {
         export type Response = defs.authorization.ClientConfig;
 
         export const init: Response;
-
+        export const url: string;
         export function fetch(params: Params): Promise<Response>;
       }
 
@@ -744,7 +744,7 @@ declare namespace API {
         export type Response = ObjectMap<any, string>;
 
         export const init: Response;
-
+        export const url: string;
         export function fetch(params: Params): Promise<Response>;
       }
     }
@@ -763,7 +763,7 @@ declare namespace API {
         export type Response = ObjectMap<any, Array<string>>;
 
         export const init: Response;
-
+        export const url: string;
         export function fetch(
           bodyParams: defs.authorization.DataScopeDTO,
         ): Promise<Response>;
@@ -779,7 +779,7 @@ declare namespace API {
         export type Response = Array<defs.authorization.OrgTreeDTO>;
 
         export const init: Response;
-
+        export const url: string;
         export function fetch(): Promise<Response>;
       }
 
@@ -796,7 +796,7 @@ declare namespace API {
         export type Response = any;
 
         export const init: Response;
-
+        export const url: string;
         export function fetch(params: Params): Promise<Response>;
       }
 
@@ -813,7 +813,7 @@ declare namespace API {
         export type Response = Array<defs.authorization.DataModule>;
 
         export const init: Response;
-
+        export const url: string;
         export function fetch(params: Params): Promise<Response>;
       }
 
@@ -827,7 +827,7 @@ declare namespace API {
         export type Response = number;
 
         export const init: Response;
-
+        export const url: string;
         export function fetch(
           bodyParams: defs.authorization.DataModule,
         ): Promise<Response>;
@@ -846,7 +846,7 @@ declare namespace API {
         export type Response = any;
 
         export const init: Response;
-
+        export const url: string;
         export function fetch(params: Params): Promise<Response>;
       }
 
@@ -863,7 +863,7 @@ declare namespace API {
         export type Response = Array<defs.authorization.DataRuleDefinition>;
 
         export const init: Response;
-
+        export const url: string;
         export function fetch(params: Params): Promise<Response>;
       }
 
@@ -877,7 +877,7 @@ declare namespace API {
         export type Response = number;
 
         export const init: Response;
-
+        export const url: string;
         export function fetch(
           bodyParams: defs.authorization.DataRuleDefinition,
         ): Promise<Response>;
@@ -896,7 +896,7 @@ declare namespace API {
         export type Response = any;
 
         export const init: Response;
-
+        export const url: string;
         export function fetch(params: Params): Promise<Response>;
       }
 
@@ -913,7 +913,7 @@ declare namespace API {
         export type Response = defs.authorization.DataRuleDTO;
 
         export const init: Response;
-
+        export const url: string;
         export function fetch(params: Params): Promise<Response>;
       }
 
@@ -930,7 +930,7 @@ declare namespace API {
         export type Response = Array<defs.authorization.DataRule>;
 
         export const init: Response;
-
+        export const url: string;
         export function fetch(params: Params): Promise<Response>;
       }
 
@@ -944,7 +944,7 @@ declare namespace API {
         export type Response = number;
 
         export const init: Response;
-
+        export const url: string;
         export function fetch(
           bodyParams: defs.authorization.DataRuleDTO,
         ): Promise<Response>;
@@ -970,7 +970,7 @@ declare namespace API {
         export type Response = any;
 
         export const init: Response;
-
+        export const url: string;
         export function fetch(params: Params): Promise<Response>;
       }
 
@@ -984,7 +984,7 @@ declare namespace API {
         export type Response = any;
 
         export const init: Response;
-
+        export const url: string;
         export function fetch(
           bodyParams: defs.authorization.BindUserDTO,
         ): Promise<Response>;
@@ -1003,7 +1003,7 @@ declare namespace API {
         export type Response = any;
 
         export const init: Response;
-
+        export const url: string;
         export function fetch(params: Params): Promise<Response>;
       }
 
@@ -1020,7 +1020,7 @@ declare namespace API {
         export type Response = defs.authorization.DataRoleVO;
 
         export const init: Response;
-
+        export const url: string;
         export function fetch(params: Params): Promise<Response>;
       }
 
@@ -1037,7 +1037,7 @@ declare namespace API {
         export type Response = Array<defs.authorization.DataRole>;
 
         export const init: Response;
-
+        export const url: string;
         export function fetch(params: Params): Promise<Response>;
       }
 
@@ -1056,7 +1056,7 @@ declare namespace API {
         export type Response = any;
 
         export const init: Response;
-
+        export const url: string;
         export function fetch(params: Params): Promise<Response>;
       }
 
@@ -1070,7 +1070,7 @@ declare namespace API {
         export type Response = number;
 
         export const init: Response;
-
+        export const url: string;
         export function fetch(
           bodyParams: defs.authorization.DataRoleInputDTO,
         ): Promise<Response>;
@@ -1094,7 +1094,7 @@ declare namespace API {
         export type Response = Array<string>;
 
         export const init: Response;
-
+        export const url: string;
         export function fetch(params: Params): Promise<Response>;
       }
 
@@ -1113,7 +1113,7 @@ declare namespace API {
         export type Response = Array<number>;
 
         export const init: Response;
-
+        export const url: string;
         export function fetch(params: Params): Promise<Response>;
       }
 
@@ -1132,7 +1132,7 @@ declare namespace API {
         export type Response = number;
 
         export const init: Response;
-
+        export const url: string;
         export function fetch(params: Params): Promise<Response>;
       }
 
@@ -1149,7 +1149,7 @@ declare namespace API {
         export type Response = Array<number>;
 
         export const init: Response;
-
+        export const url: string;
         export function fetch(params: Params): Promise<Response>;
       }
 
@@ -1166,7 +1166,7 @@ declare namespace API {
         export type Response = Array<number>;
 
         export const init: Response;
-
+        export const url: string;
         export function fetch(params: Params): Promise<Response>;
       }
     }
@@ -1188,7 +1188,7 @@ declare namespace API {
         export type Response = any;
 
         export const init: Response;
-
+        export const url: string;
         export function fetch(params: Params): Promise<Response>;
       }
 
@@ -1205,7 +1205,7 @@ declare namespace API {
         export type Response = defs.authorization.ResourceDetails;
 
         export const init: Response;
-
+        export const url: string;
         export function fetch(params: Params): Promise<Response>;
       }
 
@@ -1228,7 +1228,7 @@ declare namespace API {
         export type Response = any;
 
         export const init: Response;
-
+        export const url: string;
         export function fetch(params: Params): Promise<Response>;
       }
 
@@ -1247,7 +1247,7 @@ declare namespace API {
         export type Response = Array<defs.authorization.ResourceObjects>;
 
         export const init: Response;
-
+        export const url: string;
         export function fetch(params: Params): Promise<Response>;
       }
 
@@ -1274,7 +1274,7 @@ declare namespace API {
         >;
 
         export const init: Response;
-
+        export const url: string;
         export function fetch(params: Params): Promise<Response>;
       }
 
@@ -1293,7 +1293,7 @@ declare namespace API {
         export type Response = Array<defs.authorization.ResourceTreeObject>;
 
         export const init: Response;
-
+        export const url: string;
         export function fetch(params: Params): Promise<Response>;
       }
 
@@ -1312,7 +1312,7 @@ declare namespace API {
         export type Response = Array<defs.authorization.ResourceTreeObject>;
 
         export const init: Response;
-
+        export const url: string;
         export function fetch(params: Params): Promise<Response>;
       }
 
@@ -1359,7 +1359,7 @@ declare namespace API {
         export type Response = number;
 
         export const init: Response;
-
+        export const url: string;
         export function fetch(params: Params): Promise<Response>;
       }
 
@@ -1376,7 +1376,7 @@ declare namespace API {
         export type Response = any;
 
         export const init: Response;
-
+        export const url: string;
         export function fetch(params: Params): Promise<Response>;
       }
 
@@ -1395,7 +1395,7 @@ declare namespace API {
         export type Response = Array<string>;
 
         export const init: Response;
-
+        export const url: string;
         export function fetch(params: Params): Promise<Response>;
       }
 
@@ -1416,7 +1416,7 @@ declare namespace API {
         export type Response = Array<defs.authorization.ResourceTreeObject>;
 
         export const init: Response;
-
+        export const url: string;
         export function fetch(params: Params): Promise<Response>;
       }
 
@@ -1435,7 +1435,7 @@ declare namespace API {
         export type Response = Array<string>;
 
         export const init: Response;
-
+        export const url: string;
         export function fetch(params: Params): Promise<Response>;
       }
     }
@@ -1459,7 +1459,7 @@ declare namespace API {
         export type Response = any;
 
         export const init: Response;
-
+        export const url: string;
         export function fetch(params: Params): Promise<Response>;
       }
 
@@ -1484,7 +1484,7 @@ declare namespace API {
         export type Response = number;
 
         export const init: Response;
-
+        export const url: string;
         export function fetch(params: Params): Promise<Response>;
       }
 
@@ -1503,7 +1503,7 @@ declare namespace API {
         export type Response = any;
 
         export const init: Response;
-
+        export const url: string;
         export function fetch(params: Params): Promise<Response>;
       }
 
@@ -1522,7 +1522,7 @@ declare namespace API {
         export type Response = any;
 
         export const init: Response;
-
+        export const url: string;
         export function fetch(params: Params): Promise<Response>;
       }
 
@@ -1541,7 +1541,7 @@ declare namespace API {
         export type Response = defs.authorization.ResourcePageObject;
 
         export const init: Response;
-
+        export const url: string;
         export function fetch(params: Params): Promise<Response>;
       }
 
@@ -1560,7 +1560,7 @@ declare namespace API {
         export type Response = defs.authorization.ResourcePageObject;
 
         export const init: Response;
-
+        export const url: string;
         export function fetch(params: Params): Promise<Response>;
       }
 
@@ -1577,7 +1577,7 @@ declare namespace API {
         export type Response = Array<defs.authorization.ResourceRole>;
 
         export const init: Response;
-
+        export const url: string;
         export function fetch(params: Params): Promise<Response>;
       }
 
@@ -1591,7 +1591,7 @@ declare namespace API {
         export type Response = Array<defs.authorization.ResourceRole>;
 
         export const init: Response;
-
+        export const url: string;
         export function fetch(
           bodyParams: defs.authorization.BusinessQueryDTO,
         ): Promise<Response>;
@@ -1609,7 +1609,7 @@ declare namespace API {
         >;
 
         export const init: Response;
-
+        export const url: string;
         export function fetch(
           bodyParams: defs.authorization.BusinessQueryDTO,
         ): Promise<Response>;
@@ -1642,7 +1642,7 @@ declare namespace API {
         >;
 
         export const init: Response;
-
+        export const url: string;
         export function fetch(params: Params): Promise<Response>;
       }
 
@@ -1661,7 +1661,7 @@ declare namespace API {
         export type Response = Array<defs.authorization.ResourceRole>;
 
         export const init: Response;
-
+        export const url: string;
         export function fetch(params: Params): Promise<Response>;
       }
 
@@ -1675,7 +1675,7 @@ declare namespace API {
         export type Response = Array<defs.authorization.ResourceRole>;
 
         export const init: Response;
-
+        export const url: string;
         export function fetch(
           bodyParams: defs.authorization.UserQueryDTO,
         ): Promise<Response>;
@@ -1706,7 +1706,7 @@ declare namespace API {
         >;
 
         export const init: Response;
-
+        export const url: string;
         export function fetch(params: Params): Promise<Response>;
       }
 
@@ -1720,7 +1720,7 @@ declare namespace API {
         export type Response = number;
 
         export const init: Response;
-
+        export const url: string;
         export function fetch(
           bodyParams: defs.authorization.RoleDTO,
         ): Promise<Response>;
@@ -1736,7 +1736,7 @@ declare namespace API {
         export type Response = number;
 
         export const init: Response;
-
+        export const url: string;
         export function fetch(
           bodyParams: defs.authorization.RoleDTO,
         ): Promise<Response>;
@@ -1759,7 +1759,7 @@ declare namespace API {
         export type Response = any;
 
         export const init: Response;
-
+        export const url: string;
         export function fetch(params: Params): Promise<Response>;
       }
 
@@ -1773,7 +1773,7 @@ declare namespace API {
         export type Response = any;
 
         export const init: Response;
-
+        export const url: string;
         export function fetch(
           bodyParams: defs.authorization.BindUserDTO,
         ): Promise<Response>;
@@ -1789,7 +1789,7 @@ declare namespace API {
         export type Response = any;
 
         export const init: Response;
-
+        export const url: string;
         export function fetch(
           bodyParams: defs.authorization.UserReduceRoleDTO,
         ): Promise<Response>;
@@ -1810,7 +1810,7 @@ declare namespace API {
         export type Response = Array<number>;
 
         export const init: Response;
-
+        export const url: string;
         export function fetch(params: Params): Promise<Response>;
       }
 
@@ -1831,7 +1831,7 @@ declare namespace API {
         export type Response = any;
 
         export const init: Response;
-
+        export const url: string;
         export function fetch(params: Params): Promise<Response>;
       }
     }
@@ -1850,7 +1850,7 @@ declare namespace API {
         export type Response = any;
 
         export const init: Response;
-
+        export const url: string;
         export function fetch(
           bodyParams: defs.authorization.ResourceRole,
         ): Promise<Response>;

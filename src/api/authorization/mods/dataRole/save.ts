@@ -8,9 +8,10 @@ import { initRequest } from '../../../../common';
 const backEndUrl = serverConfig()['authorization'];
 
 export const init = undefined;
+export const url = '/role/data/save';
 
 export async function fetch(data = {}) {
-  const request = await initRequest();
+  const request = initRequest();
   const result = await request.post(backEndUrl + '/role/data/save', {
     headers: {
       'Content-Type': 'application/json',

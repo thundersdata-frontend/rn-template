@@ -133,7 +133,7 @@ android {
     }
 
     defaultConfig {
-        applicationId "com.rnTemplate"
+        applicationId "com.rntemplate"
         minSdkVersion rootProject.ext.minSdkVersion
         targetSdkVersion rootProject.ext.targetSdkVersion
         versionCode 1
@@ -195,6 +195,8 @@ dependencies {
     implementation 'com.facebook.fresco:webpsupport:2.0.0'
     // Optionally, to display animated WebP images, you have to add:
     implementation 'com.facebook.fresco:animated-webp:2.0.0'
+
+    implementation project(':react-native-mmkv')
 
     debugImplementation("com.facebook.flipper:flipper:${FLIPPER_VERSION}") {
       exclude group:'com.facebook.fbjni'

@@ -156,7 +156,7 @@ export default class MyGenerator extends CodeGenerator {
       export type Response = ${inter.responseType}
 
       export const init: Response;
-
+      export const url: string;
       export function fetch(${requestParams}): Promise<Response>;
     `;
   }
@@ -195,9 +195,10 @@ export default class MyGenerator extends CodeGenerator {
       const backEndUrl = serverConfig()['${this.dataSource.name}'];
 
       export const init = ${initValue};
+      export const url = '${inter.path}';
 
       export async function fetch(${requestParams}) {
-        const request = await initRequest();
+        const request = initRequest();
         const result = await request.${requestObj.method}(backEndUrl + '${inter.path}', {
           headers: {
             'Content-Type': '${requestObj.contentType}',
