@@ -23,8 +23,8 @@ const FormContent = ({
 
   const handleFinish = (values: Store) => {
     console.log(values);
-    // updateAuth({ signedIn: true });
-    navigation.navigate('ConfigPass');
+    updateAuth({ signedIn: true });
+    // navigation.navigate('ConfigPass');
   };
 
   return (
