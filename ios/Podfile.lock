@@ -335,7 +335,7 @@ PODS:
     - React-cxxreact (= 0.64.0)
     - React-jsi (= 0.64.0)
     - React-perflogger (= 0.64.0)
-  - ReactNativeExceptionHandler (2.10.9):
+  - ReactNativeExceptionHandler (2.10.10):
     - React-Core
   - ReactNativeWebPFormat (1.1.2):
     - React
@@ -567,7 +567,7 @@ SPEC CHECKSUMS:
   React-RCTVibration: 0fd6b21751a33cb72fce1a4a33ab9678416d307a
   React-runtimeexecutor: cad74a1eaa53ee6e7a3620231939d8fe2c6afcf0
   ReactCommon: cfe2b7fd20e0dbd2d1185cd7d8f99633fbc5ff05
-  ReactNativeExceptionHandler: f1638ffd507ef1b1794af25884fa0eb30dd5c551
+  ReactNativeExceptionHandler: b11ff67c78802b2f62eed0e10e75cb1ef7947c60
   ReactNativeWebPFormat: 4275844b80c2c385a10ab64f50264d720f2d691c
   RNBootSplash: 24175aa28fe203b10c48dc34e78d946fd33c77af
   RNCMaskedView: 5a8ec07677aa885546a0d98da336457e2bea557f

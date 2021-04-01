@@ -1,26 +1,20 @@
 /**
  * 通过手机号登录时，设置登录密码
  */
-import React from 'react';
+import React, { FC } from 'react';
 import { StyleSheet, Text, TextInput } from 'react-native';
 import { TouchableOpacity } from 'react-native-gesture-handler';
 import Form, { Field, useForm } from 'rc-field-form';
 import { Store } from 'rc-field-form/es/interface';
 
 import AuthTemplate from 'modules/auth/components/AuthTemplate';
-import { useNavigation } from '@react-navigation/core';
+import { NativeStackNavigationProp } from 'react-native-screens/lib/typescript/native-stack';
 
-const FormContent = () => {
+const FormContent: FC<{ onFinish: (values: Store) => void }> = ({ onFinish }) => {
   const [form] = useForm();
-  const navigation = useNavigation();
-
-  const handleFinish = (values: Store) => {
-    console.log(values);
-    navigation.navigate('BindPhone');
-  };
 
   return (
-    <Form component={false} form={form} onFinish={handleFinish}>
+    <Form component={false} form={form} onFinish={onFinish}>
       <Field name="phone" trigger="onChangeText">
         <TextInput
           placeholder="请输入手机号"
@@ -46,10 +40,15 @@ const FormContent = () => {
   );
 };
 
-export default function ConfigPass() {
+export default function ConfigPass({ navigation }: { navigation: NativeStackNavigationProp<AuthStackParamList> }) {
+  const handleFinish = (values: Store) => {
+    console.log(values);
+    navigation.navigate('BindPhone');
+  };
+
   return (
-    <AuthTemplate title="设置密码" subtitle="8-20个字符">
-      <FormContent />
+    <AuthTemplate title="设置密码" subtitle="8-20个字符" {...{ navigation }}>
+      <FormContent onFinish={handleFinish} />
     </AuthTemplate>
   );
 }

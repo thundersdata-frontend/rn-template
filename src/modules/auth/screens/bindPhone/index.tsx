@@ -1,26 +1,20 @@
 /**
  * 通过手机号登录时，设置登录密码
  */
-import React from 'react';
+import React, { FC } from 'react';
 import { StyleSheet, Text, TextInput } from 'react-native';
 import { TouchableOpacity } from 'react-native-gesture-handler';
 import Form, { Field, useForm } from 'rc-field-form';
 import { Store } from 'rc-field-form/es/interface';
 
 import AuthTemplate from 'modules/auth/components/AuthTemplate';
-import { useNavigation } from '@react-navigation/core';
+import { NativeStackNavigationProp } from 'react-native-screens/lib/typescript/native-stack';
 
-const FormContent = () => {
+const FormContent: FC<{ onFinish: (values: Store) => void }> = ({ onFinish }) => {
   const [form] = useForm();
-  const navigation = useNavigation();
-
-  const handleFinish = (values: Store) => {
-    console.log(values);
-    navigation.navigate('ForgetPass');
-  };
 
   return (
-    <Form component={false} form={form} onFinish={handleFinish}>
+    <Form component={false} form={form} onFinish={onFinish}>
       <Field name="phone" trigger="onChangeText">
         <TextInput
           placeholder="请输入手机号"
@@ -40,10 +34,18 @@ const FormContent = () => {
   );
 };
 
-export default function BindPhone() {
+export default function BindPhone({ navigation }: { navigation: NativeStackNavigationProp<AuthStackParamList> }) {
+  const handleFinish = (values: Store) => {
+    console.log(values);
+    navigation.navigate('ForgetPass');
+  };
+
   return (
-    <AuthTemplate title="绑定手机号" subtitle="绑定的手机号可以用来登录，若账号丢失或出现异常可通过绑定手机号找回密码">
-      <FormContent />
+    <AuthTemplate
+      title="绑定手机号"
+      subtitle="绑定的手机号可以用来登录，若账号丢失或出现异常可通过绑定手机号找回密码"
+      {...{ navigation }}>
+      <FormContent onFinish={handleFinish} />
     </AuthTemplate>
   );
 }

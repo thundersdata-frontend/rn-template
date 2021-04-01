@@ -1,4 +1,5 @@
 import React, { useEffect } from 'react';
+import { enableScreens } from 'react-native-screens';
 import { SafeAreaProvider } from 'react-native-safe-area-context';
 import { NavigationContainer } from '@react-navigation/native';
 import RNBootSplash from 'react-native-bootsplash';
@@ -7,6 +8,8 @@ import { useUpdateAtom } from 'jotai/utils';
 
 import Stack from './stacks';
 import authService from 'modules/auth/authService';
+
+enableScreens();
 
 export default function App() {
   const updateAuth = useUpdateAtom(authService.authAtom);
@@ -36,8 +39,7 @@ export default function App() {
       <SWRConfig
         value={{
           onError: handleError,
-        }}
-      >
+        }}>
         <NavigationContainer>
           <Stack />
         </NavigationContainer>

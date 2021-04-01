@@ -7,19 +7,24 @@ import Form, { Field, useForm } from 'rc-field-form';
 import { Store } from 'rc-field-form/es/interface';
 
 import LoginTab from '../LoginTab';
-import { useNavigation } from '@react-navigation/core';
 import { useUpdateAtom } from 'jotai/utils';
 import authService from 'modules/auth/authService';
+import { NativeStackNavigationProp } from 'react-native-screens/lib/typescript/native-stack';
 
-const FormContent = ({ isSmsLogin }: { isSmsLogin: boolean }) => {
+const FormContent = ({
+  isSmsLogin,
+  navigation,
+}: {
+  isSmsLogin: boolean;
+  navigation: NativeStackNavigationProp<AuthStackParamList, 'SignIn'>;
+}) => {
   const [form] = useForm();
-  const navigation = useNavigation();
   const updateAuth = useUpdateAtom(authService.authAtom);
 
   const handleFinish = (values: Store) => {
     console.log(values);
-    updateAuth({ signedIn: true });
-    // navigation.navigate('ConfigPass');
+    // updateAuth({ signedIn: true });
+    navigation.navigate('ConfigPass');
   };
 
   return (
@@ -80,11 +85,13 @@ export default function LoginForm({
   showAnimation,
   isSmsLogin,
   changeTab,
+  navigation,
 }: {
   showLoginForm: number;
   showAnimation: Animated.Node<number>;
   isSmsLogin: boolean;
   changeTab: (activeKey: string) => void;
+  navigation: NativeStackNavigationProp<AuthStackParamList, 'SignIn'>;
 }) {
   const transition = useSpringTransition(showLoginForm, {
     ...SpringUtils.makeDefaultConfig(),
@@ -115,8 +122,7 @@ export default function LoginForm({
             },
           ],
         },
-      ]}
-    >
+      ]}>
       <LoginTab isSmsLogin={isSmsLogin} onPress={changeTab} />
       <Animated.View
         style={{
@@ -124,9 +130,8 @@ export default function LoginForm({
           width: '100%',
           paddingHorizontal: 20,
           transform: [{ translateY }],
-        }}
-      >
-        <FormContent {...{ isSmsLogin }} />
+        }}>
+        <FormContent {...{ isSmsLogin, navigation }} />
       </Animated.View>
     </Animated.View>
   );

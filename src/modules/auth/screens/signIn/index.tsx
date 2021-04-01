@@ -9,8 +9,13 @@ import LoginForm from './LoginForm';
 import Logo from './Logo';
 import ThirdPartyLogin from './ThirdPartyLogin';
 import LoginBtnGroup from './LoginBtnGroup';
+import { NativeStackNavigationProp } from 'react-native-screens/lib/typescript/native-stack';
 
-export default function SignIn() {
+export default function SignIn({
+  navigation,
+}: {
+  navigation: NativeStackNavigationProp<AuthStackParamList, 'SignIn'>;
+}) {
   const [showLoginForm, setLoginForm] = useState<number>(0);
   const [activeKey, setActiveKey] = useState('sms');
   const isSmsLogin = activeKey === 'sms';
@@ -36,7 +41,7 @@ export default function SignIn() {
           {/* 登录按钮组 */}
           <LoginBtnGroup {...{ showAnimation }} onPress={handlePress} />
           {/* 登录表单 */}
-          <LoginForm {...{ showLoginForm, showAnimation, isSmsLogin, changeTab: setActiveKey }} />
+          <LoginForm {...{ showLoginForm, showAnimation, isSmsLogin, changeTab: setActiveKey, navigation }} />
         </KeyboardAwareScrollView>
       </View>
       {/* 底部第三方登录 */}

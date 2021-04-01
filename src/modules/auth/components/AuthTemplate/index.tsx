@@ -8,8 +8,14 @@ import { mix, useValue, withSpringTransition } from 'react-native-redash';
 import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view';
 
 import Container from 'modules/auth/components/Container';
+import CustomHeader from 'components/CustomHeader';
+import { NativeStackNavigationProp } from 'react-native-screens/lib/typescript/native-stack';
 
-const AuthTemplate: FC<{ title: string; subtitle?: string }> = ({ title, subtitle, children }) => {
+const AuthTemplate: FC<{
+  title: string;
+  subtitle?: string;
+  navigation: NativeStackNavigationProp<any>;
+}> = ({ title, subtitle, children, navigation }) => {
   const animated = useValue<number>(0);
 
   useEffect(() => {
@@ -25,6 +31,7 @@ const AuthTemplate: FC<{ title: string; subtitle?: string }> = ({ title, subtitl
   return (
     <Container>
       <KeyboardAwareScrollView enableOnAndroid contentContainerStyle={{ paddingBottom: 120 }}>
+        <CustomHeader {...{ navigation }} />
         <View style={styles.textWrap}>
           <Text style={styles.title}>{title}</Text>
           {subtitle && <Text style={styles.subtitle}>{subtitle}</Text>}
@@ -39,7 +46,7 @@ export default AuthTemplate;
 
 const styles = StyleSheet.create({
   textWrap: {
-    marginTop: 100,
+    marginTop: 40,
     marginHorizontal: 30,
   },
   title: {
