@@ -6,6 +6,7 @@ type AuthStackParamList = {
 };
 
 type MainStackParamList = {
+  Homepage: undefined;
   Mine: undefined;
   Address: undefined;
 };

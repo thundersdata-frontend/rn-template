@@ -1,14 +1,18 @@
 import React from 'react';
 import { Text, View } from 'react-native';
 import { NativeStackNavigationProp } from 'react-native-screens/lib/typescript/native-stack';
-import { SafeAreaView } from 'react-native-safe-area-context';
+import Container from 'components/Container';
 
-export default function Address({ navigation }: { navigation: NativeStackNavigationProp<AuthStackParamList> }) {
+export default function Address({
+  navigation,
+}: {
+  navigation: NativeStackNavigationProp<MainStackParamList, 'Address'>;
+}) {
   return (
-    <SafeAreaView style={{ flex: 1 }}>
+    <Container>
       <View>
         <Text>address</Text>
       </View>
-    </SafeAreaView>
+    </Container>
   );
 }

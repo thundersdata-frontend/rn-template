@@ -1,9 +1,10 @@
 import React from 'react';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
+import { Text } from 'react-native';
+import { Icon, Theme, useTheme } from '@td-design/react-native';
 
 import Homepage from 'modules/homepage/screens';
 import Mine from 'modules/user/screens/mine';
-import { Text } from 'react-native';
 
 const Tab = createBottomTabNavigator();
 
@@ -27,6 +28,7 @@ const tabItems = [
 ];
 
 const TabStack = () => {
+  const theme = useTheme<Theme>();
   return (
     <Tab.Navigator initialRouteName="Homepage" lazy={true}>
       {tabItems.map(item => (
@@ -40,18 +42,19 @@ const TabStack = () => {
             tabBarLabel: ({ focused }) => (
               <Text
                 style={{
-                  color: focused ? '#000' : '#666',
+                  color: focused ? theme.colors.primaryTextColor : theme.colors.secondaryTextColor,
                   fontSize: 10,
+                  marginBottom: 5,
                 }}>
                 {item?.label}
               </Text>
             ),
-            // tabBarIcon: ({ focused }) =>
-            //   focused ? (
-            //     <Iconfont name={item.focusedIcon} size={Size.px(20)} color={Color.primary} />
-            //   ) : (
-            //     <Iconfont name={item.icon} size={Size.px(20)} color={Color.middleTextColor} />
-            //   ),
+            tabBarIcon: ({ focused }) =>
+              focused ? (
+                <Icon type="custom" name={item.focusedIcon} size={20} color={theme.colors.primaryTextColor} />
+              ) : (
+                <Icon type="custom" name={item.icon} size={20} color={theme.colors.secondaryTextColor} />
+              ),
           }}
         />
       ))}

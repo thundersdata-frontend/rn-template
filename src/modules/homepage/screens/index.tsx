@@ -1,14 +1,21 @@
-import { useUpdateAtom } from 'jotai/utils';
-import authService from 'modules/auth/authService';
 import React, { useState } from 'react';
-import { Text, TouchableOpacity, View } from 'react-native';
+import { Text, View } from 'react-native';
 import { MMKV } from 'react-native-mmkv';
-import { SafeAreaView } from 'react-native-safe-area-context';
+import { NativeStackNavigationProp } from 'react-native-screens/lib/typescript/native-stack';
 import useSWR from 'swr';
+import { useUpdateAtom } from 'jotai/utils';
+import { Button, WhiteSpace } from '@td-design/react-native';
+
+import authService from 'modules/auth/authService';
+import Container from 'components/Container';
 
 const { fetch, url } = API.authorization.resource.listResource;
 
-export default function Homepage() {
+export default function Homepage({
+  navigation,
+}: {
+  navigation: NativeStackNavigationProp<MainStackParamList, 'Homepage'>;
+}) {
   const updateAuth = useUpdateAtom(authService.authAtom);
 
   const [shouldFetch, setShouldFetch] = useState(false);
@@ -23,62 +30,17 @@ export default function Homepage() {
   };
 
   return (
-    <SafeAreaView style={{ flex: 1 }}>
+    <Container hasHeader={false}>
       <View>
         <Text>我是首页</Text>
       </View>
-      <TouchableOpacity
-        onPress={logout}
-        style={{
-          marginVertical: 15,
-          backgroundColor: '#3171F0',
-          height: 44,
-          justifyContent: 'center',
-          alignItems: 'center',
-          borderRadius: 5,
-        }}
-      >
-        <Text>退出登录</Text>
-      </TouchableOpacity>
-      <TouchableOpacity
-        onPress={getData}
-        style={{
-          marginVertical: 15,
-          backgroundColor: '#3171F0',
-          height: 44,
-          justifyContent: 'center',
-          alignItems: 'center',
-          borderRadius: 5,
-        }}
-      >
-        <Text>获取数据</Text>
-      </TouchableOpacity>
-      <TouchableOpacity
-        onPress={() => MMKV.set('token', '123')}
-        style={{
-          marginVertical: 15,
-          backgroundColor: '#3171F0',
-          height: 44,
-          justifyContent: 'center',
-          alignItems: 'center',
-          borderRadius: 5,
-        }}
-      >
-        <Text>保存数据</Text>
-      </TouchableOpacity>
-      <TouchableOpacity
-        onPress={() => console.log(MMKV.getString('token'))}
-        style={{
-          marginVertical: 15,
-          backgroundColor: '#3171F0',
-          height: 44,
-          justifyContent: 'center',
-          alignItems: 'center',
-          borderRadius: 5,
-        }}
-      >
-        <Text>获取数据</Text>
-      </TouchableOpacity>
-    </SafeAreaView>
+      <Button onPress={logout} title="退出登录" />
+      <WhiteSpace />
+      <Button onPress={getData} title="调接口" />
+      <WhiteSpace />
+      <Button onPress={() => MMKV.set('token', '123')} title="保存数据" />
+      <WhiteSpace />
+      <Button onPress={() => console.log(MMKV.getString('token'))} title="获取数据" />
+    </Container>
   );
 }

@@ -5,11 +5,14 @@ import { NavigationContainer } from '@react-navigation/native';
 import RNBootSplash from 'react-native-bootsplash';
 import { SWRConfig } from 'swr';
 import { useUpdateAtom } from 'jotai/utils';
+import { ThemeProvider, helpers } from '@td-design/react-native';
 
 import Stack from './stacks';
 import authService from 'modules/auth/authService';
+import Iconfont from 'components/Iconfont';
 
 enableScreens();
+helpers.registerCustomIcon(Iconfont);
 
 export default function App() {
   const updateAuth = useUpdateAtom(authService.authAtom);
@@ -40,9 +43,11 @@ export default function App() {
         value={{
           onError: handleError,
         }}>
-        <NavigationContainer>
-          <Stack />
-        </NavigationContainer>
+        <ThemeProvider>
+          <NavigationContainer>
+            <Stack />
+          </NavigationContainer>
+        </ThemeProvider>
       </SWRConfig>
     </SafeAreaProvider>
   );
