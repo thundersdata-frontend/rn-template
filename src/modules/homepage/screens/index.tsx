@@ -6,7 +6,7 @@ import useSWR from 'swr';
 import { useUpdateAtom } from 'jotai/utils';
 import { Button, WhiteSpace } from '@td-design/react-native';
 
-import authService from 'modules/auth/authService';
+import { authAtom } from 'modules/auth/authService';
 import Container from 'components/Container';
 
 const { fetch, url } = API.authorization.resource.listResource;
@@ -16,7 +16,7 @@ export default function Homepage({
 }: {
   navigation: NativeStackNavigationProp<MainStackParamList, 'Homepage'>;
 }) {
-  const updateAuth = useUpdateAtom(authService.authAtom);
+  const updateAuth = useUpdateAtom(authAtom);
 
   const [shouldFetch, setShouldFetch] = useState(false);
   const {} = useSWR(shouldFetch ? url : null, fetch);

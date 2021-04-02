@@ -1,6 +1,5 @@
 import React from 'react';
-import { Text } from 'react-native';
-import { TouchableOpacity } from 'react-native-gesture-handler';
+import { Text, TouchableOpacity } from 'react-native';
 import Animated, { Extrapolate, interpolate } from 'react-native-reanimated';
 
 export default function LoginBtnGroup({
@@ -35,10 +34,10 @@ export default function LoginBtnGroup({
           outputRange: [1, 0],
           extrapolate: Extrapolate.CLAMP,
         }),
-      }}
-    >
+      }}>
       <TouchableOpacity
         onPress={() => onPress('sms')}
+        activeOpacity={0.8}
         style={{
           width: 247,
           height: 44,
@@ -46,12 +45,12 @@ export default function LoginBtnGroup({
           backgroundColor: '#fff',
           justifyContent: 'center',
           alignItems: 'center',
-        }}
-      >
+        }}>
         <Text style={{ fontSize: 16, lineHeight: 22, color: '#3171F0' }}>验证码登录</Text>
       </TouchableOpacity>
       <TouchableOpacity
         onPress={() => onPress('pass')}
+        activeOpacity={0.8}
         style={{
           width: 247,
           height: 44,
@@ -61,8 +60,7 @@ export default function LoginBtnGroup({
           justifyContent: 'center',
           alignItems: 'center',
           marginTop: 20,
-        }}
-      >
+        }}>
         <Text style={{ fontSize: 16, lineHeight: 22, color: '#fff' }}>密码登录</Text>
       </TouchableOpacity>
     </Animated.View>

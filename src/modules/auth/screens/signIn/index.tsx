@@ -35,7 +35,7 @@ export default function SignIn({
   return (
     <Container>
       <View style={{ flex: 1 }}>
-        <KeyboardAwareScrollView enableOnAndroid>
+        <KeyboardAwareScrollView enableOnAndroid keyboardShouldPersistTaps="handled">
           {/* logo和欢迎语 */}
           <Logo {...{ showAnimation }} />
           {/* 登录按钮组 */}

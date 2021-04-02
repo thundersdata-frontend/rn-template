@@ -1,6 +1,5 @@
 import React, { FC, ReactNode } from 'react';
-import { View } from 'react-native';
-import { TouchableOpacity } from 'react-native-gesture-handler';
+import { Platform, View, TouchableOpacity } from 'react-native';
 import { NativeStackNavigationProp } from 'react-native-screens/lib/typescript/native-stack';
 import Icon from 'react-native-vector-icons/AntDesign';
 
@@ -19,10 +18,11 @@ const CustomHeader: FC<{
         flexDirection: 'row',
         alignItems: 'center',
         paddingLeft: 5,
+        marginTop: Platform.OS === 'android' ? 24 : 0,
       }}>
       <View style={{ flex: 1 }}>
         {headerLeft ?? (
-          <TouchableOpacity onPress={() => navigation?.canGoBack && navigation.goBack()}>
+          <TouchableOpacity activeOpacity={0.8} onPress={() => navigation?.canGoBack && navigation.goBack()}>
             <Icon name="left" color="#fff" size={24} />
           </TouchableOpacity>
         )}

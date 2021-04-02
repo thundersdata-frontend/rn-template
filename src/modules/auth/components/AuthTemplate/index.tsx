@@ -30,7 +30,10 @@ const AuthTemplate: FC<{
 
   return (
     <Container>
-      <KeyboardAwareScrollView enableOnAndroid contentContainerStyle={{ paddingBottom: 120 }}>
+      <KeyboardAwareScrollView
+        enableOnAndroid
+        contentContainerStyle={{ paddingBottom: 120 }}
+        keyboardShouldPersistTaps="handled">
         <CustomHeader {...{ navigation }} />
         <View style={styles.textWrap}>
           <Text style={styles.title}>{title}</Text>

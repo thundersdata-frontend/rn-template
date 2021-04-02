@@ -2,40 +2,63 @@
  * 通过手机号登录时，设置登录密码
  */
 import React, { FC } from 'react';
-import { StyleSheet, Text, TextInput } from 'react-native';
-import { TouchableOpacity } from 'react-native-gesture-handler';
 import Form, { Field, useForm } from 'rc-field-form';
 import { Store } from 'rc-field-form/es/interface';
+import { NativeStackNavigationProp } from 'react-native-screens/lib/typescript/native-stack';
+import { Icon, Input, Theme, useTheme, WhiteSpace, Button, Box } from '@td-design/react-native';
+
+import { passwordRules } from 'utils/validators';
+import useAuthService from 'modules/auth/authService';
+import ErrorMessage from 'modules/auth/components/ErrorMessage';
 
 import AuthTemplate from 'modules/auth/components/AuthTemplate';
-import { NativeStackNavigationProp } from 'react-native-screens/lib/typescript/native-stack';
 
 const FormContent: FC<{ onFinish: (values: Store) => void }> = ({ onFinish }) => {
   const [form] = useForm();
+  const theme = useTheme<Theme>();
+  const { error, clearError, submitFormFailed } = useAuthService();
 
   return (
-    <Form component={false} form={form} onFinish={onFinish}>
-      <Field name="phone" trigger="onChangeText">
-        <TextInput
-          placeholder="请输入手机号"
-          style={{ borderWidth: 1, borderColor: '#e5e5e5', height: 48, marginBottom: 24 }}
+    <Form
+      component={false}
+      form={form}
+      onFinish={onFinish}
+      onFinishFailed={submitFormFailed}
+      onValuesChange={clearError}
+    >
+      <Field name="password" rules={passwordRules}>
+        <Input
+          placeholder="请输入密码"
+          inputType="password"
+          leftIcon={<Icon type="custom" name="icon_login_password" color={theme.colors.primaryTextColor} />}
         />
       </Field>
-      <Field name="sms" trigger="onChangeText">
-        <TextInput
-          placeholder="请输入验证码"
-          style={{ borderWidth: 1, borderColor: '#e5e5e5', height: 48, marginBottom: 24 }}
+      <WhiteSpace size="xxl" />
+      <Field
+        name="confirmPass"
+        dependencies={['password']}
+        rules={[
+          ...passwordRules,
+          ({ getFieldValue }) => ({
+            validator(_, value) {
+              if (!value || getFieldValue('password') === value) {
+                return Promise.resolve();
+              }
+              return Promise.reject(new Error('两次输入的密码不一致!'));
+            },
+          }),
+        ]}
+      >
+        <Input
+          placeholder="请再次输入密码"
+          inputType="password"
+          leftIcon={<Icon type="custom" name="icon_login_password" color={theme.colors.primaryTextColor} />}
         />
       </Field>
-      <Field name="sms" trigger="onChangeText">
-        <TextInput
-          placeholder="请输入验证码"
-          style={{ borderWidth: 1, borderColor: '#e5e5e5', height: 48, marginBottom: 24 }}
-        />
-      </Field>
-      <TouchableOpacity onPress={form.submit} style={styles.btn}>
-        <Text style={{ fontSize: 18, lineHeight: 22, color: '#fff', fontWeight: '500' }}>确认</Text>
-      </TouchableOpacity>
+      <Box height={32} marginTop="xs">
+        <ErrorMessage text={error} />
+      </Box>
+      <Button onPress={form.submit} title="确认" />
     </Form>
   );
 };
@@ -47,18 +70,8 @@ export default function ConfigPass({ navigation }: { navigation: NativeStackNavi
   };
 
   return (
-    <AuthTemplate title="设置密码" subtitle="8-20个字符" {...{ navigation }}>
+    <AuthTemplate title="设置密码" subtitle="6-20位字母和数字组合" {...{ navigation }}>
       <FormContent onFinish={handleFinish} />
     </AuthTemplate>
   );
 }
-
-const styles = StyleSheet.create({
-  btn: {
-    backgroundColor: '#3171F0',
-    height: 44,
-    justifyContent: 'center',
-    alignItems: 'center',
-    borderRadius: 5,
-  },
-});

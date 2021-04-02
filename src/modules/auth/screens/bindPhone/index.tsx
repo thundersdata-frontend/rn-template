@@ -2,34 +2,50 @@
  * 通过手机号登录时，设置登录密码
  */
 import React, { FC } from 'react';
-import { StyleSheet, Text, TextInput } from 'react-native';
-import { TouchableOpacity } from 'react-native-gesture-handler';
 import Form, { Field, useForm } from 'rc-field-form';
 import { Store } from 'rc-field-form/es/interface';
+import { NativeStackNavigationProp } from 'react-native-screens/lib/typescript/native-stack';
+import { Box, Button, Icon, Input, useTheme, Theme, WhiteSpace, CountDown } from '@td-design/react-native';
 
 import AuthTemplate from 'modules/auth/components/AuthTemplate';
-import { NativeStackNavigationProp } from 'react-native-screens/lib/typescript/native-stack';
+
+import { mobilePhoneRules } from 'utils/validators';
+import useAuthService from 'modules/auth/authService';
+import ErrorMessage from 'modules/auth/components/ErrorMessage';
 
 const FormContent: FC<{ onFinish: (values: Store) => void }> = ({ onFinish }) => {
   const [form] = useForm();
+  const theme = useTheme<Theme>();
+  const { error, clearError, submitFormFailed } = useAuthService();
 
   return (
-    <Form component={false} form={form} onFinish={onFinish}>
-      <Field name="phone" trigger="onChangeText">
-        <TextInput
+    <Form
+      component={false}
+      form={form}
+      onFinish={onFinish}
+      onFinishFailed={submitFormFailed}
+      onValuesChange={clearError}
+    >
+      <Field name="phone" rules={mobilePhoneRules}>
+        <Input
           placeholder="请输入手机号"
-          style={{ borderWidth: 1, borderColor: '#e5e5e5', height: 48, marginBottom: 24 }}
+          leftIcon={<Icon type="custom" name="login_iphone" color={theme.colors.primaryTextColor} />}
+          allowClear
         />
       </Field>
-      <Field name="sms" trigger="onChangeText">
-        <TextInput
-          placeholder="请输入验证码"
-          style={{ borderWidth: 1, borderColor: '#e5e5e5', height: 48, marginBottom: 24 }}
+      <WhiteSpace size="xxl" />
+      <Field name="sms" rules={[{ required: true, message: '请输入验证码' }]}>
+        <CountDown
+          bordered
+          leftIcon={<Icon type="custom" name="login_verify" color={theme.colors.primaryTextColor} />}
+          onClick={() => console.log('123')}
+          onEnd={() => console.log('倒计时结束')}
         />
       </Field>
-      <TouchableOpacity onPress={form.submit} style={styles.btn}>
-        <Text style={{ fontSize: 18, lineHeight: 22, color: '#fff', fontWeight: '500' }}>确认</Text>
-      </TouchableOpacity>
+      <Box height={32} marginTop="xs">
+        <ErrorMessage text={error} />
+      </Box>
+      <Button onPress={form.submit} title="确认" />
     </Form>
   );
 };
@@ -44,18 +60,9 @@ export default function BindPhone({ navigation }: { navigation: NativeStackNavig
     <AuthTemplate
       title="绑定手机号"
       subtitle="绑定的手机号可以用来登录，若账号丢失或出现异常可通过绑定手机号找回密码"
-      {...{ navigation }}>
+      {...{ navigation }}
+    >
       <FormContent onFinish={handleFinish} />
     </AuthTemplate>
   );
 }
-
-const styles = StyleSheet.create({
-  btn: {
-    backgroundColor: '#3171F0',
-    height: 44,
-    justifyContent: 'center',
-    alignItems: 'center',
-    borderRadius: 5,
-  },
-});

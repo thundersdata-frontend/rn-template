@@ -1667,10 +1667,10 @@
   dependencies:
     "@sinonjs/commons" "^1.7.0"
 
-"@td-design/react-native@^1.4.2":
-  version "1.4.2"
-  resolved "https://registry.yarnpkg.com/@td-design/react-native/-/react-native-1.4.2.tgz#2de3a71a5a9ca9a2de70688aaaad3f44ed770e24"
-  integrity sha512-aVjm8GMfaVxapqICKkr0JPXz/Kkmy3gRFqcIvUJsxIdEQw6S9PVKwwH1lbB6/9FLDWe2shU/+vPfQMLIMdiNeA==
+"@td-design/react-native@^1.4.3":
+  version "1.4.3"
+  resolved "https://registry.yarnpkg.com/@td-design/react-native/-/react-native-1.4.3.tgz#8e9fe34eb8c3794a58a49d244e72b08b0006c134"
+  integrity sha512-xC7xN3ZzmBh5FwbqEbY9dggAm3S4i8kXNNp61HemlXcTEhNGZpCg5MG30Ye50Cd1wS8Ju1Xe1xqKZb/ghIvVyg==
   dependencies:
     "@shopify/restyle" "^1.4.0"
     array-tree-filter "^2.1.0"

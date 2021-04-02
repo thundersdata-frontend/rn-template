@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { enableScreens } from 'react-native-screens';
 import { SafeAreaProvider } from 'react-native-safe-area-context';
 import { NavigationContainer } from '@react-navigation/native';
@@ -8,14 +8,16 @@ import { useUpdateAtom } from 'jotai/utils';
 import { ThemeProvider, helpers } from '@td-design/react-native';
 
 import Stack from './stacks';
-import authService from 'modules/auth/authService';
+import { authAtom } from 'modules/auth/authService';
 import Iconfont from 'components/Iconfont';
+import { theme, darkTheme } from './theme';
 
 enableScreens();
 helpers.registerCustomIcon(Iconfont);
 
 export default function App() {
-  const updateAuth = useUpdateAtom(authService.authAtom);
+  const updateAuth = useUpdateAtom(authAtom);
+  const [dark] = useState(false);
 
   useEffect(() => {
     const init = async () => {
@@ -42,8 +44,9 @@ export default function App() {
       <SWRConfig
         value={{
           onError: handleError,
-        }}>
-        <ThemeProvider>
+        }}
+      >
+        <ThemeProvider theme={dark ? darkTheme : theme}>
           <NavigationContainer>
             <Stack />
           </NavigationContainer>

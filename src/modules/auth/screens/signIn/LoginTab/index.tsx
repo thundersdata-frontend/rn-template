@@ -1,19 +1,17 @@
 import React from 'react';
-import { Dimensions, ImageBackground, StyleSheet, Text } from 'react-native';
-import { TouchableOpacity } from 'react-native-gesture-handler';
+import { Dimensions, ImageBackground, StyleSheet, Text, TouchableOpacity } from 'react-native';
 
 const { width } = Dimensions.get('window');
 export default function LoginTab({ isSmsLogin, onPress }: { isSmsLogin: boolean; onPress: (key: string) => void }) {
   return (
     <ImageBackground
       style={styles.tab}
-      source={isSmsLogin ? require('./assets/bg1.webp') : require('./assets/bg2.webp')}
-    >
+      source={isSmsLogin ? require('./assets/bg1.webp') : require('./assets/bg2.webp')}>
       <TouchableOpacity style={[styles.item]} onPress={() => onPress('sms')} activeOpacity={1}>
-        <Text style={[styles.text]}>验证码登录</Text>
+        <Text style={[styles.text, !isSmsLogin ? styles.unselected : {}]}>验证码登录</Text>
       </TouchableOpacity>
       <TouchableOpacity style={[styles.item]} onPress={() => onPress('pass')} activeOpacity={1}>
-        <Text style={[styles.text, styles.unselected]}>密码登录</Text>
+        <Text style={[styles.text, isSmsLogin ? styles.unselected : {}]}>密码登录</Text>
       </TouchableOpacity>
     </ImageBackground>
   );
