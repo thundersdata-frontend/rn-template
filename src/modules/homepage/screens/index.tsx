@@ -41,6 +41,8 @@ export default function Homepage({
       <Button onPress={() => MMKV.set('token', '123')} title="保存数据" />
       <WhiteSpace />
       <Button onPress={() => console.log(MMKV.getString('token'))} title="获取数据" />
+      <WhiteSpace />
+      <Button onPress={() => navigation.navigate('Mine')} title="去我的页面" />
     </Container>
   );
 }
