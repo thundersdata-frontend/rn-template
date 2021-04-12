@@ -4,7 +4,7 @@ export const theme: Theme = {
   ...defaultTheme,
   colors: {
     ...defaultTheme.colors,
-    primaryColor: '#3171F0',
+    primary: '#3171F0',
   },
 };
 
@@ -12,5 +12,6 @@ export const darkTheme: Theme = {
   ...defaultDarkTheme,
   colors: {
     ...defaultDarkTheme.colors,
+    primary: '#3171F0',
   },
 };
