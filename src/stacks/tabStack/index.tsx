@@ -42,18 +42,19 @@ const TabStack = () => {
             tabBarLabel: ({ focused }) => (
               <Text
                 style={{
-                  color: focused ? theme.colors.primaryTextColor : theme.colors.secondaryTextColor,
+                  color: focused ? theme.colors.primaryText_1 : theme.colors.primaryText_2,
                   fontSize: 10,
                   marginBottom: 5,
-                }}>
+                }}
+              >
                 {item?.label}
               </Text>
             ),
             tabBarIcon: ({ focused }) =>
               focused ? (
-                <Icon type="custom" name={item.focusedIcon} size={20} color={theme.colors.primaryTextColor} />
+                <Icon type="custom" name={item.focusedIcon} size={20} color={theme.colors.primaryText_1} />
               ) : (
-                <Icon type="custom" name={item.icon} size={20} color={theme.colors.secondaryTextColor} />
+                <Icon type="custom" name={item.icon} size={20} color={theme.colors.primaryText_2} />
               ),
           }}
         />

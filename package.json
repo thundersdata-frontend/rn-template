@@ -8,12 +8,12 @@
     "start": "react-native start --reset-cache",
     "eslint": "eslint --fix --ext .ts,.tsx src/",
     "prettier": "prettier --check src/**/*.tsx --write",
-    "postinstall": "husky install",
     "clean:android": "cd android && ./gradlew cleanBuildCache && ./gradlew clean && cd ..",
     "clean:ios": "rm -rf ios/build",
     "clean": "run-p clean:*",
     "release": "npm run clean:android && cd ./android && ./gradlew app:assembleRelease",
     "commit": "git-cz",
+    "tsc": "tsc -p tsconfig.json",
     "pod": "cd ios && pod install --repo-update && cd ..",
     "fix:image": "npx react-native-fix-image",
     "test": "jest --passWithNoTests --detectOpenHandles --watch",
@@ -29,21 +29,23 @@
   },
   "husky": {
     "hooks": {
-      "pre-commit": "npm run tsc && npm run eslint:fix && npm run lint:fix && lint-staged",
+      "pre-commit": "npm run tsc && lint-staged",
       "commit-msg": "commitlint -E HUSKY_GIT_PARAMS"
     }
   },
   "lint-staged": {
-    "src/**/*.{ts,tsx}": [
-      "git add ."
+    "src/**/*.{js,ts,tsx}": [
+      "npm run eslint",
+      "npm run prettier",
+      "git add"
     ]
   },
   "dependencies": {
     "@react-native-community/masked-view": "^0.1.10",
-    "@react-native-picker/picker": "^1.14.0",
-    "@react-navigation/bottom-tabs": "^5.11.8",
-    "@react-navigation/native": "^5.9.3",
-    "@react-navigation/stack": "^5.14.3",
+    "@react-native-picker/picker": "^1.15.0",
+    "@react-navigation/bottom-tabs": "^5.11.9",
+    "@react-navigation/native": "^5.9.4",
+    "@react-navigation/stack": "^5.14.4",
     "@td-design/react-native": "^2.0.2",
     "immer": "^9.0.1",
     "jotai": "^0.16.0",
@@ -53,7 +55,7 @@
     "react-native": "0.64.0",
     "react-native-background-timer": "^2.4.1",
     "react-native-bootsplash": "^3.2.0",
-    "react-native-dotenv": "^2.5.3",
+    "react-native-dotenv": "^2.5.5",
     "react-native-exception-handler": "^2.10.10",
     "react-native-fast-image": "^8.3.4",
     "react-native-gesture-handler": "^1.10.3",
@@ -65,13 +67,13 @@
     "react-native-restart": "^0.0.22",
     "react-native-safe-area-context": "^3.2.0",
     "react-native-screens": "^2.18.1",
-    "react-native-svg": "^12.1.0",
+    "react-native-svg": "^12.1.1",
     "react-native-vector-icons": "^8.1.0",
     "swr": "^0.5.5",
     "umi-request": "^1.3.5"
   },
   "devDependencies": {
-    "@babel/core": "^7.12.9",
+    "@babel/core": "^7.13.15",
     "@babel/runtime": "^7.12.5",
     "@bam.tech/react-native-make": "^3.0.0",
     "@commitlint/cli": "^12.0.1",
@@ -80,7 +82,6 @@
     "@testing-library/jest-native": "^4.0.1",
     "@testing-library/react-hooks": "^5.1.1",
     "@testing-library/react-native": "^7.1.0",
-    "@types/detox": "^17.14.0",
     "@types/jest": "^26.0.22",
     "@types/react-native": "^0.64.2",
     "@types/react-native-vector-icons": "^6.4.6",
@@ -91,13 +92,13 @@
     "babel-plugin-module-resolver": "^4.1.0",
     "commitizen": "^4.2.3",
     "cz-customizable": "^6.3.0",
-    "detox": "^18.9.0",
+    "detox": "^18.12.0",
     "eslint": "^7.14.0",
     "eslint-config-prettier": "^8.0.0",
     "eslint-plugin-prettier": "^3.3.1",
-    "eslint-plugin-react": "^7.20.5",
+    "eslint-plugin-react": "^7.23.2",
     "eslint-plugin-react-hooks": "^4.0.8",
-    "husky": "^6.0.0",
+    "husky": "4.2.5",
     "inquirer": "^8.0.0",
     "jest": "^26.6.3",
     "jest-circus": "^26.6.3",
@@ -110,8 +111,8 @@
     "react-native-fix-image": "^2.1.0",
     "react-test-renderer": "^17.0.2",
     "shelljs": "^0.8.4",
-    "ts-jest": "^26.5.1",
-    "typescript": "^4.2.3"
+    "ts-jest": "^26.5.5",
+    "typescript": "^4.2.4"
   },
   "resolutions": {
     "@types/react": "^17"

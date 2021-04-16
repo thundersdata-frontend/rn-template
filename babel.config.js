@@ -4,6 +4,7 @@ module.exports = {
     [
       'module:react-native-dotenv',
       {
+        moduleName: 'react-native-dotenv',
         safe: true,
       },
     ],
@@ -11,17 +12,7 @@ module.exports = {
       'module-resolver',
       {
         root: ['./src'],
-        extensions: [
-          '.ios.ts',
-          '.android.ts',
-          '.ts',
-          '.ios.tsx',
-          '.android.tsx',
-          '.tsx',
-          '.jsx',
-          '.js',
-          '.json',
-        ],
+        extensions: ['.ios.ts', '.android.ts', '.ts', '.ios.tsx', '.android.tsx', '.tsx', '.jsx', '.js', '.json'],
       },
     ],
   ],

@@ -30,7 +30,7 @@ const FormContent: FC<{ onFinish: (values: Store) => void }> = ({ onFinish }) =>
         <Input
           placeholder="请输入密码"
           inputType="password"
-          leftIcon={<Icon type="custom" name="icon_login_password" color={theme.colors.primaryTextColor} />}
+          leftIcon={<Icon type="custom" name="icon_login_password" color={theme.colors.primaryText_1} />}
         />
       </Field>
       <WhiteSpace size="xxl" />
@@ -52,7 +52,7 @@ const FormContent: FC<{ onFinish: (values: Store) => void }> = ({ onFinish }) =>
         <Input
           placeholder="请再次输入密码"
           inputType="password"
-          leftIcon={<Icon type="custom" name="icon_login_password" color={theme.colors.primaryTextColor} />}
+          leftIcon={<Icon type="custom" name="icon_login_password" color={theme.colors.primaryText_1} />}
         />
       </Field>
       <Box height={32} marginTop="xs">
