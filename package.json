@@ -12,6 +12,7 @@
     "clean:ios": "rm -rf ios/build",
     "clean": "run-p clean:*",
     "release": "npm run clean:android && cd ./android && ./gradlew app:assembleRelease",
+    "postinstall": "npx husky install",
     "commit": "git-cz",
     "tsc": "tsc -p tsconfig.json",
     "pod": "cd ios && pod install --repo-update && cd ..",
@@ -27,17 +28,10 @@
       "path": "node_modules/cz-customizable"
     }
   },
-  "husky": {
-    "hooks": {
-      "pre-commit": "npm run tsc && lint-staged",
-      "commit-msg": "commitlint -E HUSKY_GIT_PARAMS"
-    }
-  },
   "lint-staged": {
     "src/**/*.{js,ts,tsx}": [
       "npm run eslint",
-      "npm run prettier",
-      "git add"
+      "npm run prettier"
     ]
   },
   "dependencies": {
@@ -98,7 +92,7 @@
     "eslint-plugin-prettier": "^3.3.1",
     "eslint-plugin-react": "^7.23.2",
     "eslint-plugin-react-hooks": "^4.0.8",
-    "husky": "4.2.5",
+    "husky": "^6.0.0",
     "inquirer": "^8.0.0",
     "jest": "^26.6.3",
     "jest-circus": "^26.6.3",
