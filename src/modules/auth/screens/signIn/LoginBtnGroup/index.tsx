@@ -1,40 +1,30 @@
 import React from 'react';
 import { Text, TouchableOpacity } from 'react-native';
-import Animated, { Extrapolate, interpolate } from 'react-native-reanimated';
+import Animated, { useAnimatedStyle } from 'react-native-reanimated';
+import { mix } from 'react-native-redash';
 
 export default function LoginBtnGroup({
-  showAnimation,
+  animation,
   onPress,
 }: {
-  showAnimation: Animated.Node<number>;
+  animation: Animated.SharedValue<number>;
   onPress: (activeKey: string) => void;
 }) {
+  const style = useAnimatedStyle(() => ({
+    alignItems: 'center',
+    transform: [
+      {
+        translateY: mix(animation.value, 80, 300),
+      },
+      {
+        scale: mix(animation.value, 1, 0.7),
+      },
+    ],
+    opacity: mix(animation.value, 1, 0),
+  }));
+
   return (
-    <Animated.View
-      style={{
-        alignItems: 'center',
-        transform: [
-          {
-            translateY: interpolate(showAnimation, {
-              inputRange: [0, 1],
-              outputRange: [80, 300],
-              extrapolate: Extrapolate.CLAMP,
-            }),
-          },
-          {
-            scale: interpolate(showAnimation, {
-              inputRange: [0, 1],
-              outputRange: [1, 0.7],
-              extrapolate: Extrapolate.CLAMP,
-            }),
-          },
-        ],
-        opacity: interpolate(showAnimation, {
-          inputRange: [0, 1],
-          outputRange: [1, 0],
-          extrapolate: Extrapolate.CLAMP,
-        }),
-      }}>
+    <Animated.View style={style}>
       <TouchableOpacity
         onPress={() => onPress('sms')}
         activeOpacity={0.8}
@@ -45,7 +35,8 @@ export default function LoginBtnGroup({
           backgroundColor: '#fff',
           justifyContent: 'center',
           alignItems: 'center',
-        }}>
+        }}
+      >
         <Text style={{ fontSize: 16, lineHeight: 22, color: '#3171F0' }}>验证码登录</Text>
       </TouchableOpacity>
       <TouchableOpacity
@@ -60,7 +51,8 @@ export default function LoginBtnGroup({
           justifyContent: 'center',
           alignItems: 'center',
           marginTop: 20,
-        }}>
+        }}
+      >
         <Text style={{ fontSize: 16, lineHeight: 22, color: '#fff' }}>密码登录</Text>
       </TouchableOpacity>
     </Animated.View>

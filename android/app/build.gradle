@@ -34,7 +34,7 @@ import com.android.build.OutputFile
  *   // The configuration property can be in the following formats
  *   //         'bundleIn${productFlavor}${buildType}'
  *   //         'bundleIn${buildType}'
- *   // bundleInFreeDebug: true,
+ *   // bundleInFreedebug: false,
  *   // bundleInPaidRelease: true,
  *   // bundleInBeta: true,
  *

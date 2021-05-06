@@ -78,7 +78,7 @@ export default class MyGenerator extends CodeGenerator {
           .filter(id => id)
           .join('\n')}
       }
-    `
+    `,
     );
 
     if (this.dataSource.name) {
@@ -194,8 +194,10 @@ export default class MyGenerator extends CodeGenerator {
 
       const backEndUrl = serverConfig()['${this.dataSource.name}'];
 
+      // 初始值
       export const init = ${initValue};
-      export const url = '${inter.path}';
+      // 接口地址
+      export const url = ${inter.path};
 
       export async function fetch(${requestParams}) {
         const request = initRequest();

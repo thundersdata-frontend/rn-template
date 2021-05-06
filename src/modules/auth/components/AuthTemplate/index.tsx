@@ -3,43 +3,55 @@
  */
 import React, { FC, useEffect } from 'react';
 import { StyleSheet, Text, View } from 'react-native';
-import Animated, { SpringUtils } from 'react-native-reanimated';
-import { mix, useValue, withSpringTransition } from 'react-native-redash';
+import Animated, { useSharedValue, useAnimatedStyle, withSpring, useDerivedValue } from 'react-native-reanimated';
+import { mix } from 'react-native-redash';
 import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view';
 
 import Container from 'modules/auth/components/Container';
 import CustomHeader from 'components/CustomHeader';
 import { NativeStackNavigationProp } from 'react-native-screens/lib/typescript/native-stack';
 
+const springConfig = {
+  mass: 1,
+  damping: 15,
+  stiffness: 120,
+  overshootClamping: false,
+  restSpeedThreshold: 0.001,
+  restDisplacementThreshold: 0.001,
+};
+
 const AuthTemplate: FC<{
   title: string;
   subtitle?: string;
   navigation: NativeStackNavigationProp<any>;
 }> = ({ title, subtitle, children, navigation }) => {
-  const animated = useValue<number>(0);
+  const animated = useSharedValue<number>(0);
 
   useEffect(() => {
-    animated.setValue(1);
+    animated.value = 1;
   }, [animated]);
 
-  const transition = withSpringTransition(animated, {
-    ...SpringUtils.makeDefaultConfig(),
-    damping: 16,
+  const animation = useDerivedValue(() => (animated.value ? withSpring(1, springConfig) : withSpring(0, springConfig)));
+  const style = useAnimatedStyle(() => {
+    const translateY = mix(animation.value, 700, 30);
+    return {
+      transform: [{ translateY }],
+    };
   });
-  const translateY = mix(transition, 700, 30);
 
   return (
     <Container>
       <KeyboardAwareScrollView
         enableOnAndroid
         contentContainerStyle={{ paddingBottom: 120 }}
-        keyboardShouldPersistTaps="handled">
+        keyboardShouldPersistTaps="handled"
+      >
         <CustomHeader {...{ navigation }} />
         <View style={styles.textWrap}>
           <Text style={styles.title}>{title}</Text>
           {subtitle && <Text style={styles.subtitle}>{subtitle}</Text>}
         </View>
-        <Animated.View style={[styles.card, { transform: [{ translateY }] }]}>{children}</Animated.View>
+        <Animated.View style={[styles.card, style]}>{children}</Animated.View>
       </KeyboardAwareScrollView>
     </Container>
   );

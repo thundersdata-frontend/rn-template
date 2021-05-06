@@ -1,44 +1,45 @@
 import React from 'react';
 import { Dimensions } from 'react-native';
-import Animated, { Extrapolate, interpolate } from 'react-native-reanimated';
+import Animated, { useAnimatedStyle } from 'react-native-reanimated';
+import { mix } from 'react-native-redash';
 
 const { width } = Dimensions.get('window');
-export default function Logo({ showAnimation }: { showAnimation: Animated.Node<number> }) {
+export default function Logo({ animation }: { animation: Animated.SharedValue<number> }) {
+  const wrapStyle = useAnimatedStyle(() => ({
+    marginBottom: 25,
+    marginTop: mix(animation.value, 120, 55),
+  }));
+
+  const imageStyle = useAnimatedStyle(() => ({
+    left: mix(animation.value, (width - 72) / 2, 25),
+  }));
+
+  const textStyle = useAnimatedStyle(() => ({
+    left: mix(animation.value, (width - 200) / 2, 25),
+  }));
+
   return (
-    <Animated.View
-      style={{
-        marginTop: interpolate(showAnimation, {
-          inputRange: [0, 1],
-          outputRange: [120, 55],
-          extrapolate: Extrapolate.CLAMP,
-        }),
-        marginBottom: 25,
-      }}
-    >
+    <Animated.View style={wrapStyle}>
       <Animated.Image
         source={require('../../../assets/logo.webp')}
-        style={{
-          width: 72,
-          height: 72,
-          marginBottom: 20,
-          left: interpolate(showAnimation, {
-            inputRange: [0, 1],
-            outputRange: [(width - 72) / 2, 25],
-            extrapolate: Extrapolate.CLAMP,
-          }),
-        }}
+        style={[
+          {
+            width: 72,
+            height: 72,
+            marginBottom: 20,
+          },
+          imageStyle,
+        ]}
       />
       <Animated.Text
-        style={{
-          fontSize: 23,
-          lineHeight: 32,
-          color: '#fff',
-          left: interpolate(showAnimation, {
-            inputRange: [0, 1],
-            outputRange: [(width - 200) / 2, 25],
-            extrapolate: Extrapolate.CLAMP,
-          }),
-        }}
+        style={[
+          {
+            fontSize: 23,
+            lineHeight: 32,
+            color: '#fff',
+          },
+          textStyle,
+        ]}
       >
         欢迎来到雷数科技！
       </Animated.Text>

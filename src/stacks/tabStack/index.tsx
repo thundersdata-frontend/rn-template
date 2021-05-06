@@ -15,7 +15,6 @@ const tabItems = [
     label: '首页',
     icon: 'tab_home_non',
     focusedIcon: 'tab_home_sel',
-    tabBarVisible: true,
   },
   {
     name: 'Mine',
@@ -23,14 +22,13 @@ const tabItems = [
     label: '我的',
     icon: 'tab_me_non',
     focusedIcon: 'tab_me_sel',
-    tabBarVisible: true,
   },
 ];
 
 const TabStack = () => {
   const theme = useTheme<Theme>();
   return (
-    <Tab.Navigator initialRouteName="Homepage" lazy={true}>
+    <Tab.Navigator initialRouteName="Homepage" screenOptions={{ lazy: true, headerShown: false }}>
       {tabItems.map(item => (
         <Tab.Screen
           key={item.name}
@@ -38,11 +36,10 @@ const TabStack = () => {
           component={item.component}
           options={{
             title: item.label,
-            tabBarVisible: item.tabBarVisible,
             tabBarLabel: ({ focused }) => (
               <Text
                 style={{
-                  color: focused ? theme.colors.primaryText_1 : theme.colors.primaryText_2,
+                  color: focused ? theme.colors.contentText_3 : theme.colors.contentText_4,
                   fontSize: 10,
                   marginBottom: 5,
                 }}
@@ -52,9 +49,9 @@ const TabStack = () => {
             ),
             tabBarIcon: ({ focused }) =>
               focused ? (
-                <Icon type="custom" name={item.focusedIcon} size={20} color={theme.colors.primaryText_1} />
+                <Icon type="custom" name={item.focusedIcon} size={20} color={theme.colors.contentText_3} />
               ) : (
-                <Icon type="custom" name={item.icon} size={20} color={theme.colors.primaryText_2} />
+                <Icon type="custom" name={item.icon} size={20} color={theme.colors.contentText_4} />
               ),
           }}
         />

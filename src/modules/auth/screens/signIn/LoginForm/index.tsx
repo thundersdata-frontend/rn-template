@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react';
 import { StyleSheet, Text, TouchableOpacity } from 'react-native';
-import Animated, { Extrapolate, interpolate, SpringUtils } from 'react-native-reanimated';
-import { mix, useSpringTransition } from 'react-native-redash';
+import Animated, { useAnimatedStyle, useDerivedValue, withSpring } from 'react-native-reanimated';
+import { mix } from 'react-native-redash';
 import Form, { Field, useForm } from 'rc-field-form';
 import { Store } from 'rc-field-form/es/interface';
 import { NativeStackNavigationProp } from 'react-native-screens/lib/typescript/native-stack';
@@ -92,7 +92,6 @@ const FormContent = ({
                   <TouchableOpacity
                     onPress={evt => {
                       evt.stopPropagation();
-                      console.log('1');
                     }}
                   >
                     <Text style={[styles.policy, styles.link]}>《雷数用户协议》</Text>
@@ -101,7 +100,6 @@ const FormContent = ({
                   <TouchableOpacity
                     onPress={evt => {
                       evt.stopPropagation();
-                      console.log('2');
                     }}
                   >
                     <Text style={[styles.policy, styles.link]}>《隐私政策》</Text>
@@ -118,56 +116,46 @@ const FormContent = ({
 
 export default function LoginForm({
   showLoginForm,
-  showAnimation,
+  animation,
   isSmsLogin,
   changeTab,
   navigation,
 }: {
-  showLoginForm: number;
-  showAnimation: Animated.Node<number>;
+  showLoginForm: Animated.SharedValue<boolean>;
+  animation: Animated.SharedValue<number>;
   isSmsLogin: boolean;
   changeTab: (activeKey: string) => void;
   navigation: NativeStackNavigationProp<AuthStackParamList, 'SignIn'>;
 }) {
-  const transition = useSpringTransition(showLoginForm, {
-    ...SpringUtils.makeDefaultConfig(),
-    damping: 16,
-  });
-  const translateY = mix(transition, 700, 0);
+  const transition = useDerivedValue(() => (showLoginForm.value ? withSpring(1) : withSpring(0)));
+
+  const style = useAnimatedStyle(() => ({
+    transform: [
+      {
+        translateY: mix(animation.value, 700, -100),
+      },
+      {
+        scale: mix(animation.value, 0.4, 1),
+      },
+    ],
+  }));
+
+  const formStyle = useAnimatedStyle(() => ({
+    transform: [{ translateY: mix(transition.value, 700, 0) }],
+  }));
 
   return (
-    <Animated.View
-      style={[
-        styles.top,
-        {
-          alignItems: 'center',
-          transform: [
-            {
-              translateY: interpolate(showAnimation, {
-                inputRange: [0, 1],
-                outputRange: [700, -100],
-                extrapolate: Extrapolate.CLAMP,
-              }),
-            },
-            {
-              scale: interpolate(showAnimation, {
-                inputRange: [0, 1],
-                outputRange: [0.4, 1],
-                extrapolate: Extrapolate.CLAMP,
-              }),
-            },
-          ],
-        },
-      ]}
-    >
+    <Animated.View style={[styles.top, style]}>
       <LoginTab isSmsLogin={isSmsLogin} onPress={changeTab} />
       <Animated.View
-        style={{
-          marginTop: 10,
-          width: '100%',
-          paddingHorizontal: 20,
-          transform: [{ translateY }],
-        }}
+        style={[
+          {
+            marginTop: 10,
+            width: '100%',
+            paddingHorizontal: 20,
+          },
+          formStyle,
+        ]}
       >
         <FormContent {...{ isSmsLogin, navigation }} />
       </Animated.View>
@@ -181,6 +169,7 @@ const styles = StyleSheet.create({
     height: 300,
     borderRadius: 20,
     backgroundColor: '#fff',
+    alignItems: 'center',
   },
   policy: {
     fontSize: 12,

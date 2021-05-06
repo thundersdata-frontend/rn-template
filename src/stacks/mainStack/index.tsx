@@ -1,10 +1,10 @@
-import React from 'react';
-import { createNativeStackNavigator } from 'react-native-screens/native-stack';
+import React, { FC } from 'react';
+import { createStackNavigator, StackNavigationOptions } from '@react-navigation/stack';
 
 import Address from 'modules/user/screens/address';
 import TabStack from 'stacks/tabStack';
 
-const Stack = createNativeStackNavigator();
+const Stack = createStackNavigator();
 
 const screens = [
   {
@@ -23,9 +23,9 @@ const screens = [
   },
 ];
 
-const MainStack = () => {
+const MainStack: FC<{ commonStackOptions: StackNavigationOptions }> = ({ commonStackOptions }) => {
   return (
-    <Stack.Navigator initialRouteName="Tab" screenOptions={{ gestureEnabled: true, headerBackTitleVisible: false }}>
+    <Stack.Navigator initialRouteName="Tab" screenOptions={commonStackOptions}>
       {screens.map(screen => (
         <Stack.Screen key={screen.name} {...screen} />
       ))}

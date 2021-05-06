@@ -1,16 +1,16 @@
-import React from 'react';
-import { createNativeStackNavigator } from 'react-native-screens/native-stack';
+import React, { FC } from 'react';
+import { createStackNavigator, StackNavigationOptions } from '@react-navigation/stack';
 
 import SignIn from 'modules/auth/screens/signIn';
 import ConfigPass from 'modules/auth/screens/configPass';
 import BindPhone from 'modules/auth/screens/bindPhone';
 import ForgetPass from 'modules/auth/screens/forgetPass';
 
-const Stack = createNativeStackNavigator();
+const Stack = createStackNavigator();
 
-const AuthStack = () => {
+const AuthStack: FC<{ commonStackOptions: StackNavigationOptions }> = ({ commonStackOptions }) => {
   return (
-    <Stack.Navigator initialRouteName="SignIn" screenOptions={{ gestureEnabled: true }}>
+    <Stack.Navigator initialRouteName="SignIn" screenOptions={commonStackOptions}>
       <Stack.Screen
         name="SignIn"
         component={SignIn}
