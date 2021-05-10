@@ -198,10 +198,10 @@ export default class MyGenerator extends CodeGenerator {
       // 初始值
       export const init = ${initValue};
       // 接口地址
-      export const url = ${inter.path};
+      export const url = "${inter.path}";
 
       export async function fetch(${requestParams}) {
-        const request = initRequest();
+        const request = await initRequest();
         const result = await request.${requestObj.method}(backEndUrl + '${inter.path}', {
           headers: {
             'Content-Type': '${requestObj.contentType}',

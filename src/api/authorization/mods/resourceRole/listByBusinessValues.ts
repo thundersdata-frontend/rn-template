@@ -7,19 +7,18 @@ import { initRequest } from '../../../../common';
 
 const backEndUrl = serverConfig()['authorization'];
 
+// 初始值
 export const init = new defs.authorization.PagingEntity();
+// 接口地址
 export const url = '/role/resource/listByBusinessValues';
 
 export async function fetch(params = {}) {
-  const request = initRequest();
-  const result = await request.post(
-    backEndUrl + '/role/resource/listByBusinessValues',
-    {
-      headers: {
-        'Content-Type': 'application/x-www-form-urlencoded',
-      },
-      params,
+  const request = await initRequest();
+  const result = await request.post(backEndUrl + '/role/resource/listByBusinessValues', {
+    headers: {
+      'Content-Type': 'application/x-www-form-urlencoded',
     },
-  );
+    params,
+  });
   return result;
 }

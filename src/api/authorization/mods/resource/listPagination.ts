@@ -7,11 +7,13 @@ import { initRequest } from '../../../../common';
 
 const backEndUrl = serverConfig()['authorization'];
 
+// 初始值
 export const init = new defs.authorization.PagingEntity();
+// 接口地址
 export const url = '/resource/listPagination';
 
 export async function fetch(params = {}) {
-  const request = initRequest();
+  const request = await initRequest();
   const result = await request.get(backEndUrl + '/resource/listPagination', {
     headers: {
       'Content-Type': 'application/json',

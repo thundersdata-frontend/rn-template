@@ -1,7 +1,7 @@
 import type { ResponseError } from 'umi-request';
 import { extend } from 'umi-request';
 import { LoginFailure } from './enums';
-import { MMKV } from 'react-native-mmkv';
+import AsyncStorage from '@react-native-async-storage/async-storage';
 
 const codeMessage: Record<number, string> = {
   200: '服务器成功返回请求的数据。',
@@ -32,14 +32,14 @@ export function errorHandler(error: ResponseError) {
       JSON.stringify({
         message: errorText,
         description: `请求错误 ${status}: ${url}`,
-      })
+      }),
     );
   }
   throw error;
 }
 
-export const initRequest = () => {
-  const token = MMKV.getString('token') ?? '';
+export const initRequest = async () => {
+  const token = (await AsyncStorage.getItem('token')) ?? '';
   const request = extend({
     timeout: 10000,
     headers: {

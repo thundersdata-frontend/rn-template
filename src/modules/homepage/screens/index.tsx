@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { Text, View } from 'react-native';
-import { MMKV } from 'react-native-mmkv';
+import AsyncStorage from '@react-native-async-storage/async-storage';
 import { StackNavigationProp } from '@react-navigation/stack';
 import useSWR from 'swr';
 import { useUpdateAtom } from 'jotai/utils';
@@ -34,9 +34,9 @@ export function Homepage({ navigation }: { navigation: StackNavigationProp<MainS
       <WhiteSpace />
       <Button onPress={getData} title="调接口" />
       <WhiteSpace />
-      <Button onPress={() => MMKV.set('token', '123')} title="保存数据" />
+      <Button onPress={() => AsyncStorage.setItem('token', '123')} title="保存数据" />
       <WhiteSpace />
-      <Button onPress={() => console.log(MMKV.getString('token'))} title="获取数据" />
+      <Button onPress={() => console.log(AsyncStorage.getItem('token'))} title="获取数据" />
       <WhiteSpace />
       <Button onPress={() => navigation.navigate('Mine')} title="去我的页面" />
     </Container>

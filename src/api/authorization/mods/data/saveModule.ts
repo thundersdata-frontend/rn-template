@@ -7,11 +7,13 @@ import { initRequest } from '../../../../common';
 
 const backEndUrl = serverConfig()['authorization'];
 
+// 初始值
 export const init = undefined;
+// 接口地址
 export const url = '/data/module/save';
 
 export async function fetch(data = {}) {
-  const request = initRequest();
+  const request = await initRequest();
   const result = await request.post(backEndUrl + '/data/module/save', {
     headers: {
       'Content-Type': 'application/json',
