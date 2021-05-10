@@ -1,10 +1,14 @@
 import React from 'react';
 import { Dimensions } from 'react-native';
+import { useTheme } from '@shopify/restyle';
 import Animated, { useAnimatedStyle } from 'react-native-reanimated';
 import { mix } from 'react-native-redash';
+import { AppTheme } from 'theme';
 
 const { width } = Dimensions.get('window');
-export default function Logo({ animation }: { animation: Animated.SharedValue<number> }) {
+export function Logo({ animation }: { animation: Animated.SharedValue<number> }) {
+  const theme = useTheme<AppTheme>();
+
   const wrapStyle = useAnimatedStyle(() => ({
     marginBottom: 25,
     marginTop: mix(animation.value, 120, 55),
@@ -36,7 +40,7 @@ export default function Logo({ animation }: { animation: Animated.SharedValue<nu
           {
             fontSize: 23,
             lineHeight: 32,
-            color: '#fff',
+            color: theme.colors.white,
           },
           textStyle,
         ]}

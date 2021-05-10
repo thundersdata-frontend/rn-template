@@ -6,7 +6,7 @@ export const authAtom = atom({
   signedIn: true,
 });
 
-export default function useAuthService() {
+export function useAuthService() {
   const [error, setError] = useState('');
 
   const submitFormFailed = useCallback((errorInfo: ValidateErrorEntity) => {

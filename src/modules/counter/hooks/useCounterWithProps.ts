@@ -1,6 +1,6 @@
 import { useState, useCallback } from 'react';
 
-export default function useCounterWithProps(initialValue = 0) {
+export function useCounterWithProps(initialValue = 0) {
   const [count, setCount] = useState(initialValue);
 
   const increment = useCallback(() => setCount(x => x + 1), []);

@@ -1,24 +1,20 @@
-import Container from 'modules/auth/components/Container';
 import React, { useState } from 'react';
 import { View } from 'react-native';
 import { Easing, useDerivedValue, useSharedValue, withTiming } from 'react-native-reanimated';
 import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view';
+import { Container } from 'modules/auth/components/Container';
 
-import LoginForm from './LoginForm';
-import Logo from './Logo';
-import ThirdPartyLogin from './ThirdPartyLogin';
-import LoginBtnGroup from './LoginBtnGroup';
-import { NativeStackNavigationProp } from 'react-native-screens/lib/typescript/native-stack';
+import { LoginForm } from './LoginForm';
+import { Logo } from './Logo';
+import { ThirdPartyLogin } from './ThirdPartyLogin';
+import { LoginBtnGroup } from './LoginBtnGroup';
+import { StackNavigationProp } from '@react-navigation/stack';
 
 const timingConfig = {
   duration: 600,
   easing: Easing.inOut(Easing.ease),
 };
-export default function SignIn({
-  navigation,
-}: {
-  navigation: NativeStackNavigationProp<AuthStackParamList, 'SignIn'>;
-}) {
+export function SignIn({ navigation }: { navigation: StackNavigationProp<AuthStackParamList, 'SignIn'> }) {
   const [activeKey, setActiveKey] = useState('sms');
   const isSmsLogin = activeKey === 'sms';
 

@@ -1,5 +1,5 @@
 import { renderHook, act } from '@testing-library/react-hooks';
-import useCounterWithProps from './useCounterWithProps';
+import { useCounterWithProps } from './useCounterWithProps';
 
 test('should increment counter from custom initial value', () => {
   const { result } = renderHook(() => useCounterWithProps(9000));

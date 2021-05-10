@@ -1,5 +1,6 @@
 import pontConfig from './pont-config.json';
 
+// eslint-disable-next-line import/no-default-export
 export default function () {
   const result: Record<string, string> = {};
   pontConfig.origins.forEach(origin => {

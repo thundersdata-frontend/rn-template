@@ -5,7 +5,7 @@ import { Alert, AppRegistry, LogBox } from 'react-native';
 import { setJSExceptionHandler, setNativeExceptionHandler } from 'react-native-exception-handler';
 import RNRestart from 'react-native-restart';
 
-import App from './src/App';
+import { App } from './src/App';
 import { name as appName } from './app.json';
 
 LogBox.ignoreLogs(['Require cycle:']);
@@ -28,7 +28,7 @@ setJSExceptionHandler((error, isFatal) => {
             RNRestart.Restart();
           },
         },
-      ]
+      ],
     );
   } else {
     console.log(error); // So that we can see it in the ADB logs in case of Android if needed
@@ -43,7 +43,7 @@ setNativeExceptionHandler(
     console.log(exceptionString);
   },
   false,
-  true
+  true,
 );
 
 AppRegistry.registerComponent(appName, () => App);

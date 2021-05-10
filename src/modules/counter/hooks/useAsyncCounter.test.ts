@@ -1,5 +1,5 @@
 import { renderHook, act } from '@testing-library/react-hooks';
-import useAsyncCounter from './useAsyncCounter';
+import { useAsyncCounter } from './useAsyncCounter';
 
 describe('useAsyncCounter', () => {
   beforeAll(() => {

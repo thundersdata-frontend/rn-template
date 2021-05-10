@@ -1,16 +1,18 @@
 import React from 'react';
-import { helpers, useTheme, Theme } from '@td-design/react-native';
+import { useTheme } from '@shopify/restyle';
+import { helpers } from '@td-design/react-native';
 import { StackNavigationOptions, CardStyleInterpolators } from '@react-navigation/stack';
 import { useAtomValue } from 'jotai/utils';
 
-import MainStack from './mainStack';
-import AuthStack from './authStack';
+import { MainStack } from './mainStack';
+import { AuthStack } from './authStack';
 import { authAtom } from 'modules/auth/authService';
+import { AppTheme } from 'theme';
 
 const { px } = helpers;
-export default () => {
+export const Stack = () => {
   const auth = useAtomValue(authAtom);
-  const theme = useTheme<Theme>();
+  const theme = useTheme<AppTheme>();
 
   const commonStackOptions: StackNavigationOptions = {
     headerTitleStyle: {

@@ -15,6 +15,18 @@ module.exports = {
         extensions: ['.ios.ts', '.android.ts', '.ts', '.ios.tsx', '.android.tsx', '.tsx', '.jsx', '.js', '.json'],
       },
     ],
+    [
+      'import',
+      {
+        libraryName: '@td-design/react-native',
+        libraryDirectory: 'lib/commonjs',
+      },
+    ],
     'react-native-reanimated/plugin',
   ],
+  env: {
+    production: {
+      plugins: ['transform-remove-console'],
+    },
+  },
 };

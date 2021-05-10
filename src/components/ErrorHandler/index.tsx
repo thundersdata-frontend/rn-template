@@ -14,9 +14,8 @@ const ErrorFallback = ({ resetErrorBoundary }: FallbackProps) => (
   </View>
 );
 
-const ErrorHandler: FC = props => (
+export const ErrorHandler: FC = props => (
   <ErrorBoundary FallbackComponent={ErrorFallback} onError={errorHandler}>
     {props.children}
   </ErrorBoundary>
 );
-export default ErrorHandler;

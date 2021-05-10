@@ -1,43 +1,48 @@
 import React from 'react';
 import { Dimensions, ImageBackground, StyleSheet, Text, TouchableOpacity } from 'react-native';
+import { useTheme } from '@shopify/restyle';
+
+import { AppTheme } from 'theme';
 
 const { width } = Dimensions.get('window');
-export default function LoginTab({ isSmsLogin, onPress }: { isSmsLogin: boolean; onPress: (key: string) => void }) {
+export function LoginTab({ isSmsLogin, onPress }: { isSmsLogin: boolean; onPress: (key: string) => void }) {
+  const theme = useTheme<AppTheme>();
+  const styles = StyleSheet.create({
+    item: {
+      alignItems: 'center',
+      height: 50,
+      justifyContent: 'center',
+      width: (width - 36) / 2,
+    },
+    tab: {
+      borderTopLeftRadius: 20,
+      borderTopRightRadius: 20,
+      flexDirection: 'row',
+      height: 50,
+      transform: [{ translateY: -10 }],
+    },
+    text: {
+      color: theme.colors.primaryText_1,
+      fontSize: 16,
+      fontWeight: '500',
+      lineHeight: 22,
+    },
+    unselected: {
+      color: theme.colors.contentText_4,
+    },
+  });
+
   return (
     <ImageBackground
       style={styles.tab}
-      source={isSmsLogin ? require('./assets/bg1.webp') : require('./assets/bg2.webp')}>
-      <TouchableOpacity style={[styles.item]} onPress={() => onPress('sms')} activeOpacity={1}>
+      source={isSmsLogin ? require('./assets/bg1.webp') : require('./assets/bg2.webp')}
+    >
+      <TouchableOpacity style={styles.item} onPress={() => onPress('sms')} activeOpacity={1}>
         <Text style={[styles.text, !isSmsLogin ? styles.unselected : {}]}>验证码登录</Text>
       </TouchableOpacity>
-      <TouchableOpacity style={[styles.item]} onPress={() => onPress('pass')} activeOpacity={1}>
+      <TouchableOpacity style={styles.item} onPress={() => onPress('pass')} activeOpacity={1}>
         <Text style={[styles.text, isSmsLogin ? styles.unselected : {}]}>密码登录</Text>
       </TouchableOpacity>
     </ImageBackground>
   );
 }
-
-const styles = StyleSheet.create({
-  tab: {
-    flexDirection: 'row',
-    height: 50,
-    borderTopLeftRadius: 20,
-    borderTopRightRadius: 20,
-    transform: [{ translateY: -10 }],
-  },
-  item: {
-    width: (width - 36) / 2,
-    height: 50,
-    justifyContent: 'center',
-    alignItems: 'center',
-  },
-  text: {
-    fontSize: 16,
-    lineHeight: 22,
-    color: '#333',
-    fontWeight: '500',
-  },
-  unselected: {
-    color: '#666',
-  },
-});

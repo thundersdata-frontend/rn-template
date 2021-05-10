@@ -1,10 +1,12 @@
 import React from 'react';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { Text } from 'react-native';
-import { Icon, Theme, useTheme } from '@td-design/react-native';
+import { useTheme } from '@shopify/restyle';
+import { Icon } from '@td-design/react-native';
 
-import Homepage from 'modules/homepage/screens';
-import Mine from 'modules/user/screens/mine';
+import { Homepage } from 'modules/homepage/screens';
+import { Mine } from 'modules/user/screens/mine';
+import { AppTheme } from 'theme';
 
 const Tab = createBottomTabNavigator();
 
@@ -25,10 +27,10 @@ const tabItems = [
   },
 ];
 
-const TabStack = () => {
-  const theme = useTheme<Theme>();
+export const TabStack = () => {
+  const theme = useTheme<AppTheme>();
   return (
-    <Tab.Navigator initialRouteName="Homepage" screenOptions={{ lazy: true, headerShown: false }}>
+    <Tab.Navigator initialRouteName="Homepage" screenOptions={{ lazy: false, headerShown: false }}>
       {tabItems.map(item => (
         <Tab.Screen
           key={item.name}
@@ -59,5 +61,3 @@ const TabStack = () => {
     </Tab.Navigator>
   );
 };
-
-export default TabStack;

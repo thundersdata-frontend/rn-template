@@ -1,8 +1,8 @@
 import React, { FC } from 'react';
 import { createStackNavigator, StackNavigationOptions } from '@react-navigation/stack';
 
-import Address from 'modules/user/screens/address';
-import TabStack from 'stacks/tabStack';
+import { Address } from 'modules/user/screens/address';
+import { TabStack } from 'stacks/tabStack';
 
 const Stack = createStackNavigator();
 
@@ -23,7 +23,7 @@ const screens = [
   },
 ];
 
-const MainStack: FC<{ commonStackOptions: StackNavigationOptions }> = ({ commonStackOptions }) => {
+export const MainStack: FC<{ commonStackOptions: StackNavigationOptions }> = ({ commonStackOptions }) => {
   return (
     <Stack.Navigator initialRouteName="Tab" screenOptions={commonStackOptions}>
       {screens.map(screen => (
@@ -32,5 +32,3 @@ const MainStack: FC<{ commonStackOptions: StackNavigationOptions }> = ({ commonS
     </Stack.Navigator>
   );
 };
-
-export default MainStack;

@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from 'react';
-import { enableScreens } from 'react-native-screens';
 import { SafeAreaProvider } from 'react-native-safe-area-context';
 import { NavigationContainer } from '@react-navigation/native';
 import RNBootSplash from 'react-native-bootsplash';
@@ -7,15 +6,15 @@ import { SWRConfig } from 'swr';
 import { useUpdateAtom } from 'jotai/utils';
 import { ThemeProvider, helpers } from '@td-design/react-native';
 
-import Stack from './stacks';
+import { Stack } from './stacks';
 import { authAtom } from 'modules/auth/authService';
-import Iconfont from 'components/Iconfont';
-import { theme, darkTheme } from './theme';
+import { Iconfont } from 'components/Iconfont';
+import { lightTheme, darkTheme } from './theme';
 
-enableScreens();
-helpers.registerCustomIcon(Iconfont);
+const { registerCustomIcon } = helpers;
+registerCustomIcon(Iconfont);
 
-export default function App() {
+export function App() {
   const updateAuth = useUpdateAtom(authAtom);
   const [dark] = useState(false);
 
@@ -46,7 +45,7 @@ export default function App() {
           onError: handleError,
         }}
       >
-        <ThemeProvider theme={dark ? darkTheme : theme}>
+        <ThemeProvider theme={dark ? darkTheme : lightTheme}>
           <NavigationContainer>
             <Stack />
           </NavigationContainer>

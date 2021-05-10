@@ -1,10 +1,13 @@
 import React from 'react';
-import { Dimensions, Image, Text, View, TouchableOpacity } from 'react-native';
+import { Dimensions, Image, View, TouchableOpacity } from 'react-native';
 import Animated, { useAnimatedStyle } from 'react-native-reanimated';
 import { mix } from 'react-native-redash';
 
+import { Box } from 'components/Box';
+import { Text } from 'components/Text';
+
 const { width } = Dimensions.get('window');
-export default function ThirdPartyLogin({
+export function ThirdPartyLogin({
   animation,
   onPress,
 }: {
@@ -29,11 +32,11 @@ export default function ThirdPartyLogin({
           justifyContent: 'center',
         }}
       >
-        <View style={{ height: 1, backgroundColor: 'rgba(255, 255, 255, 0.16)', width: 55 }} />
+        <Box backgroundColor="divide_line" height={1} width={55} />
         <View style={{ paddingHorizontal: 10, transform: [{ translateY: -10 }] }}>
-          <Text style={{ fontSize: 14, lineHeight: 20, color: '#fff' }}>第三方登录</Text>
+          <Text variant="loginDivider">第三方登录</Text>
         </View>
-        <View style={{ height: 1, backgroundColor: 'rgba(255, 255, 255, 0.16)', width: 55 }} />
+        <Box backgroundColor="divide_line" height={1} width={55} />
       </View>
       <View style={{ marginTop: 10, flexDirection: 'row', justifyContent: 'center', alignItems: 'center' }}>
         <TouchableOpacity activeOpacity={0.8} onPress={() => onPress(0)}>

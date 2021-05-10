@@ -1,10 +1,11 @@
 import React from 'react';
-import { NativeStackNavigationProp } from 'react-native-screens/lib/typescript/native-stack';
-import Container from 'components/Container';
+import { StackNavigationProp } from '@react-navigation/stack';
 import { Button } from '@td-design/react-native';
-import EchartsDemo from './EchartsDemo';
 
-export default function Mine({ navigation }: { navigation: NativeStackNavigationProp<MainStackParamList, 'Mine'> }) {
+import { Container } from 'components/Container';
+import { EchartsDemo } from './EchartsDemo';
+
+export function Mine({ navigation }: { navigation: StackNavigationProp<MainStackParamList, 'Mine'> }) {
   return (
     <Container hasHeader={false}>
       <EchartsDemo />

@@ -1,5 +1,5 @@
 import { renderHook, act } from '@testing-library/react-hooks';
-import useCounterError from './useCounterError';
+import { useCounterError } from './useCounterError';
 
 test('should throw error when over 9000', () => {
   const { result } = renderHook(() => useCounterError(9000));

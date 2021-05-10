@@ -2,7 +2,7 @@ import React, { FC, useEffect, useRef } from 'react';
 import Echarts, { EchartsHandler } from '@td-design/react-native-echarts';
 import { Box, Button, WhiteSpace } from '@td-design/react-native';
 
-const EchartsDemo: FC = () => {
+export const EchartsDemo: FC = () => {
   const chart = useRef<EchartsHandler>(null);
 
   useEffect(() => {
@@ -71,8 +71,7 @@ const EchartsDemo: FC = () => {
       <Button title="修改图表数据" onPress={modifyOptions} />
       <WhiteSpace />
       <Button title="清除图表" onPress={clearChart} />
+      <WhiteSpace />
     </Box>
   );
 };
-
-export default EchartsDemo;

@@ -1,15 +1,31 @@
 import React from 'react';
-import { Text, TouchableOpacity } from 'react-native';
+import { StyleSheet, TouchableOpacity } from 'react-native';
+import { useTheme } from '@shopify/restyle';
 import Animated, { useAnimatedStyle } from 'react-native-reanimated';
 import { mix } from 'react-native-redash';
 
-export default function LoginBtnGroup({
+import { Text } from 'components/Text';
+import { AppTheme } from 'theme';
+
+export function LoginBtnGroup({
   animation,
   onPress,
 }: {
   animation: Animated.SharedValue<number>;
   onPress: (activeKey: string) => void;
 }) {
+  const theme = useTheme<AppTheme>();
+  const styles = StyleSheet.create({
+    btn: {
+      width: 247,
+      height: 44,
+      borderRadius: 4,
+      backgroundColor: theme.colors.white,
+      justifyContent: 'center',
+      alignItems: 'center',
+    },
+  });
+
   const style = useAnimatedStyle(() => ({
     alignItems: 'center',
     transform: [
@@ -25,35 +41,20 @@ export default function LoginBtnGroup({
 
   return (
     <Animated.View style={style}>
-      <TouchableOpacity
-        onPress={() => onPress('sms')}
-        activeOpacity={0.8}
-        style={{
-          width: 247,
-          height: 44,
-          borderRadius: 4,
-          backgroundColor: '#fff',
-          justifyContent: 'center',
-          alignItems: 'center',
-        }}
-      >
-        <Text style={{ fontSize: 16, lineHeight: 22, color: '#3171F0' }}>验证码登录</Text>
+      <TouchableOpacity onPress={() => onPress('sms')} activeOpacity={0.8} style={styles.btn}>
+        <Text variant="primaryLoginBtn">验证码登录</Text>
       </TouchableOpacity>
       <TouchableOpacity
         onPress={() => onPress('pass')}
         activeOpacity={0.8}
-        style={{
-          width: 247,
-          height: 44,
-          borderRadius: 4,
-          borderWidth: 1,
-          borderColor: '#fff',
-          justifyContent: 'center',
-          alignItems: 'center',
-          marginTop: 20,
-        }}
+        style={[
+          styles.btn,
+          {
+            marginTop: 20,
+          },
+        ]}
       >
-        <Text style={{ fontSize: 16, lineHeight: 22, color: '#fff' }}>密码登录</Text>
+        <Text variant="secondaryLoginBtn">密码登录</Text>
       </TouchableOpacity>
     </Animated.View>
   );

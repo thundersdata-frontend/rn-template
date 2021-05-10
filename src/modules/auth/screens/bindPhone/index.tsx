@@ -4,18 +4,20 @@
 import React, { FC } from 'react';
 import Form, { Field, useForm } from 'rc-field-form';
 import { Store } from 'rc-field-form/es/interface';
-import { NativeStackNavigationProp } from 'react-native-screens/lib/typescript/native-stack';
-import { Box, Button, Icon, Input, useTheme, Theme, WhiteSpace, CountDown } from '@td-design/react-native';
+import { StackNavigationProp } from '@react-navigation/stack';
+import { useTheme } from '@shopify/restyle';
+import { Box, Button, Icon, Input, WhiteSpace, CountDown } from '@td-design/react-native';
 
-import AuthTemplate from 'modules/auth/components/AuthTemplate';
+import { AuthTemplate } from 'modules/auth/components/AuthTemplate';
+import { AppTheme } from 'theme';
 
 import { mobilePhoneRules } from 'utils/validators';
-import useAuthService from 'modules/auth/authService';
-import ErrorMessage from 'modules/auth/components/ErrorMessage';
+import { useAuthService } from 'modules/auth/authService';
+import { ErrorMessage } from 'modules/auth/components/ErrorMessage';
 
 const FormContent: FC<{ onFinish: (values: Store) => void }> = ({ onFinish }) => {
   const [form] = useForm();
-  const theme = useTheme<Theme>();
+  const theme = useTheme<AppTheme>();
   const { error, clearError, submitFormFailed } = useAuthService();
 
   return (
@@ -50,7 +52,7 @@ const FormContent: FC<{ onFinish: (values: Store) => void }> = ({ onFinish }) =>
   );
 };
 
-export default function BindPhone({ navigation }: { navigation: NativeStackNavigationProp<AuthStackParamList> }) {
+export function BindPhone({ navigation }: { navigation: StackNavigationProp<AuthStackParamList> }) {
   const handleFinish = (values: Store) => {
     console.log(values);
     navigation.navigate('ForgetPass');

@@ -3,7 +3,7 @@ import { Dimensions, ImageBackground, SafeAreaView, StatusBar } from 'react-nati
 
 const { width, height } = Dimensions.get('window');
 
-const Container: FC = props => {
+export const Container: FC = props => {
   return (
     <ImageBackground source={require('../../assets/bg.webp')} style={{ width, height }}>
       <StatusBar barStyle="light-content" translucent backgroundColor="transparent" />
@@ -11,5 +11,3 @@ const Container: FC = props => {
     </ImageBackground>
   );
 };
-
-export default Container;

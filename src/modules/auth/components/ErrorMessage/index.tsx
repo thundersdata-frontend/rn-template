@@ -1,9 +1,11 @@
 import React, { FC } from 'react';
 import { Text } from 'react-native';
-import { useTheme, Theme, Flex, Icon } from '@td-design/react-native';
+import { useTheme } from '@shopify/restyle';
+import { Flex, Icon } from '@td-design/react-native';
+import { AppTheme } from 'theme';
 
-const ErrorMessage: FC<{ text: string }> = ({ text }) => {
-  const theme = useTheme<Theme>();
+export const ErrorMessage: FC<{ text: string }> = ({ text }) => {
+  const theme = useTheme<AppTheme>();
 
   if (!text) return null;
   return (
@@ -13,5 +15,3 @@ const ErrorMessage: FC<{ text: string }> = ({ text }) => {
     </Flex>
   );
 };
-
-export default ErrorMessage;

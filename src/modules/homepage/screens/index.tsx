@@ -1,21 +1,17 @@
 import React, { useState } from 'react';
 import { Text, View } from 'react-native';
 import { MMKV } from 'react-native-mmkv';
-import { NativeStackNavigationProp } from 'react-native-screens/lib/typescript/native-stack';
+import { StackNavigationProp } from '@react-navigation/stack';
 import useSWR from 'swr';
 import { useUpdateAtom } from 'jotai/utils';
 import { Button, WhiteSpace } from '@td-design/react-native';
 
 import { authAtom } from 'modules/auth/authService';
-import Container from 'components/Container';
+import { Container } from 'components/Container';
 
 const { fetch, url } = API.authorization.resource.listResource;
 
-export default function Homepage({
-  navigation,
-}: {
-  navigation: NativeStackNavigationProp<MainStackParamList, 'Homepage'>;
-}) {
+export function Homepage({ navigation }: { navigation: StackNavigationProp<MainStackParamList, 'Homepage'> }) {
   const updateAuth = useUpdateAtom(authAtom);
 
   const [shouldFetch, setShouldFetch] = useState(false);

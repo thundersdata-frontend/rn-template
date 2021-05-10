@@ -241,7 +241,7 @@ PODS:
     - React-Core
   - react-native-safe-area-context (3.2.0):
     - React-Core
-  - react-native-webview (11.4.3):
+  - react-native-webview (11.4.4):
     - React-Core
   - React-perflogger (0.64.0)
   - React-RCTActionSheet (0.64.0):
@@ -309,7 +309,7 @@ PODS:
     - React-perflogger (= 0.64.0)
   - ReactNativeExceptionHandler (2.10.10):
     - React-Core
-  - RNBootSplash (3.2.1):
+  - RNBootSplash (3.2.3):
     - React-Core
   - RNCMaskedView (0.1.11):
     - React
@@ -544,7 +544,7 @@ SPEC CHECKSUMS:
   react-native-mmkv: 1d21be7e3a7d5c6be1c15120453de4e9452da1cb
   react-native-restart: 733a51ad137f15b0f8dc34c4082e55af7da00979
   react-native-safe-area-context: f0906bf8bc9835ac9a9d3f97e8bde2a997d8da79
-  react-native-webview: d749ba1348c17c7225391e84ac4a0c1c90c2c8ee
+  react-native-webview: cc2a1fd8149a2654d1408793daa62baadfc0bd96
   React-perflogger: 9c547d8f06b9bf00cb447f2b75e8d7f19b7e02af
   React-RCTActionSheet: 3080b6e12e0e1a5b313c8c0050699b5c794a1b11
   React-RCTAnimation: 3f96f21a497ae7dabf4d2f150ee43f906aaf516f
@@ -558,7 +558,7 @@ SPEC CHECKSUMS:
   React-runtimeexecutor: cad74a1eaa53ee6e7a3620231939d8fe2c6afcf0
   ReactCommon: cfe2b7fd20e0dbd2d1185cd7d8f99633fbc5ff05
   ReactNativeExceptionHandler: b11ff67c78802b2f62eed0e10e75cb1ef7947c60
-  RNBootSplash: a7750857d7c7c51fb37ba453cd506b5950e62f74
+  RNBootSplash: 8ef5ffa03dadd35f66510b42960ce40f397c98bf
   RNCMaskedView: 0e1bc4bfa8365eba5fbbb71e07fbdc0555249489
   RNCPicker: 5256da29a92406cac439ac6605719e233714a86a
   RNFastImage: d4870d58f5936111c56218dbd7fcfc18e65b58ff

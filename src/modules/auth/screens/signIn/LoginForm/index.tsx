@@ -1,27 +1,30 @@
 import React, { useEffect } from 'react';
-import { StyleSheet, Text, TouchableOpacity } from 'react-native';
+import { StyleSheet, TouchableOpacity } from 'react-native';
 import Animated, { useAnimatedStyle, useDerivedValue, withSpring } from 'react-native-reanimated';
 import { mix } from 'react-native-redash';
 import Form, { Field, useForm } from 'rc-field-form';
 import { Store } from 'rc-field-form/es/interface';
-import { NativeStackNavigationProp } from 'react-native-screens/lib/typescript/native-stack';
-import { Button, Checkable, CountDown, Flex, Icon, Input, Theme, useTheme, WhiteSpace } from '@td-design/react-native';
+import { StackNavigationProp } from '@react-navigation/stack';
+import { useTheme } from '@shopify/restyle';
+import { Button, Checkable, CountDown, Flex, Icon, Input, WhiteSpace } from '@td-design/react-native';
 
-import LoginTab from '../LoginTab';
+import { LoginTab } from '../LoginTab';
 import { useUpdateAtom } from 'jotai/utils';
-import useAuthService, { authAtom } from 'modules/auth/authService';
+import { useAuthService, authAtom } from 'modules/auth/authService';
 import { mobilePhoneRules } from 'utils/validators';
-import ErrorMessage from 'modules/auth/components/ErrorMessage';
+import { ErrorMessage } from 'modules/auth/components/ErrorMessage';
+import { AppTheme } from 'theme';
+import { Text } from 'components/Text';
 
 const FormContent = ({
   isSmsLogin,
   navigation,
 }: {
   isSmsLogin: boolean;
-  navigation: NativeStackNavigationProp<AuthStackParamList, 'SignIn'>;
+  navigation: StackNavigationProp<AuthStackParamList, 'SignIn'>;
 }) => {
   const [form] = useForm();
-  const theme = useTheme<Theme>();
+  const theme = useTheme<AppTheme>();
   const updateAuth = useUpdateAtom(authAtom);
   const { error, clearError, submitFormFailed } = useAuthService();
 
@@ -75,7 +78,7 @@ const FormContent = ({
         {!!error ? <ErrorMessage text={error} /> : <Text />}
         {!isSmsLogin && (
           <TouchableOpacity activeOpacity={0.8} onPress={() => navigation.navigate('ForgetPass')}>
-            <Text style={{ fontSize: 14, lineHeight: 20, color: '#999' }}>忘记密码?</Text>
+            <Text variant="forgetPass">忘记密码?</Text>
           </TouchableOpacity>
         )}
       </Flex>
@@ -88,21 +91,25 @@ const FormContent = ({
               value: 1,
               label: (
                 <Flex justifyContent="flex-start" alignItems="center" style={{ marginLeft: -4 }}>
-                  <Text style={styles.policy}>我已阅读并同意</Text>
+                  <Text variant="policy">我已阅读并同意</Text>
                   <TouchableOpacity
                     onPress={evt => {
                       evt.stopPropagation();
                     }}
                   >
-                    <Text style={[styles.policy, styles.link]}>《雷数用户协议》</Text>
+                    <Text variant="policy" color="primary">
+                      《雷数用户协议》
+                    </Text>
                   </TouchableOpacity>
-                  <Text style={styles.policy}>和</Text>
+                  <Text variant="policy">和</Text>
                   <TouchableOpacity
                     onPress={evt => {
                       evt.stopPropagation();
                     }}
                   >
-                    <Text style={[styles.policy, styles.link]}>《隐私政策》</Text>
+                    <Text variant="policy" color="primary">
+                      《隐私政策》
+                    </Text>
                   </TouchableOpacity>
                 </Flex>
               ),
@@ -114,7 +121,7 @@ const FormContent = ({
   );
 };
 
-export default function LoginForm({
+export function LoginForm({
   showLoginForm,
   animation,
   isSmsLogin,
@@ -125,8 +132,19 @@ export default function LoginForm({
   animation: Animated.SharedValue<number>;
   isSmsLogin: boolean;
   changeTab: (activeKey: string) => void;
-  navigation: NativeStackNavigationProp<AuthStackParamList, 'SignIn'>;
+  navigation: StackNavigationProp<AuthStackParamList, 'SignIn'>;
 }) {
+  const theme = useTheme<AppTheme>();
+  const styles = StyleSheet.create({
+    top: {
+      alignItems: 'center',
+      backgroundColor: theme.colors.white,
+      borderRadius: 20,
+      height: 300,
+      marginHorizontal: 18,
+    },
+  });
+
   const transition = useDerivedValue(() => (showLoginForm.value ? withSpring(1) : withSpring(0)));
 
   const style = useAnimatedStyle(() => ({
@@ -162,21 +180,3 @@ export default function LoginForm({
     </Animated.View>
   );
 }
-
-const styles = StyleSheet.create({
-  top: {
-    marginHorizontal: 18,
-    height: 300,
-    borderRadius: 20,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-  },
-  policy: {
-    fontSize: 12,
-    lineHeight: 17,
-    color: '#999999',
-  },
-  link: {
-    color: '#3171F0',
-  },
-});
