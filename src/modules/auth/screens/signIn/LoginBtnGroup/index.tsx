@@ -51,6 +51,9 @@ export function LoginBtnGroup({
           styles.btn,
           {
             marginTop: 20,
+            backgroundColor: theme.colors.transparent,
+            borderColor: theme.colors.white,
+            borderWidth: 1,
           },
         ]}
       >
