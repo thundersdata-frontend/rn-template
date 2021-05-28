@@ -1,4 +1,4 @@
-import React from 'react';
+import * as React from 'react';
 import { StatusBar, StyleSheet } from 'react-native';
 import { useTheme } from '@shopify/restyle';
 import { SafeAreaView } from 'react-native-safe-area-context';

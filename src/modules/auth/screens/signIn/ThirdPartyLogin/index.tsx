@@ -1,4 +1,3 @@
-import React from 'react';
 import { Dimensions, Image, View, TouchableOpacity } from 'react-native';
 import Animated, { useAnimatedStyle } from 'react-native-reanimated';
 import { mix } from 'react-native-redash';

@@ -1,4 +1,3 @@
-import React from 'react';
 import { Dimensions } from 'react-native';
 import { useTheme } from '@shopify/restyle';
 import Animated, { useAnimatedStyle } from 'react-native-reanimated';

@@ -1,4 +1,4 @@
-import React, { FC } from 'react';
+import { FC } from 'react';
 import { Text } from 'react-native';
 import { useTheme } from '@shopify/restyle';
 import { Flex, Icon } from '@td-design/react-native';

@@ -1,4 +1,4 @@
-import React, { FC } from 'react';
+import { FC } from 'react';
 import { createStackNavigator, StackNavigationOptions } from '@react-navigation/stack';
 
 import { SignIn } from 'modules/auth/screens/signIn';

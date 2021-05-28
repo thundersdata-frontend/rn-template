@@ -1,4 +1,4 @@
-import React, { FC } from 'react';
+import { FC } from 'react';
 import { Dimensions, ImageBackground, SafeAreaView, StatusBar } from 'react-native';
 
 const { width, height } = Dimensions.get('window');

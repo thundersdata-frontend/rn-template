@@ -1,4 +1,3 @@
-import React from 'react';
 import { useTheme } from '@shopify/restyle';
 import { helpers } from '@td-design/react-native';
 import { StackNavigationOptions, CardStyleInterpolators } from '@react-navigation/stack';

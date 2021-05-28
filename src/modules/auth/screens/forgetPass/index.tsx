@@ -1,7 +1,7 @@
 /**
  * 通过手机号登录时，设置登录密码
  */
-import React, { FC } from 'react';
+import { FC } from 'react';
 import Form, { Field, useForm } from 'rc-field-form';
 import { Store } from 'rc-field-form/es/interface';
 import { StackNavigationProp } from '@react-navigation/stack';

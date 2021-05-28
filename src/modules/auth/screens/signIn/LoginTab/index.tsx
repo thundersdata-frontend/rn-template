@@ -1,4 +1,3 @@
-import React from 'react';
 import { Dimensions, ImageBackground, StyleSheet, Text, TouchableOpacity } from 'react-native';
 import { useTheme } from '@shopify/restyle';
 

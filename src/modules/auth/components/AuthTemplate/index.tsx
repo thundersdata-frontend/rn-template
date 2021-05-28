@@ -1,7 +1,7 @@
 /**
  * 通过手机号登录时，设置登录密码
  */
-import React, { FC, useEffect } from 'react';
+import { FC, useEffect } from 'react';
 import { StyleSheet, View } from 'react-native';
 import { StackNavigationProp } from '@react-navigation/stack';
 import { useTheme } from '@shopify/restyle';

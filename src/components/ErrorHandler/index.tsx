@@ -1,4 +1,4 @@
-import React, { FC } from 'react';
+import { FC } from 'react';
 import { Button, Text, View } from 'react-native';
 import { ErrorBoundary, FallbackProps } from 'react-error-boundary';
 

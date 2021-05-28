@@ -1,4 +1,4 @@
-import React, { FC, useEffect, useRef } from 'react';
+import { FC, useEffect, useRef } from 'react';
 import Echarts, { EchartsHandler } from '@td-design/react-native-echarts';
 import { Box, Button, WhiteSpace } from '@td-design/react-native';
 

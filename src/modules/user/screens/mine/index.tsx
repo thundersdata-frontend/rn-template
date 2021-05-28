@@ -1,4 +1,3 @@
-import React from 'react';
 import { StackNavigationProp } from '@react-navigation/stack';
 import { Button } from '@td-design/react-native';
 

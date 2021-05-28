@@ -1,4 +1,5 @@
-import React, { useState, useContext, useCallback } from 'react';
+import { useState, useContext, useCallback } from 'react';
+import * as React from 'react';
 
 const CounterContext = React.createContext(1);
 
