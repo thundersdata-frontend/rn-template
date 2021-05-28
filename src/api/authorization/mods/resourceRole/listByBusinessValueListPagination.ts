@@ -2,10 +2,10 @@
  * @description 根据业务拓展字段查询角色(带分页)
  */
 import * as defs from '../../baseClass';
-import serverConfig from '../../../../../server.config';
 import { initRequest } from '../../../../common';
+import Config from 'react-native-config';
 
-const backEndUrl = serverConfig()['authorization'];
+const backEndUrl = Config['authorization'];
 
 // 初始值
 export const init = new defs.authorization.PagingEntity();

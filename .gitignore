@@ -67,3 +67,6 @@ package-lock.json
 
 .mocks/
 .jest
+
+# react-native-config codegen
+ios/tmp.xcconfig

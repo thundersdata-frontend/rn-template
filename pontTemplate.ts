@@ -190,10 +190,10 @@ export default class MyGenerator extends CodeGenerator {
       * @description ${inter.description}
       */
       ${defsStr}
-      import serverConfig from '../../../../../server.config';
       import { initRequest } from '../../../../common';
+      import Config from 'react-native-config';
 
-      const backEndUrl = serverConfig()['${this.dataSource.name}'];
+      const backEndUrl = Config['${this.dataSource.name}'];
 
       // 初始值
       export const init = ${initValue};

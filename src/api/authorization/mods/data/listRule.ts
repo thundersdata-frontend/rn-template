@@ -2,10 +2,10 @@
  * @description 获取数据规则列表
  */
 
-import serverConfig from '../../../../../server.config';
 import { initRequest } from '../../../../common';
+import Config from 'react-native-config';
 
-const backEndUrl = serverConfig()['authorization'];
+const backEndUrl = Config['authorization'];
 
 // 初始值
 export const init = [];

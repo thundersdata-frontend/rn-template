@@ -2,13 +2,6 @@ module.exports = {
   presets: ['module:metro-react-native-babel-preset'],
   plugins: [
     [
-      'module:react-native-dotenv',
-      {
-        moduleName: 'react-native-dotenv',
-        safe: true,
-      },
-    ],
-    [
       'module-resolver',
       {
         root: ['./src'],
@@ -20,6 +13,12 @@ module.exports = {
       {
         libraryName: '@td-design/react-native',
         libraryDirectory: 'lib/commonjs',
+      },
+    ],
+    [
+      '@babel/plugin-transform-react-jsx',
+      {
+        runtime: 'automatic',
       },
     ],
     'react-native-reanimated/plugin',

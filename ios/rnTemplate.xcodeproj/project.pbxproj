@@ -14,6 +14,7 @@
 		7413B6A3E40A910E83A7621B /* libPods-rnTemplate-rnTemplateTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 57DB42522B9E1E6FA01EDF18 /* libPods-rnTemplate-rnTemplateTests.a */; };
 		C3A8E475D73A73890724762D /* libPods-rnTemplate.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 3FBBE554668CA7FBBAF929E4 /* libPods-rnTemplate.a */; };
 		E432122326098623007B1EAF /* BootSplash.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E432122226098623007B1EAF /* BootSplash.storyboard */; };
+		E4C332ED2660BF21000354DA /* Config.xcconfig in Resources */ = {isa = PBXBuildFile; fileRef = E4C332EC2660BF21000354DA /* Config.xcconfig */; };
 		E4FE9D162616C41D006527E7 /* iconfont.ttf in Resources */ = {isa = PBXBuildFile; fileRef = E4FE9D152616C41D006527E7 /* iconfont.ttf */; };
 /* End PBXBuildFile section */
 
@@ -57,6 +58,7 @@
 		DD4816A2D1904376A48E9ED7 /* AntDesign.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = AntDesign.ttf; path = "../node_modules/react-native-vector-icons/Fonts/AntDesign.ttf"; sourceTree = "<group>"; };
 		DF0585762F2D47FDA976E946 /* FontAwesome.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = FontAwesome.ttf; path = "../node_modules/react-native-vector-icons/Fonts/FontAwesome.ttf"; sourceTree = "<group>"; };
 		E432122226098623007B1EAF /* BootSplash.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = BootSplash.storyboard; path = rnTemplate/BootSplash.storyboard; sourceTree = "<group>"; };
+		E4C332EC2660BF21000354DA /* Config.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = Config.xcconfig; sourceTree = "<group>"; };
 		E4FE9D152616C41D006527E7 /* iconfont.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = iconfont.ttf; sourceTree = "<group>"; };
 		ED297162215061F000B7C4FE /* JavaScriptCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = JavaScriptCore.framework; path = System/Library/Frameworks/JavaScriptCore.framework; sourceTree = SDKROOT; };
 		F14FFCA9D7AD4DE48A9F8180 /* Entypo.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = Entypo.ttf; path = "../node_modules/react-native-vector-icons/Fonts/Entypo.ttf"; sourceTree = "<group>"; };
@@ -145,6 +147,7 @@
 		83CBB9F61A601CBA00E9B192 = {
 			isa = PBXGroup;
 			children = (
+				E4C332EC2660BF21000354DA /* Config.xcconfig */,
 				13B07FAE1A68108700A75B9A /* rnTemplate */,
 				832341AE1AAA6A7D00B99B32 /* Libraries */,
 				00E356EF1AD99517003FC87E /* rnTemplateTests */,
@@ -285,6 +288,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E4C332ED2660BF21000354DA /* Config.xcconfig in Resources */,
 				13B07FBF1A68108700A75B9A /* Images.xcassets in Resources */,
 				E432122326098623007B1EAF /* BootSplash.storyboard in Resources */,
 				E4FE9D162616C41D006527E7 /* iconfont.ttf in Resources */,
@@ -528,6 +532,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
 				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 3JFB8G72VV;
 				ENABLE_BITCODE = NO;
 				INFOPLIST_FILE = rnTemplate/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
@@ -540,7 +545,7 @@
 					"-ObjC",
 					"-lc++",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = "org.reactjs.native.example.$(PRODUCT_NAME:rfc1034identifier)";
+				PRODUCT_BUNDLE_IDENTIFIER = com.thundersdata.rnTemplateApp;
 				PRODUCT_NAME = rnTemplate;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 5.0;
@@ -555,6 +560,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
 				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 3JFB8G72VV;
 				INFOPLIST_FILE = rnTemplate/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -566,7 +572,7 @@
 					"-ObjC",
 					"-lc++",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = "org.reactjs.native.example.$(PRODUCT_NAME:rfc1034identifier)";
+				PRODUCT_BUNDLE_IDENTIFIER = com.thundersdata.rnTemplateApp;
 				PRODUCT_NAME = rnTemplate;
 				SWIFT_VERSION = 5.0;
 				VERSIONING_SYSTEM = "apple-generic";
@@ -575,6 +581,7 @@
 		};
 		83CBBA201A601CBA00E9B192 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = E4C332EC2660BF21000354DA /* Config.xcconfig */;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
@@ -622,6 +629,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
+				INFOPLIST_PREPROCESS = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					/usr/lib/swift,
@@ -640,6 +648,7 @@
 		};
 		83CBBA211A601CBA00E9B192 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = E4C332EC2660BF21000354DA /* Config.xcconfig */;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
@@ -680,6 +689,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
+				INFOPLIST_PREPROCESS = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					/usr/lib/swift,

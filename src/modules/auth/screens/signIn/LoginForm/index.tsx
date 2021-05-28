@@ -40,6 +40,11 @@ const FormContent = ({
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [isSmsLogin]);
 
+  const handlePress = async () => {
+    const result = await API.authorization.data.list.fetch({});
+    console.log(result);
+  };
+
   return (
     <Form
       component={false}
@@ -82,7 +87,7 @@ const FormContent = ({
           </TouchableOpacity>
         )}
       </Flex>
-      <Button onPress={form.submit} title="登录" />
+      <Button onPress={handlePress} title="登录" />
       <Field name="agree" rules={[{ required: true, message: '请勾选雷数用户协议和隐私政策' }]}>
         <Checkable
           type="radio"
