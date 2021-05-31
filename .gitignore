@@ -59,9 +59,6 @@ buck-out/
 /ios/Pods/
 Podfile.lock
 
-.env
-.env.development
-
 yarn.lock
 package-lock.json
 

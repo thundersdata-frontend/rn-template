@@ -3,9 +3,9 @@
   "version": "0.0.1",
   "private": true,
   "scripts": {
-    "android": "ENVFILE=.env.prod react-native run-android",
+    "android": "ENVFILE=.env.dev react-native run-android",
+    "android:staging": "cd ./android && ENVFILE=.env.staging ./gradlew app:assembleRelease",
     "android:prod": "cd ./android && ENVFILE=.env.prod ./gradlew app:assembleRelease",
-    "ios": "ENVFILE=.env react-native run-ios",
     "start": "react-native start --reset-cache",
     "eslint": "eslint --fix --ext .ts,.tsx src/",
     "prettier": "prettier --check src/**/*.tsx --write",
