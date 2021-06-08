@@ -10,8 +10,8 @@ export const ErrorMessage: FC<{ text: string }> = ({ text }) => {
   if (!text) return null;
   return (
     <Flex>
-      <Icon name="warning" size={14} color={theme.colors.warn} />
-      <Text style={{ fontSize: 12, lineHeight: 20, color: theme.colors.warn }}>{text}</Text>
+      <Icon name="warning" size={14} color={theme.colors.func500} />
+      <Text style={{ fontSize: 12, lineHeight: 20, color: theme.colors.func500 }}>{text}</Text>
     </Flex>
   );
 };

@@ -31,20 +31,20 @@ const FormContent: FC<{ onFinish: (values: Store) => void }> = ({ onFinish }) =>
       <Field name="phone" rules={mobilePhoneRules}>
         <Input
           placeholder="请输入手机号"
-          leftIcon={<Icon type="custom" name="login_iphone" color={theme.colors.primaryText_1} />}
+          leftIcon={<Icon type="custom" name="login_iphone" color={theme.colors.icon} />}
           allowClear
         />
       </Field>
-      <WhiteSpace size="xxl" />
+      <WhiteSpace size="x6" />
       <Field name="sms" rules={[{ required: true, message: '请输入验证码' }]}>
         <CountDown
           bordered
-          leftIcon={<Icon type="custom" name="login_verify" color={theme.colors.primaryText_1} />}
+          leftIcon={<Icon type="custom" name="login_verify" color={theme.colors.icon} />}
           onClick={() => console.log('123')}
           onEnd={() => console.log('倒计时结束')}
         />
       </Field>
-      <Box height={32} marginTop="xs">
+      <Box height={32} marginTop="x1">
         <ErrorMessage text={error} />
       </Box>
       <Button onPress={form.submit} title="确认" />

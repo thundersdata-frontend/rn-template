@@ -16,7 +16,7 @@ export const Stack = () => {
   const commonStackOptions: StackNavigationOptions = {
     headerTitleStyle: {
       fontWeight: '500',
-      color: theme.colors.primaryText_1,
+      color: theme.colors.gray500,
       fontSize: px(18),
     },
     headerTitleAlign: 'center',

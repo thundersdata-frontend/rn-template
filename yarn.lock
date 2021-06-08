@@ -1798,15 +1798,15 @@
   dependencies:
     "@sinonjs/commons" "^1.7.0"
 
-"@td-design/react-native-echarts@^1.0.0":
-  version "1.0.0"
-  resolved "https://registry.yarnpkg.com/@td-design/react-native-echarts/-/react-native-echarts-1.0.0.tgz#abf44b9fb13ebdc3cc4ebf098e1b05294aee0b15"
-  integrity sha512-rLDDED5yyfl2d4q+G4Ab4tyw9XXPCtpnl3ccQof3tHMD8Iy8lWJN+XkkMHknKLBMq6K2pmUgr/JD+JFoOLF9Eg==
+"@td-design/react-native-echarts@^1.1.0":
+  version "1.1.0"
+  resolved "https://registry.yarnpkg.com/@td-design/react-native-echarts/-/react-native-echarts-1.1.0.tgz#a309561ca6222f0de88120da71cddbb026107018"
+  integrity sha512-EJq2NdYclx/Reh5v0stUTTRUkjCzUkevMFCILVXUuhOFQVz315B+SHsOSdxqjXYvtBQnsZX4TX7urUdqKHKfhw==
 
-"@td-design/react-native@^3.1.2":
-  version "3.1.2"
-  resolved "https://registry.yarnpkg.com/@td-design/react-native/-/react-native-3.1.2.tgz#5be3d1abba1d139ca7a8970b9ffbe8fbeaf1451d"
-  integrity sha512-zjQooZOBLTZFIkhcKFo4m206Yro4bj3ADFAeg4oyRs8rTT9J6sISfo8E3tkAKKvAllcmc+T4jRcgBUKEAWMonw==
+"@td-design/react-native@^3.2.0":
+  version "3.2.0"
+  resolved "https://registry.yarnpkg.com/@td-design/react-native/-/react-native-3.2.0.tgz#214daf3617fb6d1d591ad9ea0219fd8f9ae81394"
+  integrity sha512-KDJJUwpyj8sKhr3AKwpQfnpE26BMxAs0b8xhh3nZ+DOh6+BHHRl3oc73GqGnnN2v+GviF6YwwMLQpXry+B+c6w==
   dependencies:
     array-tree-filter "^2.1.0"
     color "^3.1.3"

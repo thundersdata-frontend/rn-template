@@ -32,10 +32,10 @@ const FormContent: FC<{ onFinish: (values: Store) => void }> = ({ onFinish }) =>
         <Input
           placeholder="请输入密码"
           inputType="password"
-          leftIcon={<Icon type="custom" name="icon_login_password" color={theme.colors.primaryText_1} />}
+          leftIcon={<Icon type="custom" name="icon_login_password" color={theme.colors.icon} />}
         />
       </Field>
-      <WhiteSpace size="xxl" />
+      <WhiteSpace size="x6" />
       <Field
         name="confirmPass"
         dependencies={['password']}
@@ -54,10 +54,10 @@ const FormContent: FC<{ onFinish: (values: Store) => void }> = ({ onFinish }) =>
         <Input
           placeholder="请再次输入密码"
           inputType="password"
-          leftIcon={<Icon type="custom" name="icon_login_password" color={theme.colors.primaryText_1} />}
+          leftIcon={<Icon type="custom" name="icon_login_password" color={theme.colors.icon} />}
         />
       </Field>
-      <Box height={32} marginTop="xs">
+      <Box height={32} marginTop="x1">
         <ErrorMessage text={error} />
       </Box>
       <Button onPress={form.submit} title="确认" />

@@ -40,7 +40,7 @@ export const TabStack = () => {
             tabBarLabel: ({ focused }) => (
               <Text
                 style={{
-                  color: focused ? theme.colors.contentText_3 : theme.colors.contentText_4,
+                  color: focused ? theme.colors.gray500 : theme.colors.gray300,
                   fontSize: 10,
                   marginBottom: 5,
                 }}
@@ -50,9 +50,9 @@ export const TabStack = () => {
             ),
             tabBarIcon: ({ focused }) =>
               focused ? (
-                <Icon type="custom" name={item.focusedIcon} size={20} color={theme.colors.contentText_3} />
+                <Icon type="custom" name={item.focusedIcon} size={20} color={theme.colors.gray500} />
               ) : (
-                <Icon type="custom" name={item.icon} size={20} color={theme.colors.contentText_4} />
+                <Icon type="custom" name={item.icon} size={20} color={theme.colors.gray300} />
               ),
           }}
         />

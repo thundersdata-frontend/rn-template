@@ -1,8 +1,9 @@
-import { FC, useEffect, useRef } from 'react';
+import { useEffect, useRef } from 'react';
 import Echarts, { EchartsHandler } from '@td-design/react-native-echarts';
-import { Box, Button, WhiteSpace } from '@td-design/react-native';
+import { Button, WhiteSpace } from '@td-design/react-native';
+import { Container } from 'components/Container';
 
-export const EchartsDemo: FC = () => {
+export function LineChart() {
   const chart = useRef<EchartsHandler>(null);
 
   useEffect(() => {
@@ -68,12 +69,12 @@ export const EchartsDemo: FC = () => {
   };
 
   return (
-    <Box>
+    <Container>
       <Echarts ref={chart} />
       <Button title="修改图表数据" onPress={modifyOptions} />
       <WhiteSpace />
       <Button title="清除图表" onPress={clearChart} />
       <WhiteSpace />
-    </Box>
+    </Container>
   );
-};
+}

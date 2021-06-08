@@ -51,16 +51,16 @@ const FormContent = ({
       <Field name="phone" rules={mobilePhoneRules}>
         <Input
           placeholder="请输入手机号"
-          leftIcon={<Icon type="custom" name="login_iphone" color={theme.colors.primaryText_1} />}
+          leftIcon={<Icon type="custom" name="login_iphone" color={theme.colors.icon} />}
           allowClear
         />
       </Field>
-      <WhiteSpace size="xxl" />
+      <WhiteSpace size="x6" />
       {isSmsLogin ? (
         <Field name="sms" rules={[{ required: true, message: '请输入验证码' }]}>
           <CountDown
             bordered
-            leftIcon={<Icon type="custom" name="login_verify" color={theme.colors.primaryText_1} />}
+            leftIcon={<Icon type="custom" name="login_verify" color={theme.colors.icon} />}
             onClick={() => console.log('123')}
             onEnd={() => console.log('倒计时结束')}
           />
@@ -70,11 +70,11 @@ const FormContent = ({
           <Input
             inputType="password"
             placeholder="请输入密码"
-            leftIcon={<Icon type="custom" name="icon_login_password" color={theme.colors.primaryText_1} />}
+            leftIcon={<Icon type="custom" name="icon_login_password" color={theme.colors.icon} />}
           />
         </Field>
       )}
-      <Flex justifyContent="space-between" alignItems="flex-start" height={32} marginTop="xs">
+      <Flex justifyContent="space-between" alignItems="flex-start" height={32} marginTop="x1">
         {!!error ? <ErrorMessage text={error} /> : <Text />}
         {!isSmsLogin && (
           <TouchableOpacity activeOpacity={0.8} onPress={() => navigation.navigate('ForgetPass')}>

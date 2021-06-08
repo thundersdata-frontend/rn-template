@@ -15,7 +15,7 @@ export const CustomHeader: FC<{
   const theme = useTheme<AppTheme>();
   const styles = StyleSheet.create({
     container: {
-      backgroundColor: transparent ? theme.colors.transparent : theme.colors.app_background,
+      backgroundColor: transparent ? theme.colors.transparent : theme.colors.background,
       minHeight: 60,
       flexDirection: 'row',
       alignItems: 'center',

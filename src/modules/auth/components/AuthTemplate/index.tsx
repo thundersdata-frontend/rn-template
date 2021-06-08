@@ -34,7 +34,7 @@ export const AuthTemplate: FC<{
       paddingBottom: 120,
     },
     card: {
-      backgroundColor: theme.colors.app_background,
+      backgroundColor: theme.colors.background,
       borderRadius: 20,
       marginHorizontal: 18,
       paddingBottom: 20,
@@ -72,7 +72,7 @@ export const AuthTemplate: FC<{
         <View style={styles.textWrap}>
           <Text variant="authTitle">{title}</Text>
           {subtitle && (
-            <Text variant="authSubTitle" marginTop="m">
+            <Text variant="authSubTitle" marginTop="x3">
               {subtitle}
             </Text>
           )}

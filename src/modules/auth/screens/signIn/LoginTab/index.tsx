@@ -21,13 +21,13 @@ export function LoginTab({ isSmsLogin, onPress }: { isSmsLogin: boolean; onPress
       transform: [{ translateY: -10 }],
     },
     text: {
-      color: theme.colors.primaryText_1,
+      color: theme.colors.gray500,
       fontSize: 16,
       fontWeight: '500',
       lineHeight: 22,
     },
     unselected: {
-      color: theme.colors.contentText_4,
+      color: theme.colors.gray500,
     },
   });
 
