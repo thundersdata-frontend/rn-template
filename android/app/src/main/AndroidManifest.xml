@@ -20,6 +20,14 @@
       android:launchMode="singleTask">
       <!-- ⚠️ add android:exported="true" and android:launchMode="singleTask" above -->
       <!-- remove the <intent-filter> from .MainActivity -->
+      <intent-filter>
+        <action android:name="android.intent.action.VIEW" />
+        <category android:name="android.intent.category.DEFAULT" />
+        <category android:name="android.intent.category.BROWSABLE" />
+        <data
+          android:host="app"
+          android:scheme="rntemplate" />
+      </intent-filter>
     </activity>
 
     <!-- add the following lines (use the theme you created at step 2) -->

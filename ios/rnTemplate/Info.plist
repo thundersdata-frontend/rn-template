@@ -20,6 +20,19 @@
 	<string>$(VERSION_NAME)</string>
 	<key>CFBundleSignature</key>
 	<string>????</string>
+	<key>CFBundleURLTypes</key>
+	<array>
+		<dict>
+			<key>CFBundleTypeRole</key>
+			<string>Editor</string>
+			<key>CFBundleURLName</key>
+			<string>rnTemplate</string>
+			<key>CFBundleURLSchemes</key>
+			<array>
+				<string>rntemplate</string>
+			</array>
+		</dict>
+	</array>
 	<key>CFBundleVersion</key>
 	<string>$(VERSION_CODE)</string>
 	<key>LSRequiresIPhoneOS</key>

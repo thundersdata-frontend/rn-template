@@ -3,7 +3,7 @@
   "version": "0.0.1",
   "private": true,
   "scripts": {
-    "android": "ENVFILE=.env.dev react-native run-android",
+    "android:dev": "ENVFILE=.env.dev react-native run-android",
     "android:staging": "cd ./android && ENVFILE=.env.staging ./gradlew app:assembleRelease",
     "android:prod": "cd ./android && ENVFILE=.env.prod ./gradlew app:assembleRelease",
     "start": "react-native start --reset-cache",

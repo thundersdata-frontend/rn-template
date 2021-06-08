@@ -9,7 +9,9 @@ import { ThemeProvider, helpers } from '@td-design/react-native';
 import { Stack } from './stacks';
 import { authAtom } from 'modules/auth/authService';
 import { Iconfont } from 'components/Iconfont';
-import { lightTheme, darkTheme } from './theme';
+import { Fallback } from 'components/Fallback';
+import { lightTheme, darkTheme } from 'theme';
+import { linking } from 'linking';
 
 const { registerCustomIcon } = helpers;
 registerCustomIcon(Iconfont);
@@ -46,7 +48,7 @@ export function App() {
         }}
       >
         <ThemeProvider theme={dark ? darkTheme : lightTheme}>
-          <NavigationContainer>
+          <NavigationContainer linking={linking} fallback={<Fallback />}>
             <Stack />
           </NavigationContainer>
         </ThemeProvider>
