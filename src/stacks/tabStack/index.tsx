@@ -29,7 +29,7 @@ const tabItems = [
 export const TabStack = () => {
   const theme = useTheme<AppTheme>();
   return (
-    <Tab.Navigator initialRouteName="Homepage" lazy={false}>
+    <Tab.Navigator initialRouteName="Homepage" lazy={true}>
       {tabItems.map(item => (
         <Tab.Screen
           key={item.name}

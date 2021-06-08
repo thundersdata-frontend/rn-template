@@ -6,16 +6,16 @@ export const EchartsDemo: FC = () => {
   const chart = useRef<EchartsHandler>(null);
 
   useEffect(() => {
-    setTimeout(() => {
+    const timer = setTimeout(() => {
       chart.current?.setOption({
         tooltip: {
           trigger: 'axis',
           formatter: `function (params) {
-            if (Array.isArray(params)) {
-              return params[0].name;
-            }
-            return params.name;
-          }`,
+              if (Array.isArray(params)) {
+                return params[0].name;
+              }
+              return params.name;
+            }`,
         },
         xAxis: {
           type: 'category',
@@ -32,6 +32,8 @@ export const EchartsDemo: FC = () => {
         ],
       });
     }, 2000);
+
+    return () => clearTimeout(timer);
   }, []);
 
   const modifyOptions = () => {
