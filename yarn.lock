@@ -1803,10 +1803,10 @@
   resolved "https://registry.yarnpkg.com/@td-design/react-native-echarts/-/react-native-echarts-1.1.0.tgz#a309561ca6222f0de88120da71cddbb026107018"
   integrity sha512-EJq2NdYclx/Reh5v0stUTTRUkjCzUkevMFCILVXUuhOFQVz315B+SHsOSdxqjXYvtBQnsZX4TX7urUdqKHKfhw==
 
-"@td-design/react-native@^3.2.0":
-  version "3.2.0"
-  resolved "https://registry.yarnpkg.com/@td-design/react-native/-/react-native-3.2.0.tgz#214daf3617fb6d1d591ad9ea0219fd8f9ae81394"
-  integrity sha512-KDJJUwpyj8sKhr3AKwpQfnpE26BMxAs0b8xhh3nZ+DOh6+BHHRl3oc73GqGnnN2v+GviF6YwwMLQpXry+B+c6w==
+"@td-design/react-native@^3.2.1":
+  version "3.2.1"
+  resolved "https://registry.yarnpkg.com/@td-design/react-native/-/react-native-3.2.1.tgz#56f6c08c4e34aaf6efcdd82c16588727f5d0ca48"
+  integrity sha512-YRNOsiSz/YZjsMi0r8PkUlV3wH9yelhkIPB6YoGaOzZCAVzURWreF7el8EoYEJSQC9fmOSA+LunfiAjequjWGQ==
   dependencies:
     array-tree-filter "^2.1.0"
     color "^3.1.3"
