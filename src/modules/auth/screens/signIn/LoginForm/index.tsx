@@ -97,7 +97,7 @@ const FormContent = ({
                       evt.stopPropagation();
                     }}
                   >
-                    <Text variant="policy" color="primary">
+                    <Text variant="policy" color="primary200">
                       《雷数用户协议》
                     </Text>
                   </TouchableOpacity>
@@ -107,7 +107,7 @@ const FormContent = ({
                       evt.stopPropagation();
                     }}
                   >
-                    <Text variant="policy" color="primary">
+                    <Text variant="policy" color="primary200">
                       《隐私政策》
                     </Text>
                   </TouchableOpacity>

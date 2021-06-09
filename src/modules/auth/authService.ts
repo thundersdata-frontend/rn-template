@@ -3,7 +3,7 @@ import { ValidateErrorEntity } from 'rc-field-form/es/interface';
 import { useCallback, useState } from 'react';
 
 export const authAtom = atom({
-  signedIn: false,
+  signedIn: true,
 });
 
 export function useAuthService() {

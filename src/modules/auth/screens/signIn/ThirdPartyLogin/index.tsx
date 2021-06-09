@@ -31,11 +31,11 @@ export function ThirdPartyLogin({
           justifyContent: 'center',
         }}
       >
-        <Box backgroundColor="divide_line" height={1} width={55} />
+        <Box backgroundColor="border" height={1} width={55} />
         <View style={{ paddingHorizontal: 10, transform: [{ translateY: -10 }] }}>
           <Text variant="loginDivider">第三方登录</Text>
         </View>
-        <Box backgroundColor="divide_line" height={1} width={55} />
+        <Box backgroundColor="border" height={1} width={55} />
       </View>
       <View style={{ marginTop: 10, flexDirection: 'row', justifyContent: 'center', alignItems: 'center' }}>
         <TouchableOpacity activeOpacity={0.8} onPress={() => onPress(0)}>

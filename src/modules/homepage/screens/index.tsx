@@ -39,6 +39,10 @@ export function Homepage({ navigation }: { navigation: StackNavigationProp<MainS
       <Button onPress={() => console.log(AsyncStorage.getItem('token'))} title="获取数据" />
       <WhiteSpace />
       <Button onPress={() => navigation.navigate('Mine')} title="去我的页面" />
+      <WhiteSpace />
+      {/* <Input /> */}
+      {/* <SearchBar /> */}
+      {/* <NoticeBar text="我是通知我是通知我是通知我是通知我是通知我是通知22222" /> */}
     </Container>
   );
 }

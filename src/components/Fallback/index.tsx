@@ -10,7 +10,7 @@ export function Fallback() {
   return (
     <Container>
       <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
-        <ActivityIndicator animating size="large" color={theme.colors.primary} />
+        <ActivityIndicator animating size="large" color={theme.colors.primary200} />
         <Text>页面加载中...</Text>
       </View>
     </Container>
