@@ -134,7 +134,7 @@ android {
     }
 
     defaultConfig {
-        applicationId "com.rntemplate"
+        applicationId project.env.get("APP_PACKAGE")
         minSdkVersion rootProject.ext.minSdkVersion
         targetSdkVersion rootProject.ext.targetSdkVersion
         versionCode generateVersionCode()

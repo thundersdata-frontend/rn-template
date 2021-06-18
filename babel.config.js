@@ -12,7 +12,7 @@ module.exports = {
       'import',
       {
         libraryName: '@td-design/react-native',
-        libraryDirectory: 'lib/commonjs',
+        libraryDirectory: 'lib/module',
       },
     ],
     [

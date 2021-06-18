@@ -4,10 +4,10 @@
   "configurations": {
     "ios": {
       "binaryPath": "ios/build/Build/Products/Release-iphonesimulator/rnTemplate.app",
-      "build": "xcodebuild -workspace ios/rnTemplate.xcworkspace -configuration Release -scheme rnTemplate -sdk iphonesimulator14.2 -derivedDataPath ios/build -arch x86_64",
+      "build": "xcodebuild -workspace ios/rnTemplate.xcworkspace -configuration Release -scheme rnTemplate -sdk iphonesimulator14.5 -derivedDataPath ios/build -arch x86_64",
       "type": "ios.simulator",
       "device": {
-        "type": "iPhone 11"
+        "type": "iPhone 12 Pro"
       }
     },
     "android": {
