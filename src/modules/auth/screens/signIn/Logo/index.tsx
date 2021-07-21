@@ -1,35 +1,34 @@
-import { Dimensions } from 'react-native';
 import { useTheme } from '@shopify/restyle';
+import { helpers } from '@td-design/react-native';
 import Animated, { useAnimatedStyle } from 'react-native-reanimated';
 import { mix } from 'react-native-redash';
 import { AppTheme } from 'theme';
 
-const { width } = Dimensions.get('window');
+const { px, deviceWidth } = helpers;
 export function Logo({ animation }: { animation: Animated.SharedValue<number> }) {
   const theme = useTheme<AppTheme>();
 
   const wrapStyle = useAnimatedStyle(() => ({
-    marginBottom: 25,
     marginTop: mix(animation.value, 120, 55),
   }));
 
   const imageStyle = useAnimatedStyle(() => ({
-    left: mix(animation.value, (width - 72) / 2, 25),
+    left: mix(animation.value, (deviceWidth - 72) / 2, 25),
   }));
 
   const textStyle = useAnimatedStyle(() => ({
-    left: mix(animation.value, (width - 200) / 2, 25),
+    left: mix(animation.value, (deviceWidth - 200) / 2, 25),
   }));
 
   return (
-    <Animated.View style={wrapStyle}>
+    <Animated.View style={[{ marginBottom: px(25) }, wrapStyle]}>
       <Animated.Image
         source={require('../../../assets/logo.webp')}
         style={[
           {
-            width: 72,
-            height: 72,
-            marginBottom: 20,
+            width: px(72),
+            height: px(72),
+            marginBottom: px(20),
           },
           imageStyle,
         ]}
@@ -37,8 +36,8 @@ export function Logo({ animation }: { animation: Animated.SharedValue<number> })
       <Animated.Text
         style={[
           {
-            fontSize: 23,
-            lineHeight: 32,
+            fontSize: px(24),
+            lineHeight: px(32),
             color: theme.colors.white,
           },
           textStyle,

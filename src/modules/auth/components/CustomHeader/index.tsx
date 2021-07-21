@@ -1,26 +1,27 @@
 import { FC, ReactNode } from 'react';
 import { Platform, View, TouchableOpacity, StyleSheet } from 'react-native';
-import { StackNavigationProp } from '@react-navigation/stack';
-import Icon from 'react-native-vector-icons/AntDesign';
+import { helpers, Iconfont } from '@td-design/react-native';
 import { useTheme } from '@shopify/restyle';
 import { AppTheme } from 'theme';
+import { NavigationProp } from '@react-navigation/native';
 
+const { px } = helpers;
 export const CustomHeader: FC<{
   title?: ReactNode;
   transparent?: boolean;
   headerLeft?: ReactNode;
   headerRight?: ReactNode;
-  navigation?: StackNavigationProp<AuthStackParamList>;
+  navigation?: NavigationProp<AuthStackParamList>;
 }> = ({ transparent = true, title, headerLeft, headerRight, navigation }) => {
   const theme = useTheme<AppTheme>();
   const styles = StyleSheet.create({
     container: {
       backgroundColor: transparent ? theme.colors.transparent : theme.colors.background,
-      minHeight: 60,
+      minHeight: px(60),
       flexDirection: 'row',
       alignItems: 'center',
-      paddingLeft: 5,
-      marginTop: Platform.OS === 'android' ? 24 : 0,
+      paddingLeft: theme.spacing.x2,
+      marginTop: Platform.OS === 'android' ? theme.spacing.x6 : 0,
     },
     left: { flex: 1 },
     title: { flex: 2 },
@@ -31,8 +32,8 @@ export const CustomHeader: FC<{
     <View style={styles.container}>
       <View style={styles.left}>
         {headerLeft ?? (
-          <TouchableOpacity activeOpacity={0.8} onPress={() => navigation?.canGoBack && navigation.goBack()}>
-            <Icon name="left" color="#fff" size={24} />
+          <TouchableOpacity activeOpacity={0.5} onPress={() => navigation?.canGoBack && navigation.goBack()}>
+            <Iconfont name="left" color={theme.colors.white} size={px(24)} />
           </TouchableOpacity>
         )}
       </View>

@@ -11,7 +11,7 @@ export const Container: React.FC<{ hasHeader?: boolean }> = ({ hasHeader = true,
   });
 
   return (
-    <SafeAreaView style={styles.container} edges={hasHeader ? ['bottom', 'left', 'right'] : undefined}>
+    <SafeAreaView style={styles.container} edges={hasHeader ? ['left', 'right', 'bottom'] : ['left', 'right']}>
       <StatusBar barStyle="dark-content" backgroundColor="transparent" translucent />
       {children}
     </SafeAreaView>

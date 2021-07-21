@@ -1,20 +1,20 @@
 import { useState } from 'react';
-import { View } from 'react-native';
 import { Easing, useDerivedValue, useSharedValue, withTiming } from 'react-native-reanimated';
-import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view';
+import { helpers } from '@td-design/react-native';
+import { KeyboardAwareScrollView } from 'components';
 import { Container } from 'modules/auth/components/Container';
 
-import { LoginForm } from './LoginForm';
 import { Logo } from './Logo';
-import { ThirdPartyLogin } from './ThirdPartyLogin';
 import { LoginBtnGroup } from './LoginBtnGroup';
-import { StackNavigationProp } from '@react-navigation/stack';
+import { LoginForm } from './LoginForm';
+import { ThirdPartyLogin } from './ThirdPartyLogin';
 
+const { px, deviceHeight } = helpers;
 const timingConfig = {
   duration: 600,
   easing: Easing.inOut(Easing.ease),
 };
-export function SignIn({ navigation }: { navigation: StackNavigationProp<AuthStackParamList, 'SignIn'> }) {
+export function SignIn() {
   const [activeKey, setActiveKey] = useState('sms');
   const isSmsLogin = activeKey === 'sms';
 
@@ -36,16 +36,14 @@ export function SignIn({ navigation }: { navigation: StackNavigationProp<AuthSta
 
   return (
     <Container>
-      <View style={{ flex: 1 }}>
-        <KeyboardAwareScrollView enableOnAndroid keyboardShouldPersistTaps="handled">
-          {/* logo和欢迎语 */}
-          <Logo {...{ animation }} />
-          {/* 登录按钮组 */}
-          <LoginBtnGroup {...{ animation }} onPress={handlePress} />
-          {/* 登录表单 */}
-          <LoginForm {...{ showLoginForm, animation, isSmsLogin, changeTab: setActiveKey, navigation }} />
-        </KeyboardAwareScrollView>
-      </View>
+      <KeyboardAwareScrollView style={{ height: deviceHeight - px(140) }}>
+        {/* logo和欢迎语 */}
+        <Logo {...{ animation }} />
+        {/* 登录按钮组 */}
+        <LoginBtnGroup {...{ animation }} onPress={handlePress} />
+        {/* 登录表单 */}
+        <LoginForm {...{ showLoginForm, animation, isSmsLogin, changeTab: setActiveKey }} />
+      </KeyboardAwareScrollView>
       {/* 底部第三方登录 */}
       <ThirdPartyLogin {...{ animation }} onPress={() => (showLoginForm.value = false)} />
     </Container>

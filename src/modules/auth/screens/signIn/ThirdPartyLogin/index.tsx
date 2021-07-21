@@ -1,11 +1,12 @@
-import { Dimensions, Image, View, TouchableOpacity } from 'react-native';
+import { Image, TouchableOpacity } from 'react-native';
 import Animated, { useAnimatedStyle } from 'react-native-reanimated';
 import { mix } from 'react-native-redash';
+import { Flex, helpers } from '@td-design/react-native';
+import { Box, Text } from 'components';
 
-import { Box } from 'components/Box';
-import { Text } from 'components/Text';
+const { px, deviceWidth } = helpers;
+const ICON_SIZE = px(48);
 
-const { width } = Dimensions.get('window');
 export function ThirdPartyLogin({
   animation,
   onPress,
@@ -14,7 +15,6 @@ export function ThirdPartyLogin({
   onPress: (status: number) => void;
 }) {
   const style = useAnimatedStyle(() => ({
-    height: 110,
     transform: [
       {
         translateY: mix(animation.value, 0, 20),
@@ -22,30 +22,31 @@ export function ThirdPartyLogin({
     ],
   }));
   return (
-    <Animated.View style={style}>
-      <View
+    <Animated.View style={[{ height: px(110) }, style]}>
+      <Flex
+        width={deviceWidth}
+        justifyContent="center"
         style={{
-          width,
           paddingHorizontal: 60,
-          flexDirection: 'row',
-          justifyContent: 'center',
         }}
       >
-        <Box backgroundColor="border" height={1} width={55} />
-        <View style={{ paddingHorizontal: 10, transform: [{ translateY: -10 }] }}>
-          <Text variant="loginDivider">第三方登录</Text>
-        </View>
-        <Box backgroundColor="border" height={1} width={55} />
-      </View>
-      <View style={{ marginTop: 10, flexDirection: 'row', justifyContent: 'center', alignItems: 'center' }}>
-        <TouchableOpacity activeOpacity={0.8} onPress={() => onPress(0)}>
-          <Image source={require('../../../assets/weichat.webp')} style={{ width: 48, height: 48 }} />
+        <Box backgroundColor="border" height={1} width={px(55)} />
+        <Box paddingHorizontal="x3" style={{ transform: [{ translateY: -px(10) }] }}>
+          <Text variant="p1" color="white">
+            第三方登录
+          </Text>
+        </Box>
+        <Box backgroundColor="border" height={1} width={px(55)} />
+      </Flex>
+      <Flex marginTop="x3" justifyContent="center">
+        <TouchableOpacity activeOpacity={0.5} onPress={() => onPress(0)}>
+          <Image source={require('../../../assets/weichat.webp')} style={{ width: ICON_SIZE, height: ICON_SIZE }} />
         </TouchableOpacity>
-        <View style={{ width: 85 }} />
-        <TouchableOpacity activeOpacity={0.8} onPress={() => onPress(0)}>
-          <Image source={require('../../../assets/qq.webp')} style={{ width: 48, height: 48 }} />
+        <Box width={px(85)} />
+        <TouchableOpacity activeOpacity={0.5} onPress={() => onPress(0)}>
+          <Image source={require('../../../assets/qq.webp')} style={{ width: ICON_SIZE, height: ICON_SIZE }} />
         </TouchableOpacity>
-      </View>
+      </Flex>
     </Animated.View>
   );
 }

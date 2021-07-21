@@ -1,30 +1,32 @@
-import { Dimensions, ImageBackground, StyleSheet, Text, TouchableOpacity } from 'react-native';
+import { ImageBackground, StyleSheet, Text, TouchableOpacity } from 'react-native';
 import { useTheme } from '@shopify/restyle';
+import { helpers } from '@td-design/react-native';
 
 import { AppTheme } from 'theme';
 
-const { width } = Dimensions.get('window');
+const { px, deviceWidth } = helpers;
 export function LoginTab({ isSmsLogin, onPress }: { isSmsLogin: boolean; onPress: (key: string) => void }) {
   const theme = useTheme<AppTheme>();
   const styles = StyleSheet.create({
     item: {
       alignItems: 'center',
-      height: 50,
+      height: px(50),
       justifyContent: 'center',
-      width: (width - 36) / 2,
+      width: (deviceWidth - px(36)) / 2,
     },
     tab: {
-      borderTopLeftRadius: 20,
-      borderTopRightRadius: 20,
+      borderTopLeftRadius: px(20),
+      borderTopRightRadius: px(20),
       flexDirection: 'row',
-      height: 50,
-      transform: [{ translateY: -10 }],
+      height: px(50),
+      overflow: 'hidden',
+      transform: [{ translateY: -px(10) }],
     },
     text: {
       color: theme.colors.gray500,
-      fontSize: 16,
+      fontSize: px(16),
       fontWeight: '500',
-      lineHeight: 22,
+      lineHeight: px(22),
     },
     unselected: {
       color: theme.colors.gray500,

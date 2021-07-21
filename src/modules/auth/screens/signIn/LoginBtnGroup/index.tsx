@@ -2,10 +2,12 @@ import { StyleSheet, TouchableOpacity } from 'react-native';
 import { useTheme } from '@shopify/restyle';
 import Animated, { useAnimatedStyle } from 'react-native-reanimated';
 import { mix } from 'react-native-redash';
+import { helpers } from '@td-design/react-native';
 
-import { Text } from 'components/Text';
+import { Text } from 'components';
 import { AppTheme } from 'theme';
 
+const { px } = helpers;
 export function LoginBtnGroup({
   animation,
   onPress,
@@ -16,9 +18,9 @@ export function LoginBtnGroup({
   const theme = useTheme<AppTheme>();
   const styles = StyleSheet.create({
     btn: {
-      width: 247,
-      height: 44,
-      borderRadius: 4,
+      width: px(247),
+      height: px(44),
+      borderRadius: theme.borderRadii.x1,
       backgroundColor: theme.colors.white,
       justifyContent: 'center',
       alignItems: 'center',
@@ -40,23 +42,27 @@ export function LoginBtnGroup({
 
   return (
     <Animated.View style={style}>
-      <TouchableOpacity onPress={() => onPress('sms')} activeOpacity={0.8} style={styles.btn}>
-        <Text variant="primaryLoginBtn">验证码登录</Text>
+      <TouchableOpacity onPress={() => onPress('sms')} activeOpacity={0.5} style={styles.btn}>
+        <Text variant="p0" color="primary200">
+          验证码登录
+        </Text>
       </TouchableOpacity>
       <TouchableOpacity
         onPress={() => onPress('pass')}
-        activeOpacity={0.8}
+        activeOpacity={0.5}
         style={[
           styles.btn,
           {
-            marginTop: 20,
+            marginTop: px(20),
             backgroundColor: theme.colors.transparent,
             borderColor: theme.colors.white,
             borderWidth: 1,
           },
         ]}
       >
-        <Text variant="secondaryLoginBtn">密码登录</Text>
+        <Text variant="p0" color="white">
+          密码登录
+        </Text>
       </TouchableOpacity>
     </Animated.View>
   );

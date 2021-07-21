@@ -9,10 +9,9 @@ export const linking: LinkingOptions = {
       Tab: {
         screens: {
           Homepage: 'home',
-          Mine: 'profile',
+          Mine: 'mine',
         },
       },
-      Address: 'address',
     },
   },
 };

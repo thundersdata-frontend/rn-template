@@ -9,5 +9,5 @@ package.json
 tsconfig.json
 src/**/*.json
 src/**/*.d.ts
-services/
+api/*
 *.js

@@ -2,8 +2,7 @@ import React from 'react';
 import { ActivityIndicator, View } from 'react-native';
 import { useTheme } from '@shopify/restyle';
 import { AppTheme } from 'theme';
-import { Container } from 'components/Container';
-import { Text } from 'components/Text';
+import { Container, Text } from 'components';
 
 export function Fallback() {
   const theme = useTheme<AppTheme>();

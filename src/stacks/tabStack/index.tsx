@@ -1,28 +1,28 @@
-import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
-import { Text } from 'react-native';
 import { useTheme } from '@shopify/restyle';
-import { Icon } from '@td-design/react-native';
+import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
+import { helpers } from '@td-design/react-native';
+
+import { AppTheme } from 'theme';
+import { Text } from 'components';
+import Iconfont, { IconNames } from '../../components/Iconfont';
 
 import { Homepage } from 'modules/homepage/screens';
-import { Mine } from 'modules/user/screens/mine';
-import { AppTheme } from 'theme';
+import { Mine } from 'modules/mine/screens';
 
+const { px } = helpers;
 const Tab = createBottomTabNavigator();
-
-const tabItems = [
+const tabItems: { name: string; label: string; icon: IconNames; component: any }[] = [
   {
     name: 'Homepage',
     component: Homepage,
     label: '首页',
-    icon: 'tab_home_non',
-    focusedIcon: 'tab_home_sel',
+    icon: 'sms',
   },
   {
     name: 'Mine',
     component: Mine,
     label: '我的',
-    icon: 'tab_me_non',
-    focusedIcon: 'tab_me_sel',
+    icon: 'user',
   },
 ];
 
@@ -41,19 +41,16 @@ export const TabStack = () => {
               <Text
                 style={{
                   color: focused ? theme.colors.gray500 : theme.colors.gray300,
-                  fontSize: 10,
-                  marginBottom: 5,
+                  fontSize: px(12),
+                  marginBottom: theme.spacing.x1,
                 }}
               >
                 {item?.label}
               </Text>
             ),
-            tabBarIcon: ({ focused }) =>
-              focused ? (
-                <Icon type="custom" name={item.focusedIcon} size={20} color={theme.colors.gray500} />
-              ) : (
-                <Icon type="custom" name={item.icon} size={20} color={theme.colors.gray300} />
-              ),
+            tabBarIcon: ({ focused }) => (
+              <Iconfont name={item.icon} size={px(20)} color={focused ? theme.colors.gray500 : theme.colors.gray300} />
+            ),
           }}
         />
       ))}

@@ -4,9 +4,8 @@
 import { FC } from 'react';
 import Form, { Field, useForm } from 'rc-field-form';
 import { Store } from 'rc-field-form/es/interface';
-import { StackNavigationProp } from '@react-navigation/stack';
 import { useTheme } from '@shopify/restyle';
-import { Icon, Input, WhiteSpace, Button, Box } from '@td-design/react-native';
+import { Input, WhiteSpace, Button, Box } from '@td-design/react-native';
 
 import { passwordRules } from 'utils/validators';
 import { useAuthService } from 'modules/auth/authService';
@@ -14,6 +13,7 @@ import { ErrorMessage } from 'modules/auth/components/ErrorMessage';
 
 import { AuthTemplate } from 'modules/auth/components/AuthTemplate';
 import { AppTheme } from 'theme';
+import { Iconfont } from 'components';
 
 const FormContent: FC<{ onFinish: (values: Store) => void }> = ({ onFinish }) => {
   const [form] = useForm();
@@ -32,7 +32,7 @@ const FormContent: FC<{ onFinish: (values: Store) => void }> = ({ onFinish }) =>
         <Input
           placeholder="请输入密码"
           inputType="password"
-          leftIcon={<Icon type="custom" name="icon_login_password" color={theme.colors.icon} />}
+          leftIcon={<Iconfont name="password" color={theme.colors.icon} />}
         />
       </Field>
       <WhiteSpace size="x6" />
@@ -54,7 +54,7 @@ const FormContent: FC<{ onFinish: (values: Store) => void }> = ({ onFinish }) =>
         <Input
           placeholder="请再次输入密码"
           inputType="password"
-          leftIcon={<Icon type="custom" name="icon_login_password" color={theme.colors.icon} />}
+          leftIcon={<Iconfont name="password" color={theme.colors.icon} />}
         />
       </Field>
       <Box height={32} marginTop="x1">
@@ -65,14 +65,13 @@ const FormContent: FC<{ onFinish: (values: Store) => void }> = ({ onFinish }) =>
   );
 };
 
-export function ConfigPass({ navigation }: { navigation: StackNavigationProp<AuthStackParamList> }) {
+export function ConfigPass() {
   const handleFinish = (values: Store) => {
     console.log(values);
-    navigation.navigate('BindPhone');
   };
 
   return (
-    <AuthTemplate title="设置密码" subtitle="6-20位字母和数字组合" {...{ navigation }}>
+    <AuthTemplate title="设置密码" subtitle="6-20位字母和数字组合">
       <FormContent onFinish={handleFinish} />
     </AuthTemplate>
   );

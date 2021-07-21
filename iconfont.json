@@ -1,0 +1,7 @@
+{
+    "use_typescript": false,
+    "save_dir": "./src/components/Iconfont",
+    "trim_icon_prefix": "icon",
+    "default_icon_size": 16,
+    "local_svgs": "icon-svg"
+}

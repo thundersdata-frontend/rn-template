@@ -3,13 +3,13 @@
  */
 import { FC, useEffect } from 'react';
 import { StyleSheet, View } from 'react-native';
-import { StackNavigationProp } from '@react-navigation/stack';
 import { useTheme } from '@shopify/restyle';
 import Animated, { useSharedValue, useAnimatedStyle, withSpring, useDerivedValue } from 'react-native-reanimated';
 import { mix } from 'react-native-redash';
-import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view';
+import { NavigationProp, useNavigation } from '@react-navigation/native';
+import { helpers } from '@td-design/react-native';
+import { KeyboardAwareScrollView, Text } from 'components';
 
-import { Text } from 'components/Text';
 import { Container } from '../Container';
 import { CustomHeader } from '../CustomHeader';
 import { AppTheme } from 'theme';
@@ -23,27 +23,25 @@ const springConfig = {
   restDisplacementThreshold: 0.001,
 };
 
+const { px } = helpers;
 export const AuthTemplate: FC<{
   title: string;
   subtitle?: string;
-  navigation: StackNavigationProp<AuthStackParamList>;
-}> = ({ title, subtitle, children, navigation }) => {
+}> = ({ title, subtitle, children }) => {
+  const navigation = useNavigation<NavigationProp<AuthStackParamList>>();
   const theme = useTheme<AppTheme>();
   const styles = StyleSheet.create({
-    container: {
-      paddingBottom: 120,
-    },
     card: {
       backgroundColor: theme.colors.background,
-      borderRadius: 20,
-      marginHorizontal: 18,
-      paddingBottom: 20,
-      paddingHorizontal: 18,
-      paddingTop: 32,
+      borderRadius: px(20),
+      marginHorizontal: px(18),
+      paddingBottom: px(20),
+      paddingHorizontal: px(18),
+      paddingTop: px(32),
     },
     textWrap: {
-      marginHorizontal: 30,
-      marginTop: 40,
+      marginHorizontal: px(30),
+      marginVertical: px(20),
     },
   });
 
@@ -55,7 +53,7 @@ export const AuthTemplate: FC<{
 
   const animation = useDerivedValue(() => (animated.value ? withSpring(1, springConfig) : withSpring(0, springConfig)));
   const style = useAnimatedStyle(() => {
-    const translateY = mix(animation.value, 700, 30);
+    const translateY = mix(animation.value, 700, 0);
     return {
       transform: [{ translateY }],
     };
@@ -63,16 +61,14 @@ export const AuthTemplate: FC<{
 
   return (
     <Container>
-      <KeyboardAwareScrollView
-        enableOnAndroid
-        contentContainerStyle={styles.container}
-        keyboardShouldPersistTaps="handled"
-      >
+      <KeyboardAwareScrollView>
         <CustomHeader {...{ navigation }} />
         <View style={styles.textWrap}>
-          <Text variant="authTitle">{title}</Text>
+          <Text variant="h3" color="func50">
+            {title}
+          </Text>
           {subtitle && (
-            <Text variant="authSubTitle" marginTop="x3">
+            <Text variant="p2" color="func50" marginTop="x3">
               {subtitle}
             </Text>
           )}

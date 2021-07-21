@@ -1,62 +1,60 @@
 /**
- * 通过手机号登录时，设置登录密码
+ * 忘记密码页面
  */
-import { FC } from 'react';
 import Form, { Field, useForm } from 'rc-field-form';
-import { Store } from 'rc-field-form/es/interface';
-import { StackNavigationProp } from '@react-navigation/stack';
 import { useTheme } from '@shopify/restyle';
-import { Icon, Input, WhiteSpace, CountDown, Button, Box } from '@td-design/react-native';
+import { Input, WhiteSpace, CountDown, Button, Box } from '@td-design/react-native';
 
 import { AuthTemplate } from 'modules/auth/components/AuthTemplate';
 import { AppTheme } from 'theme';
 import { mobilePhoneRules, passwordRules } from 'utils/validators';
 import { useAuthService } from 'modules/auth/authService';
 import { ErrorMessage } from 'modules/auth/components/ErrorMessage';
+import { useNavigation } from '@react-navigation/native';
+import { StackNavigationProp } from '@react-navigation/stack';
+import { SmsTypeEnum } from 'enums';
+import { Iconfont } from 'components';
 
-const FormContent: FC<{ onFinish: (values: Store) => void }> = ({ onFinish }) => {
+const FormContent = () => {
   const [form] = useForm();
   const theme = useTheme<AppTheme>();
-  const { error, clearError, submitFormFailed } = useAuthService();
+  const { error, clearError, submitFormFailed, forgetPassword, beforeSendSms, smsSend } = useAuthService();
 
   return (
     <Form
       component={false}
       form={form}
-      onFinish={onFinish}
+      onFinish={forgetPassword}
       onFinishFailed={submitFormFailed}
       onValuesChange={clearError}
     >
       <Field name="phone" rules={mobilePhoneRules}>
-        <Input
-          placeholder="请输入手机号"
-          leftIcon={<Icon type="custom" name="login_iphone" color={theme.colors.icon} />}
-          allowClear
-        />
+        <Input placeholder="请输入手机号" leftIcon={<Iconfont name="mobile" color={theme.colors.icon} />} allowClear />
       </Field>
       <WhiteSpace size="x6" />
-      <Field name="sms" rules={[{ required: true, message: '请输入验证码' }]}>
+      <Field name="code" rules={[{ required: true, message: '请输入验证码' }]}>
         <CountDown
           bordered
-          leftIcon={<Icon type="custom" name="login_verify" color={theme.colors.icon} />}
-          onClick={() => console.log('123')}
-          onEnd={() => console.log('倒计时结束')}
+          leftIcon={<Iconfont name="sms" color={theme.colors.icon} />}
+          onBeforeSend={() => beforeSendSms(form.getFieldValue('phone'))}
+          onSend={() => smsSend({ mobile: form.getFieldValue('phone'), type: SmsTypeEnum.修改密码 })}
         />
       </Field>
       <WhiteSpace size="x6" />
       <Field name="password" rules={passwordRules}>
         <Input
-          placeholder="6-20位字母和数字组合"
+          placeholder="请输入密码"
           inputType="password"
-          leftIcon={<Icon type="custom" name="icon_login_password" color={theme.colors.icon} />}
+          leftIcon={<Iconfont name="password" color={theme.colors.icon} />}
         />
       </Field>
       <WhiteSpace size="x6" />
       <Field
-        name="confirmPass"
+        name="againPassword"
         dependencies={['password']}
         rules={[
-          ...passwordRules,
+          { required: true, message: '请再次输入密码' },
+          { pattern: /^(?![0-9]+$)(?![a-zA-Z]+$)[0-9A-Za-z]{6,20}$/, message: '密码格式不正确' },
           ({ getFieldValue }) => ({
             validator(_, value) {
               if (!value || getFieldValue('password') === value) {
@@ -70,7 +68,7 @@ const FormContent: FC<{ onFinish: (values: Store) => void }> = ({ onFinish }) =>
         <Input
           placeholder="请再次输入密码"
           inputType="password"
-          leftIcon={<Icon type="custom" name="icon_login_password" color={theme.colors.icon} />}
+          leftIcon={<Iconfont name="password" color={theme.colors.icon} />}
         />
       </Field>
       <Box height={32} marginTop="x1">
@@ -81,11 +79,8 @@ const FormContent: FC<{ onFinish: (values: Store) => void }> = ({ onFinish }) =>
   );
 };
 
-export function ForgetPass({ navigation }: { navigation: StackNavigationProp<AuthStackParamList> }) {
-  const handleFinish = (values: Store) => {
-    console.log(values);
-    navigation.navigate('ConfigPass');
-  };
+export function ForgetPass() {
+  const navigation = useNavigation<StackNavigationProp<AuthStackParamList>>();
 
   return (
     <AuthTemplate
@@ -93,7 +88,7 @@ export function ForgetPass({ navigation }: { navigation: StackNavigationProp<Aut
       subtitle="为了保证您的账户安全，1天只能操作1次，否则账户将会被锁定无法登录"
       {...{ navigation }}
     >
-      <FormContent onFinish={handleFinish} />
+      <FormContent />
     </AuthTemplate>
   );
 }

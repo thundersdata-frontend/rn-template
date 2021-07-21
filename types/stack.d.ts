@@ -1,8 +1,10 @@
 type AuthStackParamList = {
   SignIn: undefined;
   ConfigPass: undefined;
-  BindPhone: undefined;
   ForgetPass: undefined;
+  Register: undefined;
+  Privacy: undefined;
+  UserAgreement: undefined;
 };
 
 type MainStackParamList = {
@@ -12,4 +14,5 @@ type MainStackParamList = {
   Echarts: undefined;
   LineChart: undefined;
   MapChart: undefined;
+  ChangePassword: undefined;
 };

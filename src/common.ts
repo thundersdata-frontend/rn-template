@@ -1,7 +1,7 @@
 import type { ResponseError } from 'umi-request';
 import { extend } from 'umi-request';
-import { LoginFailure } from './enums';
-import AsyncStorage from '@react-native-async-storage/async-storage';
+import { LoginFailureEnum } from './enums';
+import { getToken } from 'utils/auth';
 
 const codeMessage: Record<number, string> = {
   200: '服务器成功返回请求的数据。',
@@ -39,7 +39,7 @@ export function errorHandler(error: ResponseError) {
 }
 
 export const initRequest = async () => {
-  const token = (await AsyncStorage.getItem('token')) ?? '';
+  const token = await getToken();
   const request = extend({
     timeout: 10000,
     headers: {
@@ -53,7 +53,7 @@ export const initRequest = async () => {
       .clone()
       .json()
       .then(res => {
-        if ([LoginFailure['不允许登录'], LoginFailure['登录过期']].includes(res.code)) {
+        if ([LoginFailureEnum.登录无效, LoginFailureEnum.登录过期, LoginFailureEnum.登录禁止].includes(res.code)) {
           throw new Error('LoginFailure');
         }
       });
