@@ -1,5 +1,5 @@
-import * as Pont from 'pont-engine';
-import { CodeGenerator, Interface, Property } from 'pont-engine';
+import * as Pont from '@td-design/pont-engine';
+import { CodeGenerator, Interface, Property } from '@td-design/pont-engine';
 
 export class FileStructures extends Pont.FileStructures {
   getDataSourcesTs() {

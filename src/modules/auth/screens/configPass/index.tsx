@@ -13,7 +13,7 @@ import { ErrorMessage } from 'modules/auth/components/ErrorMessage';
 
 import { AuthTemplate } from 'modules/auth/components/AuthTemplate';
 import { AppTheme } from 'theme';
-import { Iconfont } from 'components';
+import { Icon } from 'components';
 
 const FormContent: FC<{ onFinish: (values: Store) => void }> = ({ onFinish }) => {
   const [form] = useForm();
@@ -32,7 +32,7 @@ const FormContent: FC<{ onFinish: (values: Store) => void }> = ({ onFinish }) =>
         <Input
           placeholder="请输入密码"
           inputType="password"
-          leftIcon={<Iconfont name="password" color={theme.colors.icon} />}
+          leftIcon={<Icon name="password" color={theme.colors.icon} />}
         />
       </Field>
       <WhiteSpace size="x6" />
@@ -54,7 +54,7 @@ const FormContent: FC<{ onFinish: (values: Store) => void }> = ({ onFinish }) =>
         <Input
           placeholder="请再次输入密码"
           inputType="password"
-          leftIcon={<Iconfont name="password" color={theme.colors.icon} />}
+          leftIcon={<Icon name="password" color={theme.colors.icon} />}
         />
       </Field>
       <Box height={32} marginTop="x1">

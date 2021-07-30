@@ -4,7 +4,7 @@ import { helpers } from '@td-design/react-native';
 
 import { AppTheme } from 'theme';
 import { Text } from 'components';
-import Iconfont, { IconNames } from '../../components/Iconfont';
+import Icon, { IconNames } from '../../components/Icon';
 
 import { Homepage } from 'modules/homepage/screens';
 import { Mine } from 'modules/mine/screens';
@@ -49,7 +49,7 @@ export const TabStack = () => {
               </Text>
             ),
             tabBarIcon: ({ focused }) => (
-              <Iconfont name={item.icon} size={px(20)} color={focused ? theme.colors.gray500 : theme.colors.gray300} />
+              <Icon name={item.icon} size={px(20)} color={focused ? theme.colors.gray500 : theme.colors.gray300} />
             ),
           }}
         />

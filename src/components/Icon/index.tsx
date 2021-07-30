@@ -21,18 +21,16 @@ export interface IconfontProps extends GProps, ViewProps {
 let IconFont: FC<IconfontProps> = ({ name, ...rest }) => {
   switch (name) {
     case 'mobile':
-      return <IconMobile key="L1" {...rest} />;
+      return <IconMobile {...rest} />;
     case 'password':
-      return <IconPassword key="L2" {...rest} />;
+      return <IconPassword {...rest} />;
     case 'sms':
-      return <IconSms key="L3" {...rest} />;
+      return <IconSms {...rest} />;
     case 'user':
-      return <IconUser key="L4" {...rest} />;
+      return <IconUser {...rest} />;
     case 'warning':
-      return <IconWarning key="L5" {...rest} />;
+      return <IconWarning {...rest} />;
   }
-
-  return null;
 };
 
 IconFont = React.memo ? React.memo(IconFont) : IconFont;

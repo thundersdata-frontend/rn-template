@@ -1,6 +1,6 @@
 import { FC, ReactNode } from 'react';
 import { Platform, View, TouchableOpacity, StyleSheet } from 'react-native';
-import { helpers, Iconfont } from '@td-design/react-native';
+import { helpers, SvgIcon } from '@td-design/react-native';
 import { useTheme } from '@shopify/restyle';
 import { AppTheme } from 'theme';
 import { NavigationProp } from '@react-navigation/native';
@@ -33,7 +33,7 @@ export const CustomHeader: FC<{
       <View style={styles.left}>
         {headerLeft ?? (
           <TouchableOpacity activeOpacity={0.5} onPress={() => navigation?.canGoBack && navigation.goBack()}>
-            <Iconfont name="left" color={theme.colors.white} size={px(24)} />
+            <SvgIcon name="left" color={theme.colors.white} size={px(24)} />
           </TouchableOpacity>
         )}
       </View>

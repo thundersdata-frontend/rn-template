@@ -10,7 +10,7 @@ import { useAuthService } from 'modules/auth/authService';
 import { mobilePhoneRules } from 'utils/validators';
 import { ErrorMessage } from 'modules/auth/components/ErrorMessage';
 import { AppTheme } from 'theme';
-import { Text, Box, Iconfont } from 'components';
+import { Text, Box, Icon } from 'components';
 import { SmsTypeEnum } from 'enums';
 import { NavigationProp, useNavigation } from '@react-navigation/native';
 
@@ -35,7 +35,7 @@ const FormContent = ({ isSmsLogin }: { isSmsLogin: boolean }) => {
             <Input
               placeholder="请输入手机号"
               keyboardType="phone-pad"
-              leftIcon={<Iconfont name="mobile" color={theme.colors.icon} />}
+              leftIcon={<Icon name="mobile" color={theme.colors.icon} />}
               allowClear
             />
           </Field>
@@ -43,7 +43,7 @@ const FormContent = ({ isSmsLogin }: { isSmsLogin: boolean }) => {
           <Field name="sms" rules={[{ required: true, message: '请输入验证码' }]}>
             <CountDown
               bordered
-              leftIcon={<Iconfont name="sms" color={theme.colors.icon} />}
+              leftIcon={<Icon name="sms" color={theme.colors.icon} />}
               onBeforeSend={() => beforeSendSms(form.getFieldValue('phone'))}
               onSend={() => smsSend({ mobile: form.getFieldValue('phone'), type: SmsTypeEnum.登录 })}
             />
@@ -52,18 +52,14 @@ const FormContent = ({ isSmsLogin }: { isSmsLogin: boolean }) => {
       ) : (
         <Box>
           <Field name="username" rules={[{ required: true, message: '请输入用户名' }]}>
-            <Input
-              placeholder="请输入用户名"
-              leftIcon={<Iconfont name="user" color={theme.colors.icon} />}
-              allowClear
-            />
+            <Input placeholder="请输入用户名" leftIcon={<Icon name="user" color={theme.colors.icon} />} allowClear />
           </Field>
           <WhiteSpace size="x6" />
           <Field name="password" rules={[{ required: true, message: '请输入密码' }]}>
             <Input
               inputType="password"
               placeholder="请输入密码"
-              leftIcon={<Iconfont name="password" color={theme.colors.icon} />}
+              leftIcon={<Icon name="password" color={theme.colors.icon} />}
             />
           </Field>
         </Box>

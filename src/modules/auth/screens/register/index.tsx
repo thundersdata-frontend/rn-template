@@ -14,7 +14,7 @@ import { ErrorMessage } from 'modules/auth/components/ErrorMessage';
 import { useNavigation } from '@react-navigation/native';
 import { StackNavigationProp } from '@react-navigation/stack';
 import { SmsTypeEnum } from 'enums';
-import { Iconfont } from 'components';
+import { Icon } from 'components';
 
 const FormContent = () => {
   const [form] = useForm();
@@ -36,17 +36,17 @@ const FormContent = () => {
           { pattern: /^[a-z0-9A-Z0-9\-\_@]+$/, message: '用户名格式不正确' },
         ]}
       >
-        <Input placeholder="请输入用户名" leftIcon={<Iconfont name="user" color={theme.colors.icon} />} allowClear />
+        <Input placeholder="请输入用户名" leftIcon={<Icon name="user" color={theme.colors.icon} />} allowClear />
       </Field>
       <WhiteSpace size="x6" />
       <Field name="phone" rules={mobilePhoneRules}>
-        <Input placeholder="请输入手机号" leftIcon={<Iconfont name="mobile" color={theme.colors.icon} />} allowClear />
+        <Input placeholder="请输入手机号" leftIcon={<Icon name="mobile" color={theme.colors.icon} />} allowClear />
       </Field>
       <WhiteSpace size="x6" />
       <Field name="code" rules={[{ required: true, message: '请输入验证码' }]}>
         <CountDown
           bordered
-          leftIcon={<Iconfont name="sms" color={theme.colors.icon} />}
+          leftIcon={<Icon name="sms" color={theme.colors.icon} />}
           onBeforeSend={() => beforeSendSms(form.getFieldValue('phone'))}
           onSend={() => smsSend({ mobile: form.getFieldValue('phone'), type: SmsTypeEnum.注册 })}
         />
@@ -56,7 +56,7 @@ const FormContent = () => {
         <Input
           placeholder="请输入密码"
           inputType="password"
-          leftIcon={<Iconfont name="password" color={theme.colors.icon} />}
+          leftIcon={<Icon name="password" color={theme.colors.icon} />}
         />
       </Field>
       <WhiteSpace size="x6" />
@@ -79,7 +79,7 @@ const FormContent = () => {
         <Input
           placeholder="请再次输入密码"
           inputType="password"
-          leftIcon={<Iconfont name="password" color={theme.colors.icon} />}
+          leftIcon={<Icon name="password" color={theme.colors.icon} />}
         />
       </Field>
       <Box height={32} marginTop="x1">
