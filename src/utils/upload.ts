@@ -8,10 +8,10 @@ export async function uploadFile({ fileName, fileType, uri }: File) {
   const token = await getToken();
   const resultData = await RNFetchBlob.fetch(
     'POST',
-    `${Config.oss}/upload/public/head?access_token=${token}`,
+    `${Config.oss}/upload/public/head?access_token=${token.accessToken!}`,
     {
       'Content-Type': 'multipart/form-data',
-      Authorization: token,
+      Authorization: token.accessToken!,
     },
     [
       {
@@ -23,6 +23,7 @@ export async function uploadFile({ fileName, fileType, uri }: File) {
     ],
   );
   const result = resultData.json();
+  console.log(result);
   if (!result.success) throw new Error('上传失败');
   return result.data;
 }

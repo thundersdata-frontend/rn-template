@@ -1,19 +1,16 @@
 import { useCallback, useState } from 'react';
-import { atom } from 'jotai';
-import { useUpdateAtom } from 'jotai/utils';
 import { Toast } from '@td-design/react-native';
 import { uploadFile } from 'utils/upload';
+import { authAtom, userInfoAtom } from 'atoms';
 import { useToast } from 'hooks/useToast';
-import { getUserInfo, saveUserInfo } from 'utils/auth';
-import { userNamePattern } from 'utils/validators';
 import { useError } from 'hooks/useError';
+import { useUpdateAtom } from 'jotai/utils';
+import { signOut } from 'utils/auth';
+import { mockChangeAvatar, mockFetchUserInfo, mockUpdateUsername } from 'modules/mock';
 
-/** 用户信息 */
-export const userInfoAtom = atom<UserInfo>({});
-
-// TODO 将获取用户数据到atom和AsyncStorage的功能整合成一个方法
 export function useUserService() {
   const updateUserInfo = useUpdateAtom(userInfoAtom);
+  const updateAuth = useUpdateAtom(authAtom);
   const { toastSuccess, toastFail } = useToast();
   const { convertErrorMsg } = useError();
   const [refreshing, setRefreshing] = useState<boolean>(false);
@@ -24,16 +21,15 @@ export function useUserService() {
       try {
         Toast.submitting();
         const data = await uploadFile(file);
-        const userInfo = await getUserInfo();
-        // 调用后台更新头像接口
-        const success = true;
+        const newValues = {
+          profilePicture: data,
+        };
+        const success = await mockChangeAvatar(newValues);
         if (success) {
-          const userInfoData = {
-            ...userInfo,
+          updateUserInfo(draft => ({
+            ...draft,
             profilePicture: data,
-          };
-          saveUserInfo(userInfoData);
-          updateUserInfo(userInfoData);
+          }));
           toastSuccess('修改头像成功');
         }
         return data;
@@ -44,29 +40,21 @@ export function useUserService() {
     [toastFail, toastSuccess, updateUserInfo],
   );
 
-  // 修改用户名
+  // 修改昵称
   const updateNickname = useCallback(
     async value => {
       if (!value) {
-        toastFail('用户名输入为空');
-        return;
-      }
-      if (!userNamePattern.test(value)) {
-        toastFail('用户名不符合规范');
+        toastFail('昵称输入为空');
         return;
       }
       try {
         Toast.submitting();
-        // 调用后台修改昵称的接口
-        const success = true;
+        const success = await mockUpdateUsername({ userName: value });
         if (success) {
-          const userInfo = await getUserInfo();
-          const userInfoData = {
-            ...userInfo,
+          updateUserInfo(draft => ({
+            ...draft,
             userName: value,
-          };
-          saveUserInfo(userInfoData);
-          updateUserInfo(userInfoData);
+          }));
           toastSuccess('修改昵称成功');
         }
       } catch (error) {
@@ -80,17 +68,18 @@ export function useUserService() {
   const refreshUserInfo = useCallback(async () => {
     try {
       setRefreshing(true);
-      // 调用后台获取用户数据的接口
-      const result = {};
-      saveUserInfo(result);
+      const result = await mockFetchUserInfo();
       updateUserInfo(result);
       setRefreshing(false);
     } catch (error) {
       const message = convertErrorMsg(error);
       toastFail(message);
       setRefreshing(false);
+      // 用户信息获取失败自动认为登录失效
+      await signOut();
+      updateAuth({ signedIn: false });
     }
-  }, [convertErrorMsg, toastFail, updateUserInfo]);
+  }, [convertErrorMsg, toastFail, updateAuth, updateUserInfo]);
 
   return {
     refreshing,

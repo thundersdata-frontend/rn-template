@@ -1,103 +1,125 @@
-import { useCallback, useEffect, useState } from 'react';
+/* eslint-disable @typescript-eslint/ban-ts-comment */
+import { authAtom } from 'atoms';
 import { LoginFailureEnum, RefreshStateEnum } from 'enums';
+import { BaseOptions, Service } from 'hooks/useRequest/types';
+import { useAsync } from 'hooks/useRequest/useAsync';
+import { useAtom } from 'jotai';
+import { useCallback, useState } from 'react';
 import { signOut } from 'utils/auth';
-import { authAtom } from 'modules/auth/authService';
-import { useUpdateAtom } from 'jotai/utils';
 
-// 需要重新刷新的 page
-const REFRESH_PAGE = 0;
 // 初始化 page
 const INITIAL_PAGE = 1;
 
-export function useRefreshService<T>(
-  service: ((data: Record<string, unknown>, params: Record<string, unknown>) => Promise<Page<T>>) | null,
-  options?: {
-    bodyParams?: Record<string, unknown>;
-    params?: Record<string, unknown>;
+interface BasicResult<T, P> {
+  run: (args: P) => Promise<unknown>;
+  refreshState: RefreshStateEnum;
+  list: T[];
+  headerRefresh: () => void;
+  footerRefresh: () => void;
+  updateParams: (params: P) => void;
+}
+
+function useRefreshService<T, R extends Page<T> = Page<T>, P extends any[] = any>(
+  service: Service<R, P>,
+  options?: Omit<BaseOptions<R, P>, 'onSuccess' | 'onError' | 'refreshDeps'> & {
+    onSuccess?: (list: T[]) => void;
   },
-  callback?: (list: T[]) => void,
-) {
-  const updateAuth = useUpdateAtom(authAtom);
+): BasicResult<T, P>;
+
+function useRefreshService<T>(service: any, options?: any) {
+  const [auth, updateAuth] = useAtom(authAtom);
   const [refreshState, setRefreshState] = useState(RefreshStateEnum.HeaderRefreshing);
-  const [currentPage, setCurrentPage] = useState(REFRESH_PAGE);
+  const [currentPage, setCurrentPage] = useState(INITIAL_PAGE);
   const [list, setList] = useState<T[]>([]);
-  const { bodyParams, params } = options || {};
 
-  /** 设置 list */
-  const handleSetList = useCallback(
-    (newList: T[]) => {
-      setList(newList);
-      callback?.(newList);
+  const promiseService = (...args: any) =>
+    new Promise((resolve, reject) => {
+      if (!auth.signedIn) {
+        reject(JSON.stringify({ code: LoginFailureEnum.登录过期 }));
+      }
+      const s = service(...args);
+      s.then(resolve).catch(reject);
+    });
+
+  const { run, params } = useAsync(promiseService, {
+    defaultParams: [
+      {
+        page: INITIAL_PAGE,
+        pageSize: 10,
+      },
+    ],
+    ...options,
+    onSuccess(data: any) {
+      // 对data进行处理
+      const { list: resultList = [], total = 0, page = INITIAL_PAGE, totalPage = 0 } = data;
+      setCurrentPage(page);
+
+      let _list: T[] = [];
+      if (total === 0) {
+        _list = [];
+      } else if (page === INITIAL_PAGE) {
+        _list = resultList;
+      } else {
+        _list = list.concat(resultList);
+      }
+      setList(_list);
+      options?.onSuccess?.(_list);
+
+      if (totalPage === 0) {
+        setRefreshState(RefreshStateEnum.EmptyData);
+      } else if (page === totalPage) {
+        setRefreshState(RefreshStateEnum.NoMoreData);
+      } else {
+        setRefreshState(RefreshStateEnum.Idle);
+      }
     },
-    [callback, setList],
-  );
-
-  useEffect(() => {
-    setRefreshState(RefreshStateEnum.HeaderRefreshing);
-  }, [bodyParams, params]);
-
-  useEffect(() => {
-    if (currentPage === REFRESH_PAGE) {
-      setCurrentPage(INITIAL_PAGE);
-      return;
-    }
-    if (!service) {
-      setRefreshState(RefreshStateEnum.EmptyData);
-      return;
-    }
-    service({ pageSize: 10, page: currentPage, ...bodyParams }, { ...params })
-      .then(result => {
-        const { list: resultList = [], total = 0, page = INITIAL_PAGE, totalPage = 0 } = result;
-        setCurrentPage(page);
-        if (total === 0) {
-          handleSetList([]);
-        } else if (page === INITIAL_PAGE) {
-          handleSetList(resultList);
-        } else {
-          handleSetList(list.concat(resultList as any));
-        }
-        if (totalPage === 0) {
-          setRefreshState(RefreshStateEnum.EmptyData);
-        } else if (page === totalPage) {
-          setRefreshState(RefreshStateEnum.NoMoreData);
-        } else {
-          setRefreshState(RefreshStateEnum.Idle);
-        }
-      })
-      .catch(error => {
-        const { code } = JSON.parse(error.message);
-        if ([LoginFailureEnum.登录无效, LoginFailureEnum.登录过期, LoginFailureEnum.登录禁止].includes(code)) {
-          signOut().then(() => {
-            updateAuth({ signedIn: false });
-          });
-        } else if (currentPage === INITIAL_PAGE) {
-          handleSetList([]);
-          setRefreshState(RefreshStateEnum.Failure);
-        }
-      });
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [bodyParams, currentPage, params, service]);
+    onError(err) {
+      const { code } = JSON.parse(err.message);
+      if ([LoginFailureEnum.登录无效, LoginFailureEnum.登录过期, LoginFailureEnum.登录禁止].includes(code)) {
+        signOut().then(() => {
+          updateAuth({ signedIn: false });
+        });
+      } else if (currentPage === INITIAL_PAGE) {
+        setList([]);
+        options?.onSuccess?.([]);
+      }
+      setRefreshState(RefreshStateEnum.Failure);
+    },
+  });
 
   /**
    * 从头开始刷新数据
    */
   const headerRefresh = useCallback(() => {
-    setCurrentPage(REFRESH_PAGE);
     setRefreshState(RefreshStateEnum.HeaderRefreshing);
-  }, []);
+    run({ ...params[0], pageSize: 10, page: INITIAL_PAGE });
+  }, [run, params]);
 
   /**
    * 加载下一页数据
    */
   const footerRefresh = useCallback(() => {
-    setCurrentPage(page => page + 1);
     setRefreshState(RefreshStateEnum.FooterRefreshing);
-  }, []);
+    const { page, pageSize } = params[0];
+    run({ ...params[0], pageSize, page: page + 1 });
+  }, [run, params]);
+
+  const updateParams = useCallback(
+    (params: any) => {
+      setRefreshState(RefreshStateEnum.HeaderRefreshing);
+      run({ ...params, pageSize: 10, page: INITIAL_PAGE });
+    },
+    [run],
+  );
 
   return {
+    run,
     refreshState,
     list,
     headerRefresh,
     footerRefresh,
+    updateParams,
   };
 }
+
+export { useRefreshService };

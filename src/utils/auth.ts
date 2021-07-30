@@ -1,17 +1,8 @@
 import AsyncStorage from '@react-native-async-storage/async-storage';
-import { convertNullToEmptyString } from './string';
+import { removeEmpty } from './object';
 
 const TOKEN_KEY = 'token';
 const USER_INFO = 'userInfo';
-
-export const saveToken = (token: string) => {
-  AsyncStorage.setItem(TOKEN_KEY, token);
-};
-
-export const saveUserInfo = (info: UserInfo) => {
-  const userInfo = convertNullToEmptyString(info);
-  AsyncStorage.setItem(USER_INFO, JSON.stringify(userInfo));
-};
 
 /**
  * @功能描述: 退出登录
@@ -36,19 +27,24 @@ export const signOut = () => {
  * @返回值:
  */
 export const isSignedIn = async () => {
-  const result = await AsyncStorage.getItem(TOKEN_KEY);
+  const result = await AsyncStorage.getItem(USER_INFO);
   return !!result;
 };
 
-export const getUserInfo: () => Promise<UserInfo> = async () => {
-  const result = await AsyncStorage.getItem(USER_INFO);
+/**
+ * 持久化token相关数据
+ * @param token
+ */
+export const saveToken = (token: Token) => {
+  const { accessToken, refreshToken, tokenExpireTime, tokenExpiresIn } = token;
+  const _token = removeEmpty({ accessToken, refreshToken, tokenExpireTime, tokenExpiresIn });
+  AsyncStorage.setItem(TOKEN_KEY, JSON.stringify(_token));
+};
+
+export const getToken: () => Promise<Token> = async () => {
+  const result = await AsyncStorage.getItem(TOKEN_KEY);
   if (result) {
     return JSON.parse(result);
   }
   return {};
-};
-
-export const getToken = async () => {
-  const result = await AsyncStorage.getItem(TOKEN_KEY);
-  return result || '';
 };

@@ -8,20 +8,20 @@ import { AppTheme } from 'theme';
 import { passwordPattern } from 'utils/validators';
 import { ErrorMessage } from 'modules/auth/components/ErrorMessage';
 import { Box, Icon } from 'components';
-import { useAuthService } from 'modules/auth/authService';
+import { useAuthService } from 'modules/auth/useAuthService';
 
 const { px } = helpers;
 
 const FormContent = () => {
   const theme = useTheme<AppTheme>();
   const [form] = useForm();
-  const { error, clearError, submitFormFailed, changePassword } = useAuthService();
+  const { error, clearError, submitFormFailed, modifyPassword } = useAuthService();
 
   return (
     <Form
       component={false}
       form={form}
-      onFinish={changePassword}
+      onFinish={modifyPassword}
       onFinishFailed={submitFormFailed}
       onValuesChange={clearError}
     >

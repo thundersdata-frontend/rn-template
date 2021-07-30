@@ -7,7 +7,7 @@ import { Text } from 'components';
 import Icon, { IconNames } from '../../components/Icon';
 
 import { Homepage } from 'modules/homepage/screens';
-import { Mine } from 'modules/mine/screens';
+import { Mine } from 'modules/user/screens';
 
 const { px } = helpers;
 const Tab = createBottomTabNavigator();

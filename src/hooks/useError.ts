@@ -1,6 +1,6 @@
+import { authAtom } from 'atoms';
 import { LoginFailureEnum } from 'enums';
 import { useUpdateAtom } from 'jotai/utils';
-import { authAtom } from 'modules/auth/authService';
 import { useCallback } from 'react';
 import { signOut } from 'utils/auth';
 
@@ -17,12 +17,10 @@ export function useError() {
         }
         const { message, code } = JSON.parse(error.message);
         if ([LoginFailureEnum.登录无效, LoginFailureEnum.登录过期, LoginFailureEnum.登录禁止].includes(code)) {
-          // 删除极光推送的别名
-          // JPush.deleteAlias({ sequence: 1 });
           signOut().then(() => {
             updateAuth({ signedIn: false });
           });
-          return;
+          return LoginFailureEnum[code];
         }
         return message;
       } catch (error) {

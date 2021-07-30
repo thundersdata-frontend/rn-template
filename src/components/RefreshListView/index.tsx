@@ -7,7 +7,6 @@ import { AppTheme } from 'theme';
 
 const { UIActivityIndicator } = Indicator;
 const { px } = helpers;
-
 interface RefreshListViewProps<T> extends FlatListProps<T> {
   refreshState: number;
   onHeaderRefresh: () => void;

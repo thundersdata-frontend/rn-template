@@ -6,4 +6,24 @@ interface Page<T> {
   totalPage?: number;
 }
 
-type UserInfo = any;
+type UserInfo = {
+  userId?: number;
+  userName?: string;
+  profilePicture?: string;
+};
+
+interface Token {
+  accessToken?: string;
+  refreshToken?: string;
+  tokenExpireTime?: string;
+  tokenExpiresIn?: number;
+  userId?: number;
+  ispassword?: boolean;
+}
+
+interface AjaxResponse<T = any> {
+  code: number;
+  success: boolean;
+  message: string;
+  data: T;
+}

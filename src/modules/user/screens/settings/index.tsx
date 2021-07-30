@@ -3,8 +3,8 @@ import { ListItem, Modal, Image, helpers, Input } from '@td-design/react-native'
 
 import { Box } from 'components';
 import { useUpdateAtom } from 'jotai/utils';
-import { authAtom } from 'modules/auth/authService';
-import { useUserService } from 'modules/mine/useUserService';
+import { authAtom } from 'atoms';
+import { useUserService } from 'modules/user/useUserService';
 import { signOut } from 'utils/auth';
 
 const { px } = helpers;
@@ -44,7 +44,7 @@ export function Settings() {
           })
         }
       />
-      <ListItem title="修改密码" arrow="horizontal" onPress={() => navigation.navigate('ChangePassword')} />
+      <ListItem title="修改密码" arrow="horizontal" onPress={() => navigation.navigate('ModifyPassword')} />
       <ListItem title="注销登录" arrow="horizontal" onPress={handleLogout} />
     </Box>
   );

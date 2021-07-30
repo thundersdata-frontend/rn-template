@@ -8,7 +8,7 @@ import { Input, WhiteSpace, CountDown, Button, Box } from '@td-design/react-nati
 import { AuthTemplate } from 'modules/auth/components/AuthTemplate';
 import { AppTheme } from 'theme';
 import { mobilePhoneRules, passwordRules } from 'utils/validators';
-import { useAuthService } from 'modules/auth/authService';
+import { useAuthService } from 'modules/auth/useAuthService';
 import { ErrorMessage } from 'modules/auth/components/ErrorMessage';
 import { useNavigation } from '@react-navigation/native';
 import { StackNavigationProp } from '@react-navigation/stack';

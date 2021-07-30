@@ -14,6 +14,16 @@ module.exports = {
         libraryName: '@td-design/react-native',
         libraryDirectory: 'lib/module',
       },
+      'rn',
+    ],
+    [
+      'import',
+      {
+        libraryName: 'lodash',
+        libraryDirectory: '',
+        camel2DashComponentName: false, // default: true
+      },
+      'lodash',
     ],
     [
       '@babel/plugin-transform-react-jsx',

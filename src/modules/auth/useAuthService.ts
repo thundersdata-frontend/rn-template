@@ -1,21 +1,35 @@
 import { useCallback, useState } from 'react';
-import { atom } from 'jotai';
-import { Store, ValidateErrorEntity } from 'rc-field-form/es/interface';
 import { Keyboard } from 'react-native';
+import { Store, ValidateErrorEntity } from 'rc-field-form/es/interface';
+import { useUpdateAtom } from 'jotai/utils';
+
+import { authAtom, tokenAtom, userInfoAtom } from 'atoms';
 import { useToast } from 'hooks/useToast';
 import { useError } from 'hooks/useError';
-
-/** 是否登录 */
-export const authAtom = atom({
-  signedIn: false,
-});
+import {
+  mockConfigPassword,
+  mockFetchUserInfo,
+  mockLogin,
+  mockRegister,
+  mockResetPassword,
+  mockSendSms,
+  mockUpdatePassword,
+} from 'modules/mock';
+import { useNavigation } from '@react-navigation/native';
+import { mobilePattern } from 'utils/validators';
+import { signOut } from 'utils/auth';
 
 export function useAuthService(isSmsLogin = true) {
+  const navigation = useNavigation();
   const { convertErrorMsg } = useError();
   const [error, setError] = useState('');
   const [loading, setLoading] = useState(false);
   const [disabled, setDisabled] = useState(true);
   const { toastFail, toastSuccess } = useToast();
+
+  const updateAuth = useUpdateAtom(authAtom);
+  const updateUserInfo = useUpdateAtom(userInfoAtom);
+  const updateToken = useUpdateAtom(tokenAtom);
 
   const submitFormFailed = useCallback((errorInfo: ValidateErrorEntity) => {
     const { errorFields } = errorInfo;
@@ -53,32 +67,66 @@ export function useAuthService(isSmsLogin = true) {
     setError('');
   }, []);
 
+  /** 查询用户信息 */
+  const fetchUserInfo = useCallback(async () => {
+    try {
+      const userInfo = await mockFetchUserInfo();
+      updateUserInfo(userInfo);
+      updateAuth({ signedIn: true });
+    } catch (error) {
+      const message = convertErrorMsg(error);
+      toastFail(message);
+    }
+  }, [convertErrorMsg, toastFail, updateAuth, updateUserInfo]);
+
   /** 验证码登录 */
   const smsLogin = useCallback(
     async values => {
       try {
-        console.log(values);
+        setLoading(true);
+        const data = await mockLogin(values);
+        if (data) {
+          const { ispassword } = data;
+          updateToken(data);
+          await fetchUserInfo();
+          setLoading(false);
+          if (!!ispassword) {
+            navigation.navigate('ConfigPass');
+          }
+        } else {
+          setLoading(false);
+          setError('对不起，登录失败');
+        }
       } catch (error) {
         setLoading(false);
         const message = convertErrorMsg(error);
         setError(message);
       }
     },
-    [convertErrorMsg],
+    [convertErrorMsg, fetchUserInfo, navigation, updateToken],
   );
 
   /** 用户名密码登录 */
   const login = useCallback(
     async values => {
       try {
-        console.log(values);
+        setLoading(true);
+        const data = await mockLogin(values);
+        if (data) {
+          updateToken(data);
+          await fetchUserInfo();
+          setLoading(false);
+        } else {
+          setLoading(false);
+          setError('对不起，登录失败');
+        }
       } catch (error) {
         setLoading(false);
         const message = convertErrorMsg(error);
         setError(message);
       }
     },
-    [convertErrorMsg],
+    [convertErrorMsg, fetchUserInfo, updateToken],
   );
 
   /** 登录表单提交 */
@@ -94,23 +142,23 @@ export function useAuthService(isSmsLogin = true) {
     [isSmsLogin, login, smsLogin],
   );
 
-  /** 修改密码 */
-  const changePassword = useCallback(
+  /** 注册之后设置密码 */
+  const configPassword = useCallback(
     async values => {
       try {
         Keyboard.dismiss();
-        // 调用后台修改密码接口
-        console.log(values);
-        const data = true;
-        if (!data) {
-          toastFail('修改密码失败');
+        const data = await mockConfigPassword(values);
+        if (data) {
+          updateAuth({ signedIn: true });
+        } else {
+          setError('对不起，设置密码失败');
         }
       } catch (error) {
         const message = convertErrorMsg(error);
         setError(message);
       }
     },
-    [convertErrorMsg, toastFail],
+    [convertErrorMsg, updateAuth],
   );
 
   /** 重置密码 */
@@ -118,13 +166,37 @@ export function useAuthService(isSmsLogin = true) {
     async values => {
       try {
         Keyboard.dismiss();
-        console.log(values);
+        const data = await mockResetPassword(values);
+        if (data) {
+          navigation?.canGoBack() && navigation.goBack();
+        } else {
+          setError('对不起，重置密码失败');
+        }
       } catch (error) {
         const message = convertErrorMsg(error);
         setError(message);
       }
     },
-    [convertErrorMsg],
+    [convertErrorMsg, navigation],
+  );
+
+  /** 修改密码 */
+  const modifyPassword = useCallback(
+    async values => {
+      try {
+        Keyboard.dismiss();
+        const data = await mockUpdatePassword(values);
+        if (data) {
+          navigation.navigate('ModifyPasswordResult');
+        } else {
+          toastFail('修改密码失败');
+        }
+      } catch (error) {
+        const message = convertErrorMsg(error);
+        toastFail(message);
+      }
+    },
+    [convertErrorMsg, navigation, toastFail],
   );
 
   /** 发送验证码之前的校验 */
@@ -133,7 +205,7 @@ export function useAuthService(isSmsLogin = true) {
       if (!phone) {
         toastFail('手机号为空');
         return Promise.resolve(false);
-      } else if (!/^(?:(?:\+|00)86)?1[3-9]\d{9}$/.test(phone)) {
+      } else if (!mobilePattern.test(phone)) {
         toastFail('手机号格式不正确');
         return Promise.resolve(false);
       }
@@ -147,7 +219,7 @@ export function useAuthService(isSmsLogin = true) {
     async values => {
       try {
         Keyboard.dismiss();
-        console.log(values);
+        await mockSendSms(values);
       } catch (error) {
         const message = convertErrorMsg(error);
         setError(message);
@@ -156,6 +228,13 @@ export function useAuthService(isSmsLogin = true) {
     [convertErrorMsg],
   );
 
+  /** 退出登录 */
+  const signedOut = useCallback(() => {
+    signOut().then(() => {
+      updateAuth({ signedIn: false });
+    });
+  }, [updateAuth]);
+
   /**
    * 注册
    */
@@ -163,15 +242,18 @@ export function useAuthService(isSmsLogin = true) {
     async (values: Store) => {
       try {
         Keyboard.dismiss();
-        console.log(values);
+        setLoading(true);
+        await mockRegister(values);
+        setLoading(false);
         toastSuccess('恭喜你，注册成功');
+        navigation.navigate('SignIn'); // 注册成功后去登录页面登录
       } catch (error) {
         setLoading(false);
         const message = convertErrorMsg(error);
         setError(message);
       }
     },
-    [convertErrorMsg, toastSuccess],
+    [convertErrorMsg, navigation, toastSuccess],
   );
 
   return {
@@ -183,10 +265,12 @@ export function useAuthService(isSmsLogin = true) {
     handleFinish,
     submitFormFailed,
     handleFormValueChange,
+    signedOut,
     beforeSendSms,
     smsSend,
-    changePassword,
+    configPassword,
     forgetPassword,
+    modifyPassword,
     register,
   };
 }

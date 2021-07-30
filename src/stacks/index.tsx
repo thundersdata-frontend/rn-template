@@ -5,7 +5,7 @@ import { useAtomValue } from 'jotai/utils';
 
 import { MainStack } from './mainStack';
 import { AuthStack } from './authStack';
-import { authAtom } from 'modules/auth/authService';
+import { authAtom } from 'atoms';
 import { AppTheme } from 'theme';
 
 const { px } = helpers;

@@ -6,7 +6,7 @@ import { useTheme } from '@shopify/restyle';
 import { Button, Checkable, CountDown, Flex, helpers, Input, WhiteSpace } from '@td-design/react-native';
 
 import { LoginTab } from '../LoginTab';
-import { useAuthService } from 'modules/auth/authService';
+import { useAuthService } from 'modules/auth/useAuthService';
 import { mobilePhoneRules } from 'utils/validators';
 import { ErrorMessage } from 'modules/auth/components/ErrorMessage';
 import { AppTheme } from 'theme';

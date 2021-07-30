@@ -7,7 +7,7 @@ import { useUpdateAtom } from 'jotai/utils';
 import { ThemeProvider } from '@td-design/react-native';
 
 import { Stack } from './stacks';
-import { authAtom } from 'modules/auth/authService';
+import { authAtom } from 'atoms';
 import { Fallback } from 'components';
 import { lightTheme, darkTheme } from 'theme';
 import { linking } from 'linking';

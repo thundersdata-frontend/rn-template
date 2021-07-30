@@ -1,7 +1,10 @@
-import type { ResponseError } from 'umi-request';
-import { extend } from 'umi-request';
+import { extend, ResponseError } from 'umi-request';
+import dayjs from 'dayjs';
+
 import { LoginFailureEnum } from './enums';
-import { getToken } from 'utils/auth';
+import { getToken, saveToken } from 'utils/auth';
+import Config from 'react-native-config';
+import { isEmpty } from 'lodash';
 
 const codeMessage: Record<number, string> = {
   200: '服务器成功返回请求的数据。',
@@ -39,26 +42,57 @@ export function errorHandler(error: ResponseError) {
 }
 
 export const initRequest = async () => {
-  const token = await getToken();
   const request = extend({
-    timeout: 10000,
-    headers: {
-      accessToken: token,
-    },
+    timeout: 30000,
     errorHandler,
   });
 
-  request.interceptors.response.use(response => {
-    response
-      .clone()
-      .json()
-      .then(res => {
-        if ([LoginFailureEnum.登录无效, LoginFailureEnum.登录过期, LoginFailureEnum.登录禁止].includes(res.code)) {
+  /** 使用中间件在请求前进行token的校验 */
+  request.use(async (ctx, next) => {
+    try {
+      const token = await getToken();
+      if (isEmpty(token)) {
+        await next();
+        return;
+      }
+      const { accessToken, refreshToken, tokenExpireTime } = token;
+
+      // 判断当前日期是否晚于tokenExpireTime，如果是表示token已经过期，需要用refreshToken去换一个新的token
+      if (dayjs().isAfter(dayjs(tokenExpireTime))) {
+        const result = await fetch(`${Config['basic']}/auth/token/refresh?refreshToken=${refreshToken}`).then(
+          response => response.json(),
+        );
+        const { data } = result;
+        saveToken(data);
+        // 对request的header增加accessToken配置
+        ctx.req.options = {
+          ...ctx.req.options,
+          headers: {
+            ...ctx.req.options.headers,
+            accessToken: data.accessToken!,
+          },
+        };
+        await next();
+      } else {
+        // 对request的header增加accessToken配置
+        ctx.req.options = {
+          ...ctx.req.options,
+          headers: {
+            ...ctx.req.options.headers,
+            accessToken: accessToken!,
+          },
+        };
+        await next();
+      }
+    } catch (error) {
+    } finally {
+      if (ctx.res) {
+        const { code } = ctx.res;
+        if ([LoginFailureEnum.登录无效, LoginFailureEnum.登录过期, LoginFailureEnum.登录禁止].includes(code)) {
           throw new Error('LoginFailure');
         }
-      });
-    return response;
+      }
+    }
   });
-
   return request;
 };
