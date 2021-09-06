@@ -1,6 +1,7 @@
-import { FC, useState } from 'react';
+import { FC } from 'react';
 import { StyleProp, TouchableOpacity, TouchableWithoutFeedback } from 'react-native';
 import { helpers, Image, Modal } from '@td-design/react-native';
+import { useSafeState } from '@td-design/rn-hooks';
 
 import { ViewStyle } from 'react-native';
 
@@ -13,7 +14,7 @@ interface PreviewImageProps {
 
 const { deviceWidth, deviceHeight } = helpers;
 export const PreviewImage: FC<PreviewImageProps> = ({ width, height, uri, style }) => {
-  const [visible, setVisible] = useState(false);
+  const [visible, setVisible] = useSafeState(false);
 
   return (
     <>

@@ -1,6 +1,6 @@
 {
   "name": "rn-template",
-  "version": "0.0.1",
+  "version": "1.0.0",
   "private": true,
   "scripts": {
     "android:dev": "ENVFILE=.env.dev react-native run-android",
@@ -31,14 +31,15 @@
     "@react-native-async-storage/async-storage": "^1.15.7",
     "@react-native-community/masked-view": "^0.1.11",
     "@react-native-picker/picker": "^1.16.7",
-    "@react-navigation/bottom-tabs": "^5.11.11",
-    "@react-navigation/native": "^5.9.4",
-    "@react-navigation/stack": "^5.14.5",
+    "@react-navigation/bottom-tabs": "^6.0.5",
+    "@react-navigation/native": "^6.0.2",
+    "@react-navigation/stack": "^6.0.7",
     "@shopify/restyle": "^1.4.0",
     "@td-design/react-native": "^3.5.1",
     "@td-design/react-native-echarts": "^1.1.0",
-    "@td-design/react-native-image-picker": "^1.4.0",
+    "@td-design/react-native-image-picker": "^1.5.1",
     "@td-design/react-native-picker": "^1.6.1",
+    "@td-design/rn-hooks": "^1.0.1",
     "immer": "^9.0.6",
     "jotai": "^1.3.2",
     "lodash": "^4.17.21",
@@ -47,14 +48,14 @@
     "react-error-boundary": "^3.1.3",
     "react-native": "0.64.2",
     "react-native-background-timer": "^2.4.1",
-    "react-native-bootsplash": "^3.2.4",
+    "react-native-bootsplash": "^3.2.5",
     "react-native-config": "^1.4.4",
     "react-native-exception-handler": "^2.10.10",
     "react-native-fast-image": "^8.3.7",
     "react-native-gesture-handler": "^1.10.3",
     "react-native-image-picker": "^4.0.6",
     "react-native-reanimated": "^2.2.0",
-    "react-native-redash": "^16.2.1",
+    "react-native-redash": "^16.2.2",
     "react-native-restart": "^0.0.22",
     "react-native-safe-area-context": "^3.3.2",
     "react-native-screens": "^3.6.0",
@@ -72,7 +73,7 @@
     "@commitlint/cli": "^12.1.4",
     "@commitlint/config-conventional": "^12.1.4",
     "@react-native-community/eslint-config": "^3.0.0",
-    "@td-design/pont-engine": "1.0.2",
+    "@td-design/pont-engine": "1.0.3",
     "@td-design/svgicon-cli": "^1.1.4",
     "@testing-library/react-hooks": "^7.0.2",
     "@types/jest": "^26.0.23",
@@ -105,19 +106,5 @@
     "shelljs": "^0.8.4",
     "ts-jest": "^27.0.3",
     "typescript": "^4.3.4"
-  },
-  "jest": {
-    "preset": "react-native",
-    "moduleFileExtensions": [
-      "ts",
-      "tsx",
-      "js",
-      "jsx",
-      "json",
-      "node"
-    ],
-    "setupFilesAfterEnv": [
-      "./jest.setup.js"
-    ]
   }
 }

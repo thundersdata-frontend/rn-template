@@ -1,10 +1,10 @@
-import { useEffect, useState } from 'react';
 import { SafeAreaProvider } from 'react-native-safe-area-context';
 import { NavigationContainer } from '@react-navigation/native';
 import RNBootSplash from 'react-native-bootsplash';
 import { SWRConfig } from 'swr';
 import { useUpdateAtom } from 'jotai/utils';
 import { ThemeProvider } from '@td-design/react-native';
+import { useSafeState, useMount } from '@td-design/rn-hooks';
 
 import { Stack } from './stacks';
 import { authAtom } from 'atoms';
@@ -14,9 +14,9 @@ import { linking } from 'linking';
 
 export function App() {
   const updateAuth = useUpdateAtom(authAtom);
-  const [dark] = useState(false);
+  const [dark] = useSafeState(false);
 
-  useEffect(() => {
+  useMount(() => {
     const init = async () => {
       // …do multiple sync or async tasks
     };
@@ -24,7 +24,7 @@ export function App() {
     init().finally(async () => {
       await RNBootSplash.hide({ fade: true });
     });
-  }, []);
+  });
 
   /**
    * 全局的错误处理，当接口返回的是登录失败时自动登出进入登录页面重新登录

@@ -1,6 +1,6 @@
-import { useState } from 'react';
 import { Easing, useDerivedValue, useSharedValue, withTiming } from 'react-native-reanimated';
 import { helpers } from '@td-design/react-native';
+import { useSafeState } from '@td-design/rn-hooks';
 import { KeyboardAwareScrollView } from 'components';
 import { Container } from 'modules/auth/components/Container';
 
@@ -15,7 +15,7 @@ const timingConfig = {
   easing: Easing.inOut(Easing.ease),
 };
 export function SignIn() {
-  const [activeKey, setActiveKey] = useState('sms');
+  const [activeKey, setActiveKey] = useSafeState('sms');
   const isSmsLogin = activeKey === 'sms';
 
   const showLoginForm = useSharedValue(false);

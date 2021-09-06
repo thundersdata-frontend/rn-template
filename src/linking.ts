@@ -1,6 +1,6 @@
 import { LinkingOptions } from '@react-navigation/native';
 
-export const linking: LinkingOptions = {
+export const linking: LinkingOptions<AuthStackParamList & MainStackParamList> = {
   enabled: true,
   prefixes: ['rntemplate://app'],
   config: {

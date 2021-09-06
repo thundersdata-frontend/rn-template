@@ -5,9 +5,11 @@ type AuthStackParamList = {
   Register: undefined;
   Privacy: undefined;
   UserAgreement: undefined;
+  ModifyPasswordResult: undefined;
 };
 
 type MainStackParamList = {
+  Tab: undefined;
   Homepage: undefined;
   Mine: undefined;
   Address: undefined;

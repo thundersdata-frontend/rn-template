@@ -11,7 +11,7 @@ import { Mine } from 'modules/user/screens';
 
 const { px } = helpers;
 const Tab = createBottomTabNavigator();
-const tabItems: { name: string; label: string; icon: IconNames; component: any }[] = [
+const tabItems: { name: string; label: string; icon: IconNames; component: () => JSX.Element }[] = [
   {
     name: 'Homepage',
     component: Homepage,
@@ -29,7 +29,7 @@ const tabItems: { name: string; label: string; icon: IconNames; component: any }
 export const TabStack = () => {
   const theme = useTheme<AppTheme>();
   return (
-    <Tab.Navigator initialRouteName="Homepage" lazy={true}>
+    <Tab.Navigator initialRouteName="Homepage" screenOptions={{ lazy: true }}>
       {tabItems.map(item => (
         <Tab.Screen
           key={item.name}

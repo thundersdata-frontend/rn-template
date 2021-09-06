@@ -1,10 +1,10 @@
 /* eslint-disable @typescript-eslint/ban-ts-comment */
 import { authAtom } from 'atoms';
+import { useMemoizedFn, useSafeState } from '@td-design/rn-hooks';
 import { LoginFailureEnum, RefreshStateEnum } from 'enums';
 import { BaseOptions, Service } from 'hooks/useRequest/types';
 import { useAsync } from 'hooks/useRequest/useAsync';
 import { useAtom } from 'jotai';
-import { useCallback, useState } from 'react';
 import { signOut } from 'utils/auth';
 
 // 初始化 page
@@ -28,9 +28,9 @@ function useRefreshService<T, R extends Page<T> = Page<T>, P extends any[] = any
 
 function useRefreshService<T>(service: any, options?: any) {
   const [auth, updateAuth] = useAtom(authAtom);
-  const [refreshState, setRefreshState] = useState(RefreshStateEnum.HeaderRefreshing);
-  const [currentPage, setCurrentPage] = useState(INITIAL_PAGE);
-  const [list, setList] = useState<T[]>([]);
+  const [refreshState, setRefreshState] = useSafeState(RefreshStateEnum.HeaderRefreshing);
+  const [currentPage, setCurrentPage] = useSafeState(INITIAL_PAGE);
+  const [list, setList] = useSafeState<T[]>([]);
 
   const promiseService = (...args: any) =>
     new Promise((resolve, reject) => {
@@ -90,35 +90,32 @@ function useRefreshService<T>(service: any, options?: any) {
   /**
    * 从头开始刷新数据
    */
-  const headerRefresh = useCallback(() => {
+  const headerRefresh = () => {
     setRefreshState(RefreshStateEnum.HeaderRefreshing);
     run({ ...params[0], pageSize: 10, page: INITIAL_PAGE });
-  }, [run, params]);
+  };
 
   /**
    * 加载下一页数据
    */
-  const footerRefresh = useCallback(() => {
+  const footerRefresh = () => {
     setRefreshState(RefreshStateEnum.FooterRefreshing);
     const { page, pageSize } = params[0];
     run({ ...params[0], pageSize, page: page + 1 });
-  }, [run, params]);
+  };
 
-  const updateParams = useCallback(
-    (params: any) => {
-      setRefreshState(RefreshStateEnum.HeaderRefreshing);
-      run({ ...params, pageSize: 10, page: INITIAL_PAGE });
-    },
-    [run],
-  );
+  const updateParams = (params: any) => {
+    setRefreshState(RefreshStateEnum.HeaderRefreshing);
+    run({ ...params, pageSize: 10, page: INITIAL_PAGE });
+  };
 
   return {
     run,
     refreshState,
     list,
-    headerRefresh,
-    footerRefresh,
-    updateParams,
+    headerRefresh: useMemoizedFn(headerRefresh),
+    footerRefresh: useMemoizedFn(footerRefresh),
+    updateParams: useMemoizedFn(updateParams),
   };
 }
 

@@ -19,6 +19,14 @@ module.exports = {
     [
       'import',
       {
+        libraryName: '@td-design/rn-hooks',
+        libraryDirectory: 'lib/module',
+      },
+      'hooks',
+    ],
+    [
+      'import',
+      {
         libraryName: 'lodash',
         libraryDirectory: '',
         camel2DashComponentName: false, // default: true
