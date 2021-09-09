@@ -7,6 +7,9 @@ import android.os.Bundle;
 import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
+
+import androidx.core.view.WindowCompat;
+
 import com.facebook.react.ReactActivity;
 import com.zoontek.rnbootsplash.RNBootSplash; // <- add this necessary import
 
@@ -37,6 +40,8 @@ public class MainActivity extends ReactActivity {
 
     super.onCreate(savedInstanceState);
     RNBootSplash.init(R.drawable.bootsplash, MainActivity.this); // <- display the generated bootsplash.xml drawable over our MainActivity
+    // Layout edge-to-edge
+    WindowCompat.setDecorFitsSystemWindows(getWindow(), false);
   }
 
   public static void setWindowFlag(Activity activity, final int bits, boolean on) {

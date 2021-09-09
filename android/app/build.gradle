@@ -202,6 +202,7 @@ private String generateVersionName() {
 
 dependencies {
     implementation fileTree(dir: "libs", include: ["*.jar"])
+    implementation "androidx.core:core:1.6.0" // <-- Add this
     //noinspection GradleDynamicVersion
     implementation "com.facebook.react:react-native:+"  // From node_modules
 
