@@ -1,7 +1,7 @@
 module.exports = {
   parser: '@typescript-eslint/parser',
   extends: ['plugin:@typescript-eslint/recommended', 'plugin:import/typescript', 'plugin:react-native/all'],
-  plugins: ['@typescript-eslint', 'import', 'react-hooks', 'react-native'],
+  plugins: ['@typescript-eslint', 'react-hooks', 'react-native', 'replace-hooks', 'import'],
   env: {
     'react-native/react-native': true,
   },
@@ -28,6 +28,8 @@ module.exports = {
     '@typescript-eslint/no-unused-vars': 2,
     '@typescript-eslint/no-empty-function': 0,
     'import/no-default-export': 2,
+    'import/no-duplicates': 'error',
+    'no-unused-modules': 'error',
     'react-hooks/rules-of-hooks': 2,
     'react-hooks/exhaustive-deps': 2,
     'react-native/no-unused-styles': 2,
@@ -37,5 +39,9 @@ module.exports = {
     'react-native/no-single-element-style-arrays': 2,
     'react-native/no-color-literals': 2,
     'react-native/sort-styles': 0,
+    'replace-hooks/no-forbidden-hooks': [
+      'error',
+      { useState: { tip: 'useSafeState', dependency: '@td-design/rn-hooks' } },
+    ],
   },
 };
