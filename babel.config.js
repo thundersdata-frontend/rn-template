@@ -21,6 +21,7 @@ module.exports = {
       {
         libraryName: '@td-design/rn-hooks',
         libraryDirectory: 'lib/module',
+        camel2DashComponentName: false, // default: true
       },
       'hooks',
     ],
