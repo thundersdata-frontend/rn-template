@@ -60,9 +60,6 @@ buck-out/
 /ios/Pods/
 Podfile.lock
 
-yarn.lock
-package-lock.json
-
 .mocks/
 .jest
 
