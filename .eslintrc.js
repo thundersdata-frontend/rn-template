@@ -1,6 +1,11 @@
 module.exports = {
   parser: '@typescript-eslint/parser',
-  extends: ['plugin:@typescript-eslint/recommended', 'plugin:import/typescript', 'plugin:react-native/all'],
+  extends: [
+    'plugin:@typescript-eslint/recommended',
+    'plugin:import/recommended',
+    'plugin:import/typescript',
+    'plugin:react-native/all',
+  ],
   plugins: ['@typescript-eslint', 'react-hooks', 'react-native', 'replace-hooks', 'import'],
   env: {
     'react-native/react-native': true,
@@ -11,6 +16,9 @@ module.exports = {
       pragma: 'React',
       version: 'detect',
     },
+    'import/resolver': {
+      typescript: {},
+    },
   },
   parserOptions: {
     //指定ESLint可以解析JSX语法
@@ -19,6 +27,8 @@ module.exports = {
     ecmaFeatures: {
       jsx: true,
     },
+    project: './tsconfig.json',
+    tsconfigRootDir: './',
   },
   rules: {
     'react/jsx-uses-react': 'off',
@@ -29,7 +39,8 @@ module.exports = {
     '@typescript-eslint/no-empty-function': 0,
     'import/no-default-export': 2,
     'import/no-duplicates': 'error',
-    'no-unused-modules': 'error',
+    'import/no-unused-modules': 'error',
+    'import/no-named-as-default': 0,
     'react-hooks/rules-of-hooks': 2,
     'react-hooks/exhaustive-deps': 2,
     'react-native/no-unused-styles': 2,

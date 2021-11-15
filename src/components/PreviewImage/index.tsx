@@ -1,9 +1,7 @@
 import { FC } from 'react';
-import { StyleProp, TouchableOpacity, TouchableWithoutFeedback } from 'react-native';
+import { StyleProp, TouchableOpacity, TouchableWithoutFeedback, ViewStyle } from 'react-native';
 import { helpers, Image, Modal } from '@td-design/react-native';
 import { useSafeState } from '@td-design/rn-hooks';
-
-import { ViewStyle } from 'react-native';
 
 interface PreviewImageProps {
   width: number;

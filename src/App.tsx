@@ -1,6 +1,6 @@
 import { SafeAreaProvider } from 'react-native-safe-area-context';
 import { NavigationContainer } from '@react-navigation/native';
-import RNBootSplash from 'react-native-bootsplash';
+import { hide as hideSplash } from 'react-native-bootsplash';
 import { SWRConfig } from 'swr';
 import { useUpdateAtom } from 'jotai/utils';
 import { ThemeProvider } from '@td-design/react-native';
@@ -22,7 +22,7 @@ export function App() {
     };
 
     init().finally(async () => {
-      await RNBootSplash.hide({ fade: true });
+      await hideSplash({ fade: true });
     });
   });
 

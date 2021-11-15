@@ -1,4 +1,3 @@
-/* eslint-disable @typescript-eslint/ban-ts-comment */
 import { authAtom } from 'atoms';
 import { useMemoizedFn, useSafeState } from '@td-design/rn-hooks';
 import { LoginFailureEnum, RefreshStateEnum } from 'enums';

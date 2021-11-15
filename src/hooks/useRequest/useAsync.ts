@@ -1,5 +1,6 @@
 /* eslint-disable react-hooks/exhaustive-deps */
-import { useCallback, useEffect, useRef, useState } from 'react';
+import { useCallback, useEffect, useRef } from 'react';
+import { useSafeState } from '@td-design/rn-hooks';
 import type { BaseOptions, BaseResult, FetchConfig, Fetches, FetchResult, Service, Subscribe } from './types';
 import { usePersistFn } from './utils/usePersistFn';
 import { useUpdateEffect } from './utils/useUpdateEffect';
@@ -104,7 +105,7 @@ class Fetch<R, P extends any[]> {
   }
 
   refresh() {
-    return this.run(...this.state.params) as Promise<R>;
+    return this.run(...this.state.params);
   }
 
   mutate(data: any) {
@@ -140,7 +141,7 @@ function useAsync<R, P extends any[], U>(service: Service<R, P>, options?: BaseO
     throwOnError,
   };
 
-  const [fetches, setFetches] = useState<Fetches<U, P>>(() => {
+  const [fetches, setFetches] = useSafeState<Fetches<U, P>>(() => {
     return {};
   });
 

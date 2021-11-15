@@ -2,7 +2,7 @@ import type { DependencyList } from 'react';
 
 export type noop = (...args: any[]) => void;
 
-export type Service<R extends any, P extends any[]> = (...args: P) => Promise<R>;
+export type Service<R, P extends any[]> = (...args: P) => Promise<R>;
 export type Subscribe<R, P extends any[]> = (data: FetchResult<R, P>) => void;
 export type Mutate<R> = (x: R | undefined | ((data: R) => R)) => void;
 

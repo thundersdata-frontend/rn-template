@@ -29,7 +29,15 @@ const tabItems: { name: string; label: string; icon: IconNames; component: () =>
 export const TabStack = () => {
   const theme = useTheme<AppTheme>();
   return (
-    <Tab.Navigator initialRouteName="Homepage" screenOptions={{ lazy: true }}>
+    <Tab.Navigator
+      initialRouteName="Homepage"
+      screenOptions={{
+        // 懒加载TabScreen
+        lazy: true,
+        // 不显示TabScreen的header
+        headerShown: false,
+      }}
+    >
       {tabItems.map(item => (
         <Tab.Screen
           key={item.name}
