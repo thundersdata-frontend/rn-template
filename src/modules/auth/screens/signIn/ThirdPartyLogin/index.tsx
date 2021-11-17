@@ -1,11 +1,13 @@
-import { Image, TouchableOpacity } from 'react-native';
+import { StyleSheet, TouchableOpacity } from 'react-native';
 import Animated, { useAnimatedStyle } from 'react-native-reanimated';
 import { mix } from 'react-native-redash';
 import { Flex, helpers } from '@td-design/react-native';
-import { Box, Text } from 'components';
+import { Box, Text, Icon } from 'components';
+import { AppTheme } from 'theme';
+import { useTheme } from '@shopify/restyle';
 
 const { px, deviceWidth } = helpers;
-const ICON_SIZE = px(48);
+const ICON_SIZE = px(24);
 
 export function ThirdPartyLogin({
   animation,
@@ -14,6 +16,7 @@ export function ThirdPartyLogin({
   animation: Animated.SharedValue<number>;
   onPress: (status: number) => void;
 }) {
+  const theme = useTheme<AppTheme>();
   const style = useAnimatedStyle(() => ({
     transform: [
       {
@@ -31,7 +34,7 @@ export function ThirdPartyLogin({
         }}
       >
         <Box backgroundColor="border" height={1} width={px(55)} />
-        <Box paddingHorizontal="x3" style={{ transform: [{ translateY: -px(10) }] }}>
+        <Box paddingHorizontal="x3">
           <Text variant="p1" color="white">
             第三方登录
           </Text>
@@ -39,14 +42,32 @@ export function ThirdPartyLogin({
         <Box backgroundColor="border" height={1} width={px(55)} />
       </Flex>
       <Flex marginTop="x3" justifyContent="center">
-        <TouchableOpacity activeOpacity={0.5} onPress={() => onPress(0)}>
-          <Image source={require('../../../assets/weichat.webp')} style={{ width: ICON_SIZE, height: ICON_SIZE }} />
+        <TouchableOpacity
+          style={[styles.icon, { backgroundColor: theme.colors.iconBg }]}
+          activeOpacity={0.5}
+          onPress={() => onPress(0)}
+        >
+          <Icon name="qq" size={ICON_SIZE} color={theme.colors.background} />
         </TouchableOpacity>
         <Box width={px(85)} />
-        <TouchableOpacity activeOpacity={0.5} onPress={() => onPress(0)}>
-          <Image source={require('../../../assets/qq.webp')} style={{ width: ICON_SIZE, height: ICON_SIZE }} />
+        <TouchableOpacity
+          style={[styles.icon, { backgroundColor: theme.colors.iconBg }]}
+          activeOpacity={0.5}
+          onPress={() => onPress(0)}
+        >
+          <Icon name="wechat" size={ICON_SIZE} color={theme.colors.background} />
         </TouchableOpacity>
       </Flex>
     </Animated.View>
   );
 }
+
+const styles = StyleSheet.create({
+  icon: {
+    width: ICON_SIZE * 2,
+    height: ICON_SIZE * 2,
+    borderRadius: ICON_SIZE,
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
+});

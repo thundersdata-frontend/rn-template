@@ -141,7 +141,7 @@ export function LoginForm({
   const styles = StyleSheet.create({
     top: {
       alignItems: 'center',
-      backgroundColor: theme.colors.white,
+      backgroundColor: theme.colors.background,
       borderRadius: px(20),
       height: px(320),
       marginHorizontal: px(18),

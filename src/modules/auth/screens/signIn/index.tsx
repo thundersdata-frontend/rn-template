@@ -36,7 +36,7 @@ export function SignIn() {
 
   return (
     <Container>
-      <KeyboardAwareScrollView style={{ height: deviceHeight - px(140) }}>
+      <KeyboardAwareScrollView style={{ height: deviceHeight - px(180) }}>
         {/* logo和欢迎语 */}
         <Logo {...{ animation }} />
         {/* 登录按钮组 */}

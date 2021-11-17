@@ -1815,10 +1815,10 @@
     lodash.throttle "^4.1.1"
     use-immer "^0.6.0"
 
-"@td-design/svgicon-cli@^1.1.4":
-  version "1.1.4"
-  resolved "https://registry.yarnpkg.com/@td-design/svgicon-cli/-/svgicon-cli-1.1.4.tgz#bbf183a3ea5443633f902fc73ca71f2e832d4be2"
-  integrity sha512-3FwnDtk0trFymn8ac9ousN8tMWt5evodH/EBBvdT/LvEqOZcHaD1EtbSHLBa2ok8jm+c6Kkk+L/faioz7ZtM0Q==
+"@td-design/svgicon-cli@^1.3.0":
+  version "1.3.0"
+  resolved "https://registry.yarnpkg.com/@td-design/svgicon-cli/-/svgicon-cli-1.3.0.tgz#bccaae48cee9c83632cb3f0729685eb99dddfc09"
+  integrity sha512-VET2c0EbIYpb1qfCJhLx1nM70B7LoL3C5WIB+LqXg1L6ANwgfYtvBE3Hy2fHk45Tv9UNbhgfuF/CUo8eVaS3rQ==
   dependencies:
     colors "^1.3.3"
     glob "^7.1.4"

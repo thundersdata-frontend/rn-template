@@ -56,3 +56,19 @@ react-native set-icon --path path-to-image
 - 支持安卓自适应图标
 - 图片格式支持.png 和 .jpeg
 - 安卓平台下，上面的命令会在 android/app/src/main/res 目录下生成一堆图标文件
+
+## 3. 如何生成svg图标
+
+- 保证你的项目里安装了 `react-native-svg` 和 `@td-design/svgicon-cli`
+- 把图表对应的svg文件放在根目录下的 icon-svg 文件夹下
+- 执行命令 `npx svgicon-init` 生成配置文件：
+```json
+{
+  "save_dir": "", // 生成图标文件的保存位置，推荐 ./src/components/Icon
+  "trim_icon_prefix": "icon", // 图标文件的统一前缀
+  "default_icon_size": 20, // 图标文件的默认大小
+  "icon_svg": "./icon-svg", // 图标文件的存放位置
+  "for_library": false // 是否为组件库生成图标，默认是false，表示是为项目生成图标
+}
+```
+- 执行命令 `npx svgicon-create` 在对应的 `save_dir` 下生成图标组件
