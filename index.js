@@ -4,11 +4,13 @@ import './src/api';
 import { Alert, AppRegistry, LogBox } from 'react-native';
 import { setJSExceptionHandler, setNativeExceptionHandler } from 'react-native-exception-handler';
 import RNRestart from 'react-native-restart';
+import { enableFreeze } from 'react-native-screens';
 
 import { App } from './src/App';
 import { name as appName } from './app.json';
 
 LogBox.ignoreLogs(['Require cycle:']);
+enableFreeze();
 
 /**
  * 未捕获的JS异常
