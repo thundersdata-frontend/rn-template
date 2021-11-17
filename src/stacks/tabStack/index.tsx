@@ -36,6 +36,9 @@ export const TabStack = () => {
         lazy: true,
         // 不显示TabScreen的header
         headerShown: false,
+        tabBarStyle: {
+          paddingTop: px(4),
+        },
       }}
     >
       {tabItems.map(item => (
@@ -50,7 +53,6 @@ export const TabStack = () => {
                 style={{
                   color: focused ? theme.colors.gray500 : theme.colors.gray300,
                   fontSize: px(12),
-                  marginBottom: theme.spacing.x1,
                 }}
               >
                 {item?.label}

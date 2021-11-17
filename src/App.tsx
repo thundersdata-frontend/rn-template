@@ -1,5 +1,5 @@
 import { SafeAreaProvider } from 'react-native-safe-area-context';
-import { NavigationContainer } from '@react-navigation/native';
+import { NavigationContainer, DefaultTheme, DarkTheme } from '@react-navigation/native';
 import { hide as hideSplash } from 'react-native-bootsplash';
 import { SWRConfig } from 'swr';
 import { useUpdateAtom } from 'jotai/utils';
@@ -55,7 +55,11 @@ export function App() {
         }}
       >
         <ThemeProvider theme={theme === 'dark' ? darkTheme : lightTheme}>
-          <NavigationContainer linking={linking} fallback={<Fallback />}>
+          <NavigationContainer
+            linking={linking}
+            fallback={<Fallback />}
+            theme={theme === 'dark' ? DarkTheme : DefaultTheme}
+          >
             <Stack />
           </NavigationContainer>
         </ThemeProvider>
