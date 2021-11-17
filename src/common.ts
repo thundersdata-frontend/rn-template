@@ -4,7 +4,7 @@ import dayjs from 'dayjs';
 import { LoginFailureEnum } from './enums';
 import { getToken, saveToken } from 'utils/auth';
 import Config from 'react-native-config';
-import { isEmpty } from 'lodash';
+import { isEmpty } from 'lodash-es';
 
 const codeMessage: Record<number, string> = {
   200: '服务器成功返回请求的数据。',

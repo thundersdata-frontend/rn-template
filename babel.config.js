@@ -26,15 +26,6 @@ module.exports = {
       'hooks',
     ],
     [
-      'import',
-      {
-        libraryName: 'lodash',
-        libraryDirectory: '',
-        camel2DashComponentName: false, // default: true
-      },
-      'lodash',
-    ],
-    [
       '@babel/plugin-transform-react-jsx',
       {
         runtime: 'automatic',

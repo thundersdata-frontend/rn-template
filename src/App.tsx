@@ -4,17 +4,28 @@ import { hide as hideSplash } from 'react-native-bootsplash';
 import { SWRConfig } from 'swr';
 import { useUpdateAtom } from 'jotai/utils';
 import { ThemeProvider } from '@td-design/react-native';
-import { useSafeState, useMount } from '@td-design/rn-hooks';
+import { useSafeState, useMount, useMemoizedFn } from '@td-design/rn-hooks';
 
 import { Stack } from './stacks';
 import { authAtom } from 'atoms';
 import { Fallback } from 'components';
 import { lightTheme, darkTheme } from 'theme';
 import { linking } from 'linking';
+import { Appearance } from 'react-native';
 
 export function App() {
   const updateAuth = useUpdateAtom(authAtom);
-  const [dark] = useSafeState(false);
+  const [theme, setTheme] = useSafeState(Appearance.getColorScheme());
+
+  const themeChange = useMemoizedFn(() => {
+    setTheme(Appearance.getColorScheme());
+  });
+
+  useMount(() => {
+    const listener = Appearance.addChangeListener(themeChange);
+
+    return () => listener.remove();
+  });
 
   useMount(() => {
     const init = async () => {
@@ -43,7 +54,7 @@ export function App() {
           onError: handleError,
         }}
       >
-        <ThemeProvider theme={dark ? darkTheme : lightTheme}>
+        <ThemeProvider theme={theme === 'dark' ? darkTheme : lightTheme}>
           <NavigationContainer linking={linking} fallback={<Fallback />}>
             <Stack />
           </NavigationContainer>
