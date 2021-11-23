@@ -8,7 +8,7 @@ import Animated, { useSharedValue, useAnimatedStyle, withSpring, useDerivedValue
 import { mix } from 'react-native-redash';
 import { NavigationProp, useNavigation } from '@react-navigation/native';
 import { helpers } from '@td-design/react-native';
-import { KeyboardAwareScrollView, Text } from 'components';
+import { Text } from 'components';
 
 import { Container } from '../Container';
 import { CustomHeader } from '../CustomHeader';
@@ -61,20 +61,18 @@ export const AuthTemplate: FC<{
 
   return (
     <Container>
-      <KeyboardAwareScrollView>
-        <CustomHeader {...{ navigation }} />
-        <View style={styles.textWrap}>
-          <Text variant="h3" color="func50">
-            {title}
+      <CustomHeader {...{ navigation }} />
+      <View style={styles.textWrap}>
+        <Text variant="h3" color="func50">
+          {title}
+        </Text>
+        {subtitle && (
+          <Text variant="p2" color="func50" marginTop="x3">
+            {subtitle}
           </Text>
-          {subtitle && (
-            <Text variant="p2" color="func50" marginTop="x3">
-              {subtitle}
-            </Text>
-          )}
-        </View>
-        <Animated.View style={[styles.card, style]}>{children}</Animated.View>
-      </KeyboardAwareScrollView>
+        )}
+      </View>
+      <Animated.View style={[styles.card, style]}>{children}</Animated.View>
     </Container>
   );
 };

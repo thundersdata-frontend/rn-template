@@ -1,13 +1,13 @@
 import { Easing, useDerivedValue, useSharedValue, withTiming } from 'react-native-reanimated';
 import { helpers } from '@td-design/react-native';
 import { useSafeState } from '@td-design/rn-hooks';
-import { KeyboardAwareScrollView } from 'components';
 import { Container } from 'modules/auth/components/Container';
 
 import { Logo } from './Logo';
 import { LoginBtnGroup } from './LoginBtnGroup';
 import { LoginForm } from './LoginForm';
 import { ThirdPartyLogin } from './ThirdPartyLogin';
+import { KeyboardShift } from 'components/KeyboardShift';
 
 const { px, deviceHeight } = helpers;
 const timingConfig = {
@@ -36,14 +36,14 @@ export function SignIn() {
 
   return (
     <Container>
-      <KeyboardAwareScrollView style={{ height: deviceHeight - px(180) }}>
+      <KeyboardShift style={{ height: deviceHeight - px(180) }}>
         {/* logo和欢迎语 */}
         <Logo {...{ animation }} />
         {/* 登录按钮组 */}
         <LoginBtnGroup {...{ animation }} onPress={handlePress} />
         {/* 登录表单 */}
         <LoginForm {...{ showLoginForm, animation, isSmsLogin, changeTab: setActiveKey }} />
-      </KeyboardAwareScrollView>
+      </KeyboardShift>
       {/* 底部第三方登录 */}
       <ThirdPartyLogin {...{ animation }} onPress={() => (showLoginForm.value = false)} />
     </Container>

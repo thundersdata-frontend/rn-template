@@ -1804,10 +1804,10 @@
     lodash.throttle "^4.1.1"
     use-immer "^0.6.0"
 
-"@td-design/rn-hooks@^2.0.0":
-  version "2.0.0"
-  resolved "https://registry.yarnpkg.com/@td-design/rn-hooks/-/rn-hooks-2.0.0.tgz#3ffe5822506ce3b0c8257a375672f67c7907eae9"
-  integrity sha512-uGpwoGpcBrCq6ETw1mMnbdFjyx4/RJhz6p6QC3vH56koZ0c+TpXWM/RMUSwgZ1M1xn8OwLL+kgYHMs+RHCzneQ==
+"@td-design/rn-hooks@^2.1.1":
+  version "2.1.1"
+  resolved "https://registry.yarnpkg.com/@td-design/rn-hooks/-/rn-hooks-2.1.1.tgz#d6c9d610e87865b4f5e90da5d7f23c25d6e6344b"
+  integrity sha512-6NVkKFgzqF0F491FEz9EIruk2eUU3u5eIGIeSgLOy2Zcf0fXcnRHTKb1RGyTID800Ut7fJYCiplnEryrnmQrwQ==
   dependencies:
     immer "^9.0.6"
     lodash.debounce "^4.0.8"

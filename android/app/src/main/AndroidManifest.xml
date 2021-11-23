@@ -29,7 +29,7 @@
       android:name=".MainActivity"
       android:configChanges="keyboard|keyboardHidden|orientation|screenSize|uiMode"
       android:label="@string/APP_DISPLAY_NAME"
-      android:windowSoftInputMode="adjustPan"
+      android:windowSoftInputMode="adjustResize"
       android:exported="true"
       android:launchMode="singleTask">
       <!-- ⚠️ add android:exported="true" and android:launchMode="singleTask" above -->
