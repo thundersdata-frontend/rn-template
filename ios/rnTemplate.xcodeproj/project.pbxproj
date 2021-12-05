@@ -48,6 +48,7 @@
 		E42E5C2B2661E02B004C1AD9 /* libPods-rnTemplate.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; path = "libPods-rnTemplate.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		E42E5C2D2661E0D3004C1AD9 /* OpenSSL.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; name = OpenSSL.xcframework; path = "Pods/OpenSSL-Universal/Frameworks/OpenSSL.xcframework"; sourceTree = "<group>"; };
 		E432122226098623007B1EAF /* BootSplash.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = BootSplash.storyboard; path = rnTemplate/BootSplash.storyboard; sourceTree = "<group>"; };
+		E4B70531275CD6AF00798E67 /* libRNBootSplash.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; path = libRNBootSplash.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		E4C332EC2660BF21000354DA /* Config.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = Config.xcconfig; sourceTree = "<group>"; };
 		ED297162215061F000B7C4FE /* JavaScriptCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = JavaScriptCore.framework; path = System/Library/Frameworks/JavaScriptCore.framework; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
@@ -117,6 +118,7 @@
 		2D16E6871FA4F8E400B85C8A /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				E4B70531275CD6AF00798E67 /* libRNBootSplash.a */,
 				E42E5C2D2661E0D3004C1AD9 /* OpenSSL.xcframework */,
 				E42E5C2B2661E02B004C1AD9 /* libPods-rnTemplate.a */,
 				ED297162215061F000B7C4FE /* JavaScriptCore.framework */,
@@ -507,7 +509,7 @@
 				DEVELOPMENT_TEAM = 3JFB8G72VV;
 				ENABLE_BITCODE = NO;
 				INFOPLIST_FILE = rnTemplate/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -534,7 +536,7 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = 3JFB8G72VV;
 				INFOPLIST_FILE = rnTemplate/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",

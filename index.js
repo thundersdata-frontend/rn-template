@@ -9,7 +9,7 @@ import { enableFreeze } from 'react-native-screens';
 import { App } from './src/App';
 import { name as appName } from './app.json';
 
-LogBox.ignoreLogs(['Require cycle:']);
+LogBox.ignoreLogs(['Require cycle:', 'new NativeEventEmitter()']);
 enableFreeze();
 
 /**
