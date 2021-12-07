@@ -3,11 +3,11 @@
  */
 import Form, { Field, useForm } from 'rc-field-form';
 import { useTheme } from '@shopify/restyle';
-import { Input, WhiteSpace, Button, helpers } from '@td-design/react-native';
+import { Box, Input, WhiteSpace, Button, helpers } from '@td-design/react-native';
 import { AppTheme } from 'theme';
 import { passwordPattern } from 'utils/validators';
 import { ErrorMessage } from 'modules/auth/components/ErrorMessage';
-import { Box, Icon } from 'components';
+import { Icon } from 'components';
 import { useAuthService } from 'modules/auth/useAuthService';
 
 const { px } = helpers;

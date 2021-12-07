@@ -1,6 +1,6 @@
-import { WingBlank, WhiteSpace, Flex } from '@td-design/react-native';
+import { WingBlank, WhiteSpace, Flex, Text } from '@td-design/react-native';
 import { ScrollView } from 'react-native';
-import { Container, Text } from 'components';
+import { Container } from 'components';
 
 export function UserAgreement() {
   return (

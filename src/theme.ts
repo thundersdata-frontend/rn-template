@@ -1,6 +1,5 @@
-import { theme, helpers } from '@td-design/react-native';
+import { theme } from '@td-design/react-native';
 
-const { px } = helpers;
 export const lightTheme = {
   ...theme.lightTheme,
   colors: {
@@ -10,11 +9,6 @@ export const lightTheme = {
   },
   textVariants: {
     ...theme.lightTheme.textVariants,
-    h3: {
-      fontSize: px(28),
-      lineHeight: px(39.2),
-      fontWeight: '500',
-    },
   },
 };
 
@@ -29,10 +23,5 @@ export const darkTheme: AppTheme = {
   },
   textVariants: {
     ...theme.darkTheme.textVariants,
-    h3: {
-      fontSize: px(28),
-      lineHeight: px(39.2),
-      fontWeight: '500',
-    },
   },
 };

@@ -1,9 +1,8 @@
 import { useTheme } from '@shopify/restyle';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
-import { helpers } from '@td-design/react-native';
+import { helpers, Text } from '@td-design/react-native';
 
 import { AppTheme } from 'theme';
-import { Text } from 'components';
 import Icon, { IconNames } from '../../components/Icon';
 
 import { Homepage } from 'modules/homepage/screens';

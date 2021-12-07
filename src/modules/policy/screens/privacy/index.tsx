@@ -1,5 +1,5 @@
-import { WingBlank, WhiteSpace, Flex } from '@td-design/react-native';
-import { Container, Text } from 'components';
+import { WingBlank, WhiteSpace, Flex, Text } from '@td-design/react-native';
+import { Container } from 'components';
 import { ScrollView } from 'react-native';
 
 export function Privacy() {

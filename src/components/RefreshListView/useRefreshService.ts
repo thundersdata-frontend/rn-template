@@ -1,13 +1,11 @@
 import { authAtom } from 'atoms';
-import { useMemoizedFn, useSafeState } from '@td-design/rn-hooks';
+import { useMemoizedFn, useSafeState, useRequest } from '@td-design/rn-hooks';
 import { LoginFailureEnum, RefreshStateEnum } from 'enums';
-import { BaseOptions, Service } from 'hooks/useRequest/types';
-import { useAsync } from 'hooks/useRequest/useAsync';
 import { useAtom } from 'jotai';
 import { signOut } from 'utils/auth';
 
 // 初始化 page
-const INITIAL_PAGE = 1;
+export const INITIAL_PAGE = 1;
 
 interface BasicResult<T, P> {
   run: (args: P) => Promise<unknown>;
@@ -18,37 +16,34 @@ interface BasicResult<T, P> {
   updateParams: (params: P) => void;
 }
 
-function useRefreshService<T, R extends Page<T> = Page<T>, P extends any[] = any>(
+export function useRefreshService<T, R extends Page<T> = Page<T>, P extends any[] = any>(
   service: Service<R, P>,
-  options?: Omit<BaseOptions<R, P>, 'onSuccess' | 'onError' | 'refreshDeps'> & {
+  options?: Omit<Options<R, P>, 'onSuccess' | 'onError' | 'refreshDeps'> & {
     onSuccess?: (list: T[]) => void;
   },
-): BasicResult<T, P>;
-
-function useRefreshService<T>(service: any, options?: any) {
+): BasicResult<T, P> {
   const [auth, updateAuth] = useAtom(authAtom);
   const [refreshState, setRefreshState] = useSafeState(RefreshStateEnum.HeaderRefreshing);
   const [currentPage, setCurrentPage] = useSafeState(INITIAL_PAGE);
   const [list, setList] = useSafeState<T[]>([]);
 
-  const promiseService = (...args: any) =>
-    new Promise((resolve, reject) => {
-      if (!auth.signedIn) {
-        reject(JSON.stringify({ code: LoginFailureEnum.登录过期 }));
-      }
-      const s = service(...args);
-      s.then(resolve).catch(reject);
-    });
+  const promiseService = async (...args: P) => {
+    if (!auth.signedIn) {
+      throw new Error(JSON.stringify({ code: LoginFailureEnum.登录过期 }));
+    }
+    return service(...args);
+  };
 
-  const { run, params } = useAsync(promiseService, {
+  const { onSuccess, onError, ...restOptions } = options || {};
+  const { run, refresh, params } = useRequest(promiseService, {
     defaultParams: [
       {
         page: INITIAL_PAGE,
         pageSize: 10,
       },
-    ],
-    ...options,
-    onSuccess(data: any) {
+    ] as P,
+    ...restOptions,
+    onSuccess(data: R) {
       // 对data进行处理
       const { list: resultList = [], total = 0, page = INITIAL_PAGE, totalPage = 0 } = data;
       setCurrentPage(page);
@@ -62,7 +57,6 @@ function useRefreshService<T>(service: any, options?: any) {
         _list = list.concat(resultList);
       }
       setList(_list);
-      options?.onSuccess?.(_list);
 
       if (totalPage === 0) {
         setRefreshState(RefreshStateEnum.EmptyData);
@@ -71,8 +65,9 @@ function useRefreshService<T>(service: any, options?: any) {
       } else {
         setRefreshState(RefreshStateEnum.Idle);
       }
+      onSuccess?.(_list);
     },
-    onError(err) {
+    onError(err: any) {
       const { code } = JSON.parse(err.message);
       if ([LoginFailureEnum.登录无效, LoginFailureEnum.登录过期, LoginFailureEnum.登录禁止].includes(code)) {
         signOut().then(() => {
@@ -80,9 +75,9 @@ function useRefreshService<T>(service: any, options?: any) {
         });
       } else if (currentPage === INITIAL_PAGE) {
         setList([]);
-        options?.onSuccess?.([]);
       }
       setRefreshState(RefreshStateEnum.Failure);
+      onError(err);
     },
   });
 
@@ -91,7 +86,7 @@ function useRefreshService<T>(service: any, options?: any) {
    */
   const headerRefresh = () => {
     setRefreshState(RefreshStateEnum.HeaderRefreshing);
-    run({ ...params[0], pageSize: 10, page: INITIAL_PAGE });
+    refresh({ ...params[0], pageSize: 10, page: INITIAL_PAGE });
   };
 
   /**
@@ -103,7 +98,7 @@ function useRefreshService<T>(service: any, options?: any) {
     run({ ...params[0], pageSize, page: page + 1 });
   };
 
-  const updateParams = (params: any) => {
+  const updateParams = (params: P) => {
     setRefreshState(RefreshStateEnum.HeaderRefreshing);
     run({ ...params, pageSize: 10, page: INITIAL_PAGE });
   };
@@ -117,5 +112,3 @@ function useRefreshService<T>(service: any, options?: any) {
     updateParams: useMemoizedFn(updateParams),
   };
 }
-
-export { useRefreshService };

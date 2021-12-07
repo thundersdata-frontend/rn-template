@@ -1,8 +1,8 @@
 import { StyleSheet, TouchableOpacity } from 'react-native';
 import Animated, { useAnimatedStyle } from 'react-native-reanimated';
 import { mix } from 'react-native-redash';
-import { Flex, helpers } from '@td-design/react-native';
-import { Box, Text, Icon } from 'components';
+import { Flex, helpers, Box, Text } from '@td-design/react-native';
+import { Icon } from 'components';
 import { AppTheme } from 'theme';
 import { useTheme } from '@shopify/restyle';
 

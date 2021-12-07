@@ -1,5 +1,5 @@
-import { Container, Box } from 'components';
-import { Flex, helpers, Avatar, Toast, PullRefresh } from '@td-design/react-native';
+import { Container } from 'components';
+import { Box, Flex, helpers, Avatar, Toast, PullRefresh } from '@td-design/react-native';
 import { ImageBackground } from 'react-native';
 import ImagePicker from '@td-design/react-native-image-picker';
 import { useUserService } from '../useUserService';

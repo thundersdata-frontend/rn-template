@@ -79,3 +79,23 @@ npx react-native set-icon --path path-to-image
 ```
 
 - 执行命令 `npx svgicon-create` 在对应的 `save_dir` 下生成图标组件
+
+## 4. 如何应用字体文件
+
+在@td-design/react-native 组件库中，我们内置了对`PingFang SC Regular` 和 `Roboto` 字体的默认支持，但是需要在项目中加载这两个字体文件。做法如下：
+
+- 在`react-native.config.js`文件中增加以下配置：
+
+```code
+module.exports = {
+  // 其他配置
+  assets: ['./assets/fonts/'], // stays the same
+};
+
+```
+
+- 在`assets/fonts/`目录下，将这两个字体文件复制进来
+- 执行`npx react-native link`命令，会自动将字体文件映射到 Android 和 IOS 原生配置中
+
+通过以上步骤增加字体之后，不需要其他额外的配置就可以在项目中看到效果了。
+你也可以通过在`theme.ts`文件中定义自己的 textVariants。

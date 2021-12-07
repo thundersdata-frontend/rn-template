@@ -1,25 +1,16 @@
-import { useTheme } from '@shopify/restyle';
-import { helpers } from '@td-design/react-native';
 import { StackNavigationOptions, CardStyleInterpolators } from '@react-navigation/stack';
 import { useAtomValue } from 'jotai/utils';
 
 import { MainStack } from './mainStack';
 import { AuthStack } from './authStack';
 import { authAtom } from 'atoms';
-import { AppTheme } from 'theme';
+import { CustomHeader } from 'components';
 
-const { px } = helpers;
 export const Stack = () => {
   const auth = useAtomValue(authAtom);
-  const theme = useTheme<AppTheme>();
 
   const commonStackOptions: StackNavigationOptions = {
-    headerTitleStyle: {
-      fontWeight: '500',
-      color: theme.colors.gray500,
-      fontSize: px(18),
-    },
-    headerTitleAlign: 'center',
+    header: props => <CustomHeader {...props} />,
     gestureEnabled: true,
     gestureDirection: 'horizontal',
     cardStyleInterpolator: CardStyleInterpolators.forHorizontalIOS,
