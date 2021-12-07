@@ -65,7 +65,6 @@
     "react-native-webp-format": "^1.1.2",
     "react-native-webview": "^11.14.3",
     "rn-fetch-blob": "^0.12.0",
-    "swr": "^1.0.1",
     "umi-request": "^1.4.0"
   },
   "devDependencies": {
