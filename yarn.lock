@@ -1795,7 +1795,7 @@
     react-native-indicators "^0.17.0"
     use-immer "^0.6.0"
 
-"@td-design/rn-hooks@^2.0.0":
+"@td-design/rn-hooks@^2.0.0", "@td-design/rn-hooks@^2.1.6":
   version "2.1.6"
   resolved "https://registry.yarnpkg.com/@td-design/rn-hooks/-/rn-hooks-2.1.6.tgz#6ed698d196c9cd313f3410bd9d6135165c2c493a"
   integrity sha512-8pKKh4COHzWsEicaqGufVqwUQF3lE+KF19//UeIlkF8reNiP6soPxjK5vHi/QgNyagSUUk3tbUk8jn9BHShhxQ==
@@ -1803,17 +1803,6 @@
     lodash.debounce "^4.0.8"
     lodash.isequal "^4.5.0"
     lodash.throttle "^4.1.1"
-
-"@td-design/rn-hooks@^2.1.1":
-  version "2.1.1"
-  resolved "https://registry.yarnpkg.com/@td-design/rn-hooks/-/rn-hooks-2.1.1.tgz#d6c9d610e87865b4f5e90da5d7f23c25d6e6344b"
-  integrity sha512-6NVkKFgzqF0F491FEz9EIruk2eUU3u5eIGIeSgLOy2Zcf0fXcnRHTKb1RGyTID800Ut7fJYCiplnEryrnmQrwQ==
-  dependencies:
-    immer "^9.0.6"
-    lodash.debounce "^4.0.8"
-    lodash.isequal "^4.5.0"
-    lodash.throttle "^4.1.1"
-    use-immer "^0.6.0"
 
 "@td-design/svgicon-cli@^1.3.0":
   version "1.3.0"

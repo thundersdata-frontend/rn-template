@@ -1,7 +1,6 @@
 import { NavigationProp, useNavigation } from '@react-navigation/native';
-import { ListItem, Modal, Image, helpers, Input } from '@td-design/react-native';
+import { Box, ListItem, Modal, Image, helpers, Input } from '@td-design/react-native';
 
-import { Box } from 'components';
 import { useUpdateAtom } from 'jotai/utils';
 import { authAtom } from 'atoms';
 import { useUserService } from 'modules/user/useUserService';

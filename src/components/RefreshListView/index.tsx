@@ -1,7 +1,6 @@
-import { FlatList, StyleSheet, View, TouchableOpacity, FlatListProps } from 'react-native';
+import { FlatList, StyleSheet, View, TouchableOpacity, FlatListProps, ViewStyle } from 'react-native';
 import { useTheme } from '@shopify/restyle';
-import { Indicator, PullRefresh, helpers, Box, Flex } from '@td-design/react-native';
-import { Text } from 'components';
+import { Indicator, PullRefresh, helpers, Box, Flex, Text } from '@td-design/react-native';
 import { RefreshStateEnum } from 'enums';
 import { AppTheme } from 'theme';
 
@@ -13,6 +12,7 @@ interface RefreshListViewProps<T> extends FlatListProps<T> {
   onFooterRefresh?: () => void;
   keyExtractor: (item: T, index: number) => string;
   EmptyComponent?: React.ReactElement | null;
+  headerStyle?: ViewStyle;
 }
 
 /**
@@ -20,7 +20,15 @@ interface RefreshListViewProps<T> extends FlatListProps<T> {
  */
 export function RefreshListView<T>(props: RefreshListViewProps<T>) {
   const theme = useTheme<AppTheme>();
-  const { refreshState, data = [], onHeaderRefresh, onFooterRefresh, EmptyComponent, ...restProps } = props;
+  const {
+    refreshState,
+    data = [],
+    onHeaderRefresh,
+    onFooterRefresh,
+    EmptyComponent,
+    headerStyle,
+    ...restProps
+  } = props;
   const styles = StyleSheet.create({
     footerContainer: {
       flex: 1,
@@ -150,7 +158,11 @@ export function RefreshListView<T>(props: RefreshListViewProps<T>) {
     );
 
   return (
-    <PullRefresh refreshing={refreshState === RefreshStateEnum.HeaderRefreshing} onRefresh={handleHeaderRefresh}>
+    <PullRefresh
+      headerStyle={{ marginTop: px(-30), ...headerStyle }}
+      refreshing={refreshState === RefreshStateEnum.HeaderRefreshing}
+      onRefresh={handleHeaderRefresh}
+    >
       {renderContent()}
     </PullRefresh>
   );

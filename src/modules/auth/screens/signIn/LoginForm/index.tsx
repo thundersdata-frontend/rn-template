@@ -3,14 +3,14 @@ import Animated, { useAnimatedStyle, useDerivedValue, withSpring } from 'react-n
 import { mix } from 'react-native-redash';
 import Form, { Field, useForm } from 'rc-field-form';
 import { useTheme } from '@shopify/restyle';
-import { Button, Checkable, CountDown, Flex, helpers, Input, WhiteSpace } from '@td-design/react-native';
+import { Button, Checkable, CountDown, Flex, helpers, Input, WhiteSpace, Text, Box } from '@td-design/react-native';
 
 import { LoginTab } from '../LoginTab';
 import { useAuthService } from 'modules/auth/useAuthService';
 import { mobilePhoneRules } from 'utils/validators';
 import { ErrorMessage } from 'modules/auth/components/ErrorMessage';
 import { AppTheme } from 'theme';
-import { Text, Box, Icon } from 'components';
+import { Icon } from 'components';
 import { SmsTypeEnum } from 'enums';
 import { NavigationProp, useNavigation } from '@react-navigation/native';
 

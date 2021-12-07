@@ -7,8 +7,7 @@ import { useTheme } from '@shopify/restyle';
 import Animated, { useSharedValue, useAnimatedStyle, withSpring, useDerivedValue } from 'react-native-reanimated';
 import { mix } from 'react-native-redash';
 import { NavigationProp, useNavigation } from '@react-navigation/native';
-import { helpers } from '@td-design/react-native';
-import { Text } from 'components';
+import { helpers, Text } from '@td-design/react-native';
 
 import { Container } from '../Container';
 import { CustomHeader } from '../CustomHeader';

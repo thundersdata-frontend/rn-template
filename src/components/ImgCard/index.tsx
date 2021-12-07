@@ -1,7 +1,5 @@
 import { FC } from 'react';
-import { helpers, Image } from '@td-design/react-native';
-import { Box, Text } from 'components';
-import { PreviewImage } from 'components/PreviewImage';
+import { helpers, Image, Box, Text } from '@td-design/react-native';
 
 const { px } = helpers;
 export const ImgCard: FC<{ title: string; uri?: string }> = ({ title, uri }) => {
@@ -18,7 +16,7 @@ export const ImgCard: FC<{ title: string; uri?: string }> = ({ title, uri }) => 
       alignItems="center"
     >
       {uri ? (
-        <PreviewImage uri={uri} width={px(144)} height={px(70)} />
+        <Image source={{ uri }} preview style={{ width: px(144), height: px(70) }} />
       ) : (
         <Image source={require('./assets/card-img-default.webp')} style={{ width: px(144), height: px(70) }} />
       )}
