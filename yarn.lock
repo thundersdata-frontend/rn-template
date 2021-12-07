@@ -1784,25 +1784,25 @@
     immer "^9.0.6"
     use-immer "^0.6.0"
 
-"@td-design/react-native@^3.6.1":
-  version "3.6.1"
-  resolved "https://registry.yarnpkg.com/@td-design/react-native/-/react-native-3.6.1.tgz#087fc75e883c613bc643cb707c9c6749d6151230"
-  integrity sha512-Pl3rnSmvktl6/yxWICO7Z5BGY2+dn90az8pD5/gDG7oxuC3IwlR2baE+ji2UyrwZj2awQ8uYKT64AWGAb7fSwA==
+"@td-design/react-native@^3.6.10":
+  version "3.6.10"
+  resolved "https://registry.yarnpkg.com/@td-design/react-native/-/react-native-3.6.10.tgz#55efab9d57eb2d3272c85373a1c6c2f476f7f770"
+  integrity sha512-2iIeQ/PiFHLYt+wEzRlEQ9ZIDTMB9DPrj4hxGo5VKiAlklMvImKifd1bxk4gjAnHS7PGz4NjwTZLHIw+/TsmLg==
   dependencies:
-    "@td-design/rn-hooks" "^1.0.2"
-    "@types/react-native-indicators" "^0.16.0"
+    "@td-design/rn-hooks" "^2.0.0"
+    "@types/react-native-indicators" "^0.16.1"
+    immer "^9.0.7"
     react-native-indicators "^0.17.0"
+    use-immer "^0.6.0"
 
-"@td-design/rn-hooks@^1.0.2":
-  version "1.0.4"
-  resolved "https://registry.yarnpkg.com/@td-design/rn-hooks/-/rn-hooks-1.0.4.tgz#0bc335e42fbedc4650c89e19eabf95b67ba1395a"
-  integrity sha512-iNR7FQ59vLtGojAUZc89/+2Ow1M8egjikn7Ayzb/oPWSN+/njtoOQNqN/32UU99YCWvwlhq02LbbsXtIhSnR3A==
+"@td-design/rn-hooks@^2.0.0":
+  version "2.1.6"
+  resolved "https://registry.yarnpkg.com/@td-design/rn-hooks/-/rn-hooks-2.1.6.tgz#6ed698d196c9cd313f3410bd9d6135165c2c493a"
+  integrity sha512-8pKKh4COHzWsEicaqGufVqwUQF3lE+KF19//UeIlkF8reNiP6soPxjK5vHi/QgNyagSUUk3tbUk8jn9BHShhxQ==
   dependencies:
-    immer "^9.0.6"
     lodash.debounce "^4.0.8"
     lodash.isequal "^4.5.0"
     lodash.throttle "^4.1.1"
-    use-immer "^0.6.0"
 
 "@td-design/rn-hooks@^2.1.1":
   version "2.1.1"
@@ -1989,7 +1989,7 @@
   dependencies:
     "@types/react" "*"
 
-"@types/react-native-indicators@^0.16.0":
+"@types/react-native-indicators@^0.16.1":
   version "0.16.1"
   resolved "https://registry.yarnpkg.com/@types/react-native-indicators/-/react-native-indicators-0.16.1.tgz#9bf7d6d044509f7a4179987a19ceb1603108cd04"
   integrity sha512-L7SCFjTdDzwNciAYflAdWuSwgj6qP2Zd+uKFcFBkovG/O5qX7P9aKkmzYQz/lXIJtiPWgNEG1xIeJoHLed31Ew==
@@ -5147,6 +5147,11 @@ immer@^9.0.6:
   version "9.0.6"
   resolved "https://registry.yarnpkg.com/immer/-/immer-9.0.6.tgz#7a96bf2674d06c8143e327cbf73539388ddf1a73"
   integrity sha512-G95ivKpy+EvVAnAab4fVa4YGYn24J1SpEktnJX7JJ45Bd7xqME/SCplFzYFmTbrkwZbQ4xJK1xMTUYBkN6pWsQ==
+
+immer@^9.0.7:
+  version "9.0.7"
+  resolved "https://registry.yarnpkg.com/immer/-/immer-9.0.7.tgz#b6156bd7db55db7abc73fd2fdadf4e579a701075"
+  integrity sha512-KGllzpbamZDvOIxnmJ0jI840g7Oikx58lBPWV0hUh7dtAyZpFqqrBZdKka5GlTwMTZ1Tjc/bKKW4VSFAt6BqMA==
 
 import-fresh@^2.0.0:
   version "2.0.0"

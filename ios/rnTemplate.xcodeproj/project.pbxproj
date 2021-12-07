@@ -16,6 +16,8 @@
 		E432122326098623007B1EAF /* BootSplash.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E432122226098623007B1EAF /* BootSplash.storyboard */; };
 		E4C332ED2660BF21000354DA /* Config.xcconfig in Resources */ = {isa = PBXBuildFile; fileRef = E4C332EC2660BF21000354DA /* Config.xcconfig */; };
 		EC599CB824990C13BAF4CF2F /* libPods-rnTemplate.a in Frameworks */ = {isa = PBXBuildFile; fileRef = E42E5C2B2661E02B004C1AD9 /* libPods-rnTemplate.a */; };
+		A30584CED2D44E3DA6F4E483 /* PingFang SC Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = A6CDAC24A4494E8CA0647C49 /* PingFang SC Regular.ttf */; };
+		811980EB5E00431F861B8E04 /* Roboto.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 8270941888A9425E948256E8 /* Roboto.ttf */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -50,6 +52,8 @@
 		E432122226098623007B1EAF /* BootSplash.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = BootSplash.storyboard; path = rnTemplate/BootSplash.storyboard; sourceTree = "<group>"; };
 		E4C332EC2660BF21000354DA /* Config.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = Config.xcconfig; sourceTree = "<group>"; };
 		ED297162215061F000B7C4FE /* JavaScriptCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = JavaScriptCore.framework; path = System/Library/Frameworks/JavaScriptCore.framework; sourceTree = SDKROOT; };
+		A6CDAC24A4494E8CA0647C49 /* PingFang SC Regular.ttf */ = {isa = PBXFileReference; name = "PingFang SC Regular.ttf"; path = "../assets/fonts/PingFang SC Regular.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
+		8270941888A9425E948256E8 /* Roboto.ttf */ = {isa = PBXFileReference; name = "Roboto.ttf"; path = "../assets/fonts/Roboto.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -163,6 +167,8 @@
 		FC4F48950D374BBFB500C243 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				A6CDAC24A4494E8CA0647C49 /* PingFang SC Regular.ttf */,
+				8270941888A9425E948256E8 /* Roboto.ttf */,
 			);
 			name = Resources;
 			sourceTree = "<group>";
@@ -264,6 +270,8 @@
 				E4C332ED2660BF21000354DA /* Config.xcconfig in Resources */,
 				13B07FBF1A68108700A75B9A /* Images.xcassets in Resources */,
 				E432122326098623007B1EAF /* BootSplash.storyboard in Resources */,
+				A30584CED2D44E3DA6F4E483 /* PingFang SC Regular.ttf in Resources */,
+				811980EB5E00431F861B8E04 /* Roboto.ttf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
