@@ -1643,6 +1643,11 @@
   resolved "https://registry.yarnpkg.com/@react-native-community/masked-view/-/masked-view-0.1.11.tgz#2f4c6e10bee0786abff4604e39a37ded6f3980ce"
   integrity sha512-rQfMIGSR/1r/SyN87+VD8xHHzDYeHaJq6elOSCAD+0iLagXkSI2pfA0LmSXP21uw5i3em7GkkRjfJ8wpqWXZNw==
 
+"@react-native-community/netinfo@^7.1.4":
+  version "7.1.4"
+  resolved "https://registry.yarnpkg.com/@react-native-community/netinfo/-/netinfo-7.1.4.tgz#611e4e0644d300e2e8b24f41cef05bdb26a078ad"
+  integrity sha512-78zQ4e9k36eGIityJCDd6W9bLg28QbHcbKyj/0vHU6rdUclCdeChZsCOtiLZ21l2q9j4F6bvoP8N5W53o3Jduw==
+
 "@react-native-picker/picker@^2.2.0":
   version "2.2.0"
   resolved "https://registry.yarnpkg.com/@react-native-picker/picker/-/picker-2.2.0.tgz#e96ecc0808bdf2a706a263b422864bee5a0e6b76"
@@ -1795,10 +1800,19 @@
     react-native-indicators "^0.17.0"
     use-immer "^0.6.0"
 
-"@td-design/rn-hooks@^2.0.0", "@td-design/rn-hooks@^2.1.6":
+"@td-design/rn-hooks@^2.0.0":
   version "2.1.6"
   resolved "https://registry.yarnpkg.com/@td-design/rn-hooks/-/rn-hooks-2.1.6.tgz#6ed698d196c9cd313f3410bd9d6135165c2c493a"
   integrity sha512-8pKKh4COHzWsEicaqGufVqwUQF3lE+KF19//UeIlkF8reNiP6soPxjK5vHi/QgNyagSUUk3tbUk8jn9BHShhxQ==
+  dependencies:
+    lodash.debounce "^4.0.8"
+    lodash.isequal "^4.5.0"
+    lodash.throttle "^4.1.1"
+
+"@td-design/rn-hooks@^2.2.0":
+  version "2.2.0"
+  resolved "https://registry.yarnpkg.com/@td-design/rn-hooks/-/rn-hooks-2.2.0.tgz#4271bdbe7f24daa1b90804f5966cb13a537e8e4f"
+  integrity sha512-aABTediDwoloklbIyExT+Cdv5qlrl2tTCjhzUPv5P24CMld+wZsOzZj+SAYAe7TTJJB6bDYph9bz6Nf+tQz1kA==
   dependencies:
     lodash.debounce "^4.0.8"
     lodash.isequal "^4.5.0"

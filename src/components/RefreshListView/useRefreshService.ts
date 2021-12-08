@@ -3,26 +3,19 @@ import { useMemoizedFn, useSafeState, useRequest } from '@td-design/rn-hooks';
 import { LoginFailureEnum, RefreshStateEnum } from 'enums';
 import { useAtom } from 'jotai';
 import { signOut } from 'utils/auth';
+import { fetch } from '@react-native-community/netinfo';
 import { useToast } from 'hooks/useToast';
+import { Options, Service } from '@td-design/rn-hooks/lib/typescript/useRequest/types';
 
 // 初始化 page
 export const INITIAL_PAGE = 1;
-
-interface BasicResult<T, P> {
-  run: (args: P) => Promise<unknown>;
-  refreshState: RefreshStateEnum;
-  list: T[];
-  headerRefresh: () => void;
-  footerRefresh: () => void;
-  updateParams: (params: P) => void;
-}
 
 export function useRefreshService<T, R extends Page<T> = Page<T>, P extends any[] = any>(
   service: Service<R, P>,
   options?: Omit<Options<R, P>, 'onSuccess'> & {
     onSuccess?: (list: T[]) => void;
   },
-): BasicResult<T, P> {
+) {
   const { toastFail } = useToast();
   const [auth, updateAuth] = useAtom(authAtom);
   const [refreshState, setRefreshState] = useSafeState(-1);
@@ -30,6 +23,15 @@ export function useRefreshService<T, R extends Page<T> = Page<T>, P extends any[
   const [list, setList] = useSafeState<T[]>([]);
 
   const promiseService = async (...args: P) => {
+    const state = await fetch();
+    if (!state.isConnected) {
+      throw new Error(
+        JSON.stringify({
+          success: false,
+          message: '网络连接异常',
+        }),
+      );
+    }
     if (!auth.signedIn) {
       throw new Error(JSON.stringify({ code: LoginFailureEnum.登录过期 }));
     }
