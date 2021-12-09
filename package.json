@@ -75,6 +75,7 @@
     "@commitlint/cli": "^15.0.0",
     "@commitlint/config-conventional": "^15.0.0",
     "@react-native-community/eslint-config": "^3.0.1",
+    "@react-navigation/devtools": "^6.0.4",
     "@td-design/pont-engine": "1.0.3",
     "@td-design/svgicon-cli": "^1.5.0",
     "@testing-library/react-hooks": "^7.0.2",
