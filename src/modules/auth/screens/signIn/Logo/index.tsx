@@ -1,50 +1,30 @@
 import { useTheme } from '@shopify/restyle';
-import { helpers } from '@td-design/react-native';
-import Animated, { useAnimatedStyle } from 'react-native-reanimated';
-import { mix } from 'react-native-redash';
+import { Box, Image, Text, helpers } from '@td-design/react-native';
 import { AppTheme } from 'theme';
 
-const { px, deviceWidth } = helpers;
-export function Logo({ animation }: { animation: Animated.SharedValue<number> }) {
+const { px } = helpers;
+export function Logo() {
   const theme = useTheme<AppTheme>();
 
-  const wrapStyle = useAnimatedStyle(() => ({
-    marginTop: mix(animation.value, 120, 55),
-  }));
-
-  const imageStyle = useAnimatedStyle(() => ({
-    left: mix(animation.value, (deviceWidth - 72) / 2, 25),
-  }));
-
-  const textStyle = useAnimatedStyle(() => ({
-    left: mix(animation.value, (deviceWidth - 200) / 2, 25),
-  }));
-
   return (
-    <Animated.View style={[{ marginBottom: px(25) }, wrapStyle]}>
-      <Animated.Image
+    <Box marginLeft="x6" marginBottom={'x6'} marginTop={'x10'}>
+      <Image
         source={require('../../../assets/logo.webp')}
-        style={[
-          {
-            width: px(72),
-            height: px(72),
-            marginBottom: px(20),
-          },
-          imageStyle,
-        ]}
+        style={{
+          width: px(72),
+          height: px(72),
+          marginBottom: px(20),
+        }}
       />
-      <Animated.Text
-        style={[
-          {
-            fontSize: px(24),
-            lineHeight: px(32),
-            color: theme.colors.white,
-          },
-          textStyle,
-        ]}
+      <Text
+        style={{
+          fontSize: px(24),
+          lineHeight: px(32),
+          color: theme.colors.white,
+        }}
       >
         欢迎来到雷数科技！
-      </Animated.Text>
-    </Animated.View>
+      </Text>
+    </Box>
   );
 }

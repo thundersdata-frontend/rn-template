@@ -12,8 +12,8 @@ const { px } = helpers;
 
 export interface SvgIconProps extends GProps, ViewProps {
   size?: number;
-  width?: number;
-  height?: number;
+  width?: number | string;
+  height?: number | string;
   color?: string | string[];
 }
 

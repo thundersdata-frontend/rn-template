@@ -3,31 +3,35 @@ import { useMemoizedFn, useSafeState, useRequest } from '@td-design/rn-hooks';
 import { LoginFailureEnum, RefreshStateEnum } from 'enums';
 import { useAtom } from 'jotai';
 import { signOut } from 'utils/auth';
+import { fetch } from '@react-native-community/netinfo';
+import { useToast } from 'hooks/useToast';
+import { Options, Service } from '@td-design/rn-hooks/lib/typescript/useRequest/types';
 
 // 初始化 page
 export const INITIAL_PAGE = 1;
 
-interface BasicResult<T, P> {
-  run: (args: P) => Promise<unknown>;
-  refreshState: RefreshStateEnum;
-  list: T[];
-  headerRefresh: () => void;
-  footerRefresh: () => void;
-  updateParams: (params: P) => void;
-}
-
 export function useRefreshService<T, R extends Page<T> = Page<T>, P extends any[] = any>(
   service: Service<R, P>,
-  options?: Omit<Options<R, P>, 'onSuccess' | 'onError' | 'refreshDeps'> & {
+  options?: Omit<Options<R, P>, 'onSuccess'> & {
     onSuccess?: (list: T[]) => void;
   },
-): BasicResult<T, P> {
+) {
+  const { toastFail } = useToast();
   const [auth, updateAuth] = useAtom(authAtom);
-  const [refreshState, setRefreshState] = useSafeState(RefreshStateEnum.HeaderRefreshing);
+  const [refreshState, setRefreshState] = useSafeState(-1);
   const [currentPage, setCurrentPage] = useSafeState(INITIAL_PAGE);
   const [list, setList] = useSafeState<T[]>([]);
 
   const promiseService = async (...args: P) => {
+    const state = await fetch();
+    if (!state.isConnected) {
+      throw new Error(
+        JSON.stringify({
+          success: false,
+          message: '网络连接异常',
+        }),
+      );
+    }
     if (!auth.signedIn) {
       throw new Error(JSON.stringify({ code: LoginFailureEnum.登录过期 }));
     }
@@ -35,7 +39,7 @@ export function useRefreshService<T, R extends Page<T> = Page<T>, P extends any[
   };
 
   const { onSuccess, onError, ...restOptions } = options || {};
-  const { run, refresh, params } = useRequest(promiseService, {
+  const { run, params } = useRequest(promiseService, {
     defaultParams: [
       {
         page: INITIAL_PAGE,
@@ -43,6 +47,9 @@ export function useRefreshService<T, R extends Page<T> = Page<T>, P extends any[
       },
     ] as P,
     ...restOptions,
+    onBefore() {
+      setRefreshState(RefreshStateEnum.HeaderRefreshing);
+    },
     onSuccess(data: R) {
       // 对data进行处理
       const { list: resultList = [], total = 0, page = INITIAL_PAGE, totalPage = 0 } = data;
@@ -68,16 +75,19 @@ export function useRefreshService<T, R extends Page<T> = Page<T>, P extends any[
       onSuccess?.(_list);
     },
     onError(err: any) {
-      const { code } = JSON.parse(err.message);
-      if ([LoginFailureEnum.登录无效, LoginFailureEnum.登录过期, LoginFailureEnum.登录禁止].includes(code)) {
-        signOut().then(() => {
-          updateAuth({ signedIn: false });
-        });
-      } else if (currentPage === INITIAL_PAGE) {
-        setList([]);
+      const { code, message } = JSON.parse(err.message);
+      if (code) {
+        if ([LoginFailureEnum.登录无效, LoginFailureEnum.登录过期, LoginFailureEnum.登录禁止].includes(code)) {
+          signOut().then(() => {
+            updateAuth({ signedIn: false });
+          });
+        } else if (currentPage === INITIAL_PAGE) {
+          setList([]);
+        }
       }
       setRefreshState(RefreshStateEnum.Failure);
-      onError(err);
+      toastFail(message);
+      onError?.(err);
     },
   });
 
@@ -86,7 +96,7 @@ export function useRefreshService<T, R extends Page<T> = Page<T>, P extends any[
    */
   const headerRefresh = () => {
     setRefreshState(RefreshStateEnum.HeaderRefreshing);
-    refresh({ ...params[0], pageSize: 10, page: INITIAL_PAGE });
+    run({ ...params[0], pageSize: 10, page: INITIAL_PAGE });
   };
 
   /**

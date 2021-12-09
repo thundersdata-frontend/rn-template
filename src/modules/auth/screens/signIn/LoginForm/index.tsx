@@ -1,6 +1,4 @@
-import { StyleSheet, TouchableOpacity } from 'react-native';
-import Animated, { useAnimatedStyle, useDerivedValue, withSpring } from 'react-native-reanimated';
-import { mix } from 'react-native-redash';
+import { TouchableOpacity } from 'react-native';
 import Form, { Field, useForm } from 'rc-field-form';
 import { useTheme } from '@shopify/restyle';
 import { Button, Checkable, CountDown, Flex, helpers, Input, WhiteSpace, Text, Box } from '@td-design/react-native';
@@ -126,63 +124,25 @@ const FormContent = ({ isSmsLogin }: { isSmsLogin: boolean }) => {
 };
 
 const { px } = helpers;
-export function LoginForm({
-  showLoginForm,
-  animation,
-  isSmsLogin,
-  changeTab,
-}: {
-  showLoginForm: Animated.SharedValue<boolean>;
-  animation: Animated.SharedValue<number>;
-  isSmsLogin: boolean;
-  changeTab: (activeKey: string) => void;
-}) {
-  const theme = useTheme<AppTheme>();
-  const styles = StyleSheet.create({
-    top: {
-      alignItems: 'center',
-      backgroundColor: theme.colors.background,
-      borderRadius: px(20),
-      height: px(320),
-      marginHorizontal: px(18),
-    },
-  });
-  const transition = useDerivedValue(() => (showLoginForm.value ? withSpring(1) : withSpring(0)));
-  const style = useAnimatedStyle(() => ({
-    transform: [
-      {
-        translateY: mix(animation.value, 700, -100),
-      },
-      {
-        scale: mix(animation.value, 0.4, 1),
-      },
-    ],
-  }));
-
-  const formStyle = useAnimatedStyle(() => ({
-    transform: [{ translateY: mix(transition.value, 700, 0) }],
-  }));
-
+export function LoginForm({ isSmsLogin, changeTab }: { isSmsLogin: boolean; changeTab: (activeKey: string) => void }) {
   return (
-    <Animated.View style={[styles.top, style]}>
+    <Box
+      alignItems="center"
+      backgroundColor="background"
+      borderRadius="x5"
+      height={px(320)}
+      marginHorizontal="x4"
+      marginVertical="x3"
+    >
       <LoginTab
         isSmsLogin={isSmsLogin}
         onPress={e => {
           changeTab(e);
         }}
       />
-      <Animated.View
-        style={[
-          {
-            marginTop: 10,
-            width: '100%',
-            paddingHorizontal: 20,
-          },
-          formStyle,
-        ]}
-      >
+      <Box marginTop="x3" paddingHorizontal="x4" width="100%">
         <FormContent {...{ isSmsLogin }} />
-      </Animated.View>
-    </Animated.View>
+      </Box>
+    </Box>
   );
 }

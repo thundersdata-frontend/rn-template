@@ -5,11 +5,11 @@ import { isNull, isUndefined, omitBy } from 'lodash';
  * @param obj
  * @returns
  */
-export function removeEmpty(obj: Record<string, any>) {
+export function removeEmpty<T extends Record<string, any>>(obj: T): T {
   return omitBy(
     {
       ...obj,
     },
-    item => isNull(item) || isUndefined(item) || item == '',
-  );
+    item => isNull(item) || isUndefined(item) || item === '',
+  ) as T;
 }
