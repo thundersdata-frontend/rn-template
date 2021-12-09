@@ -1,7 +1,7 @@
-import { useDimensions } from '@td-design/rn-hooks';
-import React, { FC, useEffect } from 'react';
+import { FC, useEffect } from 'react';
 import { Keyboard, KeyboardAvoidingView, Platform, TextInput, ViewProps } from 'react-native';
 import Animated, { useSharedValue, useAnimatedStyle, withTiming } from 'react-native-reanimated';
+import { useDimensions } from '@td-design/rn-hooks';
 
 interface KeyboardShiftProps extends ViewProps {
   headerOffset?: number;

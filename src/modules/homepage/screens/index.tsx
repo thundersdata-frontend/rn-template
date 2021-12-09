@@ -1,24 +1,24 @@
-import { Input } from '@td-design/react-native';
-import { Container, KeyboardAwareScrollView } from 'components';
-import { KeyboardShift } from 'components/KeyboardShift';
-import { Keyboard, Platform, Text, View } from 'react-native';
+import { Box, Input, List } from '@td-design/react-native';
+import { Container, KeyboardShift, KeyboardAwareScrollView } from 'components';
 
+const { InputItem } = Input;
 export function Homepage() {
   return (
     <Container hasHeader={false}>
       <KeyboardShift style={{ flex: 1 }}>
-        <KeyboardAwareScrollView
-          showsVerticalScrollIndicator={false}
-          keyboardDismissMode="on-drag"
-          // 修复安卓手机上keyboardDismissMode="on-drag"不起作用的问题
-          // https://github.com/facebook/react-native/issues/23364
-          onScrollBeginDrag={Platform.OS === 'android' ? Keyboard.dismiss : () => {}}
-          keyboardShouldPersistTaps="handled"
-        >
-          <View style={{ height: 500 }}>
-            <Text>123</Text>
-          </View>
+        <KeyboardAwareScrollView>
+          <Box style={{ marginTop: 500 }} />
           <Input />
+          <InputItem label="姓名" />
+          <List
+            header="基础信息"
+            items={[
+              {
+                title: '毛色',
+                extra: <InputItem placeholder="请输入毛色" border={false} style={{ textAlign: 'right' }} />,
+              },
+            ]}
+          />
         </KeyboardAwareScrollView>
       </KeyboardShift>
     </Container>
