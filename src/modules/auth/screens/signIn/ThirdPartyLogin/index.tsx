@@ -1,6 +1,4 @@
 import { StyleSheet, TouchableOpacity } from 'react-native';
-import Animated, { useAnimatedStyle } from 'react-native-reanimated';
-import { mix } from 'react-native-redash';
 import { Flex, helpers, Box, Text } from '@td-design/react-native';
 import { Icon } from 'components';
 import { AppTheme } from 'theme';
@@ -9,23 +7,10 @@ import { useTheme } from '@shopify/restyle';
 const { px, deviceWidth } = helpers;
 const ICON_SIZE = px(24);
 
-export function ThirdPartyLogin({
-  animation,
-  onPress,
-}: {
-  animation: Animated.SharedValue<number>;
-  onPress: (status: number) => void;
-}) {
+export function ThirdPartyLogin() {
   const theme = useTheme<AppTheme>();
-  const style = useAnimatedStyle(() => ({
-    transform: [
-      {
-        translateY: mix(animation.value, 0, 20),
-      },
-    ],
-  }));
   return (
-    <Animated.View style={[{ height: px(110) }, style]}>
+    <Box height={px(110)} marginTop="x5">
       <Flex
         width={deviceWidth}
         justifyContent="center"
@@ -42,23 +27,15 @@ export function ThirdPartyLogin({
         <Box backgroundColor="border" height={1} width={px(55)} />
       </Flex>
       <Flex marginTop="x3" justifyContent="center">
-        <TouchableOpacity
-          style={[styles.icon, { backgroundColor: theme.colors.iconBg }]}
-          activeOpacity={0.5}
-          onPress={() => onPress(0)}
-        >
+        <TouchableOpacity style={[styles.icon, { backgroundColor: theme.colors.iconBg }]} activeOpacity={0.5}>
           <Icon name="qq" size={ICON_SIZE} color={theme.colors.background} />
         </TouchableOpacity>
         <Box width={px(85)} />
-        <TouchableOpacity
-          style={[styles.icon, { backgroundColor: theme.colors.iconBg }]}
-          activeOpacity={0.5}
-          onPress={() => onPress(0)}
-        >
+        <TouchableOpacity style={[styles.icon, { backgroundColor: theme.colors.iconBg }]} activeOpacity={0.5}>
           <Icon name="wechat" size={ICON_SIZE} color={theme.colors.background} />
         </TouchableOpacity>
       </Flex>
-    </Animated.View>
+    </Box>
   );
 }
 

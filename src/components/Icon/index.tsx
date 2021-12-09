@@ -19,8 +19,8 @@ export type IconNames = 'mobile' | 'passTab' | 'password' | 'qq' | 'sms' | 'smsT
 export interface SvgIconProps extends GProps, ViewProps {
   name: IconNames;
   size?: number;
-  width?: number;
-  height?: number;
+  width?: number | string;
+  height?: number | string;
   color?: string | string[];
 }
 

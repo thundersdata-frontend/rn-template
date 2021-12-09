@@ -31,7 +31,9 @@
       android:label="@string/APP_DISPLAY_NAME"
       android:windowSoftInputMode="adjustResize"
       android:exported="true"
-      android:launchMode="singleTask">
+      android:launchMode="singleTask"
+      android:fitsSystemWindows="true"
+    >
       <!-- ⚠️ add android:exported="true" and android:launchMode="singleTask" above -->
       <!-- remove the <intent-filter> from .MainActivity -->
       <intent-filter>
