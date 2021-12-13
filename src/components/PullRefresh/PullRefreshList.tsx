@@ -1,5 +1,6 @@
+import { useFocusEffect } from '@react-navigation/native';
 import { DataItem } from 'hooks/useRefreshService';
-import { ReactElement, useRef } from 'react';
+import { ReactElement, useCallback, useRef } from 'react';
 import { IndexPath, LargeList, LargeListPropType } from 'react-native-largelist';
 import { LoadingFooter } from './components/LoadingFooter';
 import { RefreshHeader } from './components/RefreshHeader';
@@ -26,6 +27,13 @@ export function PullRefreshList<T>({
   allLoaded = false,
 }: PullRefreshListProps<T>) {
   const listRef = useRef<LargeList>(null);
+
+  useFocusEffect(
+    useCallback(() => {
+      listRef.current?.endRefresh();
+      listRef.current?.endLoading();
+    }, []),
+  );
 
   const renderIndexPath = ({ section, row }: IndexPath) => {
     const item = data[section].items[row];

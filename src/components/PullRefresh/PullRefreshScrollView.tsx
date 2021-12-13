@@ -1,4 +1,5 @@
-import { FC, useRef, isValidElement, ReactElement } from 'react';
+import { useFocusEffect } from '@react-navigation/native';
+import { FC, useRef, isValidElement, ReactElement, useCallback } from 'react';
 import { SpringScrollView, SpringScrollViewPropType } from 'react-native-spring-scrollview';
 
 export interface PullRefreshScrollViewProps
@@ -26,6 +27,13 @@ export const PullRefreshScrollView: FC<PullRefreshScrollViewProps> = ({
   ...props
 }) => {
   const scrollRef = useRef<SpringScrollView>(null);
+
+  useFocusEffect(
+    useCallback(() => {
+      scrollRef.current?.endRefresh();
+      scrollRef.current?.endLoading(true);
+    }, []),
+  );
 
   const handleRefresh = async () => {
     await onRefresh?.();
