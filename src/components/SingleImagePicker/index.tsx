@@ -9,6 +9,7 @@ interface CustomImagePickerProps {
   title: string;
   width: number;
   height: number;
+  value?: string;
   showUploadImg?: boolean;
   onUpload?: () => void;
   onUploadFinish?: (uri?: string) => void;
@@ -20,6 +21,7 @@ export const SingleImagePicker: FC<CustomImagePickerProps> = ({
   width,
   height,
   title,
+  value,
   showUploadImg,
   onUpload,
   onUploadFinish,
@@ -29,6 +31,7 @@ export const SingleImagePicker: FC<CustomImagePickerProps> = ({
       showUploadImg={showUploadImg}
       width={width}
       height={height}
+      value={value}
       beforeUpload={file => {
         if (file.fileType.includes('image/') && file?.fileSize && file?.fileSize > MAX_FILE_SIZE) {
           Toast.fail({ content: `上传图片不能大于${MAX_FILE_SIZE_NUMBER}M` });

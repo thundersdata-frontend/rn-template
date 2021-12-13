@@ -2,7 +2,7 @@ import { Container } from './Container';
 import { ErrorHandler } from './ErrorHandler';
 import { Fallback } from './Fallback';
 import { ImgCard } from './ImgCard';
-import { RefreshListView } from './RefreshListView';
+import { PullRefreshList, PullRefreshScrollView } from './PullRefresh';
 import { CustomWebView } from './CustomWebView';
 import { CustomHeader } from './CustomHeader';
 import Icon from './Icon';
@@ -17,7 +17,8 @@ export {
   Fallback,
   ImgCard,
   Icon,
-  RefreshListView,
+  PullRefreshList,
+  PullRefreshScrollView,
   CustomWebView,
   CustomHeader,
   KeyboardAwareScrollView,
