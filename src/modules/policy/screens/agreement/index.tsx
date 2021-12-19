@@ -1,8 +1,8 @@
 import { Text } from '@td-design/react-native';
-import { Container } from 'components';
 import { ScrollView } from 'react-native';
+import { Container } from 'components';
 
-export function Privacy() {
+export function Agreement() {
   return (
     <Container>
       <ScrollView>

@@ -5,7 +5,7 @@ import { SignIn } from 'modules/auth/screens/signIn';
 import { Register } from 'modules/auth/screens/register';
 import { ConfigPass } from 'modules/auth/screens/configPass';
 import { ForgetPass } from 'modules/auth/screens/forgetPass';
-import { UserAgreement } from 'modules/policy/screens/userAgreement';
+import { Agreement } from 'modules/policy/screens/agreement';
 import { Privacy } from 'modules/policy/screens/privacy';
 
 const Stack = createStackNavigator();
@@ -42,10 +42,10 @@ export const AuthStack: FC<{ commonStackOptions: StackNavigationOptions }> = ({ 
         }}
       />
       <Stack.Screen
-        name="UserAgreement"
-        component={UserAgreement}
+        name="Agreement"
+        component={Agreement}
         options={{
-          headerTitle: '晋日达用户协议',
+          headerTitle: '用户协议',
         }}
       />
       <Stack.Screen

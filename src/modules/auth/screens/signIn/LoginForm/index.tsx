@@ -1,7 +1,7 @@
 import { TouchableOpacity } from 'react-native';
 import Form, { Field, useForm } from 'rc-field-form';
 import { useTheme } from '@shopify/restyle';
-import { Button, Checkable, CountDown, Flex, helpers, Input, WhiteSpace, Text, Box } from '@td-design/react-native';
+import { Button, Radio, CountDown, Flex, helpers, Input, WhiteSpace, Text, Box } from '@td-design/react-native';
 
 import { LoginTab } from '../LoginTab';
 import { useAuthService } from 'modules/auth/useAuthService';
@@ -75,8 +75,9 @@ const FormContent = ({ isSmsLogin }: { isSmsLogin: boolean }) => {
       </Flex>
       <Button disabled={disabled} loading={loading} onPress={form.submit} title="登录" />
       <Field name="agree" rules={[{ required: true, message: '请勾选用户协议和隐私政策' }]}>
-        <Checkable
-          type="radio"
+        <Radio
+          size={14}
+          containerStyle={{ marginVertical: 8 }}
           options={[
             {
               value: 1,

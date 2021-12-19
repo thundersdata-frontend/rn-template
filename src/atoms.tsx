@@ -4,7 +4,7 @@ import { removeEmpty } from 'utils/object';
 
 /** 是否登录 */
 export const authAtom = atom({
-  signedIn: true,
+  signedIn: false,
 });
 
 /** 绑定atom和AsyncStorage */

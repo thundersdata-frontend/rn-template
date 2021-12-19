@@ -10,6 +10,7 @@ import { KeyboardAwareScrollView } from './KeyboardAwareScrollView';
 import { KeyboardShift } from './KeyboardShift';
 import { ImagePickerField } from './ImagePickerField';
 import { ImgList } from './ImgList';
+import { IndexBar } from './IndexBar';
 
 export {
   Container,
@@ -25,4 +26,5 @@ export {
   KeyboardShift,
   ImagePickerField,
   ImgList,
+  IndexBar,
 };

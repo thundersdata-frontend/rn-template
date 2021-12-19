@@ -1,26 +1,23 @@
-import { Box, Input, List } from '@td-design/react-native';
-import { Container, KeyboardShift, KeyboardAwareScrollView } from 'components';
+import { Container } from 'components';
+import { IndexBar, Section } from 'components/IndexBar';
+import { lorem } from 'utils/lorem';
 
-const { InputItem } = Input;
+const getRandomList = (min: number, max: number): string[] => {
+  return new Array(Math.floor(Math.random() * (max - min) + min)).fill('');
+};
+
+const charCodeOfA = 'A'.charCodeAt(0);
+const data: Section[] = Array(26)
+  .fill('')
+  .map((_, i) => ({
+    title: String.fromCharCode(charCodeOfA + i),
+    items: getRandomList(3, 10).map(() => ({ name: lorem.generateWords(2) })),
+  }));
+
 export function Homepage() {
   return (
     <Container hasHeader={false}>
-      <KeyboardShift style={{ flex: 1 }}>
-        <KeyboardAwareScrollView>
-          <Box style={{ marginTop: 500 }} />
-          <Input />
-          <InputItem label="姓名" />
-          <List
-            header="基础信息"
-            items={[
-              {
-                title: '毛色',
-                extra: <InputItem placeholder="请输入毛色" border={false} style={{ textAlign: 'right' }} />,
-              },
-            ]}
-          />
-        </KeyboardAwareScrollView>
-      </KeyboardShift>
+      <IndexBar data={data} />
     </Container>
   );
 }
