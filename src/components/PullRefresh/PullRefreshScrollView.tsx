@@ -1,6 +1,7 @@
 import { useFocusEffect } from '@react-navigation/native';
 import { FC, useRef, isValidElement, ReactElement, useCallback } from 'react';
 import { SpringScrollView, SpringScrollViewPropType } from 'react-native-spring-scrollview';
+import { RefreshHeader } from './components/RefreshHeader';
 
 export interface PullRefreshScrollViewProps
   extends Omit<
@@ -12,13 +13,14 @@ export interface PullRefreshScrollViewProps
     | 'onRefresh'
     | 'onLoading'
   > {
+  refreshHeader?: any;
   onRefresh: () => Promise<void>;
-  onLoadMore: () => Promise<void>;
-  renderEmpty: () => ReactElement;
+  onLoadMore?: () => Promise<void>;
+  renderEmpty?: () => ReactElement;
 }
 
 export const PullRefreshScrollView: FC<PullRefreshScrollViewProps> = ({
-  refreshHeader,
+  refreshHeader = RefreshHeader,
   loadingFooter,
   onRefresh,
   onLoadMore,
@@ -49,7 +51,7 @@ export const PullRefreshScrollView: FC<PullRefreshScrollViewProps> = ({
     <SpringScrollView
       ref={scrollRef}
       {...props}
-      decelerationRate={16}
+      // decelerationRate={16}
       showsHorizontalScrollIndicator={false}
       showsVerticalScrollIndicator={false}
       dragToHideKeyboard={true}
@@ -58,7 +60,7 @@ export const PullRefreshScrollView: FC<PullRefreshScrollViewProps> = ({
       onRefresh={handleRefresh}
       onLoading={handleLoadMore}
     >
-      {isValidElement(children) ? children : renderEmpty()}
+      {isValidElement(children) ? children : renderEmpty?.()}
     </SpringScrollView>
   );
 };

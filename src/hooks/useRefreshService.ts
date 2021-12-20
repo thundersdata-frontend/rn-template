@@ -63,10 +63,12 @@ export function useRefreshService<T, R extends Page<T> = Page<T>, P extends any[
     ...restOptions,
     onSuccess(data: R, params: P) {
       // 对data进行处理
-      const { list, page = INITIAL_PAGE, totalPage = 0 } = data;
+      const { list, page = INITIAL_PAGE, totalPage = 0, total = 0 } = data;
       const listItem: DataItem<T> = { page, items: list ?? [] };
 
-      if (page === INITIAL_PAGE) {
+      if (total === 0) {
+        setData([]);
+      } else if (page === INITIAL_PAGE) {
         setData([listItem]);
       } else {
         setData(data => {
