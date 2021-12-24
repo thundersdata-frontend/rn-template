@@ -1,7 +1,7 @@
 import { FC } from 'react';
 import { TouchableOpacity } from 'react-native';
 import { useTheme } from '@shopify/restyle';
-import { Box, helpers, Flex, Image, SvgIcon } from '@td-design/react-native';
+import { helpers, Flex, Image, SvgIcon, Box } from '@td-design/react-native';
 import { SingleImagePicker } from '../SingleImagePicker';
 
 import { AppTheme } from 'theme';
@@ -13,9 +13,10 @@ export const MultipleImagePicker: FC<{
   value?: string[];
   width?: number;
   height?: number;
+  needUploadOss?: boolean;
   onUpload?: () => void;
   onUploadFinish?: (uri?: string[]) => void;
-}> = ({ title, max = 5, value = [], width = px(100), height = px(100), onUpload, onUploadFinish }) => {
+}> = ({ title, max = 5, value = [], width = px(100), height = px(100), needUploadOss, onUpload, onUploadFinish }) => {
   const theme = useTheme<AppTheme>();
 
   const handleUploadFinish = (uri?: string) => {
@@ -36,7 +37,7 @@ export const MultipleImagePicker: FC<{
 
         return (
           <Box position="relative" key={item} marginBottom={'x3'}>
-            <Image source={{ uri: item }} style={{ width, height }} />
+            <Image preview source={{ uri: item }} style={{ width, height }} />
             <TouchableOpacity
               onPress={() => handleDelete(index)}
               style={{
@@ -53,7 +54,15 @@ export const MultipleImagePicker: FC<{
       <Box marginBottom={'x3'}>
         {value.length < max && (
           <SingleImagePicker
-            {...{ width, height, title, onUpload, onUploadFinish: handleUploadFinish, showUploadImg: false }}
+            {...{
+              width,
+              height,
+              title,
+              needUploadOss,
+              onUpload,
+              onUploadFinish: handleUploadFinish,
+              showUploadImg: false,
+            }}
           />
         )}
       </Box>
