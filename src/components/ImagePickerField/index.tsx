@@ -12,6 +12,7 @@ interface ImagePickerFieldProps {
   rules?: Rule[];
   max?: number;
   multiple?: boolean;
+  needUploadOss?: boolean;
   onUpload?: () => void;
   onUploadFinish?: (uri?: string | string[]) => void;
 }
@@ -29,8 +30,9 @@ export const ImagePickerField: FC<ImagePickerFieldProps> = ({
   onUploadFinish,
   max,
   multiple = false,
+  needUploadOss = true,
 }) => {
-  const imagePickerProps = { max, width, height, title, onUpload, onUploadFinish };
+  const imagePickerProps = { max, width, height, title, needUploadOss, onUpload, onUploadFinish };
   return (
     <Field name={name} rules={rules} trigger="onUploadFinish" validateTrigger="onUploadFinish">
       {multiple ? <MultipleImagePicker {...imagePickerProps} /> : <SingleImagePicker {...imagePickerProps} />}

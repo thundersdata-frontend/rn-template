@@ -1,4 +1,5 @@
 import { useFocusEffect } from '@react-navigation/native';
+import { useSafeState } from '@td-design/rn-hooks';
 import { DataItem } from 'hooks/useRefreshService';
 import { ReactElement, useCallback, useRef } from 'react';
 import { IndexPath, LargeList, LargeListPropType } from 'react-native-largelist';
@@ -7,7 +8,7 @@ import { RefreshHeader } from './components/RefreshHeader';
 
 export interface PullRefreshListProps<T> extends Pick<LargeListPropType, 'allLoaded' | 'renderEmpty'> {
   data: DataItem<T>[];
-  renderItem: (item: T) => ReactElement;
+  renderItem: (item: T, pressable: boolean) => ReactElement;
   itemHeight: number;
   onRefresh?: () => Promise<void>;
   onLoadMore?: () => Promise<void>;
@@ -28,6 +29,15 @@ export function PullRefreshList<T>({
 }: PullRefreshListProps<T>) {
   const listRef = useRef<LargeList>(null);
 
+  const pressable = useRef(true);
+
+  const [obj, setObj] = useSafeState<any>({});
+
+  const renderIndexPath = ({ section, row }: IndexPath) => {
+    const item = data[section].items[row];
+    return renderItem(item, pressable.current);
+  };
+
   useFocusEffect(
     useCallback(() => {
       listRef.current?.endRefresh();
@@ -35,17 +45,13 @@ export function PullRefreshList<T>({
     }, []),
   );
 
-  const renderIndexPath = ({ section, row }: IndexPath) => {
-    const item = data[section].items[row];
-    return renderItem(item);
-  };
-
   const headerRefresh = async () => {
     await onRefresh?.();
     listRef.current?.endRefresh();
   };
 
   const footerLoadMore = async () => {
+    console.log(obj);
     await onLoadMore?.();
     listRef.current?.endLoading();
   };
@@ -68,6 +74,14 @@ export function PullRefreshList<T>({
       bounces
       dragToHideKeyboard
       updateTimeInterval={50}
+      onMomentumScrollEnd={() => {
+        pressable.current = true;
+        setObj({});
+      }}
+      onScrollBeginDrag={() => {
+        pressable.current = false;
+        setObj({});
+      }}
     />
   );
 }
