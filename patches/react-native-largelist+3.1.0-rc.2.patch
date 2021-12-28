@@ -1,0 +1,12 @@
+diff --git a/node_modules/react-native-largelist/index.d.ts b/node_modules/react-native-largelist/index.d.ts
+index 8b962d7..f016389 100644
+--- a/node_modules/react-native-largelist/index.d.ts
++++ b/node_modules/react-native-largelist/index.d.ts
+@@ -33,6 +33,7 @@ declare module "react-native-largelist" {
+     groupMinHeight?: number;
+     updateTimeInterval?: number;
+     headerStickyEnabled?: boolean;
++    onScrollBeginDrag?: () => void;
+   }
+ 
+   export class LargeList extends React.PureComponent<LargeListPropType> {

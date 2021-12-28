@@ -23,4 +23,3 @@
 -keep class com.facebook.react.turbomodule.** { *; }
 
 -keep class com.rntemplate.BuildConfig { *; }
--keepresources string/build_config_package
