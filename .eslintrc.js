@@ -37,7 +37,6 @@ module.exports = {
     '@typescript-eslint/no-non-null-assertion': 0,
     '@typescript-eslint/no-unused-vars': 2,
     '@typescript-eslint/no-empty-function': 0,
-    'import/no-default-export': 2,
     'import/no-duplicates': 'error',
     'import/no-unused-modules': 'error',
     'import/no-named-as-default': 0,

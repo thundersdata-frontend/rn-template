@@ -25,7 +25,6 @@ export class FileStructures extends Pont.FileStructures {
   }
 }
 
-// eslint-disable-next-line import/no-default-export
 export default class MyGenerator extends CodeGenerator {
   enum: Array<string | number> = [];
 
