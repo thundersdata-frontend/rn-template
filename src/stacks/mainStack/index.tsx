@@ -5,6 +5,8 @@ import { TabStack } from 'stacks/tabStack';
 import { EchartsRoot } from 'modules/charts/screens/main';
 import { LineChart } from 'modules/charts/screens/line';
 import { MapChart } from 'modules/charts/screens/map';
+import { IndexBarDemo } from 'modules/homepage/screens/indexbar';
+import { LocalModelDemo } from 'modules/homepage/screens/localmodel';
 
 const Stack = createStackNavigator();
 
@@ -35,6 +37,20 @@ const screens = [
     component: MapChart,
     options: {
       headerTitle: '山东地图',
+    },
+  },
+  {
+    name: 'IndexBarDemo',
+    component: IndexBarDemo,
+    options: {
+      headerTitle: '通讯录示例',
+    },
+  },
+  {
+    name: 'LocalModelDemo',
+    component: LocalModelDemo,
+    options: {
+      headerTitle: '局部共享数据示例',
     },
   },
 ];

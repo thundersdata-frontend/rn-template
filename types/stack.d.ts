@@ -11,6 +11,8 @@ type AuthStackParamList = {
 type MainStackParamList = {
   Tab: undefined;
   Homepage: undefined;
+  IndexBarDemo: undefined;
+  LocalModelDemo: undefined;
   Mine: undefined;
   Address: undefined;
   Echarts: undefined;

@@ -5,8 +5,8 @@ import React, { createContext, useContext } from 'react';
  * @param hooks 自定义hooks
  * @returns
  */
-export function createLocalShare(hooks: (...args: any[]) => any) {
-  const Context = createContext({});
+export function createLocalModel<T extends Record<string, any>>(hooks: (...args: any[]) => T) {
+  const Context = createContext<T>({} as any);
 
   const ModelProvider = ({ children }: { children?: React.ReactNode }) => (
     <Context.Provider value={hooks()}>{children}</Context.Provider>

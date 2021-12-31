@@ -1,14 +1,16 @@
 import { Container } from 'components';
-import { Box, Flex, helpers, Avatar, Toast } from '@td-design/react-native';
+import { Box, Flex, helpers, Avatar, Toast, Button } from '@td-design/react-native';
 import { ImageBackground } from 'react-native';
 import ImagePicker from '@td-design/react-native-image-picker';
 import { useUserService } from '../useUserService';
+import { NavigationProp, useNavigation } from '@react-navigation/native';
 
 const { px } = helpers;
 const AVATAR_SIZE = px(66);
 
 export function Mine() {
   const { changeAvatar } = useUserService();
+  const navigation = useNavigation<NavigationProp<MainStackParamList>>();
 
   return (
     <Container>
@@ -24,6 +26,7 @@ export function Mine() {
             </ImagePicker>
           </Flex>
         </ImageBackground>
+        <Button title="图表示例" onPress={() => navigation.navigate('Echarts')} />
       </Box>
     </Container>
   );
