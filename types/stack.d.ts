@@ -13,6 +13,7 @@ type MainStackParamList = {
   Homepage: undefined;
   IndexBarDemo: undefined;
   LocalModelDemo: undefined;
+  RecyclerListDemo: undefined;
   Mine: undefined;
   Address: undefined;
   Echarts: undefined;

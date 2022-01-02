@@ -7,6 +7,7 @@ import { LineChart } from 'modules/charts/screens/line';
 import { MapChart } from 'modules/charts/screens/map';
 import { IndexBarDemo } from 'modules/homepage/screens/indexbar';
 import { LocalModelDemo } from 'modules/homepage/screens/localmodel';
+import { RecyclerListDemo } from 'modules/homepage/screens/recyclerlist';
 
 const Stack = createStackNavigator();
 
@@ -51,6 +52,13 @@ const screens = [
     component: LocalModelDemo,
     options: {
       headerTitle: '局部共享数据示例',
+    },
+  },
+  {
+    name: 'RecyclerListDemo',
+    component: RecyclerListDemo,
+    options: {
+      headerTitle: 'RecyclerListView示例',
     },
   },
 ];

@@ -10,6 +10,7 @@ export function Homepage() {
       <Center>
         <Button title="通讯录示例" onPress={() => navigation.navigate('IndexBarDemo')} />
         <Button title="局部共享数据示例" onPress={() => navigation.navigate('LocalModelDemo')} />
+        <Button title="RecyclerListView示例" onPress={() => navigation.navigate('RecyclerListDemo')} />
       </Center>
     </Container>
   );

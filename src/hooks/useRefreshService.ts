@@ -10,17 +10,19 @@ import { Options, Service } from '@td-design/rn-hooks/lib/typescript/useRequest/
 // 初始化 page
 export const INITIAL_PAGE = 1;
 
-export type DataItem<T> = { page: number; items: T[] };
+export type PageParams = { page: number; pageSize: number } & Record<string, unknown>;
 
-export function useRefreshService<T, R extends Page<T> = Page<T>, P extends any[] = any>(
+export function useRefreshService<T, R extends Page<T> = Page<T>, P extends PageParams[] = any>(
   service: Service<R, P>,
   options?: Options<R, P>,
 ) {
   const { toastFail } = useToast();
   const [auth, updateAuth] = useAtom(authAtom);
 
-  const [data, setData] = useSafeState<DataItem<T>[]>([]);
+  const [data, setData] = useSafeState<T[]>([]);
   const [allLoaded, setAllLoaded] = useSafeState(false);
+  const [refreshing, setRefreshing] = useSafeState(false);
+  const [loadingMore, setLoadingMore] = useSafeState(false);
 
   const promiseService = async (...args: P) => {
     const state = await fetch();
@@ -40,8 +42,8 @@ export function useRefreshService<T, R extends Page<T> = Page<T>, P extends any[
 
   const { onSuccess, onError, ...restOptions } = options || {};
 
-  const handleError = (err: any, params: P) => {
-    const { code, message } = JSON.parse(err.message);
+  const handleError = (err: unknown, params: P) => {
+    const { code, message } = JSON.parse((err as Error).message);
     if (code) {
       if ([LoginFailureEnum.登录无效, LoginFailureEnum.登录过期, LoginFailureEnum.登录禁止].includes(code)) {
         signOut().then(() => {
@@ -50,10 +52,14 @@ export function useRefreshService<T, R extends Page<T> = Page<T>, P extends any[
       }
     }
     toastFail(message);
-    onError?.(err, params);
+    onError?.(err as Error, params);
   };
 
-  const { runAsync, params } = useRequest(promiseService, {
+  const {
+    runAsync,
+    params,
+    data: result,
+  } = useRequest(promiseService, {
     defaultParams: [
       {
         page: INITIAL_PAGE,
@@ -61,20 +67,24 @@ export function useRefreshService<T, R extends Page<T> = Page<T>, P extends any[
       },
     ] as P,
     ...restOptions,
+    onBefore(params: P) {
+      if (params[0].page === INITIAL_PAGE) {
+        setRefreshing(true);
+      } else {
+        setLoadingMore(true);
+      }
+    },
     onSuccess(data: R, params: P) {
       // 对data进行处理
       const { list, page = INITIAL_PAGE, totalPage = 0, total = 0 } = data;
-      const listItem: DataItem<T> = { page, items: list ?? [] };
-
       if (total === 0) {
-        setData([]);
+        setData([] as T[]);
       } else if (page === INITIAL_PAGE) {
-        setData([listItem]);
+        setData(list ?? []);
       } else {
         setData(data => {
           const newData = [...data];
-          newData.push(listItem);
-          return newData;
+          return newData.concat(list ?? []);
         });
       }
 
@@ -87,6 +97,13 @@ export function useRefreshService<T, R extends Page<T> = Page<T>, P extends any[
       onSuccess?.(data, params);
     },
     onError: handleError,
+    onFinally(params: P) {
+      if (params[0].page === INITIAL_PAGE) {
+        setRefreshing(false);
+      } else {
+        setLoadingMore(false);
+      }
+    },
   });
 
   /**
@@ -94,7 +111,6 @@ export function useRefreshService<T, R extends Page<T> = Page<T>, P extends any[
    */
   const onRefresh = async () => {
     try {
-      setAllLoaded(false);
       await runAsync({ ...params[0], pageSize: 10, page: INITIAL_PAGE });
     } catch (error) {
       handleError(error, params as P);
@@ -106,8 +122,8 @@ export function useRefreshService<T, R extends Page<T> = Page<T>, P extends any[
    */
   const onLoadMore = async () => {
     try {
-      setAllLoaded(false);
       const { page, pageSize } = params[0];
+      if (allLoaded || page >= (result?.totalPage ?? 0)) return;
       await runAsync({ ...params[0], pageSize, page: page + 1 });
     } catch (error) {
       handleError(error, params as P);
@@ -116,7 +132,6 @@ export function useRefreshService<T, R extends Page<T> = Page<T>, P extends any[
 
   const onUpdate = async (params: P) => {
     try {
-      setAllLoaded(false);
       await runAsync({ ...params, pageSize: 10, page: INITIAL_PAGE });
     } catch (error) {
       handleError(error, params as P);
@@ -124,6 +139,8 @@ export function useRefreshService<T, R extends Page<T> = Page<T>, P extends any[
   };
 
   return {
+    refreshing,
+    loadingMore,
     allLoaded,
     data,
 
