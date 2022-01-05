@@ -99,3 +99,215 @@ module.exports = {
 
 通过以上步骤增加字体之后，不需要其他额外的配置就可以在项目中看到效果了。
 你也可以通过在`theme.ts`文件中定义自己的 textVariants。
+
+## 5. 组件库默认主题
+
+```js
+
+const basePalette = {
+  // 基础色
+  white: '#FFFFFF',
+  black: '#000000',
+  transparent: 'transparent',
+  // 功能色
+  func50: '#FBF5F5',
+  func100: '#FFF7E3',
+  func200: '#FFD21D',
+  func300: '#52C41A',
+  func400: '#1890FF',
+  func500: '#F86E21',
+  func600: '#F4333C',
+};
+
+/** 默认调色板 */
+const palette = {
+  ...basePalette,
+  // 主色
+  primary50: '#E5F1FF',
+  primary100: '#3AA3FF',
+  primary200: '#005DFF',
+  primary300: 'rgba(0, 93, 255, 0.7)',
+  primary400: 'rgba(0, 93, 255, 0.4)',
+  // 中性色
+  gray50: '#F5F5F5',
+  gray100: '#E5E5E5',
+  gray200: '#CCCCCC',
+  gray300: '#999999',
+  gray400: '#666666',
+  gray500: '#333333',
+  gray600: 'rgba(0, 0, 0, 0.4)',
+  gray700: 'rgba(0, 0, 0, 0.04)',
+};
+
+const lightTheme = createTheme({
+  spacing: {
+    x1: px(4),
+    x2: px(8),
+    x3: px(12),
+    x4: px(16),
+    x5: px(20),
+    x6: px(24),
+    x7: px(28),
+    x8: px(32),
+    x9: px(36),
+    x10: px(40),
+  },
+  borderRadii: {
+    x1: px(4),
+    x2: px(8),
+    x3: px(12),
+    x4: px(16),
+    x5: px(20),
+    x6: px(24),
+    x7: px(28),
+    x8: px(32),
+    x9: px(36),
+    x10: px(40),
+  },
+  zIndices: {
+    '1': 1,
+    '9': 9,
+    '19': 9,
+    '29': 9,
+    '39': 9,
+    '49': 9,
+    '59': 9,
+    '69': 9,
+    '79': 9,
+    '89': 9,
+    '99': 99,
+  },
+  breakpoints: {
+    phone: 0,
+    tablet: 768,
+    largeTablet: 1024,
+  },
+  colors: {
+    ...palette,
+    background: palette.gray50,
+    mask: palette.gray600,
+    border: palette.gray200,
+    icon: palette.gray300,
+    disabled: palette.gray200,
+    primary_disabled: palette.primary300,
+    text: palette.gray500,
+    text_active: palette.white,
+  },
+  textVariants: {
+    h0: {
+      fontWeight: 'bold',
+      fontSize: px(28),
+      lineHeight: px(39.2),
+      fontFamily: 'PingFang SC',
+    },
+    h1: {
+      fontWeight: '500',
+      fontSize: px(18),
+      lineHeight: px(25.2),
+      fontFamily: 'PingFang SC',
+    },
+    h2: {
+      fontWeight: '500',
+      fontSize: px(16),
+      lineHeight: px(22.4),
+      fontFamily: 'PingFang SC',
+    },
+    h3: {
+      fontWeight: '500',
+      fontSize: px(14),
+      lineHeight: px(19.6),
+      fontFamily: 'PingFang SC',
+    },
+    p0: {
+      fontSize: px(16),
+      lineHeight: px(22.4),
+      fontFamily: 'PingFang SC',
+    },
+    p1: {
+      fontSize: px(14),
+      lineHeight: px(19.6),
+      fontFamily: 'PingFang SC',
+    },
+    p2: {
+      fontSize: px(12),
+      lineHeight: px(16.8),
+      fontFamily: 'PingFang SC',
+    },
+    p3: {
+      fontSize: px(10),
+      lineHeight: px(14),
+      fontFamily: 'PingFang SC',
+    },
+    d0: {
+      fontSize: px(24),
+      lineHeight: px(28.13),
+      fontFamily: 'Roboto',
+    },
+    d1: {
+      fontSize: px(18),
+      lineHeight: px(21.09),
+      fontFamily: 'Roboto',
+    },
+    d2: {
+      fontSize: px(12),
+      lineHeight: px(14.06),
+      fontFamily: 'Roboto',
+    },
+  },
+});
+export type Theme = typeof lightTheme;
+export type Spacing = keyof Theme['spacing'];
+export type Color = keyof Theme['colors'];
+export type BorderRadius = keyof Theme['borderRadii'];
+
+/** 深色调色板 */
+const darkPalette = {
+  ...basePalette,
+  // 主色
+  primary50: 'rgba(0, 93, 255, 0.3)',
+  primary100: '#3AA3FF',
+  primary200: '#005DFF',
+  primary300: 'rgba(0, 93, 255, 0.7)',
+  primary400: 'rgba(0, 93, 255, 0.4)',
+
+  // 中性色
+  gray50: '#131C22',
+  gray100: 'rgba(255, 255, 255, 0.15)',
+  gray200: 'rgba(255, 255, 255, 0.25)',
+  gray300: 'rgba(255, 255, 255, 0.4)',
+  gray400: 'rgba(255, 255, 255, 0.6)',
+  gray500: 'rgba(255, 255, 255, 0.8)',
+  gray600: 'rgba(0, 0, 0, 0.4)',
+  gray700: 'rgba(0, 0, 0, 0.04)',
+};
+
+const darkTheme: Theme = {
+  ...lightTheme,
+  colors: {
+    ...darkPalette,
+    background: darkPalette.gray50,
+    mask: darkPalette.gray600,
+    border: darkPalette.gray400,
+    icon: darkPalette.gray300,
+    disabled: darkPalette.gray200,
+    primary_disabled: darkPalette.primary300,
+    text: darkPalette.gray500,
+    text_active: darkPalette.white,
+  },
+};
+
+```
+
+## 6. 创建 keystore
+
+### 创建开发环境 keystore
+
+```code
+$ keytool -genkey -v -keystore ./android/app/debug.keystore -storepass android -alias androiddebugkey -keypass android -keyalg RSA -keysize 2048 -validity 10000
+```
+
+### 创建生产环境 keystore
+
+```code
+$ keytool -genkeypair -v -storetype PKCS12 -keystore ./android/app/my-release-key.keystore -alias my-key-alias -keyalg RSA -keysize 2048 -validity 10000
+```
