@@ -311,3 +311,5 @@ $ keytool -genkey -v -keystore ./android/app/debug.keystore -storepass android -
 ```code
 $ keytool -genkeypair -v -storetype PKCS12 -keystore ./android/app/my-release-key.keystore -alias my-key-alias -keyalg RSA -keysize 2048 -validity 10000
 ```
+
+## 7. 配置外链打开 app 内指定页面以及传参
