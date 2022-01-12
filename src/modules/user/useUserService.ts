@@ -1,19 +1,19 @@
 import { Toast } from '@td-design/react-native';
 import { useSafeState, useMemoizedFn } from '@td-design/rn-hooks';
 import { uploadFile } from 'utils/upload';
-import { authAtom, userInfoAtom } from 'atoms';
+import { userInfoAtom } from 'atoms';
 import { useToast } from 'hooks/useToast';
 import { useError } from 'hooks/useError';
 import { useUpdateAtom } from 'jotai/utils';
-import { signOut } from 'utils/auth';
 import { mockChangeAvatar, mockFetchUserInfo, mockUpdateUsername } from 'modules/mock';
 import { File } from '@td-design/react-native-image-picker';
+import { useSignout } from 'hooks/useSignout';
 
 export function useUserService() {
   const updateUserInfo = useUpdateAtom(userInfoAtom);
-  const updateAuth = useUpdateAtom(authAtom);
   const { toastSuccess, toastFail } = useToast();
   const { convertErrorMsg } = useError();
+  const { signOut } = useSignout();
   const [refreshing, setRefreshing] = useSafeState<boolean>(false);
 
   // 修改头像
@@ -71,13 +71,13 @@ export function useUserService() {
       toastFail(message);
       setRefreshing(false);
       // 用户信息获取失败自动认为登录失效
-      await signOut();
-      updateAuth({ signedIn: false });
+      signOut();
     }
   };
 
   return {
     refreshing,
+    signOut,
     changeAvatar: useMemoizedFn(changeAvatar),
     updateNickname: useMemoizedFn(updateNickname),
     refreshUserInfo: useMemoizedFn(refreshUserInfo),

@@ -7,7 +7,7 @@ import { authAtom } from 'atoms';
 import { CustomHeader } from 'components';
 
 export const Stack = () => {
-  const auth = useAtomValue(authAtom);
+  const signedIn = useAtomValue(authAtom);
 
   const commonStackOptions: StackNavigationOptions = {
     header: props => <CustomHeader {...props} />,
@@ -16,6 +16,6 @@ export const Stack = () => {
     cardStyleInterpolator: CardStyleInterpolators.forHorizontalIOS,
   };
 
-  if (auth.signedIn) return <MainStack {...{ commonStackOptions }} />;
+  if (signedIn) return <MainStack {...{ commonStackOptions }} />;
   return <AuthStack {...{ commonStackOptions }} />;
 };

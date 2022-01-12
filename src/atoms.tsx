@@ -2,11 +2,6 @@ import AsyncStorage from '@react-native-async-storage/async-storage';
 import { atom, PrimitiveAtom } from 'jotai';
 import { removeEmpty } from 'utils/object';
 
-/** 是否登录 */
-export const authAtom = atom({
-  signedIn: true,
-});
-
 /** 绑定atom和AsyncStorage */
 export function atomWithAsyncStorage<T>(key: string, initialValue: T): PrimitiveAtom<T> {
   const getInitialValue: () => Promise<T> = async () => {
@@ -60,6 +55,8 @@ export function atomWithAsyncStorage<T>(key: string, initialValue: T): Primitive
     },
   );
 }
+/** 是否登录 */
+export const authAtom = atomWithAsyncStorage<boolean>('signedIn', false);
 
 /** 用户信息 */
 export const userInfoAtom = atomWithAsyncStorage<UserInfo>('userInfo', {});

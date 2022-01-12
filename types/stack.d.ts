@@ -23,3 +23,5 @@ type MainStackParamList = {
   ModifyPassword: undefined;
   ModifyPasswordResult: undefined;
 };
+
+type AppParamList = AuthStackParamList & MainStackParamList;

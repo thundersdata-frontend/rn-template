@@ -1,23 +1,21 @@
-import { authAtom } from 'atoms';
 import { useMemoizedFn, useSafeState, useRequest } from '@td-design/rn-hooks';
 import { LoginFailureEnum } from 'enums';
-import { useAtom } from 'jotai';
-import { signOut } from 'utils/auth';
 import { fetch } from '@react-native-community/netinfo';
 import { useToast } from 'hooks/useToast';
 import { Options, Service } from '@td-design/rn-hooks/lib/typescript/useRequest/types';
+import { useSignout } from './useSignout';
 
 // 初始化 page
 export const INITIAL_PAGE = 1;
 
 export type PageParams = { page: number; pageSize: number } & Record<string, unknown>;
 
-export function useRefreshService<T, R extends Page<T> = Page<T>, P extends PageParams[] = any>(
+export function useRefreshService<T, R extends Page<T> = Page<T>, P extends PageParams[] = any[]>(
   service: Service<R, P>,
   options?: Options<R, P>,
 ) {
   const { toastFail } = useToast();
-  const [auth, updateAuth] = useAtom(authAtom);
+  const { signedIn, signOut } = useSignout();
 
   const [data, setData] = useSafeState<T[]>([]);
   const [allLoaded, setAllLoaded] = useSafeState(false);
@@ -34,7 +32,7 @@ export function useRefreshService<T, R extends Page<T> = Page<T>, P extends Page
         }),
       );
     }
-    if (!auth.signedIn) {
+    if (!signedIn) {
       throw new Error(JSON.stringify({ code: LoginFailureEnum.登录过期 }));
     }
     return service(...args);
@@ -46,9 +44,7 @@ export function useRefreshService<T, R extends Page<T> = Page<T>, P extends Page
     const { code, message } = JSON.parse((err as Error).message);
     if (code) {
       if ([LoginFailureEnum.登录无效, LoginFailureEnum.登录过期, LoginFailureEnum.登录禁止].includes(code)) {
-        signOut().then(() => {
-          updateAuth({ signedIn: false });
-        });
+        signOut();
       }
     }
     toastFail(message);

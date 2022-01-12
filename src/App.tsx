@@ -1,6 +1,6 @@
 import { Appearance } from 'react-native';
 import { SafeAreaProvider } from 'react-native-safe-area-context';
-import { NavigationContainer, DefaultTheme, DarkTheme, useNavigationContainerRef } from '@react-navigation/native';
+import { NavigationContainer, DefaultTheme, DarkTheme } from '@react-navigation/native';
 import { hide as bootsplashHide } from 'react-native-bootsplash';
 import { ThemeProvider } from '@td-design/react-native';
 import { useSafeState, useMount, useMemoizedFn } from '@td-design/rn-hooks';
@@ -10,10 +10,10 @@ import { Stack } from './stacks';
 import { Fallback } from 'components';
 import { lightTheme, darkTheme } from 'theme';
 import { linking } from 'linking';
+import { navigationRef } from 'services/NavigationService';
 
 export function App() {
   const [theme, setTheme] = useSafeState(Appearance.getColorScheme());
-  const navigationRef = useNavigationContainerRef<MainStackParamList & AuthStackParamList>();
   useFlipper(navigationRef);
 
   const themeChange = useMemoizedFn(() => {

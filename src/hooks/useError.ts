@@ -1,11 +1,9 @@
-import { authAtom } from 'atoms';
 import { LoginFailureEnum } from 'enums';
-import { useUpdateAtom } from 'jotai/utils';
 import { useCallback } from 'react';
-import { signOut } from 'utils/auth';
+import { useSignout } from './useSignout';
 
 export function useError() {
-  const updateAuth = useUpdateAtom(authAtom);
+  const { signOut } = useSignout();
 
   const convertErrorMsg = useCallback(
     (error: unknown) => {
@@ -19,9 +17,7 @@ export function useError() {
           }
           const { message, code } = JSON.parse(error.message);
           if ([LoginFailureEnum.登录无效, LoginFailureEnum.登录过期, LoginFailureEnum.登录禁止].includes(code)) {
-            signOut().then(() => {
-              updateAuth({ signedIn: false });
-            });
+            signOut();
             return LoginFailureEnum[code];
           }
           return message;
@@ -32,7 +28,8 @@ export function useError() {
         }
       }
     },
-    [updateAuth],
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+    [],
   );
 
   return {
