@@ -9,7 +9,7 @@ import { KeyboardShift } from './KeyboardShift';
 import { ImagePickerField } from './ImagePickerField';
 import { ImgList } from './ImgList';
 import { IndexBar } from './IndexBar';
-import { DataListView } from './DataListView';
+import { RecyclerFlatList } from './RecyclerFlatList';
 
 export {
   Container,
@@ -23,5 +23,5 @@ export {
   ImagePickerField,
   ImgList,
   IndexBar,
-  DataListView,
+  RecyclerFlatList,
 };

@@ -623,9 +623,7 @@ declare namespace API {
 
         export const init: Response;
         export const url: string;
-        export function fetch(
-          bodyParams: defs.authorization.ResourceObjects,
-        ): Promise<Response>;
+        export function fetch(bodyParams: defs.authorization.ResourceObjects): Promise<Response>;
       }
 
       /**
@@ -639,9 +637,7 @@ declare namespace API {
 
         export const init: Response;
         export const url: string;
-        export function fetch(
-          bodyParams: Array<defs.authorization.ResourceObjects>,
-        ): Promise<Response>;
+        export function fetch(bodyParams: Array<defs.authorization.ResourceObjects>): Promise<Response>;
       }
     }
 
@@ -764,9 +760,7 @@ declare namespace API {
 
         export const init: Response;
         export const url: string;
-        export function fetch(
-          bodyParams: defs.authorization.DataScopeDTO,
-        ): Promise<Response>;
+        export function fetch(bodyParams: defs.authorization.DataScopeDTO): Promise<Response>;
       }
 
       /**
@@ -828,9 +822,7 @@ declare namespace API {
 
         export const init: Response;
         export const url: string;
-        export function fetch(
-          bodyParams: defs.authorization.DataModule,
-        ): Promise<Response>;
+        export function fetch(bodyParams: defs.authorization.DataModule): Promise<Response>;
       }
 
       /**
@@ -878,9 +870,7 @@ declare namespace API {
 
         export const init: Response;
         export const url: string;
-        export function fetch(
-          bodyParams: defs.authorization.DataRuleDefinition,
-        ): Promise<Response>;
+        export function fetch(bodyParams: defs.authorization.DataRuleDefinition): Promise<Response>;
       }
 
       /**
@@ -945,9 +935,7 @@ declare namespace API {
 
         export const init: Response;
         export const url: string;
-        export function fetch(
-          bodyParams: defs.authorization.DataRuleDTO,
-        ): Promise<Response>;
+        export function fetch(bodyParams: defs.authorization.DataRuleDTO): Promise<Response>;
       }
     }
 
@@ -985,9 +973,7 @@ declare namespace API {
 
         export const init: Response;
         export const url: string;
-        export function fetch(
-          bodyParams: defs.authorization.BindUserDTO,
-        ): Promise<Response>;
+        export function fetch(bodyParams: defs.authorization.BindUserDTO): Promise<Response>;
       }
 
       /**
@@ -1071,9 +1057,7 @@ declare namespace API {
 
         export const init: Response;
         export const url: string;
-        export function fetch(
-          bodyParams: defs.authorization.DataRoleInputDTO,
-        ): Promise<Response>;
+        export function fetch(bodyParams: defs.authorization.DataRoleInputDTO): Promise<Response>;
       }
     }
 
@@ -1269,9 +1253,7 @@ declare namespace API {
           type?: number;
         }
 
-        export type Response = defs.authorization.PagingEntity<
-          defs.authorization.ResourceObjects
-        >;
+        export type Response = defs.authorization.PagingEntity<defs.authorization.ResourceObjects>;
 
         export const init: Response;
         export const url: string;
@@ -1592,9 +1574,7 @@ declare namespace API {
 
         export const init: Response;
         export const url: string;
-        export function fetch(
-          bodyParams: defs.authorization.BusinessQueryDTO,
-        ): Promise<Response>;
+        export function fetch(bodyParams: defs.authorization.BusinessQueryDTO): Promise<Response>;
       }
 
       /**
@@ -1604,15 +1584,11 @@ declare namespace API {
       export namespace listByBusinessValueListPagination {
         export class Params {}
 
-        export type Response = defs.authorization.PagingEntity<
-          defs.authorization.ResourceRole
-        >;
+        export type Response = defs.authorization.PagingEntity<defs.authorization.ResourceRole>;
 
         export const init: Response;
         export const url: string;
-        export function fetch(
-          bodyParams: defs.authorization.BusinessQueryDTO,
-        ): Promise<Response>;
+        export function fetch(bodyParams: defs.authorization.BusinessQueryDTO): Promise<Response>;
       }
 
       /**
@@ -1637,9 +1613,7 @@ declare namespace API {
           status?: number;
         }
 
-        export type Response = defs.authorization.PagingEntity<
-          defs.authorization.ResourceRole
-        >;
+        export type Response = defs.authorization.PagingEntity<defs.authorization.ResourceRole>;
 
         export const init: Response;
         export const url: string;
@@ -1676,9 +1650,7 @@ declare namespace API {
 
         export const init: Response;
         export const url: string;
-        export function fetch(
-          bodyParams: defs.authorization.UserQueryDTO,
-        ): Promise<Response>;
+        export function fetch(bodyParams: defs.authorization.UserQueryDTO): Promise<Response>;
       }
 
       /**
@@ -1701,9 +1673,7 @@ declare namespace API {
           status?: number;
         }
 
-        export type Response = defs.authorization.PagingEntity<
-          defs.authorization.ResourceRole
-        >;
+        export type Response = defs.authorization.PagingEntity<defs.authorization.ResourceRole>;
 
         export const init: Response;
         export const url: string;
@@ -1721,9 +1691,7 @@ declare namespace API {
 
         export const init: Response;
         export const url: string;
-        export function fetch(
-          bodyParams: defs.authorization.RoleDTO,
-        ): Promise<Response>;
+        export function fetch(bodyParams: defs.authorization.RoleDTO): Promise<Response>;
       }
 
       /**
@@ -1737,9 +1705,7 @@ declare namespace API {
 
         export const init: Response;
         export const url: string;
-        export function fetch(
-          bodyParams: defs.authorization.RoleDTO,
-        ): Promise<Response>;
+        export function fetch(bodyParams: defs.authorization.RoleDTO): Promise<Response>;
       }
 
       /**
@@ -1774,9 +1740,7 @@ declare namespace API {
 
         export const init: Response;
         export const url: string;
-        export function fetch(
-          bodyParams: defs.authorization.BindUserDTO,
-        ): Promise<Response>;
+        export function fetch(bodyParams: defs.authorization.BindUserDTO): Promise<Response>;
       }
 
       /**
@@ -1790,9 +1754,7 @@ declare namespace API {
 
         export const init: Response;
         export const url: string;
-        export function fetch(
-          bodyParams: defs.authorization.UserReduceRoleDTO,
-        ): Promise<Response>;
+        export function fetch(bodyParams: defs.authorization.UserReduceRoleDTO): Promise<Response>;
       }
 
       /**
@@ -1851,9 +1813,7 @@ declare namespace API {
 
         export const init: Response;
         export const url: string;
-        export function fetch(
-          bodyParams: defs.authorization.ResourceRole,
-        ): Promise<Response>;
+        export function fetch(bodyParams: defs.authorization.ResourceRole): Promise<Response>;
       }
     }
   }

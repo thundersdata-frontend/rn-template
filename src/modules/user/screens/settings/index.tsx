@@ -34,7 +34,7 @@ export function Settings() {
       <ListItem
         title="修改昵称"
         arrow="horizontal"
-        extra={''} // 昵称
+        height={54}
         onPress={() =>
           Modal.prompt({
             title: '修改昵称',
@@ -43,8 +43,8 @@ export function Settings() {
           })
         }
       />
-      <ListItem title="修改密码" arrow="horizontal" onPress={() => navigation.navigate('ModifyPassword')} />
-      <ListItem title="注销登录" arrow="horizontal" onPress={handleLogout} />
+      <ListItem title="修改密码" arrow="horizontal" height={54} onPress={() => navigation.navigate('ModifyPassword')} />
+      <ListItem title="注销登录" arrow="horizontal" height={54} onPress={handleLogout} />
     </Box>
   );
 }

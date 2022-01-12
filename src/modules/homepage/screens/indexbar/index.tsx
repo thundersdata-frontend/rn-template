@@ -1,13 +1,16 @@
-import { Container } from 'components';
-import { IndexBar, ContentType } from 'components/IndexBar';
+import { Container, IndexBar } from 'components';
 import { lorem } from 'utils/lorem';
 
 export function IndexBarDemo() {
-  const preparedData = prepare(data);
-
   return (
     <Container>
-      <IndexBar data={preparedData} />
+      <IndexBar
+        sections={data}
+        windowSize={50}
+        initialNumToRender={250}
+        maxToRenderPerBatch={250}
+        updateCellsBatchingPeriod={50}
+      />
     </Container>
   );
 }
@@ -22,14 +25,5 @@ const data = Array(26)
   .fill('')
   .map((_, i) => ({
     title: String.fromCharCode(charCodeOfA + i),
-    items: getRandomList(3, 10).map(() => ({ name: lorem.generateWords(2) })),
+    data: getRandomList(3, 15).map(() => ({ name: lorem.generateWords(2) })),
   }));
-
-function prepare(data: any[]) {
-  const result: any[] = [];
-  data.forEach(({ title, items }) => {
-    result.push({ type: ContentType.TITLE, name: title });
-    result.push(...items.map((ele: any) => ({ type: ContentType.CONTENT, name: ele.name })));
-  });
-  return result;
-}

@@ -19,6 +19,7 @@ type MainStackParamList = {
   Echarts: undefined;
   LineChart: undefined;
   MapChart: undefined;
+  Settings: undefined;
   ModifyPassword: undefined;
   ModifyPasswordResult: undefined;
 };

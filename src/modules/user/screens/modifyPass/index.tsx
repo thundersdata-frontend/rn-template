@@ -3,11 +3,11 @@
  */
 import Form, { Field, useForm } from 'rc-field-form';
 import { useTheme } from '@shopify/restyle';
-import { Box, Input, WhiteSpace, Button, helpers } from '@td-design/react-native';
+import { Box, Input, WhiteSpace, Button, helpers, WingBlank } from '@td-design/react-native';
 import { AppTheme } from 'theme';
 import { passwordPattern } from 'utils/validators';
 import { ErrorMessage } from 'modules/auth/components/ErrorMessage';
-import { Icon } from 'components';
+import { Container, Icon } from 'components';
 import { useAuthService } from 'modules/auth/useAuthService';
 
 const { px } = helpers;
@@ -87,8 +87,11 @@ const FormContent = () => {
 
 export function ModifyPassword() {
   return (
-    <Box backgroundColor="white" paddingHorizontal="x4" paddingBottom="x5" paddingTop="x8" height="100%">
-      <FormContent />
-    </Box>
+    <Container>
+      <WhiteSpace size="x3" />
+      <WingBlank size="x3">
+        <FormContent />
+      </WingBlank>
+    </Container>
   );
 }

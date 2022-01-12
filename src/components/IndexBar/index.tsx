@@ -1,98 +1,84 @@
-import React, { useRef, ReactElement, memo, ReactText } from 'react';
-import { FlatList, ListRenderItem, ListRenderItemInfo, TouchableOpacity } from 'react-native';
-import { DataListView } from '../DataListView';
-import { Flex, Box, Text, helpers } from '@td-design/react-native';
-import { DataProvider, LayoutProvider } from 'recyclerlistview';
-import { useCreation } from '@td-design/rn-hooks';
+import React, { useRef, ReactElement, memo } from 'react';
+import {
+  FlatList,
+  ListRenderItem,
+  ListRenderItemInfo,
+  Platform,
+  SectionList,
+  SectionListData,
+  SectionListProps,
+  SectionListRenderItemInfo,
+  TouchableOpacity,
+} from 'react-native';
+import { Flex, Box, Text, helpers, Empty } from '@td-design/react-native';
 
 export enum ContentType {
   TITLE = 'title',
   CONTENT = 'content',
 }
 
-type ItemType = { type: ContentType; name: string; [key: string]: unknown };
 type LetterType = { name: string; index: number };
-export interface IndexBarProps<T extends ItemType = ItemType> {
-  data: T[];
-  onPress?: (item: T) => void;
+type ItemType = { name: string; [key: string]: unknown };
+type SectionType = { title: string };
+
+export interface IndexBarProps<T, R>
+  extends Pick<
+    SectionListProps<T, R>,
+    'sections' | 'windowSize' | 'initialNumToRender' | 'maxToRenderPerBatch' | 'updateCellsBatchingPeriod'
+  > {
   renderItem?: (item: T) => ReactElement;
-  renderSectionHeader?: (section: T) => ReactElement;
-  ListFooterComponent?: ReactElement;
+  renderSectionHeader?: (section: R) => ReactElement;
+  renderFooter?: () => ReactElement;
   renderIndexItem?: ListRenderItem<LetterType>;
   titleHeight?: number;
   itemHeight?: number;
 }
 
 const { px, ONE_PIXEL } = helpers;
-export function IndexBar<T extends ItemType = ItemType>({
-  data = [],
-  onPress,
-  renderItem,
-  renderSectionHeader,
-  renderIndexItem,
-  ListFooterComponent,
+export function IndexBar<T extends ItemType = ItemType, R extends SectionType = SectionType>({
+  sections = [],
   titleHeight = px(32),
   itemHeight = px(56),
-}: IndexBarProps<T>) {
-  const listRef = useRef<any>(null);
+  windowSize,
+  initialNumToRender,
+  maxToRenderPerBatch,
+  updateCellsBatchingPeriod,
+  ...props
+}: IndexBarProps<T, R>) {
+  const listRef = useRef<SectionList<T, R>>(null);
 
-  const letters = prepareLetters<T>(data);
-  const length = useCreation(() => {
-    return data.filter(item => item.type === ContentType.CONTENT).length;
-  }, []);
+  // performance optimization props
+  const _windowSize = 50;
+  const _initialNumToRender = 150;
+  const _maxToRenderPerBatch = 150;
+  const _updateCellsBatchingPeriod = 50;
 
-  const renderAheadOffset = letters.length * titleHeight + length * itemHeight;
-
-  const renderLayoutProvider = (dataProvider: DataProvider) => {
-    return new LayoutProvider(
-      (index: number) => {
-        const type = dataProvider.getDataForIndex(index).type;
-        return type;
-      },
-      (type, dim) => {
-        switch (type) {
-          case ContentType.TITLE:
-            dim.width = helpers.deviceWidth;
-            dim.height = 32;
-            break;
-
-          case ContentType.CONTENT:
-            dim.width = helpers.deviceWidth;
-            dim.height = 56;
-            break;
-
-          default:
-            dim.width = 0;
-            dim.height = 0;
-        }
-      },
-    );
+  const renderSectionItem = (info: SectionListRenderItemInfo<T, R>) => {
+    if (props.renderItem) return props.renderItem(info.item);
+    return <IndexItem name={info.item.name} height={itemHeight} />;
   };
 
-  const rowRenderer = (type: ReactText, data: T) => {
-    switch (type) {
-      case ContentType.TITLE:
-        if (renderSectionHeader) return renderSectionHeader(data);
-        return <Title {...data} />;
-
-      case ContentType.CONTENT:
-        if (renderItem) return renderItem(data);
-        const handlePress = () => {
-          onPress?.(data);
-        };
-        return <IndexItem {...data} onPress={handlePress} />;
-
-      default:
-        return null;
-    }
+  const renderSectionHeader = ({ section }: { section: SectionListData<T, R> }) => {
+    if (props.renderSectionHeader) return props.renderSectionHeader(section);
+    return <SectionHeader height={titleHeight} {...section} />;
   };
 
+  const renderSectionFooter = () => {
+    if (sections.length === 0) return null;
+    if (props.renderFooter) return props.renderFooter();
+
+    const count = sections.reduce((accu, curr) => accu + curr.data.length, 0);
+    return <SectionFooter count={count} />;
+  };
+
+  const renderSectionEmpty = () => <Empty isEmpty emptyText="暂无数据" />;
+
+  const letters = sections.map((item, index) => ({ name: item.title, index }));
   const handleLetterSelect = (item: LetterType) => () => {
-    listRef.current?.scrollToIndex(item.index, true);
+    listRef.current?.scrollToLocation({ itemIndex: 0, sectionIndex: item.index, animated: false });
   };
-
   const renderLetterItem = (info: ListRenderItemInfo<LetterType>) => {
-    if (renderIndexItem) return renderIndexItem(info);
+    if (props.renderIndexItem) return props.renderIndexItem(info);
 
     const { item } = info;
     return (
@@ -104,28 +90,24 @@ export function IndexBar<T extends ItemType = ItemType>({
     );
   };
 
-  const renderListFooter = () => {
-    if (ListFooterComponent) return ListFooterComponent;
-    return (
-      <Box height={px(56)} justifyContent="center" alignItems="center">
-        <Text variant="p1" color="gray500">
-          {`${length} 个联系人`}
-        </Text>
-      </Box>
-    );
-  };
-
   return (
     <>
-      <DataListView
+      <SectionList
         ref={listRef}
-        data={data}
-        keyExtractor={item => item.type.toString() + item.name.toString()}
-        itemHeight={140}
-        renderLayoutProvider={renderLayoutProvider}
-        rowRenderer={rowRenderer}
-        renderFooter={renderListFooter}
-        renderAheadOffset={renderAheadOffset}
+        keyExtractor={item => item.name}
+        sections={sections}
+        renderItem={renderSectionItem}
+        renderSectionHeader={renderSectionHeader}
+        ListEmptyComponent={renderSectionEmpty}
+        ListFooterComponent={renderSectionFooter}
+        getItemLayout={(_, index) => ({ length: itemHeight, offset: itemHeight * index, index })}
+        windowSize={windowSize ?? _windowSize}
+        initialNumToRender={initialNumToRender ?? _initialNumToRender}
+        maxToRenderPerBatch={maxToRenderPerBatch ?? _maxToRenderPerBatch}
+        updateCellsBatchingPeriod={updateCellsBatchingPeriod ?? _updateCellsBatchingPeriod}
+        stickySectionHeadersEnabled
+        removeClippedSubviews={Platform.OS === 'android'}
+        contentContainerStyle={sections.length > 0 ? {} : { flex: 1 }}
       />
       <FlatList
         data={letters}
@@ -150,54 +132,47 @@ export function IndexBar<T extends ItemType = ItemType>({
   );
 }
 
-const Title = memo((data: ItemType) => {
+const SectionHeader = memo(({ title, height }: { title: string; height: number }) => {
   return (
-    <Box flex={1} backgroundColor="background" justifyContent="center" paddingLeft="x2">
-      <Text color="gray500">{data.name.toUpperCase()}</Text>
+    <Box height={height} backgroundColor="background" justifyContent="center" paddingLeft="x2">
+      <Text color="gray500">{title.toUpperCase()}</Text>
     </Box>
   );
 });
 
-const IndexItem = memo(({ onPress, ...data }: ItemType & { onPress?: () => void }) => {
+const SectionFooter = memo(({ count }: { count: number }) => {
   return (
-    <TouchableOpacity onPress={onPress} activeOpacity={0.8}>
-      <Flex
-        width={'100%'}
-        height={'100%'}
-        alignItems="center"
-        paddingLeft="x2"
-        borderBottomWidth={ONE_PIXEL}
-        borderBottomColor="border"
-      >
-        <Box
-          width={px(40)}
-          height={px(40)}
-          backgroundColor="primary200"
-          justifyContent="center"
-          alignItems="center"
-          borderRadius="x1"
-        >
-          <Text variant="h2" color="white">
-            {data.name?.substring(0, 1)}
-          </Text>
-        </Box>
-        <Box marginLeft="x2">
-          <Text>{data.name}</Text>
-        </Box>
-      </Flex>
-    </TouchableOpacity>
+    <Flex width="100%" height={helpers.px(49)} justifyContent="center" alignItems="center">
+      <Text>共 {count} 条记录</Text>
+    </Flex>
   );
 });
 
-function prepareLetters<T extends ItemType>(data: T[]) {
-  const result: LetterType[] = [];
-  data.forEach((item, index) => {
-    if (item.type === ContentType.TITLE) {
-      result.push({
-        name: item.name,
-        index,
-      });
-    }
-  });
-  return result;
-}
+const IndexItem = memo(({ name, height }: { name: string; height: number }) => {
+  return (
+    <Flex
+      width={'100%'}
+      height={height}
+      alignItems="center"
+      paddingLeft="x2"
+      borderBottomWidth={ONE_PIXEL}
+      borderBottomColor="border"
+    >
+      <Box
+        width={px(40)}
+        height={px(40)}
+        backgroundColor="primary200"
+        justifyContent="center"
+        alignItems="center"
+        borderRadius="x1"
+      >
+        <Text variant="h2" color="white">
+          {name.substring(0, 1)}
+        </Text>
+      </Box>
+      <Box marginLeft="x2">
+        <Text>{name}</Text>
+      </Box>
+    </Flex>
+  );
+});

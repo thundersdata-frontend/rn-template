@@ -9,6 +9,9 @@ import { IndexBarDemo } from 'modules/homepage/screens/indexbar';
 import { LocalModelDemo } from 'modules/homepage/screens/localmodel';
 import { RecyclerListDemo } from 'modules/homepage/screens/recyclerlist';
 
+import { Settings } from 'modules/user/screens/settings';
+import { ModifyPassword } from 'modules/user/screens/modifyPass';
+
 const Stack = createStackNavigator();
 
 const screens = [
@@ -59,6 +62,20 @@ const screens = [
     component: RecyclerListDemo,
     options: {
       headerTitle: 'RecyclerListView示例',
+    },
+  },
+  {
+    name: 'Settings',
+    component: Settings,
+    options: {
+      headerTitle: '系统设置',
+    },
+  },
+  {
+    name: 'ModifyPassword',
+    component: ModifyPassword,
+    options: {
+      headerTitle: '修改密码',
     },
   },
 ];
