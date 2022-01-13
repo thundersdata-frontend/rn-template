@@ -1,17 +1,9 @@
 import { LinkingOptions } from '@react-navigation/native';
 
-export const linking: LinkingOptions<AuthStackParamList & MainStackParamList> = {
+export const linking: LinkingOptions<AppParamList> = {
   enabled: true,
-  prefixes: ['rntemplate://app'],
+  prefixes: ['rntemplate://'],
   config: {
-    screens: {
-      SignIn: '*', // if a user tries to navigate to a deep link path that doesn't exist
-      Tab: {
-        screens: {
-          Homepage: 'home',
-          Mine: 'mine',
-        },
-      },
-    },
+    screens: {},
   },
 };
