@@ -47,11 +47,15 @@ export const CustomHeader: FC<StackHeaderProps> = ({ navigation, options }) => {
       </Animated.View>
       <Animated.View
         style={[
-          { flex: 2, justifyContent: 'center', alignItems: headerTitleAlign === 'left' ? 'flex-start' : 'center' },
+          {
+            flex: 2,
+            justifyContent: 'center',
+            alignItems: headerTitleAlign === 'left' ? 'flex-start' : 'center',
+          },
           headerTitleContainerStyle,
         ]}
       >
-        <Text variant="h1" color="gray500" style={headerTitleStyle as TextStyle}>
+        <Text variant="h1" color="gray500" textAlign={'center'} style={headerTitleStyle as TextStyle}>
           {headerTitle}
         </Text>
       </Animated.View>

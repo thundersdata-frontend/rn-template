@@ -1,14 +1,12 @@
 import { fetch } from '@react-native-community/netinfo';
 import { useRequest } from '@td-design/rn-hooks';
 import { LoginFailureEnum } from 'enums';
-import { authAtom } from 'atoms';
-import { signOut } from 'utils/auth';
-import { useUpdateAtom } from 'jotai/utils';
 import { useToast } from './useToast';
 import type { Options, Service } from '@td-design/rn-hooks/lib/typescript/useRequest/types';
+import { useSignout } from './useSignout';
 
 export function useCustomRequest<R, P extends any[] = []>(service: Service<R, P>, options?: Options<R, P>) {
-  const updateAuth = useUpdateAtom(authAtom);
+  const { signOut } = useSignout();
 
   const { toastFail } = useToast();
 
@@ -32,9 +30,7 @@ export function useCustomRequest<R, P extends any[] = []>(service: Service<R, P>
       try {
         const { code, message } = JSON.parse(error.message);
         if ([LoginFailureEnum.登录无效, LoginFailureEnum.登录过期, LoginFailureEnum.登录禁止].includes(code)) {
-          signOut().then(() => {
-            updateAuth({ signedIn: false });
-          });
+          signOut();
         } else {
           toastFail(message);
         }

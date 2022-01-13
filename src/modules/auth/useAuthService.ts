@@ -17,15 +17,17 @@ import {
 } from 'modules/mock';
 import { NavigationProp, useNavigation } from '@react-navigation/native';
 import { mobilePattern } from 'utils/validators';
-import { signOut } from 'utils/auth';
+import { useSignout } from 'hooks/useSignout';
 
 export function useAuthService(isSmsLogin = true) {
   const navigation = useNavigation<NavigationProp<AuthStackParamList>>();
   const { convertErrorMsg } = useError();
+  const { toastFail, toastSuccess } = useToast();
+  const { signOut } = useSignout();
+
   const [error, setError] = useSafeState('');
   const [loading, setLoading] = useSafeState(false);
   const [disabled, setDisabled] = useSafeState(true);
-  const { toastFail, toastSuccess } = useToast();
 
   const updateAuth = useUpdateAtom(authAtom);
   const updateUserInfo = useUpdateAtom(userInfoAtom);
@@ -69,7 +71,7 @@ export function useAuthService(isSmsLogin = true) {
     try {
       const userInfo = await mockFetchUserInfo();
       updateUserInfo(userInfo);
-      updateAuth({ signedIn: true });
+      updateAuth(true);
     } catch (error) {
       const message = convertErrorMsg(error);
       toastFail(message);
@@ -136,7 +138,7 @@ export function useAuthService(isSmsLogin = true) {
       Keyboard.dismiss();
       const data = await mockConfigPassword(values);
       if (data) {
-        updateAuth({ signedIn: true });
+        updateAuth(true);
       } else {
         setError('对不起，设置密码失败');
       }
@@ -201,13 +203,6 @@ export function useAuthService(isSmsLogin = true) {
     }
   };
 
-  /** 退出登录 */
-  const signedOut = () => {
-    signOut().then(() => {
-      updateAuth({ signedIn: false });
-    });
-  };
-
   /**
    * 注册
    */
@@ -230,12 +225,12 @@ export function useAuthService(isSmsLogin = true) {
     disabled,
     loading,
     error,
+    signOut,
     clearError: useMemoizedFn(clearError),
     setError: useMemoizedFn(setError),
     handleFinish: useMemoizedFn(handleFinish),
     submitFormFailed: useMemoizedFn(submitFormFailed),
     handleFormValueChange: useMemoizedFn(handleFormValueChange),
-    signedOut: useMemoizedFn(signedOut),
     beforeSendSms: useMemoizedFn(beforeSendSms),
     smsSend: useMemoizedFn(smsSend),
     configPassword: useMemoizedFn(configPassword),

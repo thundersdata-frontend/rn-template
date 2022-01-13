@@ -1,16 +1,12 @@
 import { NavigationProp, useNavigation } from '@react-navigation/native';
 import { Box, ListItem, Modal, Image, helpers, Input } from '@td-design/react-native';
 
-import { useUpdateAtom } from 'jotai/utils';
-import { authAtom } from 'atoms';
 import { useUserService } from 'modules/user/useUserService';
-import { signOut } from 'utils/auth';
 
 const { px } = helpers;
 export function Settings() {
   const navigation = useNavigation<NavigationProp<MainStackParamList>>();
-  const updateAuth = useUpdateAtom(authAtom);
-  const { updateNickname } = useUserService();
+  const { updateNickname, signOut } = useUserService();
 
   const handleLogout = () => {
     Modal.confirm({
@@ -22,10 +18,7 @@ export function Settings() {
       ),
       title: '退出登录',
       content: '确定要退出登录吗？',
-      onOk: async () => {
-        await signOut();
-        updateAuth({ signedIn: false });
-      },
+      onOk: signOut,
     });
   };
 
