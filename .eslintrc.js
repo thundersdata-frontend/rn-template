@@ -40,6 +40,7 @@ module.exports = {
     'import/no-duplicates': 'error',
     'import/no-unused-modules': 'error',
     'import/no-named-as-default': 0,
+    'import/no-named-as-default-member': 0,
     'react-hooks/rules-of-hooks': 2,
     'react-hooks/exhaustive-deps': 2,
     'react-native/no-unused-styles': 2,

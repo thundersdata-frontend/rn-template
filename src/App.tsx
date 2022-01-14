@@ -11,8 +11,13 @@ import { Fallback } from 'components';
 import { lightTheme, darkTheme } from 'theme';
 import { linking } from 'linking';
 import { navigationRef } from 'services/NavigationService';
+import { useNetwork } from 'hooks/useNetwork';
 
 export function App() {
+  // 监听网络连接情况
+  useNetwork();
+
+  // 手机主题切换
   const [theme, setTheme] = useSafeState(Appearance.getColorScheme());
   useFlipper(navigationRef);
 
