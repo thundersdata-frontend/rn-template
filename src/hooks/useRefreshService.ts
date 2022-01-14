@@ -1,9 +1,10 @@
 import { useMemoizedFn, useSafeState, useRequest } from '@td-design/rn-hooks';
 import { LoginFailureEnum } from 'enums';
-import { fetch } from '@react-native-community/netinfo';
 import { useToast } from 'hooks/useToast';
 import { Options, Service } from '@td-design/rn-hooks/lib/typescript/useRequest/types';
 import { useSignout } from './useSignout';
+import { useAtomValue } from 'jotai/utils';
+import { isOnlineAtom } from './useNetwork';
 
 // 初始化 page
 export const INITIAL_PAGE = 1;
@@ -16,6 +17,7 @@ export function useRefreshService<T, R extends Page<T> = Page<T>, P extends Page
 ) {
   const { toastFail } = useToast();
   const { signedIn, signOut } = useSignout();
+  const isOnline = useAtomValue(isOnlineAtom);
 
   const [data, setData] = useSafeState<T[]>([]);
   const [allLoaded, setAllLoaded] = useSafeState(false);
@@ -23,8 +25,7 @@ export function useRefreshService<T, R extends Page<T> = Page<T>, P extends Page
   const [loadingMore, setLoadingMore] = useSafeState(false);
 
   const promiseService = async (...args: P) => {
-    const state = await fetch();
-    if (!state.isConnected) {
+    if (!isOnline) {
       throw new Error(
         JSON.stringify({
           success: false,
