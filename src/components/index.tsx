@@ -10,6 +10,7 @@ import { ImagePickerField } from './ImagePickerField';
 import { ImgList } from './ImgList';
 import { IndexBar } from './IndexBar';
 import { RecyclerFlatList } from './RecyclerFlatList';
+import { RecyclerWaterfallList } from './RecyclerWaterfallList';
 
 export {
   Container,
@@ -24,4 +25,5 @@ export {
   ImgList,
   IndexBar,
   RecyclerFlatList,
+  RecyclerWaterfallList,
 };

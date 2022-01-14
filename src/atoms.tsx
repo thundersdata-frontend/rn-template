@@ -56,7 +56,7 @@ export function atomWithAsyncStorage<T>(key: string, initialValue: T): Primitive
   );
 }
 /** 是否登录 */
-export const authAtom = atomWithAsyncStorage<boolean>('signedIn', false);
+export const authAtom = atomWithAsyncStorage<boolean>('signedIn', true);
 
 /** 用户信息 */
 export const userInfoAtom = atomWithAsyncStorage<UserInfo>('userInfo', {});

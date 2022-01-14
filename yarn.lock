@@ -8596,6 +8596,15 @@ rechoir@^0.6.2:
   dependencies:
     resolve "^1.1.6"
 
+recyclerlistview-masonrylayoutmanager@^3.0.14:
+  version "3.0.14"
+  resolved "https://registry.yarnpkg.com/recyclerlistview-masonrylayoutmanager/-/recyclerlistview-masonrylayoutmanager-3.0.14.tgz#f3bf3c0477dde10b689bb5afe07e89a83d146894"
+  integrity sha512-evhp5kKk6yDUlufeGmwKmscS1XsMN7kw6coIHNSv68AowDhHQF/6wcnqEFsmbty1uIKwng2Vr01KLRh51E6nSg==
+  dependencies:
+    lodash.debounce "4.0.8"
+    prop-types "15.5.8"
+    ts-object-utils "0.0.5"
+
 recyclerlistview@^3.0.5:
   version "3.0.5"
   resolved "https://registry.yarnpkg.com/recyclerlistview/-/recyclerlistview-3.0.5.tgz#50bf5bcaa401d56bb6bb264354083f4d424408eb"

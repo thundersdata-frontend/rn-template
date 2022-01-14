@@ -68,6 +68,7 @@
     "react-native-webp-format": "^1.1.2",
     "react-native-webview": "^11.15.0",
     "recyclerlistview": "^3.0.5",
+    "recyclerlistview-masonrylayoutmanager": "^3.0.14",
     "rn-fetch-blob": "^0.12.0",
     "umi-request": "^1.4.0"
   },
