@@ -1,4 +1,4 @@
-import { Text, NativeSyntheticEvent, Image, NativeScrollEvent, StyleSheet } from 'react-native';
+import { Text, NativeSyntheticEvent, NativeScrollEvent, StyleSheet } from 'react-native';
 import { Container, RecyclerWaterfallList } from 'components';
 import { Box, Center, PullToRefresh } from '@td-design/react-native';
 import FastImage from 'react-native-fast-image';
@@ -429,8 +429,6 @@ function fetchData({ page, pageSize }: { page: number; pageSize: number }): Prom
   });
 }
 
-FastImage.clearDiskCache();
-FastImage.clearMemoryCache();
 export function RecyclerListDemo4() {
   const { refreshing, loadingMore, allLoaded, onRefresh, onLoadMore, data } = useRefreshService<DataType>(fetchData, {
     defaultParams: [{ page: 1, pageSize: 30 }],
@@ -439,7 +437,7 @@ export function RecyclerListDemo4() {
   const renderItem = ({ item }: { item: DataType }) => {
     return (
       <Box flex={1} overflow={'hidden'} margin="x1">
-        <Image source={{ uri: item.imageUrl }} style={StyleSheet.absoluteFill} resizeMode="cover" />
+        <FastImage source={{ uri: item.imageUrl }} style={StyleSheet.absoluteFill} resizeMode="cover" />
       </Box>
     );
   };

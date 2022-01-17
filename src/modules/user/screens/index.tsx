@@ -21,7 +21,7 @@ export function Mine() {
               <ImagePicker
                 upload={changeAvatar}
                 showUploadImg={false}
-                onGrantFail={() => Toast.fail({ content: '上传头像失败' })}
+                onGrantFail={() => Toast.middle({ content: '上传头像失败' })}
               >
                 <Avatar size={AVATAR_SIZE} />
               </ImagePicker>

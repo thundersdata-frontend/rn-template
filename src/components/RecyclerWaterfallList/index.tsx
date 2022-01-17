@@ -77,7 +77,6 @@ function RecyclerWaterfallListInner<
    * RLV 需要的DataProvider
    */
   const dataProvider = new DataProvider((r1: T, r2: T) => {
-    console.log(r1, r2);
     const key1 = keyExtractor(r1);
     const key2 = keyExtractor(r2);
     return key1 !== key2;
