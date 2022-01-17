@@ -1824,10 +1824,10 @@
     array-tree-filter "^2.1.0"
     dayjs "^1.10.7"
 
-"@td-design/react-native@^3.9.3":
-  version "3.9.3"
-  resolved "https://registry.yarnpkg.com/@td-design/react-native/-/react-native-3.9.3.tgz#c7773d4af25a324cb396957671c3abd8583b0f3e"
-  integrity sha512-cCAKMO334LLMEmySBq3BaExBgJh3eIJPHJOykRXZRBidq9hyi0vRtCAGxhxuWU3xotHaJw4Z9FqYRzg33MLJMg==
+"@td-design/react-native@^3.9.4":
+  version "3.9.4"
+  resolved "https://registry.yarnpkg.com/@td-design/react-native/-/react-native-3.9.4.tgz#b52f9368b425502679d96cc2105d3f7d8061915c"
+  integrity sha512-jt/ZA1Q+SASkmRFl33ivH9Rd78/OOaKE/CaJgUHOa38nhUgASGKyFtFASh/aDTVcb9yox5wc4tP0RjEnWZhg5g==
   dependencies:
     "@td-design/rn-hooks" "^2.0.0"
     "@types/react-native-indicators" "^0.16.1"
