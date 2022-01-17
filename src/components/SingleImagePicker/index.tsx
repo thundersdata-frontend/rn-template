@@ -59,7 +59,7 @@ export const SingleImagePicker: FC<CustomImagePickerProps> = ({
           console.log(err);
         }
       }}
-      onGrantFail={() => Toast.fail({ content: '对不起，授权失败' })}
+      onGrantFail={() => Toast.middle({ content: '对不起，授权失败' })}
       uploadFinish={onUploadFinish}
     >
       <ImgCard title={title} />

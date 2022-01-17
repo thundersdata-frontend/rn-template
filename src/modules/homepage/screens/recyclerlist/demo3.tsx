@@ -1,8 +1,9 @@
 /* eslint-disable react-native/no-color-literals */
 import { memo } from 'react';
 import { Container, RecyclerWaterfallList } from 'components';
-import { StyleSheet, Image, View, Text } from 'react-native';
-import { Box } from '@td-design/react-native';
+import { StyleSheet, View, Text } from 'react-native';
+import { Box, Image } from '@td-design/react-native';
+// import FastImage from 'react-native-fast-image';
 
 interface DataType {
   imageUrl: string;

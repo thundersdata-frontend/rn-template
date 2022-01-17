@@ -1824,20 +1824,29 @@
     array-tree-filter "^2.1.0"
     dayjs "^1.10.7"
 
-"@td-design/react-native@^3.8.2":
-  version "3.8.2"
-  resolved "https://registry.yarnpkg.com/@td-design/react-native/-/react-native-3.8.2.tgz#3ff508fdc6717be76e329c91b38787236820ec91"
-  integrity sha512-NTdLM16J6kztvbKIJswv/0pElVDu3k5R4eSKHgcLz1QV5jmyC/nYuJTxRbA5TqZxE/1jZ/4Cwjmliwqw3jdcnA==
+"@td-design/react-native@^3.9.3":
+  version "3.9.3"
+  resolved "https://registry.yarnpkg.com/@td-design/react-native/-/react-native-3.9.3.tgz#c7773d4af25a324cb396957671c3abd8583b0f3e"
+  integrity sha512-cCAKMO334LLMEmySBq3BaExBgJh3eIJPHJOykRXZRBidq9hyi0vRtCAGxhxuWU3xotHaJw4Z9FqYRzg33MLJMg==
   dependencies:
     "@td-design/rn-hooks" "^2.0.0"
     "@types/react-native-indicators" "^0.16.1"
     react-native-indicators "^0.17.0"
     react-native-shadow-2 "^6.0.0-beta.0"
 
-"@td-design/rn-hooks@^2.0.0", "@td-design/rn-hooks@^2.2.3":
+"@td-design/rn-hooks@^2.0.0":
   version "2.2.3"
   resolved "https://registry.yarnpkg.com/@td-design/rn-hooks/-/rn-hooks-2.2.3.tgz#830f99d2c61c90a99ad18cfadfe13deea3eee674"
   integrity sha512-kxBcQ/qi4JWDROL8/Ii52COxe8qe0zUsEK2eey2MrFR+mWIqdzxADIUBse2OthO/+xu/zXZSTrfDJ0wdj6K9bw==
+  dependencies:
+    lodash.debounce "^4.0.8"
+    lodash.isequal "^4.5.0"
+    lodash.throttle "^4.1.1"
+
+"@td-design/rn-hooks@^2.2.5":
+  version "2.2.5"
+  resolved "https://registry.yarnpkg.com/@td-design/rn-hooks/-/rn-hooks-2.2.5.tgz#ccb5b920b7046ff6065f2195602a238642939ac4"
+  integrity sha512-XOf3WbBSmbsRPwW+YofAyLrfKXDNnYZyXW11ah9DmoYdcNrj4zbi+bON9yel9KiRTg86l3/6tqqFgkmd5b9jQw==
   dependencies:
     lodash.debounce "^4.0.8"
     lodash.isequal "^4.5.0"
