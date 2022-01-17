@@ -1,14 +1,11 @@
 import { StackNavigationOptions, CardStyleInterpolators } from '@react-navigation/stack';
-import { useAtomValue } from 'jotai/utils';
 
 import { MainStack } from './mainStack';
 import { AuthStack } from './authStack';
-import { authAtom } from 'atoms';
 import { CustomHeader } from 'components';
+import { storageService } from 'services/StorageService';
 
 export const Stack = () => {
-  const signedIn = useAtomValue(authAtom);
-
   const commonStackOptions: StackNavigationOptions = {
     header: props => <CustomHeader {...props} />,
     gestureEnabled: true,
@@ -16,6 +13,6 @@ export const Stack = () => {
     cardStyleInterpolator: CardStyleInterpolators.forHorizontalIOS,
   };
 
-  if (signedIn) return <MainStack {...{ commonStackOptions }} />;
+  if (storageService.signedIn) return <MainStack {...{ commonStackOptions }} />;
   return <AuthStack {...{ commonStackOptions }} />;
 };

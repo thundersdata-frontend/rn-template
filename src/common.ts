@@ -1,9 +1,9 @@
 import { extend, ResponseError } from 'umi-request';
 import dayjs from 'dayjs';
 
-import { getToken, saveToken } from 'utils/auth';
 import { isEmpty } from 'lodash-es';
 import Config from 'react-native-config';
+import { storageService, StorageToken } from 'services/StorageService';
 
 const codeMessage: Record<number, string> = {
   400: '请求参数错误，请检查',
@@ -40,7 +40,7 @@ export const initRequest = async () => {
 
   /** 使用中间件在请求前进行token的校验 */
   request.use(async (ctx, next) => {
-    const token = await getToken();
+    const token = storageService.token;
     if (isEmpty(token)) {
       await next();
       return;
@@ -53,7 +53,7 @@ export const initRequest = async () => {
         response.json(),
       );
       const { data } = result;
-      saveToken(data);
+      storageService.updateStorage(StorageToken.Token, data);
       // 对request的header增加accessToken配置
       ctx.req.options = {
         ...ctx.req.options,

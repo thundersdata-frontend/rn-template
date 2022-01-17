@@ -1,14 +1,16 @@
 /* eslint-disable react-native/no-color-literals */
 import { View, Text, StyleSheet } from 'react-native';
-import { useSafeState } from '@td-design/rn-hooks';
-import { RenderItemInfo } from 'components/RecyclerFlatList';
+import { Box } from '@td-design/react-native';
+import FastImage from 'react-native-fast-image';
 import { Container, RecyclerFlatList } from 'components';
-import { getRandomData } from 'utils/lorem';
-import { Pressable } from '@td-design/react-native';
+import { RenderItemInfo } from 'components/RecyclerFlatList';
+import { dogData } from './dogData';
+
+const data = dogData.map(item => ({
+  imageUrl: item,
+}));
 
 export function RecyclerListDemo2() {
-  const [data, setData] = useSafeState([{ title: '我是1', backgroundColor: 'blue' }, ...getRandomData(30)]);
-
   const renderHeader = () => {
     return (
       <View
@@ -24,22 +26,12 @@ export function RecyclerListDemo2() {
     );
   };
 
-  const renderItem = ({ type, item, index }: RenderItemInfo<any>) => {
-    console.log(item, index, type);
+  const renderItem = ({ item }: RenderItemInfo<{ imageUrl: string }>) => {
     return (
-      <View
-        style={{
-          borderRadius: 8,
-          overflow: 'hidden',
-          backgroundColor: item.backgroundColor,
-          flex: 1,
-          alignItems: 'center',
-          justifyContent: 'center',
-        }}
-      >
-        <Text style={styles.title}>{index}</Text>
-        <Text style={styles.title}>{item.height}</Text>
-      </View>
+      <Box flex={1} overflow={'hidden'} margin="x1">
+        {/* 在列表中展示图片，请直接使用FastImage，不要用RN的Image和组件库的Image */}
+        <FastImage source={{ uri: item.imageUrl }} style={StyleSheet.absoluteFill} resizeMode="cover" />
+      </Box>
     );
   };
 
@@ -47,9 +39,6 @@ export function RecyclerListDemo2() {
     return (
       <View style={[styles.cell, { height: 200 }]}>
         <Text style={styles.title}>底部组件</Text>
-        <Pressable onPress={() => setData([...getRandomData(300)])}>
-          <Text>加载更多</Text>
-        </Pressable>
       </View>
     );
   };
@@ -58,17 +47,17 @@ export function RecyclerListDemo2() {
     <Container>
       <RecyclerFlatList
         marginHorizontal={10}
+        gap={5}
         numColumns={2}
-        gap={10}
-        keyExtractor={item => item.title}
+        keyExtractor={item => item.imageUrl}
         renderHeader={renderHeader}
         renderFooter={renderFooter}
         renderItem={renderItem}
         headerHeight={21}
-        itemHeight={120}
+        itemHeight={200}
         data={data}
-        // initialOffset={1000}
-        // initialRenderIndex={9}
+        initialOffset={1000}
+        initialRenderIndex={49}
       />
     </Container>
   );

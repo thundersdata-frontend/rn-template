@@ -2,7 +2,7 @@ import { useMemoizedFn, useSafeState, useRequest } from '@td-design/rn-hooks';
 import { LoginFailureEnum } from 'enums';
 import { useToast } from 'hooks/useToast';
 import { Options, Service } from '@td-design/rn-hooks/lib/typescript/useRequest/types';
-import { useSignout } from './useSignout';
+import { storageService } from '../services/StorageService';
 import { useAtomValue } from 'jotai/utils';
 import { isOnlineAtom } from './useNetwork';
 
@@ -16,7 +16,7 @@ export function useRefreshService<T, R extends Page<T> = Page<T>, P extends Page
   options?: Options<R, P>,
 ) {
   const { toastFail } = useToast();
-  const { signedIn, signOut } = useSignout();
+  const { signedIn, signOut } = storageService;
   const isOnline = useAtomValue(isOnlineAtom);
 
   const [data, setData] = useSafeState<T[]>([]);

@@ -1,19 +1,16 @@
 import { Toast } from '@td-design/react-native';
 import { useSafeState, useMemoizedFn } from '@td-design/rn-hooks';
 import { uploadFile } from 'utils/upload';
-import { userInfoAtom } from 'atoms';
 import { useToast } from 'hooks/useToast';
 import { useError } from 'hooks/useError';
-import { useUpdateAtom } from 'jotai/utils';
 import { mockChangeAvatar, mockFetchUserInfo, mockUpdateUsername } from 'modules/mock';
 import { File } from '@td-design/react-native-image-picker';
-import { useSignout } from 'hooks/useSignout';
+import { storageService, StorageToken } from 'services/StorageService';
 
 export function useUserService() {
-  const updateUserInfo = useUpdateAtom(userInfoAtom);
   const { toastSuccess, toastFail } = useToast();
   const { convertErrorMsg } = useError();
-  const { signOut } = useSignout();
+  const { signOut, updateStorage } = storageService;
   const [refreshing, setRefreshing] = useSafeState<boolean>(false);
 
   // 修改头像
@@ -26,10 +23,9 @@ export function useUserService() {
       };
       const success = await mockChangeAvatar(newValues);
       if (success) {
-        updateUserInfo(draft => ({
-          ...draft,
+        updateStorage(StorageToken.UserInfo, {
           profilePicture: data,
-        }));
+        });
         toastSuccess('修改头像成功');
       }
       return data;
@@ -48,10 +44,9 @@ export function useUserService() {
       Toast.submitting();
       const success = await mockUpdateUsername({ userName: value });
       if (success) {
-        updateUserInfo(draft => ({
-          ...draft,
+        updateStorage(StorageToken.UserInfo, {
           userName: value,
-        }));
+        });
         toastSuccess('修改昵称成功');
       }
     } catch (error) {
@@ -64,7 +59,7 @@ export function useUserService() {
     try {
       setRefreshing(true);
       const result = await mockFetchUserInfo();
-      updateUserInfo(result);
+      updateStorage(StorageToken.UserInfo, result);
       setRefreshing(false);
     } catch (error) {
       const message = convertErrorMsg(error);
