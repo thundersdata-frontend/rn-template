@@ -1,5 +1,6 @@
 import { NavigationProp, useNavigation } from '@react-navigation/native';
-import { Box, ListItem, Modal, Image, helpers, Input } from '@td-design/react-native';
+import { Modal, Image, helpers, Input, List } from '@td-design/react-native';
+import { Container } from 'components';
 
 import { useUserService } from 'modules/user/useUserService';
 
@@ -23,21 +24,35 @@ export function Settings() {
   };
 
   return (
-    <Box>
-      <ListItem
-        title="修改昵称"
-        arrow="horizontal"
-        height={54}
-        onPress={() =>
-          Modal.prompt({
+    <Container>
+      <List
+        items={[
+          {
             title: '修改昵称',
-            input: <Input placeholder="请输入昵称" />,
-            onOk: updateNickname,
-          })
-        }
+            arrow: 'horizontal',
+            minHeight: px(48),
+            onPress() {
+              Modal.prompt({
+                title: '修改昵称',
+                input: <Input placeholder="请输入昵称" />,
+                onOk: updateNickname,
+              });
+            },
+          },
+          {
+            title: '修改密码',
+            arrow: 'horizontal',
+            onPress() {
+              navigation.navigate('ModifyPassword');
+            },
+          },
+          {
+            title: '注销登录',
+            arrow: 'horizontal',
+            onPress: handleLogout,
+          },
+        ]}
       />
-      <ListItem title="修改密码" arrow="horizontal" height={54} onPress={() => navigation.navigate('ModifyPassword')} />
-      <ListItem title="注销登录" arrow="horizontal" height={54} onPress={handleLogout} />
-    </Box>
+    </Container>
   );
 }
