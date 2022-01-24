@@ -1,20 +1,20 @@
 import { Button, Input, WhiteSpace } from '@td-design/react-native';
 import { Container } from 'components';
 import Form, { Field } from 'rc-field-form';
-import useLocalModelService from './useLocalModelService';
+import useShareModelService from './useShareModelService';
 
 export function LocalModelDemo() {
   return (
     <Container>
-      <useLocalModelService.Provider>
+      <useShareModelService.Provider>
         <TestForm />
-      </useLocalModelService.Provider>
+      </useShareModelService.Provider>
     </Container>
   );
 }
 
 function TestForm() {
-  const { form, onFinish, onFinishFailed } = useLocalModelService();
+  const { form, onFinish, onFinishFailed } = useShareModelService.useModel();
   return (
     <>
       <Form form={form} component={false} onFinish={onFinish} onFinishFailed={onFinishFailed}>
@@ -30,7 +30,7 @@ function TestForm() {
 }
 
 function PasswordInput() {
-  const { validatePassword } = useLocalModelService();
+  const { validatePassword } = useShareModelService.useModel();
   return (
     <>
       <Field name="password" rules={[{ required: true, message: '请输入密码' }]}>
