@@ -16,7 +16,7 @@ export function useUserService() {
   // 修改头像
   const changeAvatar = async (file: File) => {
     try {
-      Toast.submitting();
+      Toast.process('提交中...');
       const data = await uploadFile(file);
       const newValues = {
         profilePicture: data,
@@ -41,7 +41,7 @@ export function useUserService() {
       return;
     }
     try {
-      Toast.submitting();
+      Toast.process('提交中...');
       const success = await mockUpdateUsername({ userName: value });
       if (success) {
         updateStorage(StorageToken.UserInfo, {

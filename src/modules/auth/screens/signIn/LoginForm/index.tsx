@@ -42,7 +42,7 @@ const FormContent = ({ isSmsLogin }: { isSmsLogin: boolean }) => {
             <CountDown
               bordered
               leftIcon={<Icon name="sms" color={theme.colors.icon} />}
-              onBeforeSend={() => beforeSendSms(form.getFieldValue('phone'))}
+              onBefore={() => beforeSendSms(form.getFieldValue('phone'))}
               onSend={() => smsSend({ mobile: form.getFieldValue('phone'), type: SmsTypeEnum.登录 })}
             />
           </Field>

@@ -36,7 +36,7 @@ const FormContent = () => {
         <CountDown
           bordered
           leftIcon={<Icon name="sms" color={theme.colors.icon} />}
-          onBeforeSend={() => beforeSendSms(form.getFieldValue('phone'))}
+          onBefore={() => beforeSendSms(form.getFieldValue('phone'))}
           onSend={() => smsSend({ mobile: form.getFieldValue('phone'), type: SmsTypeEnum.修改密码 })}
         />
       </Field>
