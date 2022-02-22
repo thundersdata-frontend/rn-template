@@ -18,7 +18,7 @@ class StorageService {
     if (this.storage.getAllKeys().includes(StorageToken.SignedIn)) {
       return this.storage.getBoolean(StorageToken.SignedIn);
     }
-    return true;
+    return false;
   }
 
   get token(): Token {

@@ -42,6 +42,7 @@ export function Settings() {
           {
             title: '修改密码',
             arrow: 'horizontal',
+            minHeight: px(48),
             onPress() {
               navigation.navigate('ModifyPassword');
             },
@@ -49,6 +50,7 @@ export function Settings() {
           {
             title: '注销登录',
             arrow: 'horizontal',
+            minHeight: px(48),
             onPress: handleLogout,
           },
         ]}
