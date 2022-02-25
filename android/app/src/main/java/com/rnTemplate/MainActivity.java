@@ -38,7 +38,10 @@ public class MainActivity extends ReactActivity {
         setWindowFlag(this, WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS, false);
         getWindow().setStatusBarColor(Color.TRANSPARENT);
     }
-
+    if (savedInstanceState != null) {
+			savedInstanceState.remove("android:support:fragments");
+			savedInstanceState.remove("android:fragments");
+		}
     super.onCreate(savedInstanceState);
     // Layout edge-to-edge
     WindowCompat.setDecorFitsSystemWindows(getWindow(), false);
