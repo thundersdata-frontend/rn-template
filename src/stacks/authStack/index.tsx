@@ -42,10 +42,10 @@ export const AuthStack: FC<{ commonStackOptions: StackNavigationOptions }> = ({ 
         }}
       />
       <Stack.Screen
-        name="UserAgreement"
+        name="Agreement"
         component={Agreement}
         options={{
-          headerTitle: '用户服务协议',
+          headerTitle: '用户协议',
         }}
       />
       <Stack.Screen
