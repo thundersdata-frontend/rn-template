@@ -1,7 +1,7 @@
 import { TouchableOpacity } from 'react-native';
 import Form, { Field, useForm } from 'rc-field-form';
 import { useTheme } from '@shopify/restyle';
-import { Button, Radio, CountDown, Flex, Input, WhiteSpace, Text, Box } from '@td-design/react-native';
+import { Button, CountDown, Flex, Input, WhiteSpace, Text, Box } from '@td-design/react-native';
 
 import { LoginTab } from '../LoginTab';
 import { useAuthService } from 'modules/auth/useAuthService';
@@ -74,47 +74,31 @@ const FormContent = ({ isSmsLogin }: { isSmsLogin: boolean }) => {
         )}
       </Flex>
       <Button disabled={disabled} loading={loading} onPress={form.submit} title="登录" />
-      <Field name="agree" rules={[{ required: true, message: '请勾选用户协议和隐私政策' }]}>
-        <Radio
-          size={14}
-          containerStyle={{ marginVertical: 8 }}
-          options={[
-            {
-              value: 1,
-              label: (
-                <Flex justifyContent="flex-start" alignItems="center" style={{ marginLeft: -4 }}>
-                  <Text variant="p2" color="gray300">
-                    我已阅读并同意
-                  </Text>
-                  <TouchableOpacity
-                    onPress={evt => {
-                      evt.stopPropagation();
-                      navigation.navigate('UserAgreement');
-                    }}
-                  >
-                    <Text variant="p2" color="primary200">
-                      用户协议
-                    </Text>
-                  </TouchableOpacity>
-                  <Text variant="p2" color="gray300">
-                    和
-                  </Text>
-                  <TouchableOpacity
-                    onPress={evt => {
-                      evt.stopPropagation();
-                      navigation.navigate('Privacy');
-                    }}
-                  >
-                    <Text variant="p2" color="primary200">
-                      隐私政策
-                    </Text>
-                  </TouchableOpacity>
-                </Flex>
-              ),
-            },
-          ]}
-        />
-      </Field>
+      <Flex justifyContent="center" alignItems="center" marginTop={'x2'}>
+        <TouchableOpacity
+          onPress={evt => {
+            evt.stopPropagation();
+            navigation.navigate('UserAgreement');
+          }}
+        >
+          <Text variant="p2" color="primary200">
+            用户服务协议
+          </Text>
+        </TouchableOpacity>
+        <Text variant="p2" color="gray300">
+          和
+        </Text>
+        <TouchableOpacity
+          onPress={evt => {
+            evt.stopPropagation();
+            navigation.navigate('Privacy');
+          }}
+        >
+          <Text variant="p2" color="primary200">
+            隐私政策
+          </Text>
+        </TouchableOpacity>
+      </Flex>
       <TouchableOpacity activeOpacity={0.8} onPress={() => navigation.navigate('Register')}>
         <Text variant="p1" color="primary200" textDecorationLine="underline">
           去注册&gt;&gt;
