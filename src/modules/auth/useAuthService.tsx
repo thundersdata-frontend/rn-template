@@ -1,4 +1,5 @@
-import { Keyboard } from 'react-native';
+import { Keyboard, TouchableOpacity } from 'react-native';
+import { Box, Modal, Portal, Text } from '@td-design/react-native';
 import { useSafeState, useMemoizedFn } from '@td-design/rn-hooks';
 import { Store, ValidateErrorEntity } from 'rc-field-form/es/interface';
 
@@ -119,11 +120,48 @@ export function useAuthService(isSmsLogin = true) {
   /** 登录表单提交 */
   const handleFinish = async (values: Store) => {
     Keyboard.dismiss();
-    if (isSmsLogin) {
-      smsLogin(values);
-    } else {
-      login(values);
-    }
+    const key = Modal.confirm({
+      title: '用户服务协议和隐私政策',
+      content: (
+        <Box marginHorizontal={'x2'}>
+          <Text>
+            请你务必审慎阅读、充分理解“用户服务协议”和“隐私政策”各条款，包括但不限于：为了向你提供即时通讯、内容分享等服务，我们需要收集你的设备信息、操作日志等个人信息。你可以在“设置”中查看、变更、删除个人信息并管理你的授权。
+          </Text>
+          <Text>
+            <Text>你可阅读</Text>
+            <TouchableOpacity
+              onPress={() => {
+                navigation.navigate('UserAgreement');
+                Portal.remove(key);
+              }}
+            >
+              <Text color="primary200">《用户服务协议》</Text>
+            </TouchableOpacity>
+            <Text>和</Text>
+            <TouchableOpacity
+              onPress={() => {
+                navigation.navigate('Privacy');
+                Portal.remove(key);
+              }}
+            >
+              <Text color="primary200">《隐私政策》</Text>
+            </TouchableOpacity>
+            <Text>了解详细信息。如你同意，请点击“同意”开始接受我们的服务。</Text>
+          </Text>
+        </Box>
+      ),
+      okText: '确定',
+      cancelText: '取消',
+      onOk: () => {
+        if (isSmsLogin) {
+          smsLogin(values);
+        } else {
+          login(values);
+        }
+        // 其他逻辑
+      },
+      onCancel: () => {},
+    });
   };
 
   /** 注册之后设置密码 */
