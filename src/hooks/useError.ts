@@ -2,9 +2,8 @@ import { useMemoizedFn } from '@td-design/rn-hooks';
 import { LoginFailureEnum } from 'enums';
 import { storageService } from '../services/StorageService';
 
+const { signOut } = storageService;
 export function useError() {
-  const { signOut } = storageService;
-
   const convertErrorMsg = useMemoizedFn((error: unknown) => {
     try {
       // https://www.typescriptlang.org/docs/handbook/release-notes/typescript-4-0.html#unknown-on-catch-clause-bindings
