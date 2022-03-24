@@ -71,7 +71,7 @@ export function IndexBar<T extends ItemType = ItemType, R extends SectionType = 
     return <SectionFooter count={count} />;
   };
 
-  const renderSectionEmpty = () => <Empty isEmpty emptyText="暂无数据" />;
+  const renderSectionEmpty = () => <Empty emptyText="暂无数据" />;
 
   const letters = sections.map((item, index) => ({ name: item.title, index }));
   const handleLetterSelect = (item: LetterType) => () => {
