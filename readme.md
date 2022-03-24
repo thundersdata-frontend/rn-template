@@ -689,3 +689,26 @@ export const linking: LinkingOptions<AppParamList> = {
   },
 };
 ```
+
+## 8. 编译问题
+
+### 8.1 MMKV编译报错
+如果遇到一下报错：
+```txt
+FAILURE: Build failed with an exception.
+
+* What went wrong:
+Execution failed for task ':react-native-mmkv:generateJsonModelRelease'.
+> /Users/runner/work/1/s/node_modules/react-native-mmkv/android/CMakeLists.txt : C/C++ release|armeabi-v7a : CMake Error: The following variables are used in this project, but they are set to NOTFOUND.
+  Please set them or make sure they are set and tested correctly in the CMake files:
+  JSI_LIB
+      linked by target "reactnativemmkv" in directory /Users/runner/work/1/s/node_modules/react-native-mmkv/android
+  REACT_NATIVE_JNI_LIB
+      linked by target "reactnativemmkv" in directory /Users/runner/work/1/s/node_modules/react-native-mmkv/android
+
+```
+请执行以下命令：
+```code
+cd android && ./gradlew clean
+```
+然后再重新build即可。

@@ -1775,10 +1775,10 @@
     color "^3.1.3"
     warn-once "^0.1.0"
 
-"@shopify/restyle@^1.6.1":
-  version "1.8.0"
-  resolved "https://registry.npmjs.org/@shopify/restyle/-/restyle-1.8.0.tgz#77451232f88124aad03b54c9e3a222e7f604b886"
-  integrity sha512-p1MB7+R54eYNFe76kEmStxyW0Jm6bKOR70fv+VwVpYw2040Y1+IaL6Xwa7mlUg2X5CngwW+OxZytXDd5QcZOIQ==
+"@shopify/restyle@^2.0.0":
+  version "2.0.0"
+  resolved "https://registry.npmjs.org/@shopify/restyle/-/restyle-2.0.0.tgz#8d93daac3c700e3ffd8a45b302175ece8bd524c0"
+  integrity sha512-MkmHQ1K6zOgY2eww4W4rZr755RR1ImGtgEpMDF/BInjn2Z6e5zJuAHg53Oc5A1P3PqXP4I1raghJdzq0hgXrAw==
 
 "@sideway/address@^4.1.3":
   version "4.1.4"
@@ -1845,18 +1845,17 @@
     dayjs "^1.10.7"
     lodash-es "^4.17.21"
 
-"@td-design/react-native@^3.10.0":
-  version "3.11.3"
-  resolved "https://registry.npmjs.org/@td-design/react-native/-/react-native-3.11.3.tgz#af2239d9bcb530c00a8a2acf2aa089942d84e76e"
-  integrity sha512-cnZcaG6befa7A/xa2XBQosos0NvFC+9X4MOwXnEmQGAqpppSeM1xClRplB+NmrtdYawuN5FMb56mDnlVbdRgfQ==
+"@td-design/react-native@./td-design-react-native-3.11.4.tgz":
+  version "3.11.4"
+  resolved "./td-design-react-native-3.11.4.tgz#e09c82b2b424775390d4b1caef1cb7da57a86682"
   dependencies:
-    "@td-design/rn-hooks" "^2.2.7"
+    "@td-design/rn-hooks" "^2.2.9"
     "@types/react-native-indicators" "^0.16.1"
-    rc-field-form "^1.22.1"
+    rc-field-form "^1.24.0"
     react-native-indicators "^0.17.0"
     react-native-shadow-2 "^6.0.0-beta.0"
 
-"@td-design/rn-hooks@^2.2.7":
+"@td-design/rn-hooks@^2.2.7", "@td-design/rn-hooks@^2.2.9":
   version "2.2.9"
   resolved "https://registry.npmjs.org/@td-design/rn-hooks/-/rn-hooks-2.2.9.tgz#45fb84b3d08d7e46c812d0b3832f87587703fffa"
   integrity sha512-LgiosCh1r4odGIOJ3fvvXT5F7JIHyOlbZufKm6a8PvUC7IL5Sj8DXfY9sLppG046kskb/19mAyjMyEmnFikpxQ==
@@ -8281,7 +8280,7 @@ range-parser@~1.2.1:
   resolved "https://registry.npmjs.org/range-parser/-/range-parser-1.2.1.tgz#3cf37023d199e1c24d1a55b84800c2f3e6468031"
   integrity sha512-Hrgsx+orqoygnmhFbKaHE6c296J+HTAQXoxEF6gNupROmmGJRoyzfG3ccAveqCBrwr/2yxQ5BVd/GTl5agOwSg==
 
-rc-field-form@^1.22.0, rc-field-form@^1.22.1:
+rc-field-form@^1.22.0, rc-field-form@^1.24.0:
   version "1.24.0"
   resolved "https://registry.npmjs.org/rc-field-form/-/rc-field-form-1.24.0.tgz#2510a5c34713831ddcb412d4560be9057fc0dc5e"
   integrity sha512-5beNBU5gEyi8YRYyqbTWSu5hO0jZQN0AWpY3U7TcllUKrDLcZZdRXuAOpyxJQcttWFs+UAFsbcRAUtnOGBjl7w==
