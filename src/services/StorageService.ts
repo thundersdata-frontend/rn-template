@@ -5,25 +5,43 @@ export enum StorageToken {
   SignedIn = 'SignedIn',
   Token = 'Token',
   UserInfo = 'UserInfo',
+  Confirmed = 'Confirmed',
 }
 
 class StorageService {
+  private static instance: StorageService;
+
   storage: MMKV;
 
   constructor() {
     this.storage = new MMKV();
   }
 
-  get signedIn(): boolean {
-    if (this.storage.getAllKeys().includes(StorageToken.SignedIn)) {
-      return this.storage.getBoolean(StorageToken.SignedIn);
+  static getInstance() {
+    if (!StorageService.instance) {
+      StorageService.instance = new StorageService();
     }
-    return true;
+
+    return StorageService.instance;
+  }
+
+  get confirmed(): boolean {
+    if (StorageService.getInstance().storage.getAllKeys().includes(StorageToken.Confirmed)) {
+      return StorageService.getInstance().storage.getBoolean(StorageToken.Confirmed);
+    }
+    return false;
+  }
+
+  get signedIn(): boolean {
+    if (StorageService.getInstance().storage.getAllKeys().includes(StorageToken.SignedIn)) {
+      return StorageService.getInstance().storage.getBoolean(StorageToken.SignedIn);
+    }
+    return false;
   }
 
   get token(): Token {
-    if (this.storage.getAllKeys().includes(StorageToken.Token)) {
-      const tokenStr = this.storage.getString(StorageToken.Token);
+    if (StorageService.getInstance().storage.getAllKeys().includes(StorageToken.Token)) {
+      const tokenStr = StorageService.getInstance().storage.getString(StorageToken.Token);
       try {
         return tokenStr ? JSON.parse(tokenStr) : {};
       } catch (error) {
@@ -35,8 +53,8 @@ class StorageService {
   }
 
   get userInfo(): UserInfo {
-    if (this.storage.getAllKeys().includes(StorageToken.UserInfo)) {
-      const userInfoStr = this.storage.getString(StorageToken.UserInfo);
+    if (StorageService.getInstance().storage.getAllKeys().includes(StorageToken.UserInfo)) {
+      const userInfoStr = StorageService.getInstance().storage.getString(StorageToken.UserInfo);
       try {
         return userInfoStr ? JSON.parse(userInfoStr) : {};
       } catch (error) {
@@ -53,19 +71,19 @@ class StorageService {
 
       switch (type) {
         case 'object':
-          const oldValue = this.storage.getString(key);
+          const oldValue = StorageService.getInstance().storage.getString(key);
           if (oldValue) {
             const oldObj = JSON.parse(oldValue);
-            this.storage.set(key, removeEmpty({ ...oldObj, ...value }));
+            StorageService.getInstance().storage.set(key, removeEmpty({ ...oldObj, ...value }));
           } else {
-            this.storage.set(key, JSON.stringify(removeEmpty(value)));
+            StorageService.getInstance().storage.set(key, JSON.stringify(removeEmpty(value)));
           }
           break;
 
         case 'string':
         case 'number':
         case 'boolean':
-          this.storage.set(key, value as unknown as string | number | boolean);
+          StorageService.getInstance().storage.set(key, value as unknown as string | number | boolean);
           break;
       }
     } catch (error) {
@@ -74,14 +92,14 @@ class StorageService {
   }
 
   deleteStorage(key: StorageToken) {
-    this.storage.delete(key);
+    StorageService.getInstance().storage.delete(key);
   }
 
   signOut() {
-    this.deleteStorage(StorageToken.SignedIn);
-    this.deleteStorage(StorageToken.UserInfo);
-    this.deleteStorage(StorageToken.Token);
+    StorageService.getInstance().deleteStorage(StorageToken.SignedIn);
+    StorageService.getInstance().deleteStorage(StorageToken.UserInfo);
+    StorageService.getInstance().deleteStorage(StorageToken.Token);
   }
 }
 
-export const storageService = new StorageService();
+export const storageService = StorageService.getInstance();

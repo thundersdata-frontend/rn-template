@@ -1,7 +1,7 @@
 import { TouchableOpacity } from 'react-native';
 import Form, { Field, useForm } from 'rc-field-form';
 import { useTheme } from '@shopify/restyle';
-import { Button, Radio, CountDown, Flex, helpers, Input, WhiteSpace, Text, Box } from '@td-design/react-native';
+import { Button, Radio, CountDown, Flex, Input, WhiteSpace, Text, Box } from '@td-design/react-native';
 
 import { LoginTab } from '../LoginTab';
 import { useAuthService } from 'modules/auth/useAuthService';
@@ -124,16 +124,15 @@ const FormContent = ({ isSmsLogin }: { isSmsLogin: boolean }) => {
   );
 };
 
-const { px } = helpers;
 export function LoginForm({ isSmsLogin, changeTab }: { isSmsLogin: boolean; changeTab: (activeKey: string) => void }) {
   return (
     <Box
       alignItems="center"
       backgroundColor="background"
       borderRadius="x5"
-      height={px(320)}
       marginHorizontal="x4"
       marginVertical="x3"
+      paddingBottom={'x4'}
     >
       <LoginTab
         isSmsLogin={isSmsLogin}

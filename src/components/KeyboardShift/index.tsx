@@ -45,9 +45,9 @@ export const KeyboardShift: FC<KeyboardShiftProps> = ({ children, headerOffset, 
 
   if (Platform.OS === 'android') {
     return (
-      <Animated.View style={[style, animatedStyle]} {...rest}>
+      <Animated.ScrollView style={[style, animatedStyle]} {...rest}>
         {children}
-      </Animated.View>
+      </Animated.ScrollView>
     );
   }
 
