@@ -27,3 +27,5 @@ interface AjaxResponse<T = any> {
   message: string;
   data: T;
 }
+
+type Obj = Record<string, any>;
