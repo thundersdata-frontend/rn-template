@@ -11,9 +11,9 @@ buildscript {
         kotlinVersion = "1.5.20"
     }
     repositories {
-        google()
         mavenCentral()
-        jcenter()
+        maven { url 'https://maven.aliyun.com/repository/google' }
+        maven { url 'https://maven.aliyun.com/repository/jcenter' }
     }
     dependencies {
         classpath('com.android.tools.build:gradle:7.1.0-rc01')
@@ -32,8 +32,8 @@ allprojects {
             // Android JSC is installed from npm
             url("$rootDir/../node_modules/jsc-android/dist")
         }
-        google()
-        jcenter()
+        maven { url 'https://maven.aliyun.com/repository/google' }
+        maven { url 'https://maven.aliyun.com/repository/jcenter' }
         maven { url 'https://www.jitpack.io' }
     }
 }
