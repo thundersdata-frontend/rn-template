@@ -1881,10 +1881,10 @@
     color "^3.1.3"
     warn-once "^0.1.0"
 
-"@shopify/restyle@^2.1.0":
-  version "2.1.0"
-  resolved "https://registry.npmjs.org/@shopify/restyle/-/restyle-2.1.0.tgz#c5371deb5db873268bddd7e90fa74f783ad7ed23"
-  integrity sha512-CE4DDf5ZvDI438n5iQrdqw628Sa0F4C6CwTGxJEAKQLvC+4orWtr2TFPskoxl9hrMfk+TOzNTDZ3tcR88qKvrw==
+"@shopify/restyle@2.0.0":
+  version "2.0.0"
+  resolved "https://registry.npmjs.org/@shopify/restyle/-/restyle-2.0.0.tgz#8d93daac3c700e3ffd8a45b302175ece8bd524c0"
+  integrity sha512-MkmHQ1K6zOgY2eww4W4rZr755RR1ImGtgEpMDF/BInjn2Z6e5zJuAHg53Oc5A1P3PqXP4I1raghJdzq0hgXrAw==
 
 "@sideway/address@^4.1.3":
   version "4.1.4"
@@ -1942,34 +1942,25 @@
   resolved "https://registry.npmjs.org/@td-design/react-native-image-picker/-/react-native-image-picker-1.6.0.tgz#35054e5f947c6dd970cf7d845fc19a7cb6741696"
   integrity sha512-GMTES0+2zlHfE6aj4/xPiykcSpes14LRgdJMGYyokalPeLC/9qLM1/GyQ+DL4o3SU8BQGaOisYHhUUZ6ElID3w==
 
-"@td-design/react-native-picker@^1.8.0":
-  version "1.9.0"
-  resolved "https://registry.npmjs.org/@td-design/react-native-picker/-/react-native-picker-1.9.0.tgz#eaf9b5f4d8ecf89730b95bef4eaaf4399bdf6142"
-  integrity sha512-pLnDlSqZF9YJXQsmwVujmSLlCquR09wJZo72KS5chB5qLKFwdLll1ZU3PfkHtA6D5SBr7ElVM3aZPdmIwx4+LQ==
+"@td-design/react-native-picker@^1.9.2":
+  version "1.9.2"
+  resolved "https://registry.npmjs.org/@td-design/react-native-picker/-/react-native-picker-1.9.2.tgz#eb0eab92fa8159b64773fee5c4d66972bb76faf6"
+  integrity sha512-tkMHCRK2mqay3JfyRNeQvWN9Q4UIS2wNzypDBWLtoc4SCPFSfmpURgVaYJ9Yj/3NRASiYA0kWlljkZp1MZsdLQ==
   dependencies:
     array-tree-filter "^2.1.0"
     dayjs "^1.10.7"
     lodash-es "^4.17.21"
 
-"@td-design/react-native@^3.11.4":
-  version "3.11.4"
-  resolved "https://registry.npmjs.org/@td-design/react-native/-/react-native-3.11.4.tgz#e09c82b2b424775390d4b1caef1cb7da57a86682"
-  integrity sha512-VOP2jlYKID9IHdEsjrWdaqMrCJIZTJ01muuTAXZ99PFTR7XRZuTivvUI72ZMbSgSZLF2waUHQ5jdq7MeGtF5DQ==
+"@td-design/react-native@^3.11.6":
+  version "3.11.6"
+  resolved "https://registry.npmjs.org/@td-design/react-native/-/react-native-3.11.6.tgz#65bde8a9887c08934fc65490443e6421a6ec9f39"
+  integrity sha512-4YOwtGb980n5SqCA5VlUIcZtfSoOQWlVS2Nrtczp02Pxcmp3dpTqGoUzNY56UzS9w2Ugsi2k8rtLbN20P9I79Q==
   dependencies:
-    "@td-design/rn-hooks" "^2.2.9"
+    "@td-design/rn-hooks" "^2.3.0"
     "@types/react-native-indicators" "^0.16.1"
-    rc-field-form "^1.24.0"
+    rc-field-form "^1.25.0"
     react-native-indicators "^0.17.0"
     react-native-shadow-2 "^6.0.0-beta.0"
-
-"@td-design/rn-hooks@^2.2.9":
-  version "2.2.9"
-  resolved "https://registry.npmjs.org/@td-design/rn-hooks/-/rn-hooks-2.2.9.tgz#45fb84b3d08d7e46c812d0b3832f87587703fffa"
-  integrity sha512-LgiosCh1r4odGIOJ3fvvXT5F7JIHyOlbZufKm6a8PvUC7IL5Sj8DXfY9sLppG046kskb/19mAyjMyEmnFikpxQ==
-  dependencies:
-    lodash.debounce "^4.0.8"
-    lodash.isequal "^4.5.0"
-    lodash.throttle "^4.1.1"
 
 "@td-design/rn-hooks@^2.3.0":
   version "2.3.0"
@@ -2738,11 +2729,6 @@ async-limiter@~1.0.0:
   version "1.0.1"
   resolved "https://registry.npmjs.org/async-limiter/-/async-limiter-1.0.1.tgz#dd379e94f0db8310b08291f9d64c3209766617fd"
   integrity sha512-csOlWGAcRFJaI6m+F2WKdnMKr4HhdhFVBk0H/QbJFMCr+uO2kwohwXQPxw/9OCxp05r5ghVBFSyioixx3gfkNQ==
-
-async-validator@^4.0.2:
-  version "4.0.7"
-  resolved "https://registry.npmjs.org/async-validator/-/async-validator-4.0.7.tgz#034a0fd2103a6b2ebf010da75183bec299247afe"
-  integrity sha512-Pj2IR7u8hmUEDOwB++su6baaRi+QvsgajuFB9j95foM1N2gy5HM4z60hfusIO0fBPG5uLAEl6yCJr1jNSVugEQ==
 
 async-validator@^4.1.0:
   version "4.1.1"
@@ -8333,16 +8319,7 @@ range-parser@~1.2.1:
   resolved "https://registry.npmjs.org/range-parser/-/range-parser-1.2.1.tgz#3cf37023d199e1c24d1a55b84800c2f3e6468031"
   integrity sha512-Hrgsx+orqoygnmhFbKaHE6c296J+HTAQXoxEF6gNupROmmGJRoyzfG3ccAveqCBrwr/2yxQ5BVd/GTl5agOwSg==
 
-rc-field-form@^1.24.0:
-  version "1.24.0"
-  resolved "https://registry.npmjs.org/rc-field-form/-/rc-field-form-1.24.0.tgz#2510a5c34713831ddcb412d4560be9057fc0dc5e"
-  integrity sha512-5beNBU5gEyi8YRYyqbTWSu5hO0jZQN0AWpY3U7TcllUKrDLcZZdRXuAOpyxJQcttWFs+UAFsbcRAUtnOGBjl7w==
-  dependencies:
-    "@babel/runtime" "^7.8.4"
-    async-validator "^4.0.2"
-    rc-util "^5.8.0"
-
-rc-field-form@^1.26.3:
+rc-field-form@^1.25.0, rc-field-form@^1.26.3:
   version "1.26.3"
   resolved "https://registry.npmjs.org/rc-field-form/-/rc-field-form-1.26.3.tgz#4050000eae0d879fde85672a965c9558ed6ff04b"
   integrity sha512-wzQToAwdr8fiq/Nb1KFq+9WYFeALJXKwNGk5/MaCu1AUS7PpVQaN2anzVfWdVBFiiM2N+3DOh64JSOH8s1w3FQ==
