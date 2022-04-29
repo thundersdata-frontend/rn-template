@@ -16,12 +16,14 @@ import {
 import { NavigationProp, useNavigation } from '@react-navigation/native';
 import { mobilePattern } from 'utils/validators';
 import { storageService, StorageToken } from 'services/StorageService';
+import useStackService from 'stacks/useStackService';
 
 export function useAuthService(isSmsLogin = true) {
+  const { update } = useStackService.useModel();
   const navigation = useNavigation<NavigationProp<AuthStackParamList>>();
   const { convertErrorMsg } = useError();
   const { toastFail, toastSuccess } = useToast();
-  const { signOut, updateStorage } = storageService;
+  const { updateStorage } = storageService;
 
   const [error, setError] = useSafeState('');
   const [loading, setLoading] = useSafeState(false);
@@ -66,6 +68,7 @@ export function useAuthService(isSmsLogin = true) {
       const userInfo = await mockFetchUserInfo();
       updateStorage(StorageToken.UserInfo, userInfo);
       updateStorage(StorageToken.SignedIn, true);
+      update();
     } catch (error) {
       const message = convertErrorMsg(error);
       toastFail(message);
@@ -219,7 +222,6 @@ export function useAuthService(isSmsLogin = true) {
     disabled,
     loading,
     error,
-    signOut,
     clearError: useMemoizedFn(clearError),
     setError: useMemoizedFn(setError),
     handleFinish: useMemoizedFn(handleFinish),
