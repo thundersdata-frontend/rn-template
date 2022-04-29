@@ -6,8 +6,10 @@ import { useError } from 'hooks/useError';
 import { mockChangeAvatar, mockFetchUserInfo, mockUpdateUsername } from 'modules/mock';
 import { File } from '@td-design/react-native-image-picker';
 import { storageService, StorageToken } from 'services/StorageService';
+import useStackService from 'stacks/useStackService';
 
 export function useUserService() {
+  const { update } = useStackService.useModel();
   const { toastSuccess, toastFail } = useToast();
   const { convertErrorMsg } = useError();
   const { signOut, updateStorage } = storageService;
@@ -66,13 +68,18 @@ export function useUserService() {
       toastFail(message);
       setRefreshing(false);
       // 用户信息获取失败自动认为登录失效
-      signOut();
+      logout();
     }
+  };
+
+  const logout: () => void = () => {
+    signOut();
+    update();
   };
 
   return {
     refreshing,
-    signOut,
+    signOut: useMemoizedFn(logout),
     changeAvatar: useMemoizedFn(changeAvatar),
     updateNickname: useMemoizedFn(updateNickname),
     refreshUserInfo: useMemoizedFn(refreshUserInfo),
