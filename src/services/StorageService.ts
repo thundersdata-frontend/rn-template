@@ -27,14 +27,14 @@ class StorageService {
 
   get confirmed(): boolean {
     if (StorageService.getInstance().storage.getAllKeys().includes(StorageToken.Confirmed)) {
-      return StorageService.getInstance().storage.getBoolean(StorageToken.Confirmed);
+      return StorageService.getInstance().storage.getBoolean(StorageToken.Confirmed) ?? false;
     }
     return false;
   }
 
   get signedIn(): boolean {
     if (StorageService.getInstance().storage.getAllKeys().includes(StorageToken.SignedIn)) {
-      return StorageService.getInstance().storage.getBoolean(StorageToken.SignedIn);
+      return StorageService.getInstance().storage.getBoolean(StorageToken.SignedIn) ?? false;
     }
     return false;
   }
@@ -76,7 +76,7 @@ class StorageService {
             const oldObj = JSON.parse(oldValue);
             StorageService.getInstance().storage.set(key, removeEmpty({ ...oldObj, ...value }));
           } else {
-            StorageService.getInstance().storage.set(key, JSON.stringify(removeEmpty(value)));
+            StorageService.getInstance().storage.set(key, JSON.stringify(removeEmpty(value as Obj)));
           }
           break;
 
