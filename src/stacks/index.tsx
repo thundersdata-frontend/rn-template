@@ -28,10 +28,6 @@ import useStackService from './useStackService';
 
 const AUTH_SCREENS = [
   {
-    name: 'PrivacyConfirm',
-    component: PrivacyConfirm,
-  },
-  {
     name: 'SignIn',
     component: SignIn,
   },
@@ -138,21 +134,25 @@ export default () => {
   useStackService.useModel();
 
   const commonStackOptions: StackNavigationOptions = {
-    header: props => <CustomHeader {...props} />,
     gestureEnabled: true,
     gestureDirection: 'horizontal',
     cardStyleInterpolator: CardStyleInterpolators.forHorizontalIOS,
   };
 
   const { confirmed, signedIn } = storageService;
-
+  console.log(confirmed, signedIn);
   return (
     <Stack.Navigator
       initialRouteName={confirmed ? (signedIn ? 'Tab' : 'SignIn') : 'PrivacyConfirm'}
       screenOptions={commonStackOptions}
     >
+      {!confirmed && <Stack.Screen name="PrivacyConfirm" component={PrivacyConfirm} />}
       {signedIn ? (
-        <Stack.Group>
+        <Stack.Group
+          screenOptions={{
+            header: props => <CustomHeader {...props} />,
+          }}
+        >
           {MAIN_SCREENS.map(screen => (
             <Stack.Screen key={screen.name} {...screen} />
           ))}
@@ -164,7 +164,13 @@ export default () => {
           ))}
         </Stack.Group>
       )}
-      <Stack.Group screenOptions={{ presentation: 'modal' }}>
+      <Stack.Group
+        screenOptions={{
+          header: props => <CustomHeader {...props} headerStyle={{ marginTop: 0 }} />,
+          presentation: 'modal',
+          cardStyleInterpolator: CardStyleInterpolators.forModalPresentationIOS,
+        }}
+      >
         {MODAL_SCREENS.map(screen => (
           <Stack.Screen key={screen.name} {...screen} />
         ))}
