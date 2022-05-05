@@ -1,5 +1,5 @@
 import { FC, ReactNode } from 'react';
-import { Animated, TextStyle, TouchableOpacity } from 'react-native';
+import { Animated, StyleProp, TextStyle, TouchableOpacity, ViewStyle } from 'react-native';
 import { Flex, helpers, SvgIcon, Box, Text } from '@td-design/react-native';
 import { useTheme } from '@shopify/restyle';
 import { AppTheme } from 'theme';
@@ -8,7 +8,11 @@ import { useSafeAreaInsets } from 'react-native-safe-area-context';
 
 const { px } = helpers;
 
-export const CustomHeader: FC<StackHeaderProps> = ({ navigation, options }) => {
+export const CustomHeader: FC<StackHeaderProps & { headerStyle?: StyleProp<ViewStyle> }> = ({
+  navigation,
+  options,
+  headerStyle,
+}) => {
   const theme = useTheme<AppTheme>();
   const insets = useSafeAreaInsets();
   const {
@@ -40,7 +44,7 @@ export const CustomHeader: FC<StackHeaderProps> = ({ navigation, options }) => {
       backgroundColor={headerTransparent ? 'transparent' : 'background'}
       minHeight={px(54)}
       justifyContent="center"
-      style={{ marginTop: insets.top }}
+      style={[{ marginTop: insets.top }, headerStyle]}
     >
       <Animated.View style={[{ flex: 1, alignItems: 'flex-start' }, headerLeftContainerStyle]}>
         {headerLeftComp}

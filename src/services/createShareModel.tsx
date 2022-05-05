@@ -2,8 +2,7 @@ import React, { createContext, PropsWithChildren, ReactNode, useContext, useMemo
 
 const EMPTY = Symbol('EMPTY');
 
-type BaseProps = Record<string, any>;
-type UseHook<Value, Props extends BaseProps> = ((props: Props) => Value) | (() => Value);
+type UseHook<Value, Props extends Obj> = ((props: Props) => Value) | (() => Value);
 type ConsumerProps<Value> = {
   children: (value: Value) => ReactNode;
 };
@@ -13,7 +12,7 @@ type ConsumerProps<Value> = {
  * @param useHook 自定义hooks
  * @returns
  */
-export function createShareModel<Value, Props extends BaseProps>(useHook: UseHook<Value, Props>) {
+export function createShareModel<Value, Props extends Obj>(useHook: UseHook<Value, Props>) {
   const Context = createContext<Value | typeof EMPTY>(EMPTY);
   const hookName = useHook.name || 'useHook';
   Context.displayName = `${hookName}Context`;

@@ -1,10 +1,13 @@
+type CommonStackParamList = {
+  Privacy: undefined;
+  Agreement: undefined;
+};
+
 type AuthStackParamList = {
   SignIn: undefined;
   ConfigPass: undefined;
   ForgetPass: undefined;
   Register: undefined;
-  Privacy: undefined;
-  UserAgreement: undefined;
   ModifyPasswordResult: undefined;
 };
 
@@ -24,4 +27,4 @@ type MainStackParamList = {
   ModifyPasswordResult: undefined;
 };
 
-type AppParamList = AuthStackParamList & MainStackParamList;
+type AppParamList = AuthStackParamList & MainStackParamList & CommonStackParamList;

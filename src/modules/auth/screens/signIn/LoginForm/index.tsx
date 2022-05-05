@@ -13,7 +13,7 @@ import { SmsTypeEnum } from 'enums';
 import { NavigationProp, useNavigation } from '@react-navigation/native';
 
 const FormContent = ({ isSmsLogin }: { isSmsLogin: boolean }) => {
-  const navigation = useNavigation<NavigationProp<AuthStackParamList, 'SignIn'>>();
+  const navigation = useNavigation<NavigationProp<AuthStackParamList & CommonStackParamList, 'SignIn'>>();
   const [form] = useForm();
   const theme = useTheme<AppTheme>();
   const { loading, error, handleFormValueChange, submitFormFailed, beforeSendSms, smsSend, handleFinish, disabled } =
@@ -89,7 +89,7 @@ const FormContent = ({ isSmsLogin }: { isSmsLogin: boolean }) => {
                   <TouchableOpacity
                     onPress={evt => {
                       evt.stopPropagation();
-                      navigation.navigate('UserAgreement');
+                      navigation.navigate('Agreement');
                     }}
                   >
                     <Text variant="p2" color="primary200">
