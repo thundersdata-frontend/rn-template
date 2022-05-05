@@ -6,8 +6,8 @@ import { storageService, StorageToken } from 'services/StorageService';
 import { NavigationProp, useFocusEffect, useNavigation } from '@react-navigation/native';
 
 const { updateStorage } = storageService;
-export default () => {
-  const navigation = useNavigation<NavigationProp<AuthStackParamList>>();
+export const PrivacyConfirm = () => {
+  const navigation = useNavigation<NavigationProp<AuthStackParamList & CommonStackParamList>>();
 
   useFocusEffect(
     useCallback(() => {
@@ -23,7 +23,7 @@ export default () => {
               <TouchableOpacity
                 onPress={() => {
                   Portal.remove(key);
-                  navigation.navigate('UserAgreement');
+                  navigation.navigate('Agreement');
                 }}
               >
                 <Text color="primary200">《用户服务协议》</Text>

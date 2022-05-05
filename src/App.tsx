@@ -6,7 +6,7 @@ import { ThemeProvider } from '@td-design/react-native';
 import { useSafeState, useMount, useMemoizedFn } from '@td-design/rn-hooks';
 import { useFlipper } from '@react-navigation/devtools';
 
-import { Stack } from './stacks';
+import Stack from './stacks';
 import { Fallback } from 'components';
 import { lightTheme, darkTheme } from 'theme';
 import { linking } from 'linking';
