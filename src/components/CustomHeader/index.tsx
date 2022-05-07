@@ -42,9 +42,9 @@ export const CustomHeader: FC<StackHeaderProps & { headerStyle?: StyleProp<ViewS
     <Flex
       paddingHorizontal="x2"
       backgroundColor={headerTransparent ? 'transparent' : 'background'}
-      minHeight={px(54)}
+      height={80}
       justifyContent="center"
-      style={[{ marginTop: insets.top }, headerStyle]}
+      style={[{ paddingTop: insets.top }, headerStyle]}
     >
       <Animated.View style={[{ flex: 1, alignItems: 'flex-start' }, headerLeftContainerStyle]}>
         {headerLeftComp}
@@ -64,7 +64,7 @@ export const CustomHeader: FC<StackHeaderProps & { headerStyle?: StyleProp<ViewS
         </Text>
       </Animated.View>
       <Animated.View style={[{ flex: 1, alignItems: 'flex-end' }, headerRightContainerStyle]}>
-        {options?.headerRight?.({}) ?? headerRight}
+        {headerRight?.({})}
       </Animated.View>
     </Flex>
   );
