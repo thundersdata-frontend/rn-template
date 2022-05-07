@@ -140,7 +140,6 @@ export default () => {
   };
 
   const { confirmed, signedIn } = storageService;
-  console.log(confirmed, signedIn);
   return (
     <Stack.Navigator
       initialRouteName={confirmed ? (signedIn ? 'Tab' : 'SignIn') : 'PrivacyConfirm'}
