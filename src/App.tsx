@@ -1,3 +1,4 @@
+import { useEffect } from 'react';
 import { Appearance } from 'react-native';
 import { SafeAreaProvider } from 'react-native-safe-area-context';
 import { NavigationContainer, DefaultTheme, DarkTheme } from '@react-navigation/native';
@@ -17,20 +18,7 @@ import useStackService from 'stacks/useStackService';
 export function App() {
   // 监听网络连接情况
   useNetwork();
-
-  // 手机主题切换
-  const [theme, setTheme] = useSafeState(Appearance.getColorScheme());
   useFlipper(navigationRef);
-
-  const themeChange = useMemoizedFn(() => {
-    setTheme(Appearance.getColorScheme());
-  });
-
-  useMount(() => {
-    const listener = Appearance.addChangeListener(themeChange);
-
-    return () => listener.remove();
-  });
 
   useMount(() => {
     const init = async () => {
@@ -40,6 +28,19 @@ export function App() {
     init().finally(async () => {
       await hideSplash({ fade: true });
     });
+  });
+
+  // 手机主题切换
+  const [theme, setTheme] = useSafeState(Appearance.getColorScheme());
+
+  const themeChange = useMemoizedFn(() => {
+    setTheme(Appearance.getColorScheme());
+  });
+
+  useEffect(() => {
+    const listener = Appearance.addChangeListener(themeChange);
+
+    return () => listener.remove();
   });
 
   return (
