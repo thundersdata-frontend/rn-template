@@ -2,6 +2,8 @@ import React, { forwardRef, useRef, useImperativeHandle, useCallback } from 'rea
 import { Animated, ActivityIndicator, View, Text, StyleSheet, Platform, ViewStyle } from 'react-native';
 import { ByronRefreshControl, RefreshControlProps } from '@byron-react-native/refresh-control';
 import { useSafeState } from '@td-design/rn-hooks';
+import { useTheme } from '@shopify/restyle';
+import { AppTheme } from 'theme';
 
 export interface CustomRefreshControlRef {
   startRefresh: () => void;
@@ -10,6 +12,8 @@ export interface CustomRefreshControlRef {
 
 export const CustomRefreshControl = forwardRef<CustomRefreshControlRef, RefreshControlProps>(
   ({ onRefresh, style, ...props }, ref) => {
+    const theme = useTheme<AppTheme>();
+
     const styleHeight = (style as ViewStyle)?.height || 100;
     const [title, setTitle] = useSafeState('下拉可以刷新');
     const [lastTime, setLastTime] = useSafeState(fetchNowTime());
@@ -93,11 +97,14 @@ export const CustomRefreshControl = forwardRef<CustomRefreshControlRef, RefreshC
         {refreshing ? (
           <ActivityIndicator color={'gray'} />
         ) : (
-          <Animated.Image style={[styles.left, { transform: [{ rotate }] }]} source={require('./assets/arrow.png')} />
+          <Animated.Image
+            style={[styles.left, { tintColor: theme.colors.gray200, transform: [{ rotate }] }]}
+            source={require('./assets/arrow.png')}
+          />
         )}
         <View style={styles.right}>
-          <Text style={styles.text}>{title}</Text>
-          <Text style={[styles.text, { marginTop: 5, fontSize: 11 }]}>{`上次更新：${lastTime}`}</Text>
+          <Text style={{ fontSize: 12, color: theme.colors.gray200 }}>{title}</Text>
+          <Text style={{ marginTop: 5, fontSize: 10, color: theme.colors.gray200 }}>{`上次更新：${lastTime}`}</Text>
         </View>
       </View>
     );
@@ -146,16 +153,11 @@ const styles = StyleSheet.create({
   left: {
     width: 32,
     height: 32,
-    tintColor: 'gray',
   },
   right: {
     alignItems: 'center',
     justifyContent: 'center',
     marginHorizontal: 15,
-  },
-  text: {
-    color: 'gray',
-    fontSize: 12,
   },
   indicator: {
     width: '100%',
