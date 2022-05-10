@@ -1,6 +1,6 @@
-import { Text, NativeSyntheticEvent, NativeScrollEvent, StyleSheet } from 'react-native';
-import { Container, RecyclerWaterfallList } from 'components';
-import { Box, Center, PullToRefresh } from '@td-design/react-native';
+import { Text, StyleSheet } from 'react-native';
+import { Container, CustomRefreshControl, RecyclerWaterfallList } from 'components';
+import { Box, Center } from '@td-design/react-native';
 import FastImage from 'react-native-fast-image';
 import { useRefreshService } from 'hooks/useRefreshService';
 
@@ -430,7 +430,7 @@ function fetchData({ page, pageSize }: { page: number; pageSize: number }): Prom
 }
 
 export function RecyclerListDemo4() {
-  const { refreshing, loadingMore, allLoaded, onRefresh, onLoadMore, data } = useRefreshService<DataType>(fetchData, {
+  const { loadingMore, allLoaded, onLoadMore, data, onRefresh } = useRefreshService<DataType>(fetchData, {
     defaultParams: [{ page: 1, pageSize: 30 }],
   });
 
@@ -458,37 +458,19 @@ export function RecyclerListDemo4() {
     return null;
   };
 
-  const renderChildren = ({
-    onScroll,
-    onMomentumScrollEnd,
-    scrollEnabled,
-  }: {
-    onScroll: () => void;
-    onMomentumScrollEnd: (event: NativeSyntheticEvent<NativeScrollEvent>) => void;
-    scrollEnabled: boolean;
-  }) => {
-    return (
+  return (
+    <Container>
       <RecyclerWaterfallList
         data={data}
         keyExtractor={item => item.imageUrl}
         renderItem={renderItem}
         renderFooter={renderFooter}
-        onScroll={onScroll}
         scrollViewProps={{
-          bounces: false,
-          scrollEnabled,
-          scrollEventThrottle: 16,
-          onMomentumScrollEnd,
+          refreshControl: <CustomRefreshControl onRefresh={onRefresh} />,
         }}
         onEndReached={onLoadMore}
         onEndReachedThreshold={20}
       />
-    );
-  };
-
-  return (
-    <Container>
-      <PullToRefresh onRefresh={onRefresh} refreshing={refreshing} renderChildren={renderChildren} />
     </Container>
   );
 }
