@@ -21,6 +21,10 @@ import { MapChart } from 'modules/charts/screens/map';
 import { IndexBarDemo } from 'modules/homepage/screens/indexbar';
 import { LocalModelDemo } from 'modules/homepage/screens/localmodel';
 import { RecyclerListDemo } from 'modules/homepage/screens/recyclerlist';
+import { RecyclerListDemo1 } from 'modules/homepage/screens/recyclerlist/demo1';
+import { RecyclerListDemo2 } from 'modules/homepage/screens/recyclerlist/demo2';
+import { RecyclerListDemo3 } from 'modules/homepage/screens/recyclerlist/demo3';
+import { RecyclerListDemo4 } from 'modules/homepage/screens/recyclerlist/demo4';
 import { Settings } from 'modules/user/screens/settings';
 import { ModifyPassword } from 'modules/user/screens/modifyPass';
 import useStackService from './useStackService';
@@ -93,6 +97,34 @@ const MAIN_SCREENS = [
     component: RecyclerListDemo,
     options: {
       headerTitle: 'RecyclerListView示例',
+    },
+  },
+  {
+    name: 'RecyclerListDemo1',
+    component: RecyclerListDemo1,
+    options: {
+      headerTitle: 'RLV示例1',
+    },
+  },
+  {
+    name: 'RecyclerListDemo2',
+    component: RecyclerListDemo2,
+    options: {
+      headerTitle: 'RLV示例2',
+    },
+  },
+  {
+    name: 'RecyclerListDemo3',
+    component: RecyclerListDemo3,
+    options: {
+      headerTitle: 'RLV示例3',
+    },
+  },
+  {
+    name: 'RecyclerListDemo4',
+    component: RecyclerListDemo4,
+    options: {
+      headerTitle: 'RLV示例4',
     },
   },
   {

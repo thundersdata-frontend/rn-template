@@ -1,6 +1,6 @@
 /* eslint-disable react-native/no-color-literals */
 import { memo } from 'react';
-import { Container, RecyclerWaterfallList } from 'components';
+import { Container, CustomRefreshControl, RecyclerWaterfallList } from 'components';
 import { StyleSheet, View, Text } from 'react-native';
 import { Box } from '@td-design/react-native';
 import { dogData } from './dogData';
@@ -19,6 +19,14 @@ const ImageRenderer = memo(({ imageUrl }: { imageUrl: string }) => {
     </Box>
   );
 });
+
+function mockFetch(): Promise<void> {
+  return new Promise(resolve => {
+    setTimeout(() => {
+      resolve();
+    }, 2000);
+  });
+}
 
 export function RecyclerListDemo3() {
   const renderItem = ({ item }: { item: DataType }) => {
@@ -41,6 +49,9 @@ export function RecyclerListDemo3() {
         renderFooter={renderFooter}
         keyExtractor={item => item.imageUrl}
         data={data}
+        scrollViewProps={{
+          refreshControl: <CustomRefreshControl onRefresh={mockFetch} />,
+        }}
       />
     </Container>
   );

@@ -1,6 +1,6 @@
 import { Box, Empty, helpers } from '@td-design/react-native';
 import { useCreation } from '@td-design/rn-hooks';
-import { ForwardedRef, forwardRef, ReactText } from 'react';
+import { ForwardedRef, forwardRef, ReactNode, ReactText, useRef } from 'react';
 import { ScrollView, ScrollViewProps } from 'react-native';
 import {
   RecyclerListView,
@@ -55,6 +55,7 @@ export interface RecyclerFlatListProps<T>
   renderHeader?: () => JSX.Element;
   renderItem: (info: RenderItemInfo<T>) => JSX.Element;
   scrollViewProps?: ScrollViewProps;
+  emptyComponent?: ReactNode;
 }
 
 const ViewTypes = {
@@ -84,9 +85,12 @@ function RecyclerFlatListInner<
     numColumns = 1,
     gap = 0,
     marginHorizontal = 0,
+    emptyComponent,
   }: RecyclerFlatListProps<T>,
   ref: ForwardedRef<R>,
 ) {
+  const scrollViewRef = useRef<ScrollView>();
+
   /**
    * 得到每个列表项的宽度
    * header默认返回屏幕宽度
@@ -226,8 +230,12 @@ function RecyclerFlatListInner<
 
   if (data.length === 0) {
     return (
-      <ScrollView ref={ref as ForwardedRef<ScrollView>}>
-        <Empty />
+      <ScrollView
+        ref={ref as ForwardedRef<ScrollView>}
+        {...scrollViewProps}
+        contentContainerStyle={[{ flex: 1 }, scrollViewProps?.contentContainerStyle]}
+      >
+        {emptyComponent ?? <Empty />}
       </ScrollView>
     );
   }
@@ -245,6 +253,7 @@ function RecyclerFlatListInner<
       initialOffset={initialOffset}
       onScroll={onScroll}
       scrollViewProps={{
+        ref: scrollViewRef,
         ...scrollViewProps,
         contentContainerStyle,
       }}

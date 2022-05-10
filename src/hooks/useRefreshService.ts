@@ -3,8 +3,6 @@ import { LoginFailureEnum } from 'enums';
 import { useToast } from 'hooks/useToast';
 import { Options, Service } from '@td-design/rn-hooks/lib/typescript/useRequest/types';
 import { storageService } from '../services/StorageService';
-import { useAtomValue } from 'jotai/utils';
-import { isOnlineAtom } from './useNetwork';
 
 // 初始化 page
 export const INITIAL_PAGE = 1;
@@ -17,7 +15,6 @@ export function useRefreshService<T, R extends Page<T> = Page<T>, P extends Page
 ) {
   const { toastFail } = useToast();
   const { signedIn, signOut } = storageService;
-  const isOnline = useAtomValue(isOnlineAtom);
 
   const [data, setData] = useSafeState<T[]>([]);
   const [allLoaded, setAllLoaded] = useSafeState(false);
@@ -25,14 +22,6 @@ export function useRefreshService<T, R extends Page<T> = Page<T>, P extends Page
   const [loadingMore, setLoadingMore] = useSafeState(false);
 
   const promiseService = async (...args: P) => {
-    if (!isOnline) {
-      throw new Error(
-        JSON.stringify({
-          success: false,
-          message: '网络连接异常',
-        }),
-      );
-    }
     if (!signedIn) {
       throw new Error(JSON.stringify({ code: LoginFailureEnum.登录过期 }));
     }

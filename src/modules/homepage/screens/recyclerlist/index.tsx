@@ -1,8 +1,15 @@
-// import { RecyclerListDemo1 } from './demo1';
-import { RecyclerListDemo2 } from './demo2';
-// import { RecyclerListDemo3 } from './demo3';
-// import { RecyclerListDemo4 } from './demo4';
+import { NavigationProp, useNavigation } from '@react-navigation/native';
+import { Button } from '@td-design/react-native';
+import { Container } from 'components';
 
 export function RecyclerListDemo() {
-  return <RecyclerListDemo2 />;
+  const navigation = useNavigation<NavigationProp<MainStackParamList>>();
+  return (
+    <Container>
+      <Button onPress={() => navigation.navigate('RecyclerListDemo1')} title="Demo1" />
+      <Button onPress={() => navigation.navigate('RecyclerListDemo2')} title="Demo2" />
+      <Button onPress={() => navigation.navigate('RecyclerListDemo3')} title="Demo3" />
+      <Button onPress={() => navigation.navigate('RecyclerListDemo4')} title="Demo4" />
+    </Container>
+  );
 }
