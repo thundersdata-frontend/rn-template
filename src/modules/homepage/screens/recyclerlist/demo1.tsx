@@ -1,7 +1,7 @@
 import { FC, memo } from 'react';
-import { Text, TouchableOpacity, NativeSyntheticEvent, NativeScrollEvent } from 'react-native';
-import { Container, RecyclerFlatList } from 'components';
-import { Box, Center, PullToRefresh } from '@td-design/react-native';
+import { Text } from 'react-native';
+import { Container, CustomRefreshControl, RecyclerFlatList } from 'components';
+import { Box, Center } from '@td-design/react-native';
 import { useRefreshService } from 'hooks/useRefreshService';
 
 interface DataType {
@@ -26,7 +26,7 @@ function fetchData({ page = 1, pageSize = 10 }: { page: number; pageSize: number
 }
 
 export function RecyclerListDemo1() {
-  const { refreshing, loadingMore, allLoaded, onRefresh, onLoadMore, data } = useRefreshService<DataType>(fetchData);
+  const { loadingMore, allLoaded, onLoadMore, data, onRefresh } = useRefreshService<DataType>(fetchData);
 
   const renderItem = ({ item }: { item: DataType }) => {
     return <CellContainer item={item} />;
@@ -48,56 +48,36 @@ export function RecyclerListDemo1() {
     return null;
   };
 
-  const renderChildren = ({
-    onScroll,
-    onMomentumScrollEnd,
-    scrollEnabled,
-  }: {
-    onScroll: () => void;
-    onMomentumScrollEnd: (event: NativeSyntheticEvent<NativeScrollEvent>) => void;
-    scrollEnabled: boolean;
-  }) => {
-    return (
+  return (
+    <Container>
       <RecyclerFlatList
         data={data}
         keyExtractor={item => item.id.toString()}
         renderItem={renderItem}
         itemHeight={140}
         renderFooter={renderFooter}
-        onScroll={onScroll}
-        scrollViewProps={{
-          bounces: false,
-          scrollEnabled,
-          scrollEventThrottle: 16,
-          onMomentumScrollEnd,
-        }}
         onEndReached={onLoadMore}
         onEndReachedThreshold={20}
+        scrollViewProps={{
+          refreshControl: <CustomRefreshControl onRefresh={onRefresh} />,
+        }}
       />
-    );
-  };
-
-  return (
-    <Container>
-      <PullToRefresh onRefresh={onRefresh} refreshing={refreshing} renderChildren={renderChildren} />
     </Container>
   );
 }
 
 const Cell: FC<{ item: DataType }> = ({ item }) => {
   return (
-    <TouchableOpacity onPress={() => console.log(item)}>
-      <Box
-        backgroundColor="primary200"
-        height={140}
-        justifyContent="center"
-        alignItems="center"
-        borderBottomWidth={1}
-        borderBottomColor="border"
-      >
-        <Text>{item.name}</Text>
-      </Box>
-    </TouchableOpacity>
+    <Box
+      backgroundColor="primary200"
+      height={140}
+      justifyContent="center"
+      alignItems="center"
+      borderBottomWidth={1}
+      borderBottomColor="border"
+    >
+      <Text>{item.name}</Text>
+    </Box>
   );
 };
 const CellContainer = memo(Cell);

@@ -1,9 +1,10 @@
+import Icon from './Icon';
 import { Container } from './Container';
 import { Fallback } from './Fallback';
 import { ImgCard } from './ImgCard';
 import { CustomWebView } from './CustomWebView';
 import { CustomHeader } from './CustomHeader';
-import Icon from './Icon';
+import { CustomRefreshControl } from './CustomRefreshControl';
 import { KeyboardAwareScrollView } from './KeyboardAwareScrollView';
 import { KeyboardShift } from './KeyboardShift';
 import { ImagePickerField } from './ImagePickerField';
@@ -19,6 +20,7 @@ export {
   Icon,
   CustomWebView,
   CustomHeader,
+  CustomRefreshControl,
   KeyboardAwareScrollView,
   KeyboardShift,
   ImagePickerField,

@@ -2,9 +2,17 @@
 import { View, Text, StyleSheet } from 'react-native';
 import { Box } from '@td-design/react-native';
 import FastImage from 'react-native-fast-image';
-import { Container, RecyclerFlatList } from 'components';
+import { Container, RecyclerFlatList, CustomRefreshControl } from 'components';
 import { RenderItemInfo } from 'components/RecyclerFlatList';
 import { dogData } from './dogData';
+
+function mockFetch(): Promise<void> {
+  return new Promise(resolve => {
+    setTimeout(() => {
+      resolve();
+    }, 2000);
+  });
+}
 
 const data = dogData.map(item => ({
   imageUrl: item,
@@ -56,8 +64,9 @@ export function RecyclerListDemo2() {
         headerHeight={21}
         itemHeight={200}
         data={data}
-        initialOffset={1000}
-        initialRenderIndex={49}
+        scrollViewProps={{
+          refreshControl: <CustomRefreshControl onRefresh={mockFetch} />,
+        }}
       />
     </Container>
   );

@@ -10,14 +10,7 @@ export function useNetwork() {
   const updateOnlineAtom = useUpdateAtom(isOnlineAtom);
 
   /** 已经包含了网络连接变化情况的监听事件 */
-  const netInfo = useNetInfo({
-    reachabilityUrl: 'http://authorization.dev.thundersdata.com/v2/api-docs',
-    reachabilityTest: async response => response.status === 200,
-    reachabilityLongTimeout: 30 * 1000, // 60s
-    reachabilityShortTimeout: 3 * 1000, // 5s
-    reachabilityRequestTimeout: 6 * 1000, // 15s
-    reachabilityShouldRun: () => true,
-  });
+  const netInfo = useNetInfo();
 
   /**
    * 当连接状态发生改变的时候
