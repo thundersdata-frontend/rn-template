@@ -44,16 +44,6 @@ export function App() {
     return () => listener.remove();
   });
 
-  useMount(() => {
-    const init = async () => {
-      // …do multiple sync or async tasks
-    };
-
-    init().finally(async () => {
-      await hideSplash({ fade: true });
-    });
-  });
-
   return (
     <SafeAreaProvider>
       <GestureHandlerRootView style={{ flex: 1 }}>
