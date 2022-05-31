@@ -13,7 +13,7 @@
     "postinstall": "npx husky install && npx patch-package",
     "commit": "git-cz",
     "tsc": "tsc -p tsconfig.json",
-    "pod": "cd ios && pod install --repo-update && cd ..",
+    "pod": "cd ios && pod install && cd ..",
     "test": "jest --passWithNoTests --detectOpenHandles --watch"
   },
   "config": {
