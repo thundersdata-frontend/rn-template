@@ -2,8 +2,9 @@
  * @description 获取用户数据权限
  */
 
-import { initRequest } from '../../../../common';
 import Config from 'react-native-config';
+
+import { initRequest } from '../../../../common';
 
 const backEndUrl = Config['authorization'];
 

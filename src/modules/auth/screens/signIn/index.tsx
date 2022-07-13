@@ -1,10 +1,10 @@
 import { useSafeState } from '@td-design/rn-hooks';
+import { KeyboardShift } from 'components/KeyboardShift';
 import { Container } from 'modules/auth/components/Container';
 
-import { Logo } from './Logo';
 import { LoginForm } from './LoginForm';
+import { Logo } from './Logo';
 import { ThirdPartyLogin } from './ThirdPartyLogin';
-import { KeyboardShift } from 'components/KeyboardShift';
 
 export function SignIn() {
   const [activeKey, setActiveKey] = useSafeState('sms');

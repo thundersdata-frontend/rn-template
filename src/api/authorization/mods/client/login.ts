@@ -1,9 +1,10 @@
 /**
  * @description login
  */
-import * as defs from '../../baseClass';
-import { initRequest } from '../../../../common';
 import Config from 'react-native-config';
+
+import { initRequest } from '../../../../common';
+import * as defs from '../../baseClass';
 
 const backEndUrl = Config['authorization'];
 

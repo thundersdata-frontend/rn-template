@@ -1,20 +1,18 @@
 /**
  * 注册页面
  */
-import Form, { Field, useForm } from 'rc-field-form';
-import { useTheme } from '@shopify/restyle';
-import { Box, Button, Input, WhiteSpace, CountDown } from '@td-design/react-native';
-
-import { AuthTemplate } from 'modules/auth/components/AuthTemplate';
-import { AppTheme } from 'theme';
-
-import { mobilePhoneRules, passwordRules } from 'utils/validators';
-import { useAuthService } from 'modules/auth/useAuthService';
-import { ErrorMessage } from 'modules/auth/components/ErrorMessage';
 import { useNavigation } from '@react-navigation/native';
 import { StackNavigationProp } from '@react-navigation/stack';
-import { SmsTypeEnum } from 'enums';
+import { useTheme } from '@shopify/restyle';
+import { Box, Button, CountDown, Input, WhiteSpace } from '@td-design/react-native';
 import { Icon } from 'components';
+import { SmsTypeEnum } from 'enums';
+import { AuthTemplate } from 'modules/auth/components/AuthTemplate';
+import { ErrorMessage } from 'modules/auth/components/ErrorMessage';
+import { useAuthService } from 'modules/auth/useAuthService';
+import Form, { Field, useForm } from 'rc-field-form';
+import { AppTheme } from 'theme';
+import { mobilePhoneRules, passwordRules } from 'utils/validators';
 
 const FormContent = () => {
   const [form] = useForm();

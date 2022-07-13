@@ -1,5 +1,6 @@
-import { Text } from '@td-design/react-native';
 import { ScrollView } from 'react-native';
+
+import { Text } from '@td-design/react-native';
 
 export function Privacy() {
   return (

@@ -2,8 +2,9 @@
  * @description 用户绑定ResourceRole（批量）
  */
 
-import { initRequest } from '../../../../common';
 import Config from 'react-native-config';
+
+import { initRequest } from '../../../../common';
 
 const backEndUrl = Config['authorization'];
 

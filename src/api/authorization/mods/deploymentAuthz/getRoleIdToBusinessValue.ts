@@ -2,8 +2,9 @@
  * @description 获取能访问businessValue的RoleId
  */
 
-import { initRequest } from '../../../../common';
 import Config from 'react-native-config';
+
+import { initRequest } from '../../../../common';
 
 const backEndUrl = Config['authorization'];
 

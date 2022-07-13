@@ -1,4 +1,5 @@
 import { useEffect, useRef } from 'react';
+
 import Echarts, { EchartsHandler } from '@td-design/react-native-echarts';
 import { Container } from 'components';
 

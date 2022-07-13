@@ -1,9 +1,11 @@
-import { Container, CustomRefreshControl } from 'components';
-import { Flex, helpers, Avatar, Toast, Button } from '@td-design/react-native';
 import { ImageBackground, ScrollView } from 'react-native';
-import ImagePicker from '@td-design/react-native-image-picker';
-import { useUserService } from '../useUserService';
+
 import { NavigationProp, useNavigation } from '@react-navigation/native';
+import { Avatar, Button, Flex, helpers, Toast } from '@td-design/react-native';
+import ImagePicker from '@td-design/react-native-image-picker';
+import { Container, CustomRefreshControl } from 'components';
+
+import { useUserService } from '../useUserService';
 
 const { px } = helpers;
 const AVATAR_SIZE = px(66);

@@ -2,8 +2,9 @@
  * @description 全部资源列表（树形）
  */
 
-import { initRequest } from '../../../../common';
 import Config from 'react-native-config';
+
+import { initRequest } from '../../../../common';
 
 const backEndUrl = Config['authorization'];
 

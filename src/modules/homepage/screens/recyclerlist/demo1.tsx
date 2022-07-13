@@ -1,7 +1,8 @@
 import { FC, memo } from 'react';
 import { Text } from 'react-native';
-import { Container, CustomRefreshControl, RecyclerFlatList } from 'components';
+
 import { Box, Center } from '@td-design/react-native';
+import { Container, CustomRefreshControl, RecyclerFlatList } from 'components';
 import { useRefreshService } from 'hooks/useRefreshService';
 
 interface DataType {

@@ -1,7 +1,8 @@
-import { useMemoizedFn, useSafeState, useRequest } from '@td-design/rn-hooks';
+import { useMemoizedFn, useRequest, useSafeState } from '@td-design/rn-hooks';
+import { Options, Service } from '@td-design/rn-hooks/lib/typescript/useRequest/types';
 import { LoginFailureEnum } from 'enums';
 import { useToast } from 'hooks/useToast';
-import { Options, Service } from '@td-design/rn-hooks/lib/typescript/useRequest/types';
+
 import { storageService } from '../services/StorageService';
 
 // 初始化 page

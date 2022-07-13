@@ -1,6 +1,6 @@
 import React, { FC } from 'react';
-import WebView from 'react-native-webview';
 import { StyleProp, View, ViewStyle } from 'react-native';
+import WebView from 'react-native-webview';
 
 interface CustomWebViewProps {
   strings: string; //富文本生成的string

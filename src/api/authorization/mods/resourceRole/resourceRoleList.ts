@@ -2,8 +2,9 @@
  * @description 获取ResourceRole列表
  */
 
-import { initRequest } from '../../../../common';
 import Config from 'react-native-config';
+
+import { initRequest } from '../../../../common';
 
 const backEndUrl = Config['authorization'];
 

@@ -1,5 +1,6 @@
-import { helpers, Image } from '@td-design/react-native';
 import { ScrollView } from 'react-native';
+
+import { helpers, Image } from '@td-design/react-native';
 
 const { px } = helpers;
 export function ImgList({
