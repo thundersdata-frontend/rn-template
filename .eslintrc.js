@@ -37,10 +37,6 @@ module.exports = {
     '@typescript-eslint/no-non-null-assertion': 0,
     '@typescript-eslint/no-unused-vars': 2,
     '@typescript-eslint/no-empty-function': 0,
-    'import/no-duplicates': 'error',
-    'import/no-unused-modules': 'error',
-    'import/no-named-as-default': 0,
-    'import/no-named-as-default-member': 0,
     'react-hooks/rules-of-hooks': 2,
     'react-hooks/exhaustive-deps': 2,
     'react-native/no-unused-styles': 2,
@@ -53,6 +49,36 @@ module.exports = {
     'replace-hooks/no-forbidden-hooks': [
       'error',
       { useState: { tip: 'useSafeState', dependency: '@td-design/rn-hooks' } },
+    ],
+    'sort-imports': ['error', { ignoreCase: true, ignoreDeclarationSort: true }],
+    'import/first': 'off',
+    'import/no-duplicates': 'error',
+    'import/no-unused-modules': 'error',
+    'import/no-named-as-default': 0,
+    'import/no-named-as-default-member': 0,
+    'import/order': [
+      'error',
+      {
+        groups: ['builtin', 'external', 'internal', 'parent', 'sibling', 'index'],
+        pathGroups: [
+          {
+            pattern: 'react*',
+            group: 'builtin',
+            position: 'before',
+          },
+          {
+            pattern: '@/**',
+            group: 'internal',
+            position: 'before',
+          },
+        ],
+        pathGroupsExcludedImportTypes: [],
+        'newlines-between': 'always',
+        alphabetize: {
+          order: 'asc',
+          caseInsensitive: true,
+        },
+      },
     ],
   },
 };
