@@ -1,12 +1,12 @@
 import { Toast } from '@td-design/react-native';
-import { useMemoizedFn } from '@td-design/rn-hooks';
-import { uploadFile } from 'utils/upload';
-import { useToast } from 'hooks/useToast';
-import { useError } from 'hooks/useError';
-import { mockChangeAvatar, mockFetchUserInfo, mockUpdateUsername } from 'modules/mock';
 import { File } from '@td-design/react-native-image-picker';
+import { useMemoizedFn } from '@td-design/rn-hooks';
+import { useError } from 'hooks/useError';
+import { useToast } from 'hooks/useToast';
+import { mockChangeAvatar, mockFetchUserInfo, mockUpdateUsername } from 'modules/mock';
 import { storageService, StorageToken } from 'services/StorageService';
 import useStackService from 'stacks/useStackService';
+import { uploadFile } from 'utils/upload';
 
 export function useUserService() {
   const { update } = useStackService.useModel();

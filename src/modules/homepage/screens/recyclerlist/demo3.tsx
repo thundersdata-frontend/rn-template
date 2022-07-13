@@ -1,10 +1,12 @@
 /* eslint-disable react-native/no-color-literals */
 import { memo } from 'react';
-import { Container, CustomRefreshControl, RecyclerWaterfallList } from 'components';
-import { StyleSheet, View, Text } from 'react-native';
-import { Box } from '@td-design/react-native';
-import { dogData } from './dogData';
+import { StyleSheet, Text, View } from 'react-native';
 import FastImage from 'react-native-fast-image';
+
+import { Box } from '@td-design/react-native';
+import { Container, CustomRefreshControl, RecyclerWaterfallList } from 'components';
+
+import { dogData } from './dogData';
 
 interface DataType {
   imageUrl: string;

@@ -1,9 +1,10 @@
 /**
  * @description 获取数据规则详情
  */
-import * as defs from '../../baseClass';
-import { initRequest } from '../../../../common';
 import Config from 'react-native-config';
+
+import { initRequest } from '../../../../common';
+import * as defs from '../../baseClass';
 
 const backEndUrl = Config['authorization'];
 

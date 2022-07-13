@@ -1,7 +1,7 @@
 module.exports = {
   parser: '@typescript-eslint/parser',
   extends: ['plugin:@typescript-eslint/recommended', 'plugin:react-native/all'],
-  plugins: ['@typescript-eslint', 'react-hooks', 'react-native', 'replace-hooks'],
+  plugins: ['@typescript-eslint', 'react-hooks', 'react-native', 'replace-hooks', 'import'],
   env: {
     'react-native/react-native': true,
   },
@@ -41,6 +41,36 @@ module.exports = {
     'replace-hooks/no-forbidden-hooks': [
       'error',
       { useState: { tip: 'useSafeState', dependency: '@td-design/rn-hooks' } },
+    ],
+    'sort-imports': ['error', { ignoreCase: true, ignoreDeclarationSort: true }],
+    'import/first': 'off',
+    'import/no-duplicates': 'error',
+    'import/no-unused-modules': 'error',
+    'import/no-named-as-default': 0,
+    'import/no-named-as-default-member': 0,
+    'import/order': [
+      'error',
+      {
+        groups: ['builtin', 'external', 'internal', 'parent', 'sibling', 'index'],
+        pathGroups: [
+          {
+            pattern: 'react*',
+            group: 'builtin',
+            position: 'before',
+          },
+          {
+            pattern: '@/**',
+            group: 'internal',
+            position: 'before',
+          },
+        ],
+        pathGroupsExcludedImportTypes: [],
+        'newlines-between': 'always',
+        alphabetize: {
+          order: 'asc',
+          caseInsensitive: true,
+        },
+      },
     ],
   },
 };

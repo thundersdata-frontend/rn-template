@@ -2,8 +2,9 @@
  * @description 校验用户是否已经绑定该角色
  */
 
-import { initRequest } from '../../../../common';
 import Config from 'react-native-config';
+
+import { initRequest } from '../../../../common';
 
 const backEndUrl = Config['authorization'];
 

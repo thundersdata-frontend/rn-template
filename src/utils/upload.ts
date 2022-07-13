@@ -1,6 +1,7 @@
-import RNFetchBlob from 'rn-fetch-blob';
 import Config from 'react-native-config';
+
 import { File } from '@td-design/react-native-image-picker';
+import RNFetchBlob from 'rn-fetch-blob';
 import { storageService } from 'services/StorageService';
 
 /** 上传文件 */

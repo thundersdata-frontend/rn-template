@@ -2,8 +2,9 @@
  * @description 根据用户id列表查询其所有角色
  */
 
-import { initRequest } from '../../../../common';
 import Config from 'react-native-config';
+
+import { initRequest } from '../../../../common';
 
 const backEndUrl = Config['authorization'];
 

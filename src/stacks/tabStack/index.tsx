@@ -1,12 +1,11 @@
-import { useTheme } from '@shopify/restyle';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
+import { useTheme } from '@shopify/restyle';
 import { helpers, Text } from '@td-design/react-native';
-
-import { AppTheme } from 'theme';
-import Icon, { IconNames } from '../../components/Icon';
-
 import { Homepage } from 'modules/homepage/screens';
 import { Mine } from 'modules/user/screens';
+import { AppTheme } from 'theme';
+
+import Icon, { IconNames } from '../../components/Icon';
 
 const { px } = helpers;
 const Tab = createBottomTabNavigator();

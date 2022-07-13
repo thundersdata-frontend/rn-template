@@ -1,5 +1,6 @@
 import { FC } from 'react';
-import { helpers, Image, Box, Text } from '@td-design/react-native';
+
+import { Box, helpers, Image, Text } from '@td-design/react-native';
 
 const { px } = helpers;
 export const ImgCard: FC<{ title: string; uri?: string }> = ({ title, uri }) => {

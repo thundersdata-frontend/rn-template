@@ -1,9 +1,9 @@
-import { extend, ResponseError } from 'umi-request';
-import dayjs from 'dayjs';
-
-import { isEmpty } from 'lodash-es';
 import Config from 'react-native-config';
+
+import dayjs from 'dayjs';
+import { isEmpty } from 'lodash-es';
 import { storageService, StorageToken } from 'services/StorageService';
+import { extend, ResponseError } from 'umi-request';
 
 const codeMessage: Record<number, string> = {
   400: '请求参数错误，请检查',

@@ -310,7 +310,11 @@ PODS:
     - React-Core
   - react-native-flipper (0.144.0):
     - React-Core
+<<<<<<< HEAD
   - react-native-image-picker (4.8.1):
+=======
+  - react-native-image-picker (4.8.2):
+>>>>>>> 0.64.2
     - React-Core
   - react-native-image-resizer (1.4.5):
     - React-Core
@@ -323,13 +327,21 @@ PODS:
     - React
   - react-native-restart (0.0.24):
     - React-Core
+<<<<<<< HEAD
   - react-native-safe-area-context (4.2.5):
+=======
+  - react-native-safe-area-context (4.2.2):
+>>>>>>> 0.64.2
     - RCT-Folly
     - RCTRequired
     - RCTTypeSafety
     - React
     - ReactCommon/turbomodule/core
+<<<<<<< HEAD
   - react-native-webview (11.18.2):
+=======
+  - react-native-webview (11.17.0):
+>>>>>>> 0.64.2
     - React-Core
   - React-perflogger (0.66.3)
   - React-RCTActionSheet (0.66.3):
@@ -541,7 +553,7 @@ DEPENDENCIES:
   - Yoga (from `../node_modules/react-native/ReactCommon/yoga`)
 
 SPEC REPOS:
-  trunk:
+  https://github.com/CocoaPods/Specs.git:
     - CocoaAsyncSocket
     - Flipper
     - Flipper-Boost-iOSX
@@ -711,6 +723,7 @@ SPEC CHECKSUMS:
   React-logger: e522e76fa3e9ec3e7d7115b49485cc065cf4ae06
   react-native-background-timer: 17ea5e06803401a379ebf1f20505b793ac44d0fe
   react-native-config: 6502b1879f97ed5ac570a029961fc35ea606cd14
+<<<<<<< HEAD
   react-native-flipper: 09951517bad4cd226698d108dd38fe1d9db0096e
   react-native-image-picker: 5640333245b448b0e64172576ea27760f4134099
   react-native-image-resizer: d9fb629a867335bdc13230ac2a58702bb8c8828f
@@ -736,19 +749,52 @@ SPEC CHECKSUMS:
   ReactNativeWebPFormat: 4275844b80c2c385a10ab64f50264d720f2d691c
   rn-fetch-blob: f065bb7ab7fb48dd002629f8bdcb0336602d3cba
   RNBootSplash: 2830c475d5793d6cf12312d1e8f5f1decb0dd3e8
+=======
+  react-native-flipper: bb8caa2e42294b4f145365138cf4941a125fe953
+  react-native-image-picker: 1ccfc97709f680a7167ccb758c32466b466c96e2
+  react-native-image-resizer: d9fb629a867335bdc13230ac2a58702bb8c8828f
+  react-native-mmkv: e92ed3dfb337b01afd411fa7a9b65be05fec36be
+  react-native-netinfo: 3671b091c4843fda5e153612866ef4024b8f5d62
+  react-native-refresh-control: aaa1ff9602702a2e7910b0d57c9d498c374e4914
+  react-native-restart: 45c8dca02491980f2958595333cbccd6877cb57e
+  react-native-safe-area-context: da2d11bd7df9bf7779e9bdc85081c141cfa544f4
+  react-native-webview: 10996be8bcc5e37a30dbc139fc544bb651dc8612
+  React-perflogger: 93075d8931c32cd1fce8a98c15d2d5ccc4d891bd
+  React-RCTActionSheet: 7d3041e6761b4f3044a37079ddcb156575fb6d89
+  React-RCTAnimation: 743e88b55ac62511ae5c2e22803d4f503f2a3a13
+  React-RCTBlob: bee3a2f98fa7fc25c957c8643494244f74bea0a0
+  React-RCTImage: 19fc9e29b06cc38611c553494f8d3040bf78c24e
+  React-RCTLinking: dc799503979c8c711126d66328e7ce8f25c2848f
+  React-RCTNetwork: 417e4e34cf3c19eaa5fd4e9eb20180d662a799ce
+  React-RCTSettings: 4df89417265af26501a7e0e9192a34d3d9848dff
+  React-RCTText: f8a21c3499ab322326290fa9b701ae29aa093aa5
+  React-RCTVibration: e3ffca672dd3772536cb844274094b0e2c31b187
+  React-runtimeexecutor: dec32ee6f2e2a26e13e58152271535fadff5455a
+  ReactCommon: 57b69f6383eafcbd7da625bfa6003810332313c4
+  ReactNativeExceptionHandler: b11ff67c78802b2f62eed0e10e75cb1ef7947c60
+  ReactNativeWebPFormat: 4275844b80c2c385a10ab64f50264d720f2d691c
+  rn-fetch-blob: f065bb7ab7fb48dd002629f8bdcb0336602d3cba
+  RNBootSplash: 4f34ccf1a0c2573cb4ba918ab7f69d51d610827f
+>>>>>>> 0.64.2
   RNCClipboard: f1736c75ab85b627a4d57587edb4b60999c4dd80
   RNCMaskedView: 0e1bc4bfa8365eba5fbbb71e07fbdc0555249489
   RNCPicker: abc646b53a3d28ccfa3232c927a0ca52e0cf024d
   RNFastImage: 1f2cab428712a4baaf78d6169eaec7f622556dd7
   RNGestureHandler: 61628a2c859172551aa2100d3e73d1e57878392f
+<<<<<<< HEAD
   RNReanimated: 58b57be69a237fb02ec8099d25171057638cf41a
   RNScreens: 40a2cb40a02a609938137a1e0acfbf8fc9eebf19
   RNSVG: 302bfc9905bd8122f08966dc2ce2d07b7b52b9f8
+=======
+  RNReanimated: e8afbe2a9e08e9e778ea72ddb1a8533445812621
+  RNScreens: 2559f98b0835103cbef3b26ba77fa61d4bb37ae7
+  RNSVG: 551acb6562324b1d52a4e0758f7ca0ec234e278f
+>>>>>>> 0.64.2
   SDWebImage: a7f831e1a65eb5e285e3fb046a23fcfbf08e696d
   SDWebImageWebPCoder: f93010f3f6c031e2f8fb3081ca4ee6966c539815
   Yoga: 32a18c0e845e185f4a2a66ec76e1fd1f958f22fa
   YogaKit: f782866e155069a2cca2517aafea43200b01fd5a
 
-PODFILE CHECKSUM: c8a0aa121d73a63ba40e35dd5045ac6b8846845b
+PODFILE CHECKSUM: 31f6f6e62c62760e4c6b9c7008362056e89dc698
 
-COCOAPODS: 1.11.2
+COCOAPODS: 1.11.3

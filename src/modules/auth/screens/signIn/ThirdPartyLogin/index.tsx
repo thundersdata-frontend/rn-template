@@ -1,8 +1,9 @@
 import { StyleSheet, TouchableOpacity } from 'react-native';
-import { Flex, helpers, Box, Text } from '@td-design/react-native';
+
+import { useTheme } from '@shopify/restyle';
+import { Box, Flex, helpers, Text } from '@td-design/react-native';
 import { Icon } from 'components';
 import { AppTheme } from 'theme';
-import { useTheme } from '@shopify/restyle';
 
 const { px, deviceWidth } = helpers;
 const ICON_SIZE = px(24);

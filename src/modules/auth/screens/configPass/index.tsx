@@ -2,18 +2,17 @@
  * 通过手机号登录时，设置登录密码
  */
 import { FC } from 'react';
+
+import { useTheme } from '@shopify/restyle';
+import { Box, Button, Input, WhiteSpace } from '@td-design/react-native';
+import { Icon } from 'components';
+import { AuthTemplate } from 'modules/auth/components/AuthTemplate';
+import { ErrorMessage } from 'modules/auth/components/ErrorMessage';
+import { useAuthService } from 'modules/auth/useAuthService';
 import Form, { Field, useForm } from 'rc-field-form';
 import { Store } from 'rc-field-form/es/interface';
-import { useTheme } from '@shopify/restyle';
-import { Input, WhiteSpace, Button, Box } from '@td-design/react-native';
-
-import { passwordRules } from 'utils/validators';
-import { useAuthService } from 'modules/auth/useAuthService';
-import { ErrorMessage } from 'modules/auth/components/ErrorMessage';
-
-import { AuthTemplate } from 'modules/auth/components/AuthTemplate';
 import { AppTheme } from 'theme';
-import { Icon } from 'components';
+import { passwordRules } from 'utils/validators';
 
 const FormContent: FC<{ onFinish: (values: Store) => void }> = ({ onFinish }) => {
   const [form] = useForm();

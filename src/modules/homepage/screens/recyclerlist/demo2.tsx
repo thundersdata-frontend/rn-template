@@ -1,9 +1,11 @@
 /* eslint-disable react-native/no-color-literals */
-import { View, Text, StyleSheet } from 'react-native';
-import { Box } from '@td-design/react-native';
+import { StyleSheet, Text, View } from 'react-native';
 import FastImage from 'react-native-fast-image';
-import { Container, RecyclerFlatList, CustomRefreshControl } from 'components';
+
+import { Box } from '@td-design/react-native';
+import { Container, CustomRefreshControl, RecyclerFlatList } from 'components';
 import { RenderItemInfo } from 'components/RecyclerFlatList';
+
 import { dogData } from './dogData';
 
 function mockFetch(): Promise<void> {

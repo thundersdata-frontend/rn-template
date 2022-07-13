@@ -2,8 +2,9 @@
  * @description 拷贝角色资源新建角色
  */
 
-import { initRequest } from '../../../../common';
 import Config from 'react-native-config';
+
+import { initRequest } from '../../../../common';
 
 const backEndUrl = Config['authorization'];
 

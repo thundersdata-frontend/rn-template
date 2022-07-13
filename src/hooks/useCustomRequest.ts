@@ -1,10 +1,12 @@
 import { useRequest } from '@td-design/rn-hooks';
-import { LoginFailureEnum } from 'enums';
-import { useToast } from './useToast';
 import type { Options, Service } from '@td-design/rn-hooks/lib/typescript/useRequest/types';
-import { storageService } from '../services/StorageService';
+import { LoginFailureEnum } from 'enums';
 import { useAtomValue } from 'jotai/utils';
+
+import { storageService } from '../services/StorageService';
+
 import { isOnlineAtom } from './useNetwork';
+import { useToast } from './useToast';
 
 export function useCustomRequest<R, P extends any[] = []>(service: Service<R, P>, options?: Options<R, P>) {
   const { signOut } = storageService;
