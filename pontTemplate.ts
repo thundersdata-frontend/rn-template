@@ -78,7 +78,7 @@ export default class MyGenerator extends CodeGenerator {
           .filter(id => id)
           .join('\n')}
       }
-    `,
+    `
     );
 
     if (this.dataSource.name) {

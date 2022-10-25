@@ -1,20 +1,20 @@
+import { useFlipper } from '@react-navigation/devtools';
+import { DarkTheme, DefaultTheme, NavigationContainer } from '@react-navigation/native';
+import { ThemeProvider } from '@td-design/react-native';
+import { useMemoizedFn, useMount, useSafeState } from '@td-design/rn-hooks';
+import { Fallback } from 'components';
+import { useNetwork } from 'hooks/useNetwork';
+import { linking } from 'linking';
 import { useEffect } from 'react';
 import { Appearance } from 'react-native';
-import { SafeAreaProvider } from 'react-native-safe-area-context';
-import { NavigationContainer, DefaultTheme, DarkTheme } from '@react-navigation/native';
-import { GestureHandlerRootView } from 'react-native-gesture-handler';
 import { hide as hideSplash } from 'react-native-bootsplash';
-import { ThemeProvider } from '@td-design/react-native';
-import { useSafeState, useMount, useMemoizedFn } from '@td-design/rn-hooks';
-import { useFlipper } from '@react-navigation/devtools';
+import { GestureHandlerRootView } from 'react-native-gesture-handler';
+import { SafeAreaProvider } from 'react-native-safe-area-context';
+import { navigationRef } from 'services/NavigationService';
+import useStackService from 'stacks/useStackService';
+import { darkTheme, lightTheme } from 'theme';
 
 import Stack from './stacks';
-import { Fallback } from 'components';
-import { lightTheme, darkTheme } from 'theme';
-import { linking } from 'linking';
-import { navigationRef } from 'services/NavigationService';
-import { useNetwork } from 'hooks/useNetwork';
-import useStackService from 'stacks/useStackService';
 
 export function App() {
   // 监听网络连接情况

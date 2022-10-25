@@ -1,10 +1,10 @@
+import { useTheme } from '@shopify/restyle';
+import { Box, Flex, helpers, Image, SvgIcon } from '@td-design/react-native';
 import { FC } from 'react';
 import { TouchableOpacity } from 'react-native';
-import { useTheme } from '@shopify/restyle';
-import { helpers, Flex, Image, SvgIcon, Box } from '@td-design/react-native';
-import { SingleImagePicker } from '../SingleImagePicker';
-
 import { AppTheme } from 'theme';
+
+import { SingleImagePicker } from '../SingleImagePicker';
 
 const { px } = helpers;
 export const MultipleImagePicker: FC<{

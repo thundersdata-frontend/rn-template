@@ -1,5 +1,5 @@
 import { useTheme } from '@shopify/restyle';
-import { Box, Image, Text, helpers } from '@td-design/react-native';
+import { Box, helpers, Image, Text } from '@td-design/react-native';
 import { AppTheme } from 'theme';
 
 const { px } = helpers;

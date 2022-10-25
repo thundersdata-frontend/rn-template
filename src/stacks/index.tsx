@@ -1,33 +1,31 @@
-import { StackNavigationOptions, CardStyleInterpolators, createStackNavigator } from '@react-navigation/stack';
-
+import { CardStyleInterpolators, createStackNavigator, StackNavigationOptions } from '@react-navigation/stack';
 import { CustomHeader } from 'components';
-import { storageService } from 'services/StorageService';
-
-// ----- 登录鉴权相关页面 START ---------------------------------------------------------------------------
-import { SignIn } from 'modules/auth/screens/signIn';
-import { Register } from 'modules/auth/screens/register';
 import { ConfigPass } from 'modules/auth/screens/configPass';
 import { ForgetPass } from 'modules/auth/screens/forgetPass';
-import { Agreement } from 'modules/policy/screens/agreement';
-import { Privacy } from 'modules/policy/screens/privacy';
-import { PrivacyConfirm } from 'modules/policy/screens/privacyConfirm';
-// ----- 登录鉴权相关页面 END ---------------------------------------------------------------------------
-
-// ----- 登录后相关页面 START ---------------------------------------------------------------------------
-import { TabStack } from 'stacks/tabStack';
-import { EchartsRoot } from 'modules/charts/screens/main';
+import { Register } from 'modules/auth/screens/register';
+// ----- 登录鉴权相关页面 START ---------------------------------------------------------------------------
+import { SignIn } from 'modules/auth/screens/signIn';
 import { LineChart } from 'modules/charts/screens/line';
+import { EchartsRoot } from 'modules/charts/screens/main';
 import { MapChart } from 'modules/charts/screens/map';
-import { IndexBarDemo } from 'modules/homepage/screens/indexbar';
 import { LocalModelDemo } from 'modules/homepage/screens/localmodel';
 import { RecyclerListDemo } from 'modules/homepage/screens/recyclerlist';
 import { RecyclerListDemo1 } from 'modules/homepage/screens/recyclerlist/demo1';
 import { RecyclerListDemo2 } from 'modules/homepage/screens/recyclerlist/demo2';
 import { RecyclerListDemo3 } from 'modules/homepage/screens/recyclerlist/demo3';
 import { RecyclerListDemo4 } from 'modules/homepage/screens/recyclerlist/demo4';
-import { Settings } from 'modules/user/screens/settings';
+import { Agreement } from 'modules/policy/screens/agreement';
+import { Privacy } from 'modules/policy/screens/privacy';
+import { PrivacyConfirm } from 'modules/policy/screens/privacyConfirm';
 import { ModifyPassword } from 'modules/user/screens/modifyPass';
+import { Settings } from 'modules/user/screens/settings';
+import { storageService } from 'services/StorageService';
+// ----- 登录鉴权相关页面 END ---------------------------------------------------------------------------
+// ----- 登录后相关页面 START ---------------------------------------------------------------------------
+import { TabStack } from 'stacks/tabStack';
+
 import useStackService from './useStackService';
+
 // ----- 登录后相关页面 START ---------------------------------------------------------------------------
 
 const AUTH_SCREENS = [
@@ -76,13 +74,6 @@ const MAIN_SCREENS = [
     component: MapChart,
     options: {
       headerTitle: '山东地图',
-    },
-  },
-  {
-    name: 'IndexBarDemo',
-    component: IndexBarDemo,
-    options: {
-      headerTitle: '通讯录示例',
     },
   },
   {

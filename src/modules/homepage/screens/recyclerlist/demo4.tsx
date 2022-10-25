@@ -1,8 +1,8 @@
-import { Text, StyleSheet } from 'react-native';
-import { Container, CustomRefreshControl, RecyclerWaterfallList } from 'components';
 import { Box, Center } from '@td-design/react-native';
-import FastImage from 'react-native-fast-image';
+import { Container, CustomRefreshControl, RecyclerWaterfallList } from 'components';
 import { useRefreshService } from 'hooks/useRefreshService';
+import { StyleSheet, Text } from 'react-native';
+import FastImage from 'react-native-fast-image';
 
 interface DataType {
   imageUrl: string;

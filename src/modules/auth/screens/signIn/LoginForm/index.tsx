@@ -1,16 +1,16 @@
-import { TouchableOpacity } from 'react-native';
-import Form, { Field, useForm } from 'rc-field-form';
+import { NavigationProp, useNavigation } from '@react-navigation/native';
 import { useTheme } from '@shopify/restyle';
-import { Button, Radio, CountDown, Flex, Input, WhiteSpace, Text, Box } from '@td-design/react-native';
-
-import { LoginTab } from '../LoginTab';
-import { useAuthService } from 'modules/auth/useAuthService';
-import { mobilePhoneRules } from 'utils/validators';
-import { ErrorMessage } from 'modules/auth/components/ErrorMessage';
-import { AppTheme } from 'theme';
+import { Box, Button, CountDown, Flex, Input, Radio, Text, WhiteSpace } from '@td-design/react-native';
 import { Icon } from 'components';
 import { SmsTypeEnum } from 'enums';
-import { NavigationProp, useNavigation } from '@react-navigation/native';
+import { ErrorMessage } from 'modules/auth/components/ErrorMessage';
+import { useAuthService } from 'modules/auth/useAuthService';
+import Form, { Field, useForm } from 'rc-field-form';
+import { TouchableOpacity } from 'react-native';
+import { AppTheme } from 'theme';
+import { mobilePhoneRules } from 'utils/validators';
+
+import { LoginTab } from '../LoginTab';
 
 const FormContent = ({ isSmsLogin }: { isSmsLogin: boolean }) => {
   const navigation = useNavigation<NavigationProp<AuthStackParamList & CommonStackParamList, 'SignIn'>>();

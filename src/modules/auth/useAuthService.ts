@@ -1,9 +1,7 @@
-import { Keyboard } from 'react-native';
-import { useSafeState, useMemoizedFn } from '@td-design/rn-hooks';
-import { Store, ValidateErrorEntity } from 'rc-field-form/es/interface';
-
-import { useToast } from 'hooks/useToast';
+import { NavigationProp, useNavigation } from '@react-navigation/native';
+import { useMemoizedFn, useSafeState } from '@td-design/rn-hooks';
 import { useError } from 'hooks/useError';
+import { useToast } from 'hooks/useToast';
 import {
   mockConfigPassword,
   mockFetchUserInfo,
@@ -13,10 +11,11 @@ import {
   mockSendSms,
   mockUpdatePassword,
 } from 'modules/mock';
-import { NavigationProp, useNavigation } from '@react-navigation/native';
-import { mobilePattern } from 'utils/validators';
+import { Store, ValidateErrorEntity } from 'rc-field-form/es/interface';
+import { Keyboard } from 'react-native';
 import { storageService, StorageToken } from 'services/StorageService';
 import useStackService from 'stacks/useStackService';
+import { mobilePattern } from 'utils/validators';
 
 export function useAuthService(isSmsLogin = true) {
   const { update } = useStackService.useModel();

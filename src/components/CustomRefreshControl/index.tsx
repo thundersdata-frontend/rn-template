@@ -1,8 +1,8 @@
-import React, { forwardRef, useRef, useImperativeHandle, useCallback } from 'react';
-import { Animated, ActivityIndicator, View, Text, StyleSheet, Platform, ViewStyle } from 'react-native';
 import { ByronRefreshControl, RefreshControlProps } from '@byron-react-native/refresh-control';
-import { useSafeState } from '@td-design/rn-hooks';
 import { useTheme } from '@shopify/restyle';
+import { useSafeState } from '@td-design/rn-hooks';
+import React, { forwardRef, useCallback, useImperativeHandle, useRef } from 'react';
+import { ActivityIndicator, Animated, Platform, StyleSheet, Text, View, ViewStyle } from 'react-native';
 import { AppTheme } from 'theme';
 
 export interface CustomRefreshControlRef {
@@ -117,7 +117,7 @@ export const CustomRefreshControl = forwardRef<CustomRefreshControlRef, RefreshC
         {props.children ? props.children : NormalRefreshHeader}
       </ByronRefreshControl>
     );
-  },
+  }
 );
 
 const fetchNowTime = () => {

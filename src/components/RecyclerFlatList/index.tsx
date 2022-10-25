@@ -3,12 +3,12 @@ import { useCreation } from '@td-design/rn-hooks';
 import { ForwardedRef, forwardRef, ReactNode, ReactText, useRef } from 'react';
 import { ScrollView, ScrollViewProps } from 'react-native';
 import {
-  RecyclerListView,
   DataProvider,
-  LayoutProvider,
-  RecyclerListViewProps,
   Dimension,
   Layout,
+  LayoutProvider,
+  RecyclerListView,
+  RecyclerListViewProps,
 } from 'recyclerlistview';
 
 export interface RecyclerListViewRef<T> {
@@ -65,7 +65,7 @@ const ViewTypes = {
 
 function RecyclerFlatListInner<
   T extends { isCrossRow?: boolean } & Record<string, unknown>,
-  R = RecyclerListViewRef<T>,
+  R = RecyclerListViewRef<T>
 >(
   {
     data,
@@ -87,7 +87,7 @@ function RecyclerFlatListInner<
     marginHorizontal = 0,
     emptyComponent,
   }: RecyclerFlatListProps<T>,
-  ref: ForwardedRef<R>,
+  ref: ForwardedRef<R>
 ) {
   const scrollViewRef = useRef<ScrollView>();
 
@@ -161,7 +161,7 @@ function RecyclerFlatListInner<
           dim.width = 0;
           dim.height = 0;
       }
-    },
+    }
   );
 
   /**
@@ -268,7 +268,7 @@ function RecyclerFlatListInner<
 
 /** 通过类型断言，解决forwardRef不支持泛型的问题 */
 export const RecyclerFlatList = forwardRef(RecyclerFlatListInner) as <T, R = RecyclerListViewRef<T>>(
-  props: RecyclerFlatListProps<T> & { ref?: React.ForwardedRef<R> },
+  props: RecyclerFlatListProps<T> & { ref?: React.ForwardedRef<R> }
 ) => ReturnType<typeof RecyclerFlatListInner>;
 
 /**

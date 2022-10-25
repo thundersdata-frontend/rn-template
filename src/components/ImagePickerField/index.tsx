@@ -1,8 +1,9 @@
-import { FC } from 'react';
 import { Field } from 'rc-field-form';
 import { Rule } from 'rc-field-form/es/interface';
-import { SingleImagePicker } from '../SingleImagePicker';
+import { FC } from 'react';
+
 import { MultipleImagePicker } from '../MultipleImagePicker';
+import { SingleImagePicker } from '../SingleImagePicker';
 
 interface ImagePickerFieldProps {
   title: string;

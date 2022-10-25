@@ -1,9 +1,8 @@
-import { TouchableOpacity } from 'react-native';
 import { useTheme } from '@shopify/restyle';
-import { Box, Flex, Text, helpers } from '@td-design/react-native';
-
-import { AppTheme } from 'theme';
+import { Box, Flex, helpers, Text } from '@td-design/react-native';
 import { Icon } from 'components';
+import { TouchableOpacity } from 'react-native';
+import { AppTheme } from 'theme';
 
 const { px } = helpers;
 export function LoginTab({ isSmsLogin, onPress }: { isSmsLogin: boolean; onPress: (key: string) => void }) {

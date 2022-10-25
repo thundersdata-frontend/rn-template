@@ -1,9 +1,9 @@
-import { useCallback } from 'react';
-import { Modal, Box, Text, Portal } from '@td-design/react-native';
-import { BackHandler, TouchableOpacity } from 'react-native';
-import { Container } from 'components';
-import { storageService, StorageToken } from 'services/StorageService';
 import { NavigationProp, useFocusEffect, useNavigation } from '@react-navigation/native';
+import { Box, Modal, Portal, Text } from '@td-design/react-native';
+import { Container } from 'components';
+import { useCallback } from 'react';
+import { BackHandler, TouchableOpacity } from 'react-native';
+import { storageService, StorageToken } from 'services/StorageService';
 
 const { updateStorage } = storageService;
 export const PrivacyConfirm = () => {
@@ -51,7 +51,7 @@ export const PrivacyConfirm = () => {
           BackHandler.exitApp();
         },
       });
-    }, [navigation]),
+    }, [navigation])
   );
 
   return <Container />;

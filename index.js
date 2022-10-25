@@ -1,5 +1,4 @@
 import 'react-native-gesture-handler';
-import './src/api';
 
 import { Alert, AppRegistry, LogBox } from 'react-native';
 import { setJSExceptionHandler, setNativeExceptionHandler } from 'react-native-exception-handler';

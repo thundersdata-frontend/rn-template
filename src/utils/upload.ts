@@ -1,6 +1,6 @@
-import RNFetchBlob from 'rn-fetch-blob';
-import Config from 'react-native-config';
 import { File } from '@td-design/react-native-image-picker';
+import Config from 'react-native-config';
+import RNFetchBlob from 'rn-fetch-blob';
 import { storageService } from 'services/StorageService';
 
 /** 上传文件 */
@@ -20,7 +20,7 @@ export async function uploadFile({ fileName, fileType, uri }: File) {
         type: fileType,
         data: RNFetchBlob.wrap(uri.replace('file://', '')),
       },
-    ],
+    ]
   );
   const result = resultData.json();
   console.log(result);

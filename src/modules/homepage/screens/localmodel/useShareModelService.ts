@@ -1,7 +1,7 @@
 import { useMemoizedFn } from '@td-design/rn-hooks';
-import { createShareModel } from 'services/createShareModel';
 import { useForm } from 'rc-field-form';
 import { Store, ValidateErrorEntity } from 'rc-field-form/es/interface';
+import { createShareModel } from 'services/createShareModel';
 
 function useLocalModelService() {
   const [form] = useForm();

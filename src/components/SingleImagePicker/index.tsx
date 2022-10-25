@@ -1,10 +1,10 @@
-import { FC } from 'react';
-import ImagePicker from '@td-design/react-native-image-picker';
 import { Toast } from '@td-design/react-native';
+import ImagePicker from '@td-design/react-native-image-picker';
+import { FC } from 'react';
 import ImageResizer from 'react-native-image-resizer';
+import { uploadFile } from 'utils/upload';
 
 import { ImgCard } from '../ImgCard';
-import { uploadFile } from 'utils/upload';
 
 interface CustomImagePickerProps {
   title: string;

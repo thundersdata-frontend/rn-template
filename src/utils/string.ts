@@ -1,4 +1,5 @@
 import produce from 'immer';
+
 /**
  * 用于字符长度超过指定个数自动截取并添加...
  */

@@ -1,5 +1,5 @@
-import { removeEmpty } from 'utils/object';
 import { MMKV } from 'react-native-mmkv';
+import { removeEmpty } from 'utils/object';
 
 export enum StorageToken {
   SignedIn = 'SignedIn',

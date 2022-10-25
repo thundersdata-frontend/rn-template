@@ -2,12 +2,12 @@ import { Empty, helpers } from '@td-design/react-native';
 import { ForwardedRef, forwardRef, ReactNode, ReactText, useRef } from 'react';
 import { ScrollView, ScrollViewProps } from 'react-native';
 import {
-  MasonryLayoutProvider,
-  RecyclerListView,
   DataProvider,
-  RecyclerListViewProps,
   Dimension,
   Layout,
+  MasonryLayoutProvider,
+  RecyclerListView,
+  RecyclerListViewProps,
 } from 'recyclerlistview-masonrylayoutmanager';
 
 export interface RecyclerListViewRef<T> {
@@ -56,7 +56,7 @@ export interface RecyclerFlatListProps<T>
 const { deviceWidth } = helpers;
 function RecyclerWaterfallListInner<
   T extends { isCrossRow?: boolean } & Record<string, unknown>,
-  R = RecyclerListViewRef<T>,
+  R = RecyclerListViewRef<T>
 >(
   {
     data,
@@ -73,7 +73,7 @@ function RecyclerWaterfallListInner<
     numColumns = 2,
     emptyComponent,
   }: RecyclerFlatListProps<T>,
-  ref: ForwardedRef<R>,
+  ref: ForwardedRef<R>
 ) {
   const scrollViewRef = useRef<ScrollView>();
 
@@ -100,7 +100,7 @@ function RecyclerWaterfallListInner<
       const item = listData.getDataForIndex(index);
       dim.width = columnWidth;
       dim.height = item.height;
-    },
+    }
   );
 
   /**
@@ -149,5 +149,5 @@ function RecyclerWaterfallListInner<
 
 /** 通过类型断言，解决forwardRef不支持泛型的问题 */
 export const RecyclerWaterfallList = forwardRef(RecyclerWaterfallListInner) as <T, R = RecyclerListViewRef<T>>(
-  props: RecyclerFlatListProps<T> & { ref?: React.ForwardedRef<R> },
+  props: RecyclerFlatListProps<T> & { ref?: React.ForwardedRef<R> }
 ) => ReturnType<typeof RecyclerWaterfallListInner>;

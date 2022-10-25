@@ -1,7 +1,7 @@
-import { useEffect, useRef } from 'react';
-import Echarts, { EchartsHandler } from '@td-design/react-native-echarts';
 import { Button, WhiteSpace } from '@td-design/react-native';
+import Echarts, { EchartsHandler } from '@td-design/react-native-echarts';
 import { Container } from 'components';
+import { useEffect, useRef } from 'react';
 
 export function LineChart() {
   const chart = useRef<EchartsHandler>(null);
