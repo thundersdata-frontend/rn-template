@@ -1,3 +1,4 @@
+import NiceModal from '@ebay/nice-modal-react';
 import { useFlipper } from '@react-navigation/devtools';
 import { DarkTheme, DefaultTheme, NavigationContainer } from '@react-navigation/native';
 import { ThemeProvider } from '@td-design/react-native';
@@ -49,14 +50,16 @@ export function App() {
       <GestureHandlerRootView style={{ flex: 1 }}>
         <ThemeProvider theme={theme === 'dark' ? darkTheme : lightTheme}>
           <useStackService.Provider>
-            <NavigationContainer
-              ref={navigationRef}
-              linking={linking}
-              fallback={<Fallback />}
-              theme={theme === 'dark' ? DarkTheme : DefaultTheme}
-            >
-              <Stack />
-            </NavigationContainer>
+            <NiceModal.Provider>
+              <NavigationContainer
+                ref={navigationRef}
+                linking={linking}
+                fallback={<Fallback />}
+                theme={theme === 'dark' ? DarkTheme : DefaultTheme}
+              >
+                <Stack />
+              </NavigationContainer>
+            </NiceModal.Provider>
           </useStackService.Provider>
         </ThemeProvider>
       </GestureHandlerRootView>

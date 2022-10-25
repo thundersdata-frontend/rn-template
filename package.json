@@ -26,6 +26,7 @@
   },
   "dependencies": {
     "@byron-react-native/refresh-control": "^1.2.5",
+    "@ebay/nice-modal-react": "^1.2.8",
     "@react-native-clipboard/clipboard": "^1.11.1",
     "@react-native-community/masked-view": "^0.1.11",
     "@react-native-community/netinfo": "^9.3.5",

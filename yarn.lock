@@ -953,6 +953,11 @@
   dependencies:
     "@jridgewell/trace-mapping" "0.3.9"
 
+"@ebay/nice-modal-react@^1.2.8":
+  version "1.2.8"
+  resolved "https://registry.npmjs.org/@ebay/nice-modal-react/-/nice-modal-react-1.2.8.tgz#3309bcd8ea6c0e5c0aadf9c3560f6ac0b961cf1f"
+  integrity sha512-5C+9/zWsaYeDMI3HLVIg2clQzVmhepxOGeVdAWOyww2GZJ4Cl3NgzPHyO70SIkG0a4aXvUruyDnPM+jx7DzSJg==
+
 "@egjs/hammerjs@^2.0.17":
   version "2.0.17"
   resolved "https://registry.npmjs.org/@egjs/hammerjs/-/hammerjs-2.0.17.tgz#5dc02af75a6a06e4c2db0202cae38c9263895124"
