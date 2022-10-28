@@ -1,0 +1,16 @@
+**/*.svg
+**/*.ejs
+**/*.html
+**/*.js
+**/*.json
+**/*.jsx
+package.json
+*.yaml
+.umi
+.umi-production
+
+example
+lib
+.changeset
+docs
+api/**/*

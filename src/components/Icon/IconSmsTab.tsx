@@ -1,12 +1,12 @@
 /* tslint:disable */
-/* eslint-disable */
 
+/* eslint-disable */
+import { helpers } from '@td-design/react-native';
 import React, { FC } from 'react';
 import { ViewProps } from 'react-native';
 import { GProps, SvgXml } from 'react-native-svg';
-import { getIconColor } from './helper';
 
-import { helpers } from '@td-design/react-native';
+import { getIconColor } from './helper';
 
 const { px } = helpers;
 
@@ -23,12 +23,12 @@ let IconSmsTab: FC<SvgIconProps> = ({ size, width = size, height = size, color, 
 <path fill-rule="evenodd" clip-rule="evenodd" d="M346 25C346 13.9543 337.046 5 326 5H20C8.95428 5 0 13.9543 0 25V48.3905V49.3643H346V49.1223V25Z" fill="${getIconColor(
     color,
     0,
-    '#999999',
+    '#999999'
   )}"/>
 <path fill-rule="evenodd" clip-rule="evenodd" d="M0 20C0 8.95429 8.9543 0 20 0H156.928C164.285 0 170.981 4.24693 174.116 10.902L186.793 37.8086C189.928 44.4637 196.624 48.7106 203.981 48.7106H346V49.3643H0V20Z" fill="${getIconColor(
     color,
     1,
-    '#999999',
+    '#999999'
   )}"/>
 </svg>
 `;

@@ -1,9 +1,4 @@
-import { useEffect } from 'react';
-import { Appearance } from 'react-native';
-import { hide as hideSplash } from 'react-native-bootsplash';
-import { GestureHandlerRootView } from 'react-native-gesture-handler';
-import { SafeAreaProvider } from 'react-native-safe-area-context';
-
+import NiceModal from '@ebay/nice-modal-react';
 import { useFlipper } from '@react-navigation/devtools';
 import { DarkTheme, DefaultTheme, NavigationContainer } from '@react-navigation/native';
 import { ThemeProvider } from '@td-design/react-native';
@@ -11,6 +6,11 @@ import { useMemoizedFn, useMount, useSafeState } from '@td-design/rn-hooks';
 import { Fallback } from 'components';
 import { useNetwork } from 'hooks/useNetwork';
 import { linking } from 'linking';
+import { useEffect } from 'react';
+import { Appearance } from 'react-native';
+import { hide as hideSplash } from 'react-native-bootsplash';
+import { GestureHandlerRootView } from 'react-native-gesture-handler';
+import { SafeAreaProvider } from 'react-native-safe-area-context';
 import { navigationRef } from 'services/NavigationService';
 import useStackService from 'stacks/useStackService';
 import { darkTheme, lightTheme } from 'theme';
@@ -50,14 +50,16 @@ export function App() {
       <GestureHandlerRootView style={{ flex: 1 }}>
         <ThemeProvider theme={theme === 'dark' ? darkTheme : lightTheme}>
           <useStackService.Provider>
-            <NavigationContainer
-              ref={navigationRef}
-              linking={linking}
-              fallback={<Fallback />}
-              theme={theme === 'dark' ? DarkTheme : DefaultTheme}
-            >
-              <Stack />
-            </NavigationContainer>
+            <NiceModal.Provider>
+              <NavigationContainer
+                ref={navigationRef}
+                linking={linking}
+                fallback={<Fallback />}
+                theme={theme === 'dark' ? DarkTheme : DefaultTheme}
+              >
+                <Stack />
+              </NavigationContainer>
+            </NiceModal.Provider>
           </useStackService.Provider>
         </ThemeProvider>
       </GestureHandlerRootView>

@@ -1,9 +1,8 @@
-import { ImageBackground, ScrollView } from 'react-native';
-
 import { NavigationProp, useNavigation } from '@react-navigation/native';
 import { Avatar, Button, Flex, helpers, Toast } from '@td-design/react-native';
 import ImagePicker from '@td-design/react-native-image-picker';
 import { Container, CustomRefreshControl } from 'components';
+import { ImageBackground, ScrollView } from 'react-native';
 
 import { useUserService } from '../useUserService';
 

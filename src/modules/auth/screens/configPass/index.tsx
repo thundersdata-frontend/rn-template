@@ -1,8 +1,6 @@
 /**
  * 通过手机号登录时，设置登录密码
  */
-import { FC } from 'react';
-
 import { useTheme } from '@shopify/restyle';
 import { Box, Button, Input, WhiteSpace } from '@td-design/react-native';
 import { Icon } from 'components';
@@ -11,6 +9,7 @@ import { ErrorMessage } from 'modules/auth/components/ErrorMessage';
 import { useAuthService } from 'modules/auth/useAuthService';
 import Form, { Field, useForm } from 'rc-field-form';
 import { Store } from 'rc-field-form/es/interface';
+import { FC } from 'react';
 import { AppTheme } from 'theme';
 import { passwordRules } from 'utils/validators';
 

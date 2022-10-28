@@ -1,7 +1,6 @@
-import { useEffect, useRef } from 'react';
-
 import Echarts, { EchartsHandler } from '@td-design/react-native-echarts';
 import { Container } from 'components';
+import { useEffect, useRef } from 'react';
 
 import shandongMap from './370000.geo';
 

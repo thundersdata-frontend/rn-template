@@ -1,9 +1,8 @@
-import { FC, memo } from 'react';
-import { Text } from 'react-native';
-
 import { Box, Center } from '@td-design/react-native';
 import { Container, CustomRefreshControl, RecyclerFlatList } from 'components';
 import { useRefreshService } from 'hooks/useRefreshService';
+import { FC, memo } from 'react';
+import { Text } from 'react-native';
 
 interface DataType {
   id: number;

@@ -12,7 +12,7 @@ export type PageParams = { page: number; pageSize: number } & Record<string, unk
 
 export function useRefreshService<T, R extends Page<T> = Page<T>, P extends PageParams[] = any[]>(
   service: Service<R, P>,
-  options?: Options<R, P>,
+  options?: Options<R, P>
 ) {
   const { toastFail } = useToast();
   const { signedIn, signOut } = storageService;

@@ -1,9 +1,8 @@
-import React from 'react';
-import { ActivityIndicator, View } from 'react-native';
-
 import { useTheme } from '@shopify/restyle';
 import { Text } from '@td-design/react-native';
 import { Container } from 'components';
+import React from 'react';
+import { ActivityIndicator, View } from 'react-native';
 import { AppTheme } from 'theme';
 
 export function Fallback() {
