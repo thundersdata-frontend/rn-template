@@ -1,5 +1,4 @@
 import 'react-native-gesture-handler';
-import './src/api';
 
 import { Alert, AppRegistry, LogBox } from 'react-native';
 import { setJSExceptionHandler, setNativeExceptionHandler } from 'react-native-exception-handler';
@@ -9,7 +8,7 @@ import { enableFreeze } from 'react-native-screens';
 import { App } from './src/App';
 import { name as appName } from './app.json';
 
-LogBox.ignoreLogs(['Require cycle:', 'new NativeEventEmitter()', "Can't perform"]);
+LogBox.ignoreLogs(['Require cycle:', 'new NativeEventEmitter()', "Can't perform", "Flipper", "RCTBridge"]);
 enableFreeze();
 
 /**

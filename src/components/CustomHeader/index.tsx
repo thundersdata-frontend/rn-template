@@ -1,10 +1,9 @@
-import { FC, ReactNode } from 'react';
-import { Animated, StyleProp, TextStyle, TouchableOpacity, ViewStyle } from 'react-native';
-import { useSafeAreaInsets } from 'react-native-safe-area-context';
-
 import { StackHeaderProps } from '@react-navigation/stack';
 import { useTheme } from '@shopify/restyle';
 import { Box, Flex, helpers, SvgIcon, Text } from '@td-design/react-native';
+import { FC, ReactNode } from 'react';
+import { Animated, StyleProp, TextStyle, TouchableOpacity, ViewStyle } from 'react-native';
+import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import { AppTheme } from 'theme';
 
 const { px } = helpers;

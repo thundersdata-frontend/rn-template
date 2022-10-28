@@ -1,8 +1,7 @@
-import { StyleSheet, TouchableOpacity } from 'react-native';
-
 import { useTheme } from '@shopify/restyle';
 import { Box, Flex, helpers, Text } from '@td-design/react-native';
 import { Icon } from 'components';
+import { StyleSheet, TouchableOpacity } from 'react-native';
 import { AppTheme } from 'theme';
 
 const { px, deviceWidth } = helpers;

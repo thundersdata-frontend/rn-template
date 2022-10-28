@@ -1,5 +1,3 @@
-import { Keyboard } from 'react-native';
-
 import { NavigationProp, useNavigation } from '@react-navigation/native';
 import { useMemoizedFn, useSafeState } from '@td-design/rn-hooks';
 import { useError } from 'hooks/useError';
@@ -14,6 +12,7 @@ import {
   mockUpdatePassword,
 } from 'modules/mock';
 import { Store, ValidateErrorEntity } from 'rc-field-form/es/interface';
+import { Keyboard } from 'react-native';
 import { storageService, StorageToken } from 'services/StorageService';
 import useStackService from 'stacks/useStackService';
 import { mobilePattern } from 'utils/validators';

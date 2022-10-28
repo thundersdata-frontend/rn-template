@@ -4,7 +4,6 @@ import { LoginFailureEnum } from 'enums';
 import { useAtomValue } from 'jotai/utils';
 
 import { storageService } from '../services/StorageService';
-
 import { isOnlineAtom } from './useNetwork';
 import { useToast } from './useToast';
 
@@ -19,7 +18,7 @@ export function useCustomRequest<R, P extends any[] = []>(service: Service<R, P>
         JSON.stringify({
           success: false,
           message: '网络连接异常',
-        }),
+        })
       );
     }
     return service(...args);

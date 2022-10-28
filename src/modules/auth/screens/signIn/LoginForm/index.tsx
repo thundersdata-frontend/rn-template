@@ -1,5 +1,3 @@
-import { TouchableOpacity } from 'react-native';
-
 import { NavigationProp, useNavigation } from '@react-navigation/native';
 import { useTheme } from '@shopify/restyle';
 import { Box, Button, CountDown, Flex, Input, Radio, Text, WhiteSpace } from '@td-design/react-native';
@@ -8,6 +6,7 @@ import { SmsTypeEnum } from 'enums';
 import { ErrorMessage } from 'modules/auth/components/ErrorMessage';
 import { useAuthService } from 'modules/auth/useAuthService';
 import Form, { Field, useForm } from 'rc-field-form';
+import { TouchableOpacity } from 'react-native';
 import { AppTheme } from 'theme';
 import { mobilePhoneRules } from 'utils/validators';
 

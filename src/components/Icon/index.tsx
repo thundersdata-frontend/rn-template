@@ -1,9 +1,10 @@
 /* tslint:disable */
-/* eslint-disable */
 
+/* eslint-disable */
 import React, { FC } from 'react';
 import { ViewProps } from 'react-native';
 import { GProps } from 'react-native-svg';
+
 import IconMobile from './IconMobile';
 import IconPassTab from './IconPassTab';
 import IconPassword from './IconPassword';

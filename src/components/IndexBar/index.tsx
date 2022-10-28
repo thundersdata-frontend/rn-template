@@ -1,3 +1,4 @@
+import { Box, Empty, Flex, helpers, Text } from '@td-design/react-native';
 import React, { memo, ReactElement, useRef } from 'react';
 import {
   FlatList,
@@ -10,8 +11,6 @@ import {
   SectionListRenderItemInfo,
   TouchableOpacity,
 } from 'react-native';
-
-import { Box, Empty, Flex, helpers, Text } from '@td-design/react-native';
 
 export enum ContentType {
   TITLE = 'title',

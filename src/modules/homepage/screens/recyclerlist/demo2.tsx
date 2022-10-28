@@ -1,10 +1,9 @@
 /* eslint-disable react-native/no-color-literals */
-import { StyleSheet, Text, View } from 'react-native';
-import FastImage from 'react-native-fast-image';
-
 import { Box } from '@td-design/react-native';
 import { Container, CustomRefreshControl, RecyclerFlatList } from 'components';
 import { RenderItemInfo } from 'components/RecyclerFlatList';
+import { StyleSheet, Text, View } from 'react-native';
+import FastImage from 'react-native-fast-image';
 
 import { dogData } from './dogData';
 

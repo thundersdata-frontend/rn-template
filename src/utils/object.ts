@@ -10,6 +10,6 @@ export function removeEmpty<T extends Obj>(obj: T): T {
     {
       ...obj,
     },
-    item => isNull(item) || isUndefined(item) || item === '',
+    item => isNull(item) || isUndefined(item) || item === ''
   ) as T;
 }

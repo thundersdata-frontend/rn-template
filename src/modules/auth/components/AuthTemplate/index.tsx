@@ -1,14 +1,13 @@
 /**
  * 通过手机号登录时，设置登录密码
  */
+import { NavigationProp, useNavigation } from '@react-navigation/native';
+import { useTheme } from '@shopify/restyle';
+import { helpers, Text } from '@td-design/react-native';
 import { FC, useEffect } from 'react';
 import { StyleSheet, View } from 'react-native';
 import Animated, { useAnimatedStyle, useDerivedValue, useSharedValue, withSpring } from 'react-native-reanimated';
 import { mix } from 'react-native-redash';
-
-import { NavigationProp, useNavigation } from '@react-navigation/native';
-import { useTheme } from '@shopify/restyle';
-import { helpers, Text } from '@td-design/react-native';
 import { AppTheme } from 'theme';
 
 import { Container } from '../Container';
