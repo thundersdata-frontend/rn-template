@@ -79,6 +79,7 @@ import com.android.build.OutputFile
  */
 project.ext.react = [
     enableHermes: project.env.get("enableHermes", false),  // clean and rebuild if changing
+    hermesFlagsRelease: ["-w"],
 ]
 
 apply from: "../../node_modules/react-native/react.gradle"
