@@ -8,17 +8,13 @@ yarn react-native generate-bootsplash path-to-logo-image
 
 可选参数：
 
-- --background-color=[color]
-  启动页背景色。hex 格式
+- --background-color=[color] 启动页背景色。hex 格式
 
-- --logo-width=[width]
-  1 倍图 logo 大小（正方形）。默认为 100
+- --logo-width=[width] 1 倍图 logo 大小（正方形）。默认为 100
 
-- --assets-path=[path]
-  logo 存放在项目目录下的位置
+- --assets-path=[path] logo 存放在项目目录下的位置
 
-- --flavor=[flavor]
-  安卓下有效。表示不是`main`目录的安卓资源文件夹
+- --flavor=[flavor] 安卓下有效。表示不是`main`目录的安卓资源文件夹
 
 生成文件示例：
 
@@ -97,8 +93,7 @@ module.exports = {
 - 在`assets/fonts/`目录下，将这两个字体文件复制进来
 - 执行`npx react-native link`命令，会自动将字体文件映射到 Android 和 IOS 原生配置中
 
-通过以上步骤增加字体之后，不需要其他额外的配置就可以在项目中看到效果了。
-你也可以通过在`theme.ts`文件中定义自己的 textVariants。
+通过以上步骤增加字体之后，不需要其他额外的配置就可以在项目中看到效果了。你也可以通过在`theme.ts`文件中定义自己的 textVariants。
 
 ## 5. 组件库默认主题
 
@@ -367,8 +362,7 @@ export const linking: LinkingOptions<AppParamList> = {
 };
 ```
 
-点击外链，打开 app 的某个页面，实际上是把外链地址映射成 react navigation 的`[navigation state](https://reactnavigation.org/docs/navigation-state)`。
-比如， `/rooms/chat` 映射之后的结构是：
+点击外链，打开 app 的某个页面，实际上是把外链地址映射成 react navigation 的`[navigation state](https://reactnavigation.org/docs/navigation-state)`。比如， `/rooms/chat` 映射之后的结构是：
 
 ```js
 const state = {
@@ -416,8 +410,7 @@ export const linking: LinkingOptions<AppParamList> = {
 </Stack.Navigator>
 ```
 
-如果我们的页面存在于一个嵌套的 navigator 里面，这时候`config`也要体现出嵌套的结构。
-比如：
+如果我们的页面存在于一个嵌套的 navigator 里面，这时候`config`也要体现出嵌套的结构。比如：
 
 ```tsx
 function App() {
@@ -459,9 +452,7 @@ const config = {
 传参在外链上有 2 中体现.
 
 - `/user?id=jane`
-- `/user/jane`
-  针对这两种不同的传参方式，config 的配置也不一样。
-  第一种传参方式：
+- `/user/jane` 针对这两种不同的传参方式，config 的配置也不一样。第一种传参方式：
 
 ```js
 const config = {
@@ -494,8 +485,7 @@ const config = {
 
 ### 可选参数
 
-我们可以使用`?`来标记某个参数是可选的。这种情况主要针对上面的第二种传参形式。
-比如我们有这样一个外链:`user/jane/settings`，它对应的`config`如下：
+我们可以使用`?`来标记某个参数是可选的。这种情况主要针对上面的第二种传参形式。比如我们有这样一个外链:`user/jane/settings`，它对应的`config`如下：
 
 ```js
 const config = {
@@ -527,8 +517,7 @@ const config = {
 };
 ```
 
-这样，`user/jane`外链传递到 Screen 里的参数就是： `{id: 'jane'}`，
-`user/jane/settings`外链传递到 Screen 里的参数就是： `{id: 'jane', section: 'settings'}`，
+这样，`user/jane`外链传递到 Screen 里的参数就是： `{id: 'jane'}`， `user/jane/settings`外链传递到 Screen 里的参数就是： `{id: 'jane', section: 'settings'}`，
 
 ### 处理 404
 
@@ -653,8 +642,7 @@ const config = {
 };
 ```
 
-在上面的配置中，我们可以通过外链`/home`映射到`Home`页面，但是实际上我们可能想要不是`/home`而是直接`/`。
-我们就可以通过把 path 改成`path: ''`来实现。
+在上面的配置中，我们可以通过外链`/home`映射到`Home`页面，但是实际上我们可能想要不是`/home`而是直接`/`。我们就可以通过把 path 改成`path: ''`来实现。
 
 ```js
 const config = {
@@ -692,8 +680,10 @@ export const linking: LinkingOptions<AppParamList> = {
 
 ## 8. 编译问题
 
-### 8.1 MMKV编译报错
+### 8.1 MMKV 编译报错
+
 如果遇到一下报错：
+
 ```txt
 FAILURE: Build failed with an exception.
 
@@ -707,8 +697,19 @@ Execution failed for task ':react-native-mmkv:generateJsonModelRelease'.
       linked by target "reactnativemmkv" in directory /Users/runner/work/1/s/node_modules/react-native-mmkv/android
 
 ```
+
 请执行以下命令：
+
 ```code
 cd android && ./gradlew clean
 ```
-然后再重新build即可。
+
+然后再重新 build 即可。
+
+### 修改 cocopods 源：
+
+```code
+cd ~/.cocoapods/repos
+pod repo remove master
+git clone https://mirrors.tuna.tsinghua.edu.cn/git/CocoaPods/Specs.git master
+```
