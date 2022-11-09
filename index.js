@@ -1,5 +1,3 @@
-import 'react-native-gesture-handler';
-
 import { Alert, AppRegistry, LogBox } from 'react-native';
 import { setJSExceptionHandler, setNativeExceptionHandler } from 'react-native-exception-handler';
 import RNRestart from 'react-native-restart';
