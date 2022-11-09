@@ -4,7 +4,7 @@
 import { NavigationProp, useNavigation } from '@react-navigation/native';
 import { useTheme } from '@shopify/restyle';
 import { helpers, Text } from '@td-design/react-native';
-import { FC, useEffect } from 'react';
+import { FC, PropsWithChildren, useEffect } from 'react';
 import { StyleSheet, View } from 'react-native';
 import Animated, { useAnimatedStyle, useDerivedValue, useSharedValue, withSpring } from 'react-native-reanimated';
 import { mix } from 'react-native-redash';
@@ -23,10 +23,12 @@ const springConfig = {
 };
 
 const { px } = helpers;
-export const AuthTemplate: FC<{
-  title: string;
-  subtitle?: string;
-}> = ({ title, subtitle, children }) => {
+export const AuthTemplate: FC<
+  PropsWithChildren<{
+    title: string;
+    subtitle?: string;
+  }>
+> = ({ title, subtitle, children }) => {
   const navigation = useNavigation<NavigationProp<AuthStackParamList>>();
   const theme = useTheme<AppTheme>();
   const styles = StyleSheet.create({

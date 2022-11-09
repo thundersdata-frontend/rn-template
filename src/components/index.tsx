@@ -1,5 +1,4 @@
 import { Container } from './Container';
-import { CustomHeader } from './CustomHeader';
 import { CustomRefreshControl } from './CustomRefreshControl';
 import { CustomWebView } from './CustomWebView';
 import { ExitApp } from './ExitApp';
@@ -20,7 +19,6 @@ export {
   ImgCard,
   Icon,
   CustomWebView,
-  CustomHeader,
   CustomRefreshControl,
   KeyboardAwareScrollView,
   KeyboardShift,
