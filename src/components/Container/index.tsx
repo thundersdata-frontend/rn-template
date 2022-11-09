@@ -1,10 +1,10 @@
-import * as React from 'react';
 import { useTheme } from '@shopify/restyle';
+import { FC, PropsWithChildren } from 'react';
 import { StatusBar, StyleSheet } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { AppTheme } from 'theme';
 
-export const Container: React.FC<{ hasHeader?: boolean; backgroundColor?: string }> = ({
+export const Container: FC<PropsWithChildren<{ hasHeader?: boolean; backgroundColor?: string }>> = ({
   hasHeader = true,
   children,
   backgroundColor,

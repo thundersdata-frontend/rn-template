@@ -68,7 +68,7 @@ export const CustomRefreshControl = forwardRef<CustomRefreshControlRef, RefreshC
 
     const onRefreshFinished = () => {};
 
-    const onChangeState = useCallback(state => {
+    const onChangeState = useCallback((state: number) => {
       props.onChangeState?.(state);
       switch (state) {
         case 1: // 可以下拉
