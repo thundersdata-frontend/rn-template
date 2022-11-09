@@ -1,5 +1,4 @@
-import { CardStyleInterpolators, createStackNavigator, StackNavigationOptions } from '@react-navigation/stack';
-import { CustomHeader } from 'components';
+import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import { ConfigPass } from 'modules/auth/screens/configPass';
 import { ForgetPass } from 'modules/auth/screens/forgetPass';
 import { Register } from 'modules/auth/screens/register';
@@ -59,77 +58,77 @@ const MAIN_SCREENS = [
     name: 'Echarts',
     component: EchartsRoot,
     options: {
-      headerTitle: '图表展示',
+      title: '图表展示',
     },
   },
   {
     name: 'LineChart',
     component: LineChart,
     options: {
-      headerTitle: '折线图',
+      title: '折线图',
     },
   },
   {
     name: 'MapChart',
     component: MapChart,
     options: {
-      headerTitle: '山东地图',
+      title: '山东地图',
     },
   },
   {
     name: 'LocalModelDemo',
     component: LocalModelDemo,
     options: {
-      headerTitle: '局部共享数据示例',
+      title: '局部共享数据示例',
     },
   },
   {
     name: 'RecyclerListDemo',
     component: RecyclerListDemo,
     options: {
-      headerTitle: 'RecyclerListView示例',
+      title: 'RecyclerListView示例',
     },
   },
   {
     name: 'RecyclerListDemo1',
     component: RecyclerListDemo1,
     options: {
-      headerTitle: 'RLV示例1',
+      title: 'RLV示例1',
     },
   },
   {
     name: 'RecyclerListDemo2',
     component: RecyclerListDemo2,
     options: {
-      headerTitle: 'RLV示例2',
+      title: 'RLV示例2',
     },
   },
   {
     name: 'RecyclerListDemo3',
     component: RecyclerListDemo3,
     options: {
-      headerTitle: 'RLV示例3',
+      title: 'RLV示例3',
     },
   },
   {
     name: 'RecyclerListDemo4',
     component: RecyclerListDemo4,
     options: {
-      headerTitle: 'RLV示例4',
+      title: 'RLV示例4',
     },
   },
   {
     name: 'Settings',
     component: Settings,
     options: {
-      headerTitle: '系统设置',
+      title: '系统设置',
     },
   },
   {
     name: 'ModifyPassword',
     component: ModifyPassword,
     options: {
-      headerTitle: '修改密码',
+      title: '修改密码',
     },
   },
 ];
@@ -139,40 +138,40 @@ const MODAL_SCREENS = [
     name: 'Agreement',
     component: Agreement,
     options: {
-      headerTitle: '用户协议',
+      title: '用户协议',
     },
   },
   {
     name: 'Privacy',
     component: Privacy,
     options: {
-      headerTitle: '隐私政策',
+      title: '隐私政策',
     },
   },
 ];
 
-const Stack = createStackNavigator();
+const Stack = createNativeStackNavigator();
 
 export default () => {
   useStackService.useModel();
-
-  const commonStackOptions: StackNavigationOptions = {
-    gestureEnabled: true,
-    gestureDirection: 'horizontal',
-    cardStyleInterpolator: CardStyleInterpolators.forHorizontalIOS,
-  };
 
   const { confirmed, signedIn } = storageService;
   return (
     <Stack.Navigator
       initialRouteName={confirmed ? (signedIn ? 'Tab' : 'SignIn') : 'PrivacyConfirm'}
-      screenOptions={commonStackOptions}
+      screenOptions={{
+        gestureEnabled: true,
+        gestureDirection: 'horizontal',
+        headerTitleAlign: 'center',
+        animation: 'slide_from_right',
+        animationDuration: 400,
+      }}
     >
-      {!confirmed && <Stack.Screen name="PrivacyConfirm" component={PrivacyConfirm} />}
+      {!confirmed && <Stack.Screen name="PrivacyConfirm" component={PrivacyConfirm} options={{ headerShown: false }} />}
       {signedIn ? (
         <Stack.Group
           screenOptions={{
-            header: props => <CustomHeader {...props} />,
+            presentation: 'card',
           }}
         >
           {MAIN_SCREENS.map(screen => (
@@ -180,7 +179,7 @@ export default () => {
           ))}
         </Stack.Group>
       ) : (
-        <Stack.Group screenOptions={{ headerShown: false }}>
+        <Stack.Group screenOptions={{ headerShown: false, presentation: 'card' }}>
           {AUTH_SCREENS.map(screen => (
             <Stack.Screen key={screen.name} {...screen} />
           ))}
@@ -188,9 +187,7 @@ export default () => {
       )}
       <Stack.Group
         screenOptions={{
-          header: props => <CustomHeader {...props} headerStyle={{ marginTop: 0 }} />,
           presentation: 'modal',
-          cardStyleInterpolator: CardStyleInterpolators.forModalPresentationIOS,
         }}
       >
         {MODAL_SCREENS.map(screen => (

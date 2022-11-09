@@ -1,4 +1,4 @@
-import { StackHeaderProps } from '@react-navigation/stack';
+import { NativeStackHeaderProps } from '@react-navigation/native-stack';
 import { useTheme } from '@shopify/restyle';
 import { Box, Flex, helpers, SvgIcon, Text } from '@td-design/react-native';
 import { FC, ReactNode } from 'react';
@@ -8,24 +8,14 @@ import { AppTheme } from 'theme';
 
 const { px } = helpers;
 
-export const CustomHeader: FC<StackHeaderProps & { headerStyle?: StyleProp<ViewStyle> }> = ({
+export const CustomHeader: FC<NativeStackHeaderProps & { headerStyle?: StyleProp<ViewStyle> }> = ({
   navigation,
   options,
   headerStyle,
 }) => {
   const theme = useTheme<AppTheme>();
   const insets = useSafeAreaInsets();
-  const {
-    headerTitle,
-    headerTitleAlign,
-    headerTitleStyle,
-    headerTitleContainerStyle,
-    headerLeft,
-    headerLeftContainerStyle,
-    headerRight,
-    headerRightContainerStyle,
-    headerTransparent,
-  } = options || {};
+  const { headerTitle, headerTitleAlign, headerTitleStyle, headerLeft, headerRight, headerTransparent } = options || {};
 
   let headerLeftComp: ReactNode = <Box />;
   if (headerLeft) {
@@ -46,9 +36,7 @@ export const CustomHeader: FC<StackHeaderProps & { headerStyle?: StyleProp<ViewS
       justifyContent="center"
       style={[{ paddingTop: insets.top }, headerStyle]}
     >
-      <Animated.View style={[{ flex: 1, alignItems: 'flex-start' }, headerLeftContainerStyle]}>
-        {headerLeftComp}
-      </Animated.View>
+      <Animated.View style={[{ flex: 1, alignItems: 'flex-start' }]}>{headerLeftComp}</Animated.View>
       <Animated.View
         style={[
           {
@@ -56,16 +44,13 @@ export const CustomHeader: FC<StackHeaderProps & { headerStyle?: StyleProp<ViewS
             justifyContent: 'center',
             alignItems: headerTitleAlign === 'left' ? 'flex-start' : 'center',
           },
-          headerTitleContainerStyle,
         ]}
       >
         <Text variant="h1" color="gray500" textAlign={'center'} style={headerTitleStyle as TextStyle}>
           {headerTitle}
         </Text>
       </Animated.View>
-      <Animated.View style={[{ flex: 1, alignItems: 'flex-end' }, headerRightContainerStyle]}>
-        {headerRight?.({})}
-      </Animated.View>
+      <Animated.View style={[{ flex: 1, alignItems: 'flex-end' }]}>{headerRight?.({ canGoBack: true })}</Animated.View>
     </Flex>
   );
 };

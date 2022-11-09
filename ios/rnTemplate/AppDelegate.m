@@ -33,9 +33,13 @@ static void InitializeFlipper(UIApplication *application) {
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
-#ifdef FB_SONARKIT_ENABLED
-  InitializeFlipper(application);
-#endif
+  #ifdef FB_SONARKIT_ENABLED
+    InitializeFlipper(application);
+  #endif
+
+  #if !TARGET_OS_TV
+    [[UIDevice currentDevice] beginGeneratingDeviceOrientationNotifications];
+  #endif
 
   // webp支持
   [SDImageCodersManager.sharedManager addCoder:SDImageWebPCoder.sharedCoder];
@@ -84,5 +88,12 @@ static void InitializeFlipper(UIApplication *application) {
  return [RCTLinkingManager application:application
                   continueUserActivity:userActivity
                     restorationHandler:restorationHandler];
+}
+
+- (void)applicationWillTerminate:(UIApplication *)application
+{
+  #if !TARGET_OS_TV
+    [[UIDevice currentDevice] endGeneratingDeviceOrientationNotifications];
+  #endif
 }
 @end

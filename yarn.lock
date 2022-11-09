@@ -1603,6 +1603,14 @@
   resolved "https://registry.npmmirror.com/@react-navigation/elements/-/elements-1.3.6.tgz#fa700318528db93f05144b1be4b691b9c1dd1abe"
   integrity sha512-pNJ8R9JMga6SXOw6wGVN0tjmE6vegwPmJBL45SEMX2fqTfAk2ykDnlJHodRpHpAgsv0DaI8qX76z3A+aqKSU0w==
 
+"@react-navigation/native-stack@^6.9.1":
+  version "6.9.1"
+  resolved "https://registry.npmmirror.com/@react-navigation/native-stack/-/native-stack-6.9.1.tgz#6013300e4cd0b33e242aa18593e4dff7db2ab3d1"
+  integrity sha512-aOuJP97ge6NRz8wH6sDKfLTfdygGmraYh0apKrrVbGvMnflbPX4kpjQiAQcUPUpMeas0betH/Su8QubNL8HEkg==
+  dependencies:
+    "@react-navigation/elements" "^1.3.6"
+    warn-once "^0.1.0"
+
 "@react-navigation/native@^6.0.13":
   version "6.0.13"
   resolved "https://registry.npmmirror.com/@react-navigation/native/-/native-6.0.13.tgz#ec504120e193ea6a7f24ffa765a1338be5a3160a"
@@ -1619,15 +1627,6 @@
   integrity sha512-idJotMEzHc3haWsCh7EvnnZMKxvaS4YF/x2UyFBkNFiEFUaEo/1ioQU6qqmVLspdEv4bI/dLm97hQo7qD8Yl7Q==
   dependencies:
     nanoid "^3.1.23"
-
-"@react-navigation/stack@^6.3.3":
-  version "6.3.3"
-  resolved "https://registry.npmmirror.com/@react-navigation/stack/-/stack-6.3.3.tgz#2a8447038eddd5778bda04605ff3c52c898e6213"
-  integrity sha512-7CMwLA4NiTnt0qwzZNKwI2ekHEDhTnn3rR6BhD26/De7J1Cogxpxd5pbvEiCG4w95YP/dD054i596howT0Mlmg==
-  dependencies:
-    "@react-navigation/elements" "^1.3.6"
-    color "^4.2.3"
-    warn-once "^0.1.0"
 
 "@shopify/restyle@2.0.0":
   version "2.0.0"
@@ -1685,10 +1684,10 @@
     dayjs "^1.11.6"
     lodash-es "^4.17.21"
 
-"@td-design/react-native@^3.11.14":
-  version "3.11.14"
-  resolved "https://registry.npmmirror.com/@td-design/react-native/-/react-native-3.11.14.tgz#bd211395fd5dd7ead0992ce3d91c77e65963db0d"
-  integrity sha512-hn3wVnBnFRxCJ+U82OXBVMf6VGOmgEBTyPNvC9aAfmhS3GvM2Vjvx5CCL5J27fL35/aVXeyc4n8eAGpLR53iWg==
+"@td-design/react-native@^3.11.15":
+  version "3.11.15"
+  resolved "https://registry.npmmirror.com/@td-design/react-native/-/react-native-3.11.15.tgz#b9f48e5c79ec7aa37338f88fdd6de62fa532661e"
+  integrity sha512-xKpU3twAgiKWvd7cAFj1Omb/0szDElKT+6ySJC5WRE1UukwhirA+g9tV2GCdik57SiquWo+VF72xdHczIfBeGg==
   dependencies:
     "@td-design/rn-hooks" "^2.4.0"
     rc-field-form "^1.27.2"
@@ -4633,10 +4632,10 @@ human-signals@^3.0.1:
   resolved "https://registry.npmmirror.com/human-signals/-/human-signals-3.0.1.tgz#c740920859dafa50e5a3222da9d3bf4bb0e5eef5"
   integrity sha512-rQLskxnM/5OCldHo+wNXbpVgDn5A17CUoKX+7Sokwaknlq7CdSnphy0W39GU8dw59XiCXmFXDg4fRuckQRKewQ==
 
-husky@^8.0.1:
-  version "8.0.1"
-  resolved "https://registry.npmmirror.com/husky/-/husky-8.0.1.tgz#511cb3e57de3e3190514ae49ed50f6bc3f50b3e9"
-  integrity sha512-xs7/chUH/CKdOCs7Zy0Aev9e/dKOMZf3K1Az1nar3tzlv0jfqnYtu235bstsWTmXOR0EfINrPa97yy4Lz6RiKw==
+husky@^8.0.2:
+  version "8.0.2"
+  resolved "https://registry.npmmirror.com/husky/-/husky-8.0.2.tgz#5816a60db02650f1f22c8b69b928fd6bcd77a236"
+  integrity sha512-Tkv80jtvbnkK3mYWxPZePGFpQ/tT3HNSs/sasF9P2YfkMezDl3ON37YN6jUUI4eTg5LcyVynlb6r4eyvOmspvg==
 
 iconv-lite@^0.4.24:
   version "0.4.24"
