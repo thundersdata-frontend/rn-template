@@ -2,6 +2,7 @@ import { Container } from './Container';
 import { CustomHeader } from './CustomHeader';
 import { CustomRefreshControl } from './CustomRefreshControl';
 import { CustomWebView } from './CustomWebView';
+import { ExitApp } from './ExitApp';
 import { Fallback } from './Fallback';
 import Icon from './Icon';
 import { ImagePickerField } from './ImagePickerField';
@@ -28,4 +29,5 @@ export {
   IndexBar,
   RecyclerFlatList,
   RecyclerWaterfallList,
+  ExitApp,
 };
