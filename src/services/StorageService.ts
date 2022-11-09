@@ -76,7 +76,7 @@ class StorageService {
             const oldObj = JSON.parse(oldValue);
             StorageService.getInstance().storage.set(key, JSON.stringify(removeEmpty({ ...oldObj, ...value })));
           } else {
-            StorageService.getInstance().storage.set(key, JSON.stringify(removeEmpty({ ...value })));
+            StorageService.getInstance().storage.set(key, JSON.stringify(removeEmpty({ ...(value as Obj) })));
           }
           break;
 
