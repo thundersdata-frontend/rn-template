@@ -9,7 +9,7 @@ export const navigationRef = createNavigationContainerRef<AppParamList>();
  */
 export function navigate<T extends keyof AppParamList>(name: T, params?: AppParamList[T]) {
   if (navigationRef.isReady()) {
-    navigationRef.navigate(name, params);
+    navigationRef.navigate(name as any, params);
   }
 }
 
