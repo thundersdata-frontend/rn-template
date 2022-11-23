@@ -297,8 +297,6 @@ dependencies {
     implementation "androidx.swiperefreshlayout:swiperefreshlayout:1.0.0"
     implementation "com.github.zjupure:webpdecoder:2.0.4.12.0" // <- support animated webp
 
-    implementation project(':react-native-image-resizer')
-
     debugImplementation("com.facebook.flipper:flipper:${FLIPPER_VERSION}") {
       exclude group:'com.facebook.fbjni'
     }
