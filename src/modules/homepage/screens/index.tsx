@@ -11,7 +11,9 @@ export function Homepage() {
     <Container>
       <Center>
         <Button title="局部共享数据示例" onPress={() => navigation.navigate('LocalModelDemo')} />
-        <Button title="RecyclerListView示例" onPress={() => navigation.navigate('RecyclerListDemo')} />
+        <Button title="FlashList示例" onPress={() => navigation.navigate('FlashListDemo')} />
+        <Button title="瀑布流示例" onPress={() => navigation.navigate('WaterfallListDemo')} />
+        <Button title="通讯录示例" onPress={() => navigation.navigate('ContactsDemo')} />
         <Button
           title="弹窗测试"
           onPress={() => NiceModal.show(TestModal, { content: '我是内容', position: 'center' })}

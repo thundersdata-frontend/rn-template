@@ -16,11 +16,11 @@ type MainStackParamList = {
   Homepage: undefined;
   IndexBarDemo: undefined;
   LocalModelDemo: undefined;
-  RecyclerListDemo: undefined;
-  RecyclerListDemo1: undefined;
-  RecyclerListDemo2: undefined;
-  RecyclerListDemo3: undefined;
-  RecyclerListDemo4: undefined;
+  FlashListDemo: undefined;
+  FlashListDemo1: undefined;
+  FlashListDemo2: undefined;
+  WaterfallListDemo: undefined;
+  ContactsDemo: undefined;
   Mine: undefined;
   Address: undefined;
   Echarts: undefined;
