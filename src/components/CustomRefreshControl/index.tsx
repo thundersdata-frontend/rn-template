@@ -1,7 +1,7 @@
 import { RefreshControlProps, RNRefreshControl } from '@byron-react-native/refresh-control';
 import { useTheme } from '@shopify/restyle';
 import { useSafeState } from '@td-design/rn-hooks';
-import React, { forwardRef, useCallback, useImperativeHandle, useRef } from 'react';
+import React, { forwardRef, useCallback, useEffect, useImperativeHandle, useRef } from 'react';
 import { ActivityIndicator, Animated, Platform, StyleSheet, Text, View, ViewStyle } from 'react-native';
 import { AppTheme } from 'theme';
 
@@ -19,6 +19,10 @@ export const CustomRefreshControl = forwardRef<CustomRefreshControlRef, RefreshC
     const [lastTime, setLastTime] = useSafeState(fetchNowTime());
     const animatedValue = useRef(new Animated.Value(0));
     const [refreshing, setRefreshing] = useSafeState(false);
+
+    useEffect(() => {
+      setRefreshing(props.refreshing ?? false);
+    }, [props.refreshing]);
 
     useImperativeHandle(ref, () => ({
       startRefresh: () => {
@@ -92,6 +96,7 @@ export const CustomRefreshControl = forwardRef<CustomRefreshControlRef, RefreshC
       inputRange: [0, 180],
       outputRange: ['0deg', '180deg'],
     });
+
     const NormalRefreshHeader = (
       <View style={styles.row}>
         {refreshing ? (
@@ -108,6 +113,7 @@ export const CustomRefreshControl = forwardRef<CustomRefreshControlRef, RefreshC
         </View>
       </View>
     );
+
     return (
       <RNRefreshControl
         height={styleHeight}
@@ -115,7 +121,7 @@ export const CustomRefreshControl = forwardRef<CustomRefreshControlRef, RefreshC
         onChangeState={onChangeState}
         style={[style || styles.control, Platform.OS === 'ios' ? { marginTop: -styleHeight } : {}]}
       >
-        {props.children ? props.children : NormalRefreshHeader}
+        {props.children ?? NormalRefreshHeader}
       </RNRefreshControl>
     );
   }

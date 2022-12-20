@@ -1,11 +1,12 @@
-import { Box, Center } from '@td-design/react-native';
-import { Container, CustomRefreshControl, RecyclerWaterfallList } from 'components';
+import { Box, Center, Text } from '@td-design/react-native';
+import { WaterfallList } from 'components';
 import { useRefreshService } from 'hooks/useRefreshService';
-import { StyleSheet, Text } from 'react-native';
+import { StyleSheet } from 'react-native';
 import FastImage from 'react-native-fast-image';
 
 interface DataType {
   imageUrl: string;
+  height: number;
 }
 
 function fetchData({ page, pageSize }: { page: number; pageSize: number }): Promise<Page<DataType>> {
@@ -422,21 +423,21 @@ function fetchData({ page, pageSize }: { page: number; pageSize: number }): Prom
         list: data.slice((page - 1) * pageSize, page * pageSize).map(item => ({
           imageUrl: item,
           height: Math.random() > 0.5 ? 150 : 250,
-          key: Math.round(Math.random() * 100000),
         })),
       });
-    }, 200);
+    }, 2000);
   });
 }
 
-export function RecyclerListDemo4() {
-  const { loadingMore, allLoaded, onLoadMore, data, onRefresh } = useRefreshService<DataType>(fetchData, {
+export function WaterfallListDemo() {
+  const { loadingMore, allLoaded, onLoadMore, data, onRefresh, refreshing } = useRefreshService<DataType>(fetchData, {
     defaultParams: [{ page: 1, pageSize: 30 }],
   });
 
   const renderItem = ({ item }: { item: DataType }) => {
     return (
-      <Box flex={1} overflow={'hidden'} margin="x1">
+      <Box height={item.height} overflow={'hidden'} margin="x1">
+        {/* 在列表中展示图片，请直接使用FastImage，不要用RN的Image和组件库的Image */}
         <FastImage source={{ uri: item.imageUrl }} style={StyleSheet.absoluteFill} resizeMode="cover" />
       </Box>
     );
@@ -445,32 +446,39 @@ export function RecyclerListDemo4() {
   const renderFooter = () => {
     if (loadingMore)
       return (
-        <Center height={80}>
-          <Text>正在加载更多数据</Text>
-        </Center>
+        <Box borderWidth={1} borderColor="func200">
+          <Center height={40}>
+            <Text>正在加载更多数据</Text>
+          </Center>
+        </Box>
       );
     if (allLoaded)
       return (
-        <Center height={80}>
-          <Text>没有更多数据</Text>
-        </Center>
+        <Box borderWidth={1} borderColor="func200">
+          <Center height={40}>
+            <Text>没有更多数据</Text>
+          </Center>
+        </Box>
       );
     return null;
   };
 
   return (
-    <Container>
-      <RecyclerWaterfallList
-        data={data}
-        keyExtractor={item => item.imageUrl}
-        renderItem={renderItem}
-        renderFooter={renderFooter}
-        scrollViewProps={{
-          refreshControl: <CustomRefreshControl onRefresh={onRefresh} />,
-        }}
-        onEndReached={onLoadMore}
-        onEndReachedThreshold={20}
-      />
-    </Container>
+    <WaterfallList
+      data={data}
+      renderItem={renderItem}
+      numColumns={2}
+      keyExtractor={item => item.imageUrl}
+      estimatedItemSize={150}
+      renderFooter={renderFooter}
+      onEndReached={onLoadMore}
+      onEndReachedThreshold={0.1}
+      onRefresh={onRefresh}
+      refreshing={refreshing}
+      optimizeItemArrangement
+      overrideItemLayout={(layout, item) => {
+        layout.size = item.height;
+      }}
+    />
   );
 }

@@ -7,12 +7,12 @@ import { SignIn } from 'modules/auth/screens/signIn';
 import { LineChart } from 'modules/charts/screens/line';
 import { EchartsRoot } from 'modules/charts/screens/main';
 import { MapChart } from 'modules/charts/screens/map';
+import { ContactsDemo } from 'modules/homepage/screens/contacts';
+import { FlashListDemo } from 'modules/homepage/screens/flashlist';
+import { FlashListDemo1 } from 'modules/homepage/screens/flashlist/demo1';
+import { FlashListDemo2 } from 'modules/homepage/screens/flashlist/demo2';
 import { LocalModelDemo } from 'modules/homepage/screens/localmodel';
-import { RecyclerListDemo } from 'modules/homepage/screens/recyclerlist';
-import { RecyclerListDemo1 } from 'modules/homepage/screens/recyclerlist/demo1';
-import { RecyclerListDemo2 } from 'modules/homepage/screens/recyclerlist/demo2';
-import { RecyclerListDemo3 } from 'modules/homepage/screens/recyclerlist/demo3';
-import { RecyclerListDemo4 } from 'modules/homepage/screens/recyclerlist/demo4';
+import { WaterfallListDemo } from 'modules/homepage/screens/waterfall';
 import { Agreement } from 'modules/policy/screens/agreement';
 import { Privacy } from 'modules/policy/screens/privacy';
 import { PrivacyConfirm } from 'modules/policy/screens/privacyConfirm';
@@ -83,38 +83,38 @@ const MAIN_SCREENS = [
     },
   },
   {
-    name: 'RecyclerListDemo',
-    component: RecyclerListDemo,
+    name: 'FlashListDemo',
+    component: FlashListDemo,
     options: {
-      title: 'RecyclerListView示例',
+      title: 'FlashListDemo示例',
     },
   },
   {
-    name: 'RecyclerListDemo1',
-    component: RecyclerListDemo1,
+    name: 'FlashListDemo1',
+    component: FlashListDemo1,
     options: {
-      title: 'RLV示例1',
+      title: 'FlashListDemo1示例',
     },
   },
   {
-    name: 'RecyclerListDemo2',
-    component: RecyclerListDemo2,
+    name: 'FlashListDemo2',
+    component: FlashListDemo2,
     options: {
-      title: 'RLV示例2',
+      title: 'FlashListDemo2示例',
     },
   },
   {
-    name: 'RecyclerListDemo3',
-    component: RecyclerListDemo3,
+    name: 'WaterfallListDemo',
+    component: WaterfallListDemo,
     options: {
-      title: 'RLV示例3',
+      title: 'WaterfallListDemo示例',
     },
   },
   {
-    name: 'RecyclerListDemo4',
-    component: RecyclerListDemo4,
+    name: 'ContactsDemo',
+    component: ContactsDemo,
     options: {
-      title: 'RLV示例4',
+      title: 'ContactsDemo示例',
     },
   },
   {
