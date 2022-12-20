@@ -11,7 +11,11 @@ export const Container: FC<PropsWithChildren<{ hasHeader?: boolean; backgroundCo
 }) => {
   const theme = useTheme<AppTheme>();
   const styles = StyleSheet.create({
-    container: { flex: 1, backgroundColor: backgroundColor || theme.colors.white },
+    container: {
+      flex: 1,
+      backgroundColor: backgroundColor || theme.colors.white,
+      position: 'relative',
+    },
   });
 
   return (
