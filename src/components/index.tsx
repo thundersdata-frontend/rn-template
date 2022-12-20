@@ -8,11 +8,10 @@ import Icon from './Icon';
 import { ImagePickerField } from './ImagePickerField';
 import { ImgCard } from './ImgCard';
 import { ImgList } from './ImgList';
-import { IndexBar } from './IndexBar';
 import { KeyboardAwareScrollView } from './KeyboardAwareScrollView';
 import { KeyboardShift } from './KeyboardShift';
-import { RecyclerFlatList } from './RecyclerFlatList';
-import { RecyclerWaterfallList } from './RecyclerWaterfallList';
+import { LargeList } from './LargeList';
+import { WaterfallList } from './WaterfallList';
 
 export {
   Container,
@@ -26,8 +25,7 @@ export {
   KeyboardShift,
   ImagePickerField,
   ImgList,
-  IndexBar,
-  RecyclerFlatList,
-  RecyclerWaterfallList,
   ExitApp,
+  LargeList,
+  WaterfallList,
 };
