@@ -320,7 +320,7 @@ PODS:
     - react-native-config/App (= 1.4.11)
   - react-native-config/App (1.4.11):
     - React-Core
-  - react-native-flipper (0.176.1):
+  - react-native-flipper (0.163.0):
     - React-Core
   - react-native-image-picker (4.10.2):
     - React-Core
@@ -741,7 +741,7 @@ SPEC CHECKSUMS:
   React-logger: fdda34dd285bdb0232e059b19d9606fa0ec3bb9c
   react-native-background-timer: 17ea5e06803401a379ebf1f20505b793ac44d0fe
   react-native-config: bcafda5b4c51491ee1b0e1d0c4e3905bc7b56c1b
-  react-native-flipper: 7e4b1c3fe1a2eecbe7304e5ff6b89231b3ec61dc
+  react-native-flipper: 2d552a8178d839ef378220101fb7f0cd5b2a8003
   react-native-image-picker: bf34f3f516d139ed3e24c5f5a381a91819e349ea
   react-native-image-resizer: 794abf75ec13ed1f0dbb1f134e27504ea65e9e66
   react-native-mmkv: 69b9c003f10afdd01addf7c6ee784ce42ee2eff3
