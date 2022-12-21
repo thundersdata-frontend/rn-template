@@ -1,8 +1,17 @@
-import { RefreshControlProps, RNRefreshControl } from '@byron-react-native/refresh-control';
+import { RefreshControlProps, RNRefreshControl, RNRefreshHeader } from '@byron-react-native/refresh-control';
 import { useTheme } from '@shopify/restyle';
 import { useSafeState } from '@td-design/rn-hooks';
-import React, { forwardRef, useCallback, useEffect, useImperativeHandle, useRef } from 'react';
-import { ActivityIndicator, Animated, Platform, StyleSheet, Text, View, ViewStyle } from 'react-native';
+import React, { forwardRef, useEffect, useImperativeHandle, useRef, useState } from 'react';
+import {
+  ActivityIndicator,
+  Animated,
+  LayoutChangeEvent,
+  Platform,
+  StyleSheet,
+  Text,
+  View,
+  ViewStyle,
+} from 'react-native';
 import { AppTheme } from 'theme';
 
 export interface CustomRefreshControlRef {
@@ -10,15 +19,16 @@ export interface CustomRefreshControlRef {
   stopRefresh: () => void;
 }
 
+const DEFAULT_HEIGHT = 64;
 export const CustomRefreshControl = forwardRef<CustomRefreshControlRef, RefreshControlProps>(
   ({ onRefresh, style, ...props }, ref) => {
     const theme = useTheme<AppTheme>();
 
-    const styleHeight = ((style as ViewStyle)?.height || 100) as number;
-    const [title, setTitle] = useSafeState('下拉可以刷新');
+    const [height, setHeight] = useState(DEFAULT_HEIGHT);
+    const [title, setTitle] = useSafeState('下拉进行刷新');
     const [lastTime, setLastTime] = useSafeState(fetchNowTime());
     const animatedValue = useRef(new Animated.Value(0));
-    const [refreshing, setRefreshing] = useSafeState(false);
+    const [refreshing, setRefreshing] = useSafeState(props.refreshing ?? false);
 
     useEffect(() => {
       setRefreshing(props.refreshing ?? false);
@@ -65,14 +75,14 @@ export const CustomRefreshControl = forwardRef<CustomRefreshControlRef, RefreshC
         duration: 200,
         useNativeDriver: true,
       }).start(() => {
-        setTitle('下拉可以刷新');
+        setTitle('下拉进行刷新');
         setRefreshing(false);
       });
     };
 
     const onRefreshFinished = () => {};
 
-    const onChangeState = useCallback(state => {
+    const onChangeState = (state: number) => {
       props.onChangeState?.(state);
       switch (state) {
         case 1: // 可以下拉
@@ -89,39 +99,43 @@ export const CustomRefreshControl = forwardRef<CustomRefreshControlRef, RefreshC
           break;
         default:
       }
-      // eslint-disable-next-line react-hooks/exhaustive-deps
-    }, []);
+    };
 
     const rotate = animatedValue.current.interpolate({
       inputRange: [0, 180],
       outputRange: ['0deg', '180deg'],
     });
 
-    const NormalRefreshHeader = (
-      <View style={styles.row}>
-        {refreshing ? (
-          <ActivityIndicator color={'gray'} />
-        ) : (
-          <Animated.Image
-            style={[styles.left, { tintColor: theme.colors.gray200, transform: [{ rotate }] }]}
-            source={require('./assets/arrow.png')}
-          />
-        )}
-        <View style={styles.right}>
-          <Text style={{ fontSize: 12, color: theme.colors.gray200 }}>{title}</Text>
-          <Text style={{ marginTop: 5, fontSize: 10, color: theme.colors.gray200 }}>{`上次更新：${lastTime}`}</Text>
-        </View>
-      </View>
-    );
+    const onLayout = (event: LayoutChangeEvent) => {
+      const layout = event.nativeEvent.layout;
+      if (layout.height !== height) {
+        setHeight(Math.ceil(layout.height));
+      }
+    };
 
     return (
       <RNRefreshControl
-        height={styleHeight}
         refreshing={refreshing}
         onChangeState={onChangeState}
-        style={[style || styles.control, Platform.OS === 'ios' ? { marginTop: -styleHeight } : {}]}
+        style={[style || styles.control, Platform.OS === 'ios' ? { marginTop: -height } : {}]}
+        height={height}
       >
-        {props.children ?? NormalRefreshHeader}
+        <RNRefreshHeader style={styles.row} onLayout={onLayout}>
+          {refreshing ? (
+            <ActivityIndicator color={'gray'} />
+          ) : (
+            <Animated.Image
+              style={[styles.left, { tintColor: theme.colors.black, transform: [{ rotate }] }]}
+              source={require('./assets/arrow.png')}
+            />
+          )}
+          <View style={styles.right}>
+            <Text style={{ fontSize: 12, color: theme.colors.black }}>{title}</Text>
+            <Text style={{ marginTop: 5, fontSize: 10, color: theme.colors.black }}>{`上次更新：${lastTime}`}</Text>
+          </View>
+        </RNRefreshHeader>
+        {/* {props.children} 不能删除或注释，会导致 Android 无法设置 RefreshContent */}
+        {props.children}
       </RNRefreshControl>
     );
   }
@@ -155,7 +169,7 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     alignItems: 'center',
     justifyContent: 'center',
-    marginBottom: 30,
+    paddingVertical: 20,
   },
   left: {
     width: 32,

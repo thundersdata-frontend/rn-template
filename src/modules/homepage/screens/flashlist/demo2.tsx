@@ -1,5 +1,5 @@
 import { Box, Center, Text } from '@td-design/react-native';
-import { LargeList } from 'components';
+import { Container, LargeList } from 'components';
 import { useRefreshService } from 'hooks/useRefreshService';
 import { StyleSheet } from 'react-native';
 import FastImage from 'react-native-fast-image';
@@ -79,17 +79,17 @@ export function FlashListDemo2() {
   };
 
   return (
-    <LargeList
-      data={data}
-      renderItem={renderItem}
-      getItemType={item => item.type}
-      keyExtractor={item => item.id + ''}
-      estimatedItemSize={40}
-      renderFooter={renderFooter}
-      onEndReached={onLoadMore}
-      onEndReachedThreshold={0.1}
-      onRefresh={onRefresh}
-      refreshing={refreshing}
-    />
+    <Container>
+      <LargeList
+        data={data}
+        getItemType={item => item.type}
+        keyExtractor={item => item.id + ''}
+        estimatedItemSize={40}
+        renderFooter={renderFooter}
+        onEndReached={onLoadMore}
+        onEndReachedThreshold={100}
+        {...{ renderItem, onRefresh, refreshing, loadingMore, allLoaded }}
+      />
+    </Container>
   );
 }
