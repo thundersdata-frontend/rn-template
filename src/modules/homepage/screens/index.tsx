@@ -3,6 +3,8 @@ import { NavigationProp, useNavigation } from '@react-navigation/native';
 import { Button, Center } from '@td-design/react-native';
 import { Container } from 'components';
 import TestModal from 'modals/TestModal';
+import codePush from 'react-native-code-push';
+import Config from 'react-native-config';
 
 export function Homepage() {
   const navigation = useNavigation<NavigationProp<MainStackParamList>>();
@@ -17,6 +19,17 @@ export function Homepage() {
         <Button
           title="弹窗测试"
           onPress={() => NiceModal.show(TestModal, { content: '我是内容', position: 'center' })}
+        />
+        <Button
+          title="热更新测试"
+          onPress={() =>
+            codePush
+              .sync({
+                deploymentKey: Config.CODEPUSH_KEY_ANDROID,
+              })
+              .then(res => console.log(res))
+              .catch(e => console.error(e))
+          }
         />
       </Center>
     </Container>

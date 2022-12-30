@@ -1,3 +1,7 @@
 rootProject.name = 'rnTemplate'
 apply from: file("../node_modules/@react-native-community/cli-platform-android/native_modules.gradle"); applyNativeModulesSettingsGradle(settings)
 include ':app'
+
+// code-push的依赖必须要写在最下面，否则会报错。https://github.com/microsoft/react-native-code-push/issues/1873#issuecomment-648796648
+include ':react-native-code-push'
+project(':react-native-code-push').projectDir = new File(rootProject.projectDir, '../node_modules/react-native-code-push/android/app')
