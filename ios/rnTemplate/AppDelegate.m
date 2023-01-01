@@ -7,6 +7,8 @@
 
 #import "RNBootSplash.h" // <- add the header import
 
+#import <CodePush/CodePush.h>
+
 #import "SDImageCodersManager.h"
 #import <SDWebImageWebPCoder/SDImageWebPCoder.h>  // <- add webp support for ios8+ ~ ios13
 
@@ -71,7 +73,7 @@ static void InitializeFlipper(UIApplication *application) {
 #if DEBUG
   return [[RCTBundleURLProvider sharedSettings] jsBundleURLForBundleRoot:@"index" fallbackResource:nil];
 #else
-  return [[NSBundle mainBundle] URLForResource:@"main" withExtension:@"jsbundle"];
+  return [CodePush bundleURL];
 #endif
 }
 
