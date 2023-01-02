@@ -1,5 +1,5 @@
 import { FlashList, FlashListProps } from '@shopify/flash-list';
-import { Box, Text } from '@td-design/react-native';
+import { Box, helpers, Text } from '@td-design/react-native';
 import { useMemoizedFn } from '@td-design/rn-hooks';
 import { useMemo, useRef, useState } from 'react';
 import { Dimensions, NativeScrollEvent, NativeSyntheticEvent, Pressable, ScrollView } from 'react-native';
@@ -7,6 +7,7 @@ import { Dimensions, NativeScrollEvent, NativeSyntheticEvent, Pressable, ScrollV
 import { Container } from '../Container';
 import { CustomRefreshControl } from '../CustomRefreshControl';
 
+const { px } = helpers;
 const windowHeight = Dimensions.get('screen').height;
 
 /**
@@ -96,6 +97,7 @@ export function IndexedBar<T>({
   };
 
   const handlePress = useMemoizedFn((index: number) => {
+    setCurrentIndex(index);
     const indice = indices[index];
     listRef.current?.scrollToIndex({ index: indice, animated: true });
   });
@@ -106,10 +108,9 @@ export function IndexedBar<T>({
       <Box
         justifyContent={'center'}
         alignItems={'center'}
-        width={20}
-        height={20}
+        width={px(20)}
+        height={px(20)}
         borderRadius="x4"
-        marginBottom="x1"
         backgroundColor={currentIndex === index ? 'primary200' : 'white'}
       >
         <Text color={currentIndex === index ? 'white' : 'black'}>{letter}</Text>
@@ -152,6 +153,9 @@ export function IndexedBar<T>({
           if (e.nativeEvent.contentOffset.y === 0) {
             setCurrentIndex(0);
           }
+        }}
+        onScrollToTop={() => {
+          setCurrentIndex(0);
         }}
         scrollEventThrottle={16}
       />

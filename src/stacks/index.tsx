@@ -11,6 +11,7 @@ import { ContactsDemo } from 'modules/homepage/screens/contacts';
 import { FlashListDemo } from 'modules/homepage/screens/flashlist';
 import { FlashListDemo1 } from 'modules/homepage/screens/flashlist/demo1';
 import { FlashListDemo2 } from 'modules/homepage/screens/flashlist/demo2';
+import { RefreshFlatListDemo } from 'modules/homepage/screens/flashlist/demo3';
 import { LocalModelDemo } from 'modules/homepage/screens/localmodel';
 import { WaterfallListDemo } from 'modules/homepage/screens/waterfall';
 import { Agreement } from 'modules/policy/screens/agreement';
@@ -101,6 +102,13 @@ const MAIN_SCREENS = [
     component: FlashListDemo2,
     options: {
       title: 'FlashListDemo2示例',
+    },
+  },
+  {
+    name: 'RefreshFlatListDemo',
+    component: RefreshFlatListDemo,
+    options: {
+      title: 'RefreshFlatListDemo示例',
     },
   },
   {
