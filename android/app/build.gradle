@@ -176,9 +176,6 @@ android {
             }
         }
         releaseStaging {
-            buildConfigField "String", "CODEPUSH_KEY", '"'+project.env.get("CODEPUSH_KEY_ANDROID")+'"'
-            buildConfigField "String", "CODEPUSH_URL", '"'+project.env.get("CODEPUSH_URL")+'"'
-
             // Note: It is a good idea to provide matchingFallbacks for the new buildType you create to prevent build issues
             // Add the following line if not already there
             matchingFallbacks = ['release']
@@ -195,8 +192,6 @@ android {
                     outputFileName = "${project.env.get("APP_DISPLAY_NAME")}-v${variant.versionName}.apk"
                 }
             }
-            buildConfigField "String", "CODEPUSH_KEY", '"'+project.env.get("CODEPUSH_KEY_ANDROID")+'"'
-            buildConfigField "String", "CODEPUSH_URL", '"'+project.env.get("CODEPUSH_URL")+'"'
         }
     }
 
@@ -237,7 +232,6 @@ dependencies {
     implementation "androidx.core:core:1.6.0" // <-- Add this
     //noinspection GradleDynamicVersion
     implementation "com.facebook.react:react-native:+"  // From node_modules
-    implementation project(':react-native-code-push')
 
     implementation "androidx.core:core-splashscreen:1.0.0-alpha02" // <- react native bootsplash
     implementation "androidx.swiperefreshlayout:swiperefreshlayout:1.0.0"
