@@ -1,7 +1,7 @@
 import { useRequest } from '@td-design/rn-hooks';
 import type { Options, Service } from '@td-design/rn-hooks/lib/typescript/useRequest/types';
 import { LoginFailureEnum } from 'enums';
-import { useAtomValue } from 'jotai/utils';
+import { useAtomValue } from 'jotai';
 
 import { storageService } from '../services/StorageService';
 import { isOnlineAtom } from './useNetwork';

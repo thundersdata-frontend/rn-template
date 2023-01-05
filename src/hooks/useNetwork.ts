@@ -1,13 +1,13 @@
 import NetInfo, { useNetInfo } from '@react-native-community/netinfo';
 import { useMount, useUpdateEffect } from '@td-design/rn-hooks';
 import { atom } from 'jotai';
-import { useUpdateAtom } from 'jotai/utils';
+import { useSetAtom } from 'jotai';
 
 /** 是否联网 */
 export const isOnlineAtom = atom(true);
 
 export function useNetwork() {
-  const updateOnlineAtom = useUpdateAtom(isOnlineAtom);
+  const updateOnlineAtom = useSetAtom(isOnlineAtom);
 
   /** 已经包含了网络连接变化情况的监听事件 */
   const netInfo = useNetInfo();

@@ -1,5 +1,5 @@
-import { Box, Center, Text } from '@td-design/react-native';
-import { WaterfallList } from 'components';
+import { Box } from '@td-design/react-native';
+import { Container, WaterfallList } from 'components';
 import { useRefreshService } from 'hooks/useRefreshService';
 import { StyleSheet } from 'react-native';
 import FastImage from 'react-native-fast-image';
@@ -443,42 +443,22 @@ export function WaterfallListDemo() {
     );
   };
 
-  const renderFooter = () => {
-    if (loadingMore)
-      return (
-        <Box borderWidth={1} borderColor="func200">
-          <Center height={40}>
-            <Text>正在加载更多数据</Text>
-          </Center>
-        </Box>
-      );
-    if (allLoaded)
-      return (
-        <Box borderWidth={1} borderColor="func200">
-          <Center height={40}>
-            <Text>没有更多数据</Text>
-          </Center>
-        </Box>
-      );
-    return null;
-  };
-
   return (
-    <WaterfallList
-      data={data}
-      renderItem={renderItem}
-      numColumns={2}
-      keyExtractor={item => item.imageUrl}
-      estimatedItemSize={150}
-      renderFooter={renderFooter}
-      onEndReached={onLoadMore}
-      onEndReachedThreshold={0.1}
-      onRefresh={onRefresh}
-      refreshing={refreshing}
-      optimizeItemArrangement
-      overrideItemLayout={(layout, item) => {
-        layout.size = item.height;
-      }}
-    />
+    <Container>
+      <WaterfallList
+        data={data}
+        numColumns={2}
+        keyExtractor={item => item.imageUrl}
+        estimatedItemSize={150}
+        onEndReached={onLoadMore}
+        onEndReachedThreshold={100}
+        optimizeItemArrangement
+        overrideItemLayout={(layout, item) => {
+          layout.size = item.height;
+        }}
+        showsVerticalScrollIndicator={false}
+        {...{ renderItem, onRefresh, refreshing, loadingMore, allLoaded }}
+      />
+    </Container>
   );
 }
