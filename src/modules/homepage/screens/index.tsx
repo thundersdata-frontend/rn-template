@@ -16,9 +16,9 @@ export function Homepage() {
         <WhiteSpace />
         <Button title="FlashList示例" onPress={() => navigation.navigate('FlashListDemo')} />
         <WhiteSpace />
-        <Button title="瀑布流示例333" onPress={() => navigation.navigate('WaterfallListDemo')} />
+        <Button title="瀑布流示例" onPress={() => navigation.navigate('WaterfallListDemo')} />
         <WhiteSpace />
-        <Button title="通讯录示例444" onPress={() => navigation.navigate('ContactsDemo')} />
+        <Button title="通讯录示例" onPress={() => navigation.navigate('ContactsDemo')} />
         <WhiteSpace />
         <Button
           title="弹窗测试"
@@ -30,7 +30,7 @@ export function Homepage() {
           onPress={() =>
             codePush
               .sync({
-                deploymentKey: Config.CODEPUSH_KEY_ANDROID,
+                deploymentKey: Config.CODEPUSH_KEY_IOS,
               })
               .then(res => console.log(res))
               .catch(e => console.error(e))
