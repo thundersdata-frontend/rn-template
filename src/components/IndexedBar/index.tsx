@@ -13,7 +13,7 @@ const windowHeight = Dimensions.get('screen').height;
 /**
  * 通讯录效果组件。
  */
-export function IndexedBar<T>({
+export function IndexedBar<T extends Obj>({
   data,
   indexHeight,
   itemHeight,
@@ -189,7 +189,7 @@ export function IndexedBar<T>({
  * @param headerHeight
  * @returns
  */
-function transformData<T>(
+function transformData<T extends Obj>(
   data: T[],
   extractKey: string,
   itemHeight: number,
