@@ -1,5 +1,5 @@
 import { NavigationProp, useNavigation } from '@react-navigation/native';
-import { Avatar, Button, Flex, helpers, Toast } from '@td-design/react-native';
+import { Avatar, Button, Flex, helpers, Toast, WhiteSpace } from '@td-design/react-native';
 import ImagePicker from '@td-design/react-native-image-picker';
 import { Container, CustomRefreshControl } from 'components';
 import { ImageBackground, ScrollView } from 'react-native';
@@ -28,6 +28,7 @@ export function Mine() {
           </Flex>
         </ImageBackground>
         <Button title="图表示例" onPress={() => navigation.navigate('Echarts')} />
+        <WhiteSpace />
         <Button title="系统设置" onPress={() => navigation.navigate('Settings')} />
       </ScrollView>
     </Container>
