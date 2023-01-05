@@ -2,8 +2,8 @@
 const shell = require('shelljs');
 
 function makePush({ environment, platform, description, mandatory, version }) {
-  let androidCmd = `appcenter codepush release-react -a thundersdata/rn-template-android -d ${environment} --description "${description}" -m "${mandatory}"`;
-  let iosCmd = `appcenter codepush release-react -a thundersdata/rn-template-ios -d ${environment} --description "${description}" -m "${mandatory}"`;
+  let androidCmd = `code-push release-react rnTemplate-android android -d ${environment} --description "${description}" -m "${mandatory}"`;
+  let iosCmd = `code-push release-react rnTemplate-ios ios -d ${environment} --description "${description}" -m "${mandatory}"`;
   if (version) {
     androidCmd += ` -t "${version}"`;
     iosCmd += ` -t "${version}"`;

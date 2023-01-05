@@ -1,17 +1,17 @@
 import { Notify } from '@td-design/react-native';
-import { useCallback } from 'react';
+import { useMemoizedFn } from '@td-design/rn-hooks';
 
 export function useToast() {
-  const toastSuccess = useCallback((content: string) => {
+  const toastSuccess = (content: string) => {
     Notify.success({ content });
-  }, []);
+  };
 
-  const toastFail = useCallback((content: string) => {
+  const toastFail = (content: string) => {
     Notify.fail({ content });
-  }, []);
+  };
 
   return {
-    toastSuccess,
-    toastFail,
+    toastSuccess: useMemoizedFn(toastSuccess),
+    toastFail: useMemoizedFn(toastFail),
   };
 }

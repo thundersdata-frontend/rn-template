@@ -2,11 +2,20 @@ import { useMemoizedFn, useRequest, useSafeState } from '@td-design/rn-hooks';
 import { Options, Service } from '@td-design/rn-hooks/lib/typescript/useRequest/types';
 import { LoginFailureEnum } from 'enums';
 import { useToast } from 'hooks/useToast';
+import { useMemo } from 'react';
 
 import { storageService } from '../services/StorageService';
 
 // 初始化 page
 export const INITIAL_PAGE = 1;
+export const INITIAL_PAGE_SIZE = 10;
+
+const DEFAULT_PARAMS = [
+  {
+    page: INITIAL_PAGE,
+    pageSize: INITIAL_PAGE_SIZE,
+  },
+];
 
 export type PageParams = { page: number; pageSize: number } & Record<string, unknown>;
 
@@ -19,8 +28,6 @@ export function useRefreshService<T, R extends Page<T> = Page<T>, P extends Page
 
   const [data, setData] = useSafeState<T[]>([]);
   const [allLoaded, setAllLoaded] = useSafeState(false);
-  const [refreshing, setRefreshing] = useSafeState(false);
-  const [loadingMore, setLoadingMore] = useSafeState(false);
 
   const promiseService = async (...args: P) => {
     if (!signedIn) {
@@ -44,23 +51,12 @@ export function useRefreshService<T, R extends Page<T> = Page<T>, P extends Page
 
   const {
     runAsync,
-    params,
+    params = DEFAULT_PARAMS,
     data: result,
+    loading,
   } = useRequest(promiseService, {
-    defaultParams: [
-      {
-        page: INITIAL_PAGE,
-        pageSize: 10,
-      },
-    ] as P,
+    defaultParams: DEFAULT_PARAMS as P,
     ...restOptions,
-    onBefore(params: P) {
-      if (params[0].page === INITIAL_PAGE) {
-        setRefreshing(true);
-      } else {
-        setLoadingMore(true);
-      }
-    },
     onSuccess(data: R, params: P) {
       // 对data进行处理
       const { list, page = INITIAL_PAGE, totalPage = 0, total = 0 } = data;
@@ -84,13 +80,6 @@ export function useRefreshService<T, R extends Page<T> = Page<T>, P extends Page
       onSuccess?.(data, params);
     },
     onError: handleError,
-    onFinally(params: P) {
-      if (params[0].page === INITIAL_PAGE) {
-        setRefreshing(false);
-      } else {
-        setLoadingMore(false);
-      }
-    },
   });
 
   /**
@@ -98,7 +87,7 @@ export function useRefreshService<T, R extends Page<T> = Page<T>, P extends Page
    */
   const onRefresh = async () => {
     try {
-      await runAsync({ ...params[0], pageSize: 10, page: INITIAL_PAGE });
+      await runAsync({ ...params[0], page: INITIAL_PAGE });
     } catch (error) {
       handleError(error, params as P);
     }
@@ -108,22 +97,47 @@ export function useRefreshService<T, R extends Page<T> = Page<T>, P extends Page
    * 加载下一页数据
    */
   const onLoadMore = async () => {
+    if (loading) return;
+
     try {
-      const { page, pageSize } = params[0];
+      const { page } = params[0];
       if (allLoaded || page >= (result?.totalPage ?? 0)) return;
-      await runAsync({ ...params[0], pageSize, page: page + 1 });
+
+      await runAsync({ ...params[0], page: page + 1 });
     } catch (error) {
       handleError(error, params as P);
     }
   };
 
   const onUpdate = async (params: P) => {
+    if (loading) return;
+
     try {
-      await runAsync({ ...params, pageSize: 10, page: INITIAL_PAGE });
+      await runAsync({ pageSize: 10, page: INITIAL_PAGE, ...params });
     } catch (error) {
       handleError(error, params as P);
     }
   };
+
+  const { refreshing, loadingMore } = useMemo(() => {
+    if (params.length > 0) {
+      const isFirstPage = params[0].page === INITIAL_PAGE;
+      if (isFirstPage) {
+        return {
+          refreshing: loading,
+          loadingMore: false,
+        };
+      }
+      return {
+        refreshing: false,
+        loadingMore: loading,
+      };
+    }
+    return {
+      refreshing: loading,
+      loadingMore: false,
+    };
+  }, [loading, params]);
 
   return {
     refreshing,
