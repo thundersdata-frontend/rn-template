@@ -10,7 +10,7 @@ export const textEllipsis = (text: string, length: number) => {
   return text;
 };
 
-export function convertNullToEmptyString<T>(obj: T) {
+export function convertNullToEmptyString(obj: Obj) {
   return produce(obj, draft => {
     Object.entries(draft as Obj).forEach(([key, val]) => {
       if (val === null || val === undefined) {
