@@ -217,7 +217,11 @@ android {
  * Refer https://developer.android.com/google/play/publishing/multiple-apks.html#using-a-version-code-scheme
 */
 private Integer generateVersionCode() {
-  return project.env.get("VERSION_CODE").toInteger();
+    String versionCode = project.env.get("VERSION_CODE");
+    if (versionCode) {
+        return versionCode.toInteger();
+    }
+    return 1;
 }
 
 /**
