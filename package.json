@@ -12,7 +12,9 @@
     "postinstall": "npx husky install && npx patch-package",
     "commit": "git-cz",
     "tsc": "tsc -p tsconfig.json",
-    "pod": "cd ios && pod install && cd .."
+    "pod": "cd ios && bundle exec pod install && cd ..",
+    "publish:android": "cd ./android && fastlane publish",
+    "publish:ios": "cd ./ios && fastlane publish"
   },
   "config": {
     "commitizen": {
@@ -37,7 +39,7 @@
     "@react-navigation/native-stack": "^6.9.7",
     "@shopify/flash-list": "^1.4.0",
     "@shopify/restyle": "2.0.0",
-    "@td-design/react-native": "^3.11.22",
+    "@td-design/react-native": "^3.12.1",
     "@td-design/react-native-echarts": "^5.4.0",
     "@td-design/react-native-image-picker": "^1.6.2",
     "@td-design/react-native-picker": "^1.9.4",
@@ -50,6 +52,7 @@
     "react-error-boundary": "^3.1.4",
     "react-native": "0.66.5",
     "react-native-background-timer": "^2.4.1",
+    "react-native-blob-util": "^0.17.1",
     "react-native-bootsplash": "^4.4.0",
     "react-native-code-push": "^7.0.5",
     "react-native-config": "^1.4.11",
@@ -66,12 +69,12 @@
     "react-native-svg": "^13.6.0",
     "react-native-webp-format": "^1.1.2",
     "react-native-webview": "^11.26.0",
-    "rn-fetch-blob": "^0.12.0",
     "umi-request": "^1.4.0"
   },
   "devDependencies": {
     "@babel/core": "^7.20.12",
     "@babel/runtime": "^7.20.7",
+    "@bam.tech/react-native-make": "^3.0.3",
     "@commitlint/cli": "^17.4.0",
     "@commitlint/config-conventional": "^17.4.0",
     "@react-native-community/eslint-config": "^3.2.0",

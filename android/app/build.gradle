@@ -186,12 +186,6 @@ android {
             signingConfig signingConfigs.release
             minifyEnabled enableProguardInReleaseBuilds
             proguardFiles getDefaultProguardFile("proguard-android.txt"), "proguard-rules.pro"
-
-            applicationVariants.all { variant ->
-                variant.outputs.all {
-                    outputFileName = "${project.env.get("APP_DISPLAY_NAME")}-v${variant.versionName}.apk"
-                }
-            }
         }
     }
 
