@@ -13,6 +13,8 @@ import { FlashListDemo2 } from 'modules/homepage/screens/flashlist/demo2';
 import { RefreshFlatListDemo } from 'modules/homepage/screens/flashlist/demo3';
 import { LocalModelDemo } from 'modules/homepage/screens/localmodel';
 import { LongForm } from 'modules/homepage/screens/longform';
+import { LocalImageDemo } from 'modules/homepage/screens/pictures/demo1';
+import { OnlineImageDemo } from 'modules/homepage/screens/pictures/demo2';
 import { WaterfallListDemo } from 'modules/homepage/screens/waterfall';
 import { Agreement } from 'modules/policy/screens/agreement';
 import { Privacy } from 'modules/policy/screens/privacy';
@@ -126,6 +128,20 @@ const MAIN_SCREENS = [
     component: ContactsDemo,
     options: {
       title: 'ContactsDemo示例',
+    },
+  },
+  {
+    name: 'LocalImageDemo',
+    component: LocalImageDemo,
+    options: {
+      title: '本地图片示例',
+    },
+  },
+  {
+    name: 'OnlineImageDemo',
+    component: OnlineImageDemo,
+    options: {
+      title: '网络图片示例',
     },
   },
   {

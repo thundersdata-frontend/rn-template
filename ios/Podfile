@@ -6,6 +6,7 @@ source 'https://mirrors.tuna.tsinghua.edu.cn/git/CocoaPods/Specs.git'
 platform :ios, '11.0'
 
 pod 'OpenSSL-Universal'
+pod 'SDWebImageWebPCoder'
 
 target 'rnTemplate' do
   config = use_native_modules!

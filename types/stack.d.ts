@@ -23,6 +23,8 @@ type MainStackParamList = {
   RefreshFlatListDemo: undefined;
   WaterfallListDemo: undefined;
   ContactsDemo: undefined;
+  LocalImageDemo: undefined;
+  OnlineImageDemo: undefined;
   Mine: undefined;
   Address: undefined;
   Echarts: undefined;
