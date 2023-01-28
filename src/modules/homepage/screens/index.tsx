@@ -39,6 +39,10 @@ export function Homepage() {
         <WhiteSpace />
         <Button title="长表单示例" onPress={() => navigation.navigate('LongFormDemo')} />
         <WhiteSpace />
+        <Button title="本地图片示例" onPress={() => navigation.navigate('LocalImageDemo')} />
+        <WhiteSpace />
+        <Button title="网络图片示例" onPress={() => navigation.navigate('OnlineImageDemo')} />
+        <WhiteSpace />
       </Center>
     </Container>
   );
