@@ -678,10 +678,14 @@ export const linking: LinkingOptions<AppParamList> = {
 };
 ```
 
-### 修改 cocopods 源：
+## 8. 修改 cocopods 源：
 
 ```code
 cd ~/.cocoapods/repos
 pod repo remove master
 git clone https://mirrors.tuna.tsinghua.edu.cn/git/CocoaPods/Specs.git master
 ```
+
+## 9. 集成 fastlane
+
+## 10. 集成 code-push 并配置私有化服务器

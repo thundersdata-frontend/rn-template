@@ -8,9 +8,10 @@ import Icon from './Icon';
 import { ImagePickerField } from './ImagePickerField';
 import { ImgCard } from './ImgCard';
 import { ImgList } from './ImgList';
-import { KeyboardAwareScrollView } from './KeyboardAwareScrollView';
+import { KeyboardAwareView } from './KeyboardAwareView';
 import { KeyboardShift } from './KeyboardShift';
 import { LargeList } from './LargeList';
+import { RefreshFlatList } from './RefreshFlatList';
 import { WaterfallList } from './WaterfallList';
 
 export {
@@ -21,11 +22,12 @@ export {
   CustomWebView,
   CustomHeader,
   CustomRefreshControl,
-  KeyboardAwareScrollView,
+  KeyboardAwareView,
   KeyboardShift,
   ImagePickerField,
   ImgList,
   ExitApp,
   LargeList,
   WaterfallList,
+  RefreshFlatList,
 };

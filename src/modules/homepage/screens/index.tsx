@@ -36,6 +36,9 @@ export function Homepage() {
               .catch(e => console.error(e))
           }
         />
+        <WhiteSpace />
+        <Button title="长表单示例" onPress={() => navigation.navigate('LongFormDemo')} />
+        <WhiteSpace />
       </Center>
     </Container>
   );

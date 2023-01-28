@@ -113,7 +113,7 @@ export function useRefreshService<T, R extends Page<T> = Page<T>, P extends Page
     if (loading) return;
 
     try {
-      await runAsync({ pageSize: 10, page: INITIAL_PAGE, ...params });
+      await runAsync({ ...params[0], pageSize: 10, page: INITIAL_PAGE });
     } catch (error) {
       handleError(error, params as P);
     }
