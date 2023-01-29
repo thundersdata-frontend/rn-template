@@ -1,16 +1,17 @@
 import { NavigationProp, useNavigation } from '@react-navigation/native';
 import { useTheme } from '@shopify/restyle';
-import { Box, Button, CountDown, Flex, Input, Radio, Text, WhiteSpace } from '@td-design/react-native';
+import { Box, Button, CountDown, Flex, Form, Input, Radio, Text, WhiteSpace } from '@td-design/react-native';
 import { Icon } from 'components';
 import { SmsTypeEnum } from 'enums';
 import { ErrorMessage } from 'modules/auth/components/ErrorMessage';
 import { useAuthService } from 'modules/auth/useAuthService';
-import Form, { Field, useForm } from 'rc-field-form';
 import { TouchableOpacity } from 'react-native';
 import { AppTheme } from 'theme';
 import { mobilePhoneRules } from 'utils/validators';
 
 import { LoginTab } from '../LoginTab';
+
+const { FormItem, useForm } = Form;
 
 const FormContent = ({ isSmsLogin }: { isSmsLogin: boolean }) => {
   const navigation = useNavigation<NavigationProp<AuthStackParamList & CommonStackParamList, 'SignIn'>>();
@@ -20,46 +21,40 @@ const FormContent = ({ isSmsLogin }: { isSmsLogin: boolean }) => {
     useAuthService(isSmsLogin);
 
   return (
-    <Form
-      component={false}
-      form={form}
-      onFinish={handleFinish}
-      onFinishFailed={submitFormFailed}
-      onValuesChange={handleFormValueChange}
-    >
+    <Form form={form} onFinish={handleFinish} onFinishFailed={submitFormFailed} onValuesChange={handleFormValueChange}>
       {isSmsLogin ? (
         <Box>
-          <Field name="phone" rules={mobilePhoneRules}>
+          <FormItem name="phone" rules={mobilePhoneRules}>
             <Input
               placeholder="请输入手机号"
               keyboardType="phone-pad"
               leftIcon={<Icon name="mobile" color={theme.colors.icon} />}
               allowClear
             />
-          </Field>
+          </FormItem>
           <WhiteSpace size="x6" />
-          <Field name="sms" rules={[{ required: true, message: '请输入验证码' }]}>
+          <FormItem name="sms" rules={[{ required: true, message: '请输入验证码' }]}>
             <CountDown
               bordered
               leftIcon={<Icon name="sms" color={theme.colors.icon} />}
               onBefore={() => beforeSendSms(form.getFieldValue('phone'))}
               onSend={() => smsSend({ mobile: form.getFieldValue('phone'), type: SmsTypeEnum.登录 })}
             />
-          </Field>
+          </FormItem>
         </Box>
       ) : (
         <Box>
-          <Field name="username" rules={[{ required: true, message: '请输入用户名' }]}>
+          <FormItem name="username" rules={[{ required: true, message: '请输入用户名' }]}>
             <Input placeholder="请输入用户名" leftIcon={<Icon name="user" color={theme.colors.icon} />} allowClear />
-          </Field>
+          </FormItem>
           <WhiteSpace size="x6" />
-          <Field name="password" rules={[{ required: true, message: '请输入密码' }]}>
+          <FormItem name="password" rules={[{ required: true, message: '请输入密码' }]}>
             <Input
               inputType="password"
               placeholder="请输入密码"
               leftIcon={<Icon name="password" color={theme.colors.icon} />}
             />
-          </Field>
+          </FormItem>
         </Box>
       )}
 
@@ -74,7 +69,7 @@ const FormContent = ({ isSmsLogin }: { isSmsLogin: boolean }) => {
         )}
       </Flex>
       <Button disabled={disabled} loading={loading} onPress={form.submit} title="登录" />
-      <Field name="agree" rules={[{ required: true, message: '请勾选用户协议和隐私政策' }]}>
+      <FormItem name="agree" rules={[{ required: true, message: '请勾选用户协议和隐私政策' }]}>
         <Radio
           size={14}
           containerStyle={{ marginVertical: 8 }}
@@ -114,7 +109,7 @@ const FormContent = ({ isSmsLogin }: { isSmsLogin: boolean }) => {
             },
           ]}
         />
-      </Field>
+      </FormItem>
       <TouchableOpacity activeOpacity={0.8} onPress={() => navigation.navigate('Register')}>
         <Text variant="p1" color="primary200" textDecorationLine="underline">
           去注册&gt;&gt;

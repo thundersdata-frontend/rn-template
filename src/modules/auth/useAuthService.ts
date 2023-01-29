@@ -1,4 +1,5 @@
 import { NavigationProp, useNavigation } from '@react-navigation/native';
+import type { Store, ValidateErrorEntity } from '@td-design/react-native';
 import { useMemoizedFn, useSafeState } from '@td-design/rn-hooks';
 import { useError } from 'hooks/useError';
 import { useToast } from 'hooks/useToast';
@@ -11,7 +12,6 @@ import {
   mockSendSms,
   mockUpdatePassword,
 } from 'modules/mock';
-import { Store, ValidateErrorEntity } from 'rc-field-form/es/interface';
 import { Keyboard } from 'react-native';
 import { storageService, StorageToken } from 'services/StorageService';
 import useStackService from 'stacks/useStackService';
