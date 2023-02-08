@@ -194,17 +194,19 @@ export default class MyGenerator extends CodeGenerator {
 
       const backEndUrl = Config['${this.dataSource.name}'];
 
-      // 初始值
-      export const init = ${initValue};
-      // 接口地址
+      /** 初始值 */
+      export const initialValue = ${initValue};
+      /** 接口地址 */
       export const url = "${inter.path}";
-
+      /** 用于取消请求 */ 
+      export const controller = new AbortController();
+      /** 请求方法，异常情况需要自己在业务端进行处理 */
       export async function fetch(${requestParams}) {
-        const request = await initRequest();
-        const result = await request.${requestObj.method}(backEndUrl + '${inter.path}', {
-          headers: {
-            'Content-Type': '${requestObj.contentType}',
-          },
+        const request = initRequest();
+        request.defaults.headers.common['Content-Type'] = '${requestObj.contentType}';
+
+        const result = await request.${requestObj.method}(backEndUrl + url, {
+          signal: controller.signal,
           ${requestStr},
         });
         return result;
