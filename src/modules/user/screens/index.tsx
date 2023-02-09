@@ -27,7 +27,7 @@ export function Mine() {
             </ImagePicker>
           </Flex>
         </ImageBackground>
-        <Button title="图表示例" onPress={() => navigation.navigate('Echarts')} />
+        <Button title="图表示例" onPress={() => navigation.navigate('EchartsDemo')} />
         <WhiteSpace />
         <Button title="系统设置" onPress={() => navigation.navigate('Settings')} />
       </ScrollView>

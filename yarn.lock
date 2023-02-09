@@ -1795,11 +1795,6 @@
     translation.js "^0.7.5"
     typescript "^3.9.10"
 
-"@td-design/react-native-echarts@^5.4.0":
-  version "5.4.0"
-  resolved "https://registry.npmmirror.com/@td-design/react-native-echarts/-/react-native-echarts-5.4.0.tgz#3be80a85ad55ffa73a5e982839f0dc57f3987ca4"
-  integrity sha512-3XwR0V0pVKMxodICky3EvD8kmD1RL7dgAD07/M/5ZVaTwrC6YZJ9iCuCkcQ4s3UT3LsHgpT52NSk19rW7CA+/g==
-
 "@td-design/react-native-image-picker@^1.6.3":
   version "1.6.3"
   resolved "https://registry.npmmirror.com/@td-design/react-native-image-picker/-/react-native-image-picker-1.6.3.tgz#a8d632d74dca48ebb9b66926c91d5e5c70b274cc"
@@ -2107,6 +2102,11 @@
   dependencies:
     "@typescript-eslint/types" "5.47.1"
     eslint-visitor-keys "^3.3.0"
+
+"@xmldom/xmldom@^0.8.6":
+  version "0.8.6"
+  resolved "https://registry.npmmirror.com/@xmldom/xmldom/-/xmldom-0.8.6.tgz#8a1524eb5bd5e965c1e3735476f0262469f71440"
+  integrity sha512-uRjjusqpoqfmRkTaNuLJ2VohVr67Q5YwDATW3VU7PfzTj6IRaihGrYI7zckGZjxQPBIp63nfvJbM+Yu5ICh0Bg==
 
 JSONStream@^1.0.4:
   version "1.3.5"
@@ -3727,6 +3727,14 @@ ecc-jsbn@~0.1.1:
     jsbn "~0.1.0"
     safer-buffer "^2.1.0"
 
+echarts@^5.4.1:
+  version "5.4.1"
+  resolved "https://registry.npmmirror.com/echarts/-/echarts-5.4.1.tgz#d7f65a584d78beff62568d878b16151b3381811c"
+  integrity sha512-9ltS3M2JB0w2EhcYjCdmtrJ+6haZcW6acBolMGIuf01Hql1yrIV01L1aRj7jsaaIULJslEP9Z3vKlEmnJaWJVQ==
+  dependencies:
+    tslib "2.3.0"
+    zrender "5.4.1"
+
 editor@1.0.0:
   version "1.0.0"
   resolved "https://registry.npmmirror.com/editor/-/editor-1.0.0.tgz#60c7f87bd62bcc6a894fa8ccd6afb7823a24f742"
@@ -3771,7 +3779,7 @@ end-of-stream@^1.1.0, end-of-stream@^1.4.1:
   dependencies:
     once "^1.4.0"
 
-entities@^4.2.0:
+entities@^4.2.0, entities@^4.4.0:
   version "4.4.0"
   resolved "https://registry.npmmirror.com/entities/-/entities-4.4.0.tgz#97bdaba170339446495e653cfd2db78962900174"
   integrity sha512-oYp7156SP8LkeGD0GF85ad1X9Ai79WtRsZ2gxJqtBuzH+98YUV6jkHEKlZkMbcrjJjIVJNIDP/3WL9wQkoPbWA==
@@ -9087,6 +9095,11 @@ ts-object-utils@0.0.5:
   resolved "https://registry.npmmirror.com/ts-object-utils/-/ts-object-utils-0.0.5.tgz#95361cdecd7e52167cfc5e634c76345e90a26077"
   integrity sha512-iV0GvHqOmilbIKJsfyfJY9/dNHCs969z3so90dQWsO1eMMozvTpnB1MEaUbb3FYtZTGjv5sIy/xmslEz0Rg2TA==
 
+tslib@2.3.0:
+  version "2.3.0"
+  resolved "https://registry.npmmirror.com/tslib/-/tslib-2.3.0.tgz#803b8cdab3e12ba581a4ca41c8839bbb0dacb09e"
+  integrity sha512-N82ooyxVNm6h1riLCoyS9e3fuJ3AMG2zIZs2Gd1ATcSFjSA23Q0fzjjZeh0jbJvWVDZ0cJT8yaNNaaXHzueNjg==
+
 tslib@2.4.0:
   version "2.4.0"
   resolved "https://registry.npmmirror.com/tslib/-/tslib-2.4.0.tgz#7cecaa7f073ce680a05847aa77be941098f36dc3"
@@ -9532,6 +9545,14 @@ write-file-atomic@^2.3.0:
     imurmurhash "^0.1.4"
     signal-exit "^3.0.2"
 
+wrn-echarts@^0.1.4:
+  version "0.1.4"
+  resolved "https://registry.npmmirror.com/wrn-echarts/-/wrn-echarts-0.1.4.tgz#2f2e2ce64bbda027bf37701c68c81e614bfa0d6e"
+  integrity sha512-5PbS/wPt2qM9gY3nthjRPc/LzYVIjkqnJwCIos+Q9T5CcfGvHnuM+dkeUMDBOxKyaP04T1dLOtIZAbz/JMPIzQ==
+  dependencies:
+    "@xmldom/xmldom" "^0.8.6"
+    entities "^4.4.0"
+
 ws@^1.1.0, ws@^1.1.5:
   version "1.1.5"
   resolved "https://registry.npmmirror.com/ws/-/ws-1.1.5.tgz#cbd9e6e75e09fc5d2c90015f21f0c40875e0dd51"
@@ -9712,3 +9733,10 @@ yocto-queue@^0.1.0:
   version "0.1.0"
   resolved "https://registry.npmmirror.com/yocto-queue/-/yocto-queue-0.1.0.tgz#0294eb3dee05028d31ee1a5fa2c556a6aaf10a1b"
   integrity sha512-rVksvsnNCdJ/ohGc6xgPwyN8eheCxsiLM8mxuE/t/mOVqJewPuO1miLpTHQiRgTKCLexL4MeAFVagts7HmNZ2Q==
+
+zrender@5.4.1:
+  version "5.4.1"
+  resolved "https://registry.npmmirror.com/zrender/-/zrender-5.4.1.tgz#892f864b885c71e1dc25dcb3c7a4ba42678d3f11"
+  integrity sha512-M4Z05BHWtajY2241EmMPHglDQAJ1UyHQcYsxDNzD9XLSkPDqMq4bB28v9Pb4mvHnVQ0GxyTklZ/69xCFP6RXBA==
+  dependencies:
+    tslib "2.3.0"

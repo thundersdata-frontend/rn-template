@@ -3,9 +3,9 @@ import { ConfigPass } from 'modules/auth/screens/configPass';
 import { ForgetPass } from 'modules/auth/screens/forgetPass';
 import { Register } from 'modules/auth/screens/register';
 import { SignIn } from 'modules/auth/screens/signIn';
-import { LineChart } from 'modules/charts/screens/line';
+import { LineChartDemo } from 'modules/charts/screens/line';
 import { EchartsRoot } from 'modules/charts/screens/main';
-import { MapChart } from 'modules/charts/screens/map';
+import { MapChartDemo } from 'modules/charts/screens/map';
 import { ContactsDemo } from 'modules/homepage/screens/contacts';
 import { FlashListDemo } from 'modules/homepage/screens/flashlist';
 import { FlashListDemo1 } from 'modules/homepage/screens/flashlist/demo1';
@@ -54,22 +54,22 @@ const MAIN_SCREENS = [
     },
   },
   {
-    name: 'Echarts',
+    name: 'EchartsDemo',
     component: EchartsRoot,
     options: {
       title: '图表展示',
     },
   },
   {
-    name: 'LineChart',
-    component: LineChart,
+    name: 'LineChartDemo',
+    component: LineChartDemo,
     options: {
       title: '折线图',
     },
   },
   {
-    name: 'MapChart',
-    component: MapChart,
+    name: 'MapChartDemo',
+    component: MapChartDemo,
     options: {
       title: '山东地图',
     },
