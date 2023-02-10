@@ -16,8 +16,10 @@
 		E4295970290BDFD900DD4F1A /* AppDelegate.mm in Sources */ = {isa = PBXBuildFile; fileRef = E429596F290BDFD900DD4F1A /* AppDelegate.mm */; };
 		E42E5C2E2661E0D3004C1AD9 /* OpenSSL.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = E42E5C2D2661E0D3004C1AD9 /* OpenSSL.xcframework */; };
 		E432122326098623007B1EAF /* BootSplash.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E432122226098623007B1EAF /* BootSplash.storyboard */; };
+		E4A203A82975582900A791EC /* libswiftWebKit.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = E4A203A72975582900A791EC /* libswiftWebKit.tbd */; };
 		E4C332ED2660BF21000354DA /* Config.xcconfig in Resources */ = {isa = PBXBuildFile; fileRef = E4C332EC2660BF21000354DA /* Config.xcconfig */; };
 		E4EB3EC2291B7E7F00A2A168 /* RNExitApp.m in Sources */ = {isa = PBXBuildFile; fileRef = E4EB3EC1291B7E7F00A2A168 /* RNExitApp.m */; };
+		E4F15830298658EC00D3005A /* Bridge.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4F1582F298658EC00D3005A /* Bridge.swift */; };
 		EC599CB824990C13BAF4CF2F /* libPods-rnTemplate.a in Frameworks */ = {isa = PBXBuildFile; fileRef = E42E5C2B2661E02B004C1AD9 /* libPods-rnTemplate.a */; };
 /* End PBXBuildFile section */
 
@@ -53,9 +55,12 @@
 		E42E5C2B2661E02B004C1AD9 /* libPods-rnTemplate.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; path = "libPods-rnTemplate.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		E42E5C2D2661E0D3004C1AD9 /* OpenSSL.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; name = OpenSSL.xcframework; path = "Pods/OpenSSL-Universal/Frameworks/OpenSSL.xcframework"; sourceTree = "<group>"; };
 		E432122226098623007B1EAF /* BootSplash.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = BootSplash.storyboard; path = rnTemplate/BootSplash.storyboard; sourceTree = "<group>"; };
+		E4A203A72975582900A791EC /* libswiftWebKit.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libswiftWebKit.tbd; path = usr/lib/swift/libswiftWebKit.tbd; sourceTree = SDKROOT; };
 		E4B70531275CD6AF00798E67 /* libRNBootSplash.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; path = libRNBootSplash.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		E4C332EC2660BF21000354DA /* Config.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = Config.xcconfig; sourceTree = "<group>"; };
 		E4EB3EC1291B7E7F00A2A168 /* RNExitApp.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RNExitApp.m; sourceTree = "<group>"; };
+		E4F1582E298658EB00D3005A /* rnTemplate-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "rnTemplate-Bridging-Header.h"; sourceTree = "<group>"; };
+		E4F1582F298658EC00D3005A /* Bridge.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Bridge.swift; sourceTree = "<group>"; };
 		ED297162215061F000B7C4FE /* JavaScriptCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = JavaScriptCore.framework; path = System/Library/Frameworks/JavaScriptCore.framework; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
 
@@ -72,6 +77,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E4A203A82975582900A791EC /* libswiftWebKit.tbd in Frameworks */,
 				E42E5C2E2661E0D3004C1AD9 /* OpenSSL.xcframework in Frameworks */,
 				EC599CB824990C13BAF4CF2F /* libPods-rnTemplate.a in Frameworks */,
 			);
@@ -107,6 +113,8 @@
 				13B07FB61A68108700A75B9A /* Info.plist */,
 				13B07FB71A68108700A75B9A /* main.m */,
 				E4EB3EC1291B7E7F00A2A168 /* RNExitApp.m */,
+				E4F1582F298658EC00D3005A /* Bridge.swift */,
+				E4F1582E298658EB00D3005A /* rnTemplate-Bridging-Header.h */,
 			);
 			name = rnTemplate;
 			sourceTree = "<group>";
@@ -125,6 +133,7 @@
 		2D16E6871FA4F8E400B85C8A /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				E4A203A72975582900A791EC /* libswiftWebKit.tbd */,
 				E4B70531275CD6AF00798E67 /* libRNBootSplash.a */,
 				E42E5C2D2661E0D3004C1AD9 /* OpenSSL.xcframework */,
 				E42E5C2B2661E02B004C1AD9 /* libPods-rnTemplate.a */,
@@ -190,7 +199,7 @@
 				00E356EB1AD99517003FC87E /* Frameworks */,
 				00E356EC1AD99517003FC87E /* Resources */,
 				EF3467009EEF48114F79D286 /* [CP] Copy Pods Resources */,
-				C435F0D40195A5829076BF93 /* [CP] Embed Pods Frameworks */,
+				4D88E2BB5F4E0A6CDAE584B7 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -213,7 +222,7 @@
 				13B07F8E1A680F5B00A75B9A /* Resources */,
 				00DD1BFF1BD5951E006B06BC /* Bundle React Native code and images */,
 				7C8C68EAF9B8E21DD6FD2B67 /* [CP] Copy Pods Resources */,
-				F60E40F135B246E432650F8A /* [CP] Embed Pods Frameworks */,
+				22DDFD4FA51DD323EA8EED04 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -237,7 +246,7 @@
 						TestTargetID = 13B07F861A680F5B00A75B9A;
 					};
 					13B07F861A680F5B00A75B9A = {
-						LastSwiftMigration = 1120;
+						LastSwiftMigration = 1340;
 					};
 				};
 			};
@@ -319,6 +328,40 @@
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
+		22DDFD4FA51DD323EA8EED04 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-rnTemplate/Pods-rnTemplate-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-rnTemplate/Pods-rnTemplate-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-rnTemplate/Pods-rnTemplate-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		4D88E2BB5F4E0A6CDAE584B7 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-rnTemplate-rnTemplateTests/Pods-rnTemplate-rnTemplateTests-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-rnTemplate-rnTemplateTests/Pods-rnTemplate-rnTemplateTests-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-rnTemplate-rnTemplateTests/Pods-rnTemplate-rnTemplateTests-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
 		7C8C68EAF9B8E21DD6FD2B67 /* [CP] Copy Pods Resources */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -358,23 +401,6 @@
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
-		C435F0D40195A5829076BF93 /* [CP] Embed Pods Frameworks */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-rnTemplate-rnTemplateTests/Pods-rnTemplate-rnTemplateTests-frameworks-${CONFIGURATION}-input-files.xcfilelist",
-			);
-			name = "[CP] Embed Pods Frameworks";
-			outputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-rnTemplate-rnTemplateTests/Pods-rnTemplate-rnTemplateTests-frameworks-${CONFIGURATION}-output-files.xcfilelist",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-rnTemplate-rnTemplateTests/Pods-rnTemplate-rnTemplateTests-frameworks.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
 		EF3467009EEF48114F79D286 /* [CP] Copy Pods Resources */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -390,23 +416,6 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-rnTemplate-rnTemplateTests/Pods-rnTemplate-rnTemplateTests-resources.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		F60E40F135B246E432650F8A /* [CP] Embed Pods Frameworks */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-rnTemplate/Pods-rnTemplate-frameworks-${CONFIGURATION}-input-files.xcfilelist",
-			);
-			name = "[CP] Embed Pods Frameworks";
-			outputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-rnTemplate/Pods-rnTemplate-frameworks-${CONFIGURATION}-output-files.xcfilelist",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-rnTemplate/Pods-rnTemplate-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		FD10A7F022414F080027D42C /* Start Packager */ = {
@@ -443,6 +452,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E4F15830298658EC00D3005A /* Bridge.swift in Sources */,
 				E4EB3EC2291B7E7F00A2A168 /* RNExitApp.m in Sources */,
 				E4295970290BDFD900DD4F1A /* AppDelegate.mm in Sources */,
 				13B07FC11A68108700A75B9A /* main.m in Sources */,
@@ -464,6 +474,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = CCBE26602843B01839D42DEA /* Pods-rnTemplate-rnTemplateTests.debug.xcconfig */;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				GCC_PREPROCESSOR_DEFINITIONS = (
 					"DEBUG=1",
@@ -491,6 +502,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = AF88308C921D25A3E834753E /* Pods-rnTemplate-rnTemplateTests.release.xcconfig */;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				COPY_PHASE_STRIP = NO;
 				INFOPLIST_FILE = rnTemplateTests/Info.plist;
@@ -526,6 +538,10 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(SDKROOT)/usr/lib/swift",
+				);
 				OTHER_LDFLAGS = (
 					"$(inherited)",
 					"-ObjC",
@@ -533,6 +549,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.thundersdata.rnTemplateApp;
 				PRODUCT_NAME = rnTemplate;
+				SWIFT_OBJC_BRIDGING_HEADER = "rnTemplate-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 5.0;
 				VERSIONING_SYSTEM = "apple-generic";
@@ -553,6 +570,10 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(SDKROOT)/usr/lib/swift",
+				);
 				OTHER_LDFLAGS = (
 					"$(inherited)",
 					"-ObjC",
@@ -560,6 +581,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.thundersdata.rnTemplateApp;
 				PRODUCT_NAME = rnTemplate;
+				SWIFT_OBJC_BRIDGING_HEADER = "rnTemplate-Bridging-Header.h";
 				SWIFT_VERSION = 5.0;
 				VERSIONING_SYSTEM = "apple-generic";
 			};

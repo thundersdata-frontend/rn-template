@@ -1,0 +1,8 @@
+app_identifier("com.thundersdata.rnTemplateApp") # The bundle identifier of your app
+apple_id("chj_0507_dz@sina.com") # Your Apple Developer Portal username
+
+itc_team_id("119060916") # App Store Connect Team ID
+team_id("3JFB8G72VV") # Developer Portal Team ID
+
+# For more information about the Appfile, see:
+#     https://docs.fastlane.tools/advanced/#appfile

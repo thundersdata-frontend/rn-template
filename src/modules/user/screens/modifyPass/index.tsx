@@ -1,16 +1,17 @@
 /**
  * 通过手机号登录时，设置登录密码
  */
+import { Container, Icon } from '@/components';
+import { ErrorMessage } from '@/modules/auth/components/ErrorMessage';
+import { useAuthService } from '@/modules/auth/useAuthService';
+import { AppTheme } from '@/theme';
+import { passwordPattern } from '@/utils/validators';
 import { useTheme } from '@shopify/restyle';
-import { Box, Button, helpers, Input, WhiteSpace, WingBlank } from '@td-design/react-native';
-import { Container, Icon } from 'components';
-import { ErrorMessage } from 'modules/auth/components/ErrorMessage';
-import { useAuthService } from 'modules/auth/useAuthService';
-import Form, { Field, useForm } from 'rc-field-form';
-import { AppTheme } from 'theme';
-import { passwordPattern } from 'utils/validators';
+import { Box, Button, Form, helpers, Input, WhiteSpace, WingBlank } from '@td-design/react-native';
+import { AvoidSoftInputView } from 'react-native-avoid-softinput';
 
 const { px } = helpers;
+const { FormItem, useForm } = Form;
 
 const FormContent = () => {
   const theme = useTheme<AppTheme>();
@@ -18,14 +19,8 @@ const FormContent = () => {
   const { error, clearError, submitFormFailed, modifyPassword } = useAuthService();
 
   return (
-    <Form
-      component={false}
-      form={form}
-      onFinish={modifyPassword}
-      onFinishFailed={submitFormFailed}
-      onValuesChange={clearError}
-    >
-      <Field
+    <Form form={form} onFinish={modifyPassword} onFinishFailed={submitFormFailed} onValuesChange={clearError}>
+      <FormItem
         name="oldPassword"
         rules={[
           { required: true, message: '请输入原密码' },
@@ -37,9 +32,9 @@ const FormContent = () => {
           inputType="password"
           leftIcon={<Icon name="password" color={theme.colors.icon} />}
         />
-      </Field>
+      </FormItem>
       <WhiteSpace size="x6" />
-      <Field
+      <FormItem
         name="password"
         rules={[
           { required: true, message: '请输入新密码' },
@@ -54,9 +49,9 @@ const FormContent = () => {
           inputType="password"
           leftIcon={<Icon name="password" color={theme.colors.icon} />}
         />
-      </Field>
+      </FormItem>
       <WhiteSpace size="x6" />
-      <Field
+      <FormItem
         name="confirmPass"
         dependencies={['password']}
         rules={[
@@ -76,7 +71,7 @@ const FormContent = () => {
           inputType="password"
           leftIcon={<Icon name="password" color={theme.colors.icon} />}
         />
-      </Field>
+      </FormItem>
       <Box height={px(32)} marginTop="x1">
         <ErrorMessage text={error} />
       </Box>
@@ -88,10 +83,12 @@ const FormContent = () => {
 export function ModifyPassword() {
   return (
     <Container>
-      <WhiteSpace size="x3" />
-      <WingBlank size="x3">
-        <FormContent />
-      </WingBlank>
+      <AvoidSoftInputView easing="easeIn" hideAnimationDuration={100} showAnimationDuration={100}>
+        <WhiteSpace size="x3" />
+        <WingBlank size="x3">
+          <FormContent />
+        </WingBlank>
+      </AvoidSoftInputView>
     </Container>
   );
 }

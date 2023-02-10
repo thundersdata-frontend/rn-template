@@ -1,9 +1,10 @@
+import { AppTheme } from '@/theme';
 import { useTheme } from '@shopify/restyle';
 import { Text } from '@td-design/react-native';
-import { Container } from 'components';
 import React from 'react';
 import { ActivityIndicator, View } from 'react-native';
-import { AppTheme } from 'theme';
+
+import { Container } from '../Container';
 
 export function Fallback() {
   const theme = useTheme<AppTheme>();

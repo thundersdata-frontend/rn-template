@@ -1,15 +1,28 @@
-import Echarts, { EchartsHandler } from '@td-design/react-native-echarts';
-import { Container } from 'components';
+import * as echarts from 'echarts/core';
+import { Container } from '@/components';
+import { MapChart } from 'echarts/charts';
+import { GeoComponent } from 'echarts/components';
 import { useEffect, useRef } from 'react';
+import SvgChart, { SVGRenderer } from 'wrn-echarts/lib/module/svgChart';
 
 import shandongMap from './370000.geo';
 
-export function MapChart() {
-  const chart = useRef<EchartsHandler>(null);
+echarts.use([MapChart, GeoComponent, SVGRenderer]);
+
+export function MapChartDemo() {
+  const chart = useRef<echarts.ECharts>();
+  const svgRef = useRef(null);
 
   useEffect(() => {
-    const timer = setTimeout(() => {
-      chart.current?.setOption({
+    if (svgRef.current) {
+      echarts.registerMap('shandong', shandongMap as any);
+      const instance = echarts.init(svgRef.current, 'light', {
+        renderer: 'svg',
+        width: 300,
+        height: 250,
+      });
+
+      instance.setOption({
         backgroundColor: '#000',
         geo: {
           map: 'shandong',
@@ -62,19 +75,16 @@ export function MapChart() {
           },
         ],
       });
-    }, 2000);
 
-    return () => clearTimeout(timer);
+      chart.current = instance;
+    }
+
+    return () => chart.current?.dispose();
   }, []);
-
-  const extraCode = `
-    var shandongMapData = ${JSON.stringify(shandongMap)};
-    echarts.registerMap('shandong', shandongMapData);
-  `;
 
   return (
     <Container>
-      <Echarts ref={chart} extraCode={extraCode} />
+      <SvgChart ref={svgRef} />
     </Container>
   );
 }

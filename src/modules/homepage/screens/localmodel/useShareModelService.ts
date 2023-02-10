@@ -1,7 +1,9 @@
+import { createShareModel } from '@/services/createShareModel';
+import { Form } from '@td-design/react-native';
+import type { Store, ValidateErrorEntity } from '@td-design/react-native';
 import { useMemoizedFn } from '@td-design/rn-hooks';
-import { useForm } from 'rc-field-form';
-import { Store, ValidateErrorEntity } from 'rc-field-form/es/interface';
-import { createShareModel } from 'services/createShareModel';
+
+const { useForm } = Form;
 
 function useLocalModelService() {
   const [form] = useForm();

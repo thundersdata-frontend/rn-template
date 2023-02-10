@@ -1,7 +1,6 @@
-import { NavigationProp, useNavigation } from '@react-navigation/native';
-import { useMemoizedFn, useSafeState } from '@td-design/rn-hooks';
-import { useError } from 'hooks/useError';
-import { useToast } from 'hooks/useToast';
+import { useError } from '@/hooks/useError';
+import { useNotify } from '@/hooks/useNotify';
+import useUpdateService from '@/hooks/useUpdateService';
 import {
   mockConfigPassword,
   mockFetchUserInfo,
@@ -10,18 +9,19 @@ import {
   mockResetPassword,
   mockSendSms,
   mockUpdatePassword,
-} from 'modules/mock';
-import { Store, ValidateErrorEntity } from 'rc-field-form/es/interface';
+} from '@/modules/mock';
+import { storageService, StorageToken } from '@/services/StorageService';
+import { mobilePattern } from '@/utils/validators';
+import { NavigationProp, useNavigation } from '@react-navigation/native';
+import type { Store, ValidateErrorEntity } from '@td-design/react-native';
+import { useMemoizedFn, useSafeState } from '@td-design/rn-hooks';
 import { Keyboard } from 'react-native';
-import { storageService, StorageToken } from 'services/StorageService';
-import useStackService from 'stacks/useStackService';
-import { mobilePattern } from 'utils/validators';
 
 export function useAuthService(isSmsLogin = true) {
-  const { update } = useStackService.useModel();
+  const { update } = useUpdateService.useModel();
   const navigation = useNavigation<NavigationProp<AuthStackParamList>>();
   const { convertErrorMsg } = useError();
-  const { toastFail, toastSuccess } = useToast();
+  const { failNotify, successNotify } = useNotify();
   const { updateStorage } = storageService;
 
   const [error, setError] = useSafeState('');
@@ -70,7 +70,7 @@ export function useAuthService(isSmsLogin = true) {
       update();
     } catch (error) {
       const message = convertErrorMsg(error);
-      toastFail(message);
+      failNotify(message);
     }
   };
 
@@ -168,21 +168,21 @@ export function useAuthService(isSmsLogin = true) {
       if (data) {
         navigation.navigate('ModifyPasswordResult');
       } else {
-        toastFail('修改密码失败');
+        failNotify('修改密码失败');
       }
     } catch (error) {
       const message = convertErrorMsg(error);
-      toastFail(message);
+      failNotify(message);
     }
   };
 
   /** 发送验证码之前的校验 */
   const beforeSendSms = (phone: string) => {
     if (!phone) {
-      toastFail('手机号为空');
+      failNotify('手机号为空');
       return Promise.resolve(false);
     } else if (!mobilePattern.test(phone)) {
-      toastFail('手机号格式不正确');
+      failNotify('手机号格式不正确');
       return Promise.resolve(false);
     }
     return Promise.resolve(true);
@@ -208,7 +208,7 @@ export function useAuthService(isSmsLogin = true) {
       setLoading(true);
       await mockRegister(values);
       setLoading(false);
-      toastSuccess('恭喜你，注册成功');
+      successNotify('恭喜你，注册成功');
       navigation.navigate('SignIn'); // 注册成功后去登录页面登录
     } catch (error) {
       setLoading(false);

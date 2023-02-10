@@ -256,12 +256,6 @@ android {
             signingConfig signingConfigs.release
             minifyEnabled enableProguardInReleaseBuilds
             proguardFiles getDefaultProguardFile("proguard-android.txt"), "proguard-rules.pro"
-
-            applicationVariants.all { variant ->
-                variant.outputs.all {
-                    outputFileName = "${project.env.get("APP_DISPLAY_NAME")}-v${variant.versionName}.apk"
-                }
-            }
         }
     }
 
@@ -287,7 +281,11 @@ android {
  * Refer https://developer.android.com/google/play/publishing/multiple-apks.html#using-a-version-code-scheme
 */
 private Integer generateVersionCode() {
-  return project.env.get("VERSION_CODE").toInteger();
+    String versionCode = project.env.get("VERSION_CODE");
+    if (versionCode) {
+        return versionCode.toInteger();
+    }
+    return 1;
 }
 
 /**
@@ -300,11 +298,10 @@ private String generateVersionName() {
 dependencies {
     implementation fileTree(dir: "libs", include: ["*.jar"])
     implementation "androidx.core:core:1.6.0" // <-- Add this
-    //noinspection GradleDynamicVersion
     implementation "com.facebook.react:react-native:+"  // From node_modules
-
-    implementation "androidx.core:core-splashscreen:1.0.0-alpha02" // <- react native bootsplash
     implementation "androidx.swiperefreshlayout:swiperefreshlayout:1.0.0"
+
+    implementation "androidx.core:core-splashscreen:1.0.0" // <- react native bootsplash
     implementation "com.github.zjupure:webpdecoder:2.0.4.12.0" // <- support animated webp
 
     debugImplementation("com.facebook.flipper:flipper:${FLIPPER_VERSION}") {
