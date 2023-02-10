@@ -1,17 +1,17 @@
 /**
  * 忘记密码页面
  */
+import { Icon } from '@/components';
+import { SmsTypeEnum } from '@/enums';
+import { AuthTemplate } from '@/modules/auth/components/AuthTemplate';
+import { ErrorMessage } from '@/modules/auth/components/ErrorMessage';
+import { useAuthService } from '@/modules/auth/useAuthService';
+import { AppTheme } from '@/theme';
+import { mobilePhoneRules, passwordRules } from '@/utils/validators';
 import { NavigationProp, useNavigation } from '@react-navigation/native';
 import { useTheme } from '@shopify/restyle';
 import { Box, Button, CountDown, Form, Input, WhiteSpace } from '@td-design/react-native';
-import { Icon } from 'components';
-import { SmsTypeEnum } from 'enums';
-import { AuthTemplate } from 'modules/auth/components/AuthTemplate';
-import { ErrorMessage } from 'modules/auth/components/ErrorMessage';
-import { useAuthService } from 'modules/auth/useAuthService';
 import { AvoidSoftInputView } from 'react-native-avoid-softinput';
-import { AppTheme } from 'theme';
-import { mobilePhoneRules, passwordRules } from 'utils/validators';
 
 const { FormItem, useForm } = Form;
 

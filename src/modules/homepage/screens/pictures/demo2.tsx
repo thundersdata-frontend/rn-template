@@ -1,5 +1,5 @@
+import { Container } from '@/components';
 import { Divider, Image, Text, WhiteSpace, WingBlank } from '@td-design/react-native';
-import { Container } from 'components';
 import { ScrollView } from 'react-native';
 
 export function OnlineImageDemo() {

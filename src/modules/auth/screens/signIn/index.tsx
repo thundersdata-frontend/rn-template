@@ -1,5 +1,5 @@
+import { Container } from '@/modules/auth/components/Container';
 import { useSafeState } from '@td-design/rn-hooks';
-import { Container } from 'modules/auth/components/Container';
 import { AvoidSoftInputView } from 'react-native-avoid-softinput';
 
 import { LoginForm } from './LoginForm';

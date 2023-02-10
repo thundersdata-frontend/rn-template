@@ -27,9 +27,9 @@ type MainStackParamList = {
   OnlineImageDemo: undefined;
   Mine: undefined;
   Address: undefined;
-  Echarts: undefined;
-  LineChart: undefined;
-  MapChart: undefined;
+  EchartsDemo: undefined;
+  LineChartDemo: undefined;
+  MapChartDemo: undefined;
   Settings: undefined;
   ModifyPassword: undefined;
   ModifyPasswordResult: undefined;

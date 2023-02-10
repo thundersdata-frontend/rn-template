@@ -1,3 +1,4 @@
+import { Container } from '@/components';
 import {
   Box,
   Button,
@@ -16,7 +17,6 @@ import {
 import type { Store, ValidateErrorEntity } from '@td-design/react-native';
 import ImagePicker from '@td-design/react-native-image-picker';
 import { DatePickerItem, PickerItem } from '@td-design/react-native-picker';
-import { Container } from 'components';
 import { ScrollView } from 'react-native';
 import { AvoidSoftInputView } from 'react-native-avoid-softinput';
 
