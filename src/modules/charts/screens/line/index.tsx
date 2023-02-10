@@ -1,6 +1,6 @@
 import * as echarts from 'echarts/core';
+import { Container } from '@/components';
 import { Button, WhiteSpace } from '@td-design/react-native';
-import { Container } from 'components';
 import { LineChart } from 'echarts/charts';
 import { GridComponent, TitleComponent, TooltipComponent } from 'echarts/components';
 import { useEffect, useRef } from 'react';

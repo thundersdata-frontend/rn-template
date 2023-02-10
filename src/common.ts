@@ -1,8 +1,8 @@
+import { storageService, StorageToken } from '@/services/StorageService';
 import axios from 'axios';
 import dayjs from 'dayjs';
 import { isEmpty } from 'lodash-es';
 import Config from 'react-native-config';
-import { storageService, StorageToken } from 'services/StorageService';
 
 export const initRequest = () => {
   const instance = axios.create({

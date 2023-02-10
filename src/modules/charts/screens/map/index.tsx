@@ -1,5 +1,5 @@
 import * as echarts from 'echarts/core';
-import { Container } from 'components';
+import { Container } from '@/components';
 import { MapChart } from 'echarts/charts';
 import { GeoComponent } from 'echarts/components';
 import { useEffect, useRef } from 'react';

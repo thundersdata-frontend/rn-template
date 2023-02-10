@@ -1,5 +1,5 @@
+import { createShareModel } from '@/services/createShareModel';
 import { useUpdate } from '@td-design/rn-hooks';
-import { createShareModel } from 'services/createShareModel';
 
 function useStackService() {
   const update = useUpdate();

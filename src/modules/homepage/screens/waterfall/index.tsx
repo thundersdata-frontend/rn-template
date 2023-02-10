@@ -1,6 +1,6 @@
+import { Container, WaterfallList } from '@/components';
+import { useRefreshService } from '@/hooks/useRefreshService';
 import { Box } from '@td-design/react-native';
-import { Container, WaterfallList } from 'components';
-import { useRefreshService } from 'hooks/useRefreshService';
 import { StyleSheet } from 'react-native';
 import FastImage from 'react-native-fast-image';
 

@@ -1,9 +1,10 @@
+import { AppTheme } from '@/theme';
 import { useTheme } from '@shopify/restyle';
 import { Flex, Text } from '@td-design/react-native';
-import { CustomRefreshControl } from 'components/CustomRefreshControl';
 import React from 'react';
 import { ActivityIndicator, FlatList, FlatListProps } from 'react-native';
-import { AppTheme } from 'theme';
+
+import { CustomRefreshControl } from '../CustomRefreshControl';
 
 export type RefreshFlatListProps<ItemT> = Omit<FlatListProps<ItemT>, 'onRefresh' | 'refreshing'> & {
   onRefresh?: () => Promise<void>;

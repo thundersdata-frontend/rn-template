@@ -1,17 +1,17 @@
 /**
  * 通过手机号登录时，设置登录密码
  */
+import { Icon } from '@/components';
+import { AuthTemplate } from '@/modules/auth/components/AuthTemplate';
+import { ErrorMessage } from '@/modules/auth/components/ErrorMessage';
+import { useAuthService } from '@/modules/auth/useAuthService';
+import { AppTheme } from '@/theme';
+import { passwordRules } from '@/utils/validators';
 import { useTheme } from '@shopify/restyle';
 import { Box, Button, Form, Input, WhiteSpace } from '@td-design/react-native';
 import type { Store } from '@td-design/react-native';
-import { Icon } from 'components';
-import { AuthTemplate } from 'modules/auth/components/AuthTemplate';
-import { ErrorMessage } from 'modules/auth/components/ErrorMessage';
-import { useAuthService } from 'modules/auth/useAuthService';
 import { FC } from 'react';
 import { AvoidSoftInputView } from 'react-native-avoid-softinput';
-import { AppTheme } from 'theme';
-import { passwordRules } from 'utils/validators';
 
 const { FormItem, useForm } = Form;
 

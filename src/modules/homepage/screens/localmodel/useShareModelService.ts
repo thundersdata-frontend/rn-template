@@ -1,7 +1,7 @@
+import { createShareModel } from '@/services/createShareModel';
 import { Form } from '@td-design/react-native';
 import type { Store, ValidateErrorEntity } from '@td-design/react-native';
 import { useMemoizedFn } from '@td-design/rn-hooks';
-import { createShareModel } from 'services/createShareModel';
 
 const { useForm } = Form;
 
