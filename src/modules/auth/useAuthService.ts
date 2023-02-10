@@ -1,5 +1,6 @@
 import { useError } from '@/hooks/useError';
 import { useNotify } from '@/hooks/useNotify';
+import useUpdateService from '@/hooks/useUpdateService';
 import {
   mockConfigPassword,
   mockFetchUserInfo,
@@ -10,7 +11,6 @@ import {
   mockUpdatePassword,
 } from '@/modules/mock';
 import { storageService, StorageToken } from '@/services/StorageService';
-import useStackService from '@/stacks/useStackService';
 import { mobilePattern } from '@/utils/validators';
 import { NavigationProp, useNavigation } from '@react-navigation/native';
 import type { Store, ValidateErrorEntity } from '@td-design/react-native';
@@ -18,7 +18,7 @@ import { useMemoizedFn, useSafeState } from '@td-design/rn-hooks';
 import { Keyboard } from 'react-native';
 
 export function useAuthService(isSmsLogin = true) {
-  const { update } = useStackService.useModel();
+  const { update } = useUpdateService.useModel();
   const navigation = useNavigation<NavigationProp<AuthStackParamList>>();
   const { convertErrorMsg } = useError();
   const { failNotify, successNotify } = useNotify();

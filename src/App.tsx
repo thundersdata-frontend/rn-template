@@ -1,7 +1,7 @@
 import { Fallback } from '@/components';
+import useUpdateService from '@/hooks/useUpdateService';
 import { linking } from '@/linking';
 import { navigationRef } from '@/services/NavigationService';
-import useStackService from '@/stacks/useStackService';
 import { darkTheme, lightTheme } from '@/theme';
 import NiceModal from '@ebay/nice-modal-react';
 import { useFlipper } from '@react-navigation/devtools';
@@ -36,7 +36,7 @@ const Main = () => {
       <GestureHandlerRootView style={{ flex: 1 }}>
         <JotaiProvider>
           <ThemeProvider theme={theme === 'dark' ? darkTheme : lightTheme}>
-            <useStackService.Provider>
+            <useUpdateService.Provider>
               <NiceModal.Provider>
                 <NavigationContainer
                   ref={navigationRef}
@@ -47,7 +47,7 @@ const Main = () => {
                   <Stack />
                 </NavigationContainer>
               </NiceModal.Provider>
-            </useStackService.Provider>
+            </useUpdateService.Provider>
           </ThemeProvider>
         </JotaiProvider>
       </GestureHandlerRootView>

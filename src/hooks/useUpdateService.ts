@@ -1,7 +1,7 @@
 import { createShareModel } from '@/services/createShareModel';
 import { useUpdate } from '@td-design/rn-hooks';
 
-function useStackService() {
+function useUpdateService() {
   const update = useUpdate();
 
   return {
@@ -9,4 +9,4 @@ function useStackService() {
   };
 }
 
-export default createShareModel(useStackService);
+export default createShareModel(useUpdateService);

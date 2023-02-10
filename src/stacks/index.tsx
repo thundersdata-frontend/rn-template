@@ -24,8 +24,6 @@ import { storageService } from '@/services/StorageService';
 import { TabStack } from '@/stacks/tabStack';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 
-import useStackService from './useStackService';
-
 const AUTH_SCREENS = [
   {
     name: 'SignIn',
@@ -180,8 +178,6 @@ const MODAL_SCREENS = [
 const Stack = createNativeStackNavigator();
 
 export default () => {
-  useStackService.useModel();
-
   const { confirmed, signedIn } = storageService;
   return (
     <Stack.Navigator
