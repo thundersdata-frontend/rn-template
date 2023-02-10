@@ -1719,20 +1719,20 @@
     dayjs "^1.11.6"
     lodash-es "^4.17.21"
 
-"@td-design/react-native@^4.0.4":
-  version "4.0.4"
-  resolved "https://registry.npmmirror.com/@td-design/react-native/-/react-native-4.0.4.tgz#7478791a2e06aacc175791bdc1708fdb11321092"
-  integrity sha512-78K+lfoYX1FMV1eXeimWUY45RkZeM23PHuMZgN9gScvrFx4LMBmNPpWGn7YLsA5RP9u+/m7vZvZVNDnTNasmGw==
+"@td-design/react-native@^4.0.7":
+  version "4.0.7"
+  resolved "https://registry.npmmirror.com/@td-design/react-native/-/react-native-4.0.7.tgz#fc0c9e98ec65b79e3653b911e2f725c01514920d"
+  integrity sha512-iK1VQ+6NyoAaTH0fXHGObMxg6Y6aKV1wmBGeqARbjtMMLfCstb9kuuIzCQKwr1LPYWACviZyy07C8akNEhWGSQ==
   dependencies:
     "@ebay/nice-modal-react" "^1.2.8"
-    "@td-design/rn-hooks" "^2.5.0"
+    "@td-design/rn-hooks" "^2.5.1"
     rc-field-form "^1.27.2"
     react-native-shadow-2 "^7.0.6"
 
-"@td-design/rn-hooks@^2.5.0":
-  version "2.5.0"
-  resolved "https://registry.npmmirror.com/@td-design/rn-hooks/-/rn-hooks-2.5.0.tgz#62f170158bd56713addf3dbffabd5531642f0683"
-  integrity sha512-64T8GGi4fYwUuTWDDkrXaQ9/pjv1HWndgF2oHAaqEkVlGVyVlc8SUblM/HK2uyns09IXpP42nGjHmugIkkhaPA==
+"@td-design/rn-hooks@^2.5.1":
+  version "2.5.1"
+  resolved "https://registry.npmmirror.com/@td-design/rn-hooks/-/rn-hooks-2.5.1.tgz#13ba629b00d4de58924f2b15506b0e569f78e9ff"
+  integrity sha512-NaYK5lZ6iLcxXPQKD7h9t5jbnkcKe7WfjPd9ARYOHFU5jSa90p5PMG729fdu1gNsIuYqlwgmZ7/LrRQuRR0REw==
   dependencies:
     lodash-es "^4.17.21"
 
