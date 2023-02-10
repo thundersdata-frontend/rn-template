@@ -1,17 +1,19 @@
 /**
  * 通过手机号登录时，设置登录密码
  */
+import { Icon } from '@/components';
+import { AuthTemplate } from '@/modules/auth/components/AuthTemplate';
+import { ErrorMessage } from '@/modules/auth/components/ErrorMessage';
+import { useAuthService } from '@/modules/auth/useAuthService';
+import { AppTheme } from '@/theme';
+import { passwordRules } from '@/utils/validators';
 import { useTheme } from '@shopify/restyle';
-import { Box, Button, Input, WhiteSpace } from '@td-design/react-native';
-import { Icon } from 'components';
-import { AuthTemplate } from 'modules/auth/components/AuthTemplate';
-import { ErrorMessage } from 'modules/auth/components/ErrorMessage';
-import { useAuthService } from 'modules/auth/useAuthService';
-import Form, { Field, useForm } from 'rc-field-form';
-import { Store } from 'rc-field-form/es/interface';
+import { Box, Button, Form, Input, WhiteSpace } from '@td-design/react-native';
+import type { Store } from '@td-design/react-native';
 import { FC } from 'react';
-import { AppTheme } from 'theme';
-import { passwordRules } from 'utils/validators';
+import { AvoidSoftInputView } from 'react-native-avoid-softinput';
+
+const { FormItem, useForm } = Form;
 
 const FormContent: FC<{ onFinish: (values: Store) => void }> = ({ onFinish }) => {
   const [form] = useForm();
@@ -19,22 +21,16 @@ const FormContent: FC<{ onFinish: (values: Store) => void }> = ({ onFinish }) =>
   const { error, clearError, submitFormFailed } = useAuthService();
 
   return (
-    <Form
-      component={false}
-      form={form}
-      onFinish={onFinish}
-      onFinishFailed={submitFormFailed}
-      onValuesChange={clearError}
-    >
-      <Field name="password" rules={passwordRules}>
+    <Form form={form} onFinish={onFinish} onFinishFailed={submitFormFailed} onValuesChange={clearError}>
+      <FormItem name="password" rules={passwordRules}>
         <Input
           placeholder="请输入密码"
           inputType="password"
           leftIcon={<Icon name="password" color={theme.colors.icon} />}
         />
-      </Field>
+      </FormItem>
       <WhiteSpace size="x6" />
-      <Field
+      <FormItem
         name="confirmPass"
         dependencies={['password']}
         rules={[
@@ -54,7 +50,7 @@ const FormContent: FC<{ onFinish: (values: Store) => void }> = ({ onFinish }) =>
           inputType="password"
           leftIcon={<Icon name="password" color={theme.colors.icon} />}
         />
-      </Field>
+      </FormItem>
       <Box height={32} marginTop="x1">
         <ErrorMessage text={error} />
       </Box>
@@ -69,8 +65,10 @@ export function ConfigPass() {
   };
 
   return (
-    <AuthTemplate title="设置密码" subtitle="6-20位字母和数字组合">
-      <FormContent onFinish={handleFinish} />
-    </AuthTemplate>
+    <AvoidSoftInputView easing="easeIn" hideAnimationDuration={100} showAnimationDuration={100}>
+      <AuthTemplate title="设置密码" subtitle="6-20位字母和数字组合">
+        <FormContent onFinish={handleFinish} />
+      </AuthTemplate>
+    </AvoidSoftInputView>
   );
 }

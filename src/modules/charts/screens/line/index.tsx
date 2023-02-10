@@ -1,22 +1,33 @@
+import * as echarts from 'echarts/core';
+import { Container } from '@/components';
 import { Button, WhiteSpace } from '@td-design/react-native';
-import Echarts, { EchartsHandler } from '@td-design/react-native-echarts';
-import { Container } from 'components';
+import { LineChart } from 'echarts/charts';
+import { GridComponent, TitleComponent, TooltipComponent } from 'echarts/components';
 import { useEffect, useRef } from 'react';
+import SvgChart, { SVGRenderer } from 'wrn-echarts/lib/module/svgChart';
 
-export function LineChart() {
-  const chart = useRef<EchartsHandler>(null);
+echarts.use([LineChart, GridComponent, TitleComponent, TooltipComponent, SVGRenderer]);
+
+export function LineChartDemo() {
+  const chart = useRef<echarts.ECharts>();
+  const svgRef = useRef(null);
 
   useEffect(() => {
-    const timer = setTimeout(() => {
-      chart.current?.setOption({
+    if (svgRef.current) {
+      const instance = echarts.init(svgRef.current, 'light', {
+        renderer: 'svg',
+        width: 300,
+        height: 250,
+      });
+      instance.setOption({
         tooltip: {
           trigger: 'axis',
-          formatter: `function (params) {
-              if (Array.isArray(params)) {
-                return params[0].name;
-              }
-              return params.name;
-            }`,
+          formatter: function (params: any) {
+            if (Array.isArray(params)) {
+              return params[0].name + ': ' + params[0].data;
+            }
+            return params.name + ': ' + params.data;
+          },
         },
         xAxis: {
           type: 'category',
@@ -27,14 +38,16 @@ export function LineChart() {
         },
         series: [
           {
-            data: [150, 230, 224, 218, 135, 147, 260],
+            data: [82, 93, 90, 93, 129, 46, 66],
             type: 'line',
           },
         ],
       });
-    }, 2000);
 
-    return () => clearTimeout(timer);
+      chart.current = instance;
+    }
+
+    return () => chart.current?.dispose();
   }, []);
 
   const modifyOptions = () => {
@@ -57,7 +70,7 @@ export function LineChart() {
       },
       series: [
         {
-          data: [82, 93, 90, 93, 129, 46, 66],
+          data: [82, 193, 190, 193, 129, 146, 66],
           type: 'line',
         },
       ],
@@ -70,7 +83,7 @@ export function LineChart() {
 
   return (
     <Container>
-      <Echarts ref={chart} />
+      <SvgChart ref={svgRef} />
       <Button title="修改图表数据" onPress={modifyOptions} />
       <WhiteSpace />
       <Button title="清除图表" onPress={clearChart} />

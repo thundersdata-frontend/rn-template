@@ -1,9 +1,9 @@
+import { AppTheme } from '@/theme';
 import { NavigationProp } from '@react-navigation/native';
 import { useTheme } from '@shopify/restyle';
 import { helpers, SvgIcon } from '@td-design/react-native';
 import { FC, ReactNode } from 'react';
 import { Platform, StyleSheet, TouchableOpacity, View } from 'react-native';
-import { AppTheme } from 'theme';
 
 const { px } = helpers;
 export const CustomHeader: FC<{

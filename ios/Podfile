@@ -5,7 +5,9 @@ source 'https://mirrors.tuna.tsinghua.edu.cn/git/CocoaPods/Specs.git'
 
 platform :ios, '11.0'
 
-pod 'OpenSSL-Universal'
+if ENV['CI']
+  pod 'OpenSSL-Universal'
+end
 pod 'SDWebImageWebPCoder'
 
 target 'rnTemplate' do

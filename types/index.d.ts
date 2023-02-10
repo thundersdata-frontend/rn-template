@@ -3,6 +3,8 @@ declare module '*.jpg';
 declare module '*.webp';
 declare module '*.gif';
 
+declare module 'wrn-echarts/lib/module/svgChart';
+
 interface Page<T> {
   list?: Array<T>;
   page?: number;

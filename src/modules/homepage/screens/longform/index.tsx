@@ -1,3 +1,4 @@
+import { Container } from '@/components';
 import {
   Box,
   Button,
@@ -13,11 +14,11 @@ import {
   WhiteSpace,
   WingBlank,
 } from '@td-design/react-native';
+import type { Store, ValidateErrorEntity } from '@td-design/react-native';
 import ImagePicker from '@td-design/react-native-image-picker';
 import { DatePickerItem, PickerItem } from '@td-design/react-native-picker';
-import { Container, KeyboardAwareView } from 'components';
-import { Store, ValidateErrorEntity } from 'rc-field-form/es/interface';
 import { ScrollView } from 'react-native';
+import { AvoidSoftInputView } from 'react-native-avoid-softinput';
 
 const { FormItem, FormListItem, useForm } = Form;
 const { InputItem, TextArea } = Input;
@@ -71,8 +72,12 @@ export function LongForm() {
 
   return (
     <Container>
-      <KeyboardAwareView>
-        <ScrollView>
+      <AvoidSoftInputView easing="easeIn" hideAnimationDuration={100} showAnimationDuration={100}>
+        <ScrollView
+          contentInsetAdjustmentBehavior="always"
+          overScrollMode="always"
+          showsVerticalScrollIndicator={false}
+        >
           <WingBlank>
             <Form form={form} onFinish={handleFinish} onFinishFailed={handleFinishFailed}>
               <FormItem name="username" rules={[{ required: true, message: '请输入用户名' }]}>
@@ -174,7 +179,7 @@ export function LongForm() {
             <Button title="提交" onPress={form.submit} />
           </WingBlank>
         </ScrollView>
-      </KeyboardAwareView>
+      </AvoidSoftInputView>
     </Container>
   );
 }

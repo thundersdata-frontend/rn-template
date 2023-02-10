@@ -1,17 +1,19 @@
 /**
  * 注册页面
  */
+import { Icon } from '@/components';
+import { SmsTypeEnum } from '@/enums';
+import { AuthTemplate } from '@/modules/auth/components/AuthTemplate';
+import { ErrorMessage } from '@/modules/auth/components/ErrorMessage';
+import { useAuthService } from '@/modules/auth/useAuthService';
+import { AppTheme } from '@/theme';
+import { mobilePhoneRules, passwordRules } from '@/utils/validators';
 import { NavigationProp, useNavigation } from '@react-navigation/native';
 import { useTheme } from '@shopify/restyle';
-import { Box, Button, CountDown, Input, WhiteSpace } from '@td-design/react-native';
-import { Icon } from 'components';
-import { SmsTypeEnum } from 'enums';
-import { AuthTemplate } from 'modules/auth/components/AuthTemplate';
-import { ErrorMessage } from 'modules/auth/components/ErrorMessage';
-import { useAuthService } from 'modules/auth/useAuthService';
-import Form, { Field, useForm } from 'rc-field-form';
-import { AppTheme } from 'theme';
-import { mobilePhoneRules, passwordRules } from 'utils/validators';
+import { Box, Button, CountDown, Form, Input, WhiteSpace } from '@td-design/react-native';
+import { AvoidSoftInputView } from 'react-native-avoid-softinput';
+
+const { FormItem, useForm } = Form;
 
 const FormContent = () => {
   const [form] = useForm();
@@ -19,14 +21,8 @@ const FormContent = () => {
   const { error, clearError, loading, beforeSendSms, smsSend, submitFormFailed, register } = useAuthService();
 
   return (
-    <Form
-      component={false}
-      form={form}
-      onFinish={register}
-      onFinishFailed={submitFormFailed}
-      onValuesChange={clearError}
-    >
-      <Field
+    <Form form={form} onFinish={register} onFinishFailed={submitFormFailed} onValuesChange={clearError}>
+      <FormItem
         name="username"
         rules={[
           { required: true, message: '请输入用户名' },
@@ -34,30 +30,30 @@ const FormContent = () => {
         ]}
       >
         <Input placeholder="请输入用户名" leftIcon={<Icon name="user" color={theme.colors.icon} />} allowClear />
-      </Field>
+      </FormItem>
       <WhiteSpace size="x6" />
-      <Field name="phone" rules={mobilePhoneRules}>
+      <FormItem name="phone" rules={mobilePhoneRules}>
         <Input placeholder="请输入手机号" leftIcon={<Icon name="mobile" color={theme.colors.icon} />} allowClear />
-      </Field>
+      </FormItem>
       <WhiteSpace size="x6" />
-      <Field name="code" rules={[{ required: true, message: '请输入验证码' }]}>
+      <FormItem name="code" rules={[{ required: true, message: '请输入验证码' }]}>
         <CountDown
           bordered
           leftIcon={<Icon name="sms" color={theme.colors.icon} />}
           onBefore={() => beforeSendSms(form.getFieldValue('phone'))}
           onSend={() => smsSend({ mobile: form.getFieldValue('phone'), type: SmsTypeEnum.注册 })}
         />
-      </Field>
+      </FormItem>
       <WhiteSpace size="x6" />
-      <Field name="password" rules={passwordRules}>
+      <FormItem name="password" rules={passwordRules}>
         <Input
           placeholder="请输入密码"
           inputType="password"
           leftIcon={<Icon name="password" color={theme.colors.icon} />}
         />
-      </Field>
+      </FormItem>
       <WhiteSpace size="x6" />
-      <Field
+      <FormItem
         name="againPassword"
         dependencies={['password']}
         rules={[
@@ -78,7 +74,7 @@ const FormContent = () => {
           inputType="password"
           leftIcon={<Icon name="password" color={theme.colors.icon} />}
         />
-      </Field>
+      </FormItem>
       <Box height={32} marginTop="x1">
         <ErrorMessage text={error} />
       </Box>
@@ -91,8 +87,10 @@ export function Register() {
   const navigation = useNavigation<NavigationProp<AuthStackParamList>>();
 
   return (
-    <AuthTemplate title="注册" subtitle="注册账号后才允许使用App" {...{ navigation }}>
-      <FormContent />
-    </AuthTemplate>
+    <AvoidSoftInputView easing="easeIn" hideAnimationDuration={100} showAnimationDuration={100}>
+      <AuthTemplate title="注册" subtitle="注册账号后才允许使用App" {...{ navigation }}>
+        <FormContent />
+      </AuthTemplate>
+    </AvoidSoftInputView>
   );
 }

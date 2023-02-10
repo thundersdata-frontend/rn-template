@@ -1,12 +1,12 @@
+import { Container } from '@/components';
 import { Divider, Image, Text, WhiteSpace, WingBlank } from '@td-design/react-native';
-import { Container } from 'components';
 import { ScrollView } from 'react-native';
 
-import animatedGif from './assets/animated-webp.gif';
 import animatedWebp from './assets/animated-webp.webp';
-import d3Jpg from './assets/d3.jpg';
-import d3Png from './assets/d3.png';
-import d3Webp from './assets/d3.webp';
+import animatedGif from './assets/animated.gif';
+import d3Jpg from './assets/d3Jpg.jpg';
+import d3Png from './assets/d3Png.png';
+import d3Webp from './assets/d3Webp.webp';
 
 export function LocalImageDemo() {
   return (
