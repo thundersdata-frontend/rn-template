@@ -1,9 +1,9 @@
+import { Container, ExitApp } from '@/components';
+import { storageService, StorageToken } from '@/services/StorageService';
+import { AppTheme } from '@/theme';
 import { NavigationProp, useNavigation } from '@react-navigation/native';
 import { useTheme } from '@shopify/restyle';
 import { Box, Center, Divider, Flex, helpers, Text, WhiteSpace, WingBlank } from '@td-design/react-native';
-import { Container, ExitApp } from 'components';
-import { storageService, StorageToken } from 'services/StorageService';
-import { AppTheme } from 'theme';
 
 const { updateStorage } = storageService;
 export const PrivacyConfirm = () => {

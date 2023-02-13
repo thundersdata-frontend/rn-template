@@ -1,10 +1,12 @@
+import { LoginFailureEnum } from '@/enums';
+import { useNotify } from '@/hooks/useNotify';
+import { useNetInfo } from '@react-native-community/netinfo';
 import { useMemoizedFn, useRequest, useSafeState } from '@td-design/rn-hooks';
 import { Options, Service } from '@td-design/rn-hooks/lib/typescript/useRequest/types';
-import { LoginFailureEnum } from 'enums';
-import { useToast } from 'hooks/useToast';
 import { useMemo } from 'react';
 
 import { storageService } from '../services/StorageService';
+import createRequestService from './createRequestService';
 
 // 初始化 page
 export const INITIAL_PAGE = 1;
@@ -23,20 +25,17 @@ export function useRefreshService<T, R extends Page<T> = Page<T>, P extends Page
   service: Service<R, P>,
   options?: Options<R, P>
 ) {
-  const { toastFail } = useToast();
+  const { failNotify } = useNotify();
   const { signedIn, signOut } = storageService;
+  const netInfo = useNetInfo();
+  console.log(netInfo);
+  const isOnline = !!netInfo.isConnected && !!netInfo.isInternetReachable;
+  const requestService = createRequestService(signedIn, service);
 
   const [data, setData] = useSafeState<T[]>([]);
   const [allLoaded, setAllLoaded] = useSafeState(false);
 
-  const promiseService = async (...args: P) => {
-    if (!signedIn) {
-      throw new Error(JSON.stringify({ code: LoginFailureEnum.登录过期 }));
-    }
-    return service(...args);
-  };
-
-  const { onSuccess, onError, ...restOptions } = options || {};
+  const { onSuccess, onError, refreshDeps = [], ready, ...restOptions } = options || {};
 
   const handleError = (err: unknown, params: P) => {
     const { code, message } = JSON.parse((err as Error).message);
@@ -45,7 +44,7 @@ export function useRefreshService<T, R extends Page<T> = Page<T>, P extends Page
         signOut();
       }
     }
-    toastFail(message);
+    failNotify(message);
     onError?.(err as Error, params);
   };
 
@@ -54,8 +53,10 @@ export function useRefreshService<T, R extends Page<T> = Page<T>, P extends Page
     params = DEFAULT_PARAMS,
     data: result,
     loading,
-  } = useRequest(promiseService, {
+  } = useRequest(requestService, {
     defaultParams: DEFAULT_PARAMS as P,
+    refreshDeps: [isOnline, ...refreshDeps],
+    ready: isOnline && ready,
     ...restOptions,
     onSuccess(data: R, params: P) {
       // 对data进行处理
@@ -113,7 +114,7 @@ export function useRefreshService<T, R extends Page<T> = Page<T>, P extends Page
     if (loading) return;
 
     try {
-      await runAsync({ pageSize: 10, page: INITIAL_PAGE, ...params });
+      await runAsync({ ...params[0], pageSize: 10, page: INITIAL_PAGE });
     } catch (error) {
       handleError(error, params as P);
     }

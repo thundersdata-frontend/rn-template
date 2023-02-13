@@ -140,7 +140,6 @@ export function LargeList<T>({
     if (refreshing) return null;
     if (renderFooter) return renderFooter(footerStatus);
 
-    console.log(footerStatus);
     switch (footerStatus) {
       case FooterStatus.CanLoadMore:
         return (
@@ -186,7 +185,7 @@ export function LargeList<T>({
       data={data}
       renderItem={renderItem}
       estimatedItemSize={estimatedItemSize}
-      ListEmptyComponent={ListEmptyComponent}
+      ListEmptyComponent={refreshing ? null : ListEmptyComponent}
       ListHeaderComponent={ListHeaderComponent}
       ListFooterComponent={ListFooterComponent}
       refreshControl={refreshControl}

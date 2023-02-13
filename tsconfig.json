@@ -23,7 +23,10 @@
     "resolveJsonModule": true,
     "skipLibCheck": true,
     "incremental": false,
-    "baseUrl": "./src",
+    "baseUrl": ".",
+    "paths": {
+      "@/*": ["./src/*"],
+    }
   },
   "exclude": [
     "node_modules",

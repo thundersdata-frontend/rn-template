@@ -1,0 +1,51 @@
+# This file contains the fastlane.tools configuration
+# You can find the documentation at https://docs.fastlane.tools
+#
+# For a list of all available actions, check out
+#
+#     https://docs.fastlane.tools/actions
+#
+# For a list of all available plugins, check out
+#
+#     https://docs.fastlane.tools/plugins/available-plugins
+#
+
+# Uncomment the line if you want fastlane to automatically update itself
+# update_fastlane
+
+default_platform(:ios)
+
+before_all do
+  # ensure_git_branch(branch: 'main')
+  # ensure_git_status_clean
+  # git_pull
+end
+
+platform :ios do
+  lane :build do
+    ENV["CI"] = "true"
+    cocoapods
+    gym(
+      workspace: "rnTemplate.xcworkspace", 
+      scheme: "rnTemplate(Production)",
+      include_bitcode: false,
+      include_symbols: false,
+      silent: true,
+      clean: true,
+      export_method: "development",   # Available options: app-store ad-hoc package enterprise development
+    )
+  end
+
+  lane :gofir do
+    fir_cli(
+      api_token: "ae1d65e6383eeb50b2723f85b5e30b2b",
+      changelog: "release a new version",
+      specify_file_path: "./rnTemplate.ipa",
+    )
+  end
+
+  lane :publish do
+    build
+    gofir
+  end
+end

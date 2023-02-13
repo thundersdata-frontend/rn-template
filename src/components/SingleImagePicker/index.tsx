@@ -1,8 +1,8 @@
+import { uploadFile } from '@/utils/upload';
 import ImageResizer from '@bam.tech/react-native-image-resizer';
 import { Toast } from '@td-design/react-native';
 import ImagePicker from '@td-design/react-native-image-picker';
 import { FC } from 'react';
-import { uploadFile } from 'utils/upload';
 
 import { ImgCard } from '../ImgCard';
 

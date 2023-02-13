@@ -1,3 +1,4 @@
+import { AppTheme } from '@/theme';
 import { RefreshControlProps, RNRefreshControl, RNRefreshHeader } from '@byron-react-native/refresh-control';
 import { useTheme } from '@shopify/restyle';
 import { useSafeState } from '@td-design/rn-hooks';
@@ -12,7 +13,6 @@ import {
   View,
   ViewStyle,
 } from 'react-native';
-import { AppTheme } from 'theme';
 
 export interface CustomRefreshControlRef {
   startRefresh: () => void;

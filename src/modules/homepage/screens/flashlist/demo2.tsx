@@ -1,6 +1,6 @@
+import { Container, LargeList } from '@/components';
+import { useRefreshService } from '@/hooks/useRefreshService';
 import { Box, Center, Text } from '@td-design/react-native';
-import { Container, LargeList } from 'components';
-import { useRefreshService } from 'hooks/useRefreshService';
 import { StyleSheet } from 'react-native';
 import FastImage from 'react-native-fast-image';
 

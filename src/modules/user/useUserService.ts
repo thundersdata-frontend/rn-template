@@ -1,16 +1,16 @@
+import { useError } from '@/hooks/useError';
+import { useNotify } from '@/hooks/useNotify';
+import useUpdateService from '@/hooks/useUpdateService';
+import { mockChangeAvatar, mockFetchUserInfo, mockUpdateUsername } from '@/modules/mock';
+import { storageService, StorageToken } from '@/services/StorageService';
+import { uploadFile } from '@/utils/upload';
 import { Toast } from '@td-design/react-native';
 import { File } from '@td-design/react-native-image-picker';
 import { useMemoizedFn } from '@td-design/rn-hooks';
-import { useError } from 'hooks/useError';
-import { useToast } from 'hooks/useToast';
-import { mockChangeAvatar, mockFetchUserInfo, mockUpdateUsername } from 'modules/mock';
-import { storageService, StorageToken } from 'services/StorageService';
-import useStackService from 'stacks/useStackService';
-import { uploadFile } from 'utils/upload';
 
 export function useUserService() {
-  const { update } = useStackService.useModel();
-  const { toastSuccess, toastFail } = useToast();
+  const { update } = useUpdateService.useModel();
+  const { successNotify, failNotify } = useNotify();
   const { convertErrorMsg } = useError();
   const { signOut, updateStorage } = storageService;
 
@@ -27,18 +27,18 @@ export function useUserService() {
         updateStorage(StorageToken.UserInfo, {
           profilePicture: data,
         });
-        toastSuccess('修改头像成功');
+        successNotify('修改头像成功');
       }
       return data;
     } catch (error) {
-      toastFail('修改头像失败');
+      failNotify('修改头像失败');
     }
   };
 
   // 修改昵称
   const updateNickname = async (value?: string) => {
     if (!value) {
-      toastFail('昵称输入为空');
+      failNotify('昵称输入为空');
       return;
     }
     try {
@@ -48,10 +48,10 @@ export function useUserService() {
         updateStorage(StorageToken.UserInfo, {
           userName: value,
         });
-        toastSuccess('修改昵称成功');
+        successNotify('修改昵称成功');
       }
     } catch (error) {
-      toastFail('修改昵称失败');
+      failNotify('修改昵称失败');
     }
   };
 
@@ -62,7 +62,7 @@ export function useUserService() {
       updateStorage(StorageToken.UserInfo, result);
     } catch (error) {
       const message = convertErrorMsg(error);
-      toastFail(message);
+      failNotify(message);
       // 用户信息获取失败自动认为登录失效
       logout();
     }
