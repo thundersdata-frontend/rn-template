@@ -1,7 +1,7 @@
+import { Container } from '@/components';
+import { useUserService } from '@/modules/user/useUserService';
 import { NavigationProp, useNavigation } from '@react-navigation/native';
 import { helpers, Image, Input, List, Modal } from '@td-design/react-native';
-import { Container } from 'components';
-import { useUserService } from 'modules/user/useUserService';
 
 const { px } = helpers;
 export function Settings() {

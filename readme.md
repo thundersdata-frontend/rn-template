@@ -718,10 +718,14 @@ HERMES_ENGINE_TARBALL_PATH="你的下载路径/hermes-runtime-darwin-v0.70.5.tar
 
 即可安装成功。具体可以参考：[https://github.com/facebook/react-native/issues/31505#issuecomment-1245424395](https://github.com/facebook/react-native/issues/31505#issuecomment-1245424395)
 
-### 修改 cocopods 源：
+### 9. 修改 cocopods 源：
 
 ```code
 cd ~/.cocoapods/repos
 pod repo remove master
 git clone https://mirrors.tuna.tsinghua.edu.cn/git/CocoaPods/Specs.git master
 ```
+
+## 10. 集成 fastlane
+
+## 11. 集成 code-push 并配置私有化服务器

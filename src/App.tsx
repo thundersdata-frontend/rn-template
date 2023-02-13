@@ -1,27 +1,25 @@
+import { Fallback } from '@/components';
+import useUpdateService from '@/hooks/useUpdateService';
+import { linking } from '@/linking';
+import { navigationRef } from '@/services/NavigationService';
+import { darkTheme, lightTheme } from '@/theme';
 import NiceModal from '@ebay/nice-modal-react';
 import { useFlipper } from '@react-navigation/devtools';
 import { DarkTheme, DefaultTheme, NavigationContainer } from '@react-navigation/native';
 import { helpers, ThemeProvider } from '@td-design/react-native';
-import { useMemoizedFn, useMount, useSafeState } from '@td-design/rn-hooks';
-import { Fallback } from 'components';
-import { useNetwork } from 'hooks/useNetwork';
-import { linking } from 'linking';
-import { useEffect } from 'react';
-import { Appearance } from 'react-native';
+import { useMount } from '@td-design/rn-hooks';
+import { Provider as JotaiProvider } from 'jotai';
+import { useColorScheme } from 'react-native';
 import { hide as hideSplash } from 'react-native-bootsplash';
 import codePush from 'react-native-code-push';
 import { GestureHandlerRootView } from 'react-native-gesture-handler';
 import { SafeAreaProvider } from 'react-native-safe-area-context';
-import { navigationRef } from 'services/NavigationService';
-import useStackService from 'stacks/useStackService';
-import { darkTheme, lightTheme } from 'theme';
 
 import Stack from './stacks';
 
 const Main = () => {
-  // 监听网络连接情况
-  useNetwork();
   useFlipper(navigationRef);
+  const theme = useColorScheme();
 
   useMount(() => {
     const init = async () => {
@@ -33,36 +31,25 @@ const Main = () => {
     });
   });
 
-  // 手机主题切换
-  const [theme, setTheme] = useSafeState(Appearance.getColorScheme());
-
-  const themeChange = useMemoizedFn(() => {
-    setTheme(Appearance.getColorScheme());
-  });
-
-  useEffect(() => {
-    const listener = Appearance.addChangeListener(themeChange);
-
-    return () => listener.remove();
-  });
-
   return (
     <SafeAreaProvider>
       <GestureHandlerRootView style={{ flex: 1 }}>
-        <ThemeProvider theme={theme === 'dark' ? darkTheme : lightTheme}>
-          <useStackService.Provider>
-            <NiceModal.Provider>
-              <NavigationContainer
-                ref={navigationRef}
-                linking={linking}
-                fallback={<Fallback />}
-                theme={theme === 'dark' ? DarkTheme : DefaultTheme}
-              >
-                <Stack />
-              </NavigationContainer>
-            </NiceModal.Provider>
-          </useStackService.Provider>
-        </ThemeProvider>
+        <JotaiProvider>
+          <ThemeProvider theme={theme === 'dark' ? darkTheme : lightTheme}>
+            <useUpdateService.Provider>
+              <NiceModal.Provider>
+                <NavigationContainer
+                  ref={navigationRef}
+                  linking={linking}
+                  fallback={<Fallback />}
+                  theme={theme === 'dark' ? DarkTheme : DefaultTheme}
+                >
+                  <Stack />
+                </NavigationContainer>
+              </NiceModal.Provider>
+            </useUpdateService.Provider>
+          </ThemeProvider>
+        </JotaiProvider>
       </GestureHandlerRootView>
     </SafeAreaProvider>
   );

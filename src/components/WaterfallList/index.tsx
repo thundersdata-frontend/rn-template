@@ -104,7 +104,6 @@ export function WaterfallList<T>({
     if (refreshing) return null;
     if (renderFooter) return renderFooter(footerStatus);
 
-    console.log(footerStatus);
     switch (footerStatus) {
       case FooterStatus.CanLoadMore:
         return (
@@ -151,7 +150,7 @@ export function WaterfallList<T>({
       numColumns={numColumns}
       renderItem={renderItem}
       estimatedItemSize={estimatedItemSize}
-      ListEmptyComponent={ListEmptyComponent}
+      ListEmptyComponent={refreshing ? null : ListEmptyComponent}
       ListHeaderComponent={ListHeaderComponent}
       ListFooterComponent={ListFooterComponent}
       refreshControl={refreshControl}

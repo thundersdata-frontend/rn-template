@@ -1,32 +1,29 @@
+import useUpdateService from '@/hooks/useUpdateService';
+import { ConfigPass } from '@/modules/auth/screens/configPass';
+import { ForgetPass } from '@/modules/auth/screens/forgetPass';
+import { Register } from '@/modules/auth/screens/register';
+import { SignIn } from '@/modules/auth/screens/signIn';
+import { LineChartDemo } from '@/modules/charts/screens/line';
+import { EchartsRoot } from '@/modules/charts/screens/main';
+import { MapChartDemo } from '@/modules/charts/screens/map';
+import { ContactsDemo } from '@/modules/homepage/screens/contacts';
+import { FlashListDemo } from '@/modules/homepage/screens/flashlist';
+import { FlashListDemo1 } from '@/modules/homepage/screens/flashlist/demo1';
+import { FlashListDemo2 } from '@/modules/homepage/screens/flashlist/demo2';
+import { RefreshFlatListDemo } from '@/modules/homepage/screens/flashlist/demo3';
+import { LocalModelDemo } from '@/modules/homepage/screens/localmodel';
+import { LongForm } from '@/modules/homepage/screens/longform';
+import { LocalImageDemo } from '@/modules/homepage/screens/pictures/demo1';
+import { OnlineImageDemo } from '@/modules/homepage/screens/pictures/demo2';
+import { WaterfallListDemo } from '@/modules/homepage/screens/waterfall';
+import { Agreement } from '@/modules/policy/screens/agreement';
+import { Privacy } from '@/modules/policy/screens/privacy';
+import { PrivacyConfirm } from '@/modules/policy/screens/privacyConfirm';
+import { ModifyPassword } from '@/modules/user/screens/modifyPass';
+import { Settings } from '@/modules/user/screens/settings';
+import { storageService } from '@/services/StorageService';
+import { TabStack } from '@/stacks/tabStack';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
-import { ConfigPass } from 'modules/auth/screens/configPass';
-import { ForgetPass } from 'modules/auth/screens/forgetPass';
-import { Register } from 'modules/auth/screens/register';
-// ----- 登录鉴权相关页面 START ---------------------------------------------------------------------------
-import { SignIn } from 'modules/auth/screens/signIn';
-import { LineChart } from 'modules/charts/screens/line';
-import { EchartsRoot } from 'modules/charts/screens/main';
-import { MapChart } from 'modules/charts/screens/map';
-import { ContactsDemo } from 'modules/homepage/screens/contacts';
-import { FlashListDemo } from 'modules/homepage/screens/flashlist';
-import { FlashListDemo1 } from 'modules/homepage/screens/flashlist/demo1';
-import { FlashListDemo2 } from 'modules/homepage/screens/flashlist/demo2';
-import { RefreshFlatListDemo } from 'modules/homepage/screens/flashlist/demo3';
-import { LocalModelDemo } from 'modules/homepage/screens/localmodel';
-import { WaterfallListDemo } from 'modules/homepage/screens/waterfall';
-import { Agreement } from 'modules/policy/screens/agreement';
-import { Privacy } from 'modules/policy/screens/privacy';
-import { PrivacyConfirm } from 'modules/policy/screens/privacyConfirm';
-import { ModifyPassword } from 'modules/user/screens/modifyPass';
-import { Settings } from 'modules/user/screens/settings';
-import { storageService } from 'services/StorageService';
-// ----- 登录鉴权相关页面 END ---------------------------------------------------------------------------
-// ----- 登录后相关页面 START ---------------------------------------------------------------------------
-import { TabStack } from 'stacks/tabStack';
-
-import useStackService from './useStackService';
-
-// ----- 登录后相关页面 START ---------------------------------------------------------------------------
 
 const AUTH_SCREENS = [
   {
@@ -56,22 +53,22 @@ const MAIN_SCREENS = [
     },
   },
   {
-    name: 'Echarts',
+    name: 'EchartsDemo',
     component: EchartsRoot,
     options: {
       title: '图表展示',
     },
   },
   {
-    name: 'LineChart',
-    component: LineChart,
+    name: 'LineChartDemo',
+    component: LineChartDemo,
     options: {
       title: '折线图',
     },
   },
   {
-    name: 'MapChart',
-    component: MapChart,
+    name: 'MapChartDemo',
+    component: MapChartDemo,
     options: {
       title: '山东地图',
     },
@@ -81,6 +78,13 @@ const MAIN_SCREENS = [
     component: LocalModelDemo,
     options: {
       title: '局部共享数据示例',
+    },
+  },
+  {
+    name: 'LongFormDemo',
+    component: LongForm,
+    options: {
+      title: '长表单示例',
     },
   },
   {
@@ -126,6 +130,20 @@ const MAIN_SCREENS = [
     },
   },
   {
+    name: 'LocalImageDemo',
+    component: LocalImageDemo,
+    options: {
+      title: '本地图片示例',
+    },
+  },
+  {
+    name: 'OnlineImageDemo',
+    component: OnlineImageDemo,
+    options: {
+      title: '网络图片示例',
+    },
+  },
+  {
     name: 'Settings',
     component: Settings,
     options: {
@@ -161,9 +179,9 @@ const MODAL_SCREENS = [
 const Stack = createNativeStackNavigator();
 
 export default () => {
-  useStackService.useModel();
-
+  useUpdateService.useModel();
   const { confirmed, signedIn } = storageService;
+
   return (
     <Stack.Navigator
       initialRouteName={confirmed ? (signedIn ? 'Tab' : 'SignIn') : 'PrivacyConfirm'}

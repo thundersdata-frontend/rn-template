@@ -1,5 +1,5 @@
+import { LoginFailureEnum } from '@/enums';
 import { useMemoizedFn } from '@td-design/rn-hooks';
-import { LoginFailureEnum } from 'enums';
 
 import { storageService } from '../services/StorageService';
 

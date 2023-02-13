@@ -1,8 +1,8 @@
+import { Container } from '@/components';
+import TestModal from '@/modals/TestModal';
 import NiceModal from '@ebay/nice-modal-react';
 import { NavigationProp, useNavigation } from '@react-navigation/native';
 import { Button, Center, WhiteSpace } from '@td-design/react-native';
-import { Container } from 'components';
-import TestModal from 'modals/TestModal';
 import codePush from 'react-native-code-push';
 import Config from 'react-native-config';
 
@@ -36,6 +36,13 @@ export function Homepage() {
               .catch(e => console.error(e))
           }
         />
+        <WhiteSpace />
+        <Button title="长表单示例" onPress={() => navigation.navigate('LongFormDemo')} />
+        <WhiteSpace />
+        <Button title="本地图片示例" onPress={() => navigation.navigate('LocalImageDemo')} />
+        <WhiteSpace />
+        <Button title="网络图片示例" onPress={() => navigation.navigate('OnlineImageDemo')} />
+        <WhiteSpace />
       </Center>
     </Container>
   );
