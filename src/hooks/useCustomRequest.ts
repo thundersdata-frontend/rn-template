@@ -13,11 +13,12 @@ export function useCustomRequest<R, P extends any[] = []>(service: Service<R, P>
   const netInfo = useNetInfo();
   const isOnline = !!netInfo.isConnected && !!netInfo.isInternetReachable;
 
-  const requestService = createRequestService(signedIn, isOnline, service);
+  const requestService = createRequestService(signedIn, service);
 
-  const { refreshDeps = [], onError, ...restOptions } = options || {};
+  const { refreshDeps = [], ready, onError, ...restOptions } = options || {};
   const result = useRequest(requestService, {
-    refreshDeps,
+    refreshDeps: [isOnline, ...refreshDeps],
+    ready: isOnline && ready,
     onError: (error: any, params: P) => {
       try {
         const { code, message } = JSON.parse(error.message);
