@@ -28,13 +28,14 @@ export function useRefreshService<T, R extends Page<T> = Page<T>, P extends Page
   const { failNotify } = useNotify();
   const { signedIn, signOut } = storageService;
   const netInfo = useNetInfo();
+  console.log(netInfo);
   const isOnline = !!netInfo.isConnected && !!netInfo.isInternetReachable;
-  const requestService = createRequestService(signedIn, isOnline, service);
+  const requestService = createRequestService(signedIn, service);
 
   const [data, setData] = useSafeState<T[]>([]);
   const [allLoaded, setAllLoaded] = useSafeState(false);
 
-  const { onSuccess, onError, ...restOptions } = options || {};
+  const { onSuccess, onError, refreshDeps = [], ready, ...restOptions } = options || {};
 
   const handleError = (err: unknown, params: P) => {
     const { code, message } = JSON.parse((err as Error).message);
@@ -54,6 +55,8 @@ export function useRefreshService<T, R extends Page<T> = Page<T>, P extends Page
     loading,
   } = useRequest(requestService, {
     defaultParams: DEFAULT_PARAMS as P,
+    refreshDeps: [isOnline, ...refreshDeps],
+    ready: isOnline && ready,
     ...restOptions,
     onSuccess(data: R, params: P) {
       // 对data进行处理
