@@ -1,3 +1,4 @@
+import useUpdateService from '@/hooks/useUpdateService';
 import { ConfigPass } from '@/modules/auth/screens/configPass';
 import { ForgetPass } from '@/modules/auth/screens/forgetPass';
 import { Register } from '@/modules/auth/screens/register';
@@ -178,7 +179,9 @@ const MODAL_SCREENS = [
 const Stack = createNativeStackNavigator();
 
 export default () => {
+  useUpdateService.useModel();
   const { confirmed, signedIn } = storageService;
+
   return (
     <Stack.Navigator
       initialRouteName={confirmed ? (signedIn ? 'Tab' : 'SignIn') : 'PrivacyConfirm'}
