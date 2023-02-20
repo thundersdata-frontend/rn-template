@@ -1,9 +1,11 @@
+import { useEffect, useRef } from 'react';
+
 import * as echarts from 'echarts/core';
-import { Container } from '@/components';
 import { MapChart } from 'echarts/charts';
 import { GeoComponent } from 'echarts/components';
-import { useEffect, useRef } from 'react';
 import SvgChart, { SVGRenderer } from 'wrn-echarts/lib/module/svgChart';
+
+import { Container } from '@/components';
 
 import shandongMap from './370000.geo';
 

@@ -1,8 +1,10 @@
-import { AppTheme } from '@/theme';
-import { useTheme } from '@shopify/restyle';
-import { Flex, Text } from '@td-design/react-native';
 import React from 'react';
 import { ActivityIndicator, FlatList, FlatListProps } from 'react-native';
+
+import { useTheme } from '@shopify/restyle';
+import { Flex, Text } from '@td-design/react-native';
+
+import { AppTheme } from '@/theme';
 
 import { CustomRefreshControl } from '../CustomRefreshControl';
 

@@ -1,8 +1,10 @@
-import { Container, WaterfallList } from '@/components';
-import { useRefreshService } from '@/hooks/useRefreshService';
-import { Box } from '@td-design/react-native';
 import { StyleSheet } from 'react-native';
 import FastImage from 'react-native-fast-image';
+
+import { Box } from '@td-design/react-native';
+
+import { Container, WaterfallList } from '@/components';
+import { useRefreshService } from '@/hooks/useRefreshService';
 
 interface DataType {
   imageUrl: string;

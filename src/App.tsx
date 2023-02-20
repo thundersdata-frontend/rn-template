@@ -1,19 +1,21 @@
-import { Fallback } from '@/components';
-import useUpdateService from '@/hooks/useUpdateService';
-import { linking } from '@/linking';
-import { navigationRef } from '@/services/NavigationService';
-import { darkTheme, lightTheme } from '@/theme';
+import { useColorScheme } from 'react-native';
+import { hide as hideSplash } from 'react-native-bootsplash';
+import codePush from 'react-native-code-push';
+import { GestureHandlerRootView } from 'react-native-gesture-handler';
+import { SafeAreaProvider } from 'react-native-safe-area-context';
+
 import NiceModal from '@ebay/nice-modal-react';
 import { useFlipper } from '@react-navigation/devtools';
 import { DarkTheme, DefaultTheme, NavigationContainer } from '@react-navigation/native';
 import { helpers, ThemeProvider } from '@td-design/react-native';
 import { useMount } from '@td-design/rn-hooks';
 import { Provider as JotaiProvider } from 'jotai';
-import { useColorScheme } from 'react-native';
-import { hide as hideSplash } from 'react-native-bootsplash';
-import codePush from 'react-native-code-push';
-import { GestureHandlerRootView } from 'react-native-gesture-handler';
-import { SafeAreaProvider } from 'react-native-safe-area-context';
+
+import { Fallback } from '@/components';
+import useUpdateService from '@/hooks/useUpdateService';
+import { linking } from '@/linking';
+import { navigationRef } from '@/services/NavigationService';
+import { darkTheme, lightTheme } from '@/theme';
 
 import Stack from './stacks';
 

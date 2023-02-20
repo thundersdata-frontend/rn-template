@@ -1,8 +1,9 @@
+import { useMemo, useRef, useState } from 'react';
+import { Dimensions, NativeScrollEvent, NativeSyntheticEvent, Pressable, ScrollView } from 'react-native';
+
 import { FlashList, FlashListProps } from '@shopify/flash-list';
 import { Box, helpers, Text } from '@td-design/react-native';
 import { useMemoizedFn } from '@td-design/rn-hooks';
-import { useMemo, useRef, useState } from 'react';
-import { Dimensions, NativeScrollEvent, NativeSyntheticEvent, Pressable, ScrollView } from 'react-native';
 
 import { Container } from '../Container';
 import { CustomRefreshControl } from '../CustomRefreshControl';

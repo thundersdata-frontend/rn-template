@@ -1,3 +1,5 @@
+import { createNativeStackNavigator } from '@react-navigation/native-stack';
+
 import useUpdateService from '@/hooks/useUpdateService';
 import { ConfigPass } from '@/modules/auth/screens/configPass';
 import { ForgetPass } from '@/modules/auth/screens/forgetPass';
@@ -23,7 +25,6 @@ import { ModifyPassword } from '@/modules/user/screens/modifyPass';
 import { Settings } from '@/modules/user/screens/settings';
 import { storageService } from '@/services/StorageService';
 import { TabStack } from '@/stacks/tabStack';
-import { createNativeStackNavigator } from '@react-navigation/native-stack';
 
 const AUTH_SCREENS = [
   {

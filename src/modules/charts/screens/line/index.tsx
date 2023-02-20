@@ -1,10 +1,12 @@
+import { useEffect, useRef } from 'react';
+
 import * as echarts from 'echarts/core';
-import { Container } from '@/components';
 import { Button, WhiteSpace } from '@td-design/react-native';
 import { LineChart } from 'echarts/charts';
 import { GridComponent, TitleComponent, TooltipComponent } from 'echarts/components';
-import { useEffect, useRef } from 'react';
 import SvgChart, { SVGRenderer } from 'wrn-echarts/lib/module/svgChart';
+
+import { Container } from '@/components';
 
 echarts.use([LineChart, GridComponent, TitleComponent, TooltipComponent, SVGRenderer]);
 
