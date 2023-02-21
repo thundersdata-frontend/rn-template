@@ -3,6 +3,7 @@
  */
 import { FC, useEffect } from 'react';
 import { StyleSheet, View } from 'react-native';
+import { KeyboardInsetsView } from 'react-native-keyboard-insets';
 import Animated, { useAnimatedStyle, useDerivedValue, useSharedValue, withSpring } from 'react-native-reanimated';
 import { mix } from 'react-native-redash';
 
@@ -73,7 +74,9 @@ export const AuthTemplate: FC<{
           </Text>
         )}
       </View>
-      <Animated.View style={[styles.card, style]}>{children}</Animated.View>
+      <KeyboardInsetsView extraHeight={8}>
+        <Animated.View style={[styles.card, style]}>{children}</Animated.View>
+      </KeyboardInsetsView>
     </Container>
   );
 };

@@ -48,6 +48,7 @@ const Main = () => {
                 >
                   <Stack />
                 </NavigationContainer>
+                {/* {Platform.OS === 'android' && <SafeAreaView mode="margin" edges={['bottom']} />} */}
               </NiceModal.Provider>
             </useUpdateService.Provider>
           </ThemeProvider>

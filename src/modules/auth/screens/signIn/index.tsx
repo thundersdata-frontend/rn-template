@@ -1,5 +1,3 @@
-import { AvoidSoftInputView } from 'react-native-avoid-softinput';
-
 import { useSafeState } from '@td-design/rn-hooks';
 
 import { Container } from '@/modules/auth/components/Container';
@@ -14,14 +12,12 @@ export function SignIn() {
 
   return (
     <Container>
-      <AvoidSoftInputView easing="easeIn" hideAnimationDuration={100} showAnimationDuration={100}>
-        {/* logo和欢迎语 */}
-        <Logo />
-        {/* 登录表单 */}
-        <LoginForm {...{ isSmsLogin, changeTab: setActiveKey }} />
-        {/* 底部第三方登录 */}
-        <ThirdPartyLogin />
-      </AvoidSoftInputView>
+      {/* logo和欢迎语 */}
+      <Logo />
+      {/* 登录表单 */}
+      <LoginForm {...{ isSmsLogin, changeTab: setActiveKey }} />
+      {/* 底部第三方登录 */}
+      <ThirdPartyLogin />
     </Container>
   );
 }

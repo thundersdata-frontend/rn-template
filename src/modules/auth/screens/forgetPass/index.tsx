@@ -1,8 +1,6 @@
 /**
  * 忘记密码页面
  */
-import { AvoidSoftInputView } from 'react-native-avoid-softinput';
-
 import { NavigationProp, useNavigation } from '@react-navigation/native';
 import { useTheme } from '@shopify/restyle';
 import { Box, Button, CountDown, Form, Input, WhiteSpace } from '@td-design/react-native';
@@ -79,14 +77,12 @@ export function ForgetPass() {
   const navigation = useNavigation<NavigationProp<AuthStackParamList>>();
 
   return (
-    <AvoidSoftInputView easing="easeIn" hideAnimationDuration={100} showAnimationDuration={100}>
-      <AuthTemplate
-        title="找回密码"
-        subtitle="为了保证您的账户安全，1天只能操作1次，否则账户将会被锁定无法登录"
-        {...{ navigation }}
-      >
-        <FormContent />
-      </AuthTemplate>
-    </AvoidSoftInputView>
+    <AuthTemplate
+      title="找回密码"
+      subtitle="为了保证您的账户安全，1天只能操作1次，否则账户将会被锁定无法登录"
+      {...{ navigation }}
+    >
+      <FormContent />
+    </AuthTemplate>
   );
 }

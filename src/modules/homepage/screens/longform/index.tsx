@@ -1,5 +1,5 @@
 import { ScrollView } from 'react-native';
-import { AvoidSoftInputView } from 'react-native-avoid-softinput';
+import { KeyboardInsetsView } from 'react-native-keyboard-insets';
 
 import {
   Box,
@@ -74,7 +74,7 @@ export function LongForm() {
 
   return (
     <Container>
-      <AvoidSoftInputView easing="easeIn" hideAnimationDuration={100} showAnimationDuration={100}>
+      <KeyboardInsetsView style={{ flex: 1 }} extraHeight={8}>
         <ScrollView
           contentInsetAdjustmentBehavior="always"
           overScrollMode="always"
@@ -181,7 +181,7 @@ export function LongForm() {
             <Button title="提交" onPress={form.submit} />
           </WingBlank>
         </ScrollView>
-      </AvoidSoftInputView>
+      </KeyboardInsetsView>
     </Container>
   );
 }
