@@ -1,7 +1,8 @@
-import { MasonryFlashList, MasonryFlashListProps } from '@shopify/flash-list';
-import { Flex, Text } from '@td-design/react-native';
 import { useRef, useState } from 'react';
 import { ActivityIndicator, NativeScrollEvent, NativeSyntheticEvent } from 'react-native';
+
+import { MasonryFlashList, MasonryFlashListProps } from '@shopify/flash-list';
+import { Flex, Text } from '@td-design/react-native';
 
 import { CustomRefreshControl } from '../CustomRefreshControl';
 
