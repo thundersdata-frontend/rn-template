@@ -3,7 +3,7 @@ import { useEffect, useRef } from 'react';
 import * as echarts from 'echarts/core';
 import { MapChart } from 'echarts/charts';
 import { GeoComponent } from 'echarts/components';
-import SvgChart, { SVGRenderer } from 'wrn-echarts/lib/module/svgChart';
+import SvgChart, { SVGRenderer } from 'wrn-echarts/svgChart';
 
 import { Container } from '@/components';
 

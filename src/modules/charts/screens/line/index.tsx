@@ -4,7 +4,7 @@ import * as echarts from 'echarts/core';
 import { Button, WhiteSpace } from '@td-design/react-native';
 import { LineChart } from 'echarts/charts';
 import { GridComponent, TitleComponent, TooltipComponent } from 'echarts/components';
-import SvgChart, { SVGRenderer } from 'wrn-echarts/lib/module/svgChart';
+import SvgChart, { SVGRenderer } from 'wrn-echarts/svgChart';
 
 import { Container } from '@/components';
 
