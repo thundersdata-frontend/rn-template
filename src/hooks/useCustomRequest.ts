@@ -1,7 +1,8 @@
-import { LoginFailureEnum } from '@/enums';
 import { useNetInfo } from '@react-native-community/netinfo';
 import { useRequest } from '@td-design/rn-hooks';
 import type { Options, Service } from '@td-design/rn-hooks/lib/typescript/useRequest/types';
+
+import { LoginFailureEnum } from '@/enums';
 
 import { storageService } from '../services/StorageService';
 import createRequestService from './createRequestService';

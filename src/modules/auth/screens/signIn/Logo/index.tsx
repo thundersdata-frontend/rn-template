@@ -1,6 +1,7 @@
-import { AppTheme } from '@/theme';
 import { useTheme } from '@shopify/restyle';
 import { Box, helpers, Image, Text } from '@td-design/react-native';
+
+import { AppTheme } from '@/theme';
 
 const { px } = helpers;
 export function Logo() {

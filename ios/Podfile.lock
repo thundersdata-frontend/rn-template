@@ -415,11 +415,9 @@ PODS:
     - React-jsi (= 0.70.5)
     - React-logger (= 0.70.5)
     - React-perflogger (= 0.70.5)
-  - ReactNativeAvoidSoftinput (3.1.4):
-    - React-Core
   - ReactNativeExceptionHandler (2.10.10):
     - React-Core
-  - RNBootSplash (4.5.0):
+  - RNBootSplash (4.5.2):
     - React-Core
   - RNCClipboard (1.11.1):
     - React-Core
@@ -434,6 +432,8 @@ PODS:
   - RNFlashList (1.4.1):
     - React-Core
   - RNGestureHandler (2.8.0):
+    - React-Core
+  - RNKeyboardInsets (1.3.1):
     - React-Core
   - RNReanimated (2.13.0):
     - DoubleConversion
@@ -549,7 +549,6 @@ DEPENDENCIES:
   - React-RCTVibration (from `../node_modules/react-native/Libraries/Vibration`)
   - React-runtimeexecutor (from `../node_modules/react-native/ReactCommon/runtimeexecutor`)
   - ReactCommon/turbomodule/core (from `../node_modules/react-native/ReactCommon`)
-  - ReactNativeAvoidSoftinput (from `../node_modules/react-native-avoid-softinput`)
   - ReactNativeExceptionHandler (from `../node_modules/react-native-exception-handler`)
   - RNBootSplash (from `../node_modules/react-native-bootsplash`)
   - "RNCClipboard (from `../node_modules/@react-native-clipboard/clipboard`)"
@@ -558,6 +557,7 @@ DEPENDENCIES:
   - RNFastImage (from `../node_modules/react-native-fast-image`)
   - "RNFlashList (from `../node_modules/@shopify/flash-list`)"
   - RNGestureHandler (from `../node_modules/react-native-gesture-handler`)
+  - RNKeyboardInsets (from `../node_modules/react-native-keyboard-insets`)
   - RNReanimated (from `../node_modules/react-native-reanimated`)
   - RNScreens (from `../node_modules/react-native-screens`)
   - RNSVG (from `../node_modules/react-native-svg`)
@@ -679,8 +679,6 @@ EXTERNAL SOURCES:
     :path: "../node_modules/react-native/ReactCommon/runtimeexecutor"
   ReactCommon:
     :path: "../node_modules/react-native/ReactCommon"
-  ReactNativeAvoidSoftinput:
-    :path: "../node_modules/react-native-avoid-softinput"
   ReactNativeExceptionHandler:
     :path: "../node_modules/react-native-exception-handler"
   RNBootSplash:
@@ -697,6 +695,8 @@ EXTERNAL SOURCES:
     :path: "../node_modules/@shopify/flash-list"
   RNGestureHandler:
     :path: "../node_modules/react-native-gesture-handler"
+  RNKeyboardInsets:
+    :path: "../node_modules/react-native-keyboard-insets"
   RNReanimated:
     :path: "../node_modules/react-native-reanimated"
   RNScreens:
@@ -769,15 +769,15 @@ SPEC CHECKSUMS:
   React-RCTVibration: 8e5c8c5d17af641f306d7380d8d0fe9b3c142c48
   React-runtimeexecutor: 7401c4a40f8728fd89df4a56104541b760876117
   ReactCommon: c9246996e73bf75a2c6c3ff15f1e16707cdc2da9
-  ReactNativeAvoidSoftinput: 07319cc6928886bba825ce2df92fa4f1042c47cf
   ReactNativeExceptionHandler: b11ff67c78802b2f62eed0e10e75cb1ef7947c60
-  RNBootSplash: 364ec0f6a61d96bce40e8630d80d949c214a5749
+  RNBootSplash: b721af380c81622b03fd67d800675919ee0d8269
   RNCClipboard: 2834e1c4af68697089cdd455ee4a4cdd198fa7dd
   RNCMaskedView: bc0170f389056201c82a55e242e5d90070e18e5a
   RNCPicker: 0bf8ef8f7800524f32d2bb2a8bcadd53eda0ecd1
   RNFastImage: 5c9c9fed9c076e521b3f509fe79e790418a544e8
   RNFlashList: 8ec7f7454721145fe84566bb9e88bcf58981c9fe
   RNGestureHandler: 62232ba8f562f7dea5ba1b3383494eb5bf97a4d3
+  RNKeyboardInsets: 5263d6530bcc3bf7e2311a84feeede8bfb67e782
   RNReanimated: ce445c233a6ff5600223484a88ad5704945d972a
   RNScreens: 218801c16a2782546d30bd2026bb625c0302d70f
   RNSVG: c1e76b81c76cdcd34b4e1188852892dc280eb902

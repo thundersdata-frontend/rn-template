@@ -1,8 +1,10 @@
-import { AppTheme } from '@/theme';
-import { useTheme } from '@shopify/restyle';
-import { Box, Flex, helpers, Image, SvgIcon } from '@td-design/react-native';
 import { FC } from 'react';
 import { TouchableOpacity } from 'react-native';
+
+import { useTheme } from '@shopify/restyle';
+import { Box, Flex, helpers, Image, SvgIcon } from '@td-design/react-native';
+
+import { AppTheme } from '@/theme';
 
 import { SingleImagePicker } from '../SingleImagePicker';
 

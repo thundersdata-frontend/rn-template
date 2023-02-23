@@ -1,8 +1,10 @@
-import { Container, CustomRefreshControl } from '@/components';
+import { ImageBackground, ScrollView } from 'react-native';
+
 import { NavigationProp, useNavigation } from '@react-navigation/native';
 import { Avatar, Button, Flex, helpers, Toast, WhiteSpace } from '@td-design/react-native';
 import ImagePicker from '@td-design/react-native-image-picker';
-import { ImageBackground, ScrollView } from 'react-native';
+
+import { Container, CustomRefreshControl } from '@/components';
 
 import { useUserService } from '../useUserService';
 

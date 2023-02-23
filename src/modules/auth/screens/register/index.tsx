@@ -1,6 +1,10 @@
 /**
  * 注册页面
  */
+import { NavigationProp, useNavigation } from '@react-navigation/native';
+import { useTheme } from '@shopify/restyle';
+import { Box, Button, CountDown, Form, Input, WhiteSpace } from '@td-design/react-native';
+
 import { Icon } from '@/components';
 import { SmsTypeEnum } from '@/enums';
 import { AuthTemplate } from '@/modules/auth/components/AuthTemplate';
@@ -8,10 +12,6 @@ import { ErrorMessage } from '@/modules/auth/components/ErrorMessage';
 import { useAuthService } from '@/modules/auth/useAuthService';
 import { AppTheme } from '@/theme';
 import { mobilePhoneRules, passwordRules } from '@/utils/validators';
-import { NavigationProp, useNavigation } from '@react-navigation/native';
-import { useTheme } from '@shopify/restyle';
-import { Box, Button, CountDown, Form, Input, WhiteSpace } from '@td-design/react-native';
-import { AvoidSoftInputView } from 'react-native-avoid-softinput';
 
 const { FormItem, useForm } = Form;
 
@@ -87,10 +87,8 @@ export function Register() {
   const navigation = useNavigation<NavigationProp<AuthStackParamList>>();
 
   return (
-    <AvoidSoftInputView easing="easeIn" hideAnimationDuration={100} showAnimationDuration={100}>
-      <AuthTemplate title="注册" subtitle="注册账号后才允许使用App" {...{ navigation }}>
-        <FormContent />
-      </AuthTemplate>
-    </AvoidSoftInputView>
+    <AuthTemplate title="注册" subtitle="注册账号后才允许使用App" {...{ navigation }}>
+      <FormContent />
+    </AuthTemplate>
   );
 }

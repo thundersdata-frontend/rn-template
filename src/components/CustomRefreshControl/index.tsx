@@ -1,7 +1,3 @@
-import { AppTheme } from '@/theme';
-import { RefreshControlProps, RNRefreshControl, RNRefreshHeader } from '@byron-react-native/refresh-control';
-import { useTheme } from '@shopify/restyle';
-import { useSafeState } from '@td-design/rn-hooks';
 import React, { forwardRef, useEffect, useImperativeHandle, useRef, useState } from 'react';
 import {
   ActivityIndicator,
@@ -13,6 +9,12 @@ import {
   View,
   ViewStyle,
 } from 'react-native';
+
+import { RefreshControlProps, RNRefreshControl, RNRefreshHeader } from '@byron-react-native/refresh-control';
+import { useTheme } from '@shopify/restyle';
+import { useSafeState } from '@td-design/rn-hooks';
+
+import { AppTheme } from '@/theme';
 
 export interface CustomRefreshControlRef {
   startRefresh: () => void;
