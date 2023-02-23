@@ -79,6 +79,7 @@ export function LongForm() {
           contentInsetAdjustmentBehavior="always"
           overScrollMode="always"
           showsVerticalScrollIndicator={false}
+          keyboardDismissMode="on-drag"
         >
           <WingBlank>
             <Form form={form} onFinish={handleFinish} onFinishFailed={handleFinishFailed}>

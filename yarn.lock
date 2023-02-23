@@ -2248,10 +2248,10 @@ aws4@^1.8.0:
   resolved "https://registry.npmmirror.com/aws4/-/aws4-1.12.0.tgz#ce1c9d143389679e253b314241ea9aa5cec980d3"
   integrity sha512-NmWvPnx0F1SfrQbYwOi7OeaNGokp9XhzNioJ/CSBs8Qa4vxug81mhJEAVZwxXuBmYB5KDRfMq/F3RR0BIU7sWg==
 
-axios@^1.3.3:
-  version "1.3.3"
-  resolved "https://registry.npmmirror.com/axios/-/axios-1.3.3.tgz#e7011384ba839b885007c9c9fae1ff23dceb295b"
-  integrity sha512-eYq77dYIFS77AQlhzEL937yUBSepBfPIe8FcgEDN35vMNZKMrs81pgnyrQpwfy4NF4b4XWX1Zgx7yX+25w8QJA==
+axios@^1.3.4:
+  version "1.3.4"
+  resolved "https://registry.npmmirror.com/axios/-/axios-1.3.4.tgz#f5760cefd9cfb51fd2481acf88c05f67c4523024"
+  integrity sha512-toYm+Bsyl6VC5wSkfkbbNB6ROv7KY93PEBBL6xyDczaIHasAiv4wPqQ/c4RjoQzipxRD2W5g21cOqQulZ7rHwQ==
   dependencies:
     follow-redirects "^1.15.0"
     form-data "^4.0.0"
@@ -7229,10 +7229,10 @@ react-native-blob-util@^0.17.1:
     base-64 "0.1.0"
     glob "^7.2.3"
 
-react-native-bootsplash@^4.5.0:
-  version "4.5.0"
-  resolved "https://registry.npmmirror.com/react-native-bootsplash/-/react-native-bootsplash-4.5.0.tgz#cbd0a01d264e73b197c85b166701301b311cf6e0"
-  integrity sha512-gK8U+v0id4qz/3roIpb6AlxI4k1fHnb+ssHeAqg8JFrfVuu/+cwvJu6utZUvp0x9urgjI0h9WwGxeeFzqh4vJQ==
+react-native-bootsplash@^4.5.2:
+  version "4.5.2"
+  resolved "https://registry.npmmirror.com/react-native-bootsplash/-/react-native-bootsplash-4.5.2.tgz#ae293c39dd7bb6b8b884231dc552140347e220de"
+  integrity sha512-NCqv8JLbQp7iSaI1d+z0oUdcW13FNvpKHp5SLhr6sM6z94mjsWklU73wHEgEh6/6ExL/JRZd0bURr0XZ9QOw9A==
   dependencies:
     fs-extra "^11.1.0"
     picocolors "^1.0.0"
@@ -7301,10 +7301,10 @@ react-native-image-picker@^4.10.3:
   resolved "https://registry.npmmirror.com/react-native-image-picker/-/react-native-image-picker-4.10.3.tgz#cdc11d9836b4cfa57e658c0700201babf8fdca10"
   integrity sha512-gLX8J6jCBkUt6jogpSdA7YyaGVLGYywRzMEwBciXshihpFZjc/cRlKymAVlu6Q7HMw0j3vrho6pI8ZGC5O/FGg==
 
-react-native-keyboard-insets@^1.3.0:
-  version "1.3.0"
-  resolved "https://registry.npmmirror.com/react-native-keyboard-insets/-/react-native-keyboard-insets-1.3.0.tgz#214fd7b9d9bd2bdd4c8c76e65c5401eb380f555c"
-  integrity sha512-sA1lCFqBBR7fxAvd9qB7RkIq3v5reiZZXhmG/Wll2ayvoUJpYLmz9I4JOKtQ/G+wHDGbCDKNzZZySPDK2a11gw==
+react-native-keyboard-insets@^1.3.1:
+  version "1.3.1"
+  resolved "https://registry.npmmirror.com/react-native-keyboard-insets/-/react-native-keyboard-insets-1.3.1.tgz#33e20175c974a29e24e1e5ebfc2ea0a267aa1677"
+  integrity sha512-GBaW0+GyzNq0OccWvNdsyZwr0vlzm7IyAZKdcbMRnYpK4TKjc13dbuJoxlrCIma2L2jwkdJJr7I6vOW2H+WBYA==
 
 react-native-mmkv@2.5.1:
   version "2.5.1"

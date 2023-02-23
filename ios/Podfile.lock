@@ -386,7 +386,7 @@ PODS:
     - React-perflogger (= 0.66.5)
   - ReactNativeExceptionHandler (2.10.10):
     - React-Core
-  - RNBootSplash (4.5.0):
+  - RNBootSplash (4.5.2):
     - React-Core
   - RNCClipboard (1.11.1):
     - React-Core
@@ -402,7 +402,7 @@ PODS:
     - React-Core
   - RNGestureHandler (2.8.0):
     - React-Core
-  - RNKeyboardInsets (1.3.0):
+  - RNKeyboardInsets (1.3.1):
     - React-Core
   - RNReanimated (2.13.0):
     - DoubleConversion
@@ -719,14 +719,14 @@ SPEC CHECKSUMS:
   React-runtimeexecutor: 09041c28ce04143a113eac2d357a6b06bd64b607
   ReactCommon: 8a7a138ae43c04bb8dd760935589f326ca810484
   ReactNativeExceptionHandler: b11ff67c78802b2f62eed0e10e75cb1ef7947c60
-  RNBootSplash: 364ec0f6a61d96bce40e8630d80d949c214a5749
+  RNBootSplash: b721af380c81622b03fd67d800675919ee0d8269
   RNCClipboard: 2834e1c4af68697089cdd455ee4a4cdd198fa7dd
   RNCMaskedView: bc0170f389056201c82a55e242e5d90070e18e5a
   RNCPicker: 0bf8ef8f7800524f32d2bb2a8bcadd53eda0ecd1
   RNFastImage: 5c9c9fed9c076e521b3f509fe79e790418a544e8
   RNFlashList: 8ec7f7454721145fe84566bb9e88bcf58981c9fe
   RNGestureHandler: 62232ba8f562f7dea5ba1b3383494eb5bf97a4d3
-  RNKeyboardInsets: 35f01ee99e5d4b5ab7dcaf9d308ee75b1702ab69
+  RNKeyboardInsets: 5263d6530bcc3bf7e2311a84feeede8bfb67e782
   RNReanimated: 81ae02204392903240908ab05385e178b4f88690
   RNScreens: 218801c16a2782546d30bd2026bb625c0302d70f
   RNSVG: c1e76b81c76cdcd34b4e1188852892dc280eb902
