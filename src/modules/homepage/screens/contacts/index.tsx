@@ -1,6 +1,7 @@
+import { Center, Text } from '@td-design/react-native';
+
 import { IndexedBar } from '@/components';
 import { useRefreshService } from '@/hooks/useRefreshService';
-import { Center, Text } from '@td-design/react-native';
 
 import ContactCell from './ContactCell';
 import ContactDivider from './ContactDivider';

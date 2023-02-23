@@ -1,4 +1,6 @@
-import { Container } from '@/components';
+import { ScrollView } from 'react-native';
+import { KeyboardInsetsView } from 'react-native-keyboard-insets';
+
 import {
   Box,
   Button,
@@ -17,8 +19,8 @@ import {
 import type { Store, ValidateErrorEntity } from '@td-design/react-native';
 import ImagePicker from '@td-design/react-native-image-picker';
 import { DatePickerItem, PickerItem } from '@td-design/react-native-picker';
-import { ScrollView } from 'react-native';
-import { AvoidSoftInputView } from 'react-native-avoid-softinput';
+
+import { Container } from '@/components';
 
 const { FormItem, FormListItem, useForm } = Form;
 const { InputItem, TextArea } = Input;
@@ -72,11 +74,12 @@ export function LongForm() {
 
   return (
     <Container>
-      <AvoidSoftInputView easing="easeIn" hideAnimationDuration={100} showAnimationDuration={100}>
+      <KeyboardInsetsView style={{ flex: 1 }} extraHeight={8}>
         <ScrollView
           contentInsetAdjustmentBehavior="always"
           overScrollMode="always"
           showsVerticalScrollIndicator={false}
+          keyboardDismissMode="on-drag"
         >
           <WingBlank>
             <Form form={form} onFinish={handleFinish} onFinishFailed={handleFinishFailed}>
@@ -179,7 +182,7 @@ export function LongForm() {
             <Button title="提交" onPress={form.submit} />
           </WingBlank>
         </ScrollView>
-      </AvoidSoftInputView>
+      </KeyboardInsetsView>
     </Container>
   );
 }

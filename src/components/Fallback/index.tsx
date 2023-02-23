@@ -1,8 +1,10 @@
-import { AppTheme } from '@/theme';
-import { useTheme } from '@shopify/restyle';
-import { Text } from '@td-design/react-native';
 import React from 'react';
 import { ActivityIndicator, View } from 'react-native';
+
+import { useTheme } from '@shopify/restyle';
+import { Text } from '@td-design/react-native';
+
+import { AppTheme } from '@/theme';
 
 import { Container } from '../Container';
 

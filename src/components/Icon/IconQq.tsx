@@ -1,10 +1,11 @@
 /* tslint:disable */
 
 /* eslint-disable */
-import { helpers } from '@td-design/react-native';
 import React, { FC } from 'react';
 import { ViewProps } from 'react-native';
 import { GProps, SvgXml } from 'react-native-svg';
+
+import { helpers } from '@td-design/react-native';
 
 import { getIconColor } from './helper';
 
