@@ -1,13 +1,16 @@
+import { TouchableOpacity } from 'react-native';
+import { KeyboardInsetsView } from 'react-native-keyboard-insets';
+
+import { NavigationProp, useNavigation } from '@react-navigation/native';
+import { useTheme } from '@shopify/restyle';
+import { Box, Button, CountDown, Flex, Form, Input, Radio, Text, Theme, WhiteSpace } from '@td-design/react-native';
+
 import { Icon } from '@/components';
 import { SmsTypeEnum } from '@/enums';
 import { ErrorMessage } from '@/modules/auth/components/ErrorMessage';
 import { useAuthService } from '@/modules/auth/useAuthService';
 import { AppTheme } from '@/theme';
 import { mobilePhoneRules } from '@/utils/validators';
-import { NavigationProp, useNavigation } from '@react-navigation/native';
-import { useTheme } from '@shopify/restyle';
-import { Box, Button, CountDown, Flex, Form, Input, Radio, Text, WhiteSpace } from '@td-design/react-native';
-import { TouchableOpacity } from 'react-native';
 
 import { LoginTab } from '../LoginTab';
 
@@ -120,6 +123,7 @@ const FormContent = ({ isSmsLogin }: { isSmsLogin: boolean }) => {
 };
 
 export function LoginForm({ isSmsLogin, changeTab }: { isSmsLogin: boolean; changeTab: (activeKey: string) => void }) {
+  const theme = useTheme<Theme>();
   return (
     <Box
       alignItems="center"
@@ -135,9 +139,12 @@ export function LoginForm({ isSmsLogin, changeTab }: { isSmsLogin: boolean; chan
           changeTab(e);
         }}
       />
-      <Box marginTop="x3" paddingHorizontal="x4" width="100%">
+      <KeyboardInsetsView
+        style={{ marginTop: theme.spacing.x3, paddingHorizontal: theme.spacing.x4, width: '100%' }}
+        extraHeight={8}
+      >
         <FormContent {...{ isSmsLogin }} />
-      </Box>
+      </KeyboardInsetsView>
     </Box>
   );
 }

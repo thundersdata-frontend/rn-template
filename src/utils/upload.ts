@@ -1,7 +1,9 @@
-import { storageService } from '@/services/StorageService';
-import { File } from '@td-design/react-native-image-picker';
 import RNFetchBlob from 'react-native-blob-util';
 import Config from 'react-native-config';
+
+import { File } from '@td-design/react-native-image-picker';
+
+import { storageService } from '@/services/StorageService';
 
 /** 上传文件 */
 export async function uploadFile({ fileName, fileType, uri }: File) {

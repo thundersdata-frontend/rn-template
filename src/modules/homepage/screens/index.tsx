@@ -1,10 +1,12 @@
-import { Container } from '@/components';
-import TestModal from '@/modals/TestModal';
+import codePush from 'react-native-code-push';
+import Config from 'react-native-config';
+
 import NiceModal from '@ebay/nice-modal-react';
 import { NavigationProp, useNavigation } from '@react-navigation/native';
 import { Button, Center, WhiteSpace } from '@td-design/react-native';
-import codePush from 'react-native-code-push';
-import Config from 'react-native-config';
+
+import { Container } from '@/components';
+import TestModal from '@/modals/TestModal';
 
 export function Homepage() {
   const navigation = useNavigation<NavigationProp<MainStackParamList>>();
