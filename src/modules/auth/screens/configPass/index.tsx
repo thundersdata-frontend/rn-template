@@ -1,17 +1,18 @@
 /**
  * 通过手机号登录时，设置登录密码
  */
+import { FC } from 'react';
+
+import { useTheme } from '@shopify/restyle';
+import { Box, Button, Form, Input, WhiteSpace } from '@td-design/react-native';
+import type { Store } from '@td-design/react-native';
+
 import { Icon } from '@/components';
 import { AuthTemplate } from '@/modules/auth/components/AuthTemplate';
 import { ErrorMessage } from '@/modules/auth/components/ErrorMessage';
 import { useAuthService } from '@/modules/auth/useAuthService';
 import { AppTheme } from '@/theme';
 import { passwordRules } from '@/utils/validators';
-import { useTheme } from '@shopify/restyle';
-import { Box, Button, Form, Input, WhiteSpace } from '@td-design/react-native';
-import type { Store } from '@td-design/react-native';
-import { FC } from 'react';
-import { AvoidSoftInputView } from 'react-native-avoid-softinput';
 
 const { FormItem, useForm } = Form;
 
@@ -65,10 +66,8 @@ export function ConfigPass() {
   };
 
   return (
-    <AvoidSoftInputView easing="easeIn" hideAnimationDuration={100} showAnimationDuration={100}>
-      <AuthTemplate title="设置密码" subtitle="6-20位字母和数字组合">
-        <FormContent onFinish={handleFinish} />
-      </AuthTemplate>
-    </AvoidSoftInputView>
+    <AuthTemplate title="设置密码" subtitle="6-20位字母和数字组合">
+      <FormContent onFinish={handleFinish} />
+    </AuthTemplate>
   );
 }

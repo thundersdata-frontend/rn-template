@@ -1,8 +1,10 @@
 import * as React from 'react';
-import { AppTheme } from '@/theme';
-import { useTheme } from '@shopify/restyle';
 import { StatusBar, StyleSheet } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
+
+import { useTheme } from '@shopify/restyle';
+
+import { AppTheme } from '@/theme';
 
 export const Container: React.FC<{ hasHeader?: boolean; backgroundColor?: string }> = ({
   hasHeader = true,

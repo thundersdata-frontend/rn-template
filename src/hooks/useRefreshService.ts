@@ -1,9 +1,11 @@
-import { LoginFailureEnum } from '@/enums';
-import { useNotify } from '@/hooks/useNotify';
+import { useMemo } from 'react';
+
 import { useNetInfo } from '@react-native-community/netinfo';
 import { useMemoizedFn, useRequest, useSafeState } from '@td-design/rn-hooks';
 import { Options, Service } from '@td-design/rn-hooks/lib/typescript/useRequest/types';
-import { useMemo } from 'react';
+
+import { LoginFailureEnum } from '@/enums';
+import { useNotify } from '@/hooks/useNotify';
 
 import { storageService } from '../services/StorageService';
 import createRequestService from './createRequestService';

@@ -1,14 +1,16 @@
 /**
  * 通过手机号登录时，设置登录密码
  */
+import { KeyboardInsetsView } from 'react-native-keyboard-insets';
+
+import { useTheme } from '@shopify/restyle';
+import { Box, Button, Form, helpers, Input, WhiteSpace, WingBlank } from '@td-design/react-native';
+
 import { Container, Icon } from '@/components';
 import { ErrorMessage } from '@/modules/auth/components/ErrorMessage';
 import { useAuthService } from '@/modules/auth/useAuthService';
 import { AppTheme } from '@/theme';
 import { passwordPattern } from '@/utils/validators';
-import { useTheme } from '@shopify/restyle';
-import { Box, Button, Form, helpers, Input, WhiteSpace, WingBlank } from '@td-design/react-native';
-import { AvoidSoftInputView } from 'react-native-avoid-softinput';
 
 const { px } = helpers;
 const { FormItem, useForm } = Form;
@@ -83,12 +85,12 @@ const FormContent = () => {
 export function ModifyPassword() {
   return (
     <Container>
-      <AvoidSoftInputView easing="easeIn" hideAnimationDuration={100} showAnimationDuration={100}>
-        <WhiteSpace size="x3" />
-        <WingBlank size="x3">
+      <WhiteSpace size="x3" />
+      <WingBlank size="x3">
+        <KeyboardInsetsView extraHeight={8}>
           <FormContent />
-        </WingBlank>
-      </AvoidSoftInputView>
+        </KeyboardInsetsView>
+      </WingBlank>
     </Container>
   );
 }
