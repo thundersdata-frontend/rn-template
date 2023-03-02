@@ -2,7 +2,7 @@ import * as React from 'react';
 import { StatusBar, StyleSheet } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 
-import { useTheme } from '@shopify/restyle';
+import { useTheme } from '@td-design/react-native';
 
 import { AppTheme } from '@/theme';
 

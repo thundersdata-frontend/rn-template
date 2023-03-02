@@ -2,7 +2,7 @@ import { FC, ReactNode } from 'react';
 import { Platform, StyleSheet, TouchableOpacity, View } from 'react-native';
 
 import { NavigationProp } from '@react-navigation/native';
-import { useTheme } from '@shopify/restyle';
+import { useTheme } from '@td-design/react-native';
 import { helpers, SvgIcon } from '@td-design/react-native';
 
 import { AppTheme } from '@/theme';

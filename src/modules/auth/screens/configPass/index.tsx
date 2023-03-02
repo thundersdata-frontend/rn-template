@@ -3,7 +3,7 @@
  */
 import { FC } from 'react';
 
-import { useTheme } from '@shopify/restyle';
+import { useTheme } from '@td-design/react-native';
 import { Box, Button, Form, Input, WhiteSpace } from '@td-design/react-native';
 import type { Store } from '@td-design/react-native';
 
