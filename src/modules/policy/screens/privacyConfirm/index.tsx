@@ -1,5 +1,5 @@
 import { NavigationProp, useNavigation } from '@react-navigation/native';
-import { useTheme } from '@shopify/restyle';
+import { useTheme } from '@td-design/react-native';
 import { Box, Center, Divider, Flex, helpers, Text, WhiteSpace, WingBlank } from '@td-design/react-native';
 
 import { Container, ExitApp } from '@/components';

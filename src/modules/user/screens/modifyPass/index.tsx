@@ -3,7 +3,7 @@
  */
 import { KeyboardInsetsView } from 'react-native-keyboard-insets';
 
-import { useTheme } from '@shopify/restyle';
+import { useTheme } from '@td-design/react-native';
 import { Box, Button, Form, helpers, Input, WhiteSpace, WingBlank } from '@td-design/react-native';
 
 import { Container, Icon } from '@/components';

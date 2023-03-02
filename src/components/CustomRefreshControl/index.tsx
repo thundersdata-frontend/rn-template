@@ -11,7 +11,7 @@ import {
 } from 'react-native';
 
 import { RefreshControlProps, RNRefreshControl, RNRefreshHeader } from '@byron-react-native/refresh-control';
-import { useTheme } from '@shopify/restyle';
+import { useTheme } from '@td-design/react-native';
 import { useSafeState } from '@td-design/rn-hooks';
 
 import { AppTheme } from '@/theme';
