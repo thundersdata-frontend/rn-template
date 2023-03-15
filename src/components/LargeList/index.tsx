@@ -1,10 +1,15 @@
 import { useRef, useState } from 'react';
 import { ActivityIndicator, NativeScrollEvent, NativeSyntheticEvent } from 'react-native';
 
+
+
 import { FlashList, FlashListProps } from '@shopify/flash-list';
 import { Flex, Text } from '@td-design/react-native';
 
+
+
 import { CustomRefreshControl } from '../CustomRefreshControl';
+
 
 export enum FooterStatus {
   Idle, // 初始状态，无刷新的情况
@@ -77,6 +82,7 @@ export function LargeList<T>({
   | 'refreshing'
   | 'onEndReached'
   | 'onEndReachedThreshold'
+  | 'estimatedItemSize'
 > & {
   renderHeader?: () => JSX.Element | null;
   renderFooter?: (footerStatus: FooterStatus) => JSX.Element | null;
@@ -85,6 +91,7 @@ export function LargeList<T>({
   onEndReached: () => Promise<void>;
   refreshing: boolean;
   onEndReachedThreshold: number;
+  estimatedItemSize: number;
   loadingMore: boolean;
   allLoaded: boolean;
 }) {
