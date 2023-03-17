@@ -20,7 +20,7 @@ import type { Store, ValidateErrorEntity } from '@td-design/react-native';
 import ImagePicker from '@td-design/react-native-image-picker';
 import { DatePickerItem, PickerItem } from '@td-design/react-native-picker';
 
-import { Container } from '@/components';
+import { Container } from '@/components/Container';
 
 const { FormItem, FormListItem, useForm } = Form;
 const { InputItem, TextArea } = Input;

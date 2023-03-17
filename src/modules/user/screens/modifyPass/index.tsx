@@ -6,7 +6,8 @@ import { KeyboardInsetsView } from 'react-native-keyboard-insets';
 import { useTheme } from '@td-design/react-native';
 import { Box, Button, Form, helpers, Input, WhiteSpace, WingBlank } from '@td-design/react-native';
 
-import { Container, Icon } from '@/components';
+import { Container } from '@/components/Container';
+import Icon from '@/components/Icon';
 import { ErrorMessage } from '@/modules/auth/components/ErrorMessage';
 import { useAuthService } from '@/modules/auth/useAuthService';
 import { AppTheme } from '@/theme';

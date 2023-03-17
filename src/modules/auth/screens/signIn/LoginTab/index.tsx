@@ -3,7 +3,7 @@ import { TouchableOpacity } from 'react-native';
 import { useTheme } from '@td-design/react-native';
 import { Box, Flex, helpers, Text } from '@td-design/react-native';
 
-import { Icon } from '@/components';
+import Icon from '@/components/Icon';
 import { AppTheme } from '@/theme';
 
 const { px } = helpers;
