@@ -1,5 +1,5 @@
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
-import { useTheme } from '@shopify/restyle';
+import { useTheme } from '@td-design/react-native';
 import { helpers, Text } from '@td-design/react-native';
 
 import { Homepage } from '@/modules/homepage/screens';

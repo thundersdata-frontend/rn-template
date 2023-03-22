@@ -15,7 +15,12 @@ module.exports = {
       'import',
       {
         libraryName: '@td-design/react-native',
-        libraryDirectory: 'lib/module',
+        "customName": (name) => {
+          if (name === 'use-theme') {
+            return '@shopify/restyle/dist/hooks/useTheme';
+          }
+          return `@td-design/react-native/lib/module/${name}`;
+        }
       },
       'rn',
     ],
