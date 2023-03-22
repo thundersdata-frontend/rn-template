@@ -2,7 +2,7 @@ import { ScrollView } from 'react-native';
 
 import { Divider, Image, Text, WhiteSpace, WingBlank } from '@td-design/react-native';
 
-import { Container } from '@/components';
+import { Container } from '@/components/Container';
 
 import animatedWebp from './assets/animated-webp.webp';
 import animatedGif from './assets/animated.gif';

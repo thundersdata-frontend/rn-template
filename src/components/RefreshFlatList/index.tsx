@@ -1,7 +1,7 @@
 import React from 'react';
 import { ActivityIndicator, FlatList, FlatListProps } from 'react-native';
 
-import { useTheme } from '@shopify/restyle';
+import { useTheme } from '@td-design/react-native';
 import { Flex, Text } from '@td-design/react-native';
 
 import { AppTheme } from '@/theme';

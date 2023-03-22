@@ -2,10 +2,10 @@ import { TouchableOpacity } from 'react-native';
 import { KeyboardInsetsView } from 'react-native-keyboard-insets';
 
 import { NavigationProp, useNavigation } from '@react-navigation/native';
-import { useTheme } from '@shopify/restyle';
+import { useTheme } from '@td-design/react-native';
 import { Box, Button, CountDown, Flex, Form, Input, Radio, Text, Theme, WhiteSpace } from '@td-design/react-native';
 
-import { Icon } from '@/components';
+import Icon from '@/components/Icon';
 import { SmsTypeEnum } from '@/enums';
 import { ErrorMessage } from '@/modules/auth/components/ErrorMessage';
 import { useAuthService } from '@/modules/auth/useAuthService';

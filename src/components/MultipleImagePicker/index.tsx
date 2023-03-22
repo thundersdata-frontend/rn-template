@@ -1,7 +1,7 @@
 import { FC } from 'react';
 import { TouchableOpacity } from 'react-native';
 
-import { useTheme } from '@shopify/restyle';
+import { useTheme } from '@td-design/react-native';
 import { Box, Flex, helpers, Image, SvgIcon } from '@td-design/react-native';
 
 import { AppTheme } from '@/theme';

@@ -5,7 +5,7 @@ import { MapChart } from 'echarts/charts';
 import { GeoComponent } from 'echarts/components';
 import SvgChart, { SVGRenderer } from 'wrn-echarts/svgChart';
 
-import { Container } from '@/components';
+import { Container } from '@/components/Container';
 
 import shandongMap from './370000.geo';
 

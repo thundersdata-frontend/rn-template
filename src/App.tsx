@@ -11,12 +11,12 @@ import { helpers, ThemeProvider } from '@td-design/react-native';
 import { useMount } from '@td-design/rn-hooks';
 import { Provider as JotaiProvider } from 'jotai';
 
-import { Fallback } from '@/components';
 import useUpdateService from '@/hooks/useUpdateService';
 import { linking } from '@/linking';
 import { navigationRef } from '@/services/NavigationService';
 import { darkTheme, lightTheme } from '@/theme';
 
+import { Fallback } from './components/Fallback';
 import Stack from './stacks';
 
 const Main = () => {

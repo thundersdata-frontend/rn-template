@@ -2,7 +2,7 @@ import { ScrollView } from 'react-native';
 
 import { Divider, Image, Text, WhiteSpace, WingBlank } from '@td-design/react-native';
 
-import { Container } from '@/components';
+import { Container } from '@/components/Container';
 
 export function OnlineImageDemo() {
   return (

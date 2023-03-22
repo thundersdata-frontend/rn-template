@@ -5,7 +5,7 @@ import NiceModal from '@ebay/nice-modal-react';
 import { NavigationProp, useNavigation } from '@react-navigation/native';
 import { Button, Center, WhiteSpace } from '@td-design/react-native';
 
-import { Container } from '@/components';
+import { Container } from '@/components/Container';
 import TestModal from '@/modals/TestModal';
 
 export function Homepage() {

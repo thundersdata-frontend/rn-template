@@ -205,11 +205,23 @@ export default class MyGenerator extends CodeGenerator {
         const request = initRequest();
         request.defaults.headers.common['Content-Type'] = '${requestObj.contentType}';
 
-        const result = await request.${requestObj.method}(backEndUrl + url, {
-          signal: controller.signal,
+        const {data: result} = await request<AjaxResponse>({
+          method: '${requestObj.method}',
+          baseURL: backEndUrl,
+          url: url,
           ${requestStr},
+          signal: controller.signal,
         });
-        return result;
+
+        if (result) {
+          if (!result.success && result.code !== 20000)  {
+            throw new Error(JSON.stringify(result));
+          } else {
+            return result.data;
+          }
+        } else {
+          throw new Error(JSON.stringify({ message: '接口未响应' }));
+        }
       }
     `;
   }
