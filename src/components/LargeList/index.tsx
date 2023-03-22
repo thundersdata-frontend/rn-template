@@ -1,8 +1,9 @@
-import { useRef, useState } from 'react';
+import { useRef } from 'react';
 import { ActivityIndicator, NativeScrollEvent, NativeSyntheticEvent, View } from 'react-native';
 
 import { FlashList, FlashListProps } from '@shopify/flash-list';
 import { Flex, Text } from '@td-design/react-native';
+import { useSafeState } from '@td-design/rn-hooks';
 
 import { CustomRefreshControl } from '../CustomRefreshControl';
 
@@ -91,8 +92,8 @@ export function LargeList<T>({
   allLoaded: boolean;
 }) {
   const headerTracker = useRef(false);
-  const [footerStatus, setFooterStatus] = useState(FooterStatus.Idle);
-  const [height, setHeight] = useState(0);
+  const [footerStatus, setFooterStatus] = useSafeState(FooterStatus.Idle);
+  const [height, setHeight] = useSafeState(0);
 
   const onHeader = async () => {
     headerTracker.current = true;
@@ -147,7 +148,7 @@ export function LargeList<T>({
     switch (footerStatus) {
       case FooterStatus.CanLoadMore:
         return (
-          <Flex marginTop={'x5'} alignItems={'center'} justifyContent={'center'}>
+          <Flex marginVertical={'x3'} alignItems={'center'} justifyContent={'center'}>
             <Text variant="p1" color="gray400">
               上拉加载更多
             </Text>
@@ -155,7 +156,7 @@ export function LargeList<T>({
         );
       case FooterStatus.Refreshing:
         return (
-          <Flex marginTop={'x5'} alignItems={'center'} justifyContent={'center'}>
+          <Flex marginVertical={'x3'} alignItems={'center'} justifyContent={'center'}>
             <ActivityIndicator color="gray" />
             <Text variant="p1" color="gray400">
               努力加载中...
@@ -164,7 +165,7 @@ export function LargeList<T>({
         );
       case FooterStatus.NoMoreData:
         return (
-          <Flex marginTop={'x5'} alignItems={'center'} justifyContent={'center'}>
+          <Flex marginVertical={'x3'} alignItems={'center'} justifyContent={'center'}>
             <Text variant="p1" color="gray400">
               没有更多数据了
             </Text>
@@ -172,7 +173,7 @@ export function LargeList<T>({
         );
       case FooterStatus.Failure:
         return (
-          <Flex marginTop={'x5'} alignItems={'center'} justifyContent={'center'}>
+          <Flex marginVertical={'x3'} alignItems={'center'} justifyContent={'center'}>
             <Text variant="p1" color="gray400">
               加载失败
             </Text>

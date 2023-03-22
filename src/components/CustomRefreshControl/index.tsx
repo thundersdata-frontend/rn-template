@@ -1,14 +1,16 @@
-import React, { forwardRef, useEffect, useImperativeHandle, useRef, useState } from 'react';
+import React, { forwardRef, useEffect, useImperativeHandle, useRef } from 'react';
 import {
   ActivityIndicator,
   Animated,
   LayoutChangeEvent,
   Platform,
+  StatusBar,
   StyleSheet,
   Text,
   View,
   ViewStyle,
 } from 'react-native';
+import { useSafeAreaInsets } from 'react-native-safe-area-context';
 
 import { RefreshControlProps, RNRefreshControl, RNRefreshHeader } from '@byron-react-native/refresh-control';
 import { useTheme } from '@td-design/react-native';
@@ -25,11 +27,14 @@ const DEFAULT_HEIGHT = 64;
 export const CustomRefreshControl = forwardRef<CustomRefreshControlRef, RefreshControlProps>(
   ({ onRefresh, style, ...props }, ref) => {
     const theme = useTheme<AppTheme>();
+    const insets = useSafeAreaInsets();
 
-    const [height, setHeight] = useState(DEFAULT_HEIGHT);
+    const paddingTop = Platform.OS === 'ios' ? insets.top : StatusBar.currentHeight ?? 0;
+
+    const [height, setHeight] = useSafeState(DEFAULT_HEIGHT);
     const [title, setTitle] = useSafeState('下拉进行刷新');
     const [lastTime, setLastTime] = useSafeState(fetchNowTime());
-    const animatedValue = useRef(new Animated.Value(0));
+    const animatedValue = useRef(new Animated.Value(0)).current;
     const [refreshing, setRefreshing] = useSafeState(props.refreshing ?? false);
 
     useEffect(() => {
@@ -46,7 +51,7 @@ export const CustomRefreshControl = forwardRef<CustomRefreshControlRef, RefreshC
     }));
 
     const onPullingRefresh = () => {
-      Animated.timing(animatedValue.current, {
+      Animated.timing(animatedValue, {
         toValue: -180,
         duration: 200,
         useNativeDriver: true,
@@ -72,7 +77,7 @@ export const CustomRefreshControl = forwardRef<CustomRefreshControlRef, RefreshC
     };
 
     const onIdleRefresh = () => {
-      Animated.timing(animatedValue.current, {
+      Animated.timing(animatedValue, {
         toValue: 0,
         duration: 200,
         useNativeDriver: true,
@@ -103,7 +108,7 @@ export const CustomRefreshControl = forwardRef<CustomRefreshControlRef, RefreshC
       }
     };
 
-    const rotate = animatedValue.current.interpolate({
+    const rotate = animatedValue.interpolate({
       inputRange: [0, 180],
       outputRange: ['0deg', '180deg'],
     });
@@ -122,7 +127,15 @@ export const CustomRefreshControl = forwardRef<CustomRefreshControlRef, RefreshC
         style={[style || styles.control, Platform.OS === 'ios' ? { marginTop: -height } : {}]}
         height={height}
       >
-        <RNRefreshHeader style={styles.row} onLayout={onLayout}>
+        <RNRefreshHeader
+          style={[
+            styles.row,
+            {
+              paddingTop,
+            },
+          ]}
+          onLayout={onLayout}
+        >
           {refreshing ? (
             <ActivityIndicator color={'gray'} />
           ) : (
@@ -169,9 +182,7 @@ const styles = StyleSheet.create({
   }) as ViewStyle,
   row: {
     flexDirection: 'row',
-    alignItems: 'center',
     justifyContent: 'center',
-    paddingVertical: 20,
   },
   left: {
     width: 32,
