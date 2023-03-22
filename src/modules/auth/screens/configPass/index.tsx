@@ -3,11 +3,11 @@
  */
 import { FC } from 'react';
 
-import { useTheme } from '@shopify/restyle';
+import { useTheme } from '@td-design/react-native';
 import { Box, Button, Form, Input, WhiteSpace } from '@td-design/react-native';
 import type { Store } from '@td-design/react-native';
 
-import { Icon } from '@/components';
+import Icon from '@/components/Icon';
 import { AuthTemplate } from '@/modules/auth/components/AuthTemplate';
 import { ErrorMessage } from '@/modules/auth/components/ErrorMessage';
 import { useAuthService } from '@/modules/auth/useAuthService';

@@ -1,6 +1,6 @@
 import Config from 'react-native-config';
 
-import axios from 'axios';
+import axios, { AxiosError } from 'axios';
 import dayjs from 'dayjs';
 import { isEmpty } from 'lodash-es';
 
@@ -35,6 +35,22 @@ export const initRequest = () => {
     }
     return config;
   });
+
+  // 配置响应拦截器，对各种异常进行处理
+  instance.interceptors.response.use(
+    response => {
+      return response;
+    },
+    error => {
+      if (error instanceof AxiosError) {
+        const { message } = error;
+        if (message === 'Network Error') {
+          return Promise.reject({ message: '网络异常' });
+        }
+      }
+      return Promise.reject(error);
+    }
+  );
 
   return instance;
 };

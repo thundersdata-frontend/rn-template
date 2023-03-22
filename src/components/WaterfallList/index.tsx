@@ -1,8 +1,9 @@
-import { useRef, useState } from 'react';
+import { useRef } from 'react';
 import { ActivityIndicator, NativeScrollEvent, NativeSyntheticEvent } from 'react-native';
 
 import { MasonryFlashList, MasonryFlashListProps } from '@shopify/flash-list';
 import { Flex, Text } from '@td-design/react-native';
+import { useSafeState } from '@td-design/rn-hooks';
 
 import { CustomRefreshControl } from '../CustomRefreshControl';
 
@@ -53,7 +54,7 @@ export function WaterfallList<T>({
   allLoaded: boolean;
 }) {
   const headerTracker = useRef(false);
-  const [footerStatus, setFooterStatus] = useState(FooterStatus.Idle);
+  const [footerStatus, setFooterStatus] = useSafeState(FooterStatus.Idle);
 
   const onHeader = async () => {
     headerTracker.current = true;

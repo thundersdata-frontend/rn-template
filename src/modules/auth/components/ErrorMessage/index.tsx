@@ -1,10 +1,10 @@
 import { FC } from 'react';
 import { Text } from 'react-native';
 
-import { useTheme } from '@shopify/restyle';
+import { useTheme } from '@td-design/react-native';
 import { Flex, helpers } from '@td-design/react-native';
 
-import { Icon } from '@/components';
+import Icon from '@/components/Icon';
 import { AppTheme } from '@/theme';
 
 const { px } = helpers;

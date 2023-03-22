@@ -1,9 +1,9 @@
-import { useMemo, useRef, useState } from 'react';
+import { useMemo, useRef } from 'react';
 import { Dimensions, NativeScrollEvent, NativeSyntheticEvent, Pressable, ScrollView } from 'react-native';
 
 import { FlashList, FlashListProps } from '@shopify/flash-list';
 import { Box, helpers, Text } from '@td-design/react-native';
-import { useMemoizedFn } from '@td-design/rn-hooks';
+import { useMemoizedFn, useSafeState } from '@td-design/rn-hooks';
 
 import { Container } from '../Container';
 import { CustomRefreshControl } from '../CustomRefreshControl';
@@ -62,8 +62,8 @@ export function IndexedBar<T extends Obj>({
   );
 
   const listRef = useRef<FlashList<T> | null>(null);
-  const [height, setHeight] = useState(windowHeight);
-  const [currentIndex, setCurrentIndex] = useState(-1);
+  const [height, setHeight] = useSafeState(windowHeight);
+  const [currentIndex, setCurrentIndex] = useSafeState(-1);
 
   // 分隔组件
   const ItemSeparatorComponent = (props: { leadingItem: string | T; trailingItem: string | T }) => {

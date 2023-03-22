@@ -8,7 +8,7 @@ import Animated, { useAnimatedStyle, useDerivedValue, useSharedValue, withSpring
 import { mix } from 'react-native-redash';
 
 import { NavigationProp, useNavigation } from '@react-navigation/native';
-import { useTheme } from '@shopify/restyle';
+import { useTheme } from '@td-design/react-native';
 import { helpers, Text } from '@td-design/react-native';
 
 import { AppTheme } from '@/theme';
