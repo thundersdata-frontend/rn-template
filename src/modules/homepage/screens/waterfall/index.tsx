@@ -3,7 +3,8 @@ import FastImage from 'react-native-fast-image';
 
 import { Box } from '@td-design/react-native';
 
-import { Container, WaterfallList } from '@/components';
+import { Container } from '@/components/Container';
+import { WaterfallList } from '@/components/WaterfallList';
 import { useRefreshService } from '@/hooks/useRefreshService';
 
 interface DataType {

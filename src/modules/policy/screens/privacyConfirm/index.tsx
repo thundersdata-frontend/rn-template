@@ -2,7 +2,8 @@ import { NavigationProp, useNavigation } from '@react-navigation/native';
 import { useTheme } from '@td-design/react-native';
 import { Box, Center, Divider, Flex, helpers, Text, WhiteSpace, WingBlank } from '@td-design/react-native';
 
-import { Container, ExitApp } from '@/components';
+import { Container } from '@/components/Container';
+import { ExitApp } from '@/components/ExitApp';
 import { storageService, StorageToken } from '@/services/StorageService';
 import { AppTheme } from '@/theme';
 

@@ -1,6 +1,7 @@
 import { Box, Text } from '@td-design/react-native';
 
-import { Container, LargeList } from '@/components';
+import { Container } from '@/components/Container';
+import { LargeList } from '@/components/LargeList';
 import { useRefreshService } from '@/hooks/useRefreshService';
 
 interface DataType {

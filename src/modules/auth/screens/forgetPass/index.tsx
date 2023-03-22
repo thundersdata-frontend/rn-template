@@ -5,7 +5,7 @@ import { NavigationProp, useNavigation } from '@react-navigation/native';
 import { useTheme } from '@td-design/react-native';
 import { Box, Button, CountDown, Form, Input, WhiteSpace } from '@td-design/react-native';
 
-import { Icon } from '@/components';
+import Icon from '@/components/Icon';
 import { SmsTypeEnum } from '@/enums';
 import { AuthTemplate } from '@/modules/auth/components/AuthTemplate';
 import { ErrorMessage } from '@/modules/auth/components/ErrorMessage';
