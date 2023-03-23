@@ -16,7 +16,7 @@
 default_platform(:android)
 
 before_all do
-  # ensure_git_branch(branch: 'develop')
+  # ensure_git_branch(branch: 'main')
   # ensure_git_status_clean
   git_pull
 end
