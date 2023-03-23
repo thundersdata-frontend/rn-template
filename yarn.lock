@@ -774,13 +774,13 @@
   integrity sha512-/iAgIgrsYmxOeL9xvpPI35E+0obzo0c0UoTjJQUq/cKzWxFv5DmeexEP2yTI4o1ms52WQUiL6zEEz8JrOGndLA==
 
 "@commitlint/cli@^17.4.4":
-  version "17.4.4"
-  resolved "https://registry.npmmirror.com/@commitlint/cli/-/cli-17.4.4.tgz#36df08bfa31dbb9a2b6b1d7187a31e578f001a06"
-  integrity sha512-HwKlD7CPVMVGTAeFZylVNy14Vm5POVY0WxPkZr7EXLC/os0LH/obs6z4HRvJtH/nHCMYBvUBQhGwnufKfTjd5g==
+  version "17.5.0"
+  resolved "https://registry.npmmirror.com/@commitlint/cli/-/cli-17.5.0.tgz#045bf46fc38bb4246da30b462d8db66f48c28f9a"
+  integrity sha512-yNW3+M7UM1ioK28LKTrryIVB5qGpXlEv8+rJQiWPMZNayy9/1XR5+lL8qBTNlgopYtZWWnIm5RETcAN29ZTL/A==
   dependencies:
     "@commitlint/format" "^17.4.4"
     "@commitlint/lint" "^17.4.4"
-    "@commitlint/load" "^17.4.4"
+    "@commitlint/load" "^17.5.0"
     "@commitlint/read" "^17.4.4"
     "@commitlint/types" "^17.4.4"
     execa "^5.0.0"
@@ -847,10 +847,10 @@
     "@commitlint/rules" "^17.4.4"
     "@commitlint/types" "^17.4.4"
 
-"@commitlint/load@>6.1.1", "@commitlint/load@^17.4.4":
-  version "17.4.4"
-  resolved "https://registry.npmmirror.com/@commitlint/load/-/load-17.4.4.tgz#13fcb553572f265339801cde6dd10ee5eea07f5e"
-  integrity sha512-z6uFIQ7wfKX5FGBe1AkOF4l/ShOQsaa1ml/nLMkbW7R/xF8galGS7Zh0yHvzVp/srtfS0brC+0bUfQfmpMPFVQ==
+"@commitlint/load@>6.1.1", "@commitlint/load@^17.5.0":
+  version "17.5.0"
+  resolved "https://registry.npmmirror.com/@commitlint/load/-/load-17.5.0.tgz#be45dbbb50aaf5eb7e8e940e1e0d6171d1426bab"
+  integrity sha512-l+4W8Sx4CD5rYFsrhHH8HP01/8jEP7kKf33Xlx2Uk2out/UKoKPYMOIRcDH5ppT8UXLMV+x6Wm5osdRKKgaD1Q==
   dependencies:
     "@commitlint/config-validator" "^17.4.4"
     "@commitlint/execute-rule" "^17.4.0"
@@ -865,7 +865,7 @@
     lodash.uniq "^4.5.0"
     resolve-from "^5.0.0"
     ts-node "^10.8.1"
-    typescript "^4.6.4"
+    typescript "^4.6.4 || ^5.0.0"
 
 "@commitlint/message@^17.4.2":
   version "17.4.2"
@@ -1433,9 +1433,9 @@
     react-native-redash "^18.1.0"
 
 "@td-design/react-native@^4.1.9":
-  version "4.1.9"
-  resolved "https://registry.npmmirror.com/@td-design/react-native/-/react-native-4.1.9.tgz#86c006484270dba13eb3288ff1e8dbc94214057e"
-  integrity sha512-7UR5V9kOFu9aMQTJ2KHNJ21S8lEUzj2Y7GkUy6b3n+YRhe4SeJh4oIsbwvFkfcU27kv5n6tRYihpepdtgitT4g==
+  version "4.1.10"
+  resolved "https://registry.npmmirror.com/@td-design/react-native/-/react-native-4.1.10.tgz#af877a7742982c745798b988802eb0da2e4386c5"
+  integrity sha512-QguhC0I6nSCueAQjgBYNIlm1xQHcsmxhWqcyVq5xzWupo3eVw5NLWc2rEjHVbMt/tYeBZp1HAWiW4nCNDjyJ/A==
   dependencies:
     "@shopify/restyle" "2.4.0"
     "@td-design/rn-hooks" "^2.5.1"
@@ -7014,9 +7014,9 @@ react-devtools-core@^4.23.0:
     ws "^7"
 
 react-error-boundary@^4.0.0:
-  version "4.0.0"
-  resolved "https://registry.npmmirror.com/react-error-boundary/-/react-error-boundary-4.0.0.tgz#fe3691e4a5c1ed3758b65976bf94ff7babc356f4"
-  integrity sha512-vNbTyivmwBxCpJA68Ry55rJhZMzJSB+egkEm8hkEzbEBJLsJp5054zEVpoK/8ndxt6B+dvEA2LDw33xUfvE8og==
+  version "4.0.1"
+  resolved "https://registry.npmmirror.com/react-error-boundary/-/react-error-boundary-4.0.1.tgz#89b348004a1bb73988ab0b74fcffd955d612c007"
+  integrity sha512-1z9zlNkYz35NwHETsksZtYDh00BJkoeBKxYehEx6cVNUQCXPMAiI/hkX6yxpJcpd4bECCPhfqIqXuDLVTmmkSw==
   dependencies:
     "@babel/runtime" "^7.12.5"
 
@@ -8661,7 +8661,7 @@ typed-array-length@^1.0.4:
     for-each "^0.3.3"
     is-typed-array "^1.1.9"
 
-typescript@4.9.5, typescript@^4.6.4:
+typescript@4.9.5:
   version "4.9.5"
   resolved "https://registry.npmmirror.com/typescript/-/typescript-4.9.5.tgz#095979f9bcc0d09da324d58d03ce8f8374cbe65a"
   integrity sha512-1FXk9E2Hm+QzZQ7z+McJiHL4NW1F2EzMu9Nq9i3zAaGqibafqYwCVU6WyWAuyQRRzOlxou8xZSyXLEN8oKj24g==
@@ -8670,6 +8670,11 @@ typescript@^3.9.10:
   version "3.9.10"
   resolved "https://registry.npmmirror.com/typescript/-/typescript-3.9.10.tgz#70f3910ac7a51ed6bef79da7800690b19bf778b8"
   integrity sha512-w6fIxVE/H1PkLKcCPsFqKE7Kv7QUwhU8qQY2MueZXWx5cPZdwFupLgKK3vntcK98BtNHZtAF4LA/yl2a7k8R6Q==
+
+"typescript@^4.6.4 || ^5.0.0":
+  version "5.0.2"
+  resolved "https://registry.npmmirror.com/typescript/-/typescript-5.0.2.tgz#891e1a90c5189d8506af64b9ef929fca99ba1ee5"
+  integrity sha512-wVORMBGO/FAs/++blGNeAVdbNKtIh1rbBL2EyQ1+J9lClJ93KiiKe8PmFIVdXhHcyv44SL9oglmfeSsndo0jRw==
 
 uglify-es@^3.1.9:
   version "3.3.9"
