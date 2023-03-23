@@ -6,7 +6,7 @@ import { LineChart } from 'echarts/charts';
 import { GridComponent, TitleComponent, TooltipComponent } from 'echarts/components';
 import SvgChart, { SVGRenderer } from 'wrn-echarts/svgChart';
 
-import { Container } from '@/components';
+import { Container } from '@/components/Container';
 
 echarts.use([LineChart, GridComponent, TitleComponent, TooltipComponent, SVGRenderer]);
 

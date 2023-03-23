@@ -1,0 +1,13 @@
+{
+  "migIndex": 1,
+  "data": [
+    {
+      "path": "assets/fonts/PingFang SC Regular.ttf",
+      "sha1": "a05c2b7e3bc4982dd0d3a802b7dfb6307c12af2d"
+    },
+    {
+      "path": "assets/fonts/Roboto.ttf",
+      "sha1": "eb64250f8ba0eef69956e6591ca61c3b0846977d"
+    }
+  ]
+}

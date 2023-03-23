@@ -1,7 +1,7 @@
 import { Box, Text } from '@td-design/react-native';
 
-import { Container } from '@/components';
-import { RefreshFlatList } from '@/components';
+import { Container } from '@/components/Container';
+import { RefreshFlatList } from '@/components/RefreshFlatList';
 import { useRefreshService } from '@/hooks/useRefreshService';
 
 interface DataType {

@@ -1,11 +1,10 @@
-import codePush from 'react-native-code-push';
-import Config from 'react-native-config';
+import { Text as RNText } from 'react-native';
 
 import NiceModal from '@ebay/nice-modal-react';
 import { NavigationProp, useNavigation } from '@react-navigation/native';
-import { Button, Center, WhiteSpace } from '@td-design/react-native';
+import { Button, Center, Text, WhiteSpace } from '@td-design/react-native';
 
-import { Container } from '@/components';
+import { Container } from '@/components/Container';
 import TestModal from '@/modals/TestModal';
 
 export function Homepage() {
@@ -26,7 +25,7 @@ export function Homepage() {
           title="弹窗测试"
           onPress={() => NiceModal.show(TestModal, { content: '我是内容', position: 'center' })}
         />
-        <WhiteSpace />
+        {/* <WhiteSpace />
         <Button
           title="热更新测试"
           onPress={() =>
@@ -37,7 +36,7 @@ export function Homepage() {
               .then(res => console.log(res))
               .catch(e => console.error(e))
           }
-        />
+        /> */}
         <WhiteSpace />
         <Button title="长表单示例" onPress={() => navigation.navigate('LongFormDemo')} />
         <WhiteSpace />
@@ -45,6 +44,8 @@ export function Homepage() {
         <WhiteSpace />
         <Button title="网络图片示例" onPress={() => navigation.navigate('OnlineImageDemo')} />
         <WhiteSpace />
+        <Text variant="d0">自定义字体</Text>
+        <RNText>默认字体</RNText>
       </Center>
     </Container>
   );

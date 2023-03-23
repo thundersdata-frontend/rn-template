@@ -1,12 +1,20 @@
-import { Alert, AppRegistry, LogBox } from 'react-native';
-import { setJSExceptionHandler, setNativeExceptionHandler } from 'react-native-exception-handler';
+import {name as appName} from './app.json';
+import {App} from './src/App';
+import {Alert, AppRegistry, LogBox} from 'react-native';
+import {
+  setJSExceptionHandler,
+  setNativeExceptionHandler,
+} from 'react-native-exception-handler';
 import RNRestart from 'react-native-restart';
-import { enableFreeze } from 'react-native-screens';
+import {enableFreeze} from 'react-native-screens';
 
-import { App } from './src/App';
-import { name as appName } from './app.json';
-
-LogBox.ignoreLogs(['Require cycle:', 'new NativeEventEmitter()', "Can't perform", "Flipper", "RCTBridge"]);
+LogBox.ignoreLogs([
+  'Require cycle:',
+  'new NativeEventEmitter()',
+  "Can't perform",
+  'Flipper',
+  'RCTBridge',
+]);
 enableFreeze();
 
 /**

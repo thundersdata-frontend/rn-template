@@ -8,25 +8,18 @@ module.exports = {
         alias: {
           '@': './src',
         },
-        extensions: ['.ios.ts', '.android.ts', '.ts', '.ios.tsx', '.android.tsx', '.tsx', '.jsx', '.js', '.json'],
+        extensions: [
+          '.ios.ts',
+          '.android.ts',
+          '.ts',
+          '.ios.tsx',
+          '.android.tsx',
+          '.tsx',
+          '.jsx',
+          '.js',
+          '.json',
+        ],
       },
-    ],
-    [
-      'import',
-      {
-        libraryName: '@td-design/react-native',
-        libraryDirectory: 'lib/module',
-      },
-      'rn',
-    ],
-    [
-      'import',
-      {
-        libraryName: '@td-design/rn-hooks',
-        libraryDirectory: 'lib/module',
-        camel2DashComponentName: false, // default: true
-      },
-      'hooks',
     ],
     [
       '@babel/plugin-transform-react-jsx',
