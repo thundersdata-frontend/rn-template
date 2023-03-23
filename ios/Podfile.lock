@@ -347,7 +347,7 @@ PODS:
     - react-native-config/App (= 1.5.0)
   - react-native-config/App (1.5.0):
     - React-Core
-  - react-native-flipper (0.184.0):
+  - react-native-flipper (0.164.0):
     - React-Core
   - react-native-image-picker (5.3.1):
     - React-Core
@@ -760,7 +760,7 @@ SPEC CHECKSUMS:
   React-logger: 0d58569ec51d30d1792c5e86a8e3b78d24b582c6
   react-native-blob-util: 99f4d79189252f597fe0d810c57a3733b1b1dea6
   react-native-config: 5330c8258265c1e5fdb8c009d2cabd6badd96727
-  react-native-flipper: f5b2b27bfbbf64ffbf8d1e7030905e43a22144c1
+  react-native-flipper: c33a4995958ef12a2b2f8290d63bed7adeed7634
   react-native-image-picker: ec9b713e248760bfa0f879f0715391de4651a7cb
   react-native-image-resizer: 00ceb0e05586c7aadf061eea676957a6c2ec60fa
   react-native-mmkv: a2a40a0458bdbc9d43c4e7752ecfc5e3a87b66dd
@@ -798,4 +798,4 @@ SPEC CHECKSUMS:
 
 PODFILE CHECKSUM: 16ee3826e31274cf80326dbf860d24ee5abd0ef3
 
-COCOAPODS: 1.11.3
+COCOAPODS: 1.10.2

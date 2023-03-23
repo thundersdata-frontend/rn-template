@@ -65,7 +65,7 @@ def enableSeparateBuildPerCPUArchitecture = false
 /**
  * Set this to true to Run Proguard on Release builds to minify the Java bytecode.
  */
-def enableProguardInReleaseBuilds = false
+def enableProguardInReleaseBuilds = true
 
 /**
  * The preferred build flavor of JavaScriptCore (JSC)
@@ -130,11 +130,6 @@ android {
     buildTypes {
         debug {
             signingConfig signingConfigs.debug
-        }
-        releaseStaging {
-            // Note: It is a good idea to provide matchingFallbacks for the new buildType you create to prevent build issues
-            // Add the following line if not already there
-            matchingFallbacks = ['release']
         }
         release {
             // Caution! In production, you need to generate your own keystore file.

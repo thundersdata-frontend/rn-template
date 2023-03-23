@@ -13,26 +13,21 @@
 # Uncomment the line if you want fastlane to automatically update itself
 # update_fastlane
 
-default_platform(:ios)
+default_platform(:android)
 
 before_all do
-  # ensure_git_branch(branch: 'main')
+  # ensure_git_branch(branch: 'develop')
   # ensure_git_status_clean
   git_pull
 end
 
-platform :ios do
+platform :android do
   lane :build do
-    ENV["CI"] = "true"
-    cocoapods
-    gym(
-      workspace: "rnTemplate.xcworkspace", 
-      scheme: "rnTemplate(Production)",
-      include_bitcode: false,
-      include_symbols: false,
-      silent: true,
-      clean: true,
-      export_method: "development",   # Available options: app-store ad-hoc package enterprise development
+    gradle(
+      task: "app:assembleRelease",
+      system_properties: {
+        "ENVFILE": ".env.prod"
+      }
     )
   end
 
@@ -40,7 +35,7 @@ platform :ios do
     fir_cli(
       api_token: "ae1d65e6383eeb50b2723f85b5e30b2b",
       changelog: "release a new version",
-      specify_file_path: "./rnTemplate.ipa",
+      specify_file_path: "./app/build/outputs/apk/release/app-release.apk",
     )
   end
 

@@ -4,7 +4,6 @@
   "private": true,
   "scripts": {
     "android:dev": "cross-env ENVFILE=.env.dev react-native run-android",
-    "android:staging": "cd ./android && cross-env ENVFILE=.env.staging ./gradlew app:assembleRelease",
     "android:prod": "cd ./android && cross-env ENVFILE=.env.prod ./gradlew app:assembleRelease",
     "start": "watchman watch-del-all && react-native start --reset-cache",
     "prettier": "prettier --write --cache --cache-strategy metadata \"**/*.{tsx,ts}\"",
@@ -92,7 +91,7 @@
     "prettier": "^2.8.6",
     "prettier-plugin-packagejson": "^2.4.3",
     "react-native-clean-project": "^4.0.1",
-    "react-native-flipper": "0.184.0",
+    "react-native-flipper": "0.164.0",
     "shelljs": "^0.8.5",
     "typescript": "5.0.2"
   }
