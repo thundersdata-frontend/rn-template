@@ -1,17 +1,10 @@
 package com.rntemplate;
 
-import android.app.Activity;
-import android.graphics.Color;
 import android.os.Bundle;
-import android.os.Build;
-import android.view.View;
-import android.view.Window;
-import android.view.WindowManager;
 
 import androidx.core.view.WindowCompat;
 
 import com.facebook.react.ReactActivity;
-import com.facebook.react.ReactActivityDelegate;
 import com.zoontek.rnbootsplash.RNBootSplash; // <- add this necessary import
 
 public class MainActivity extends ReactActivity {
@@ -27,14 +20,6 @@ public class MainActivity extends ReactActivity {
 
   @Override
   protected void onCreate(Bundle savedInstanceState) {
-    if (Build.VERSION.SDK_INT >= 19 && Build.VERSION.SDK_INT < 21) {
-        setWindowFlag(this, WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS, true);
-    }
-    //make fully Android Transparent Status bar
-    if (Build.VERSION.SDK_INT >= 21) {
-        setWindowFlag(this, WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS, false);
-        getWindow().setStatusBarColor(Color.TRANSPARENT);
-    }
     if (savedInstanceState != null) {
 			savedInstanceState.remove("android:support:fragments");
 			savedInstanceState.remove("android:fragments");
@@ -43,16 +28,5 @@ public class MainActivity extends ReactActivity {
     super.onCreate(savedInstanceState);
     // Layout edge-to-edge
     WindowCompat.setDecorFitsSystemWindows(getWindow(), false);
-  }
-
-  public static void setWindowFlag(Activity activity, final int bits, boolean on) {
-    Window win = activity.getWindow();
-    WindowManager.LayoutParams winParams = win.getAttributes();
-    if (on) {
-        winParams.flags |= bits;
-    } else {
-        winParams.flags &= ~bits;
-    }
-    win.setAttributes(winParams);
   }
 }

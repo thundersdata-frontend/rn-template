@@ -2,20 +2,8 @@
 
     <!-- Base application theme. -->
     <style name="AppTheme" parent="Theme.AppCompat.DayNight.NoActionBar">
-        <item name="android:editTextBackground">@drawable/rn_edit_text_material</item>
-        
-        <!-- Make the bottom navigation bar transparent -->
-        <item name="android:navigationBarColor">
-            @android:color/transparent
-        </item>
-
-        <!-- Make the top status bar transparent -->
-        <item name="android:statusBarColor">
-            @android:color/transparent
-        </item>
-        
-        <!-- 光标颜色 -->
-        <item name="colorControlActivated">@color/colorGray</item>
+        <item name="android:windowLightStatusBar">true</item>
+        <item name="android:statusBarColor">@android:color/transparent</item>
     </style>
 
      <!-- BootTheme should inherit from Theme.SplashScreen -->
