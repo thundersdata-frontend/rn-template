@@ -1,4 +1,6 @@
 import { Text as RNText } from 'react-native';
+import codePush from 'react-native-code-push';
+import Config from 'react-native-config';
 
 import NiceModal from '@ebay/nice-modal-react';
 import { NavigationProp, useNavigation } from '@react-navigation/native';
@@ -25,7 +27,7 @@ export function Homepage() {
           title="弹窗测试"
           onPress={() => NiceModal.show(TestModal, { content: '我是内容', position: 'center' })}
         />
-        {/* <WhiteSpace />
+        <WhiteSpace />
         <Button
           title="热更新测试"
           onPress={() =>
@@ -36,7 +38,7 @@ export function Homepage() {
               .then(res => console.log(res))
               .catch(e => console.error(e))
           }
-        /> */}
+        />
         <WhiteSpace />
         <Button title="长表单示例" onPress={() => navigation.navigate('LongFormDemo')} />
         <WhiteSpace />
