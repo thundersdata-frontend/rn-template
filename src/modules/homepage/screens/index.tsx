@@ -1,3 +1,4 @@
+import { Alert } from 'react-native';
 import codePush from 'react-native-code-push';
 import Config from 'react-native-config';
 
@@ -5,6 +6,7 @@ import NiceModal from '@ebay/nice-modal-react';
 import { NavigationProp, useNavigation } from '@react-navigation/native';
 import { Button, Center, WhiteSpace } from '@td-design/react-native';
 
+import { Clipboard } from '@/components/Clipboard';
 import { Container } from '@/components/Container';
 import TestModal from '@/modals/TestModal';
 
@@ -45,6 +47,14 @@ export function Homepage() {
         <WhiteSpace />
         <Button title="网络图片示例" onPress={() => navigation.navigate('OnlineImageDemo')} />
         <WhiteSpace />
+        <Button title="复制功能" onPress={() => Clipboard.copy((Math.random() * 100).toFixed(2))} />
+        <Button
+          title="粘贴功能"
+          onPress={async () => {
+            const data = await Clipboard.paste();
+            Alert.alert(data);
+          }}
+        />
       </Center>
     </Container>
   );
