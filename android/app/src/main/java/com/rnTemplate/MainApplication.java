@@ -11,7 +11,8 @@ import com.facebook.soloader.SoLoader;
 import java.lang.reflect.InvocationTargetException;
 import java.util.List;
 
-import com.exitapp.RNExitAppPackage;
+import com.exitApp.RNExitAppPackage;
+import com.clipboard.ClipboardPackage;
 import com.microsoft.codepush.react.CodePush;
 
 public class MainApplication extends Application implements ReactApplication {
@@ -29,6 +30,7 @@ public class MainApplication extends Application implements ReactApplication {
           List<ReactPackage> packages = new PackageList(this).getPackages();
           // Packages that cannot be autolinked yet can be added manually here, for example:
           packages.add(new RNExitAppPackage());
+          packages.add(new ClipboardPackage());
           return packages;
         }
 
