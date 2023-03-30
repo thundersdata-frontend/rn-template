@@ -1,4 +1,4 @@
-package com.exitApp;
+package com.clipboard;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -10,14 +10,14 @@ import com.facebook.react.bridge.ReactApplicationContext;
 import com.facebook.react.uimanager.ViewManager;
 import com.facebook.react.bridge.JavaScriptModule;
 
-public class RNExitAppPackage implements ReactPackage {
+public class ClipboardPackage implements ReactPackage {
 
     @Override
     public List<NativeModule> createNativeModules(
             ReactApplicationContext reactContext) {
         List<NativeModule> modules = new ArrayList<>();
 
-        modules.add(new RNExitAppModule(reactContext));
+        modules.add(new ClipboardModule(reactContext));
 
         return modules;
     }
