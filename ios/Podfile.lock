@@ -307,7 +307,7 @@ PODS:
   - react-native-mmkv (2.5.1):
     - MMKV (>= 1.2.13)
     - React-Core
-  - react-native-netinfo (9.3.7):
+  - react-native-netinfo (9.3.8):
     - React-Core
   - react-native-refresh-control (1.2.5):
     - React
@@ -687,7 +687,7 @@ SPEC CHECKSUMS:
   react-native-image-picker: ec9b713e248760bfa0f879f0715391de4651a7cb
   react-native-image-resizer: 00ceb0e05586c7aadf061eea676957a6c2ec60fa
   react-native-mmkv: 69b9c003f10afdd01addf7c6ee784ce42ee2eff3
-  react-native-netinfo: 2517ad504b3d303e90d7a431b0fcaef76d207983
+  react-native-netinfo: fbc23bc2fe217155d85f2f7e0644b1654df8029b
   react-native-refresh-control: b4a6e1e3c08126286cb4c5c07eaca45df7d5b715
   react-native-restart: 45c8dca02491980f2958595333cbccd6877cb57e
   react-native-safe-area-context: 39c2d8be3328df5d437ac1700f4f3a4f75716acc
