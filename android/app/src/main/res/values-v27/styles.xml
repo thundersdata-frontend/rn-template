@@ -3,11 +3,11 @@
   <style name="AppTheme" parent="Theme.AppCompat.DayNight.NoActionBar">
     <!-- Set system bars background transparent -->
     <item name="android:statusBarColor">@android:color/transparent</item>
-    <!-- <item name="android:navigationBarColor">@android:color/transparent</item> -->
+    <item name="android:navigationBarColor">@android:color/transparent</item>
 
     <!-- Disable auto contrasted system bars background -->
     <item name="android:enforceStatusBarContrast" tools:targetApi="q">false</item>
-    <!-- <item name="android:enforceNavigationBarContrast" tools:targetApi="q">false</item> -->
+    <item name="android:enforceNavigationBarContrast" tools:targetApi="q">false</item>
   </style>
 
   <style name="BootTheme" parent="Theme.SplashScreen">
