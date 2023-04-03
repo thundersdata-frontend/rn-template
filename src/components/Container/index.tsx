@@ -1,5 +1,7 @@
 import { FC, PropsWithChildren } from 'react';
-import { StatusBar, StyleSheet } from 'react-native';
+import React from 'react';
+import { StyleSheet } from 'react-native';
+import { StatusBar } from 'react-native-bars';
 import { SafeAreaView } from 'react-native-safe-area-context';
 
 import { useTheme } from '@td-design/react-native';
@@ -22,11 +24,7 @@ export const Container: FC<PropsWithChildren<{ hasHeader?: boolean; backgroundCo
 
   return (
     <SafeAreaView style={styles.container} edges={hasHeader ? ['left', 'right', 'bottom'] : ['left', 'right', 'top']}>
-      <StatusBar
-        barStyle={theme.theme === 'light' ? 'dark-content' : 'light-content'}
-        backgroundColor="transparent"
-        translucent
-      />
+      <StatusBar barStyle={theme.theme === 'light' ? 'dark-content' : 'light-content'} />
       {children}
     </SafeAreaView>
   );
