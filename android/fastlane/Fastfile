@@ -24,6 +24,9 @@ end
 platform :android do
   lane :build do
     gradle(
+      task: "clean"
+    )
+    gradle(
       task: "app:assembleRelease",
       system_properties: {
         "ENVFILE": "../.env.prod"
@@ -35,7 +38,7 @@ platform :android do
     fir_cli(
       api_token: "ae1d65e6383eeb50b2723f85b5e30b2b",
       changelog: "release a new version",
-      specify_file_path: "./app/build/outputs/apk/release/app-release.apk",
+      specify_file_path: lane_context[SharedValues::GRADLE_APK_OUTPUT_PATH],
     )
   end
 

@@ -5,7 +5,7 @@ GEM
       rexml
     addressable (2.8.1)
       public_suffix (>= 2.0.2, < 6.0)
-    admqr_knife (0.1.5)
+    admqr_knife (0.2.0)
       api_tools
       thor
     api_tools (0.1.1)
@@ -112,11 +112,11 @@ GEM
       xcodeproj (>= 1.13.0, < 2.0.0)
       xcpretty (~> 0.3.0)
       xcpretty-travis-formatter (>= 0.0.3)
-    fastlane-plugin-fir_cli (2.0.16)
-      fir-cli (~> 2.0.16)
-    fir-cli (2.0.16)
+    fastlane-plugin-fir_cli (2.0.21)
+      fir-cli (~> 2.0.21)
+    fir-cli (2.0.21)
       CFPropertyList
-      admqr_knife (~> 0.1.5)
+      admqr_knife (~> 0.2.0)
       api_tools (~> 0.1.1)
       rest-client (~> 2.0)
       rexml
