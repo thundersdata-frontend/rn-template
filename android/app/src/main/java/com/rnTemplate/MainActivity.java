@@ -10,6 +10,7 @@ import com.facebook.react.defaults.DefaultNewArchitectureEntryPoint;
 import com.facebook.react.defaults.DefaultReactActivityDelegate;
 
 import com.zoontek.rnbootsplash.RNBootSplash; // <- add this necessary import
+import com.zoontek.rnbars.RNBars; // <- add this necessary import
 
 public class MainActivity extends ReactActivity {
 
@@ -28,8 +29,12 @@ public class MainActivity extends ReactActivity {
 			savedInstanceState.remove("android:support:fragments");
 			savedInstanceState.remove("android:fragments");
 		}
-    RNBootSplash.init(this); // <- initialize the splash screen
+    // 初始化启动页
+    RNBootSplash.init(this);
     super.onCreate(savedInstanceState);
+    // 初始化状态栏
+    // 必须在super.onCreate方法之后，不然在顶部会出现app name
+    RNBars.init(this, "dark-content");
     // Layout edge-to-edge
     WindowCompat.setDecorFitsSystemWindows(getWindow(), false);
   }
