@@ -40,7 +40,7 @@ platform :ios do
     fir_cli(
       api_token: "ae1d65e6383eeb50b2723f85b5e30b2b",
       changelog: "release a new version",
-      specify_file_path: "./rnTemplate.ipa",
+      specify_file_path: lane_context[SharedValues::IPA_OUTPUT_PATH],
     )
   end
 
