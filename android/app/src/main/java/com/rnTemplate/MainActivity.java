@@ -25,9 +25,12 @@ public class MainActivity extends ReactActivity {
 			savedInstanceState.remove("android:support:fragments");
 			savedInstanceState.remove("android:fragments");
 		}
-    RNBars.init(this, "dark-content"); // <- initialize with initial bars styles (could be light-content)
+    // 初始化启动页
     RNBootSplash.init(this);
     super.onCreate(savedInstanceState);
+    // 初始化状态栏
+    // 必须在super.onCreate方法之后，不然在顶部会出现app name
+    RNBars.init(this, "dark-content");
     // Layout edge-to-edge
     WindowCompat.setDecorFitsSystemWindows(getWindow(), false);
   }
