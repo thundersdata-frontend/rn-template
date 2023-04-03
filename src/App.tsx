@@ -1,4 +1,5 @@
-import { useColorScheme } from 'react-native';
+import { Platform, useColorScheme } from 'react-native';
+import { NavigationBar } from 'react-native-bars';
 import { hide as hideSplash } from 'react-native-bootsplash';
 import codePush from 'react-native-code-push';
 import { GestureHandlerRootView } from 'react-native-gesture-handler';
@@ -48,12 +49,12 @@ const Main = () => {
                 >
                   <Stack />
                 </NavigationContainer>
-                {/* {Platform.OS === 'android' && <SafeAreaView mode="margin" edges={['bottom']} />} */}
               </NiceModal.Provider>
             </useUpdateService.Provider>
           </ThemeProvider>
         </JotaiProvider>
       </GestureHandlerRootView>
+      {Platform.OS === 'android' && <NavigationBar barStyle="dark-content" />}
     </SafeAreaProvider>
   );
 };
