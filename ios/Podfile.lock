@@ -459,7 +459,7 @@ PODS:
   - RNScreens (3.20.0):
     - React-Core
     - React-RCTImage
-  - RNSVG (13.8.0):
+  - RNSVG (13.9.0):
     - React-Core
   - SDWebImage (5.11.1):
     - SDWebImage/Core (= 5.11.1)
@@ -762,7 +762,7 @@ SPEC CHECKSUMS:
   RNKeyboardInsets: b4e8f3235eca5e2ee17c92459ef350941704d62b
   RNReanimated: 6668b0587bebd4b15dd849b99e5a9c70fc12ed95
   RNScreens: 218801c16a2782546d30bd2026bb625c0302d70f
-  RNSVG: c1e76b81c76cdcd34b4e1188852892dc280eb902
+  RNSVG: 53c661b76829783cdaf9b7a57258f3d3b4c28315
   SDWebImage: a7f831e1a65eb5e285e3fb046a23fcfbf08e696d
   SDWebImageWebPCoder: 908b83b6adda48effe7667cd2b7f78c897e5111d
   SocketRocket: fccef3f9c5cedea1353a9ef6ada904fde10d6608
