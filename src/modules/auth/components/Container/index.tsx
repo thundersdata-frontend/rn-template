@@ -1,5 +1,6 @@
 import { FC, PropsWithChildren } from 'react';
-import { ImageBackground, StatusBar, useWindowDimensions } from 'react-native';
+import { ImageBackground, useWindowDimensions } from 'react-native';
+import { NavigationBar, StatusBar } from 'react-native-bars';
 import { SafeAreaView } from 'react-native-safe-area-context';
 
 export const Container: FC<PropsWithChildren<{}>> = props => {
@@ -13,8 +14,9 @@ export const Container: FC<PropsWithChildren<{}>> = props => {
         height: height * 1.2,
       }}
     >
-      <StatusBar barStyle="light-content" translucent backgroundColor="transparent" />
+      <StatusBar barStyle="light-content" />
       <SafeAreaView style={{ flex: 1 }}>{props.children}</SafeAreaView>
+      <NavigationBar barStyle="light-content" />
     </ImageBackground>
   );
 };
