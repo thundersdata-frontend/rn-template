@@ -11,9 +11,6 @@
 		13B07FBF1A68108700A75B9A /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 13B07FB51A68108700A75B9A /* Images.xcassets */; };
 		13B07FC11A68108700A75B9A /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 13B07FB71A68108700A75B9A /* main.m */; };
 		7413B6A3E40A910E83A7621B /* libPods-rnTemplate-rnTemplateTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 57DB42522B9E1E6FA01EDF18 /* libPods-rnTemplate-rnTemplateTests.a */; };
-		811980EB5E00431F861B8E04 /* Roboto.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 8270941888A9425E948256E8 /* Roboto.ttf */; };
-		A30584CED2D44E3DA6F4E483 /* PingFang SC Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = A6CDAC24A4494E8CA0647C49 /* PingFang SC Regular.ttf */; };
-		E4295970290BDFD900DD4F1A /* AppDelegate.mm in Sources */ = {isa = PBXBuildFile; fileRef = E429596F290BDFD900DD4F1A /* AppDelegate.mm */; };
 		E42E5C2E2661E0D3004C1AD9 /* OpenSSL.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = E42E5C2D2661E0D3004C1AD9 /* OpenSSL.xcframework */; };
 		E432122326098623007B1EAF /* BootSplash.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E432122226098623007B1EAF /* BootSplash.storyboard */; };
 		E4A203A82975582900A791EC /* libswiftWebKit.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = E4A203A72975582900A791EC /* libswiftWebKit.tbd */; };
@@ -46,9 +43,7 @@
 		2266412CB466CA5334289F3F /* Pods-rnTemplate.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-rnTemplate.release.xcconfig"; path = "Target Support Files/Pods-rnTemplate/Pods-rnTemplate.release.xcconfig"; sourceTree = "<group>"; };
 		3FBBE554668CA7FBBAF929E4 /* libPods-rnTemplate.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-rnTemplate.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		57DB42522B9E1E6FA01EDF18 /* libPods-rnTemplate-rnTemplateTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-rnTemplate-rnTemplateTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
-		8270941888A9425E948256E8 /* Roboto.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = Roboto.ttf; path = ../assets/fonts/Roboto.ttf; sourceTree = "<group>"; };
 		8C8CB8645B884621AA97D602 /* Pods-rnTemplate.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-rnTemplate.debug.xcconfig"; path = "Target Support Files/Pods-rnTemplate/Pods-rnTemplate.debug.xcconfig"; sourceTree = "<group>"; };
-		A6CDAC24A4494E8CA0647C49 /* PingFang SC Regular.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "PingFang SC Regular.ttf"; path = "../assets/fonts/PingFang SC Regular.ttf"; sourceTree = "<group>"; };
 		AF88308C921D25A3E834753E /* Pods-rnTemplate-rnTemplateTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-rnTemplate-rnTemplateTests.release.xcconfig"; path = "Target Support Files/Pods-rnTemplate-rnTemplateTests/Pods-rnTemplate-rnTemplateTests.release.xcconfig"; sourceTree = "<group>"; };
 		CCBE26602843B01839D42DEA /* Pods-rnTemplate-rnTemplateTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-rnTemplate-rnTemplateTests.debug.xcconfig"; path = "Target Support Files/Pods-rnTemplate-rnTemplateTests/Pods-rnTemplate-rnTemplateTests.debug.xcconfig"; sourceTree = "<group>"; };
 		E429596F290BDFD900DD4F1A /* AppDelegate.mm */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.objcpp; name = AppDelegate.mm; path = rnTemplate/AppDelegate.mm; sourceTree = "<group>"; };
@@ -184,8 +179,6 @@
 		FC4F48950D374BBFB500C243 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
-				A6CDAC24A4494E8CA0647C49 /* PingFang SC Regular.ttf */,
-				8270941888A9425E948256E8 /* Roboto.ttf */,
 			);
 			name = Resources;
 			sourceTree = "<group>";
@@ -287,8 +280,6 @@
 				E4C332ED2660BF21000354DA /* Config.xcconfig in Resources */,
 				13B07FBF1A68108700A75B9A /* Images.xcassets in Resources */,
 				E432122326098623007B1EAF /* BootSplash.storyboard in Resources */,
-				A30584CED2D44E3DA6F4E483 /* PingFang SC Regular.ttf in Resources */,
-				811980EB5E00431F861B8E04 /* Roboto.ttf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

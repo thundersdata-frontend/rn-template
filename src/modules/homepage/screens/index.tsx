@@ -1,10 +1,10 @@
-import { Alert } from 'react-native';
+import { Alert, ScrollView } from 'react-native';
 import codePush from 'react-native-code-push';
 import Config from 'react-native-config';
 
 import NiceModal from '@ebay/nice-modal-react';
 import { NavigationProp, useNavigation } from '@react-navigation/native';
-import { Button, Center, WhiteSpace } from '@td-design/react-native';
+import { Button, WhiteSpace } from '@td-design/react-native';
 
 import { Clipboard } from '@/components/Clipboard';
 import { Container } from '@/components/Container';
@@ -14,8 +14,8 @@ export function Homepage() {
   const navigation = useNavigation<NavigationProp<MainStackParamList>>();
 
   return (
-    <Container>
-      <Center>
+    <Container hasHeader={false}>
+      <ScrollView>
         <Button title="局部共享数据示例" onPress={() => navigation.navigate('LocalModelDemo')} />
         <WhiteSpace />
         <Button title="FlashList示例" onPress={() => navigation.navigate('FlashListDemo')} />
@@ -25,9 +25,11 @@ export function Homepage() {
         <Button title="通讯录示例" onPress={() => navigation.navigate('ContactsDemo')} />
         <WhiteSpace />
         <Button
-          title="弹窗测试"
+          title="测试组件库Modal"
           onPress={() => NiceModal.show(TestModal, { content: '我是内容', position: 'center' })}
         />
+        <WhiteSpace />
+        <Button title="测试导航库Modal" onPress={() => navigation.navigate('NavigationModal')} />
         <WhiteSpace />
         <Button
           title="热更新测试"
@@ -55,7 +57,8 @@ export function Homepage() {
             Alert.alert(data);
           }}
         />
-      </Center>
+        <WhiteSpace />
+      </ScrollView>
     </Container>
   );
 }
