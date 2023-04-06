@@ -2,9 +2,9 @@ import { useEffect, useRef } from 'react';
 
 import * as echarts from 'echarts/core';
 import { Button, WhiteSpace } from '@td-design/react-native';
+import SvgChart, { SVGRenderer } from '@wuba/react-native-echarts/svgChart';
 import { LineChart } from 'echarts/charts';
 import { GridComponent, TitleComponent, TooltipComponent } from 'echarts/components';
-import SvgChart, { SVGRenderer } from 'wrn-echarts/svgChart';
 
 import { Container } from '@/components/Container';
 
