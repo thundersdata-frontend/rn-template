@@ -33,6 +33,7 @@ type MainStackParamList = {
   Settings: undefined;
   ModifyPassword: undefined;
   ModifyPasswordResult: undefined;
+  NavigationModal: undefined;
 };
 
 type AppParamList = AuthStackParamList & MainStackParamList & CommonStackParamList;
