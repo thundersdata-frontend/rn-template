@@ -1405,10 +1405,10 @@
     lodash-es "^4.17.21"
     react-native-redash "^18.1.0"
 
-"@td-design/react-native@^4.1.14":
-  version "4.1.14"
-  resolved "https://registry.npmmirror.com/@td-design/react-native/-/react-native-4.1.14.tgz#658a4ea0fec821f5665e9ff936f2aecf80bcc2c9"
-  integrity sha512-fpjFOJAkS/nBK6w0zOAA8CFcnu2kUxjS75lceqBVa1UpfabsJ9//QQS+tsivyLl73TJ6ZCUjRC2cD+OzyL/iWg==
+"@td-design/react-native@^4.1.17":
+  version "4.1.17"
+  resolved "https://registry.npmmirror.com/@td-design/react-native/-/react-native-4.1.17.tgz#d80d134b479239946d1ac479fc5835fceabcdc42"
+  integrity sha512-p4MmO8nCe5qf5F5udpKYc6tQyvAZtK0cSlRH2XLYc3ZHb6/QUzdEwDC9b5z7tergzXGtxtevTj9r72lMbRVrFg==
   dependencies:
     "@shopify/restyle" "2.4.0"
     "@td-design/rn-hooks" "^2.5.1"
