@@ -1,9 +1,9 @@
 import { useEffect, useRef } from 'react';
 
 import * as echarts from 'echarts/core';
+import SvgChart, { SVGRenderer } from '@wuba/react-native-echarts/svgChart';
 import { MapChart } from 'echarts/charts';
 import { GeoComponent } from 'echarts/components';
-import SvgChart, { SVGRenderer } from 'wrn-echarts/svgChart';
 
 import { Container } from '@/components/Container';
 

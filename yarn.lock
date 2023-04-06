@@ -1708,6 +1708,14 @@
     "@typescript-eslint/types" "5.57.0"
     eslint-visitor-keys "^3.3.0"
 
+"@wuba/react-native-echarts@^1.0.0":
+  version "1.0.0"
+  resolved "https://registry.npmmirror.com/@wuba/react-native-echarts/-/react-native-echarts-1.0.0.tgz#91da0b7e51c0b37e39d2903e0a25b7ddf2be7670"
+  integrity sha512-TBf/NrMYvy6vlyQHiCwaAIeYpC5ZKDCJjH+8Vl45ylBZeSVy7NO7c8TrrKmaUn/iL8QJbZlRGK0QAFfa/ELeEw==
+  dependencies:
+    "@xmldom/xmldom" "^0.8.6"
+    entities "^4.4.0"
+
 "@xmldom/xmldom@^0.8.6":
   version "0.8.7"
   resolved "https://registry.npmmirror.com/@xmldom/xmldom/-/xmldom-0.8.7.tgz#8b1e39c547013941974d83ad5e9cf5042071a9a0"
@@ -9019,14 +9027,6 @@ write-file-atomic@^2.3.0:
     graceful-fs "^4.1.11"
     imurmurhash "^0.1.4"
     signal-exit "^3.0.2"
-
-wrn-echarts@^0.1.5:
-  version "0.1.6"
-  resolved "https://registry.npmmirror.com/wrn-echarts/-/wrn-echarts-0.1.6.tgz#4bac674561682d4762f4902564008a19151c570f"
-  integrity sha512-a5U7n4LsAiDkR5dLSokR25fIf56wpHKvjIME39NUz2n88C/yLUkhmyUztDrvhLDW2UIWiAH5ssMWJvyiCntY8Q==
-  dependencies:
-    "@xmldom/xmldom" "^0.8.6"
-    entities "^4.4.0"
 
 ws@^6.1.4:
   version "6.2.2"
