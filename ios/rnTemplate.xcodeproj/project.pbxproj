@@ -14,8 +14,6 @@
 		13B07FC11A68108700A75B9A /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 13B07FB71A68108700A75B9A /* main.m */; };
 		7699B88040F8A987B510C191 /* libPods-rnTemplate-rnTemplateTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 19F6CBCC0A4E27FBF8BF4A61 /* libPods-rnTemplate-rnTemplateTests.a */; };
 		81AB9BB82411601600AC10FF /* BootSplash.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 81AB9BB72411601600AC10FF /* BootSplash.storyboard */; };
-		C1D8F0D05D4549B6BF216BB2 /* PingFang SC Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = E5033C02AB5A4B2AB0D7E6FF /* PingFang SC Regular.ttf */; };
-		CCB1431A5A2C4D2E8A1D0EB1 /* Roboto.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 6556EA49FD434297A913FB3C /* Roboto.ttf */; };
 		E4F9313F29A8616E00F33780 /* Config.xcconfig in Resources */ = {isa = PBXBuildFile; fileRef = E4F9313E29A8616E00F33780 /* Config.xcconfig */; };
 		E4F9314529A861FC00F33780 /* Bridge.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4F9314429A861FC00F33780 /* Bridge.swift */; };
 		E4F9314829A8625100F33780 /* RNExitApp.m in Sources */ = {isa = PBXBuildFile; fileRef = E4F9314729A8625100F33780 /* RNExitApp.m */; };
@@ -46,14 +44,12 @@
 		5709B34CF0A7D63546082F79 /* Pods-rnTemplate.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-rnTemplate.release.xcconfig"; path = "Target Support Files/Pods-rnTemplate/Pods-rnTemplate.release.xcconfig"; sourceTree = "<group>"; };
 		5B7EB9410499542E8C5724F5 /* Pods-rnTemplate-rnTemplateTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-rnTemplate-rnTemplateTests.debug.xcconfig"; path = "Target Support Files/Pods-rnTemplate-rnTemplateTests/Pods-rnTemplate-rnTemplateTests.debug.xcconfig"; sourceTree = "<group>"; };
 		5DCACB8F33CDC322A6C60F78 /* libPods-rnTemplate.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-rnTemplate.a"; sourceTree = BUILT_PRODUCTS_DIR; };
-		6556EA49FD434297A913FB3C /* Roboto.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = undefined; includeInIndex = 0; lastKnownFileType = unknown; name = Roboto.ttf; path = ../assets/fonts/Roboto.ttf; sourceTree = "<group>"; };
 		81AB9BB72411601600AC10FF /* BootSplash.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = BootSplash.storyboard; path = rnTemplate/BootSplash.storyboard; sourceTree = "<group>"; };
 		89C6BE57DB24E9ADA2F236DE /* Pods-rnTemplate-rnTemplateTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-rnTemplate-rnTemplateTests.release.xcconfig"; path = "Target Support Files/Pods-rnTemplate-rnTemplateTests/Pods-rnTemplate-rnTemplateTests.release.xcconfig"; sourceTree = "<group>"; };
 		E4F9313E29A8616E00F33780 /* Config.xcconfig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xcconfig; path = Config.xcconfig; sourceTree = "<group>"; };
 		E4F9314429A861FC00F33780 /* Bridge.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Bridge.swift; sourceTree = "<group>"; };
 		E4F9314629A8623500F33780 /* rnTemplate-Bridging-Header.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "rnTemplate-Bridging-Header.h"; sourceTree = "<group>"; };
 		E4F9314729A8625100F33780 /* RNExitApp.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RNExitApp.m; sourceTree = "<group>"; };
-		E5033C02AB5A4B2AB0D7E6FF /* PingFang SC Regular.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = undefined; includeInIndex = 0; lastKnownFileType = unknown; name = "PingFang SC Regular.ttf"; path = "../assets/fonts/PingFang SC Regular.ttf"; sourceTree = "<group>"; };
 		ED297162215061F000B7C4FE /* JavaScriptCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = JavaScriptCore.framework; path = System/Library/Frameworks/JavaScriptCore.framework; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
 
@@ -156,11 +152,8 @@
 		951C5F2132914247949CDDCD /* Resources */ = {
 			isa = PBXGroup;
 			children = (
-				E5033C02AB5A4B2AB0D7E6FF /* PingFang SC Regular.ttf */,
-				6556EA49FD434297A913FB3C /* Roboto.ttf */,
 			);
 			name = Resources;
-			path = "";
 			sourceTree = "<group>";
 		};
 		BBD78D7AC51CEA395F1C20DB /* Pods */ = {
@@ -271,8 +264,6 @@
 				81AB9BB82411601600AC10FF /* BootSplash.storyboard in Resources */,
 				E4F9313F29A8616E00F33780 /* Config.xcconfig in Resources */,
 				13B07FBF1A68108700A75B9A /* Images.xcassets in Resources */,
-				C1D8F0D05D4549B6BF216BB2 /* PingFang SC Regular.ttf in Resources */,
-				CCB1431A5A2C4D2E8A1D0EB1 /* Roboto.ttf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

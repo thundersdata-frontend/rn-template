@@ -34,7 +34,7 @@
     "@react-navigation/native": "^6.1.6",
     "@react-navigation/native-stack": "^6.9.12",
     "@shopify/flash-list": "^1.4.2",
-    "@td-design/react-native": "^4.1.14",
+    "@td-design/react-native": "^4.1.17",
     "@td-design/react-native-image-picker": "^1.6.4",
     "@td-design/react-native-picker": "^2.0.4",
     "@td-design/rn-hooks": "^2.5.1",
