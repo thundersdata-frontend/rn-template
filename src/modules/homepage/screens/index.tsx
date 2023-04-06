@@ -25,9 +25,11 @@ export function Homepage() {
         <Button title="通讯录示例" onPress={() => navigation.navigate('ContactsDemo')} />
         <WhiteSpace />
         <Button
-          title="弹窗测试"
+          title="测试组件库Modal"
           onPress={() => NiceModal.show(TestModal, { content: '我是内容', position: 'center' })}
         />
+        <WhiteSpace />
+        <Button title="测试导航库Modal" onPress={() => navigation.navigate('NavigationModal')} />
         <WhiteSpace />
         <Button
           title="热更新测试"

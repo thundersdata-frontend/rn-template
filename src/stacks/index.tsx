@@ -15,6 +15,7 @@ import { FlashListDemo2 } from '@/modules/homepage/screens/flashlist/demo2';
 import { RefreshFlatListDemo } from '@/modules/homepage/screens/flashlist/demo3';
 import { LocalModelDemo } from '@/modules/homepage/screens/localmodel';
 import { LongForm } from '@/modules/homepage/screens/longform';
+import { NavigationModal } from '@/modules/homepage/screens/modal';
 import { LocalImageDemo } from '@/modules/homepage/screens/pictures/demo1';
 import { OnlineImageDemo } from '@/modules/homepage/screens/pictures/demo2';
 import { WaterfallListDemo } from '@/modules/homepage/screens/waterfall';
@@ -175,6 +176,13 @@ const MODAL_SCREENS = [
       title: '隐私政策',
     },
   },
+  {
+    name: 'NavigationModal',
+    component: NavigationModal,
+    options: {
+      headerShown: false,
+    },
+  },
 ];
 
 const Stack = createNativeStackNavigator();
@@ -191,7 +199,7 @@ export default () => {
         gestureDirection: 'horizontal',
         headerTitleAlign: 'center',
         animation: 'slide_from_right',
-        animationDuration: 400,
+        animationDuration: 200,
       }}
     >
       {!confirmed && <Stack.Screen name="PrivacyConfirm" component={PrivacyConfirm} options={{ headerShown: false }} />}
@@ -214,7 +222,10 @@ export default () => {
       )}
       <Stack.Group
         screenOptions={{
-          presentation: 'modal',
+          presentation: 'transparentModal',
+          animation: 'slide_from_bottom',
+          animationDuration: 200,
+          animationTypeForReplace: 'pop',
         }}
       >
         {MODAL_SCREENS.map(screen => (
