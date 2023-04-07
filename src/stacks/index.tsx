@@ -19,6 +19,8 @@ import { LongForm } from '@/modules/homepage/screens/longform';
 import { NavigationModal } from '@/modules/homepage/screens/modal';
 import { LocalImageDemo } from '@/modules/homepage/screens/pictures/demo1';
 import { OnlineImageDemo } from '@/modules/homepage/screens/pictures/demo2';
+import { SharedElementDemo } from '@/modules/homepage/screens/sharedElement';
+import { SharedElementDetail } from '@/modules/homepage/screens/sharedElement/Detail';
 import { WaterfallListDemo } from '@/modules/homepage/screens/waterfall';
 import { Agreement } from '@/modules/policy/screens/agreement';
 import { Privacy } from '@/modules/policy/screens/privacy';
@@ -110,6 +112,18 @@ const SignedInScreens = {
     screen: OnlineImageDemo,
     options: {
       title: '网络图片示例',
+    },
+  },
+  SharedElementDemo: {
+    screen: SharedElementDemo,
+    options: {
+      title: 'SharedElement示例',
+    },
+  },
+  SharedElementDetail: {
+    screen: SharedElementDetail,
+    options: {
+      title: 'SharedElement详情页',
     },
   },
   Settings: {
@@ -211,6 +225,8 @@ type RootStackParamList = StaticParamList<typeof RootStack>;
 
 declare global {
   namespace ReactNavigation {
-    interface RootParamList extends RootStackParamList {}
+    interface RootParamList extends RootStackParamList {
+      SharedElementDetail: { tag: string };
+    }
   }
 }

@@ -58,6 +58,7 @@ export function Homepage() {
           }}
         />
         <WhiteSpace />
+        <Button title="SharedElement示例" onPress={() => navigation.navigate('SharedElementDemo')} />
       </ScrollView>
     </Container>
   );

@@ -58,7 +58,7 @@ export const SingleImagePicker: FC<CustomImagePickerProps> = ({
           }
           return Promise.resolve(file?.uri);
         } catch (err) {
-          console.log(err);
+          console.error(err);
         }
       }}
       onGrantFail={() => Toast.middle({ content: '对不起，授权失败' })}

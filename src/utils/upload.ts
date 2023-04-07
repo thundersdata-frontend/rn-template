@@ -23,7 +23,6 @@ export async function uploadFile({ fileName, fileType, uri }: any) {
     ]
   );
   const result = resultData.json();
-  console.log(result);
   if (!result.success) throw new Error('上传失败');
   return result.data;
 }

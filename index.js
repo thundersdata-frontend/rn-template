@@ -31,7 +31,7 @@ setJSExceptionHandler((error, isFatal) => {
       ],
     );
   } else {
-    console.log(error); // So that we can see it in the ADB logs in case of Android if needed
+    console.error(error); // So that we can see it in the ADB logs in case of Android if needed
   }
 }, false);
 
@@ -40,7 +40,7 @@ setJSExceptionHandler((error, isFatal) => {
  */
 setNativeExceptionHandler(
   exceptionString => {
-    console.log(exceptionString);
+    console.error(exceptionString);
   },
   false,
   true,
