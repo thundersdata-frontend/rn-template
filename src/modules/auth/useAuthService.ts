@@ -1,12 +1,13 @@
+import { useContext } from 'react';
 import { Keyboard } from 'react-native';
 
-import { NavigationProp, useNavigation } from '@react-navigation/native';
+import { useNavigation } from '@react-navigation/native';
 import type { Store, ValidateErrorEntity } from '@td-design/react-native';
 import { useMemoizedFn, useSafeState } from '@td-design/rn-hooks';
 
+import { AuthContext } from '@/contexts/AuthContext';
 import { useError } from '@/hooks/useError';
 import { useNotify } from '@/hooks/useNotify';
-import useUpdateService from '@/hooks/useUpdateService';
 import {
   mockConfigPassword,
   mockFetchUserInfo,
@@ -19,12 +20,12 @@ import {
 import { storageService, StorageToken } from '@/services/StorageService';
 import { mobilePattern } from '@/utils/validators';
 
+const { updateStorage } = storageService;
 export function useAuthService(isSmsLogin = true) {
-  const { update } = useUpdateService.useModel();
-  const navigation = useNavigation<NavigationProp<AuthStackParamList>>();
+  const navigation = useNavigation();
   const { convertErrorMsg } = useError();
   const { failNotify, successNotify } = useNotify();
-  const { updateStorage } = storageService;
+  const contextValue = useContext(AuthContext);
 
   const [error, setError] = useSafeState('');
   const [loading, setLoading] = useSafeState(false);
@@ -69,7 +70,11 @@ export function useAuthService(isSmsLogin = true) {
       const userInfo = await mockFetchUserInfo();
       updateStorage(StorageToken.UserInfo, userInfo);
       updateStorage(StorageToken.SignedIn, true);
-      update();
+      if (!contextValue) {
+        return;
+      }
+      const [, dispatch] = contextValue;
+      dispatch({ type: 'SIGN_IN' });
     } catch (error) {
       const message = convertErrorMsg(error);
       failNotify(message);
@@ -168,7 +173,7 @@ export function useAuthService(isSmsLogin = true) {
       Keyboard.dismiss();
       const data = await mockUpdatePassword(values);
       if (data) {
-        navigation.navigate('ModifyPasswordResult');
+        // navigation.navigate('ModifyPasswordResult');
       } else {
         failNotify('修改密码失败');
       }

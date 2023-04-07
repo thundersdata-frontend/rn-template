@@ -1,7 +1,7 @@
 import { FC, ReactNode } from 'react';
 import { Platform, StyleSheet, TouchableOpacity, View } from 'react-native';
 
-import { NavigationProp } from '@react-navigation/native';
+import { useNavigation } from '@react-navigation/native';
 import { useTheme } from '@td-design/react-native';
 import { helpers, SvgIcon } from '@td-design/react-native';
 
@@ -13,8 +13,8 @@ export const CustomHeader: FC<{
   transparent?: boolean;
   headerLeft?: ReactNode;
   headerRight?: ReactNode;
-  navigation?: NavigationProp<AuthStackParamList>;
-}> = ({ transparent = true, title, headerLeft, headerRight, navigation }) => {
+}> = ({ transparent = true, title, headerLeft, headerRight }) => {
+  const navigation = useNavigation();
   const theme = useTheme<AppTheme>();
   const styles = StyleSheet.create({
     container: {
@@ -34,7 +34,14 @@ export const CustomHeader: FC<{
     <View style={styles.container}>
       <View style={styles.left}>
         {headerLeft ?? (
-          <TouchableOpacity activeOpacity={0.5} onPress={() => navigation?.canGoBack && navigation.goBack()}>
+          <TouchableOpacity
+            activeOpacity={0.5}
+            onPress={() => {
+              if (navigation.canGoBack()) {
+                navigation.goBack();
+              }
+            }}
+          >
             <SvgIcon name="left" color={theme.colors.white} size={px(24)} />
           </TouchableOpacity>
         )}

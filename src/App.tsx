@@ -1,28 +1,24 @@
-import { Platform, useColorScheme } from 'react-native';
-import { NavigationBar } from 'react-native-bars';
+import { useColorScheme } from 'react-native';
 import { hide as hideSplash } from 'react-native-bootsplash';
 import codePush from 'react-native-code-push';
 import { GestureHandlerRootView } from 'react-native-gesture-handler';
 import { SafeAreaProvider } from 'react-native-safe-area-context';
 
 import NiceModal from '@ebay/nice-modal-react';
-import { useFlipper } from '@react-navigation/devtools';
-import { DarkTheme, DefaultTheme, NavigationContainer } from '@react-navigation/native';
 import { helpers, ThemeProvider } from '@td-design/react-native';
 import { useMount } from '@td-design/rn-hooks';
 import { Provider as JotaiProvider } from 'jotai';
 
-import useUpdateService from '@/hooks/useUpdateService';
-import { linking } from '@/linking';
-import { navigationRef } from '@/services/NavigationService';
 import { darkTheme, lightTheme } from '@/theme';
 
-import { Fallback } from './components/Fallback';
+import { AuthContext } from './contexts/AuthContext';
+import useAuthService from './hooks/useAuth';
 import Stack from './stacks';
 
 const Main = () => {
-  useFlipper(navigationRef);
   const theme = useColorScheme();
+
+  const authService = useAuthService();
 
   useMount(() => {
     const init = async () => {
@@ -39,22 +35,14 @@ const Main = () => {
       <GestureHandlerRootView style={{ flex: 1 }}>
         <JotaiProvider>
           <ThemeProvider theme={theme === 'dark' ? darkTheme : lightTheme}>
-            <useUpdateService.Provider>
+            <AuthContext.Provider value={authService}>
               <NiceModal.Provider>
-                <NavigationContainer
-                  ref={navigationRef}
-                  linking={linking}
-                  fallback={<Fallback />}
-                  theme={theme === 'dark' ? DarkTheme : DefaultTheme}
-                >
-                  <Stack />
-                </NavigationContainer>
+                <Stack />
               </NiceModal.Provider>
-            </useUpdateService.Provider>
+            </AuthContext.Provider>
           </ThemeProvider>
         </JotaiProvider>
       </GestureHandlerRootView>
-      {Platform.OS === 'android' && <NavigationBar barStyle="dark-content" />}
     </SafeAreaProvider>
   );
 };

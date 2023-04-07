@@ -1,4 +1,4 @@
-import { NavigationProp, useNavigation } from '@react-navigation/native';
+import { useNavigation } from '@react-navigation/native';
 import { useTheme } from '@td-design/react-native';
 import { Box, Center, Divider, Flex, helpers, Text, WhiteSpace, WingBlank } from '@td-design/react-native';
 
@@ -10,7 +10,7 @@ import { AppTheme } from '@/theme';
 const { updateStorage } = storageService;
 export const PrivacyConfirm = () => {
   const theme = useTheme<AppTheme>();
-  const navigation = useNavigation<NavigationProp<AuthStackParamList & CommonStackParamList>>();
+  const navigation = useNavigation();
 
   const handleOk = () => {
     // TODO 在这里init各种SDK

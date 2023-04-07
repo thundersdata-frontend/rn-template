@@ -1,16 +1,18 @@
+import { useContext } from 'react';
+
 import { Toast } from '@td-design/react-native';
 import { File } from '@td-design/react-native-image-picker';
 import { useMemoizedFn } from '@td-design/rn-hooks';
 
+import { AuthContext } from '@/contexts/AuthContext';
 import { useError } from '@/hooks/useError';
 import { useNotify } from '@/hooks/useNotify';
-import useUpdateService from '@/hooks/useUpdateService';
 import { mockChangeAvatar, mockFetchUserInfo, mockUpdateUsername } from '@/modules/mock';
 import { storageService, StorageToken } from '@/services/StorageService';
 import { uploadFile } from '@/utils/upload';
 
 export function useUserService() {
-  const { update } = useUpdateService.useModel();
+  const contextValue = useContext(AuthContext);
   const { successNotify, failNotify } = useNotify();
   const { convertErrorMsg } = useError();
   const { signOut, updateStorage } = storageService;
@@ -71,7 +73,11 @@ export function useUserService() {
 
   const logout: () => void = () => {
     signOut();
-    update();
+    if (!contextValue) {
+      return;
+    }
+    const [, dispatch] = contextValue;
+    dispatch({ type: 'SIGN_OUT' });
   };
 
   return {

@@ -7,7 +7,6 @@ import { KeyboardInsetsView } from 'react-native-keyboard-insets';
 import Animated, { useAnimatedStyle, useDerivedValue, useSharedValue, withSpring } from 'react-native-reanimated';
 import { mix } from 'react-native-redash';
 
-import { NavigationProp, useNavigation } from '@react-navigation/native';
 import { useTheme } from '@td-design/react-native';
 import { helpers, Text } from '@td-design/react-native';
 
@@ -30,7 +29,6 @@ export const AuthTemplate: FC<{
   title: string;
   subtitle?: string;
 }> = ({ title, subtitle, children }) => {
-  const navigation = useNavigation<NavigationProp<AuthStackParamList>>();
   const theme = useTheme<AppTheme>();
   const styles = StyleSheet.create({
     card: {
@@ -63,7 +61,7 @@ export const AuthTemplate: FC<{
 
   return (
     <Container>
-      <CustomHeader {...{ navigation }} />
+      <CustomHeader />
       <View style={styles.textWrap}>
         <Text variant="h3" color="func50">
           {title}

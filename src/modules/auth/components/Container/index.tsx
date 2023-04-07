@@ -1,6 +1,6 @@
 import { FC } from 'react';
 import { ImageBackground, useWindowDimensions } from 'react-native';
-import { NavigationBar, StatusBar } from 'react-native-bars';
+import { SystemBars } from 'react-native-bars';
 import { SafeAreaView } from 'react-native-safe-area-context';
 
 export const Container: FC = props => {
@@ -14,9 +14,8 @@ export const Container: FC = props => {
         height: height * 1.2,
       }}
     >
-      <StatusBar barStyle="light-content" />
+      <SystemBars barStyle="light-content" />
       <SafeAreaView style={{ flex: 1 }}>{props.children}</SafeAreaView>
-      <NavigationBar barStyle="light-content" />
     </ImageBackground>
   );
 };

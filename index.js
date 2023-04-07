@@ -7,6 +7,7 @@ import { App } from './src/App';
 import { name as appName } from './app.json';
 
 LogBox.ignoreLogs(['Require cycle:', 'new NativeEventEmitter()', "Can't perform", "Flipper", "RCTBridge"]);
+
 enableFreeze();
 
 /**

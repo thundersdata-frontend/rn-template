@@ -1,7 +1,7 @@
 /**
  * 注册页面
  */
-import { NavigationProp, useNavigation } from '@react-navigation/native';
+import { useNavigation } from '@react-navigation/native';
 import { useTheme } from '@td-design/react-native';
 import { Box, Button, CountDown, Form, Input, WhiteSpace } from '@td-design/react-native';
 
@@ -84,7 +84,7 @@ const FormContent = () => {
 };
 
 export function Register() {
-  const navigation = useNavigation<NavigationProp<AuthStackParamList>>();
+  const navigation = useNavigation();
 
   return (
     <AuthTemplate title="注册" subtitle="注册账号后才允许使用App" {...{ navigation }}>

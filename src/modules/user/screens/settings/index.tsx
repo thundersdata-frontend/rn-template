@@ -1,4 +1,4 @@
-import { NavigationProp, useNavigation } from '@react-navigation/native';
+import { useNavigation } from '@react-navigation/native';
 import { helpers, Image, Input, List, Modal, WingBlank } from '@td-design/react-native';
 
 import { Container } from '@/components/Container';
@@ -6,7 +6,7 @@ import { useUserService } from '@/modules/user/useUserService';
 
 const { px } = helpers;
 export function Settings() {
-  const navigation = useNavigation<NavigationProp<MainStackParamList>>();
+  const navigation = useNavigation();
   const { updateNickname, signOut } = useUserService();
 
   const handleLogout = () => {
@@ -49,7 +49,7 @@ export function Settings() {
               },
             },
             {
-              title: '注销登录',
+              title: '退出登录',
               arrow: 'horizontal',
               minHeight: px(48),
               onPress: handleLogout,

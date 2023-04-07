@@ -1,6 +1,6 @@
 import { ImageBackground, ScrollView } from 'react-native';
 
-import { NavigationProp, useNavigation } from '@react-navigation/native';
+import { useNavigation } from '@react-navigation/native';
 import { Avatar, Button, Flex, helpers, Toast, WhiteSpace } from '@td-design/react-native';
 import ImagePicker from '@td-design/react-native-image-picker';
 
@@ -13,7 +13,7 @@ const { px } = helpers;
 const AVATAR_SIZE = px(66);
 
 export function Mine() {
-  const navigation = useNavigation<NavigationProp<MainStackParamList>>();
+  const navigation = useNavigation();
   const { changeAvatar, refreshUserInfo } = useUserService();
 
   return (

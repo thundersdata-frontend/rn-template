@@ -1,7 +1,7 @@
 /**
  * 忘记密码页面
  */
-import { NavigationProp, useNavigation } from '@react-navigation/native';
+import { useNavigation } from '@react-navigation/native';
 import { useTheme } from '@td-design/react-native';
 import { Box, Button, CountDown, Form, Input, WhiteSpace } from '@td-design/react-native';
 
@@ -74,7 +74,7 @@ const FormContent = () => {
 };
 
 export function ForgetPass() {
-  const navigation = useNavigation<NavigationProp<AuthStackParamList>>();
+  const navigation = useNavigation();
 
   return (
     <AuthTemplate

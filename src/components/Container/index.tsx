@@ -1,6 +1,6 @@
 import React from 'react';
 import { StyleSheet } from 'react-native';
-import { StatusBar } from 'react-native-bars';
+import { SystemBars } from 'react-native-bars';
 import { SafeAreaView } from 'react-native-safe-area-context';
 
 import { useTheme } from '@td-design/react-native';
@@ -23,7 +23,7 @@ export const Container: React.FC<{ hasHeader?: boolean; backgroundColor?: string
 
   return (
     <SafeAreaView style={styles.container} edges={hasHeader ? ['left', 'right', 'bottom'] : ['left', 'right', 'top']}>
-      <StatusBar barStyle={theme.theme === 'light' ? 'dark-content' : 'light-content'} />
+      <SystemBars barStyle={theme.theme === 'light' ? 'dark-content' : 'light-content'} />
       {children}
     </SafeAreaView>
   );

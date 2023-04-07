@@ -9,60 +9,46 @@ import { AppTheme } from '@/theme';
 import Icon, { IconNames } from '../../components/Icon';
 
 const { px } = helpers;
-const Tab = createBottomTabNavigator();
-const tabItems: { name: string; label: string; icon: IconNames; component: () => JSX.Element }[] = [
-  {
-    name: 'Homepage',
-    component: Homepage,
-    label: '首页',
-    icon: 'sms',
-  },
-  {
-    name: 'Mine',
-    component: Mine,
-    label: '我的',
-    icon: 'user',
-  },
-];
 
-export const TabStack = () => {
+const TabLabel = ({ focused }: { focused: boolean }) => {
   const theme = useTheme<AppTheme>();
   return (
-    <Tab.Navigator
-      initialRouteName="Homepage"
-      screenOptions={{
-        // 懒加载TabScreen
-        lazy: true,
-        // 不显示TabScreen的header
-        headerShown: false,
-        tabBarStyle: {
-          paddingTop: px(4),
-        },
+    <Text
+      style={{
+        color: focused ? theme.colors.gray500 : theme.colors.gray300,
+        fontSize: px(12),
       }}
     >
-      {tabItems.map(item => (
-        <Tab.Screen
-          key={item.name}
-          name={item.name}
-          component={item.component}
-          options={{
-            title: item.label,
-            tabBarLabel: ({ focused }) => (
-              <Text
-                style={{
-                  color: focused ? theme.colors.gray500 : theme.colors.gray300,
-                  fontSize: px(12),
-                }}
-              >
-                {item?.label}
-              </Text>
-            ),
-            tabBarIcon: ({ focused }) => (
-              <Icon name={item.icon} size={px(20)} color={focused ? theme.colors.gray500 : theme.colors.gray300} />
-            ),
-          }}
-        />
-      ))}
-    </Tab.Navigator>
+      首页
+    </Text>
   );
 };
+
+const TabIcon = ({ focused, icon }: { focused: boolean; icon: IconNames }) => {
+  const theme = useTheme<AppTheme>();
+  return <Icon name={icon} size={px(20)} color={focused ? theme.colors.gray500 : theme.colors.gray300} />;
+};
+
+export const TabStack = createBottomTabNavigator({
+  initialRouteName: 'Homepage',
+  screenOptions: {
+    lazy: true,
+    headerShown: false,
+  },
+  screens: {
+    Homepage: {
+      screen: Homepage,
+      options: {
+        tabBarLabel: ({ focused }: { focused: boolean }) => <TabLabel {...{ focused, label: '首页' }} />,
+        tabBarIcon: ({ focused }: { focused: boolean }) => <TabIcon {...{ focused, icon: 'sms' }} />,
+      },
+    },
+    Mine: {
+      screen: Mine,
+      options: {
+        tabBarLabel: ({ focused }: { focused: boolean }) => <TabLabel {...{ focused, label: '我的' }} />,
+        tabBarIcon: ({ focused }: { focused: boolean }) => <TabIcon {...{ focused, icon: 'user' }} />,
+      },
+    },
+  },
+});

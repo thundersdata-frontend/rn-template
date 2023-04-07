@@ -3,7 +3,7 @@ import codePush from 'react-native-code-push';
 import Config from 'react-native-config';
 
 import NiceModal from '@ebay/nice-modal-react';
-import { NavigationProp, useNavigation } from '@react-navigation/native';
+import { useNavigation } from '@react-navigation/native';
 import { Button, WhiteSpace } from '@td-design/react-native';
 
 import { Clipboard } from '@/components/Clipboard';
@@ -11,7 +11,7 @@ import { Container } from '@/components/Container';
 import TestModal from '@/modals/TestModal';
 
 export function Homepage() {
-  const navigation = useNavigation<NavigationProp<MainStackParamList>>();
+  const navigation = useNavigation();
 
   return (
     <Container hasHeader={false}>

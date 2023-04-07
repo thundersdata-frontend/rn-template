@@ -1,10 +1,10 @@
-import { NavigationProp, useNavigation } from '@react-navigation/native';
+import { useNavigation } from '@react-navigation/native';
 import { Button, Center } from '@td-design/react-native';
 
 import { Container } from '@/components/Container';
 
 export function FlashListDemo() {
-  const navigation = useNavigation<NavigationProp<MainStackParamList>>();
+  const navigation = useNavigation();
 
   return (
     <Container>

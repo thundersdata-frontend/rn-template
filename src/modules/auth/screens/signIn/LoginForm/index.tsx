@@ -1,7 +1,7 @@
 import { TouchableOpacity } from 'react-native';
 import { KeyboardInsetsView } from 'react-native-keyboard-insets';
 
-import { NavigationProp, useNavigation } from '@react-navigation/native';
+import { useNavigation } from '@react-navigation/native';
 import { useTheme } from '@td-design/react-native';
 import { Box, Button, CountDown, Flex, Form, Input, Radio, Text, Theme, WhiteSpace } from '@td-design/react-native';
 
@@ -17,7 +17,7 @@ import { LoginTab } from '../LoginTab';
 const { FormItem, useForm } = Form;
 
 const FormContent = ({ isSmsLogin }: { isSmsLogin: boolean }) => {
-  const navigation = useNavigation<NavigationProp<AuthStackParamList & CommonStackParamList, 'SignIn'>>();
+  const navigation = useNavigation();
   const [form] = useForm();
   const theme = useTheme<AppTheme>();
   const { loading, error, handleFormValueChange, submitFormFailed, beforeSendSms, smsSend, handleFinish, disabled } =

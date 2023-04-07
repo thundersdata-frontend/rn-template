@@ -1,6 +1,7 @@
+import { createStaticNavigation, StaticParamList } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 
-import useUpdateService from '@/hooks/useUpdateService';
+import { useIsConfirmed, useIsSignedIn, useIsSignedOut } from '@/contexts/AuthContext';
 import { ConfigPass } from '@/modules/auth/screens/configPass';
 import { ForgetPass } from '@/modules/auth/screens/forgetPass';
 import { Register } from '@/modules/auth/screens/register';
@@ -24,214 +25,192 @@ import { Privacy } from '@/modules/policy/screens/privacy';
 import { PrivacyConfirm } from '@/modules/policy/screens/privacyConfirm';
 import { ModifyPassword } from '@/modules/user/screens/modifyPass';
 import { Settings } from '@/modules/user/screens/settings';
-import { storageService } from '@/services/StorageService';
 import { TabStack } from '@/stacks/tabStack';
 
-const AUTH_SCREENS = [
-  {
-    name: 'SignIn',
-    component: SignIn,
-  },
-  {
-    name: 'ConfigPass',
-    component: ConfigPass,
-  },
-  {
-    name: 'ForgetPass',
-    component: ForgetPass,
-  },
-  {
-    name: 'Register',
-    component: Register,
-  },
-];
-
-const MAIN_SCREENS = [
-  {
-    name: 'Tab',
-    component: TabStack,
+const SignedInScreens = {
+  Tab: {
+    screen: TabStack,
     options: {
       headerShown: false,
     },
   },
-  {
-    name: 'EchartsDemo',
-    component: EchartsRoot,
+  EchartsDemo: {
+    screen: EchartsRoot,
     options: {
       title: '图表展示',
     },
   },
-  {
-    name: 'LineChartDemo',
-    component: LineChartDemo,
+  LineChartDemo: {
+    screen: LineChartDemo,
     options: {
       title: '折线图',
     },
   },
-  {
-    name: 'MapChartDemo',
-    component: MapChartDemo,
+  MapChartDemo: {
+    screen: MapChartDemo,
     options: {
       title: '山东地图',
     },
   },
-  {
-    name: 'LocalModelDemo',
-    component: LocalModelDemo,
+  LocalModelDemo: {
+    screen: LocalModelDemo,
     options: {
       title: '局部共享数据示例',
     },
   },
-  {
-    name: 'LongFormDemo',
-    component: LongForm,
+  LongFormDemo: {
+    screen: LongForm,
     options: {
       title: '长表单示例',
     },
   },
-  {
-    name: 'FlashListDemo',
-    component: FlashListDemo,
+  FlashListDemo: {
+    screen: FlashListDemo,
     options: {
       title: 'FlashListDemo示例',
     },
   },
-  {
-    name: 'FlashListDemo1',
-    component: FlashListDemo1,
+  FlashListDemo1: {
+    screen: FlashListDemo1,
     options: {
       title: 'FlashListDemo1示例',
     },
   },
-  {
-    name: 'FlashListDemo2',
-    component: FlashListDemo2,
+  FlashListDemo2: {
+    screen: FlashListDemo2,
     options: {
       title: 'FlashListDemo2示例',
     },
   },
-  {
-    name: 'RefreshFlatListDemo',
-    component: RefreshFlatListDemo,
+  RefreshFlatListDemo: {
+    screen: RefreshFlatListDemo,
     options: {
       title: 'RefreshFlatListDemo示例',
     },
   },
-  {
-    name: 'WaterfallListDemo',
-    component: WaterfallListDemo,
+  WaterfallListDemo: {
+    screen: WaterfallListDemo,
     options: {
       title: 'WaterfallListDemo示例',
     },
   },
-  {
-    name: 'ContactsDemo',
-    component: ContactsDemo,
+  ContactsDemo: {
+    screen: ContactsDemo,
     options: {
       title: 'ContactsDemo示例',
     },
   },
-  {
-    name: 'LocalImageDemo',
-    component: LocalImageDemo,
+  LocalImageDemo: {
+    screen: LocalImageDemo,
     options: {
       title: '本地图片示例',
     },
   },
-  {
-    name: 'OnlineImageDemo',
-    component: OnlineImageDemo,
+  OnlineImageDemo: {
+    screen: OnlineImageDemo,
     options: {
       title: '网络图片示例',
     },
   },
-  {
-    name: 'Settings',
-    component: Settings,
+  Settings: {
+    screen: Settings,
     options: {
       title: '系统设置',
     },
   },
-  {
-    name: 'ModifyPassword',
-    component: ModifyPassword,
+  ModifyPassword: {
+    screen: ModifyPassword,
     options: {
       title: '修改密码',
     },
   },
-];
-
-const MODAL_SCREENS = [
-  {
-    name: 'Agreement',
-    component: Agreement,
-    options: {
-      title: '用户协议',
-    },
-  },
-  {
-    name: 'Privacy',
-    component: Privacy,
-    options: {
-      title: '隐私政策',
-    },
-  },
-  {
-    name: 'NavigationModal',
-    component: NavigationModal,
+  NavigationModal: {
+    screen: NavigationModal,
     options: {
       headerShown: false,
+      presentation: 'transparentModal',
+      animation: 'slide_from_bottom',
+      animationDuration: 200,
+      animationTypeForReplace: 'pop',
     },
   },
-];
+};
 
-const Stack = createNativeStackNavigator();
+const RootStack = createNativeStackNavigator({
+  initialRouteName: 'PrivacyConfirm',
+  screenOptions: {
+    gestureEnabled: true,
+    gestureDirection: 'horizontal',
+    headerTitleAlign: 'center',
+    animation: 'slide_from_right',
+    animationDuration: 200,
+  },
+  screens: {},
+  groups: {
+    Confirmed: {
+      if: useIsConfirmed,
+      screenOptions: {
+        headerShown: false,
+      },
+      screens: {
+        PrivacyConfirm,
+      },
+    },
+    SignedIn: {
+      if: useIsSignedIn,
+      screenOptions: {
+        presentation: 'card',
+      },
+      screens: SignedInScreens,
+    },
+    SignedOut: {
+      if: useIsSignedOut,
+      screenOptions: {
+        headerShown: false,
+        presentation: 'card',
+      },
+      screens: {
+        SignIn,
+        ConfigPass,
+        ForgetPass,
+        Register,
+      },
+    },
+    Common: {
+      screens: {
+        Agreement: {
+          screen: Agreement,
+          options: {
+            title: '用户协议',
+          },
+        },
+        Privacy: {
+          screen: Privacy,
+          options: {
+            title: '隐私政策',
+          },
+        },
+      },
+    },
+  },
+});
+
+const Navigation = createStaticNavigation(RootStack);
 
 export default () => {
-  useUpdateService.useModel();
-  const { confirmed, signedIn } = storageService;
-
   return (
-    <Stack.Navigator
-      initialRouteName={confirmed ? (signedIn ? 'Tab' : 'SignIn') : 'PrivacyConfirm'}
-      screenOptions={{
-        gestureEnabled: true,
-        gestureDirection: 'horizontal',
-        headerTitleAlign: 'center',
-        animation: 'slide_from_right',
-        animationDuration: 200,
+    <Navigation
+      linking={{
+        prefixes: ['rntemplate://'], // 可以自己加上自己的域名
       }}
-    >
-      {!confirmed && <Stack.Screen name="PrivacyConfirm" component={PrivacyConfirm} options={{ headerShown: false }} />}
-      {signedIn ? (
-        <Stack.Group
-          screenOptions={{
-            presentation: 'card',
-          }}
-        >
-          {MAIN_SCREENS.map(screen => (
-            <Stack.Screen key={screen.name} {...screen} />
-          ))}
-        </Stack.Group>
-      ) : (
-        <Stack.Group screenOptions={{ headerShown: false, presentation: 'card' }}>
-          {AUTH_SCREENS.map(screen => (
-            <Stack.Screen key={screen.name} {...screen} />
-          ))}
-        </Stack.Group>
-      )}
-      <Stack.Group
-        screenOptions={{
-          presentation: 'transparentModal',
-          animation: 'slide_from_bottom',
-          animationDuration: 200,
-          animationTypeForReplace: 'pop',
-        }}
-      >
-        {MODAL_SCREENS.map(screen => (
-          <Stack.Screen key={screen.name} {...screen} />
-        ))}
-      </Stack.Group>
-    </Stack.Navigator>
+    />
   );
 };
+
+type RootStackParamList = StaticParamList<typeof RootStack>;
+
+declare global {
+  namespace ReactNavigation {
+    interface RootParamList extends RootStackParamList {}
+  }
+}
