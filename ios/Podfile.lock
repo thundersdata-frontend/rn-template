@@ -319,7 +319,7 @@ PODS:
   - react-native-mmkv (2.5.1):
     - MMKV (>= 1.2.13)
     - React-Core
-  - react-native-netinfo (9.3.8):
+  - react-native-netinfo (9.3.9):
     - React-Core
   - react-native-refresh-control (1.2.5):
     - React
@@ -399,7 +399,7 @@ PODS:
     - React-perflogger (= 0.69.7)
   - ReactNativeExceptionHandler (2.10.10):
     - React-Core
-  - RNBootSplash (4.5.3):
+  - RNBootSplash (4.6.0):
     - React-Core
   - RNFastImage (8.6.3):
     - React-Core
@@ -411,7 +411,7 @@ PODS:
     - React-Core
   - RNKeyboardInsets (1.3.5):
     - React-Core
-  - RNReanimated (2.14.4):
+  - RNReanimated (2.15.0):
     - DoubleConversion
     - FBLazyVector
     - FBReactNativeSpec
@@ -711,7 +711,7 @@ SPEC CHECKSUMS:
   react-native-image-picker: ec9b713e248760bfa0f879f0715391de4651a7cb
   react-native-image-resizer: 00ceb0e05586c7aadf061eea676957a6c2ec60fa
   react-native-mmkv: 69b9c003f10afdd01addf7c6ee784ce42ee2eff3
-  react-native-netinfo: fbc23bc2fe217155d85f2f7e0644b1654df8029b
+  react-native-netinfo: 22c082970cbd99071a4e5aa7a612ac20d66b08f0
   react-native-refresh-control: b4a6e1e3c08126286cb4c5c07eaca45df7d5b715
   react-native-restart: 45c8dca02491980f2958595333cbccd6877cb57e
   react-native-safe-area-context: 39c2d8be3328df5d437ac1700f4f3a4f75716acc
@@ -728,12 +728,12 @@ SPEC CHECKSUMS:
   React-runtimeexecutor: 65cd2782a57e1d59a68aa5d504edf94278578e41
   ReactCommon: 1e783348b9aa73ae68236271df972ba898560a95
   ReactNativeExceptionHandler: b11ff67c78802b2f62eed0e10e75cb1ef7947c60
-  RNBootSplash: 8fb33325dc3620a01984c6660c42cbd93fadcc80
+  RNBootSplash: 91e0c16bfc96703cb5b0562785b9a8cbfeb298fe
   RNFastImage: 5c9c9fed9c076e521b3f509fe79e790418a544e8
   RNFlashList: 7fbca4fc075484a9426f1610d648dbea2de94eb0
   RNGestureHandler: 071d7a9ad81e8b83fe7663b303d132406a7d8f39
   RNKeyboardInsets: b4e8f3235eca5e2ee17c92459ef350941704d62b
-  RNReanimated: ba021107f1dd90cb04c35c5d639392d5da27d065
+  RNReanimated: 7c2244798c6a597436f7692cef2fbf91b8358991
   RNScreens: 218801c16a2782546d30bd2026bb625c0302d70f
   RNSVG: 53c661b76829783cdaf9b7a57258f3d3b4c28315
   SDWebImage: a7f831e1a65eb5e285e3fb046a23fcfbf08e696d
