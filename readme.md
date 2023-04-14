@@ -689,3 +689,92 @@ git clone https://mirrors.tuna.tsinghua.edu.cn/git/CocoaPods/Specs.git master
 ## 9. 集成 fastlane
 
 ## 10. 集成 code-push 并配置私有化服务器
+
+1. 按照[code-push-server](https://github.com/shm-open/code-push-server/blob/master/docs/install-server-by-docker.cn.md) 这篇文章的介绍安装好私有化服务器
+
+2. 安装 code-push-cli
+
+```code
+npm install -g @shm-open/code-push-cli
+```
+
+3. 登录私有化服务器
+
+```code
+code-push login [your server url]
+```
+
+默认用户名和密码是：admin/123456
+
+4. 创建应用
+
+```code
+code-push app add <appName> <os> <platform>
+```
+
+例如：
+
+```code
+code-push app add MyApp-Android android cordova
+code-push app add MyApp-iOS ios react-native
+```
+
+5. 重命名应用/删除应用
+
+```code
+// rename
+code-push app rename <appName> <newAppName>
+
+// delete
+code-push app rm <appName>
+```
+
+6. 查看所有应用
+
+```code
+code-push app ls
+```
+
+7. 生成部署密钥
+
+```code
+code-push deployment add <appName> <deploymentName>
+```
+
+例如：
+
+```code
+
+```
+
+和创建应用一样，这里也有对应的 rename/delete/list 命令：
+
+```code
+code-push deployment rm <appName> <deploymentName>
+code-push deployment rename <appName> <deploymentName> <newDeploymentName>
+code-push deployment ls <appName> [--displayKeys|-k]
+```
+
+8. 发布更新
+
+```code
+code-push release-react <appName> <platform>
+[--bundleName <bundleName>]
+[--deploymentName <deploymentName>]
+[--description <description>]
+[--development <development>]
+[--disabled <disabled>]
+[--entryFile <entryFile>]
+[--gradleFile <gradleFile>]
+[--mandatory]
+[--noDuplicateReleaseError]
+[--outputDir <outputDir>]
+[--plistFile <plistFile>]
+[--plistFilePrefix <plistFilePrefix>]
+[--sourcemapOutput <sourcemapOutput>]
+[--sourcemapOutputDir <sourcemapOutputDir>]
+[--targetBinaryVersion <targetBinaryVersion>]
+[--rollout <rolloutPercentage>]
+[--privateKeyPath <pathToPrivateKey>]
+[--config <config>]
+```
