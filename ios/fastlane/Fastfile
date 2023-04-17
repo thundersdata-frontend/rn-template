@@ -16,14 +16,20 @@
 default_platform(:ios)
 
 before_all do
-  ensure_git_branch(branch: 'main')
-  ensure_git_status_clean
-  git_pull
+  # ensure_git_branch(branch: 'main')
+  # ensure_git_status_clean
+  # git_pull
 end
 
 platform :ios do
+  lane :pod do
+    ENV["HERMES_ENGINE_TARBALL_PATH"] = "#{Dir.pwd}/react-native-artifacts-0.71.6-hermes-ios-debug.tar.gz"
+    cocoapods
+  end
+
   lane :build do
-    ENV["CI"] = "true"
+    ENV["NO_FLIPPER"] = "1"
+    ENV["HERMES_ENGINE_TARBALL_PATH"] = "#{Dir.pwd}/react-native-artifacts-0.71.6-hermes-ios-release.tar.gz"
     cocoapods
     gym(
       workspace: "rnTemplate.xcworkspace", 
