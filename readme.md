@@ -708,12 +708,10 @@ cd android && ./gradlew clean
 
 ### 8.2 hermes-engine 下载失败
 
-首先通过 chrome 直接下载：https://github.com/facebook/hermes/releases/download/v0.70.5/hermes-runtime-darwin-v0.70.5.tar.gz 然后执行以下命令:
+首先通过链接: [hermes-engine 压缩包](https://pan.baidu.com/s/1GxiMght61h9o8dzEUHUy8g?pwd=c1ag) 下载压缩包， 然后把安装包放在`ios/fastlane`目录下，然后执行以下命令:
 
 ```code
-cd ios
-
-HERMES_ENGINE_TARBALL_PATH="你的下载路径/hermes-runtime-darwin-v0.70.5.tar.gz" pod install --verbose
+yarn pod
 ```
 
 即可安装成功。具体可以参考：[https://github.com/facebook/react-native/issues/31505#issuecomment-1245424395](https://github.com/facebook/react-native/issues/31505#issuecomment-1245424395)

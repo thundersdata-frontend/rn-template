@@ -12,7 +12,7 @@
     "postinstall": "npx husky install && npx patch-package",
     "commit": "git-cz",
     "tsc": "tsc -p tsconfig.json",
-    "pod": "cd ios && bundle exec pod install && cd ..",
+    "pod": "cd ios && fastlane pod && cd ..",
     "publish:android": "cd ./android && fastlane publish",
     "publish:ios": "cd ./ios && fastlane publish"
   },
