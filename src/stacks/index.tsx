@@ -189,6 +189,7 @@ const Stack = createNativeStackNavigator();
 
 export default () => {
   useUpdateService.useModel();
+
   const { confirmed, signedIn } = storageService;
 
   return (

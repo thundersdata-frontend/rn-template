@@ -30,7 +30,6 @@ export function useRefreshService<T, R extends Page<T> = Page<T>, P extends Page
   const { failNotify } = useNotify();
   const { signedIn, signOut } = storageService;
   const netInfo = useNetInfo();
-  console.log(netInfo);
   const isOnline = !!netInfo.isConnected && !!netInfo.isInternetReachable;
   const requestService = createRequestService(signedIn, service);
 

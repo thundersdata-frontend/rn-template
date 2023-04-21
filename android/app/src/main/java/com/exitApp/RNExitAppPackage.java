@@ -1,4 +1,4 @@
-package com.exitApp;
+package com.exitapp;
 
 import java.util.ArrayList;
 import java.util.Collections;

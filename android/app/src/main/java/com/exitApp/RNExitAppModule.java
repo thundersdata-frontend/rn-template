@@ -1,4 +1,4 @@
-package com.exitApp;
+package com.exitapp;
 
 import android.app.AlarmManager;
 import android.content.Context;
