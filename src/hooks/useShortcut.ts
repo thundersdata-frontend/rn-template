@@ -9,8 +9,8 @@ export function useShortcut() {
 
   useMount(() => {
     Shortcut.setShortcuts([
-      { type: 'contact', title: '通讯录', icon: 'contact' },
-      { type: 'mine', title: '我的', icon: 'mine' },
+      { type: 'contact', title: '通讯录', icon: 'shortcut_contact' },
+      { type: 'mine', title: '我的', icon: 'shortcut_mine' },
     ]);
 
     Shortcut.addListener(shortcutItem => {

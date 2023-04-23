@@ -32,6 +32,7 @@
     "@ebay/nice-modal-react": "^1.2.10",
     "@react-native-community/netinfo": "^9.3.9",
     "@react-navigation/bottom-tabs": "^6.5.7",
+    "@react-navigation/elements": "^1.3.17",
     "@react-navigation/native": "^6.1.6",
     "@react-navigation/native-stack": "^6.9.12",
     "@shopify/flash-list": "^1.4.2",

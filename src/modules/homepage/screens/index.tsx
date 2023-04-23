@@ -8,7 +8,6 @@ import { Button, WhiteSpace } from '@td-design/react-native';
 
 import { Clipboard } from '@/components/Clipboard';
 import { Container } from '@/components/Container';
-import Shortcut from '@/components/Shortcut';
 import TestModal from '@/modals/TestModal';
 
 export function Homepage() {
@@ -59,12 +58,6 @@ export function Homepage() {
           }}
         />
         <WhiteSpace />
-        <Button
-          title="shortcut"
-          onPress={() => {
-            Shortcut.setShortcuts([{ type: 'test', title: '测试' }]);
-          }}
-        />
       </ScrollView>
     </Container>
   );

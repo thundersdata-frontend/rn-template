@@ -1,4 +1,4 @@
-import React, { forwardRef, useEffect, useImperativeHandle, useRef } from 'react';
+import React, { forwardRef, useEffect, useImperativeHandle, useMemo, useRef } from 'react';
 import {
   ActivityIndicator,
   Animated,
@@ -13,6 +13,7 @@ import {
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 
 import { RefreshControlProps, RNRefreshControl, RNRefreshHeader } from '@byron-react-native/refresh-control';
+import { useHeaderHeight } from '@react-navigation/elements';
 import { useTheme } from '@td-design/react-native';
 import { useSafeState } from '@td-design/rn-hooks';
 
@@ -27,15 +28,20 @@ const DEFAULT_HEIGHT = 64;
 export const CustomRefreshControl = forwardRef<CustomRefreshControlRef, RefreshControlProps>(
   ({ onRefresh, style, ...props }, ref) => {
     const theme = useTheme<AppTheme>();
+    const headerHeight = useHeaderHeight();
     const insets = useSafeAreaInsets();
-
-    const paddingTop = Platform.OS === 'ios' ? insets.top : StatusBar.currentHeight ?? 0;
 
     const [height, setHeight] = useSafeState(DEFAULT_HEIGHT);
     const [title, setTitle] = useSafeState('下拉进行刷新');
     const [lastTime, setLastTime] = useSafeState(fetchNowTime());
     const animatedValue = useRef(new Animated.Value(0)).current;
     const [refreshing, setRefreshing] = useSafeState(props.refreshing ?? false);
+
+    const paddingTop = useMemo(() => {
+      if (headerHeight) return 10;
+      if (insets.top) return insets.top;
+      return Platform.OS === 'ios' ? 0 : StatusBar.currentHeight ?? 0;
+    }, [headerHeight, insets.top]);
 
     useEffect(() => {
       setRefreshing(props.refreshing ?? false);
@@ -127,15 +133,7 @@ export const CustomRefreshControl = forwardRef<CustomRefreshControlRef, RefreshC
         style={[style || styles.control, Platform.OS === 'ios' ? { marginTop: -height } : {}]}
         height={height}
       >
-        <RNRefreshHeader
-          style={[
-            styles.row,
-            {
-              paddingTop,
-            },
-          ]}
-          onLayout={onLayout}
-        >
+        <RNRefreshHeader style={[styles.row, { paddingTop }]} onLayout={onLayout}>
           {refreshing ? (
             <ActivityIndicator color={'gray'} />
           ) : (
@@ -183,6 +181,7 @@ const styles = StyleSheet.create({
   row: {
     flexDirection: 'row',
     justifyContent: 'center',
+    paddingBottom: 10,
   },
   left: {
     width: 32,
