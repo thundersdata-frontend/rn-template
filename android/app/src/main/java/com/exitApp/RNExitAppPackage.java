@@ -1,6 +1,5 @@
 package com.exitapp;
 
-import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
@@ -15,18 +14,7 @@ public class RNExitAppPackage implements ReactPackage {
     @Override
     public List<NativeModule> createNativeModules(
             ReactApplicationContext reactContext) {
-        List<NativeModule> modules = new ArrayList<>();
-
-        modules.add(new RNExitAppModule(reactContext));
-
-        return modules;
-    }
-
-    // override removed to be compatible with rn0.47+
-    //@Override
-    public List<Class<? extends JavaScriptModule>> createJSModules() {
-
-        return Collections.emptyList();
+        return Collections.singletonList(new RNExitAppModule(reactContext));
     }
 
     @Override

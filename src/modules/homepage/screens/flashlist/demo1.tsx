@@ -35,7 +35,7 @@ export function FlashListDemo1() {
   );
 
   return (
-    <Container>
+    <Container hasHeader={false}>
       <LargeList
         data={data}
         keyExtractor={item => item.id + ''}

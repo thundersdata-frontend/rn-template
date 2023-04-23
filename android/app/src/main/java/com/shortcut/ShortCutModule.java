@@ -12,7 +12,6 @@ import android.os.Bundle;
 import android.os.PersistableBundle;
 import android.util.Log;
 
-import androidx.annotation.NonNull;
 import androidx.core.content.pm.ShortcutInfoCompat;
 import androidx.core.content.pm.ShortcutManagerCompat;
 import androidx.core.graphics.drawable.IconCompat;
@@ -36,7 +35,6 @@ public class ShortcutModule extends ReactContextBaseJavaModule {
 
     private static final String SHORTCUT_ITEM_CLICKED = "onShortcutItemPressed";
 
-    @NonNull
     @Override
     public String getName() {
         return REACT_NAME;
