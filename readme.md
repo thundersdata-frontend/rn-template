@@ -778,3 +778,49 @@ code-push release-react <appName> <platform>
 [--privateKeyPath <pathToPrivateKey>]
 [--config <config>]
 ```
+
+## 11. 支持 Shortcut(Android) / QuickAction(IOS)功能
+
+### 1. 什么是 Shortcut / QuickAction
+
+Android Shortcut 和 Apple Quick Action 都是针对移动设备操作系统的快捷方式功能。
+
+- Android Shortcut 是 Android 操作系统提供的一种快捷方式功能，它可以让用户通过在主屏幕上长按应用图标来打开特定的应用程序功能或操作，例如直接进入应用程序中的某个部分或执行某个操作。Android Shortcut 可以自定义，开发者可以为自己的应用程序添加自定义的快捷方式。
+
+- Apple Quick Action 则是 iOS 操作系统提供的快捷方式功能，它可以让用户通过在主屏幕上按住应用图标，快速地访问应用程序中的常用功能或操作。例如，你可以在主屏幕上直接查看最近的通知或发送一条新的消息。与 Android Shortcut 不同的是，Apple Quick Action 的功能是由操作系统自动为应用程序生成的，开发者无法自定义。
+
+### 2. 如何使用
+
+#### 2.1 Android
+
+在`app/src/main/res`目录下，新建`drawable`目录， 然后把图片放到这个目录下。图片的名字可以自己定义，但是要和`useShortcut.ts`里的`icon`对应上。
+
+你可以借助[icons-app-shortcut](https://romannurik.github.io/AndroidAssetStudio/icons-app-shortcut.html)这个工具来生成不同分辨率的图片。
+
+#### 2.2 IOS
+
+在`ios/rnTemplate/Images.xcassets`目录下新建 icon 名称对应的`.imageset`目录，然后把图片放到这个目录下(具体可以查看代码里的例子)。图片的尺寸要求一倍图是`35*35`，二倍图是`70*70`，三倍图是`105*105`。图片的名字可以自己定义，但是要和`useShortcut.ts`里的`icon`对应上。
+
+#### 2.3 JS
+
+在`useShortcut.ts`文件里有`shortcuts`的定义，实际使用时可以替换成自己的。
+
+```ts
+// 定义shortcuts，你可以替换成你自己的
+const shortcuts = [
+  { type: 'contact', title: '通讯录', icon: 'shortcut_contact' },
+  { type: 'mine', title: '我的', icon: 'shortcut_mine' },
+];
+```
+
+这里的`icon`对应的是上面 Android 和 IOS 里存放的图片的名字。
+
+### 3. 实际效果
+
+#### 3.1 Android
+
+![Android](./images/android-shortcut-screenshot.jpg)
+
+#### 3.2 IOS
+
+![IOS](./images/ios-shortcut-screenshot.png)

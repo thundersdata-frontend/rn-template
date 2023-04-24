@@ -3,15 +3,18 @@ import { useMemoizedFn, useMount, useSafeState, useUnmount, useUpdateEffect } fr
 import Shortcut from '@/components/Shortcut';
 import { navigationRef } from '@/services/NavigationService';
 
+// 定义shortcuts，你可以替换成你自己的
+const shortcuts = [
+  { type: 'contact', title: '通讯录', icon: 'shortcut_contact' },
+  { type: 'mine', title: '我的', icon: 'shortcut_mine' },
+];
+
 export function useShortcut() {
   const [initialRouteName, setInitialRouteName] = useSafeState<keyof MainStackParamList>();
   const [ready, setReady] = useSafeState(false);
 
   useMount(() => {
-    Shortcut.setShortcuts([
-      { type: 'contact', title: '通讯录', icon: 'shortcut_contact' },
-      { type: 'mine', title: '我的', icon: 'shortcut_mine' },
-    ]);
+    Shortcut.setShortcuts(shortcuts);
 
     Shortcut.addListener(shortcutItem => {
       switch (shortcutItem.type) {
