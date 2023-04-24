@@ -4,13 +4,11 @@ import {
   Animated,
   LayoutChangeEvent,
   Platform,
-  StatusBar,
   StyleSheet,
   Text,
   View,
   ViewStyle,
 } from 'react-native';
-import { useSafeAreaInsets } from 'react-native-safe-area-context';
 
 import { RefreshControlProps, RNRefreshControl, RNRefreshHeader } from '@byron-react-native/refresh-control';
 import { useTheme } from '@td-design/react-native';
@@ -27,9 +25,6 @@ const DEFAULT_HEIGHT = 64;
 export const CustomRefreshControl = forwardRef<CustomRefreshControlRef, RefreshControlProps>(
   ({ onRefresh, style, ...props }, ref) => {
     const theme = useTheme<AppTheme>();
-    const insets = useSafeAreaInsets();
-
-    const paddingTop = Platform.OS === 'ios' ? insets.top : StatusBar.currentHeight ?? 0;
 
     const [height, setHeight] = useSafeState(DEFAULT_HEIGHT);
     const [title, setTitle] = useSafeState('下拉进行刷新');
@@ -127,15 +122,7 @@ export const CustomRefreshControl = forwardRef<CustomRefreshControlRef, RefreshC
         style={[style || styles.control, Platform.OS === 'ios' ? { marginTop: -height } : {}]}
         height={height}
       >
-        <RNRefreshHeader
-          style={[
-            styles.row,
-            {
-              paddingTop,
-            },
-          ]}
-          onLayout={onLayout}
-        >
+        <RNRefreshHeader style={[styles.row, { paddingTop: 10 }]} onLayout={onLayout}>
           {refreshing ? (
             <ActivityIndicator color={'gray'} />
           ) : (
@@ -183,6 +170,7 @@ const styles = StyleSheet.create({
   row: {
     flexDirection: 'row',
     justifyContent: 'center',
+    paddingBottom: 10,
   },
   left: {
     width: 32,

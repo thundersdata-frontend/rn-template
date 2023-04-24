@@ -1,6 +1,5 @@
 package com.clipboard;
 
-import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
@@ -15,18 +14,7 @@ public class ClipboardPackage implements ReactPackage {
     @Override
     public List<NativeModule> createNativeModules(
             ReactApplicationContext reactContext) {
-        List<NativeModule> modules = new ArrayList<>();
-
-        modules.add(new ClipboardModule(reactContext));
-
-        return modules;
-    }
-
-    // override removed to be compatible with rn0.47+
-    //@Override
-    public List<Class<? extends JavaScriptModule>> createJSModules() {
-
-        return Collections.emptyList();
+        return Collections.singletonList(new ClipboardModule(reactContext));
     }
 
     @Override
