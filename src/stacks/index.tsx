@@ -101,6 +101,7 @@ const MAIN_SCREENS = [
     component: FlashListDemo1,
     options: {
       title: 'FlashListDemo1示例',
+      headerShown: false,
     },
   },
   {
@@ -189,6 +190,7 @@ const Stack = createNativeStackNavigator();
 
 export default () => {
   useUpdateService.useModel();
+
   const { confirmed, signedIn } = storageService;
 
   return (

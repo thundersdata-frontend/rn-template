@@ -1,4 +1,4 @@
-import { Alert, ScrollView } from 'react-native';
+import { Alert, Platform, ScrollView } from 'react-native';
 import codePush from 'react-native-code-push';
 import Config from 'react-native-config';
 
@@ -36,7 +36,7 @@ export function Homepage() {
           onPress={() =>
             codePush
               .sync({
-                deploymentKey: Config.CODEPUSH_KEY_IOS,
+                deploymentKey: Platform.OS === 'android' ? Config.CODEPUSH_KEY_ANDROID : Config.CODEPUSH_KEY_IOS,
               })
               .then(res => console.log(res))
               .catch(e => console.error(e))

@@ -12,6 +12,8 @@
 #import "SDImageCodersManager.h"
 #import <SDWebImageWebPCoder/SDImageWebPCoder.h>  // <- add webp support for ios8+ ~ ios13
 
+#import "ShortcutModule.h"
+
 #ifdef FB_SONARKIT_ENABLED
 #import <FlipperKit/FlipperClient.h>
 #import <FlipperKitLayoutPlugin/FlipperKitLayoutPlugin.h>
@@ -97,5 +99,9 @@ static void InitializeFlipper(UIApplication *application) {
   #if !TARGET_OS_TV
     [[UIDevice currentDevice] endGeneratingDeviceOrientationNotifications];
   #endif
+}
+
+- (void)application:(UIApplication *)application performActionForShortcutItem:(UIApplicationShortcutItem *)shortcutItem completionHandler:(void (^)(BOOL succeeded)) completionHandler {
+  [ShortcutModule onShortcutItemPress:shortcutItem completionHandler:completionHandler];
 }
 @end

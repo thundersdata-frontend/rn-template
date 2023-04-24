@@ -87,7 +87,7 @@
     "cross-env": "^7.0.3",
     "cz-customizable": "^7.0.0",
     "husky": "^8.0.3",
-    "inquirer": "^9.1.5",
+    "inquirer": "8.1.0",
     "lint-staged": "^13.2.1",
     "metro-react-native-babel-preset": "^0.66.2",
     "prettier": "^2.8.7",
