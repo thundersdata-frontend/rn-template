@@ -10,9 +10,10 @@ import com.facebook.react.defaults.DefaultReactNativeHost;
 import com.facebook.soloader.SoLoader;
 import java.util.List;
 
-import com.exitApp.RNExitAppPackage;
+import com.exitapp.RNExitAppPackage;
 import com.clipboard.ClipboardPackage;
 import com.microsoft.codepush.react.CodePush;
+import com.shortcut.ShortcutPackage;
 
 public class MainApplication extends Application implements ReactApplication {
 
@@ -30,6 +31,7 @@ public class MainApplication extends Application implements ReactApplication {
           // Packages that cannot be autolinked yet can be added manually here, for example:
           packages.add(new RNExitAppPackage());
           packages.add(new ClipboardPackage());
+          packages.add(new ShortcutPackage());
           return packages;
         }
 

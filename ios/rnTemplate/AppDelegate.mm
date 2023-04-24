@@ -5,6 +5,7 @@
 #import "SDImageCodersManager.h"
 #import <SDWebImageWebPCoder/SDImageWebPCoder.h>  // <- add webp support for ios8+ ~ ios13
 #import <CodePush/CodePush.h> // <- add code push import
+#import "ShortcutModule.h"
 
 @implementation AppDelegate
 
@@ -41,6 +42,10 @@
 - (BOOL)concurrentRootEnabled
 {
   return true;
+}
+
+- (void)application:(UIApplication *)application performActionForShortcutItem:(UIApplicationShortcutItem *)shortcutItem completionHandler:(void (^)(BOOL succeeded)) completionHandler {
+  [ShortcutModule onShortcutItemPress:shortcutItem completionHandler:completionHandler];
 }
 
 @end
