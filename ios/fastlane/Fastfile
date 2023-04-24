@@ -16,12 +16,12 @@
 default_platform(:ios)
 
 before_all do
-  ensure_git_branch(branch: 'main')
-  ensure_git_status_clean
-  git_pull
+  # ensure_git_branch(branch: 'main')
+  # ensure_git_status_clean
+  # git_pull
 end
 
-platform: ios do
+platform :ios do
   lane :pod do
     ENV["HERMES_ENGINE_TARBALL_PATH"] = "#{Dir.pwd}/hermes-runtime-darwin-v0.70.8.tar.gz"
     cocoapods

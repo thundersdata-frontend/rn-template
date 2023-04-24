@@ -25,6 +25,7 @@
     "incremental": false,
     "baseUrl": ".",
     "paths": {
+      "*": ["*", "*.ios", "*.android"],
       "@/*": ["./src/*"],
     }
   },

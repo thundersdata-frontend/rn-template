@@ -18,15 +18,18 @@ import { navigationRef } from '@/services/NavigationService';
 import { darkTheme, lightTheme } from '@/theme';
 
 import { Fallback } from './components/Fallback';
+import { useShortcut } from './hooks/useShortcut';
 import Stack from './stacks';
 
 const Main = () => {
   useFlipper(navigationRef);
+  const { initShortcut, setReady } = useShortcut();
   const theme = useColorScheme();
 
   useMount(() => {
     const init = async () => {
       // …do multiple sync or async tasks
+      await initShortcut();
     };
 
     init().finally(async () => {
@@ -46,6 +49,7 @@ const Main = () => {
                   linking={linking}
                   fallback={<Fallback />}
                   theme={theme === 'dark' ? DarkTheme : DefaultTheme}
+                  onReady={() => setReady(true)}
                 >
                   <Stack />
                 </NavigationContainer>

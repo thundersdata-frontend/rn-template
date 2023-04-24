@@ -13,7 +13,9 @@
 		7413B6A3E40A910E83A7621B /* libPods-rnTemplate-rnTemplateTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 57DB42522B9E1E6FA01EDF18 /* libPods-rnTemplate-rnTemplateTests.a */; };
 		E42E5C2E2661E0D3004C1AD9 /* OpenSSL.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = E42E5C2D2661E0D3004C1AD9 /* OpenSSL.xcframework */; };
 		E432122326098623007B1EAF /* BootSplash.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E432122226098623007B1EAF /* BootSplash.storyboard */; };
+		E446969B29F66BCF00DEC513 /* AppDelegate.mm in Sources */ = {isa = PBXBuildFile; fileRef = E429596F290BDFD900DD4F1A /* AppDelegate.mm */; };
 		E4A203A82975582900A791EC /* libswiftWebKit.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = E4A203A72975582900A791EC /* libswiftWebKit.tbd */; };
+		E4A4287D29F1393B004260A1 /* ShortcutModule.m in Sources */ = {isa = PBXBuildFile; fileRef = E4A4287C29F1393B004260A1 /* ShortcutModule.m */; };
 		E4C332ED2660BF21000354DA /* Config.xcconfig in Resources */ = {isa = PBXBuildFile; fileRef = E4C332EC2660BF21000354DA /* Config.xcconfig */; };
 		E4E60EBE29D55F550084375A /* ClipboardModule.m in Sources */ = {isa = PBXBuildFile; fileRef = E4E60EBD29D55F550084375A /* ClipboardModule.m */; };
 		E4EB3EC2291B7E7F00A2A168 /* RNExitApp.m in Sources */ = {isa = PBXBuildFile; fileRef = E4EB3EC1291B7E7F00A2A168 /* RNExitApp.m */; };
@@ -52,6 +54,8 @@
 		E42E5C2D2661E0D3004C1AD9 /* OpenSSL.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; name = OpenSSL.xcframework; path = "Pods/OpenSSL-Universal/Frameworks/OpenSSL.xcframework"; sourceTree = "<group>"; };
 		E432122226098623007B1EAF /* BootSplash.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = BootSplash.storyboard; path = rnTemplate/BootSplash.storyboard; sourceTree = "<group>"; };
 		E4A203A72975582900A791EC /* libswiftWebKit.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libswiftWebKit.tbd; path = usr/lib/swift/libswiftWebKit.tbd; sourceTree = SDKROOT; };
+		E4A4287B29F13899004260A1 /* ShortcutModule.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ShortcutModule.h; sourceTree = "<group>"; };
+		E4A4287C29F1393B004260A1 /* ShortcutModule.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ShortcutModule.m; sourceTree = "<group>"; };
 		E4B70531275CD6AF00798E67 /* libRNBootSplash.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; path = libRNBootSplash.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		E4C332EC2660BF21000354DA /* Config.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = Config.xcconfig; sourceTree = "<group>"; };
 		E4E60EBD29D55F550084375A /* ClipboardModule.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ClipboardModule.m; sourceTree = "<group>"; };
@@ -113,6 +117,8 @@
 				E4F1582F298658EC00D3005A /* Bridge.swift */,
 				E4F1582E298658EB00D3005A /* rnTemplate-Bridging-Header.h */,
 				E4E60EBD29D55F550084375A /* ClipboardModule.m */,
+				E4A4287B29F13899004260A1 /* ShortcutModule.h */,
+				E4A4287C29F1393B004260A1 /* ShortcutModule.m */,
 			);
 			name = rnTemplate;
 			sourceTree = "<group>";
@@ -446,10 +452,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E446969B29F66BCF00DEC513 /* AppDelegate.mm in Sources */,
 				E4F15830298658EC00D3005A /* Bridge.swift in Sources */,
 				E4E60EBE29D55F550084375A /* ClipboardModule.m in Sources */,
 				E4EB3EC2291B7E7F00A2A168 /* RNExitApp.m in Sources */,
-				E4295970290BDFD900DD4F1A /* AppDelegate.mm in Sources */,
+				E4A4287D29F1393B004260A1 /* ShortcutModule.m in Sources */,
 				13B07FC11A68108700A75B9A /* main.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
