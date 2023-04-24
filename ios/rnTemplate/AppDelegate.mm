@@ -9,6 +9,8 @@
 #import <SDWebImageWebPCoder/SDImageWebPCoder.h>  // <- add webp support for ios8+ ~ ios13
 #import <CodePush/CodePush.h>
 
+#import "ShortcutModule.h"
+
 #if RCT_NEW_ARCH_ENABLED
 #import <React/CoreModulesPlugins.h>
 #import <React/RCTCxxBridgeDelegate.h>
@@ -144,5 +146,9 @@ static NSString *const kRNConcurrentRoot = @"concurrentRoot";
   #if !TARGET_OS_TV
     [[UIDevice currentDevice] endGeneratingDeviceOrientationNotifications];
   #endif
+}
+
+- (void)application:(UIApplication *)application performActionForShortcutItem:(UIApplicationShortcutItem *)shortcutItem completionHandler:(void (^)(BOOL succeeded)) completionHandler {
+  [ShortcutModule onShortcutItemPress:shortcutItem completionHandler:completionHandler];
 }
 @end
