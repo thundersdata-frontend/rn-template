@@ -2,6 +2,7 @@ import { Toast } from '@td-design/react-native';
 import { File } from '@td-design/react-native-image-picker';
 import { useMemoizedFn } from '@td-design/rn-hooks';
 
+import { useCustomRequest } from '@/hooks/useCustomRequest';
 import { useError } from '@/hooks/useError';
 import { useNotify } from '@/hooks/useNotify';
 import useUpdateService from '@/hooks/useUpdateService';
@@ -15,25 +16,63 @@ export function useUserService() {
   const { convertErrorMsg } = useError();
   const { signOut, updateStorage } = storageService;
 
+  const { runAsync: _changeAvatar } = useCustomRequest(mockChangeAvatar, {
+    manual: true,
+    onBefore() {
+      Toast.process('提交中...');
+    },
+    onSuccess(_, params) {
+      updateStorage(StorageToken.UserInfo, {
+        profilePicture: params[0].profilePicture,
+      });
+      successNotify('修改头像成功');
+    },
+    onError() {
+      failNotify('修改头像失败');
+    },
+    onFinally() {
+      Toast.hide();
+    },
+  });
+
+  const { run: _updateNickname } = useCustomRequest(mockUpdateUsername, {
+    manual: true,
+    onBefore() {
+      Toast.process('提交中...');
+    },
+    onSuccess(_, params) {
+      updateStorage(StorageToken.UserInfo, {
+        userName: params[0].userName,
+      });
+      successNotify('修改昵称成功');
+    },
+    onError() {
+      failNotify('修改昵称失败');
+    },
+    onFinally() {
+      Toast.hide();
+    },
+  });
+
+  const { loading: refreshing, run: refreshUserInfo } = useCustomRequest(mockFetchUserInfo, {
+    manual: true,
+    onSuccess(data) {
+      updateStorage(StorageToken.UserInfo, data);
+    },
+    onError(error) {
+      const message = convertErrorMsg(error);
+      failNotify(message);
+    },
+  });
+
   // 修改头像
   const changeAvatar = async (file: File) => {
-    try {
-      Toast.process('提交中...');
-      const data = await uploadFile(file);
-      const newValues = {
-        profilePicture: data,
-      };
-      const success = await mockChangeAvatar(newValues);
-      if (success) {
-        updateStorage(StorageToken.UserInfo, {
-          profilePicture: data,
-        });
-        successNotify('修改头像成功');
-      }
-      return data;
-    } catch (error) {
-      failNotify('修改头像失败');
-    }
+    const data = await uploadFile(file);
+    const newValues = {
+      profilePicture: data,
+    };
+    await _changeAvatar(newValues);
+    return data;
   };
 
   // 修改昵称
@@ -42,39 +81,17 @@ export function useUserService() {
       failNotify('昵称输入为空');
       return;
     }
-    try {
-      Toast.process('提交中...');
-      const success = await mockUpdateUsername({ userName: value });
-      if (success) {
-        updateStorage(StorageToken.UserInfo, {
-          userName: value,
-        });
-        successNotify('修改昵称成功');
-      }
-    } catch (error) {
-      failNotify('修改昵称失败');
-    }
+    _updateNickname({ userName: value });
   };
 
-  /** 下拉刷新更新用户状态 */
-  const refreshUserInfo = async () => {
-    try {
-      const result = await mockFetchUserInfo();
-      updateStorage(StorageToken.UserInfo, result);
-    } catch (error) {
-      const message = convertErrorMsg(error);
-      failNotify(message);
-      // 用户信息获取失败自动认为登录失效
-      logout();
-    }
-  };
-
-  const logout: () => void = () => {
+  /** 退出登录 */
+  const logout = () => {
     signOut();
     update();
   };
 
   return {
+    refreshing,
     signOut: useMemoizedFn(logout),
     changeAvatar: useMemoizedFn(changeAvatar),
     updateNickname: useMemoizedFn(updateNickname),

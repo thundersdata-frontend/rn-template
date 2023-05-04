@@ -1,12 +1,11 @@
 import React from 'react';
 import { ActivityIndicator, FlatList, FlatListProps } from 'react-native';
 
+import { RefreshControl } from '@sdcx/pull-to-refresh';
 import { useTheme } from '@td-design/react-native';
 import { Flex, Text } from '@td-design/react-native';
 
 import { AppTheme } from '@/theme';
-
-import { CustomRefreshControl } from '../CustomRefreshControl';
 
 export type RefreshFlatListProps<ItemT> = Omit<FlatListProps<ItemT>, 'onRefresh' | 'refreshing'> & {
   onRefresh?: () => Promise<void>;
@@ -18,7 +17,7 @@ export type RefreshFlatListProps<ItemT> = Omit<FlatListProps<ItemT>, 'onRefresh'
 export function RefreshFlatList<ItemT>({
   onRefresh,
   contentContainerStyle,
-  onEndReachedThreshold = 0.1,
+  onEndReachedThreshold = 0.2,
   loadingMore,
   allLoaded,
   refreshing,
@@ -27,13 +26,11 @@ export function RefreshFlatList<ItemT>({
 }: RefreshFlatListProps<ItemT>) {
   const theme = useTheme<AppTheme>();
 
-  const refreshControl = onRefresh ? <CustomRefreshControl onRefresh={onRefresh} refreshing={refreshing} /> : void 0;
-
   return (
     <FlatList
       {...props}
       onEndReachedThreshold={onEndReachedThreshold}
-      refreshControl={refreshControl}
+      refreshControl={<RefreshControl refreshing={refreshing} onRefresh={onRefresh} />}
       refreshing={false}
       style={{ backgroundColor: theme.colors.background }}
       contentContainerStyle={props.data?.length === 0 ? [{ flex: 1 }, contentContainerStyle] : contentContainerStyle}
