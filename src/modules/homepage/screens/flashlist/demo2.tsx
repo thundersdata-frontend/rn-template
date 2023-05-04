@@ -90,7 +90,6 @@ export function FlashListDemo2() {
         estimatedItemSize={40}
         renderFooter={renderFooter}
         onEndReached={onLoadMore}
-        onEndReachedThreshold={100}
         {...{ renderItem, onRefresh, refreshing, loadingMore, allLoaded }}
       />
     </Container>

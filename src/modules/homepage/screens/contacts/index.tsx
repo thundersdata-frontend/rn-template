@@ -36,7 +36,7 @@ export function ContactsDemo() {
       data={data}
       indexHeight={22}
       itemHeight={44}
-      headerHeight={80}
+      headerHeight={40}
       renderIndex={item => <ContactSectionHeader title={item} />}
       renderItem={item => <ContactCell contact={item} />}
       extractKey={'lastName'}

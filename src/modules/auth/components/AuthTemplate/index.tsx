@@ -3,11 +3,11 @@
  */
 import { FC, PropsWithChildren, useEffect } from 'react';
 import { StyleSheet, View } from 'react-native';
-import { KeyboardInsetsView } from 'react-native-keyboard-insets';
 import Animated, { useAnimatedStyle, useDerivedValue, useSharedValue, withSpring } from 'react-native-reanimated';
 import { mix } from 'react-native-redash';
 
 import { NavigationProp, useNavigation } from '@react-navigation/native';
+import { KeyboardInsetsView } from '@sdcx/keyboard-insets';
 import { useTheme } from '@td-design/react-native';
 import { helpers, Text } from '@td-design/react-native';
 

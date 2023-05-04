@@ -1,8 +1,8 @@
 import { useEffect } from 'react';
 import { ScrollView } from 'react-native';
-import { KeyboardInsetsView } from 'react-native-keyboard-insets';
 
 import { useNavigation } from '@react-navigation/native';
+import { KeyboardInsetsView } from '@sdcx/keyboard-insets';
 import {
   Box,
   Button,

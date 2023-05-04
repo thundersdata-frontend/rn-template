@@ -1,7 +1,7 @@
 import { TouchableOpacity } from 'react-native';
-import { KeyboardInsetsView } from 'react-native-keyboard-insets';
 
 import { NavigationProp, useNavigation } from '@react-navigation/native';
+import { KeyboardInsetsView } from '@sdcx/keyboard-insets';
 import { useTheme } from '@td-design/react-native';
 import { Box, Button, CountDown, Flex, Form, Input, Radio, Text, Theme, WhiteSpace } from '@td-design/react-native';
 

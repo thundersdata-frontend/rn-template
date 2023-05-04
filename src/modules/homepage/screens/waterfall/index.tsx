@@ -454,7 +454,6 @@ export function WaterfallListDemo() {
         keyExtractor={item => item.imageUrl}
         estimatedItemSize={150}
         onEndReached={onLoadMore}
-        onEndReachedThreshold={100}
         optimizeItemArrangement
         overrideItemLayout={(layout, item) => {
           layout.size = item.height;
