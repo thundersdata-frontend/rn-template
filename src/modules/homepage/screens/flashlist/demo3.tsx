@@ -29,7 +29,7 @@ export const RefreshFlatListDemo = () => {
   const { data, loadingMore, refreshing, allLoaded, onRefresh, onLoadMore } = useRefreshService<DataType>(fetchData);
 
   const renderItem = ({ item }: { item: DataType }) => (
-    <Box height={200} alignItems="center" justifyContent={'center'} borderTopWidth={1} borderColor="black">
+    <Box height={200} alignItems="center" justifyContent={'center'} borderBottomWidth={1} borderColor="black">
       <Text>{item.name}</Text>
     </Box>
   );

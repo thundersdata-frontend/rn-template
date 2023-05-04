@@ -17,5 +17,7 @@ const styles = StyleSheet.create({
     paddingHorizontal: 10,
     flex: 1,
     justifyContent: 'center',
+    borderWidth: 1,
+    borderColor: 'red',
   },
 });
