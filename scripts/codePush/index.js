@@ -21,9 +21,9 @@ const ENV_PARAMS = {
   name: 'environment',
   items: {
     1: 'Production',
-    2: 'Staging'
+    2: 'Staging',
   },
-  choices: ['Staging', 'Production']
+  choices: ['Staging', 'Production'],
 };
 
 const PLATFORM_PARAMS = {
@@ -31,19 +31,19 @@ const PLATFORM_PARAMS = {
   type: 'list',
   name: 'platform',
   choices: ['both', 'android', 'ios'],
-  default: 'both'
+  default: 'both',
 };
 
 const VERSION_PARAMS = {
   name: 'version',
   type: 'input',
-  message: '请输入要更新的目标版本号'
+  message: '请输入要更新的目标版本号',
 };
 
 const DES_PARAMS = {
   name: 'description',
   type: 'editor',
-  message: '请输入本次修改的描述'
+  message: '请输入本次修改的描述',
 };
 
 const MANDATORY_PARAMS = {
@@ -56,7 +56,7 @@ const MANDATORY_PARAMS = {
 
 const QUESTIONS = [ENV_PARAMS, PLATFORM_PARAMS, DES_PARAMS, VERSION_PARAMS, MANDATORY_PARAMS];
 
-function main (){
+function main() {
   inquirer.prompt(QUESTIONS).then(option => {
     const { description, environment, platform, version, mandatory } = option;
     if (!description) {

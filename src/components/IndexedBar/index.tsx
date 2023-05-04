@@ -1,12 +1,12 @@
 import { useMemo, useRef } from 'react';
 import { Dimensions, NativeScrollEvent, NativeSyntheticEvent, Pressable, ScrollView } from 'react-native';
 
+import { RefreshControl } from '@sdcx/pull-to-refresh';
 import { FlashList, FlashListProps } from '@shopify/flash-list';
 import { Box, helpers, Text } from '@td-design/react-native';
 import { useMemoizedFn, useSafeState } from '@td-design/rn-hooks';
 
 import { Container } from '../Container';
-import { CustomRefreshControl } from '../CustomRefreshControl';
 
 const { px } = helpers;
 const windowHeight = Dimensions.get('screen').height;
@@ -19,7 +19,7 @@ export function IndexedBar<T extends Obj>({
   indexHeight,
   itemHeight,
   headerHeight = 0,
-  refreshing,
+  refreshing = false,
   extractKey,
   renderIndex,
   renderItem,
@@ -138,6 +138,7 @@ export function IndexedBar<T extends Obj>({
     <Container>
       <FlashList
         {...restProps}
+        nestedScrollEnabled
         ref={listRef}
         data={list as T[]}
         estimatedItemSize={itemHeight}
@@ -148,7 +149,11 @@ export function IndexedBar<T extends Obj>({
         ListEmptyComponent={ListEmptyComponent}
         ListHeaderComponent={ListHeaderComponent}
         ListFooterComponent={ListFooterComponent}
-        refreshControl={<CustomRefreshControl onRefresh={onRefresh} refreshing={refreshing} />}
+        viewabilityConfig={{
+          waitForInteraction: true,
+          itemVisiblePercentThreshold: 50,
+          minimumViewTime: 1000,
+        }}
         onMomentumScrollEnd={handleScroll}
         onScroll={e => {
           if (e.nativeEvent.contentOffset.y === 0) {
@@ -159,6 +164,7 @@ export function IndexedBar<T extends Obj>({
           setCurrentIndex(0);
         }}
         scrollEventThrottle={16}
+        refreshControl={<RefreshControl refreshing={refreshing} onRefresh={onRefresh} />}
       />
       <ScrollView
         style={{

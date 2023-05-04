@@ -1,21 +1,18 @@
-import {name as appName} from './app.json';
-import {App} from './src/App';
-import {Alert, AppRegistry, LogBox} from 'react-native';
-import {
-  setJSExceptionHandler,
-  setNativeExceptionHandler,
-} from 'react-native-exception-handler';
+import { Alert, AppRegistry, LogBox } from 'react-native';
+import { setJSExceptionHandler, setNativeExceptionHandler } from 'react-native-exception-handler';
 import RNRestart from 'react-native-restart';
-import {enableFreeze} from 'react-native-screens';
+import { enableFreeze } from 'react-native-screens';
 
-LogBox.ignoreLogs([
-  'Require cycle:',
-  'new NativeEventEmitter()',
-  "Can't perform",
-  'Flipper',
-  'RCTBridge',
-]);
+import { PullToRefresh } from '@sdcx/pull-to-refresh';
+
+import { name as appName } from './app.json';
+import { App } from './src/App';
+import CustomPullRefreshHeader from './src/components/CustomPullRefreshHeader';
+
+LogBox.ignoreLogs(['Require cycle:', 'new NativeEventEmitter()', "Can't perform", 'Flipper', 'RCTBridge']);
 enableFreeze();
+
+PullToRefresh.setDefaultHeader(CustomPullRefreshHeader);
 
 /**
  * 未捕获的JS异常
@@ -35,7 +32,7 @@ setJSExceptionHandler((error, isFatal) => {
             RNRestart.Restart();
           },
         },
-      ],
+      ]
     );
   } else {
     console.log(error); // So that we can see it in the ADB logs in case of Android if needed
@@ -50,7 +47,7 @@ setNativeExceptionHandler(
     console.log(exceptionString);
   },
   false,
-  true,
+  true
 );
 
 AppRegistry.registerComponent(appName, () => App);
