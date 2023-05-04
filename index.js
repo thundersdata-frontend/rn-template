@@ -2,12 +2,16 @@ import { Alert, AppRegistry, LogBox } from 'react-native';
 import { setJSExceptionHandler, setNativeExceptionHandler } from 'react-native-exception-handler';
 import RNRestart from 'react-native-restart';
 import { enableFreeze } from 'react-native-screens';
+import { PullToRefresh } from '@sdcx/pull-to-refresh'
 
 import { App } from './src/App';
 import { name as appName } from './app.json';
+import CustomPullRefreshHeader from './src/components/CustomPullRefreshHeader';
 
 LogBox.ignoreLogs(['Require cycle:', 'new NativeEventEmitter()', "Can't perform", "Flipper", "RCTBridge"]);
 enableFreeze();
+
+PullToRefresh.setDefaultHeader(CustomPullRefreshHeader)
 
 /**
  * 未捕获的JS异常
