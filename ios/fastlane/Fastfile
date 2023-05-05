@@ -23,13 +23,13 @@ end
 
 platform :ios do
   lane :pod do
-    ENV["HERMES_ENGINE_TARBALL_PATH"] = "#{Dir.pwd}/hermes-runtime-darwin-v0.70.8.tar.gz"
+    ENV["HERMES_ENGINE_TARBALL_PATH"] = "#{Dir.pwd}/hermes-runtime-darwin-v0.70.9.tar.gz"
     cocoapods
   end
 
   lane :build do
     ENV["CI"] = "true"
-    ENV["HERMES_ENGINE_TARBALL_PATH"] = "#{Dir.pwd}/hermes-runtime-darwin-v0.70.8.tar.gz"
+    ENV["HERMES_ENGINE_TARBALL_PATH"] = "#{Dir.pwd}/hermes-runtime-darwin-v0.70.9.tar.gz"
     cocoapods
     gym(
       workspace: "rnTemplate.xcworkspace", 
