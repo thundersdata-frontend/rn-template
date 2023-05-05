@@ -7180,10 +7180,10 @@ react-native-svg@^13.9.0:
     css-select "^5.1.0"
     css-tree "^1.1.3"
 
-react-native@0.68.6:
-  version "0.68.6"
-  resolved "https://registry.npmmirror.com/react-native/-/react-native-0.68.6.tgz#58224fbd0c74742795287d1de94a91eb1e857dc4"
-  integrity sha512-evLsY9SEd842qvWU/1UeKa9PUGj2R5aPuTXBZj0AfzZlVQwS0bLLG9+j+bmXPlPXfYE8MpzfMLUK4EqmKBZSxg==
+react-native@0.68.7:
+  version "0.68.7"
+  resolved "https://registry.npmmirror.com/react-native/-/react-native-0.68.7.tgz#9b179f909ac8640e369957696f98070ddf7c32e7"
+  integrity sha512-t7XvcwKyXhN9vR8GfgLUyEYYccwI390pG7debFSGns/5Vb0+/ZiGuSmVZGLNt1NVc3UH2zI2GGkDdSJR8Locig==
   dependencies:
     "@jest/create-cache-key-function" "^27.0.1"
     "@react-native-community/cli" "^7.0.3"
