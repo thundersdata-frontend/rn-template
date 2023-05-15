@@ -19,6 +19,7 @@ import { NavigationModal } from '@/modules/homepage/screens/modal';
 import { LocalImageDemo } from '@/modules/homepage/screens/pictures/demo1';
 import { OnlineImageDemo } from '@/modules/homepage/screens/pictures/demo2';
 import { WaterfallListDemo } from '@/modules/homepage/screens/waterfall';
+import { ImageCrop } from '@/modules/others/screens/imageCrop';
 import { Agreement } from '@/modules/policy/screens/agreement';
 import { Privacy } from '@/modules/policy/screens/privacy';
 import { PrivacyConfirm } from '@/modules/policy/screens/privacyConfirm';
@@ -158,6 +159,13 @@ const MAIN_SCREENS = [
     component: ModifyPassword,
     options: {
       title: '修改密码',
+    },
+  },
+  {
+    name: 'ImageCrop',
+    component: ImageCrop,
+    options: {
+      title: '图片裁切',
     },
   },
 ];
