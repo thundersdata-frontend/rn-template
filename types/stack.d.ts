@@ -1,6 +1,7 @@
 type CommonStackParamList = {
   Privacy: undefined;
   Agreement: undefined;
+  NavigationModal: undefined;
 };
 
 type AuthStackParamList = {
@@ -33,7 +34,12 @@ type MainStackParamList = {
   Settings: undefined;
   ModifyPassword: undefined;
   ModifyPasswordResult: undefined;
-  NavigationModal: undefined;
+  ImageCrop: {
+    file: File;
+    width?: number;
+    height?: number;
+    callback?: (file: File) => Promise<void>;
+  };
 };
 
 type AppParamList = AuthStackParamList & MainStackParamList & CommonStackParamList;

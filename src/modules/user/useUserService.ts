@@ -1,5 +1,4 @@
 import { Toast } from '@td-design/react-native';
-import { File } from '@td-design/react-native-image-picker';
 import { useMemoizedFn } from '@td-design/rn-hooks';
 
 import { useCustomRequest } from '@/hooks/useCustomRequest';
@@ -8,7 +7,8 @@ import { useNotify } from '@/hooks/useNotify';
 import useUpdateService from '@/hooks/useUpdateService';
 import { mockChangeAvatar, mockFetchUserInfo, mockUpdateUsername } from '@/modules/mock';
 import { storageService, StorageToken } from '@/services/StorageService';
-import { uploadFile } from '@/utils/upload';
+
+// import { uploadFile } from '@/utils/upload';
 
 export function useUserService() {
   const { update } = useUpdateService.useModel();
@@ -67,12 +67,11 @@ export function useUserService() {
 
   // 修改头像
   const changeAvatar = async (file: File) => {
-    const data = await uploadFile(file);
+    // const data = await uploadFile(file);
     const newValues = {
-      profilePicture: data,
+      profilePicture: file.uri,
     };
     await _changeAvatar(newValues);
-    return data;
   };
 
   // 修改昵称
