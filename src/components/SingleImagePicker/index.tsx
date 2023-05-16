@@ -41,7 +41,7 @@ export const SingleImagePicker: FC<CustomImagePickerProps> = ({
       width={width}
       height={height}
       value={value}
-      upload={async file => {
+      onUpload={async file => {
         try {
           if (file.fileType.includes('image/') && file?.fileSize && file?.fileSize > MAX_FILE_SIZE) {
             const { name, uri } = await ImageResizer.createResizedImage(file.uri, 1024 * 2, 1024 * 2, 'JPEG', 100);
@@ -62,7 +62,7 @@ export const SingleImagePicker: FC<CustomImagePickerProps> = ({
         }
       }}
       onGrantFail={() => Toast.middle({ content: '对不起，授权失败' })}
-      uploadFinish={onUploadFinish}
+      onAfterUpload={onUploadFinish}
     >
       <ImgCard title={title} />
     </ImagePicker>

@@ -1,23 +1,26 @@
 import { NavigationProp, useNavigation } from '@react-navigation/native';
 import { ActionSheet, Avatar, helpers, Image, Input, List, Modal, Text, WingBlank } from '@td-design/react-native';
+import { useAtomValue } from 'jotai';
 
+import { userInfoAtom } from '@/atoms';
 import { Container } from '@/components/Container';
 import useImagePicker from '@/hooks/useImagePicker';
+import useLogout from '@/hooks/useLogout';
 import { useUserService } from '@/modules/user/useUserService';
-import { storageService } from '@/services/StorageService';
 
 const { px } = helpers;
 export function Settings() {
-  const { updateNickname, signOut, changeAvatar } = useUserService();
+  const { updateNickname, changeAvatar } = useUserService();
+  const logout = useLogout();
 
   const navigation = useNavigation<NavigationProp<MainStackParamList>>();
-  const userInfo = storageService.userInfo;
+  const userInfo = useAtomValue(userInfoAtom);
 
   const handleFinish = (file: File) => {
     navigation.navigate('ImageCrop', { file, callback: changeAvatar });
   };
 
-  const { launchLibrary, launchCamera, visible, onClose } = useImagePicker({ onFinish: handleFinish });
+  const { launchLibrary, launchCamera, visible, onClose, onShow } = useImagePicker({ onFinish: handleFinish });
 
   const handleLogout = () => {
     Modal.confirm({
@@ -29,7 +32,7 @@ export function Settings() {
       ),
       title: '退出登录',
       content: '确定要退出登录吗？',
-      onOk: signOut,
+      onOk: logout,
     });
   };
 
@@ -49,8 +52,7 @@ export function Settings() {
                   url={userInfo.profilePicture}
                 />
               ),
-              // TODO 换回ActionSheet
-              onPress: launchLibrary,
+              onPress: onShow,
             },
             {
               title: '修改昵称',
@@ -72,7 +74,7 @@ export function Settings() {
               },
             },
             {
-              title: '注销登录',
+              title: '退出登录',
               arrow: 'horizontal',
               onPress: handleLogout,
             },

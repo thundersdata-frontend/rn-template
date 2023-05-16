@@ -1,6 +1,5 @@
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 
-import useUpdateService from '@/hooks/useUpdateService';
 import { ConfigPass } from '@/modules/auth/screens/configPass';
 import { ForgetPass } from '@/modules/auth/screens/forgetPass';
 import { Register } from '@/modules/auth/screens/register';
@@ -25,7 +24,6 @@ import { Privacy } from '@/modules/policy/screens/privacy';
 import { PrivacyConfirm } from '@/modules/policy/screens/privacyConfirm';
 import { ModifyPassword } from '@/modules/user/screens/modifyPass';
 import { Settings } from '@/modules/user/screens/settings';
-import { storageService } from '@/services/StorageService';
 import { TabStack } from '@/stacks/tabStack';
 
 const AUTH_SCREENS = [
@@ -196,11 +194,7 @@ const MODAL_SCREENS = [
 
 const Stack = createNativeStackNavigator();
 
-export default () => {
-  useUpdateService.useModel();
-
-  const { confirmed, signedIn } = storageService;
-
+export default ({ confirmed, signedIn }: { confirmed: boolean; signedIn: boolean }) => {
   return (
     <Stack.Navigator
       initialRouteName={confirmed ? (signedIn ? 'Tab' : 'SignIn') : 'PrivacyConfirm'}

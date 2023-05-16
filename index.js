@@ -8,7 +8,7 @@ import { App } from './src/App';
 import { name as appName } from './app.json';
 import CustomPullRefreshHeader from './src/components/CustomPullRefreshHeader';
 
-LogBox.ignoreLogs(['Require cycle:', 'new NativeEventEmitter()', "Can't perform", "Flipper", "RCTBridge"]);
+LogBox.ignoreLogs(['Require cycle:', 'new NativeEventEmitter()', "Can't perform", "Flipper", "RCTBridge", "Non-serializable values were found"]);
 enableFreeze();
 
 PullToRefresh.setDefaultHeader(CustomPullRefreshHeader)
