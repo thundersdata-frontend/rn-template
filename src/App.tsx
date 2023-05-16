@@ -10,9 +10,9 @@ import { useFlipper } from '@react-navigation/devtools';
 import { DarkTheme, DefaultTheme, NavigationContainer } from '@react-navigation/native';
 import { helpers, ThemeProvider } from '@td-design/react-native';
 import { useMount } from '@td-design/rn-hooks';
-import { Provider as JotaiProvider } from 'jotai';
+import { useAtomValue } from 'jotai';
 
-import useUpdateService from '@/hooks/useUpdateService';
+import { confirmedAtom, signedInAtom } from '@/atoms';
 import { linking } from '@/linking';
 import { navigationRef } from '@/services/NavigationService';
 import { darkTheme, lightTheme } from '@/theme';
@@ -37,26 +37,25 @@ const Main = () => {
     });
   });
 
+  const confirmed = useAtomValue(confirmedAtom);
+  const signedIn = useAtomValue(signedInAtom);
+
   return (
     <SafeAreaProvider>
       <GestureHandlerRootView style={{ flex: 1 }}>
-        <JotaiProvider>
-          <ThemeProvider theme={theme === 'dark' ? darkTheme : lightTheme}>
-            <useUpdateService.Provider>
-              <NiceModal.Provider>
-                <NavigationContainer
-                  ref={navigationRef}
-                  linking={linking}
-                  fallback={<Fallback />}
-                  theme={theme === 'dark' ? DarkTheme : DefaultTheme}
-                  onReady={() => setReady(true)}
-                >
-                  <Stack />
-                </NavigationContainer>
-              </NiceModal.Provider>
-            </useUpdateService.Provider>
-          </ThemeProvider>
-        </JotaiProvider>
+        <ThemeProvider theme={theme === 'dark' ? darkTheme : lightTheme}>
+          <NiceModal.Provider>
+            <NavigationContainer
+              ref={navigationRef}
+              linking={linking}
+              fallback={<Fallback />}
+              theme={theme === 'dark' ? DarkTheme : DefaultTheme}
+              onReady={() => setReady(true)}
+            >
+              <Stack {...{ confirmed, signedIn }} />
+            </NavigationContainer>
+          </NiceModal.Provider>
+        </ThemeProvider>
       </GestureHandlerRootView>
       {Platform.OS === 'android' && <NavigationBar barStyle="dark-content" />}
     </SafeAreaProvider>

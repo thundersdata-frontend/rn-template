@@ -3,10 +3,11 @@ import { ImageBackground, ScrollView } from 'react-native';
 import { NavigationProp, useNavigation } from '@react-navigation/native';
 import { PullToRefresh } from '@sdcx/pull-to-refresh';
 import { Avatar, Box, Button, Flex, helpers, Text, WhiteSpace } from '@td-design/react-native';
+import { useAtomValue } from 'jotai';
 
+import { userInfoAtom } from '@/atoms';
 import { Container } from '@/components/Container';
 import CustomPullRefreshHeader from '@/components/CustomPullRefreshHeader';
-import { storageService } from '@/services/StorageService';
 
 import { useUserService } from '../useUserService';
 
@@ -16,7 +17,7 @@ const AVATAR_SIZE = px(66);
 export function Mine() {
   const navigation = useNavigation<NavigationProp<MainStackParamList>>();
   const { refreshing, refreshUserInfo } = useUserService();
-  const userInfo = storageService.userInfo;
+  const userInfo = useAtomValue(userInfoAtom);
 
   return (
     <Container>

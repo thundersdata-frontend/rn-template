@@ -2,10 +2,11 @@ import { useMemoizedFn } from '@td-design/rn-hooks';
 
 import { LoginFailureEnum } from '@/enums';
 
-import { storageService } from '../services/StorageService';
+import useLogout from './useLogout';
 
-const { signOut } = storageService;
 export function useError() {
+  const logout = useLogout();
+
   const convertErrorMsg = useMemoizedFn((error: unknown) => {
     try {
       // https://www.typescriptlang.org/docs/handbook/release-notes/typescript-4-0.html#unknown-on-catch-clause-bindings
@@ -17,7 +18,7 @@ export function useError() {
         }
         const { message, code } = JSON.parse(error.message);
         if ([LoginFailureEnum.登录无效, LoginFailureEnum.登录过期, LoginFailureEnum.登录禁止].includes(code)) {
-          signOut();
+          logout();
           return LoginFailureEnum[code];
         }
         return message;

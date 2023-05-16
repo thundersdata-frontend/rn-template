@@ -1,11 +1,15 @@
 import RNFetchBlob from 'react-native-blob-util';
 import Config from 'react-native-config';
 
-import { storageService } from '@/services/StorageService';
+import { isEmpty } from 'lodash-es';
+
+import { getValueInStorage } from '@/atoms';
 
 /** 上传文件 */
 export async function uploadFile({ fileName, fileType, uri }: File) {
-  const token = storageService.token;
+  const token = getValueInStorage('token', {});
+  if (isEmpty(token)) throw new Error('token为空');
+
   const resultData = await RNFetchBlob.fetch(
     'POST',
     `${Config.oss}/upload/public/head?access_token=${token.accessToken!}`,

@@ -3,12 +3,14 @@ import { useMemo } from 'react';
 import { useNetInfo } from '@react-native-community/netinfo';
 import { useMemoizedFn, useRequest, useSafeState } from '@td-design/rn-hooks';
 import { Options, Service } from '@td-design/rn-hooks/lib/typescript/useRequest/types';
+import { useAtomValue } from 'jotai';
 
+import { signedInAtom } from '@/atoms';
 import { LoginFailureEnum } from '@/enums';
 import { useNotify } from '@/hooks/useNotify';
 
-import { storageService } from '../services/StorageService';
 import createRequestService from './createRequestService';
+import useLogout from './useLogout';
 
 // 初始化 page
 export const INITIAL_PAGE = 1;
@@ -28,7 +30,9 @@ export function useRefreshService<T, R extends Page<T> = Page<T>, P extends Page
   options?: Options<R, P>
 ) {
   const { failNotify } = useNotify();
-  const { signedIn, signOut } = storageService;
+  const logout = useLogout();
+  const signedIn = useAtomValue(signedInAtom);
+
   const netInfo = useNetInfo();
   const isOnline = !!netInfo.isConnected && !!netInfo.isInternetReachable;
   const requestService = createRequestService(signedIn, service);
@@ -42,7 +46,7 @@ export function useRefreshService<T, R extends Page<T> = Page<T>, P extends Page
     const { code, message } = JSON.parse((err as Error).message);
     if (code) {
       if ([LoginFailureEnum.登录无效, LoginFailureEnum.登录过期, LoginFailureEnum.登录禁止].includes(code)) {
-        signOut();
+        logout();
       }
     }
     failNotify(message);
