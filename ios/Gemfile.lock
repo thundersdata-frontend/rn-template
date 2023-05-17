@@ -307,7 +307,7 @@ PLATFORMS
   arm64-darwin-22
 
 DEPENDENCIES
-  cocoapods
+  cocoapods (~> 1.12)
   fastlane
   fastlane-plugin-fir_cli
 

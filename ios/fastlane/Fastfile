@@ -23,14 +23,14 @@ end
 
 platform :ios do
   lane :pod do
-    ENV["HERMES_ENGINE_TARBALL_PATH"] = "#{Dir.pwd}/react-native-artifacts-0.71.8-hermes-ios-debug.tar.gz"
-    cocoapods
+    ENV["HERMES_OVERRIDE_HERMESC_PATH"] = "#{Dir.pwd}/react-native-artifacts-0.72.0-rc.3-hermes-ios-debug.tar.gz"
+    cocoapods(verbose: true)
   end
 
   lane :build do
+    ENV["HERMES_OVERRIDE_HERMESC_PATH"] = "#{Dir.pwd}/react-native-artifacts-0.72.0-rc.3-hermes-ios-release.tar.gz"
     ENV["NO_FLIPPER"] = "1"
     ENV['PRODUCTION'] == "1"
-    ENV["HERMES_ENGINE_TARBALL_PATH"] = "#{Dir.pwd}/react-native-artifacts-0.71.8-hermes-ios-release.tar.gz"
     cocoapods
     gym(
       workspace: "rnTemplate.xcworkspace", 

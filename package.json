@@ -49,7 +49,7 @@
     "jotai": "^2.1.0",
     "lodash-es": "^4.17.21",
     "react": "18.2.0",
-    "react-native": "0.71.8",
+    "react-native": "0.72.0-rc.3",
     "lottie-ios": "3.4.1",
     "lottie-react-native": "^5.1.6",
     "react-error-boundary": "^4.0.4",
@@ -77,12 +77,14 @@
     "@bam.tech/react-native-make": "^3.0.3",
     "@commitlint/cli": "^17.6.3",
     "@commitlint/config-conventional": "^17.6.3",
-    "@react-native-community/eslint-config": "^3.2.0",
+    "@react-native/eslint-config": "^0.72.1",
+    "@react-native/metro-config": "^0.72.5",
     "@react-navigation/devtools": "^6.0.18",
     "@td-design/pont-engine": "1.1.3",
     "@td-design/svgicon-cli": "^1.5.1",
     "@trivago/prettier-plugin-sort-imports": "^4.1.1",
     "@tsconfig/react-native": "^3.0.1",
+    "@types/metro-config": "^0.76.3",
     "@types/lodash-es": "^4.17.7",
     "@types/react": "^18.2.6",
     "@types/react-native": "^0.72.0",
@@ -93,7 +95,7 @@
     "cross-env": "^7.0.3",
     "cz-customizable": "^7.0.0",
     "husky": "^8.0.3",
-    "metro-react-native-babel-preset": "0.73.9",
+    "metro-react-native-babel-preset": "0.76.4",
     "inquirer": "8.1.0",
     "lint-staged": "^13.2.2",
     "lorem-ipsum": "^2.0.8",
@@ -104,5 +106,8 @@
     "react-native-flipper": "0.190.0",
     "shelljs": "^0.8.5",
     "typescript": "5.0.4"
+  },
+  "engines": {
+    "node": ">=16"
   }
 }
