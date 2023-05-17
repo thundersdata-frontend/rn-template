@@ -1,0 +1,13 @@
+diff --git a/node_modules/@bam.tech/react-native-make/react-native.config.js b/node_modules/@bam.tech/react-native-make/react-native.config.js
+index 621efba..0ddaa30 100644
+--- a/node_modules/@bam.tech/react-native-make/react-native.config.js
++++ b/node_modules/@bam.tech/react-native-make/react-native.config.js
+@@ -6,7 +6,7 @@ const { lstatSync } = require('fs');
+  * For faster development workflow, when npm linked
+  * we want this library to be transpiled at runtime using the ts-node resolver
+  */
+-const res = lstatSync(resolve('.', 'node_modules', '@bam.tech', 'react-native-make'));
++const res = lstatSync(resolve('..', 'node_modules', '@bam.tech', 'react-native-make'));
+ if (res.isSymbolicLink()) {
+   console.warn('Detected linked install of react-native-make, compiling at runtime...');
+   require('ts-node').register({ project: resolve(__dirname, `tsconfig.json`) });

@@ -11,7 +11,7 @@ import { Container } from '@/components/Container';
 import TestModal from '@/modals/TestModal';
 
 export function Homepage() {
-  const navigation = useNavigation<NavigationProp<MainStackParamList>>();
+  const navigation = useNavigation<NavigationProp<AppParamList>>();
 
   return (
     <Container hasHeader={false}>

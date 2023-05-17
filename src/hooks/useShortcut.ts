@@ -10,7 +10,7 @@ const shortcuts = [
 ];
 
 export function useShortcut() {
-  const [initialRouteName, setInitialRouteName] = useSafeState<keyof MainStackParamList>();
+  const [initialRouteName, setInitialRouteName] = useSafeState<any>();
   const [ready, setReady] = useSafeState(false);
 
   useMount(() => {

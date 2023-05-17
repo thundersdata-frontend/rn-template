@@ -4,7 +4,7 @@ import axios from 'axios';
 import dayjs from 'dayjs';
 import { isEmpty } from 'lodash-es';
 
-import { storageService, StorageToken } from '@/services/StorageService';
+import { getValueInStorage, storage } from './atoms';
 
 const codeMessage: Record<number, string> = {
   400: '用户没有权限（令牌错误）',
@@ -32,10 +32,8 @@ export const initRequest = () => {
 
   // 配置请求拦截器
   instance.interceptors.request.use(async config => {
-    const token = storageService.token;
-    if (isEmpty(token)) {
-      return config;
-    }
+    const token = getValueInStorage('token', {});
+    if (isEmpty(token)) return config;
 
     const { accessToken, refreshToken, tokenExpireTime } = token;
 
@@ -44,8 +42,9 @@ export const initRequest = () => {
       const result = await fetch(`${Config['basic']}/auth/token/refresh?refreshToken=${refreshToken}`, {
         headers: {},
       }).then(response => response.json());
+
       const { data } = result;
-      storageService.updateStorage(StorageToken.Token, data);
+      storage.set('token', data);
       // 对request的header增加accessToken配置
       config['headers'].set('accessToken', data.accessToken! as string);
     } else {

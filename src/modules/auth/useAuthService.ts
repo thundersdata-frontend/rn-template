@@ -3,10 +3,11 @@ import { Keyboard } from 'react-native';
 import { NavigationProp, useNavigation } from '@react-navigation/native';
 import type { Store, ValidateErrorEntity } from '@td-design/react-native';
 import { useMemoizedFn, useSafeState } from '@td-design/rn-hooks';
+import { useSetAtom } from 'jotai';
 
+import { signedInAtom, tokenAtom, userInfoAtom } from '@/atoms';
 import { useError } from '@/hooks/useError';
 import { useNotify } from '@/hooks/useNotify';
-import useUpdateService from '@/hooks/useUpdateService';
 import {
   mockConfigPassword,
   mockFetchUserInfo,
@@ -16,15 +17,16 @@ import {
   mockSendSms,
   mockUpdatePassword,
 } from '@/modules/mock';
-import { storageService, StorageToken } from '@/services/StorageService';
 import { mobilePattern } from '@/utils/validators';
 
 export function useAuthService(isSmsLogin = true) {
-  const { update } = useUpdateService.useModel();
   const navigation = useNavigation<NavigationProp<AuthStackParamList>>();
   const { convertErrorMsg } = useError();
   const { failNotify, successNotify } = useNotify();
-  const { updateStorage } = storageService;
+
+  const updateUserInfo = useSetAtom(userInfoAtom);
+  const updateSignedIn = useSetAtom(signedInAtom);
+  const updateToken = useSetAtom(tokenAtom);
 
   const [error, setError] = useSafeState('');
   const [loading, setLoading] = useSafeState(false);
@@ -67,9 +69,8 @@ export function useAuthService(isSmsLogin = true) {
   const fetchUserInfo = async () => {
     try {
       const userInfo = await mockFetchUserInfo();
-      updateStorage(StorageToken.UserInfo, userInfo);
-      updateStorage(StorageToken.SignedIn, true);
-      update();
+      updateUserInfo(userInfo);
+      updateSignedIn(true);
     } catch (error) {
       const message = convertErrorMsg(error);
       failNotify(message);
@@ -83,7 +84,7 @@ export function useAuthService(isSmsLogin = true) {
       const data = await mockLogin(values);
       if (data) {
         const { ispassword } = data;
-        updateStorage(StorageToken.Token, data);
+        updateToken(data);
         await fetchUserInfo();
         setLoading(false);
         if (!!ispassword) {
@@ -106,7 +107,7 @@ export function useAuthService(isSmsLogin = true) {
       setLoading(true);
       const data = await mockLogin(values);
       if (data) {
-        updateStorage(StorageToken.Token, data);
+        updateToken(data);
         await fetchUserInfo();
         setLoading(false);
       } else {
@@ -136,7 +137,7 @@ export function useAuthService(isSmsLogin = true) {
       Keyboard.dismiss();
       const data = await mockConfigPassword(values);
       if (data) {
-        updateStorage(StorageToken.SignedIn, true);
+        updateSignedIn(true);
       } else {
         setError('对不起，设置密码失败');
       }
