@@ -1,20 +1,21 @@
 import { NavigationProp, useNavigation } from '@react-navigation/native';
 import { useTheme } from '@td-design/react-native';
 import { Box, Center, Divider, Flex, helpers, Text, WhiteSpace, WingBlank } from '@td-design/react-native';
+import { useSetAtom } from 'jotai';
 
+import { confirmedAtom } from '@/atoms';
 import { Container } from '@/components/Container';
 import { ExitApp } from '@/components/ExitApp';
-import { storageService, StorageToken } from '@/services/StorageService';
 import { AppTheme } from '@/theme';
 
-const { updateStorage } = storageService;
 export const PrivacyConfirm = () => {
   const theme = useTheme<AppTheme>();
   const navigation = useNavigation<NavigationProp<AuthStackParamList & CommonStackParamList>>();
+  const updateConfirm = useSetAtom(confirmedAtom);
 
   const handleOk = () => {
     // TODO 在这里init各种SDK
-    updateStorage(StorageToken.Confirmed, true);
+    updateConfirm(true);
     navigation.navigate('SignIn');
   };
 
