@@ -1,6 +1,5 @@
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 
-import useUpdateService from '@/hooks/useUpdateService';
 import { ConfigPass } from '@/modules/auth/screens/configPass';
 import { ForgetPass } from '@/modules/auth/screens/forgetPass';
 import { Register } from '@/modules/auth/screens/register';
@@ -19,12 +18,12 @@ import { NavigationModal } from '@/modules/homepage/screens/modal';
 import { LocalImageDemo } from '@/modules/homepage/screens/pictures/demo1';
 import { OnlineImageDemo } from '@/modules/homepage/screens/pictures/demo2';
 import { WaterfallListDemo } from '@/modules/homepage/screens/waterfall';
+import { ImageCrop } from '@/modules/others/screens/imageCrop';
 import { Agreement } from '@/modules/policy/screens/agreement';
 import { Privacy } from '@/modules/policy/screens/privacy';
 import { PrivacyConfirm } from '@/modules/policy/screens/privacyConfirm';
 import { ModifyPassword } from '@/modules/user/screens/modifyPass';
 import { Settings } from '@/modules/user/screens/settings';
-import { storageService } from '@/services/StorageService';
 import { TabStack } from '@/stacks/tabStack';
 
 const AUTH_SCREENS = [
@@ -160,6 +159,13 @@ const MAIN_SCREENS = [
       title: '修改密码',
     },
   },
+  {
+    name: 'ImageCrop',
+    component: ImageCrop,
+    options: {
+      title: '图片裁切',
+    },
+  },
 ];
 
 const MODAL_SCREENS = [
@@ -188,11 +194,7 @@ const MODAL_SCREENS = [
 
 const Stack = createNativeStackNavigator();
 
-export default () => {
-  useUpdateService.useModel();
-
-  const { confirmed, signedIn } = storageService;
-
+export default ({ confirmed, signedIn }: { confirmed: boolean; signedIn: boolean }) => {
   return (
     <Stack.Navigator
       initialRouteName={confirmed ? (signedIn ? 'Tab' : 'SignIn') : 'PrivacyConfirm'}

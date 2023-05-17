@@ -1,13 +1,26 @@
 import { NavigationProp, useNavigation } from '@react-navigation/native';
-import { helpers, Image, Input, List, Modal, WingBlank } from '@td-design/react-native';
+import { ActionSheet, Avatar, helpers, Image, Input, List, Modal, Text, WingBlank } from '@td-design/react-native';
+import { useAtomValue } from 'jotai';
 
+import { userInfoAtom } from '@/atoms';
 import { Container } from '@/components/Container';
+import useImagePicker from '@/hooks/useImagePicker';
+import useLogout from '@/hooks/useLogout';
 import { useUserService } from '@/modules/user/useUserService';
 
 const { px } = helpers;
 export function Settings() {
+  const { updateNickname, changeAvatar } = useUserService();
+  const logout = useLogout();
+
   const navigation = useNavigation<NavigationProp<MainStackParamList>>();
-  const { updateNickname, signOut } = useUserService();
+  const userInfo = useAtomValue(userInfoAtom);
+
+  const handleFinish = (file: File) => {
+    navigation.navigate('ImageCrop', { file, callback: changeAvatar });
+  };
+
+  const { launchLibrary, launchCamera, visible, onClose, onShow } = useImagePicker({ onFinish: handleFinish });
 
   const handleLogout = () => {
     Modal.confirm({
@@ -19,7 +32,7 @@ export function Settings() {
       ),
       title: '退出登录',
       content: '确定要退出登录吗？',
-      onOk: signOut,
+      onOk: logout,
     });
   };
 
@@ -27,11 +40,24 @@ export function Settings() {
     <Container>
       <WingBlank>
         <List
+          itemHeight={px(48)}
           items={[
+            {
+              title: '修改头像',
+              arrow: 'horizontal',
+              extra: (
+                <Avatar
+                  size={px(44)}
+                  title={userInfo.userName?.charAt(0).toUpperCase()}
+                  url={userInfo.profilePicture}
+                />
+              ),
+              onPress: onShow,
+            },
             {
               title: '修改昵称',
               arrow: 'horizontal',
-              minHeight: px(48),
+              extra: <Text variant="p0">{userInfo.userName}</Text>,
               onPress() {
                 Modal.prompt({
                   title: '修改昵称',
@@ -43,20 +69,27 @@ export function Settings() {
             {
               title: '修改密码',
               arrow: 'horizontal',
-              minHeight: px(48),
               onPress() {
                 navigation.navigate('ModifyPassword');
               },
             },
             {
-              title: '注销登录',
+              title: '退出登录',
               arrow: 'horizontal',
-              minHeight: px(48),
               onPress: handleLogout,
             },
           ]}
         />
       </WingBlank>
+      {/* 打开相册或者打开相机 */}
+      <ActionSheet
+        items={[
+          { text: '打开相册', onPress: launchLibrary },
+          { text: '打开摄像头', onPress: launchCamera },
+        ]}
+        onCancel={onClose}
+        visible={visible}
+      />
     </Container>
   );
 }
