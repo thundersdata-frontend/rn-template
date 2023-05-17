@@ -1,20 +1,19 @@
 import { Toast } from '@td-design/react-native';
-import { File } from '@td-design/react-native-image-picker';
 import { useMemoizedFn } from '@td-design/rn-hooks';
+import { useSetAtom } from 'jotai';
 
+import { userInfoAtom } from '@/atoms';
 import { useCustomRequest } from '@/hooks/useCustomRequest';
 import { useError } from '@/hooks/useError';
 import { useNotify } from '@/hooks/useNotify';
-import useUpdateService from '@/hooks/useUpdateService';
 import { mockChangeAvatar, mockFetchUserInfo, mockUpdateUsername } from '@/modules/mock';
-import { storageService, StorageToken } from '@/services/StorageService';
-import { uploadFile } from '@/utils/upload';
+
+// import { uploadFile } from '@/utils/upload';
 
 export function useUserService() {
-  const { update } = useUpdateService.useModel();
   const { successNotify, failNotify } = useNotify();
   const { convertErrorMsg } = useError();
-  const { signOut, updateStorage } = storageService;
+  const updateUserInfo = useSetAtom(userInfoAtom);
 
   const { runAsync: _changeAvatar } = useCustomRequest(mockChangeAvatar, {
     manual: true,
@@ -22,7 +21,7 @@ export function useUserService() {
       Toast.process('提交中...');
     },
     onSuccess(_, params) {
-      updateStorage(StorageToken.UserInfo, {
+      updateUserInfo({
         profilePicture: params[0].profilePicture,
       });
       successNotify('修改头像成功');
@@ -41,7 +40,7 @@ export function useUserService() {
       Toast.process('提交中...');
     },
     onSuccess(_, params) {
-      updateStorage(StorageToken.UserInfo, {
+      updateUserInfo({
         userName: params[0].userName,
       });
       successNotify('修改昵称成功');
@@ -57,7 +56,7 @@ export function useUserService() {
   const { loading: refreshing, run: refreshUserInfo } = useCustomRequest(mockFetchUserInfo, {
     manual: true,
     onSuccess(data) {
-      updateStorage(StorageToken.UserInfo, data);
+      updateUserInfo(data);
     },
     onError(error) {
       const message = convertErrorMsg(error);
@@ -67,12 +66,11 @@ export function useUserService() {
 
   // 修改头像
   const changeAvatar = async (file: File) => {
-    const data = await uploadFile(file);
+    // const data = await uploadFile(file);
     const newValues = {
-      profilePicture: data,
+      profilePicture: file.uri,
     };
     await _changeAvatar(newValues);
-    return data;
   };
 
   // 修改昵称
@@ -84,15 +82,8 @@ export function useUserService() {
     _updateNickname({ userName: value });
   };
 
-  /** 退出登录 */
-  const logout = () => {
-    signOut();
-    update();
-  };
-
   return {
     refreshing,
-    signOut: useMemoizedFn(logout),
     changeAvatar: useMemoizedFn(changeAvatar),
     updateNickname: useMemoizedFn(updateNickname),
     refreshUserInfo: useMemoizedFn(refreshUserInfo),
