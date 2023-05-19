@@ -17,6 +17,7 @@ import { LongForm } from '@/modules/homepage/screens/longform';
 import { NavigationModal } from '@/modules/homepage/screens/modal';
 import { LocalImageDemo } from '@/modules/homepage/screens/pictures/demo1';
 import { OnlineImageDemo } from '@/modules/homepage/screens/pictures/demo2';
+import { TextDemo } from '@/modules/homepage/screens/text';
 import { WaterfallListDemo } from '@/modules/homepage/screens/waterfall';
 import { ImageCrop } from '@/modules/others/screens/imageCrop';
 import { Agreement } from '@/modules/policy/screens/agreement';
@@ -164,6 +165,13 @@ const MAIN_SCREENS = [
     component: ImageCrop,
     options: {
       title: '图片裁切',
+    },
+  },
+  {
+    name: 'TextDemo',
+    component: TextDemo,
+    options: {
+      title: '文字Variant示例',
     },
   },
 ];

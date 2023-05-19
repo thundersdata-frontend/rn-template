@@ -40,6 +40,7 @@ type MainStackParamList = {
     height?: number;
     callback?: (file: File) => Promise<void>;
   };
+  TextDemo: undefined;
 };
 
 type AppParamList = AuthStackParamList & MainStackParamList & CommonStackParamList;
