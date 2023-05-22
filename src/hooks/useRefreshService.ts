@@ -42,15 +42,20 @@ export function useRefreshService<T, R extends Page<T> = Page<T>, P extends Page
 
   const { onSuccess, onError, refreshDeps = [], ready, ...restOptions } = options || {};
 
-  const handleError = (err: unknown, params: P) => {
-    const { code, message } = JSON.parse((err as Error).message);
-    if (code) {
+  const handleError = (error: any, params: P) => {
+    try {
+      const { code, message } = JSON.parse(error.message);
       if ([LoginFailureEnum.登录无效, LoginFailureEnum.登录过期, LoginFailureEnum.登录禁止].includes(code)) {
+        failNotify(message);
         logout();
+      } else {
+        failNotify(message);
       }
+    } catch (err) {
+      failNotify((err as { message: string })?.message);
+    } finally {
+      onError?.(error, params);
     }
-    failNotify(message);
-    onError?.(err as Error, params);
   };
 
   const {
