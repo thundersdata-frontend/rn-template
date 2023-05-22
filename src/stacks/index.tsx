@@ -19,7 +19,10 @@ import { LocalImageDemo } from '@/modules/homepage/screens/pictures/demo1';
 import { OnlineImageDemo } from '@/modules/homepage/screens/pictures/demo2';
 import { TextDemo } from '@/modules/homepage/screens/text';
 import { WaterfallListDemo } from '@/modules/homepage/screens/waterfall';
+import { DetailDemo } from '@/modules/others/screens/detail';
+import { NotFound } from '@/modules/others/screens/dismatch';
 import { ImageCrop } from '@/modules/others/screens/imageCrop';
+import { LinkingFormDemo } from '@/modules/others/screens/linking';
 import { Agreement } from '@/modules/policy/screens/agreement';
 import { Privacy } from '@/modules/policy/screens/privacy';
 import { PrivacyConfirm } from '@/modules/policy/screens/privacyConfirm';
@@ -172,6 +175,27 @@ const MAIN_SCREENS = [
     component: TextDemo,
     options: {
       title: '文字Variant示例',
+    },
+  },
+  {
+    name: 'LinkingFormDemo',
+    component: LinkingFormDemo,
+    options: {
+      title: 'Deeplinking回填表单示例',
+    },
+  },
+  {
+    name: 'NotFound',
+    component: NotFound,
+    options: {
+      headerShown: false,
+    },
+  },
+  {
+    name: 'DetailDemo',
+    component: DetailDemo,
+    options: {
+      title: 'RESTFUL传参示例',
     },
   },
 ];

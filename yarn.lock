@@ -1342,10 +1342,10 @@
   dependencies:
     nanoid "^3.1.23"
 
-"@sdcx/image-crop@^0.1.0":
-  version "0.1.0"
-  resolved "https://registry.npmmirror.com/@sdcx/image-crop/-/image-crop-0.1.0.tgz#6a432298597e9c9e7c5edc1df11915f5e2b2ec86"
-  integrity sha512-R8oORG0e24Ptjyqy9ubE5GvBLJGjIMaUUdvD8XwKIs8i8OB31bbc6heb/1LXRY+yBIrflBWRGzuM6GKlBp5Ocw==
+"@sdcx/image-crop@^0.2.0":
+  version "0.2.0"
+  resolved "https://registry.npmmirror.com/@sdcx/image-crop/-/image-crop-0.2.0.tgz#ba2624304614ee269371ffe6cf5afcaa42294526"
+  integrity sha512-SUw6u1wSxIeUDjNouMBjmzZfiXSITd+KIxI/46WlEcHsZw/KIw+O0smOmL/8itHK15pJkQdoqmDotPc0lIxhgA==
 
 "@sdcx/keyboard-insets@^0.1.0":
   version "0.1.0"
@@ -1415,20 +1415,20 @@
   resolved "https://registry.npmmirror.com/@td-design/react-native-image-picker/-/react-native-image-picker-1.6.6.tgz#c97f6ab16eaaa4ca433b578d75eea963c5c7861a"
   integrity sha512-PTcSvk0VAM5rXDfQUbPTLu6m6RvbqjCMU3dP+qF0QIEDfOKiK7+wPXXX2kADoAQXFRPVPbOppErNC/sNCUo21w==
 
-"@td-design/react-native-picker@^2.1.1":
-  version "2.1.1"
-  resolved "https://registry.npmmirror.com/@td-design/react-native-picker/-/react-native-picker-2.1.1.tgz#230d15a9a3683ef03303223dab4a1882b59beb4f"
-  integrity sha512-7ZrmgAzS/u3mL/gxcB9ofss3kN+4K/cw24aH2o5H1Wny9PwQC/6ouB3Yy364Z9Vp9C6gO/hT6Ueq2k1PeCQ5XQ==
+"@td-design/react-native-picker@^2.1.2":
+  version "2.1.2"
+  resolved "https://registry.npmmirror.com/@td-design/react-native-picker/-/react-native-picker-2.1.2.tgz#e586855d8f7271f5fc56404498104a2e50650d29"
+  integrity sha512-C9SHb3cuacc0nihWhtayUN0B2xcaXhp3jh1tldrGagDsBTxTtucN1fcLAwDGTWRJPKM8Gr+X6Rd+25j4WhgCJA==
   dependencies:
     array-tree-filter "^2.1.0"
     dayjs "^1.11.6"
     lodash-es "^4.17.21"
     react-native-redash "^18.1.0"
 
-"@td-design/react-native@^4.3.2":
-  version "4.3.2"
-  resolved "https://registry.npmmirror.com/@td-design/react-native/-/react-native-4.3.2.tgz#59a8e95bd2740550de057239ef8bdab5498bea28"
-  integrity sha512-PneoLnL3unduI1H85V/3+PrhTgyEJMFSUwUoyVSqLEXS2oX7WvVWDre52k1qGlsNLxTqNaQD0/TX8bsUBetSfw==
+"@td-design/react-native@^4.3.7":
+  version "4.3.7"
+  resolved "https://registry.npmmirror.com/@td-design/react-native/-/react-native-4.3.7.tgz#3c0c488443ca0a403bc5f8d99a56b666d48d9885"
+  integrity sha512-q7L8LLNn18qOv0P+cnSYdNbPHLBjv/B1rEGKkZwAN3Veqo6lvknYq2LNJDN3HxaISo+RPXItJvY8UVPYiNgF1w==
   dependencies:
     "@shopify/restyle" "2.4.0"
     "@td-design/rn-hooks" "^2.7.1"

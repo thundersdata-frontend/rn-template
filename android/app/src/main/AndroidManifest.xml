@@ -43,6 +43,8 @@
         <action android:name="android.intent.action.VIEW" />
         <category android:name="android.intent.category.DEFAULT" />
         <category android:name="android.intent.category.BROWSABLE" />
+        
+        <!-- URL Scheme -->
         <data
           android:scheme="rntemplate" />
       </intent-filter>
