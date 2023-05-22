@@ -14,7 +14,8 @@
     "tsc": "tsc -p tsconfig.json",
     "pod": "cd ios && bundle exec pod install && cd ..",
     "publish:android": "cd ./android && fastlane publish",
-    "publish:ios": "cd ./ios && fastlane publish"
+    "publish:ios": "cd ./ios && fastlane publish",
+    "codepush": "node ./scripts/codePush/index.js"
   },
   "config": {
     "commitizen": {
@@ -33,14 +34,14 @@
     "@react-navigation/bottom-tabs": "^6.5.7",
     "@react-navigation/native": "^6.1.6",
     "@react-navigation/native-stack": "^6.9.12",
-    "@sdcx/image-crop": "^0.1.0",
+    "@sdcx/image-crop": "^0.2.0",
     "@sdcx/keyboard-insets": "^0.1.0",
     "@sdcx/nested-scroll": "^0.3.0",
     "@sdcx/pull-to-refresh": "^0.7.0",
     "@shopify/flash-list": "^1.4.3",
-    "@td-design/react-native": "^4.3.2",
+    "@td-design/react-native": "^4.3.7",
     "@td-design/react-native-image-picker": "^1.6.6",
-    "@td-design/react-native-picker": "^2.1.1",
+    "@td-design/react-native-picker": "^2.1.2",
     "@td-design/rn-hooks": "^2.7.1",
     "@wuba/react-native-echarts": "^1.1.1",
     "axios": "^1.4.0",

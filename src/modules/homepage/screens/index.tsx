@@ -58,6 +58,7 @@ export function Homepage() {
           }}
         />
         <WhiteSpace />
+        <Button title="文字Variant示例" onPress={() => navigation.navigate('TextDemo')} />
       </ScrollView>
     </Container>
   );
