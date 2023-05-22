@@ -28,6 +28,7 @@ export function useCustomRequest<R, P extends any[] = []>(service: Service<R, P>
       try {
         const { code, message } = JSON.parse(error.message);
         if ([LoginFailureEnum.登录无效, LoginFailureEnum.登录过期, LoginFailureEnum.登录禁止].includes(code)) {
+          failNotify(message);
           logout();
         } else {
           failNotify(message);

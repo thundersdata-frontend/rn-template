@@ -3,11 +3,11 @@
   "data": [
     {
       "path": "assets/fonts/PingFang SC Regular.ttf",
-      "sha1": "a05c2b7e3bc4982dd0d3a802b7dfb6307c12af2d"
+      "sha1": "f47ab9c6b6d39b720155c1d5f0a7f6f3a05d7dec"
     },
     {
-      "path": "assets/fonts/Roboto.ttf",
-      "sha1": "eb64250f8ba0eef69956e6591ca61c3b0846977d"
+      "path": "assets/fonts/Roboto-Regular.ttf",
+      "sha1": "ba879317acdc045b8fa78cb8f948650627d0477c"
     }
   ]
 }

@@ -8,7 +8,7 @@ import { Container } from '@/components/Container';
 
 export function ImageCrop() {
   const navigation = useNavigation<NavigationProp<AppParamList>>();
-  const route = useRoute<RouteProp<AppParamList>>();
+  const route = useRoute<RouteProp<AppParamList, 'ImageCrop'>>();
   const file = route.params?.file;
 
   const cropRef = useRef<ImageCropViewRef>(null);
