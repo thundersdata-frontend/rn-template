@@ -1,10 +1,9 @@
-import { TouchableOpacity } from 'react-native';
-
 import { NavigationProp, useNavigation } from '@react-navigation/native';
 import { KeyboardInsetsView } from '@sdcx/keyboard-insets';
 import { useTheme } from '@td-design/react-native';
 import { Box, Button, CountDown, Flex, Form, Input, Radio, Text, Theme, WhiteSpace } from '@td-design/react-native';
 
+import { EnhancedTouchableOpacity } from '@/components/EnhancedTouchable';
 import Icon from '@/components/Icon';
 import { SmsTypeEnum } from '@/enums';
 import { ErrorMessage } from '@/modules/auth/components/ErrorMessage';
@@ -64,11 +63,11 @@ const FormContent = ({ isSmsLogin }: { isSmsLogin: boolean }) => {
       <Flex justifyContent="space-between" alignItems="flex-start" height={32} marginTop="x1">
         {!!error ? <ErrorMessage text={error} /> : <Text />}
         {!isSmsLogin && (
-          <TouchableOpacity activeOpacity={0.8} onPress={() => navigation.navigate('ForgetPass')}>
+          <EnhancedTouchableOpacity activeOpacity={0.8} onPress={() => navigation.navigate('ForgetPass')}>
             <Text variant="p1" color="gray400">
               忘记密码?
             </Text>
-          </TouchableOpacity>
+          </EnhancedTouchableOpacity>
         )}
       </Flex>
       <Button disabled={disabled} loading={loading} onPress={form.submit} title="登录" />
@@ -84,7 +83,7 @@ const FormContent = ({ isSmsLogin }: { isSmsLogin: boolean }) => {
                   <Text variant="p2" color="gray300">
                     我已阅读并同意
                   </Text>
-                  <TouchableOpacity
+                  <EnhancedTouchableOpacity
                     onPress={evt => {
                       evt.stopPropagation();
                       navigation.navigate('Agreement');
@@ -93,11 +92,11 @@ const FormContent = ({ isSmsLogin }: { isSmsLogin: boolean }) => {
                     <Text variant="p2" color="primary200">
                       用户协议
                     </Text>
-                  </TouchableOpacity>
+                  </EnhancedTouchableOpacity>
                   <Text variant="p2" color="gray300">
                     和
                   </Text>
-                  <TouchableOpacity
+                  <EnhancedTouchableOpacity
                     onPress={evt => {
                       evt.stopPropagation();
                       navigation.navigate('Privacy');
@@ -106,18 +105,18 @@ const FormContent = ({ isSmsLogin }: { isSmsLogin: boolean }) => {
                     <Text variant="p2" color="primary200">
                       隐私政策
                     </Text>
-                  </TouchableOpacity>
+                  </EnhancedTouchableOpacity>
                 </Flex>
               ),
             },
           ]}
         />
       </FormItem>
-      <TouchableOpacity activeOpacity={0.8} onPress={() => navigation.navigate('Register')}>
+      <EnhancedTouchableOpacity activeOpacity={0.8} onPress={() => navigation.navigate('Register')}>
         <Text variant="p1" color="primary200" textDecorationLine="underline">
           去注册&gt;&gt;
         </Text>
-      </TouchableOpacity>
+      </EnhancedTouchableOpacity>
     </Form>
   );
 };

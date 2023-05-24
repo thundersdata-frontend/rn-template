@@ -50,6 +50,7 @@ export function Homepage() {
         <Button title="网络图片示例" onPress={() => navigation.navigate('OnlineImageDemo')} />
         <WhiteSpace />
         <Button title="复制功能" onPress={() => Clipboard.copy((Math.random() * 100).toFixed(2))} />
+        <WhiteSpace />
         <Button
           title="粘贴功能"
           onPress={async () => {

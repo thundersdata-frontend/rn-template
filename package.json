@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "private": true,
   "scripts": {
-    "android:dev": "cross-env ENVFILE=.env.dev react-native run-android",
+    "android:dev": "cross-env ENVFILE=.env.dev react-native run-android --active-arch-only",
     "android:staging": "cd ./android && cross-env ENVFILE=.env.staging ./gradlew app:assembleRelease",
     "android:prod": "cd ./android && cross-env ENVFILE=.env.prod ./gradlew app:assembleRelease",
     "start": "watchman watch-del-all && react-native start --reset-cache",
