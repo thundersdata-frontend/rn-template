@@ -1,5 +1,5 @@
 import { FC, ReactNode } from 'react';
-import { Animated, StyleProp, TextStyle, TouchableOpacity, ViewStyle } from 'react-native';
+import { Animated, StyleProp, TextStyle, ViewStyle } from 'react-native';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 
 import { NativeStackHeaderProps } from '@react-navigation/native-stack';
@@ -7,6 +7,8 @@ import { useTheme } from '@td-design/react-native';
 import { Box, Flex, helpers, SvgIcon, Text } from '@td-design/react-native';
 
 import { AppTheme } from '@/theme';
+
+import { EnhancedTouchableOpacity } from '../EnhancedTouchable';
 
 const { px } = helpers;
 
@@ -24,9 +26,9 @@ export const CustomHeader: FC<NativeStackHeaderProps & { headerStyle?: StyleProp
     headerLeftComp = headerLeft;
   } else if (navigation.canGoBack()) {
     headerLeftComp = (
-      <TouchableOpacity activeOpacity={0.5} onPress={() => navigation?.goBack()}>
+      <EnhancedTouchableOpacity activeOpacity={0.7} onPress={() => navigation?.goBack()}>
         <SvgIcon name="left" color={headerTransparent ? theme.colors.white : theme.colors.gray500} size={px(28)} />
-      </TouchableOpacity>
+      </EnhancedTouchableOpacity>
     );
   }
 

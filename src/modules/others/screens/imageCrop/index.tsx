@@ -2,9 +2,10 @@ import { useEffect, useRef } from 'react';
 
 import { NavigationProp, RouteProp, useNavigation, useRoute } from '@react-navigation/native';
 import { ImageCropView, ImageCropViewRef } from '@sdcx/image-crop';
-import { Pressable, Text } from '@td-design/react-native';
+import { Text } from '@td-design/react-native';
 
 import { Container } from '@/components/Container';
+import { EnhancedPressable } from '@/components/EnhancedTouchable';
 
 export function ImageCrop() {
   const navigation = useNavigation<NavigationProp<AppParamList>>();
@@ -16,7 +17,7 @@ export function ImageCrop() {
   useEffect(() => {
     navigation.setOptions({
       headerRight: () => (
-        <Pressable
+        <EnhancedPressable
           onPress={() => {
             if (cropRef.current) {
               cropRef.current.crop();
@@ -26,7 +27,7 @@ export function ImageCrop() {
           <Text variant="p0" color="black">
             确定
           </Text>
-        </Pressable>
+        </EnhancedPressable>
       ),
     });
   }, []);

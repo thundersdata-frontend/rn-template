@@ -1,8 +1,7 @@
-import { TouchableOpacity } from 'react-native';
-
 import { useTheme } from '@td-design/react-native';
 import { Box, Flex, helpers, Text } from '@td-design/react-native';
 
+import { EnhancedTouchableOpacity } from '@/components/EnhancedTouchable';
 import Icon from '@/components/Icon';
 import { AppTheme } from '@/theme';
 
@@ -22,22 +21,22 @@ export function LoginTab({ isSmsLogin, onPress }: { isSmsLogin: boolean; onPress
       </Box>
       <Flex width="100%">
         <Flex.Item>
-          <TouchableOpacity onPress={() => onPress('sms')} activeOpacity={1}>
+          <EnhancedTouchableOpacity onPress={() => onPress('sms')} activeOpacity={1}>
             <Box height={px(50)} justifyContent="center" alignItems="center" paddingBottom="x3">
               <Text variant="h2" color={!isSmsLogin ? 'gray600' : 'gray500'}>
                 验证码登录
               </Text>
             </Box>
-          </TouchableOpacity>
+          </EnhancedTouchableOpacity>
         </Flex.Item>
         <Flex.Item>
-          <TouchableOpacity onPress={() => onPress('pass')} activeOpacity={1}>
+          <EnhancedTouchableOpacity onPress={() => onPress('pass')} activeOpacity={1}>
             <Box height={px(50)} justifyContent="center" alignItems="center" paddingBottom="x3">
               <Text variant="h2" color={isSmsLogin ? 'gray600' : 'gray500'}>
                 密码登录
               </Text>
             </Box>
-          </TouchableOpacity>
+          </EnhancedTouchableOpacity>
         </Flex.Item>
       </Flex>
     </Box>

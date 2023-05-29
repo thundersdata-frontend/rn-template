@@ -23,9 +23,7 @@
     "resolveJsonModule": true,
     "skipLibCheck": true,
     "incremental": false,
-    "baseUrl": ".",
     "paths": {
-      "*": ["*", "*.ios", "*.android"],
       "@/*": ["./src/*"],
     }
   },
