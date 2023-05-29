@@ -1,5 +1,5 @@
 import { useMemo, useRef } from 'react';
-import { Dimensions, NativeScrollEvent, NativeSyntheticEvent, Pressable, ScrollView } from 'react-native';
+import { Dimensions, NativeScrollEvent, NativeSyntheticEvent, ScrollView } from 'react-native';
 
 import { RefreshControl } from '@sdcx/pull-to-refresh';
 import { FlashList, FlashListProps } from '@shopify/flash-list';
@@ -7,6 +7,7 @@ import { Box, helpers, Text } from '@td-design/react-native';
 import { useMemoizedFn, useSafeState } from '@td-design/rn-hooks';
 
 import { Container } from '../Container';
+import { EnhancedPressable } from '../EnhancedTouchable';
 
 const { px } = helpers;
 const windowHeight = Dimensions.get('screen').height;
@@ -178,9 +179,9 @@ export function IndexedBar<T extends Obj>({
         }}
       >
         {letters.map((letter, index) => (
-          <Pressable key={letter} onPress={() => handlePress(index)}>
+          <EnhancedPressable key={letter} onPress={() => handlePress(index)}>
             {createLetter(letter, index)}
-          </Pressable>
+          </EnhancedPressable>
         ))}
       </ScrollView>
     </Container>

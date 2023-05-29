@@ -1,8 +1,9 @@
-import { StyleSheet, TouchableOpacity } from 'react-native';
+import { StyleSheet } from 'react-native';
 
 import { useTheme } from '@td-design/react-native';
 import { Box, Flex, helpers, Text } from '@td-design/react-native';
 
+import { EnhancedTouchableOpacity } from '@/components/EnhancedTouchable';
 import Icon from '@/components/Icon';
 import { AppTheme } from '@/theme';
 
@@ -29,13 +30,13 @@ export function ThirdPartyLogin() {
         <Box backgroundColor="border" height={1} width={px(55)} />
       </Flex>
       <Flex marginTop="x3" justifyContent="center">
-        <TouchableOpacity style={[styles.icon, { backgroundColor: theme.colors.iconBg }]} activeOpacity={0.5}>
+        <EnhancedTouchableOpacity style={[styles.icon, { backgroundColor: theme.colors.iconBg }]} activeOpacity={0.5}>
           <Icon name="qq" size={ICON_SIZE} color={theme.colors.background} />
-        </TouchableOpacity>
+        </EnhancedTouchableOpacity>
         <Box width={px(85)} />
-        <TouchableOpacity style={[styles.icon, { backgroundColor: theme.colors.iconBg }]} activeOpacity={0.5}>
+        <EnhancedTouchableOpacity style={[styles.icon, { backgroundColor: theme.colors.iconBg }]} activeOpacity={0.5}>
           <Icon name="wechat" size={ICON_SIZE} color={theme.colors.background} />
-        </TouchableOpacity>
+        </EnhancedTouchableOpacity>
       </Flex>
     </Box>
   );
