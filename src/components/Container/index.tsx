@@ -22,10 +22,7 @@ export const Container: React.FC<{ hasHeader?: boolean; backgroundColor?: string
   });
 
   return (
-    <SafeAreaView
-      style={styles.container}
-      edges={hasHeader ? ['left', 'right', 'bottom'] : ['left', 'right', 'top', 'bottom']}
-    >
+    <SafeAreaView style={styles.container} edges={hasHeader ? ['left', 'right', 'bottom'] : ['left', 'right', 'top']}>
       <StatusBar barStyle={theme.theme === 'light' ? 'dark-content' : 'light-content'} />
       {children}
     </SafeAreaView>
