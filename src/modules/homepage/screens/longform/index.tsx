@@ -79,7 +79,7 @@ export function LongForm() {
       Modal.confirm({
         title: '放弃编辑',
         content: '您还有尚未保存的修改，确定放弃编辑吗？',
-        confirmText: '确定',
+        okText: '确定',
         cancelText: '继续编辑',
         onOk() {
           navigation.dispatch(e.data.action);
@@ -148,7 +148,7 @@ export function LongForm() {
                 required
                 rules={[{ required: true, message: '请输入身份证号' }]}
               >
-                <NumberKeyboardItem type="IdCard" placeholder="请输入身份证号" inputStyle={{ textAlign: 'right' }} />
+                <NumberKeyboardItem type="idcard" placeholder="请输入身份证号" inputStyle={{ textAlign: 'right' }} />
               </FormListItem>
               <FormListItem
                 title="爱好"
