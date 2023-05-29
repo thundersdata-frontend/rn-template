@@ -1,11 +1,11 @@
 import { FC } from 'react';
-import { TouchableOpacity } from 'react-native';
 
 import { useTheme } from '@td-design/react-native';
 import { Box, Flex, helpers, Image, SvgIcon } from '@td-design/react-native';
 
 import { AppTheme } from '@/theme';
 
+import { EnhancedTouchableOpacity } from '../EnhancedTouchable';
 import { SingleImagePicker } from '../SingleImagePicker';
 
 const { px } = helpers;
@@ -40,7 +40,7 @@ export const MultipleImagePicker: FC<{
         return (
           <Box position="relative" key={item} marginBottom={'x3'}>
             <Image preview source={{ uri: item }} style={{ width, height }} />
-            <TouchableOpacity
+            <EnhancedTouchableOpacity
               onPress={() => handleDelete(index)}
               style={{
                 position: 'absolute',
@@ -49,7 +49,7 @@ export const MultipleImagePicker: FC<{
               }}
             >
               <SvgIcon name="closecircleo" size={px(20)} color={theme.colors.gray500} />
-            </TouchableOpacity>
+            </EnhancedTouchableOpacity>
           </Box>
         );
       })}
