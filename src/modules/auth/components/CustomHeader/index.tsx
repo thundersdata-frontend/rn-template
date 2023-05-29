@@ -1,10 +1,11 @@
 import { FC, ReactNode } from 'react';
-import { Platform, StyleSheet, TouchableOpacity, View } from 'react-native';
+import { Platform, StyleSheet, View } from 'react-native';
 
 import { NavigationProp } from '@react-navigation/native';
 import { useTheme } from '@td-design/react-native';
 import { helpers, SvgIcon } from '@td-design/react-native';
 
+import { EnhancedTouchableOpacity } from '@/components/EnhancedTouchable';
 import { AppTheme } from '@/theme';
 
 const { px } = helpers;
@@ -34,9 +35,9 @@ export const CustomHeader: FC<{
     <View style={styles.container}>
       <View style={styles.left}>
         {headerLeft ?? (
-          <TouchableOpacity activeOpacity={0.5} onPress={() => navigation?.canGoBack && navigation.goBack()}>
+          <EnhancedTouchableOpacity activeOpacity={0.7} onPress={() => navigation?.canGoBack && navigation.goBack()}>
             <SvgIcon name="left" color={theme.colors.white} size={px(24)} />
-          </TouchableOpacity>
+          </EnhancedTouchableOpacity>
         )}
       </View>
       <View style={styles.title}>{title}</View>
