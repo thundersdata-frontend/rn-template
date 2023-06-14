@@ -23,13 +23,15 @@ end
 
 platform :ios do
   lane :pod do
-    ENV["HERMES_ENGINE_TARBALL_PATH"] = "#{Dir.pwd}/hermes-runtime-darwin-v0.70.9.tar.gz"
+    react_native_version = sh("node -pe 'require(\"../../node_modules/react-native/package.json\").version'")
+    ENV["HERMES_ENGINE_TARBALL_PATH"] = "#{Dir.pwd}/hermes-runtime-darwin-v#{react_native_version}.tar.gz"
     cocoapods
   end
 
   lane :build do
+    react_native_version = sh("node -pe 'require(\"../../node_modules/react-native/package.json\").version'")
     ENV["CI"] = "true"
-    ENV["HERMES_ENGINE_TARBALL_PATH"] = "#{Dir.pwd}/hermes-runtime-darwin-v0.70.9.tar.gz"
+    ENV["HERMES_ENGINE_TARBALL_PATH"] = "#{Dir.pwd}/hermes-runtime-darwin-v#{react_native_version}.tar.gz"
     cocoapods
     gym(
       workspace: "rnTemplate.xcworkspace", 
