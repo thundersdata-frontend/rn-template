@@ -10,13 +10,14 @@ if ENV['CI']
 end
 pod 'SDWebImageWebPCoder'
 
+ENV['USE_HERMES'] = '0'
 target 'rnTemplate' do
   config = use_native_modules!
 
   use_react_native!(
     :path => config[:reactNativePath],
     # to enable hermes on iOS, change `false` to `true` and then install pods
-    :hermes_enabled => false
+    :hermes_enabled => ENV['USE_HERMES'] == '1'
   )
 
   target 'rnTemplateTests' do
