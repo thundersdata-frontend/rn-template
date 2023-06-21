@@ -7066,10 +7066,10 @@ react-native-flipper@0.195.0:
   resolved "https://registry.npmmirror.com/react-native-flipper/-/react-native-flipper-0.195.0.tgz#0769bd76a42b649c1c92b884c833fd0cda34c59e"
   integrity sha512-tNP3F552S3pi+CYLZrjAeX4a2ZW5ktOi6UWo99yCMJAp6oUQKbhFxpFw1xoyFZzKtdsKVxtUxewYDNJG0MEItg==
 
-react-native-gesture-handler@2.12.0:
-  version "2.12.0"
-  resolved "https://registry.npmmirror.com/react-native-gesture-handler/-/react-native-gesture-handler-2.12.0.tgz#59ca9d97e4c71f70b9c258f14a1a081f4c689976"
-  integrity sha512-rr+XwVzXAVpY8co25ukvyI38fKCxTQjz7WajeZktl8qUPdh1twnSExgpT47DqDi4n+m+OiJPAnHfZOkqqAQMOg==
+react-native-gesture-handler@2.10.2:
+  version "2.10.2"
+  resolved "https://registry.npmmirror.com/react-native-gesture-handler/-/react-native-gesture-handler-2.10.2.tgz#0d7d82de767a551157eaedc5f74e389c5fc357b9"
+  integrity sha512-yUwTrgLinaGRdJN3igL5/QP+09B294EKgoCH7QJ4ABKb4W2mUvSDbbuGMaYBNnwMKAD87Ns2q/qibLWy3E3LTw==
   dependencies:
     "@egjs/hammerjs" "^2.0.17"
     hoist-non-react-statics "^3.3.0"
@@ -7082,10 +7082,10 @@ react-native-image-picker@^5.4.2:
   resolved "https://registry.npmmirror.com/react-native-image-picker/-/react-native-image-picker-5.4.2.tgz#017d6b379cddf706acd7feb8222c2eb58e57eb8d"
   integrity sha512-C/k3cYAh8fBImoGEwmiChNwHx9fJGqAIu2E4BUJdI1XlL17tSYjfTDx/bsuF4amZwa7hxZdQnZmpk0EnwIEUaw==
 
-react-native-mmkv@2.8.0:
-  version "2.8.0"
-  resolved "https://registry.npmmirror.com/react-native-mmkv/-/react-native-mmkv-2.8.0.tgz#328318256eb50f0b87826edceaff4b1cd70ba957"
-  integrity sha512-sfI2uzr5UCz7jS6QxIWnC7AbIuoIw9T7hDtsw0ohSlIdCABPoORPu8xpOSZN2bMkK7Z7sMQwLeP73uBXu0A3jw==
+react-native-mmkv@2.5.1:
+  version "2.5.1"
+  resolved "https://registry.npmmirror.com/react-native-mmkv/-/react-native-mmkv-2.5.1.tgz#29fc462077fab16a5e1b79570fbf8acaac9d87b4"
+  integrity sha512-5eQu25z3H6zf6w0NkJoTuFEFrbOu6luZxZ6+rK1W+XwY/rjPSFZFQPVtMaz3im90RbILFXXM/KrFGZrpaJJRoQ==
 
 react-native-reanimated@3.3.0:
   version "3.3.0"
