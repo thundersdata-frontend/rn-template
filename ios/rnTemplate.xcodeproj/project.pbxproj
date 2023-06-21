@@ -9,7 +9,6 @@
 /* Begin PBXBuildFile section */
 		00E356F31AD99517003FC87E /* rnTemplateTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 00E356F21AD99517003FC87E /* rnTemplateTests.m */; };
 		0E4BB658E40645098CBA569F /* PingFang SC Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 0EE5A8B4B2394C9093F0C689 /* PingFang SC Regular.ttf */; };
-		13B07FBC1A68108700A75B9A /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 13B07FB01A68108700A75B9A /* AppDelegate.m */; };
 		13B07FBF1A68108700A75B9A /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 13B07FB51A68108700A75B9A /* Images.xcassets */; };
 		13B07FC11A68108700A75B9A /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 13B07FB71A68108700A75B9A /* main.m */; };
 		6E5D9B5FCB1444A6A6A8B660 /* Roboto-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 2B4435FC21034DFEA8A4544D /* Roboto-Regular.ttf */; };
