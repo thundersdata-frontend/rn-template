@@ -21,18 +21,22 @@ before_all do
   # git_pull
 end
 
+react_native_path = File.join(__dir__, "..", "..")
+
+# package.json
+package = JSON.parse(File.read(File.join(react_native_path, "package.json")))
+version = package['version']
+
 platform :ios do
   lane :pod do
-    rn_version = sh("node -pe 'require(\"../../node_modules/react-native/package.json\").version'")
-    ENV["HERMES_ENGINE_TARBALL_PATH"] = "#{Dir.pwd}/react-native-artifacts-#{rn_version}-hermes-ios-debug.tar.gz"
+    ENV["HERMES_ENGINE_TARBALL_PATH"] = "#{Dir.pwd}/react-native-artifacts-#{version}-hermes-ios-debug.tar.gz"
     cocoapods
   end
 
   lane :build do
-    rn_version = sh("node -pe 'require(\"../../node_modules/react-native/package.json\").version'")
     ENV["NO_FLIPPER"] = "1"
     ENV['PRODUCTION'] == "1"
-    ENV["HERMES_ENGINE_TARBALL_PATH"] = "#{Dir.pwd}/react-native-artifacts-#{rn_version}-hermes-ios-release.tar.gz"
+    ENV["HERMES_ENGINE_TARBALL_PATH"] = "#{Dir.pwd}/react-native-artifacts-#{version}-hermes-ios-release.tar.gz"
     cocoapods
     gym(
       workspace: "rnTemplate.xcworkspace", 
