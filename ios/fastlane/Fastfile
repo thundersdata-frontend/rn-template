@@ -21,7 +21,7 @@ before_all do
   # git_pull
 end
 
-react_native_path = File.join(__dir__, "..", "..")
+react_native_path = File.join(__dir__, "..", "..", "node_modules", "react-native")
 
 # package.json
 package = JSON.parse(File.read(File.join(react_native_path, "package.json")))
