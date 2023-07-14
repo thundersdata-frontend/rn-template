@@ -10,7 +10,7 @@ const shortcuts = [
 ];
 
 export function useShortcut() {
-  const [initialRouteName, setInitialRouteName] = useSafeState<any>();
+  const [initialRouteName, setInitialRouteName] = useSafeState<string>();
   const [ready, setReady] = useSafeState(false);
 
   useMount(() => {
@@ -39,7 +39,7 @@ export function useShortcut() {
   useUpdateEffect(() => {
     if (!ready || !initialRouteName) return;
 
-    navigationRef.navigate(initialRouteName);
+    navigationRef.navigate(initialRouteName as never);
   }, [ready, initialRouteName]);
 
   const init = async () => {

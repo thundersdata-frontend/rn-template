@@ -1,15 +1,15 @@
 import { FC, PropsWithChildren } from 'react';
-import React from 'react';
 import { StyleSheet } from 'react-native';
 import { StatusBar } from 'react-native-bars';
-import { SafeAreaView } from 'react-native-safe-area-context';
+import { Edge, SafeAreaView } from 'react-native-safe-area-context';
 
 import { useTheme } from '@td-design/react-native';
 
 import { AppTheme } from '@/theme';
 
-export const Container: FC<PropsWithChildren<{ hasHeader?: boolean; backgroundColor?: string }>> = ({
+export const Container: FC<PropsWithChildren<{ hasHeader?: boolean; inTab?: boolean; backgroundColor?: string }>> = ({
   hasHeader = true,
+  inTab = false,
   children,
   backgroundColor,
 }) => {
@@ -22,8 +22,19 @@ export const Container: FC<PropsWithChildren<{ hasHeader?: boolean; backgroundCo
     },
   });
 
+  let edges: Edge[] = [];
+
+  if (hasHeader) {
+    edges = ['left', 'right', 'bottom'];
+    if (inTab) {
+      edges = ['left', 'right'];
+    }
+  } else {
+    edges = ['left', 'right', 'top'];
+  }
+
   return (
-    <SafeAreaView style={styles.container} edges={hasHeader ? ['left', 'right', 'bottom'] : ['left', 'right', 'top']}>
+    <SafeAreaView style={styles.container} edges={edges}>
       <StatusBar barStyle={theme.theme === 'light' ? 'dark-content' : 'light-content'} />
       {children}
     </SafeAreaView>

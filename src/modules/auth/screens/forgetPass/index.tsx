@@ -2,8 +2,7 @@
  * 忘记密码页面
  */
 import { NavigationProp, useNavigation } from '@react-navigation/native';
-import { useTheme } from '@td-design/react-native';
-import { Box, Button, CountDown, Form, Input, WhiteSpace } from '@td-design/react-native';
+import { Box, Button, CountDown, Form, Input, useTheme, WhiteSpace } from '@td-design/react-native';
 
 import Icon from '@/components/Icon';
 import { SmsTypeEnum } from '@/enums';
