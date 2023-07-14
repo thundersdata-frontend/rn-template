@@ -1,11 +1,19 @@
 import { NativeModules } from 'react-native';
 
 export const Clipboard = {
-  copy: function (text: string) {
-    NativeModules.ClipboardModule.copy(text);
+  setString: function (text: string) {
+    NativeModules.ClipboardModule.setString(text);
   },
-  paste: async function () {
-    const data = await NativeModules.ClipboardModule.paste();
+  getString: async function () {
+    const data = await NativeModules.ClipboardModule.getString();
+    return data;
+  },
+  hasString: async function () {
+    const data = await NativeModules.ClipboardModule.hasString();
+    return data;
+  },
+  getImage: async function () {
+    const data = await NativeModules.ClipboardModule.getImage();
     return data;
   },
 };
