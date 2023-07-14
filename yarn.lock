@@ -27,7 +27,7 @@
   resolved "https://registry.npmmirror.com/@babel/compat-data/-/compat-data-7.22.9.tgz#71cdb00a1ce3a329ce4cbec3a44f9fef35669730"
   integrity sha512-5UamI7xkUcJ3i9qVDS+KFDEK8/7oJ55/sJMB1Ge7IEapr7KfdfV/HErR+koZwOfd+SgtFKOKRhRakdg++DcJpQ==
 
-"@babel/core@^7.13.16", "@babel/core@^7.14.0", "@babel/core@^7.20.0", "@babel/core@^7.22.5":
+"@babel/core@^7.13.16", "@babel/core@^7.14.0", "@babel/core@^7.20.0", "@babel/core@^7.22.9":
   version "7.22.9"
   resolved "https://registry.npmmirror.com/@babel/core/-/core-7.22.9.tgz#bd96492c68822198f33e8a256061da3cf391f58f"
   integrity sha512-G2EgeufBcYw27U4hhoIwFcgc1XU7TlXJ3mv04oOv1WCuo900U/anZSPzEqNjwdjgffkk2Gs0AN0dW1CKVLcG7w==
@@ -982,7 +982,7 @@
     "@babel/helper-create-regexp-features-plugin" "^7.22.5"
     "@babel/helper-plugin-utils" "^7.22.5"
 
-"@babel/preset-env@^7.22.5":
+"@babel/preset-env@^7.22.9":
   version "7.22.9"
   resolved "https://registry.npmmirror.com/@babel/preset-env/-/preset-env-7.22.9.tgz#57f17108eb5dfd4c5c25a44c1977eba1df310ac7"
   integrity sha512-wNi5H/Emkhll/bqPjsjQorSykrlfY5OWakd6AulLvMEytpKasMVUpVy8RL4qBIBs5Ac6/5i0/Rv0b/Fg6Eag/g==
@@ -1115,7 +1115,7 @@
   resolved "https://registry.npmmirror.com/@babel/regjsgen/-/regjsgen-0.8.0.tgz#f0ba69b075e1f05fb2825b7fad991e7adbb18310"
   integrity sha512-x/rqGMdzj+fWZvCOYForTghzbtqPDZ5gPwaoNGHdgDfF2QA/XZbCBp4Moo5scrkAMPhB7z26XM/AaHuIJdgauA==
 
-"@babel/runtime@^7.0.0", "@babel/runtime@^7.12.5", "@babel/runtime@^7.18.0", "@babel/runtime@^7.18.3", "@babel/runtime@^7.22.5", "@babel/runtime@^7.8.4":
+"@babel/runtime@^7.0.0", "@babel/runtime@^7.12.5", "@babel/runtime@^7.18.0", "@babel/runtime@^7.18.3", "@babel/runtime@^7.22.6", "@babel/runtime@^7.8.4":
   version "7.22.6"
   resolved "https://registry.npmmirror.com/@babel/runtime/-/runtime-7.22.6.tgz#57d64b9ae3cff1d67eb067ae117dac087f5bd438"
   integrity sha512-wDb5pWm4WDdF6LFUde3Jl8WzPA+3ZbxYqkC6xAXuD3irdEHN1k0NfTRrJD8ZD378SJ61miMLCqIOXYhd8x+AJQ==
@@ -1809,7 +1809,7 @@
   resolved "https://registry.npmmirror.com/@react-native-community/eslint-plugin/-/eslint-plugin-1.3.0.tgz#9e558170c106bbafaa1ef502bd8e6d4651012bf9"
   integrity sha512-+zDZ20NUnSWghj7Ku5aFphMzuM9JulqCW+aPXT6IfIXFbb8tzYTTOSeRFOtuekJ99ibW2fUCSsjuKNlwDIbHFg==
 
-"@react-native-community/netinfo@^9.3.10":
+"@react-native-community/netinfo@^9.4.1":
   version "9.4.1"
   resolved "https://registry.npmmirror.com/@react-native-community/netinfo/-/netinfo-9.4.1.tgz#7b880758adca65fe47ee866cf7b00416b9dcc192"
   integrity sha512-dAbY5mfw+6Kas/GJ6QX9AZyY+K+eq9ad4Su6utoph/nxyH3whp5cMSgRNgE2VhGQVRZ/OG0qq3IaD3+wzoqJXw==
@@ -1917,7 +1917,7 @@
   resolved "https://registry.npmmirror.com/@sdcx/pull-to-refresh/-/pull-to-refresh-0.7.0.tgz#4e52927237103d668da44b3afd70dd6bd4be7ee5"
   integrity sha512-xoFTEWE1jk8ah2re8dwiPuktvCNo8eEPO0tiUNmV2Yf4X4rPcsnGNi1ckyJ+nHQF83xfYgCP22h+a0hVWjKw1Q==
 
-"@shopify/flash-list@^1.4.3":
+"@shopify/flash-list@^1.5.0":
   version "1.5.0"
   resolved "https://registry.npmmirror.com/@shopify/flash-list/-/flash-list-1.5.0.tgz#f1cf3c4f9bb706a58c3d1f794ddfaedb5872f431"
   integrity sha512-XeocevDIXastr6jh3TPo1MzV5XkdqTyWtw/j8kUhz9EOBc2SzNWbpJWyzrAsYKlqYNrnxxs0P9C0amlX2jaQnw==
@@ -1989,7 +1989,7 @@
   resolved "https://registry.npmmirror.com/@td-design/react-native-image-picker/-/react-native-image-picker-1.6.8.tgz#1579daaa6b5157af1bf5c60483acc77daec2bbbd"
   integrity sha512-VyaEoGtV9bdxK80fVaQkpDY8t3rE0JWKwHVdh96UH577wTCF3GrtgRRQ9FfBL/eos9TTa5LcBfMQw8BM1sR1wQ==
 
-"@td-design/react-native-picker@^2.2.0":
+"@td-design/react-native-picker@^2.2.1":
   version "2.2.1"
   resolved "https://registry.npmmirror.com/@td-design/react-native-picker/-/react-native-picker-2.2.1.tgz#cc7363fd2d02603b9cb6c3a6baa4a625b326bf10"
   integrity sha512-ZmpRtYuFsvrN6ThpGvHNvD1sf/NXSAutab779V7KP4DjuA3eq1rhRkjamNLtygJsRQWCnPftcby0ZZPK2qC6Dw==
@@ -1999,7 +1999,7 @@
     lodash-es "^4.17.21"
     react-native-redash "^18.1.0"
 
-"@td-design/react-native@^4.3.12":
+"@td-design/react-native@^4.3.13":
   version "4.3.13"
   resolved "https://registry.npmmirror.com/@td-design/react-native/-/react-native-4.3.13.tgz#31f2b47814aa025227ff61aed3760b17da7782f9"
   integrity sha512-c4v1YyUY6Bb/dvfaozFQab9MfXBFwIbXeWe9flhr9NwefYjrnAMhtULGhdxMid0FX2F8ePtcyOymgRiEt6pUYw==
@@ -2009,7 +2009,7 @@
     rc-field-form "^1.31.0"
     react-native-shadow-2 "^7.0.8"
 
-"@td-design/rn-hooks@^2.7.1", "@td-design/rn-hooks@^2.7.2":
+"@td-design/rn-hooks@^2.7.2":
   version "2.7.2"
   resolved "https://registry.npmmirror.com/@td-design/rn-hooks/-/rn-hooks-2.7.2.tgz#d41e2e56704db2792de5e9ac1fc6fc6998ddc7fb"
   integrity sha512-xIDUL+3l/jEoL1u9D8+1VhSSQ53w1nZ1ujeQ3xuC6r4t56d3+2o50bLBu+yNroA+9kVyjT1yBGg6b3p4EsqnLg==
@@ -2099,7 +2099,7 @@
   resolved "https://registry.npmmirror.com/@types/json-schema/-/json-schema-7.0.12.tgz#d70faba7039d5fca54c83c7dbab41051d2b6f6cb"
   integrity sha512-Hr5Jfhc9eYOQNPYO5WLDq/n4jqijdHNlDXjuAQkkt+mWdQR+XJToOHrsD4cPaMXpn6KO7y2+wM8AZEs8VpBLVA==
 
-"@types/lodash-es@^4.17.7":
+"@types/lodash-es@^4.17.8":
   version "4.17.8"
   resolved "https://registry.npmmirror.com/@types/lodash-es/-/lodash-es-4.17.8.tgz#cfffd0969507830c22da18dbb20d2ca126fdaa8b"
   integrity sha512-euY3XQcZmIzSy7YH5+Unb3b2X12Wtk54YWINBvvGQ5SmMvwb11JQskGsfkH/5HXK77Kr8GF0wkVDIxzAisWtog==
@@ -2139,7 +2139,7 @@
     "@react-native/virtualized-lists" "^0.72.4"
     "@types/react" "*"
 
-"@types/react@*", "@types/react@^18.2.14":
+"@types/react@*", "@types/react@^18.2.15":
   version "18.2.15"
   resolved "https://registry.npmmirror.com/@types/react/-/react-18.2.15.tgz#14792b35df676c20ec3cf595b262f8c615a73066"
   integrity sha512-oEjE7TQt1fFTFSbf8kkNuc798ahTUzn3Le67/PWjE8MAfYAD/qB7O8hSTcromLFqHCt9bcdOg5GXMokzTjJ5SA==
@@ -3670,7 +3670,7 @@ data-uri-to-buffer@3:
   resolved "https://registry.npmmirror.com/data-uri-to-buffer/-/data-uri-to-buffer-3.0.1.tgz#594b8973938c5bc2c33046535785341abc4f3636"
   integrity sha512-WboRycPNsVw3B3TL559F7kuBUM4d8CgMEvk6xEJlOp7OBPjt6G7z8WMWlD2rOFZLk6OYfFIUGsCOWzcQH9K2og==
 
-dayjs@^1.11.7, dayjs@^1.11.8, dayjs@^1.8.15:
+dayjs@^1.11.7, dayjs@^1.11.9, dayjs@^1.8.15:
   version "1.11.9"
   resolved "https://registry.npmmirror.com/dayjs/-/dayjs-1.11.9.tgz#9ca491933fadd0a60a2c19f6c237c03517d71d1a"
   integrity sha512-QvzAURSbQ0pKdIye2txOzNaHmxtUBXerpY0FJsFXUMKbIZeFm5ht1LS/jFsrncjnmtv8HsG0W2g6c0zUjZWmpA==
@@ -6038,7 +6038,7 @@ joi@^17.2.1:
     "@sideway/formula" "^3.0.1"
     "@sideway/pinpoint" "^2.0.0"
 
-jotai@^2.2.1:
+jotai@^2.2.2:
   version "2.2.2"
   resolved "https://registry.npmmirror.com/jotai/-/jotai-2.2.2.tgz#1e181789dcc01ced8240b18b95d9fa10169f9366"
   integrity sha512-Cn8hnBg1sc5ppFwEgVGTfMR5WSM0hbAasd/bdAwIwTaum0j3OUPqBSC4tyk3jtB95vicML+RRWgKFOn6gtfN0A==
@@ -6261,7 +6261,7 @@ lines-and-columns@^1.1.6:
   resolved "https://registry.npmmirror.com/lines-and-columns/-/lines-and-columns-1.2.4.tgz#eca284f75d2965079309dc0ad9255abb2ebc1632"
   integrity sha512-7ylylesZQ/PV29jhEDl3Ufjo6ZX7gCqJr5F7PKrqc93v7fzSymt1BpwEU8nAUXs8qzzvqhbjhK5QZg6Mt/HkBg==
 
-lint-staged@^13.2.2:
+lint-staged@^13.2.3:
   version "13.2.3"
   resolved "https://registry.npmmirror.com/lint-staged/-/lint-staged-13.2.3.tgz#f899aad6c093473467e9c9e316e3c2d8a28f87a7"
   integrity sha512-zVVEXLuQIhr1Y7R7YAWx4TZLdvuzk7DnmrsTNL0fax6Z3jrpFcas+vKbzxhhvp6TA55m1SQuWkpzI1qbfDZbAg==
@@ -7575,7 +7575,7 @@ pascalcase@^0.1.1:
   resolved "https://registry.npmmirror.com/pascalcase/-/pascalcase-0.1.1.tgz#b363e55e8006ca6fe21784d2db22bd15d7917f14"
   integrity sha512-XHXfu/yOQRy9vYOtUDVMN60OEJjW013GoObG1o+xwQTpB9eYJX/BjXMsdW13ZDPruFhYYn0AG22w0xgQMwl3Nw==
 
-patch-package@^7.0.0:
+patch-package@^7.0.2:
   version "7.0.2"
   resolved "https://registry.npmmirror.com/patch-package/-/patch-package-7.0.2.tgz#c01589bb6964854b5210506a5845d47900641f5a"
   integrity sha512-PMYfL8LXxGIRmxXLqlEaBxzKPu7/SdP13ld6GSfAUJUZRmBDPp8chZs0dpzaAFn9TSPnFiMwkC6PJt6pBiAl8Q==
@@ -7747,7 +7747,7 @@ prettier-linter-helpers@^1.0.0:
   dependencies:
     fast-diff "^1.1.2"
 
-prettier-plugin-packagejson@^2.4.3:
+prettier-plugin-packagejson@^2.4.5:
   version "2.4.5"
   resolved "https://registry.npmmirror.com/prettier-plugin-packagejson/-/prettier-plugin-packagejson-2.4.5.tgz#20cc396e5654b5736657bd2dfb7ac859afc618cc"
   integrity sha512-glG71jE1gO3y5+JNAhC8X+4yrlN28rub6Aj461SKbaPie9RgMiHKcInH2Moi2VGOfkTXaEHBhg4uVMBqa+kBUA==
@@ -7979,10 +7979,10 @@ react-is@^17.0.1:
   resolved "https://registry.npmmirror.com/react-is/-/react-is-17.0.2.tgz#e691d4a8e9c789365655539ab372762b0efb54f0"
   integrity sha512-w2GsyukL62IJnlaff/nRegPQR94C/XXamvMWmSHRJ4y7Ts/4ocGRmTHvOs8PSE6pB3dWOrD/nueuU5sduBsQ4w==
 
-react-native-bars@2.2.0:
-  version "2.2.0"
-  resolved "https://registry.npmmirror.com/react-native-bars/-/react-native-bars-2.2.0.tgz#a58f680d8b04717f1c9f10f3d906412e1150fa48"
-  integrity sha512-gcIOUhMSHsTZ0oKCCOr40DvyyUx+8TtyRPF6RB6IPTVtJXZ64fo+6Cmu6xHDjzGPi1xwC+z6DAA/nNalBCqHog==
+react-native-bars@2.2.2:
+  version "2.2.2"
+  resolved "https://registry.npmmirror.com/react-native-bars/-/react-native-bars-2.2.2.tgz#562d66851d6e9d37baead778ad400767e630603b"
+  integrity sha512-ZSqUoAzS6YeJodcudcrY0C6wH8uka7m6kuWSn+4TmG+m0ik1FdNC17XbXbHcqJhpvqWYmWS9i0PPFhCvn/2loQ==
 
 react-native-blob-util@^0.18.3:
   version "0.18.3"
@@ -7992,7 +7992,7 @@ react-native-blob-util@^0.18.3:
     base-64 "0.1.0"
     glob "^7.2.3"
 
-react-native-bootsplash@^4.7.2:
+react-native-bootsplash@^4.7.5:
   version "4.7.5"
   resolved "https://registry.npmmirror.com/react-native-bootsplash/-/react-native-bootsplash-4.7.5.tgz#e2ada143cfa556af1a1020a1b10e405291e0e32f"
   integrity sha512-b49pfOg/4CKpoPlWR03l1pYZLi+zq1QMs7uX/pxpgEcUKHQzA29OFLa47OmzNCXjB7/jWbogjFnSVQbN08iKqw==
@@ -8044,10 +8044,10 @@ react-native-fast-image@^8.6.3:
   resolved "https://registry.npmmirror.com/react-native-fast-image/-/react-native-fast-image-8.6.3.tgz#6edc3f9190092a909d636d93eecbcc54a8822255"
   integrity sha512-Sdw4ESidXCXOmQ9EcYguNY2swyoWmx53kym2zRsvi+VeFCHEdkO+WG1DK+6W81juot40bbfLNhkc63QnWtesNg==
 
-react-native-flipper@0.201.0:
-  version "0.201.0"
-  resolved "https://registry.npmmirror.com/react-native-flipper/-/react-native-flipper-0.201.0.tgz#81b44c3ca81c4c115cf3c39361c6c290ec80ed2f"
-  integrity sha512-m2DMNqwkp2keXw5SG74lFk7E0dnBevBgcDRq99u3DdoTx5pkSmWTJ2Cfv3cXL4hutYGuvXv8KJlWCKSpZxNATw==
+react-native-flipper@0.205.0:
+  version "0.205.0"
+  resolved "https://registry.npmmirror.com/react-native-flipper/-/react-native-flipper-0.205.0.tgz#4f9b2441fd35f56e381599a187ca5c82c9c124f9"
+  integrity sha512-KznSfeucIhdTFi+oLE/Nm/g+2s9gC1gj62spovGRkMjbZYK4gMbDWqCxGHmblf3OlYfaaWVt6k/9PnHBRN2ozA==
 
 react-native-gesture-handler@^2.12.0:
   version "2.12.0"
@@ -8070,7 +8070,7 @@ react-native-image-picker@^5.6.0:
   resolved "https://registry.npmmirror.com/react-native-image-picker/-/react-native-image-picker-5.6.0.tgz#e7b6637dc5296cddb486106b711eb4eedabd083d"
   integrity sha512-QHHb0qw3VXDedllrfS6SjxNG1SubnjUjIR2OH1HVbjv/IRVa3v4fI1MHbQaSNXlGopT9kL9jcnh7tbcX1z74Vg==
 
-react-native-mmkv@^2.10.0:
+react-native-mmkv@^2.10.1:
   version "2.10.1"
   resolved "https://registry.npmmirror.com/react-native-mmkv/-/react-native-mmkv-2.10.1.tgz#1a4e64edbf9561fe81a5ae3cefde17e88dfc669f"
   integrity sha512-MCrYytUJ3JhSVg7LwVXCj7ExbMHe48FoQdDA1xo1q/M4c1/QyI3M9L9d2dyJUhYPnsSO0+5c2mJICm7v39XA0w==
@@ -8104,10 +8104,10 @@ react-native-restart@^0.0.27:
   resolved "https://registry.npmmirror.com/react-native-restart/-/react-native-restart-0.0.27.tgz#43aa8210312c9dfa5ec7bd4b2f35238ad7972b19"
   integrity sha512-8KScVICrXwcTSJ1rjWkqVTHyEKQIttm5AIMGSK1QG1+RS5owYlE4z/1DykOTdWfVl9l16FIk0w9Xzk9ZO6jxlA==
 
-react-native-safe-area-context@4.6.3:
-  version "4.6.3"
-  resolved "https://registry.npmmirror.com/react-native-safe-area-context/-/react-native-safe-area-context-4.6.3.tgz#f06cfea05b1c4b018aa9758667a109f619c62b55"
-  integrity sha512-3CeZM9HFXkuqiU9HqhOQp1yxhXw6q99axPWrT+VJkITd67gnPSU03+U27Xk2/cr9XrLUnakM07kj7H0hdPnFiQ==
+react-native-safe-area-context@4.7.1:
+  version "4.7.1"
+  resolved "https://registry.npmmirror.com/react-native-safe-area-context/-/react-native-safe-area-context-4.7.1.tgz#b7be2d68dee909717cfa439bb5c7966042d231e8"
+  integrity sha512-X2pJG2ttmAbiGlItWedvDkZg1T1ikmEDiz+7HsiIwAIm2UbFqlhqn+B1JF53mSxPzdNaDcCQVHRNPvj8oFu6Yg==
 
 react-native-safe-modules@^1.0.3:
   version "1.0.3"
@@ -8116,7 +8116,7 @@ react-native-safe-modules@^1.0.3:
   dependencies:
     dedent "^0.6.0"
 
-react-native-screens@^3.22.0:
+react-native-screens@^3.22.1:
   version "3.22.1"
   resolved "https://registry.npmmirror.com/react-native-screens/-/react-native-screens-3.22.1.tgz#b0eb0696dbf1f9a852061cc71c0f8cdb95ed8e53"
   integrity sha512-ffzwUdVKf+iLqhWSzN5DXBm0s2w5sN0P+TaHHPAx42LT7+DT0g8PkHT1QDvxpR5vCEPSS1i3EswyVK4HCuhTYg==
@@ -8131,7 +8131,7 @@ react-native-shadow-2@^7.0.8:
   dependencies:
     colord "2.9.2"
 
-react-native-svg@^13.9.0:
+react-native-svg@^13.10.0:
   version "13.10.0"
   resolved "https://registry.npmmirror.com/react-native-svg/-/react-native-svg-13.10.0.tgz#d3c6222ea9cc1e21e2af0fd59dfbeafe7a3d0dc1"
   integrity sha512-D/oYTmUi5nsA/2Nw4WYlF1UUi3vZqhpESpiEhpYCIFB/EMd6vz4A/uq3tIzZFcfa5z2oAdGSxRU1TaYr8IcPlQ==
@@ -9686,12 +9686,7 @@ typed-array-length@^1.0.4:
     for-each "^0.3.3"
     is-typed-array "^1.1.9"
 
-typescript@5.1.3:
-  version "5.1.3"
-  resolved "https://registry.npmmirror.com/typescript/-/typescript-5.1.3.tgz#8d84219244a6b40b6fb2b33cc1c062f715b9e826"
-  integrity sha512-XH627E9vkeqhlZFQuL+UsyAXEnibT0kWR2FWONlr4sTjvxyJYnyefgrkyECLzM5NenmKzRAy2rR/OlYLA1HkZw==
-
-"typescript@^4.6.4 || ^5.0.0":
+typescript@5.1.6, "typescript@^4.6.4 || ^5.0.0":
   version "5.1.6"
   resolved "https://registry.npmmirror.com/typescript/-/typescript-5.1.6.tgz#02f8ac202b6dad2c0dd5e0913745b47a37998274"
   integrity sha512-zaWCozRZ6DLEWAWFrVDz1H6FVXzUSfTy5FUMWsQlU8Ym5JP9eO4xkTIROFCQvhQf61z6O/G6ugw3SgAnvvm+HA==
