@@ -14,15 +14,17 @@ import {
   NumberKeyboard,
   Radio,
   Stepper,
+  type Store,
   Switch,
   Text,
+  type ValidateErrorEntity,
   WhiteSpace,
   WingBlank,
 } from '@td-design/react-native';
-import type { Store, ValidateErrorEntity } from '@td-design/react-native';
 import ImagePicker from '@td-design/react-native-image-picker';
 import { DatePickerItem, PickerItem } from '@td-design/react-native-picker';
 import { useSafeState } from '@td-design/rn-hooks';
+import { type FieldData } from 'rc-field-form/es/interface';
 
 import { Container } from '@/components/Container';
 
@@ -88,7 +90,7 @@ export function LongForm() {
     });
   }, [hasUnsavedChanges]);
 
-  const handleFieldsChange = (changedFields: any[]) => {
+  const handleFieldsChange = (changedFields: FieldData[]) => {
     setHasUnsavedChanges(changedFields.length > 0);
   };
 

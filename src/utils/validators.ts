@@ -1,5 +1,5 @@
 /** 用户名校验正则 */
-export const userNamePattern = /^[a-z0-9A-Z0-9\-\_@]+$/;
+export const userNamePattern = /^[a-z0-9A-Z0-9\-_@]+$/;
 /** 密码校验正则 */
 export const passwordPattern = /^(?![0-9]+$)(?![a-zA-Z]+$)[0-9A-Za-z]{6,20}$/;
 /** 手机号校验正则 */

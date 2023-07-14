@@ -1,4 +1,5 @@
-## fastlane documentation
+fastlane documentation
+----
 
 # Installation
 
@@ -14,11 +15,21 @@ For _fastlane_ installation instructions, see [Installing _fastlane_](https://do
 
 ## iOS
 
+### ios pod
+
+```sh
+[bundle exec] fastlane ios pod
+```
+
+
+
 ### ios build
 
 ```sh
 [bundle exec] fastlane ios build
 ```
+
+
 
 ### ios gofir
 
@@ -26,13 +37,17 @@ For _fastlane_ installation instructions, see [Installing _fastlane_](https://do
 [bundle exec] fastlane ios gofir
 ```
 
+
+
 ### ios publish
 
 ```sh
 [bundle exec] fastlane ios publish
 ```
 
----
+
+
+----
 
 This README.md is auto-generated and will be re-generated every time [_fastlane_](https://fastlane.tools) is run.
 

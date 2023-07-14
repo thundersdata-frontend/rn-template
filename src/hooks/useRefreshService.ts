@@ -25,6 +25,7 @@ const DEFAULT_PARAMS = [
 
 export type PageParams = { page: number; pageSize: number } & Record<string, unknown>;
 
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
 export function useRefreshService<T, R extends Page<T> = Page<T>, P extends PageParams[] = any[]>(
   service: Service<R, P>,
   options?: Options<R, P>
@@ -42,10 +43,10 @@ export function useRefreshService<T, R extends Page<T> = Page<T>, P extends Page
 
   const { onSuccess, onError, refreshDeps = [], ready, ...restOptions } = options || {};
 
-  const handleError = (error: any, params: P) => {
+  const handleError = (error: unknown, params: P) => {
     try {
-      const { code, message } = JSON.parse(error.message);
-      if ([LoginFailureEnum.登录无效, LoginFailureEnum.登录过期, LoginFailureEnum.登录禁止].includes(code)) {
+      const { code, message } = JSON.parse((error as unknown as Error).message);
+      if ([LoginFailureEnum.登录无效, LoginFailureEnum.登录禁止].includes(code)) {
         failNotify(message);
         logout();
       } else {
@@ -54,7 +55,7 @@ export function useRefreshService<T, R extends Page<T> = Page<T>, P extends Page
     } catch (err) {
       failNotify((err as { message: string })?.message);
     } finally {
-      onError?.(error, params);
+      onError?.(error as unknown as Error, params);
     }
   };
 

@@ -9,6 +9,7 @@ export const navigationRef = createNavigationContainerRef<AppParamList>();
  */
 export function navigate<T extends keyof AppParamList>(name: T, params?: AppParamList[T]) {
   if (navigationRef.isReady()) {
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
     navigationRef.navigate(name as any, params);
   }
 }

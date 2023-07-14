@@ -2,8 +2,7 @@ import React from 'react';
 import { ActivityIndicator, FlatList, FlatListProps } from 'react-native';
 
 import { RefreshControl } from '@sdcx/pull-to-refresh';
-import { useTheme } from '@td-design/react-native';
-import { Flex, Text } from '@td-design/react-native';
+import { Flex, Text, useTheme } from '@td-design/react-native';
 
 import { AppTheme } from '@/theme';
 

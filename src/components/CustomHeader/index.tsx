@@ -3,8 +3,7 @@ import { Animated, StyleProp, TextStyle, ViewStyle } from 'react-native';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 
 import { NativeStackHeaderProps } from '@react-navigation/native-stack';
-import { useTheme } from '@td-design/react-native';
-import { Box, Flex, helpers, SvgIcon, Text } from '@td-design/react-native';
+import { Box, Flex, helpers, SvgIcon, Text, useTheme } from '@td-design/react-native';
 
 import { AppTheme } from '@/theme';
 

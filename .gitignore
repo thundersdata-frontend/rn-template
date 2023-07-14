@@ -65,3 +65,5 @@ Podfile.lock
 
 # react-native-config codegen
 ios/tmp.xcconfig
+
+*.tar.gz
