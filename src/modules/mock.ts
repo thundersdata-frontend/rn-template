@@ -1,4 +1,4 @@
-export function mockLogin(values: any): Promise<Token> {
+export function mockLogin(values: Obj): Promise<Token> {
   console.log(values);
   return new Promise(resolve => {
     setTimeout(() => {
@@ -12,7 +12,7 @@ export function mockLogin(values: any): Promise<Token> {
   });
 }
 
-export function mockRegister(values: any): Promise<boolean> {
+export function mockRegister(values: Obj): Promise<boolean> {
   console.log(values);
   return new Promise(resolve => {
     setTimeout(() => {
@@ -32,7 +32,7 @@ export function mockFetchUserInfo(): Promise<UserInfo> {
   });
 }
 
-export function mockUpdatePassword(values: any): Promise<boolean> {
+export function mockUpdatePassword(values: Obj): Promise<boolean> {
   console.log(values);
   return new Promise(resolve => {
     setTimeout(() => {
@@ -41,7 +41,7 @@ export function mockUpdatePassword(values: any): Promise<boolean> {
   });
 }
 
-export function mockConfigPassword(values: any): Promise<boolean> {
+export function mockConfigPassword(values: Obj): Promise<boolean> {
   console.log(values);
   return new Promise(resolve => {
     setTimeout(() => {
@@ -50,7 +50,7 @@ export function mockConfigPassword(values: any): Promise<boolean> {
   });
 }
 
-export function mockResetPassword(values: any): Promise<boolean> {
+export function mockResetPassword(values: Obj): Promise<boolean> {
   console.log(values);
   return new Promise(resolve => {
     setTimeout(() => {
@@ -59,7 +59,7 @@ export function mockResetPassword(values: any): Promise<boolean> {
   });
 }
 
-export function mockSendSms(values: any): Promise<boolean> {
+export function mockSendSms(values: Obj): Promise<boolean> {
   console.log(values);
   return new Promise(resolve => {
     setTimeout(() => {
@@ -68,7 +68,7 @@ export function mockSendSms(values: any): Promise<boolean> {
   });
 }
 
-export function mockChangeAvatar(values: any): Promise<boolean> {
+export function mockChangeAvatar(values: Obj): Promise<boolean> {
   console.log(values);
   return new Promise(resolve => {
     setTimeout(() => {
@@ -77,7 +77,7 @@ export function mockChangeAvatar(values: any): Promise<boolean> {
   });
 }
 
-export function mockUpdateUsername(values: any): Promise<boolean> {
+export function mockUpdateUsername(values: Obj): Promise<boolean> {
   console.log(values);
   return new Promise(resolve => {
     setTimeout(() => {

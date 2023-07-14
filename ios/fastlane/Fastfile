@@ -25,18 +25,18 @@ platform :ios do
   lane :build do
     ENV["CI"] = "true"
     cocoapods
+  end
+
+  lane :gofir do
     gym(
-      workspace: "rnTemplate.xcworkspace", 
-      scheme: "rnTemplate(Production)",
+      workspace: "SDHotelDataInsightApp.xcworkspace", 
+      scheme: "SDHotelDataInsightApp(Production)",
       include_bitcode: false,
       include_symbols: false,
       silent: true,
       clean: true,
       export_method: "development",   # Available options: app-store ad-hoc package enterprise development
     )
-  end
-
-  lane :gofir do
     fir_cli(
       api_token: "ae1d65e6383eeb50b2723f85b5e30b2b",
       changelog: "release a new version",
@@ -45,7 +45,7 @@ platform :ios do
   end
 
   lane :publish do
-    build
+    podrelease
     gofir
   end
 end

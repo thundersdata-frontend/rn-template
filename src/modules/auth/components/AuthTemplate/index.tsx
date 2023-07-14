@@ -8,8 +8,7 @@ import { mix } from 'react-native-redash';
 
 import { NavigationProp, useNavigation } from '@react-navigation/native';
 import { KeyboardInsetsView } from '@sdcx/keyboard-insets';
-import { useTheme } from '@td-design/react-native';
-import { helpers, Text } from '@td-design/react-native';
+import { helpers, Text, useTheme } from '@td-design/react-native';
 
 import { AppTheme } from '@/theme';
 
