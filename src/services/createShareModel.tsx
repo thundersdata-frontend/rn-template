@@ -27,7 +27,7 @@ export function createShareModel<Value, Props extends Obj>(useHook: UseHook<Valu
   const useShareModel = () => {
     const value = useContext(Context);
     if (value === EMPTY) {
-      throw new Error(`Component must be wrapped within Provider`);
+      throw new Error('Component must be wrapped within Provider');
     }
     return value;
   };

@@ -49,6 +49,7 @@ type MainStackParamList = {
   DetailDemo: {
     id: string;
   };
+  TabListDemo: undefined;
 };
 
 type AppParamList = AuthStackParamList & MainStackParamList & CommonStackParamList;

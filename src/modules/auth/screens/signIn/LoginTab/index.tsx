@@ -1,5 +1,4 @@
-import { useTheme } from '@td-design/react-native';
-import { Box, Flex, helpers, Text } from '@td-design/react-native';
+import { Box, Flex, helpers, Text, useTheme } from '@td-design/react-native';
 
 import { EnhancedTouchableOpacity } from '@/components/EnhancedTouchable';
 import Icon from '@/components/Icon';

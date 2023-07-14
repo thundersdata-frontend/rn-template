@@ -1,5 +1,4 @@
-import { Form } from '@td-design/react-native';
-import type { Store, ValidateErrorEntity } from '@td-design/react-native';
+import { Form, type Store, type ValidateErrorEntity } from '@td-design/react-native';
 import { useMemoizedFn } from '@td-design/rn-hooks';
 
 import { createShareModel } from '@/services/createShareModel';
