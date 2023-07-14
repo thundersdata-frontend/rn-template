@@ -1,6 +1,5 @@
 import { NavigationProp, useNavigation } from '@react-navigation/native';
-import { useTheme } from '@td-design/react-native';
-import { Box, Center, Divider, Flex, helpers, Text, WhiteSpace, WingBlank } from '@td-design/react-native';
+import { Box, Center, Divider, Flex, helpers, Text, useTheme, WhiteSpace, WingBlank } from '@td-design/react-native';
 import { useSetAtom } from 'jotai';
 
 import { confirmedAtom } from '@/atoms';

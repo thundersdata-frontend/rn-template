@@ -87,7 +87,7 @@ export function useAuthService(isSmsLogin = true) {
         updateToken(data);
         await fetchUserInfo();
         setLoading(false);
-        if (!!ispassword) {
+        if (ispassword) {
           navigation.navigate('ConfigPass');
         }
       } else {

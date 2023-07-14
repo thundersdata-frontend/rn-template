@@ -1,8 +1,7 @@
 import React from 'react';
 import { ActivityIndicator, View } from 'react-native';
 
-import { useTheme } from '@td-design/react-native';
-import { Text } from '@td-design/react-native';
+import { Text, useTheme } from '@td-design/react-native';
 
 import { AppTheme } from '@/theme';
 

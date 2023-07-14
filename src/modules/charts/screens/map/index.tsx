@@ -17,6 +17,7 @@ export function MapChartDemo() {
 
   useEffect(() => {
     if (svgRef.current) {
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
       echarts.registerMap('shandong', shandongMap as any);
       const instance = echarts.init(svgRef.current, 'light', {
         renderer: 'svg',
