@@ -17,6 +17,7 @@ import { LongForm } from '@/modules/homepage/screens/longform';
 import { NavigationModal } from '@/modules/homepage/screens/modal';
 import { LocalImageDemo } from '@/modules/homepage/screens/pictures/demo1';
 import { OnlineImageDemo } from '@/modules/homepage/screens/pictures/demo2';
+import { TabListDemo } from '@/modules/homepage/screens/tablist';
 import { TextDemo } from '@/modules/homepage/screens/text';
 import { WaterfallListDemo } from '@/modules/homepage/screens/waterfall';
 import { DetailDemo } from '@/modules/others/screens/detail';
@@ -69,6 +70,13 @@ const MAIN_SCREENS = [
     component: LineChartDemo,
     options: {
       title: '折线图',
+    },
+  },
+  {
+    name: 'TabListDemo',
+    component: TabListDemo,
+    options: {
+      title: 'Tab长列表示例',
     },
   },
   {
@@ -226,7 +234,7 @@ const MODAL_SCREENS = [
 
 const Stack = createNativeStackNavigator();
 
-export default ({ confirmed, signedIn }: { confirmed: boolean; signedIn: boolean }) => {
+export default function AppStack({ confirmed, signedIn }: { confirmed: boolean; signedIn: boolean }) {
   return (
     <Stack.Navigator
       initialRouteName={confirmed ? (signedIn ? 'Tab' : 'SignIn') : 'PrivacyConfirm'}
@@ -270,4 +278,4 @@ export default ({ confirmed, signedIn }: { confirmed: boolean; signedIn: boolean
       </Stack.Group>
     </Stack.Navigator>
   );
-};
+}

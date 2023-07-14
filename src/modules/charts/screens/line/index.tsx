@@ -24,7 +24,9 @@ export function LineChartDemo() {
       instance.setOption({
         tooltip: {
           trigger: 'axis',
-          formatter: function (params: any) {
+          formatter: function (
+            params: { name: string; data: string | number } | { name: string; data: string | number }[]
+          ) {
             if (Array.isArray(params)) {
               return params[0].name + ': ' + params[0].data;
             }

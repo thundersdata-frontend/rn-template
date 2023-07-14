@@ -1,7 +1,18 @@
 import { NavigationProp, useNavigation } from '@react-navigation/native';
 import { KeyboardInsetsView } from '@sdcx/keyboard-insets';
-import { useTheme } from '@td-design/react-native';
-import { Box, Button, CountDown, Flex, Form, Input, Radio, Text, Theme, WhiteSpace } from '@td-design/react-native';
+import {
+  Box,
+  Button,
+  CountDown,
+  Flex,
+  Form,
+  Input,
+  Radio,
+  Text,
+  Theme,
+  useTheme,
+  WhiteSpace,
+} from '@td-design/react-native';
 
 import { EnhancedTouchableOpacity } from '@/components/EnhancedTouchable';
 import Icon from '@/components/Icon';
@@ -61,7 +72,7 @@ const FormContent = ({ isSmsLogin }: { isSmsLogin: boolean }) => {
       )}
 
       <Flex justifyContent="space-between" alignItems="flex-start" height={32} marginTop="x1">
-        {!!error ? <ErrorMessage text={error} /> : <Text />}
+        {error ? <ErrorMessage text={error} /> : <Text />}
         {!isSmsLogin && (
           <EnhancedTouchableOpacity activeOpacity={0.8} onPress={() => navigation.navigate('ForgetPass')}>
             <Text variant="p1" color="gray400">
