@@ -49,12 +49,12 @@ export function Homepage() {
         <WhiteSpace />
         <Button title="网络图片示例" onPress={() => navigation.navigate('OnlineImageDemo')} />
         <WhiteSpace />
-        <Button title="复制功能" onPress={() => Clipboard.copy((Math.random() * 100).toFixed(2))} />
+        <Button title="复制功能" onPress={() => Clipboard.setString((Math.random() * 100).toFixed(2))} />
         <WhiteSpace />
         <Button
           title="粘贴功能"
           onPress={async () => {
-            const data = await Clipboard.paste();
+            const data = await Clipboard.getString();
             Alert.alert(data);
           }}
         />
