@@ -99,8 +99,8 @@ export function IndexedBar<T extends Obj>({
   };
 
   const handlePress = useMemoizedFn((index: number) => {
-    setCurrentIndex(index);
-    const indice = indices[index];
+    setCurrentIndex(index - 1);
+    const indice = indices[index - 1];
     listRef.current?.scrollToIndex({ index: indice, animated: true });
   });
 
