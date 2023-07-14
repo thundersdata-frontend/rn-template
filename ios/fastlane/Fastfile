@@ -23,12 +23,16 @@ end
 
 platform :ios do
   lane :pod do
+    # 删除 Podfile.lock 文件
+    FileUtils.rm_f(File.join(__dir__, "..", "Podfile.lock"))
     react_native_version = sh("node -pe 'require(\"../../node_modules/react-native/package.json\").version'")
     ENV["HERMES_ENGINE_TARBALL_PATH"] = "#{Dir.pwd}/hermes-runtime-darwin-v#{react_native_version}.tar.gz"
     cocoapods
   end
 
   lane :build do
+    # 删除 Podfile.lock 文件
+    FileUtils.rm_f(File.join(__dir__, "..", "Podfile.lock"))
     react_native_version = sh("node -pe 'require(\"../../node_modules/react-native/package.json\").version'")
     ENV["CI"] = "true"
     ENV["HERMES_ENGINE_TARBALL_PATH"] = "#{Dir.pwd}/hermes-runtime-darwin-v#{react_native_version}.tar.gz"
