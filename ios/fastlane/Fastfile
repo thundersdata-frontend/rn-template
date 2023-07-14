@@ -29,11 +29,15 @@ version = package['version']
 
 platform :ios do
   lane :poddebug do
+    # 删除 Podfile.lock 文件
+    FileUtils.rm_f(File.join(__dir__, "..", "Podfile.lock"))
     ENV["HERMES_ENGINE_TARBALL_PATH"] = "#{Dir.pwd}/react-native-artifacts-#{version}-hermes-ios-debug.tar.gz"
     cocoapods
   end
 
   lane :podrelease do
+    # 删除 Podfile.lock 文件
+    FileUtils.rm_f(File.join(__dir__, "..", "Podfile.lock"))
     ENV["NO_FLIPPER"] = "1"
     ENV['PRODUCTION'] == "1"
     ENV["HERMES_ENGINE_TARBALL_PATH"] = "#{Dir.pwd}/react-native-artifacts-#{version}-hermes-ios-release.tar.gz"
