@@ -1,7 +1,6 @@
 import { FC } from 'react';
 
-import { useTheme } from '@td-design/react-native';
-import { Box, Flex, helpers, Image, SvgIcon } from '@td-design/react-native';
+import { Box, Flex, helpers, Image, SvgIcon, useTheme } from '@td-design/react-native';
 
 import { AppTheme } from '@/theme';
 

@@ -2,8 +2,7 @@
  * 注册页面
  */
 import { NavigationProp, useNavigation } from '@react-navigation/native';
-import { useTheme } from '@td-design/react-native';
-import { Box, Button, CountDown, Form, Input, WhiteSpace } from '@td-design/react-native';
+import { Box, Button, CountDown, Form, Input, useTheme, WhiteSpace } from '@td-design/react-native';
 
 import Icon from '@/components/Icon';
 import { SmsTypeEnum } from '@/enums';
@@ -26,7 +25,7 @@ const FormContent = () => {
         name="username"
         rules={[
           { required: true, message: '请输入用户名' },
-          { pattern: /^[a-z0-9A-Z0-9\-\_@]+$/, message: '用户名格式不正确' },
+          { pattern: /^[a-z0-9A-Z0-9\-_@]+$/, message: '用户名格式不正确' },
         ]}
       >
         <Input placeholder="请输入用户名" leftIcon={<Icon name="user" color={theme.colors.icon} />} allowClear />

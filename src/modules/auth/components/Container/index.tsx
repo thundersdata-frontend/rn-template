@@ -3,7 +3,7 @@ import { ImageBackground, useWindowDimensions } from 'react-native';
 import { NavigationBar, StatusBar } from 'react-native-bars';
 import { SafeAreaView } from 'react-native-safe-area-context';
 
-export const Container: FC<PropsWithChildren<{}>> = props => {
+export const Container: FC<PropsWithChildren<Obj>> = props => {
   const { width, height } = useWindowDimensions();
   return (
     <ImageBackground
