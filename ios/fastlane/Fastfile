@@ -23,6 +23,8 @@ end
 
 platform :ios do
   lane :build do
+    # 删除 Podfile.lock 文件
+    FileUtils.rm_f(File.join(__dir__, "..", "Podfile.lock"))
     ENV["CI"] = "true"
     cocoapods
   end
