@@ -29,7 +29,7 @@ export function useRefreshService<T, R extends Page<T> = Page<T>, P extends Page
   service: Service<R, P>,
   options?: Options<R, P>
 ) {
-  const { onSuccess, onError, ready, refreshDeps, ...restOptions } = options || {};
+  const { onSuccess, onError, ready, refreshDeps = [], ...restOptions } = options || {};
 
   const { failNotify } = useNotify();
   const logout = useLogout();
