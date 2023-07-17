@@ -109,11 +109,6 @@ export function useRefreshService<T, R extends Page<T> = Page<T>, P extends Page
     run({ ...params[0], page: page + 1 });
   };
 
-  const onUpdate = () => {
-    if (loading) return;
-    run({ pageSize: INITIAL_PAGE_SIZE, page: INITIAL_PAGE });
-  };
-
   const { refreshing, loadingMore } = useMemo(() => {
     if (!isEmpty(params)) {
       const isFirstPage = params[0].page === INITIAL_PAGE;
@@ -142,6 +137,5 @@ export function useRefreshService<T, R extends Page<T> = Page<T>, P extends Page
 
     onRefresh: useMemoizedFn(onRefresh),
     onLoadMore: useMemoizedFn(onLoadMore),
-    onUpdate: useMemoizedFn(onUpdate),
   };
 }
