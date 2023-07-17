@@ -37,8 +37,8 @@ export function WaterfallList<T>({
   renderFooter?: () => JSX.Element | null;
   renderEmpty?: () => JSX.Element | null;
   renderSeparator?: () => JSX.Element | null;
-  onRefresh?: () => Promise<void>;
-  onEndReached: () => Promise<void>;
+  onRefresh?: () => void;
+  onEndReached: () => void;
   refreshing?: boolean;
   onEndReachedThreshold?: number;
   loadingMore: boolean;

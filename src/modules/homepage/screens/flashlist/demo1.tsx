@@ -10,6 +10,7 @@ interface DataType {
 }
 
 function fetchData({ page = 1, pageSize = 10 }: { page: number; pageSize: number }): Promise<Page<DataType>> {
+  console.log('fetch data');
   return new Promise(resolve => {
     setTimeout(() => {
       resolve({

@@ -237,7 +237,7 @@ const Stack = createNativeStackNavigator();
 export default function AppStack({ confirmed, signedIn }: { confirmed: boolean; signedIn: boolean }) {
   return (
     <Stack.Navigator
-      initialRouteName={confirmed ? (signedIn ? 'Tab' : 'SignIn') : 'PrivacyConfirm'}
+      initialRouteName={confirmed ? (signedIn ? 'FlashListDemo1' : 'SignIn') : 'PrivacyConfirm'}
       screenOptions={{
         gestureEnabled: true,
         gestureDirection: 'horizontal',

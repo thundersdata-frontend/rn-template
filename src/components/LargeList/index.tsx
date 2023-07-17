@@ -75,8 +75,8 @@ export function LargeList<T>({
   renderFooter?: () => JSX.Element | null;
   renderEmpty?: (height: number) => JSX.Element | null;
   renderSeparator?: () => JSX.Element | null;
-  onRefresh?: () => Promise<void>;
-  onEndReached: () => Promise<void>;
+  onRefresh?: () => void;
+  onEndReached: () => void;
   refreshing: boolean;
   onEndReachedThreshold?: number;
   estimatedItemSize: number;

@@ -54,7 +54,7 @@ export function IndexedBar<T extends Obj>({
   renderEmpty?: () => JSX.Element | null;
   renderSeparator?: (props: { leadingItem: string | T; trailingItem: string | T }) => JSX.Element | null;
   renderLetter?: (letter: string, index: number) => JSX.Element;
-  onRefresh?: () => Promise<void>;
+  onRefresh?: () => void;
 }) {
   const length = data.length;
   const { list, letters, indices, heights } = useMemo(

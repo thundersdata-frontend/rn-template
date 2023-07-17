@@ -1,15 +1,14 @@
 import { useMemo } from 'react';
 
-import { useNetInfo } from '@react-native-community/netinfo';
 import { useMemoizedFn, useRequest, useSafeState } from '@td-design/rn-hooks';
 import { Options, Service } from '@td-design/rn-hooks/lib/typescript/useRequest/types';
 import { useAtomValue } from 'jotai';
+import { isEmpty } from 'lodash-es';
 
 import { signedInAtom } from '@/atoms';
 import { LoginFailureEnum } from '@/enums';
 import { useNotify } from '@/hooks/useNotify';
 
-import createRequestService from './createRequestService';
 import useLogout from './useLogout';
 
 // 初始化 page
@@ -34,18 +33,14 @@ export function useRefreshService<T, R extends Page<T> = Page<T>, P extends Page
   const logout = useLogout();
   const signedIn = useAtomValue(signedInAtom);
 
-  const netInfo = useNetInfo();
-  const isOnline = !!netInfo.isConnected && !!netInfo.isInternetReachable;
-  const requestService = createRequestService(signedIn, service);
-
   const [data, setData] = useSafeState<T[]>([]);
-  const [allLoaded, setAllLoaded] = useSafeState(false);
+  const [allLoaded, setAllLoaded] = useSafeState(true);
 
-  const { onSuccess, onError, refreshDeps = [], ready, ...restOptions } = options || {};
+  const { onSuccess, onError, ready, ...restOptions } = options || {};
 
-  const handleError = (error: unknown, params: P) => {
+  const handleError = (error: Error, params: P) => {
     try {
-      const { code, message } = JSON.parse((error as unknown as Error).message);
+      const { code, message } = JSON.parse(error.message);
       if ([LoginFailureEnum.登录无效, LoginFailureEnum.登录禁止].includes(code)) {
         failNotify(message);
         logout();
@@ -55,23 +50,23 @@ export function useRefreshService<T, R extends Page<T> = Page<T>, P extends Page
     } catch (err) {
       failNotify((err as { message: string })?.message);
     } finally {
-      onError?.(error as unknown as Error, params);
+      onError?.(error, params);
     }
   };
 
   const {
-    runAsync,
+    run,
     params = DEFAULT_PARAMS,
-    data: result,
     loading,
-  } = useRequest(requestService, {
+  } = useRequest(service, {
     defaultParams: DEFAULT_PARAMS as P,
-    refreshDeps: [isOnline, ...refreshDeps],
-    ready: isOnline && ready,
+    ready: signedIn && ready,
     ...restOptions,
     onSuccess(data: R, params: P) {
       // 对data进行处理
-      const { list, page = INITIAL_PAGE, totalPage = 0, total = 0 } = data;
+      const { list, page = INITIAL_PAGE, total = 0, pageSize = INITIAL_PAGE_SIZE } = data;
+      const totalPage = Math.ceil(total / pageSize);
+
       if (total === 0) {
         setData([] as T[]);
       } else if (page === INITIAL_PAGE) {
@@ -97,42 +92,30 @@ export function useRefreshService<T, R extends Page<T> = Page<T>, P extends Page
   /**
    * 从头开始刷新数据
    */
-  const onRefresh = async () => {
-    try {
-      await runAsync({ ...params[0], page: INITIAL_PAGE });
-    } catch (error) {
-      handleError(error, params as P);
-    }
+  const onRefresh = () => {
+    console.log('123');
+    run({ ...params[0], page: INITIAL_PAGE });
   };
 
   /**
    * 加载下一页数据
    */
-  const onLoadMore = async () => {
-    if (loading) return;
+  const onLoadMore = () => {
+    if (loading || isEmpty(params)) return;
 
-    try {
-      const { page } = params[0];
-      if (allLoaded || page >= (result?.totalPage ?? 0)) return;
+    const { page } = params[0];
+    if (allLoaded) return;
 
-      await runAsync({ ...params[0], page: page + 1 });
-    } catch (error) {
-      handleError(error, params as P);
-    }
+    run({ ...params[0], page: page + 1 });
   };
 
-  const onUpdate = async (params: P) => {
+  const onUpdate = () => {
     if (loading) return;
-
-    try {
-      await runAsync({ ...params[0], pageSize: 10, page: INITIAL_PAGE });
-    } catch (error) {
-      handleError(error, params as P);
-    }
+    run({ pageSize: INITIAL_PAGE_SIZE, page: INITIAL_PAGE });
   };
 
   const { refreshing, loadingMore } = useMemo(() => {
-    if (params.length > 0) {
+    if (!isEmpty(params)) {
       const isFirstPage = params[0].page === INITIAL_PAGE;
       if (isFirstPage) {
         return {

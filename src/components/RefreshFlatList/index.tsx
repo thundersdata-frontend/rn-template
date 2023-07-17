@@ -7,7 +7,7 @@ import { Flex, Text, useTheme } from '@td-design/react-native';
 import { AppTheme } from '@/theme';
 
 export type RefreshFlatListProps<ItemT> = Omit<FlatListProps<ItemT>, 'onRefresh' | 'refreshing'> & {
-  onRefresh?: () => Promise<void>;
+  onRefresh?: () => void;
   refreshing: boolean;
   loadingMore: boolean;
   allLoaded: boolean;
