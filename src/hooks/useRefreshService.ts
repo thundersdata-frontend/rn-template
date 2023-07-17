@@ -1,4 +1,4 @@
-import { useMemo } from 'react';
+import { useMemo, useState } from 'react';
 
 import { useMemoizedFn, useRequest, useSafeState } from '@td-design/rn-hooks';
 import { Options, Service } from '@td-design/rn-hooks/lib/typescript/useRequest/types';
@@ -35,6 +35,7 @@ export function useRefreshService<T, R extends Page<T> = Page<T>, P extends Page
 
   const [data, setData] = useSafeState<T[]>([]);
   const [allLoaded, setAllLoaded] = useSafeState(true);
+  const [refreshing, setRefreshing] = useState(false);
 
   const { onSuccess, onError, ready, ...restOptions } = options || {};
 
@@ -62,6 +63,9 @@ export function useRefreshService<T, R extends Page<T> = Page<T>, P extends Page
     defaultParams: DEFAULT_PARAMS as P,
     ready: signedIn && ready,
     ...restOptions,
+    onBefore() {
+      setRefreshing(false);
+    },
     onSuccess(data: R, params: P) {
       // 对data进行处理
       const { list, page = INITIAL_PAGE, total = 0, pageSize = INITIAL_PAGE_SIZE } = data;
@@ -87,13 +91,16 @@ export function useRefreshService<T, R extends Page<T> = Page<T>, P extends Page
       onSuccess?.(data, params);
     },
     onError: handleError,
+    onFinally() {
+      setRefreshing(false);
+    },
   });
 
   /**
    * 从头开始刷新数据
    */
   const onRefresh = () => {
-    console.log('123');
+    setRefreshing(true);
     run({ ...params[0], page: INITIAL_PAGE });
   };
 
@@ -109,22 +116,19 @@ export function useRefreshService<T, R extends Page<T> = Page<T>, P extends Page
     run({ ...params[0], page: page + 1 });
   };
 
-  const { refreshing, loadingMore } = useMemo(() => {
+  const { loadingMore } = useMemo(() => {
     if (!isEmpty(params)) {
       const isFirstPage = params[0].page === INITIAL_PAGE;
       if (isFirstPage) {
         return {
-          refreshing: loading,
           loadingMore: false,
         };
       }
       return {
-        refreshing: false,
         loadingMore: loading,
       };
     }
     return {
-      refreshing: loading,
       loadingMore: false,
     };
   }, [loading, params]);
