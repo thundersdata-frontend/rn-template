@@ -1,3 +1,4 @@
+import { MutableRefObject } from 'react';
 import { ActivityIndicator, View } from 'react-native';
 
 import { RefreshControl } from '@sdcx/pull-to-refresh';
@@ -65,6 +66,7 @@ export function LargeList<T>({
   | 'ListEmptyComponent'
   | 'ListFooterComponent'
   | 'ListHeaderComponent'
+  | 'ItemSeparatorComponent'
   | 'onRefresh'
   | 'refreshing'
   | 'onEndReached'
@@ -81,7 +83,7 @@ export function LargeList<T>({
   onEndReachedThreshold?: number;
   estimatedItemSize: number;
   loadingMore: boolean;
-  allLoaded: boolean;
+  allLoaded: MutableRefObject<boolean>;
 }) {
   const [height, setHeight] = useSafeState(0);
 
@@ -106,7 +108,7 @@ export function LargeList<T>({
         </Flex>
       );
     }
-    if (allLoaded) {
+    if (allLoaded.current) {
       return (
         <Flex paddingVertical={'x2'} alignItems={'center'} justifyContent={'center'}>
           <Text variant={'p1'} color="gray400">
@@ -131,7 +133,7 @@ export function LargeList<T>({
         data={data}
         renderItem={renderItem}
         estimatedItemSize={estimatedItemSize}
-        ListEmptyComponent={refreshing ? null : ListEmptyComponent}
+        ListEmptyComponent={refreshing || loadingMore ? null : ListEmptyComponent}
         ListHeaderComponent={ListHeaderComponent}
         ListFooterComponent={ListFooterComponent}
         ItemSeparatorComponent={ItemSeparatorComponent}

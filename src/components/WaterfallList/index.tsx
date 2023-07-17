@@ -1,3 +1,4 @@
+import { MutableRefObject } from 'react';
 import { ActivityIndicator } from 'react-native';
 
 import { RefreshControl } from '@sdcx/pull-to-refresh';
@@ -42,7 +43,7 @@ export function WaterfallList<T>({
   refreshing?: boolean;
   onEndReachedThreshold?: number;
   loadingMore: boolean;
-  allLoaded: boolean;
+  allLoaded: MutableRefObject<boolean>;
 }) {
   // 列表数据为空的时候渲染的组件
   const ListEmptyComponent = renderEmpty?.();
@@ -65,7 +66,7 @@ export function WaterfallList<T>({
         </Flex>
       );
     }
-    if (allLoaded) {
+    if (allLoaded.current) {
       return (
         <Flex paddingVertical={'x2'} alignItems={'center'} justifyContent={'center'}>
           <Text variant={'p1'} color="gray400">

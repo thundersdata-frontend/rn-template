@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { MutableRefObject } from 'react';
 import { ActivityIndicator, FlatList, FlatListProps } from 'react-native';
 
 import { RefreshControl } from '@sdcx/pull-to-refresh';
@@ -10,7 +10,7 @@ export type RefreshFlatListProps<ItemT> = Omit<FlatListProps<ItemT>, 'onRefresh'
   onRefresh?: () => void;
   refreshing: boolean;
   loadingMore: boolean;
-  allLoaded: boolean;
+  allLoaded: MutableRefObject<boolean>;
 };
 
 export function RefreshFlatList<ItemT>({
@@ -39,7 +39,7 @@ export function RefreshFlatList<ItemT>({
   );
 }
 
-function Footer({ loadingMore, allLoaded }: { loadingMore: boolean; allLoaded: boolean }) {
+function Footer({ loadingMore, allLoaded }: { loadingMore: boolean; allLoaded: MutableRefObject<boolean> }) {
   if (loadingMore) {
     return (
       <Flex paddingVertical={'x2'} alignItems={'center'} justifyContent={'center'}>
@@ -50,7 +50,7 @@ function Footer({ loadingMore, allLoaded }: { loadingMore: boolean; allLoaded: b
       </Flex>
     );
   }
-  if (allLoaded) {
+  if (allLoaded.current) {
     return (
       <Flex paddingVertical={'x2'} alignItems={'center'} justifyContent={'center'}>
         <Text variant={'p1'} color="gray400">
