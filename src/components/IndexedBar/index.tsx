@@ -3,10 +3,11 @@ import { Dimensions, NativeScrollEvent, NativeSyntheticEvent, ScrollView } from 
 
 import { RefreshControl } from '@sdcx/pull-to-refresh';
 import { FlashList, FlashListProps } from '@shopify/flash-list';
-import { Box, helpers, Text } from '@td-design/react-native';
+import { Box, Center, helpers, Indicator, Text, useTheme } from '@td-design/react-native';
 import { useMemoizedFn, useSafeState } from '@td-design/rn-hooks';
 
-import { Container } from '../Container';
+import { AppTheme } from '@/theme';
+
 import { EnhancedPressable } from '../EnhancedTouchable';
 
 const { px } = helpers;
@@ -17,10 +18,11 @@ const windowHeight = Dimensions.get('screen').height;
  */
 export function IndexedBar<T extends Obj>({
   data,
+  loading,
+  refresh,
   indexHeight,
   itemHeight,
   headerHeight = 0,
-  refreshing = false,
   extractKey,
   renderIndex,
   renderItem,
@@ -29,10 +31,10 @@ export function IndexedBar<T extends Obj>({
   renderHeader,
   renderFooter,
   renderLetter,
-  onRefresh,
   ...restProps
 }: Omit<
   FlashListProps<T>,
+  | 'data'
   | 'estimatedItemSize'
   | 'renderItem'
   | 'ListEmptyComponent'
@@ -42,11 +44,12 @@ export function IndexedBar<T extends Obj>({
   | 'refreshing'
 > & {
   data: T[];
+  loading: boolean;
   headerHeight?: number;
   indexHeight: number;
   itemHeight: number;
-  refreshing?: boolean;
   extractKey: string;
+  refresh: () => Promise<void>;
   renderIndex: (item: string) => JSX.Element;
   renderItem: (item: T) => JSX.Element;
   renderHeader?: () => JSX.Element | null;
@@ -54,8 +57,16 @@ export function IndexedBar<T extends Obj>({
   renderEmpty?: () => JSX.Element | null;
   renderSeparator?: (props: { leadingItem: string | T; trailingItem: string | T }) => JSX.Element | null;
   renderLetter?: (letter: string, index: number) => JSX.Element;
-  onRefresh?: () => void;
 }) {
+  const theme = useTheme<AppTheme>();
+  const [refreshing, setRefreshing] = useSafeState(false);
+
+  const onRefresh = async () => {
+    setRefreshing(true);
+    await refresh();
+    setRefreshing(false);
+  };
+
   const length = data.length;
   const { list, letters, indices, heights } = useMemo(
     () => transformData(data, extractKey, itemHeight, indexHeight, headerHeight),
@@ -75,7 +86,7 @@ export function IndexedBar<T extends Obj>({
   };
 
   // 列表数据为空的时候渲染的组件
-  const ListEmptyComponent = renderEmpty?.();
+  const ListEmptyComponent = refreshing ? null : renderEmpty?.();
 
   // 列表顶部组件
   const ListHeaderComponent = () => {
@@ -135,8 +146,15 @@ export function IndexedBar<T extends Obj>({
     }
   };
 
+  if (loading && !refreshing)
+    return (
+      <Center>
+        <Indicator.UIActivityIndicator color={theme.colors.primary200} size={helpers.px(24)} />
+      </Center>
+    );
+
   return (
-    <Container>
+    <>
       <FlashList
         {...restProps}
         nestedScrollEnabled
@@ -146,6 +164,7 @@ export function IndexedBar<T extends Obj>({
         renderItem={RenderItemComponent}
         getItemType={item => (typeof item === 'string' ? 'sectionHeader' : 'row')}
         stickyHeaderIndices={indices}
+        showsVerticalScrollIndicator={false}
         ItemSeparatorComponent={ItemSeparatorComponent}
         ListEmptyComponent={ListEmptyComponent}
         ListHeaderComponent={ListHeaderComponent}
@@ -184,7 +203,7 @@ export function IndexedBar<T extends Obj>({
           </EnhancedPressable>
         ))}
       </ScrollView>
-    </Container>
+    </>
   );
 }
 

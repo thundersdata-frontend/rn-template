@@ -9,18 +9,20 @@ import Icon, { IconNames } from '../../components/Icon';
 
 const { px } = helpers;
 const Tab = createBottomTabNavigator();
-const tabItems: { name: string; label: string; icon: IconNames; component: () => JSX.Element }[] = [
+const tabItems: { name: string; title?: string; label: string; icon: IconNames; component: () => JSX.Element }[] = [
   {
     name: 'Homepage',
     component: Homepage,
     label: '首页',
     icon: 'sms',
+    title: '首页',
   },
   {
     name: 'Mine',
     component: Mine,
     label: '我的',
     icon: 'user',
+    title: '我的',
   },
 ];
 
@@ -32,6 +34,7 @@ export const TabStack = () => {
       screenOptions={{
         // 懒加载TabScreen
         lazy: true,
+        headerTitleAlign: 'center',
         // 不显示TabScreen的header
         headerShown: false,
         tabBarStyle: {
@@ -45,7 +48,7 @@ export const TabStack = () => {
           name={item.name}
           component={item.component}
           options={{
-            title: item.label,
+            title: item.title || item.label,
             tabBarLabel: ({ focused }) => (
               <Text
                 style={{

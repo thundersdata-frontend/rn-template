@@ -19,7 +19,7 @@ module.exports = {
   settings: {
     react: {
       version: 'detect',
-    }
+    },
   },
   parserOptions: {
     ecmaFeatures: {
@@ -36,6 +36,33 @@ module.exports = {
     'spaced-comment': 'error',
     quotes: ['error', 'single'],
     'no-duplicate-imports': 'error',
-    'no-case-declarations': 'off'
+    'no-case-declarations': 'off',
+    'no-restricted-syntax': [
+      'error',
+      {
+        selector: "ImportDeclaration[source.value='react-native'] > ImportSpecifier[imported.name='View']",
+        message: 'Use Box from @td-design/react-native instead',
+      },
+      {
+        selector: "ImportDeclaration[source.value='react-native'] > ImportSpecifier[imported.name='Text']",
+        message: 'Use Text from @td-design/react-native instead',
+      },
+      {
+        selector: "ImportDeclaration[source.value='react-native'] > ImportSpecifier[imported.name='Button']",
+        message: 'Use Button from @td-design/react-native instead',
+      },
+      {
+        selector: "ImportDeclaration[source.value='react-native'] > ImportSpecifier[imported.name='Image']",
+        message: 'Use FastImage from react-native-fast-image instead',
+      },
+      {
+        selector: "ImportDeclaration[source.value='react'] > ImportSpecifier[imported.name='useState']",
+        message: 'Use useSafeState from @td-design/rn-hooks instead',
+      },
+      {
+        selector: "ImportDeclaration[source.value='react'] > ImportSpecifier[imported.name='useCallback']",
+        message: 'Use useMemoizedFn from @td-design/rn-hooks instead',
+      },
+    ],
   },
 };

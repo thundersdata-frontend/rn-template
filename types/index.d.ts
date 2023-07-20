@@ -11,10 +11,10 @@ interface File {
 }
 
 interface Page<T> {
-  list?: Array<T>;
-  page?: number;
-  pageSize?: number;
-  total?: number;
+  list: Array<T>;
+  page: number;
+  pageSize: number;
+  total: number;
   totalPage?: number;
 }
 
@@ -33,7 +33,7 @@ interface Token {
   ispassword?: boolean;
 }
 
-interface AjaxResponse<T = any> {
+interface AjaxResponse<T = unknown> {
   code: number;
   success: boolean;
   message: string;
