@@ -1,5 +1,6 @@
 import React from 'react';
-import { StyleSheet, Text, View } from 'react-native';
+
+import { Flex, helpers, Text } from '@td-design/react-native';
 
 import { Contact } from './data';
 
@@ -9,28 +10,13 @@ interface ContactCellProps {
 
 const ContactCell = ({ contact }: ContactCellProps) => {
   return (
-    <View style={styles.rowContainer}>
-      <Text style={styles.firstName}>{contact.firstName} </Text>
-      <Text style={styles.lastName}>{contact.lastName}</Text>
-    </View>
+    <Flex backgroundColor={'white'} paddingLeft={'x2'} flex={1} alignItems={'center'}>
+      <Text fontSize={helpers.px(18)}>{contact.firstName} </Text>
+      <Text fontSize={helpers.px(18)} fontWeight={'bold'}>
+        {contact.lastName}
+      </Text>
+    </Flex>
   );
 };
 
 export default ContactCell;
-
-const styles = StyleSheet.create({
-  rowContainer: {
-    backgroundColor: 'white',
-    paddingLeft: 10,
-    flex: 1,
-    flexDirection: 'row',
-    alignItems: 'center',
-  },
-  firstName: {
-    fontSize: 18,
-  },
-  lastName: {
-    fontSize: 18,
-    fontWeight: 'bold',
-  },
-});

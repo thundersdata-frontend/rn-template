@@ -21,28 +21,46 @@ before_all do
   # git_pull
 end
 
+react_native_path = File.join(__dir__, "..", "..", "node_modules", "react-native")
+
+# package.json
+package = JSON.parse(File.read(File.join(react_native_path, "package.json")))
+version = package['version']
+
+# .tar.gz文件路径
+tarball_path = "#{Dir.pwd}/hermes-runtime-darwin-v#{version}.tar.gz"
+
+# 判断当前目录下是否存在.tar.gz文件
+def tarball_exist?(path)
+  File.exist?(path)
+end
+
 platform :ios do
   lane :pod do
     # 删除 Podfile.lock 文件
     FileUtils.rm_f(File.join(__dir__, "..", "Podfile.lock"))
-    react_native_version = sh("node -pe 'require(\"../../node_modules/react-native/package.json\").version'")
-    ENV["HERMES_ENGINE_TARBALL_PATH"] = "#{Dir.pwd}/hermes-runtime-darwin-v#{react_native_version}.tar.gz"
+    # 如果这个文件存在，才执行下面的操作
+    if tarball_exist?(tarball_path)
+      ENV["HERMES_ENGINE_TARBALL_PATH"] = tarball_path
+    end
     cocoapods
   end
 
   lane :build do
+    ENV["CI"] = "true"
     # 删除 Podfile.lock 文件
     FileUtils.rm_f(File.join(__dir__, "..", "Podfile.lock"))
-    react_native_version = sh("node -pe 'require(\"../../node_modules/react-native/package.json\").version'")
-    ENV["CI"] = "true"
-    ENV["HERMES_ENGINE_TARBALL_PATH"] = "#{Dir.pwd}/hermes-runtime-darwin-v#{react_native_version}.tar.gz"
+    # 如果这个文件存在，才执行下面的操作
+    if tarball_exist?(tarball_path)
+      ENV["HERMES_ENGINE_TARBALL_PATH"] = tarball_path
+    end
     cocoapods
   end
 
   lane :gofir do
     gym(
-      workspace: "SDHotelDataInsightApp.xcworkspace", 
-      scheme: "SDHotelDataInsightApp(Production)",
+      workspace: "rnTemplate.xcworkspace", 
+      scheme: "rnTemplate(Production)",
       include_bitcode: false,
       include_symbols: false,
       silent: true,

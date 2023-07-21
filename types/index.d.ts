@@ -11,10 +11,10 @@ interface File {
 }
 
 interface Page<T> {
-  list?: Array<T>;
-  page?: number;
-  pageSize?: number;
-  total?: number;
+  list: Array<T>;
+  page: number;
+  pageSize: number;
+  total: number;
   totalPage?: number;
 }
 

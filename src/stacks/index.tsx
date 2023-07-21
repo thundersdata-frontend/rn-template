@@ -11,7 +11,6 @@ import { ContactsDemo } from '@/modules/homepage/screens/contacts';
 import { FlashListDemo } from '@/modules/homepage/screens/flashlist';
 import { FlashListDemo1 } from '@/modules/homepage/screens/flashlist/demo1';
 import { FlashListDemo2 } from '@/modules/homepage/screens/flashlist/demo2';
-import { RefreshFlatListDemo } from '@/modules/homepage/screens/flashlist/demo3';
 import { LocalModelDemo } from '@/modules/homepage/screens/localmodel';
 import { LongForm } from '@/modules/homepage/screens/longform';
 import { NavigationModal } from '@/modules/homepage/screens/modal';
@@ -112,7 +111,6 @@ const MAIN_SCREENS = [
     component: FlashListDemo1,
     options: {
       title: 'FlashListDemo1示例',
-      headerShown: false,
     },
   },
   {
@@ -120,13 +118,6 @@ const MAIN_SCREENS = [
     component: FlashListDemo2,
     options: {
       title: 'FlashListDemo2示例',
-    },
-  },
-  {
-    name: 'RefreshFlatListDemo',
-    component: RefreshFlatListDemo,
-    options: {
-      title: 'RefreshFlatListDemo示例',
     },
   },
   {
@@ -244,6 +235,7 @@ export default function AppStack({ confirmed, signedIn }: { confirmed: boolean; 
         headerTitleAlign: 'center',
         animation: 'slide_from_right',
         animationDuration: 200,
+        headerBackTitleVisible: false,
       }}
     >
       {!confirmed && <Stack.Screen name="PrivacyConfirm" component={PrivacyConfirm} options={{ headerShown: false }} />}
