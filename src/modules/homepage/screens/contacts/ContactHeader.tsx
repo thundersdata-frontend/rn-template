@@ -1,23 +1,13 @@
 import React from 'react';
-import { StyleSheet, Text, View } from 'react-native';
+
+import { Box, Text } from '@td-design/react-native';
 
 const ContactHeader = () => {
   return (
-    <View style={styles.headerTitle}>
+    <Box backgroundColor={'white'} paddingHorizontal={'x2'} flex={1} justifyContent={'center'}>
       <Text>My contacts</Text>
-    </View>
+    </Box>
   );
 };
 
 export default ContactHeader;
-
-const styles = StyleSheet.create({
-  headerTitle: {
-    backgroundColor: 'white',
-    paddingHorizontal: 10,
-    flex: 1,
-    justifyContent: 'center',
-    borderWidth: 1,
-    borderColor: 'red',
-  },
-});

@@ -1,5 +1,6 @@
 import { Center, Text } from '@td-design/react-native';
 
+import { Container } from '@/components/Container';
 import { IndexedBar } from '@/components/IndexedBar';
 import { useRefreshService } from '@/hooks/useRefreshService';
 
@@ -23,7 +24,7 @@ function fetchData(): Promise<Page<Contact>> {
 }
 
 export function ContactsDemo() {
-  const { data, onRefresh, refreshing } = useRefreshService<Contact>(fetchData);
+  const { data, refresh, loading } = useRefreshService<Contact>(fetchData);
 
   const renderFooter = (length: number) => (
     <Center height={40}>
@@ -32,19 +33,20 @@ export function ContactsDemo() {
   );
 
   return (
-    <IndexedBar
-      data={data}
-      indexHeight={22}
-      itemHeight={44}
-      headerHeight={40}
-      renderIndex={item => <ContactSectionHeader title={item} />}
-      renderItem={item => <ContactCell contact={item} />}
-      extractKey={'lastName'}
-      onRefresh={onRefresh}
-      refreshing={refreshing}
-      renderSeparator={ContactDivider}
-      renderHeader={ContactHeader}
-      renderFooter={renderFooter}
-    />
+    <Container>
+      <IndexedBar
+        data={data?.list ?? []}
+        indexHeight={22}
+        itemHeight={44}
+        headerHeight={40}
+        renderIndex={item => <ContactSectionHeader title={item} />}
+        renderItem={item => <ContactCell contact={item} />}
+        extractKey={'lastName'}
+        renderSeparator={ContactDivider}
+        renderHeader={ContactHeader}
+        renderFooter={renderFooter}
+        {...{ refresh, loading }}
+      />
+    </Container>
   );
 }
