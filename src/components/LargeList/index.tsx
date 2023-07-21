@@ -1,9 +1,12 @@
-import { ActivityIndicator, View } from 'react-native';
+import { useEffect } from 'react';
+import { ActivityIndicator } from 'react-native';
 
 import { RefreshControl } from '@sdcx/pull-to-refresh';
 import { FlashList, FlashListProps } from '@shopify/flash-list';
-import { Flex, Text } from '@td-design/react-native';
+import { Box, Center, Flex, helpers, Indicator, Text, useTheme } from '@td-design/react-native';
 import { useSafeState } from '@td-design/rn-hooks';
+
+import { AppTheme } from '@/theme';
 
 /**
  * 对FlashList进行封装。
@@ -47,46 +50,78 @@ import { useSafeState } from '@td-design/rn-hooks';
  */
 export function LargeList<T>({
   data,
+  refresh,
+  loadMore,
+  loading,
   estimatedItemSize,
-  refreshing,
   renderItem,
   renderEmpty,
   renderHeader,
   renderFooter,
   renderSeparator,
-  onRefresh,
-  onEndReached,
   onEndReachedThreshold = 0.2,
-  loadingMore,
-  allLoaded,
   ...restProps
 }: Omit<
   FlashListProps<T>,
+  | 'data'
   | 'ListEmptyComponent'
   | 'ListFooterComponent'
   | 'ListHeaderComponent'
+  | 'ItemSeparatorComponent'
   | 'onRefresh'
   | 'refreshing'
   | 'onEndReached'
   | 'onEndReachedThreshold'
   | 'estimatedItemSize'
 > & {
+  data?: Page<T>;
+  loading?: boolean;
+  refresh: () => Promise<void>;
+  loadMore: () => Promise<void>;
   renderHeader?: () => JSX.Element | null;
   renderFooter?: () => JSX.Element | null;
-  renderEmpty?: (height: number) => JSX.Element | null;
+  renderEmpty?: (height?: number) => JSX.Element | null;
   renderSeparator?: () => JSX.Element | null;
-  onRefresh?: () => Promise<void>;
-  onEndReached: () => Promise<void>;
-  refreshing: boolean;
+  onRefresh?: () => void;
   onEndReachedThreshold?: number;
   estimatedItemSize: number;
-  loadingMore: boolean;
-  allLoaded: boolean;
 }) {
+  const theme = useTheme<AppTheme>();
+
   const [height, setHeight] = useSafeState(0);
+  const [refreshing, setRefreshing] = useSafeState(false);
+  const [loadingMore, setLoadingMore] = useSafeState(false);
+  const [noMoreData, setNoMoreData] = useSafeState(false);
+  const [list, setList] = useSafeState<T[]>([]);
+
+  useEffect(() => {
+    if (!data) return;
+
+    const { page, pageSize, total, list = [] } = data;
+    const noMoreData = page * pageSize >= total;
+    if (page === 1) {
+      setList(list);
+    } else {
+      setList(prev => [...prev, ...list]);
+    }
+    setNoMoreData(noMoreData);
+  }, [data]);
+
+  const onRefresh = async () => {
+    setRefreshing(true);
+    await refresh(); // 刷新数据
+    setRefreshing(false);
+  };
+
+  const onEndReached = async () => {
+    if (refreshing || loadingMore || noMoreData) return;
+    setLoadingMore(true);
+    await loadMore();
+    setLoadingMore(false);
+  };
 
   // 列表数据为空的时候渲染的组件
-  const ListEmptyComponent = renderEmpty?.(height);
+  const ListEmptyComponent = refreshing ? null : renderEmpty?.(height);
 
   // 列表顶部组件
   const ListHeaderComponent = renderHeader?.();
@@ -106,7 +141,7 @@ export function LargeList<T>({
         </Flex>
       );
     }
-    if (allLoaded) {
+    if (noMoreData) {
       return (
         <Flex paddingVertical={'x2'} alignItems={'center'} justifyContent={'center'}>
           <Text variant={'p1'} color="gray400">
@@ -124,21 +159,35 @@ export function LargeList<T>({
     return null;
   };
 
+  if (loading && !refreshing && !loadingMore)
+    return (
+      <Center>
+        <Indicator.UIActivityIndicator color={theme.colors.primary200} size={helpers.px(24)} />
+      </Center>
+    );
+
   return (
-    <View style={{ flex: 1 }} onLayout={event => setHeight(event.nativeEvent.layout.height)}>
+    <Box style={{ flex: 1 }} onLayout={event => setHeight(event.nativeEvent.layout.height)}>
       <FlashList
         {...restProps}
-        data={data}
+        data={list}
         renderItem={renderItem}
+        showsVerticalScrollIndicator={false}
         estimatedItemSize={estimatedItemSize}
-        ListEmptyComponent={refreshing ? null : ListEmptyComponent}
+        ListEmptyComponent={ListEmptyComponent}
         ListHeaderComponent={ListHeaderComponent}
         ListFooterComponent={ListFooterComponent}
         ItemSeparatorComponent={ItemSeparatorComponent}
+        viewabilityConfig={{
+          waitForInteraction: true,
+          itemVisiblePercentThreshold: 50,
+          minimumViewTime: 1000,
+        }}
+        contentContainerStyle={{ padding: theme.spacing.x2 }}
         onEndReached={onEndReached}
         onEndReachedThreshold={onEndReachedThreshold}
         refreshControl={<RefreshControl refreshing={refreshing} onRefresh={onRefresh} />}
       />
-    </View>
+    </Box>
   );
 }
