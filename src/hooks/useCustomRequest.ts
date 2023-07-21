@@ -1,4 +1,3 @@
-import { useNetInfo } from '@react-native-community/netinfo';
 import { useRequest } from '@td-design/rn-hooks';
 import type { Options, Service } from '@td-design/rn-hooks/lib/typescript/useRequest/types';
 import { useAtomValue } from 'jotai';
@@ -6,7 +5,6 @@ import { useAtomValue } from 'jotai';
 import { signedInAtom } from '@/atoms';
 import { LoginFailureEnum } from '@/enums';
 
-import createRequestService from './createRequestService';
 import useLogout from './useLogout';
 import { useNotify } from './useNotify';
 
@@ -16,15 +14,9 @@ export function useCustomRequest<R, P extends any[] = []>(service: Service<R, P>
   const signedIn = useAtomValue(signedInAtom);
   const logout = useLogout();
 
-  const netInfo = useNetInfo();
-  const isOnline = !!netInfo.isConnected && !!netInfo.isInternetReachable;
-
-  const requestService = createRequestService(signedIn, service);
-
-  const { refreshDeps = [], ready, onError, ...restOptions } = options || {};
-  const result = useRequest(requestService, {
-    refreshDeps: [isOnline, ...refreshDeps],
-    ready: isOnline && ready,
+  const { ready, onError, ...restOptions } = options || {};
+  const result = useRequest(service, {
+    ready: signedIn && ready,
     onError: (error: Error, params: P) => {
       try {
         const { code, message } = JSON.parse(error.message);

@@ -27,11 +27,23 @@ react_native_path = File.join(__dir__, "..", "..", "node_modules", "react-native
 package = JSON.parse(File.read(File.join(react_native_path, "package.json")))
 version = package['version']
 
+# .tar.gz文件路径
+tarball_debug_path = "#{Dir.pwd}/react-native-artifacts-#{version}-hermes-ios-debug.tar.gz"
+tarball_release_path = "#{Dir.pwd}/react-native-artifacts-#{version}-hermes-ios-release.tar.gz"
+
+# 判断当前目录下是否存在.tar.gz文件
+def tarball_exist?(path)
+  File.exist?(path)
+end
+
 platform :ios do
   lane :poddebug do
     # 删除 Podfile.lock 文件
     FileUtils.rm_f(File.join(__dir__, "..", "Podfile.lock"))
-    ENV["HERMES_ENGINE_TARBALL_PATH"] = "#{Dir.pwd}/react-native-artifacts-#{version}-hermes-ios-debug.tar.gz"
+    # 如果这个文件存在，才执行下面的操作
+    if tarball_exist?(tarball_debug_path)
+      ENV["HERMES_ENGINE_TARBALL_PATH"] = tarball_debug_path
+    end
     cocoapods
   end
 
@@ -40,14 +52,17 @@ platform :ios do
     FileUtils.rm_f(File.join(__dir__, "..", "Podfile.lock"))
     ENV["NO_FLIPPER"] = "1"
     ENV['PRODUCTION'] == "1"
-    ENV["HERMES_ENGINE_TARBALL_PATH"] = "#{Dir.pwd}/react-native-artifacts-#{version}-hermes-ios-release.tar.gz"
+    # 如果这个文件存在，才执行下面的操作
+    if tarball_exist?(tarball_release_path)
+      ENV["HERMES_ENGINE_TARBALL_PATH"] = tarball_release_path
+    end
     cocoapods
   end
 
   lane :gofir do
     gym(
-      workspace: "SDHotelDataInsightApp.xcworkspace", 
-      scheme: "SDHotelDataInsightApp(Production)",
+      workspace: "rnTemplate.xcworkspace", 
+      scheme: "rnTemplate(Production)",
       include_bitcode: false,
       include_symbols: false,
       silent: true,

@@ -15,16 +15,18 @@ For _fastlane_ installation instructions, see [Installing _fastlane_](https://do
 
 ## iOS
 
-### ios pod
+### ios poddebug
 
 ```sh
-[bundle exec] fastlane ios pod
+[bundle exec] fastlane ios poddebug
 ```
 
-### ios build
+
+
+### ios podrelease
 
 ```sh
-[bundle exec] fastlane ios build
+[bundle exec] fastlane ios podrelease
 ```
 
 

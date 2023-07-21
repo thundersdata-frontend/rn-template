@@ -54,15 +54,28 @@ export const initRequest = () => {
     return config;
   });
 
-  instance.interceptors.response.use(response => {
-    const { status } = response;
-    if (status === 200) {
-      return Promise.resolve(response);
-    } else {
-      const errorText = codeMessage[status] || response.statusText || '请求错误';
-      throw new Error(JSON.stringify({ message: errorText }));
+  instance.interceptors.response.use(
+    // 成功响应处理
+    response => {
+      const { status } = response;
+      if (status === 200) {
+        return Promise.resolve(response);
+      } else {
+        const errorText = codeMessage[status] || response.statusText || '请求错误';
+        return Promise.reject(new Error(JSON.stringify({ message: errorText })));
+      }
+    },
+    // 错误响应处理
+    error => {
+      if (error.code === 'ECONNABORTED' && error.message.indexOf('timeout') !== -1) {
+        // 请求超时错误处理
+        return Promise.reject(new Error(JSON.stringify({ message: '请求超时，请重试' })));
+      } else {
+        // 其他错误处理
+        return Promise.reject(new Error(JSON.stringify({ message: '请求出错，请重试' })));
+      }
     }
-  });
+  );
 
   return instance;
 };

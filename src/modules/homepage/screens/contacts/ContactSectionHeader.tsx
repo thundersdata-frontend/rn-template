@@ -1,5 +1,6 @@
 import React from 'react';
-import { StyleSheet, Text, View } from 'react-native';
+
+import { Box, Text } from '@td-design/react-native';
 
 interface ContactSectionHeaderProps {
   title: string;
@@ -7,21 +8,10 @@ interface ContactSectionHeaderProps {
 
 const ContactSectionHeader = ({ title }: ContactSectionHeaderProps) => {
   return (
-    <View style={styles.header}>
-      <Text style={styles.headerTitle}>{title}</Text>
-    </View>
+    <Box flex={1} justifyContent={'center'} backgroundColor={'white'}>
+      <Text paddingLeft={'x2'}>{title}</Text>
+    </Box>
   );
 };
 
 export default ContactSectionHeader;
-
-const styles = StyleSheet.create({
-  headerTitle: {
-    paddingLeft: 10,
-  },
-  header: {
-    backgroundColor: '#FAFAFA',
-    flex: 1,
-    justifyContent: 'center',
-  },
-});

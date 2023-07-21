@@ -46,6 +46,7 @@
     "@td-design/react-native": "^4.3.13",
     "@td-design/react-native-image-picker": "^1.6.8",
     "@td-design/react-native-picker": "^2.2.1",
+    "@td-design/react-native-tabs": "^4.1.0",
     "@td-design/rn-hooks": "^2.7.2",
     "@wuba/react-native-echarts": "^1.2.1",
     "axios": "^1.4.0",
