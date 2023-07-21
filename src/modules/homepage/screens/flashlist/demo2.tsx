@@ -1,7 +1,7 @@
 import { StyleSheet } from 'react-native';
 import FastImage from 'react-native-fast-image';
 
-import { Box, Center, Text } from '@td-design/react-native';
+import { Box, Text } from '@td-design/react-native';
 
 import { Container } from '@/components/Container';
 import { LargeList } from '@/components/LargeList';
@@ -47,7 +47,7 @@ function fetchData({ page = 1, pageSize = 10 }: { page: number; pageSize: number
 }
 
 export function FlashListDemo2() {
-  const { loadingMore, allLoaded, onLoadMore, data, onRefresh, refreshing } = useRefreshService<DataType>(fetchData);
+  const { data, loading, refresh, loadMore } = useRefreshService<DataType>(fetchData);
 
   const renderItem = ({ item }: { item: DataType }) => {
     if (item.type === 'text') {
@@ -65,32 +65,13 @@ export function FlashListDemo2() {
     );
   };
 
-  const renderFooter = () => {
-    if (loadingMore)
-      return (
-        <Center height={40}>
-          <Text>正在加载更多数据</Text>
-        </Center>
-      );
-    if (allLoaded)
-      return (
-        <Center height={40}>
-          <Text>没有更多数据</Text>
-        </Center>
-      );
-    return null;
-  };
-
   return (
     <Container>
       <LargeList
-        data={data}
         getItemType={item => item.type}
         keyExtractor={item => item.id + ''}
         estimatedItemSize={40}
-        renderFooter={renderFooter}
-        onEndReached={onLoadMore}
-        {...{ renderItem, onRefresh, refreshing, loadingMore, allLoaded }}
+        {...{ renderItem, data, refresh, loadMore, loading }}
       />
     </Container>
   );

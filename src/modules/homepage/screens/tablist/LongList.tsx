@@ -28,7 +28,7 @@ function fetchData({ page = 1, pageSize = 10 }: { page: number; pageSize: number
 }
 
 function LongList({ orderDate }: { orderDate: Date }) {
-  const { loadingMore, allLoaded, onLoadMore, data, onRefresh, refreshing } = useRefreshService<DataType>(fetchData, {
+  const { data, refresh, loadMore, loading } = useRefreshService<DataType>(fetchData, {
     refreshDeps: [orderDate],
   });
 
@@ -40,11 +40,9 @@ function LongList({ orderDate }: { orderDate: Date }) {
 
   return (
     <LargeList
-      data={data}
       keyExtractor={item => item.id + ''}
       estimatedItemSize={200}
-      onEndReached={onLoadMore}
-      {...{ renderItem, onRefresh, refreshing, loadingMore, allLoaded }}
+      {...{ renderItem, data, loadMore, refresh, loading }}
     />
   );
 }

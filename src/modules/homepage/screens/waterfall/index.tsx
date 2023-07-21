@@ -433,7 +433,7 @@ function fetchData({ page, pageSize }: { page: number; pageSize: number }): Prom
 }
 
 export function WaterfallListDemo() {
-  const { loadingMore, allLoaded, onLoadMore, data, onRefresh, refreshing } = useRefreshService<DataType>(fetchData, {
+  const { data, refresh, loadMore, loading } = useRefreshService<DataType>(fetchData, {
     defaultParams: [{ page: 1, pageSize: 30 }],
   });
 
@@ -449,17 +449,15 @@ export function WaterfallListDemo() {
   return (
     <Container>
       <WaterfallList
-        data={data}
         numColumns={2}
         keyExtractor={item => item.imageUrl}
         estimatedItemSize={150}
-        onEndReached={onLoadMore}
         optimizeItemArrangement
         overrideItemLayout={(layout, item) => {
           layout.size = item.height;
         }}
         showsVerticalScrollIndicator={false}
-        {...{ renderItem, onRefresh, refreshing, loadingMore, allLoaded }}
+        {...{ renderItem, data, refresh, loadMore, loading }}
       />
     </Container>
   );

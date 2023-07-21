@@ -1,14 +1,14 @@
 /**
  * 通过手机号登录时，设置登录密码
  */
-import { FC, useEffect } from 'react';
-import { StyleSheet, View } from 'react-native';
+import { FC, PropsWithChildren, useEffect } from 'react';
+import { StyleSheet } from 'react-native';
 import Animated, { useAnimatedStyle, useDerivedValue, useSharedValue, withSpring } from 'react-native-reanimated';
 import { mix } from 'react-native-redash';
 
 import { NavigationProp, useNavigation } from '@react-navigation/native';
 import { KeyboardInsetsView } from '@sdcx/keyboard-insets';
-import { helpers, Text, useTheme } from '@td-design/react-native';
+import { Box, helpers, Text, useTheme } from '@td-design/react-native';
 
 import { AppTheme } from '@/theme';
 
@@ -25,10 +25,12 @@ const springConfig = {
 };
 
 const { px } = helpers;
-export const AuthTemplate: FC<{
-  title: string;
-  subtitle?: string;
-}> = ({ title, subtitle, children }) => {
+export const AuthTemplate: FC<
+  PropsWithChildren<{
+    title: string;
+    subtitle?: string;
+  }>
+> = ({ title, subtitle, children }) => {
   const navigation = useNavigation<NavigationProp<AuthStackParamList>>();
   const theme = useTheme<AppTheme>();
   const styles = StyleSheet.create({
@@ -39,10 +41,6 @@ export const AuthTemplate: FC<{
       paddingBottom: px(20),
       paddingHorizontal: px(18),
       paddingTop: px(32),
-    },
-    textWrap: {
-      marginHorizontal: px(30),
-      marginVertical: px(20),
     },
   });
 
@@ -63,7 +61,7 @@ export const AuthTemplate: FC<{
   return (
     <Container>
       <CustomHeader {...{ navigation }} />
-      <View style={styles.textWrap}>
+      <Box marginHorizontal={'x8'} marginVertical={'x5'}>
         <Text variant="h3" color="func50">
           {title}
         </Text>
@@ -72,7 +70,7 @@ export const AuthTemplate: FC<{
             {subtitle}
           </Text>
         )}
-      </View>
+      </Box>
       <KeyboardInsetsView extraHeight={8}>
         <Animated.View style={[styles.card, style]}>{children}</Animated.View>
       </KeyboardInsetsView>
