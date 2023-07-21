@@ -31,8 +31,8 @@ platform :ios do
 
   lane :gofir do
     gym(
-      workspace: "SDHotelDataInsightApp.xcworkspace", 
-      scheme: "SDHotelDataInsightApp(Production)",
+      workspace: "rnTemplate.xcworkspace", 
+      scheme: "rnTemplate(Production)",
       include_bitcode: false,
       include_symbols: false,
       silent: true,
