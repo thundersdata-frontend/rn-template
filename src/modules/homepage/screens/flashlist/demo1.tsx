@@ -1,6 +1,7 @@
-import { Box, Text } from '@td-design/react-native';
+import { Box, Text, WhiteSpace } from '@td-design/react-native';
 
 import { Container } from '@/components/Container';
+import { Empty } from '@/components/Empty';
 import { LargeList } from '@/components/LargeList';
 import { useRefreshService } from '@/hooks/useRefreshService';
 
@@ -9,7 +10,12 @@ interface DataType {
   name: string;
 }
 
-function fetchData({ page = 1, pageSize = 10 }: { page: number; pageSize: number }): Promise<Page<DataType>> {
+function fetchData({
+  page = 1,
+  pageSize = 10,
+  ...rest
+}: { page: number; pageSize: number } & Obj): Promise<Page<DataType>> {
+  console.log(page, pageSize, rest);
   return new Promise(resolve => {
     setTimeout(() => {
       resolve({
@@ -26,22 +32,27 @@ function fetchData({ page = 1, pageSize = 10 }: { page: number; pageSize: number
 }
 
 export function FlashListDemo1() {
-  const { loadingMore, allLoaded, onLoadMore, data, onRefresh, refreshing } = useRefreshService<DataType>(fetchData);
-
   const renderItem = ({ item }: { item: DataType }) => (
-    <Box height={200} alignItems="center" justifyContent={'center'} borderBottomWidth={1} borderColor="black">
+    <Box height={200} alignItems="center" justifyContent={'center'} backgroundColor={'func200'}>
       <Text>{item.name}</Text>
     </Box>
   );
 
+  const { data, loading, refresh, loadMore } = useRefreshService(params =>
+    fetchData({
+      ...params,
+      type: 1,
+    })
+  );
+
   return (
-    <Container hasHeader={false}>
+    <Container>
       <LargeList
-        data={data}
         keyExtractor={item => item.id + ''}
         estimatedItemSize={200}
-        onEndReached={onLoadMore}
-        {...{ renderItem, onRefresh, refreshing, loadingMore, allLoaded }}
+        renderSeparator={() => <WhiteSpace />}
+        renderEmpty={height => <Empty height={height} />}
+        {...{ renderItem, data, refresh, loadMore, loading }}
       />
     </Container>
   );

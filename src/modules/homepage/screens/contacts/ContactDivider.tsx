@@ -1,5 +1,6 @@
 import React from 'react';
-import { StyleSheet, View } from 'react-native';
+
+import { Box, helpers } from '@td-design/react-native';
 
 import { Contact } from './data';
 
@@ -13,22 +14,10 @@ const ContactDivider = ({ leadingItem, trailingItem }: ContactDividerProps) => {
     return null;
   }
   return (
-    <View style={styles.dividerContainer}>
-      <View style={styles.divider} />
-    </View>
+    <Box height={helpers.ONE_PIXEL} backgroundColor={'white'}>
+      <Box marginHorizontal={'x2'} height={helpers.ONE_PIXEL} backgroundColor={'border'} />
+    </Box>
   );
 };
 
 export default ContactDivider;
-
-const styles = StyleSheet.create({
-  divider: {
-    marginHorizontal: 10,
-    height: StyleSheet.hairlineWidth,
-    backgroundColor: '#DDD',
-  },
-  dividerContainer: {
-    height: StyleSheet.hairlineWidth,
-    backgroundColor: 'white',
-  },
-});
