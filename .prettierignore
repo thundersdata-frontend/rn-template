@@ -5,8 +5,6 @@
 **/*.jsx
 package.json
 *.yaml
-.umi
-.umi-production
 
 example
 lib
