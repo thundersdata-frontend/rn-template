@@ -169,6 +169,7 @@ export function LargeList<T>({
   return (
     <Box style={{ flex: 1 }} onLayout={event => setHeight(event.nativeEvent.layout.height)}>
       <FlashList
+        nestedScrollEnabled
         {...restProps}
         data={list}
         renderItem={renderItem}
