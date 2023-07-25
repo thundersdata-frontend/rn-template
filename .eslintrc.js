@@ -53,7 +53,7 @@ module.exports = {
       },
       {
         selector: "ImportDeclaration[source.value='react-native'] > ImportSpecifier[imported.name='Image']",
-        message: 'Use FastImage from react-native-fast-image instead',
+        message: 'Use Image from expo-image instead',
       },
       {
         selector: "ImportDeclaration[source.value='react'] > ImportSpecifier[imported.name='useState']",

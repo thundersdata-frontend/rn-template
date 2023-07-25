@@ -1,16 +1,16 @@
 import { FC } from 'react';
-import { Source } from 'react-native-fast-image';
 
 import { BackgroundColorProps, LayoutProps } from '@shopify/restyle';
-import { Box, Button, Flex, helpers, Image, Empty as TDEmpty, Text, Theme } from '@td-design/react-native';
+import { Box, Button, Flex, helpers, Empty as TDEmpty, Text, Theme } from '@td-design/react-native';
 import { ButtonProps } from '@td-design/react-native/lib/typescript/button';
+import { Image, ImageSource } from 'expo-image';
 
 const { px } = helpers;
 
 type EmptyProps = BackgroundColorProps<Theme> &
   LayoutProps<Theme> & {
     /** 图片地址 */
-    source?: number | Source;
+    source?: ImageSource | string | number | ImageSource[] | string[] | null;
     /** 图片宽度 */
     imgWidth?: number;
     /** 图片高度 */

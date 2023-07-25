@@ -1,4 +1,5 @@
-import { Box, helpers, Image, Text, useTheme } from '@td-design/react-native';
+import { Box, helpers, Text, useTheme } from '@td-design/react-native';
+import { Image } from 'expo-image';
 
 import { AppTheme } from '@/theme';
 

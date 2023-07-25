@@ -1,7 +1,7 @@
 import { StyleSheet } from 'react-native';
-import FastImage from 'react-native-fast-image';
 
 import { Box, Text } from '@td-design/react-native';
+import { Image } from 'expo-image';
 
 import { Container } from '@/components/Container';
 import { LargeList } from '@/components/LargeList';
@@ -59,8 +59,7 @@ export function FlashListDemo2() {
     }
     return (
       <Box height={item.height} overflow={'hidden'} margin="x1">
-        {/* 在列表中展示图片，请直接使用FastImage，不要用RN的Image和组件库的Image */}
-        <FastImage source={{ uri: item.url }} style={StyleSheet.absoluteFill} resizeMode="cover" />
+        <Image source={{ uri: item.url }} style={StyleSheet.absoluteFill} resizeMode="cover" />
       </Box>
     );
   };
