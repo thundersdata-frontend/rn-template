@@ -42,7 +42,7 @@
     "@sdcx/nested-scroll": "^0.4.0",
     "@sdcx/pull-to-refresh": "^0.7.0",
     "@shopify/flash-list": "^1.5.0",
-    "@td-design/react-native": "^5.0.0",
+    "@td-design/react-native": "^5.0.1",
     "@td-design/react-native-image-picker": "^1.6.8",
     "@td-design/react-native-picker": "^2.2.1",
     "@td-design/react-native-tabs": "^4.1.0",

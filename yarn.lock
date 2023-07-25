@@ -2492,10 +2492,10 @@
   dependencies:
     color "^4.2.3"
 
-"@td-design/react-native@^5.0.0":
-  version "5.0.0"
-  resolved "https://registry.npmmirror.com/@td-design/react-native/-/react-native-5.0.0.tgz#d068256679d2bb4a4185241164f35ecd56193e0b"
-  integrity sha512-ou0zkdSYjgCLTj390OqeGZtiVEgfSQiO/QxFGs/6CxRMndvXeGZkWEUcqTGyiYl4jetxJXhpzA/F50EEhHQFGQ==
+"@td-design/react-native@^5.0.1":
+  version "5.0.1"
+  resolved "https://registry.npmmirror.com/@td-design/react-native/-/react-native-5.0.1.tgz#9d158bad90265f21be2dccf524a317dd88eefc64"
+  integrity sha512-XSehsuUvzMuvKzgPqwUCgiIIio80Ilzxy5EhWM7o4I5iDDwRMV0hqOuud53WRgJveMziLXQmYbDtORtOfaT7KQ==
   dependencies:
     "@shopify/restyle" "2.4.2"
     "@td-design/rn-hooks" "^2.7.3"

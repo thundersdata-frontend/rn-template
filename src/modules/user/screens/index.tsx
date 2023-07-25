@@ -2,7 +2,7 @@ import { ImageBackground, ScrollView } from 'react-native';
 
 import { NavigationProp, useNavigation } from '@react-navigation/native';
 import { PullToRefresh } from '@sdcx/pull-to-refresh';
-import { Avatar, Box, Button, Flex, helpers, Text, WhiteSpace } from '@td-design/react-native';
+import { Avatar, Box, Button, Flex, helpers, Text, WhiteSpace, WingBlank } from '@td-design/react-native';
 import { useAtomValue } from 'jotai';
 
 import { userInfoAtom } from '@/atoms';
@@ -37,9 +37,11 @@ export function Mine() {
               </Box>
             </Flex>
           </ImageBackground>
-          <Button title="图表示例" onPress={() => navigation.navigate('EchartsDemo')} />
-          <WhiteSpace />
-          <Button title="系统设置" onPress={() => navigation.navigate('Settings')} />
+          <WingBlank>
+            <Button title="图表示例" onPress={() => navigation.navigate('EchartsDemo')} />
+            <WhiteSpace />
+            <Button title="系统设置" onPress={() => navigation.navigate('Settings')} />
+          </WingBlank>
         </ScrollView>
       </PullToRefresh>
     </Container>
