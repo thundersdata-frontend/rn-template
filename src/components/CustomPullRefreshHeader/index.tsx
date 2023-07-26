@@ -59,7 +59,6 @@ export default function CustomPullRefreshHeader({
         source={require('./square-loading.json')}
         autoPlay={false}
         speed={1}
-        cacheStrategy={'strong'}
         loop
         progress={progress}
       />
