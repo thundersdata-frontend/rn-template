@@ -39,6 +39,9 @@ end
 
 platform :ios do
   lane :poddebug do
+    ENV['RCT_NEW_ARCH_ENABLED'] = "1"
+    ENV['USE_HERMES'] = "1"
+    
     # 删除 Podfile.lock 文件
     FileUtils.rm_f(File.join(__dir__, "..", "Podfile.lock"))
 
@@ -50,10 +53,13 @@ platform :ios do
   end
 
   lane :podrelease do
-    # 删除 Podfile.lock 文件
-    FileUtils.rm_f(File.join(__dir__, "..", "Podfile.lock"))
+    ENV['RCT_NEW_ARCH_ENABLED'] = "1"
+    ENV['USE_HERMES'] = "1"
     ENV["NO_FLIPPER"] = "1"
     ENV['PRODUCTION'] == "1"
+
+    # 删除 Podfile.lock 文件
+    FileUtils.rm_f(File.join(__dir__, "..", "Podfile.lock"))
 
     # 如果这个文件存在，才执行下面的操作
     if tarball_exist?(tarball_release_path)

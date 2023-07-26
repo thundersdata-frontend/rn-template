@@ -1,6 +1,5 @@
 import { FC } from 'react';
 
-import ImageResizer from '@bam.tech/react-native-image-resizer';
 import { Toast } from '@td-design/react-native';
 import ImagePicker from '@td-design/react-native-image-picker';
 
@@ -43,14 +42,14 @@ export const SingleImagePicker: FC<CustomImagePickerProps> = ({
       value={value}
       onUpload={async file => {
         try {
-          if (file.fileType.includes('image/') && file?.fileSize && file?.fileSize > MAX_FILE_SIZE) {
-            const { name, uri } = await ImageResizer.createResizedImage(file.uri, 1024 * 2, 1024 * 2, 'JPEG', 100);
-            onUpload?.();
-            if (needUploadOss) {
-              return uploadFile({ fileName: name, uri, fileType: 'image/jpg' });
-            }
-            return Promise.resolve(uri);
-          }
+          // if (file.fileType.includes('image/') && file?.fileSize && file?.fileSize > MAX_FILE_SIZE) {
+          //   const { name, uri } = await ImageResizer.createResizedImage(file.uri, 1024 * 2, 1024 * 2, 'JPEG', 100);
+          //   onUpload?.();
+          //   if (needUploadOss) {
+          //     return uploadFile({ fileName: name, uri, fileType: 'image/jpg' });
+          //   }
+          //   return Promise.resolve(uri);
+          // }
 
           onUpload?.();
           if (needUploadOss) {
