@@ -50,6 +50,10 @@ type MainStackParamList = {
     id: string;
   };
   TabListDemo: undefined;
+  AnimationDemo: undefined;
+  LayoutAnimationDemo: undefined;
+  SharedElementTransitionDemo: undefined;
+  GalleryDetail: { tag: string };
 };
 
 type AppParamList = AuthStackParamList & MainStackParamList & CommonStackParamList;

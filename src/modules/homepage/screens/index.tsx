@@ -1,14 +1,9 @@
-import { Alert, Platform, ScrollView } from 'react-native';
-import codePush from 'react-native-code-push';
-import Config from 'react-native-config';
+import { ScrollView } from 'react-native';
 
-import NiceModal from '@ebay/nice-modal-react';
 import { NavigationProp, useNavigation } from '@react-navigation/native';
 import { Button, WhiteSpace, WingBlank } from '@td-design/react-native';
 
-import { Clipboard } from '@/components/Clipboard';
 import { Container } from '@/components/Container';
-import TestModal from '@/modals/TestModal';
 
 export function Homepage() {
   const navigation = useNavigation<NavigationProp<AppParamList>>();
@@ -17,7 +12,7 @@ export function Homepage() {
     <Container hasHeader={false}>
       <ScrollView>
         <WingBlank>
-          <Button title="局部共享数据示例" onPress={() => navigation.navigate('LocalModelDemo')} />
+          {/* <Button title="局部共享数据示例" onPress={() => navigation.navigate('LocalModelDemo')} />
           <WhiteSpace />
           <Button title="FlashList示例" onPress={() => navigation.navigate('FlashListDemo')} />
           <WhiteSpace />
@@ -63,6 +58,8 @@ export function Homepage() {
           <Button title="文字Variant示例" onPress={() => navigation.navigate('TextDemo')} />
           <WhiteSpace />
           <Button title="Tabs下长列表示例" onPress={() => navigation.navigate('TabListDemo')} />
+          <WhiteSpace /> */}
+          <Button title="动画示例" onPress={() => navigation.navigate('AnimationDemo')} />
           <WhiteSpace />
         </WingBlank>
       </ScrollView>

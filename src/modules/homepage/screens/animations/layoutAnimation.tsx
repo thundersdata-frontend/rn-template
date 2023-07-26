@@ -1,5 +1,5 @@
 import { Container } from '@/components/Container';
 
-export default () => {
+export function LayoutAnimationDemo() {
   return <Container></Container>;
-};
+}

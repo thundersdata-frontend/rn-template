@@ -7,6 +7,10 @@ import { SignIn } from '@/modules/auth/screens/signIn';
 import { LineChartDemo } from '@/modules/charts/screens/line';
 import { EchartsRoot } from '@/modules/charts/screens/main';
 import { MapChartDemo } from '@/modules/charts/screens/map';
+import { AnimationDemo } from '@/modules/homepage/screens/animations';
+import { GalleryDetail } from '@/modules/homepage/screens/animations/GalleryDetail';
+import { LayoutAnimationDemo } from '@/modules/homepage/screens/animations/layoutAnimation';
+import { SharedElementTransitionDemo } from '@/modules/homepage/screens/animations/sharedElement';
 import { ContactsDemo } from '@/modules/homepage/screens/contacts';
 import { FlashListDemo } from '@/modules/homepage/screens/flashlist';
 import { FlashListDemo1 } from '@/modules/homepage/screens/flashlist/demo1';
@@ -196,6 +200,31 @@ const MAIN_SCREENS = [
     options: {
       title: 'RESTFUL传参示例',
     },
+  },
+  {
+    name: 'AnimationDemo',
+    component: AnimationDemo,
+    options: {
+      title: '动画示例',
+    },
+  },
+  {
+    name: 'LayoutAnimationDemo',
+    component: LayoutAnimationDemo,
+    options: {
+      title: 'LayoutAnimation',
+    },
+  },
+  {
+    name: 'SharedElementTransitionDemo',
+    component: SharedElementTransitionDemo,
+    options: {
+      title: 'SharedElementTransition',
+    },
+  },
+  {
+    name: 'GalleryDetail',
+    component: GalleryDetail,
   },
 ];
 
