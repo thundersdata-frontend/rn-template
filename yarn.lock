@@ -7298,11 +7298,6 @@ lorem-ipsum@^2.0.8:
   dependencies:
     commander "^9.3.0"
 
-lottie-ios@3.4.1:
-  version "3.4.1"
-  resolved "https://registry.npmmirror.com/lottie-ios/-/lottie-ios-3.4.1.tgz#1c264066d1df04644f970cce4c2f82e27086c660"
-  integrity sha512-oZh9BcCMicLFeKC0KO5cfJ6Pzb+qfB7qZ4vqh5R+buXcCRZKnFhHkt9TZfd62ZJi2XC3kirXYVYyU7c+jqpo9g==
-
 lottie-react-native@5.1.6:
   version "5.1.6"
   resolved "https://registry.npmmirror.com/lottie-react-native/-/lottie-react-native-5.1.6.tgz#6ae72829c3c0b95952dddd3d78c043f4dfbcb487"
@@ -9222,10 +9217,10 @@ react-native-pager-view@^6.2.0:
   resolved "https://registry.npmmirror.com/react-native-pager-view/-/react-native-pager-view-6.2.0.tgz#51380d93fbe47f6380dc71d613a787bf27a4ca37"
   integrity sha512-pf9OnL/Tkr+5s4Gjmsn7xh91PtJLDa6qxYa/bmtUhd/+s4cQdWQ8DIFoOFghwZIHHHwVdWtoXkp6HtpjN+r20g==
 
-react-native-reanimated@^3.4.0:
-  version "3.4.0"
-  resolved "https://registry.npmmirror.com/react-native-reanimated/-/react-native-reanimated-3.4.0.tgz#93b4d0b4b48e712fdc93f6828654b93083c6531d"
-  integrity sha512-B5cZJseoIkYlZTRBRN0xuU1NBxUza/6GSHhiEBQfbOufWVlUMMcWUecIRVglW49l8d2wXbfCdQlNyVoFqmHkaQ==
+react-native-reanimated@3.3.0:
+  version "3.3.0"
+  resolved "https://registry.npmmirror.com/react-native-reanimated/-/react-native-reanimated-3.3.0.tgz#80f9d58e28fddf62fe4c1bc792337b8ab57936ab"
+  integrity sha512-LzfpPZ1qXBGy5BcUHqw3pBC0qSd22qXS3t8hWSbozXNrBkzMhhOrcILE/nEg/PHpNNp1xvGOW8NwpAMF006roQ==
   dependencies:
     "@babel/plugin-transform-object-assign" "^7.16.7"
     "@babel/preset-typescript" "^7.16.7"

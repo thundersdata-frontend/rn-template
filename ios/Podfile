@@ -78,14 +78,6 @@ target 'rnTemplate' do
       config[:reactNativePath],
       :mac_catalyst_enabled => false
     )
-    installer.pods_project.targets.each do |target|
-      if target.name == "lottie-ios"
-        puts "Processing for set swiftcompiler language in SwiftSocket"
-        target.build_configurations.each do |config|
-          config.build_settings['SWIFT_VERSION'] = '5.0'
-        end
-      end
-    end
     __apply_Xcode_12_5_M1_post_install_workaround(installer)
   end
 end
