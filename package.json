@@ -56,7 +56,6 @@
     "immer": "^10.0.2",
     "jotai": "^2.2.2",
     "lodash-es": "^4.17.21",
-    "lottie-ios": "3.4.1",
     "lottie-react-native": "5.1.6",
     "react": "18.2.0",
     "react-error-boundary": "^4.0.10",

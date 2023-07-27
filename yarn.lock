@@ -7298,11 +7298,6 @@ lorem-ipsum@^2.0.8:
   dependencies:
     commander "^9.3.0"
 
-lottie-ios@3.4.1:
-  version "3.4.1"
-  resolved "https://registry.npmmirror.com/lottie-ios/-/lottie-ios-3.4.1.tgz#1c264066d1df04644f970cce4c2f82e27086c660"
-  integrity sha512-oZh9BcCMicLFeKC0KO5cfJ6Pzb+qfB7qZ4vqh5R+buXcCRZKnFhHkt9TZfd62ZJi2XC3kirXYVYyU7c+jqpo9g==
-
 lottie-react-native@5.1.6:
   version "5.1.6"
   resolved "https://registry.npmmirror.com/lottie-react-native/-/lottie-react-native-5.1.6.tgz#6ae72829c3c0b95952dddd3d78c043f4dfbcb487"
