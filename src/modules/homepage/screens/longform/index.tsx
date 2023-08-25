@@ -152,13 +152,7 @@ export function LongForm() {
               >
                 <NumberKeyboardItem type="idcard" placeholder="请输入身份证号" inputStyle={{ textAlign: 'right' }} />
               </FormListItem>
-              <FormListItem
-                title="爱好"
-                name="favorites"
-                minHeight={px(32)}
-                required
-                rules={[{ required: true, message: '请选择爱好' }]}
-              >
+              <FormListItem title="爱好" name="favorites" required rules={[{ required: true, message: '请选择爱好' }]}>
                 <Checkbox
                   showCheckAll={false}
                   options={[

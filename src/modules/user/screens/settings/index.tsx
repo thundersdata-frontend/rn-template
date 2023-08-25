@@ -41,7 +41,6 @@ export function Settings() {
     <Container>
       <WingBlank>
         <List
-          itemHeight={px(48)}
           items={[
             {
               title: '修改头像',
