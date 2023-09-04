@@ -1,5 +1,7 @@
+import Image from 'react-native-fast-image';
+
 import { NavigationProp, useNavigation } from '@react-navigation/native';
-import { ActionSheet, Avatar, helpers, Image, Input, List, Modal, Text, WingBlank } from '@td-design/react-native';
+import { ActionSheet, Avatar, helpers, Input, List, Modal, Text, WingBlank } from '@td-design/react-native';
 import { useAtomValue } from 'jotai';
 
 import { userInfoAtom } from '@/atoms';
@@ -40,7 +42,6 @@ export function Settings() {
     <Container>
       <WingBlank>
         <List
-          itemHeight={px(48)}
           items={[
             {
               title: '修改头像',
