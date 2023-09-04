@@ -1,8 +1,8 @@
 import { FC } from 'react';
-import { Source } from 'react-native-fast-image';
+import Image, { Source } from 'react-native-fast-image';
 
 import { BackgroundColorProps, LayoutProps } from '@shopify/restyle';
-import { Box, Button, Flex, helpers, Image, Empty as TDEmpty, Text, Theme } from '@td-design/react-native';
+import { Box, Button, Flex, helpers, Empty as TDEmpty, Text, Theme } from '@td-design/react-native';
 import { ButtonProps } from '@td-design/react-native/lib/typescript/button';
 
 const { px } = helpers;
@@ -48,7 +48,9 @@ export const Empty: FC<EmptyProps> = ({
             {subText}
           </Text>
         )}
-        {showButton && buttonProps && <Button marginTop="x6" type="primary" width={px(326)} {...buttonProps} />}
+        {showButton && buttonProps && (
+          <Button style={{ marginTop: px(24) }} type="primary" width={px(326)} {...buttonProps} />
+        )}
       </Flex>
     );
   };
