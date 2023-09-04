@@ -9281,6 +9281,11 @@ react-native-svg@^13.10.0:
     css-select "^5.1.0"
     css-tree "^1.1.3"
 
+react-native-z-view@^0.2.4:
+  version "0.2.4"
+  resolved "https://registry.npmmirror.com/react-native-z-view/-/react-native-z-view-0.2.4.tgz#9d68fc03c537138a7111b4ed13eb40dc8ddb8fbf"
+  integrity sha512-K/z6GhHmDsyEZAy6ib8DEmITSyPb0rCJ95IZjilZbAarx8xB6prdvHvtgmCg67nFKO/l/ldBuYhvxQmClda+pQ==
+
 react-native@0.72.3:
   version "0.72.3"
   resolved "https://registry.npmmirror.com/react-native/-/react-native-0.72.3.tgz#f8d85ec81c9f3592d091ec8e9ac1694956a72765"
