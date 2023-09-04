@@ -1,4 +1,6 @@
-import { Box, helpers, Image, Text, useTheme } from '@td-design/react-native';
+import Image from 'react-native-fast-image';
+
+import { Box, helpers, Text, useTheme } from '@td-design/react-native';
 
 import { AppTheme } from '@/theme';
 
