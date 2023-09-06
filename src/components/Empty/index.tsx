@@ -48,7 +48,9 @@ export const Empty: FC<EmptyProps> = ({
             {subText}
           </Text>
         )}
-        {showButton && buttonProps && <Button marginTop="x6" type="primary" width={px(326)} {...buttonProps} />}
+        {showButton && buttonProps && (
+          <Button style={{ marginTop: px(24) }} type="primary" width={px(326)} {...buttonProps} />
+        )}
       </Flex>
     );
   };
