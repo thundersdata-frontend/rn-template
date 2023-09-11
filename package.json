@@ -112,7 +112,6 @@
     "husky": "^8.0.3",
     "inquirer": "8.1.0",
     "lint-staged": "^14.0.1",
-    "lorem-ipsum": "^2.0.8",
     "metro-react-native-babel-preset": "0.76.8",
     "patch-package": "^8.0.0",
     "prettier": "^3.0.3",
