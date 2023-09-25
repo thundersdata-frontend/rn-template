@@ -3,7 +3,6 @@
 buildscript {
     ext {
         buildToolsVersion = "33.0.0"
-        excludeAppGlideModule = true
         minSdkVersion = 21
         compileSdkVersion = 33
         targetSdkVersion = 33

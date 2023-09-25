@@ -158,10 +158,8 @@ private String generatePackageName() {
 dependencies {
     // The version of react-native is set by the React Native Gradle Plugin
     implementation("com.facebook.react:react-android")
-    implementation "androidx.core:core:1.6.0" // <-- Add this
 
     implementation "androidx.core:core-splashscreen:1.0.0" // <- react native bootsplash
-    implementation "com.github.zjupure:webpdecoder:2.0.4.12.0" // <- support animated webp
 
     debugImplementation("com.facebook.flipper:flipper:${FLIPPER_VERSION}")
     debugImplementation("com.facebook.flipper:flipper-network-plugin:${FLIPPER_VERSION}") {
