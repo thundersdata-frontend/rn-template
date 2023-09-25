@@ -2758,10 +2758,10 @@
   resolved "https://registry.npmmirror.com/@sdcx/nested-scroll/-/nested-scroll-0.10.0.tgz#1a36eb00af2c6827908d49c6a8934b7c24881eca"
   integrity sha512-vQnk4KJmGAgy0bkXTfFiQHqzgXuQ5quJPfOHDJrejdfOZBpQmO134xXllme+t4Q6b7FptdZpmcpYvl+04gyqow==
 
-"@sdcx/pull-to-refresh@^0.12.0":
-  version "0.12.0"
-  resolved "https://registry.npmmirror.com/@sdcx/pull-to-refresh/-/pull-to-refresh-0.12.0.tgz#99cc5fa420d8ed851b2641afdd3eb5547727b454"
-  integrity sha512-3yypdO3HcwU+kgGy4nSNGEAgTwffnTJIOUWouYj4evWHNVFYD0QfXR3o4aoGslw4+Z238bOZA1DPfKp3cqC3MQ==
+"@sdcx/pull-to-refresh@^0.13.0":
+  version "0.13.0"
+  resolved "https://registry.npmmirror.com/@sdcx/pull-to-refresh/-/pull-to-refresh-0.13.0.tgz#8efe543359d3d9f3ea03cc433990e46eaebe9ddd"
+  integrity sha512-BQa5xL+3wynDnIl5vimyHx7WJRV+PZKHafgwvdhJowzQy4aJYBobBF1AJZPCQV+xt1Y8QOUILiiudbPxEbNlNg==
 
 "@segment/loosely-validate-event@^2.0.0":
   version "2.0.0"
@@ -2860,10 +2860,10 @@
   dependencies:
     color "^4.2.3"
 
-"@td-design/react-native@^5.0.1":
-  version "5.1.1"
-  resolved "https://registry.npmmirror.com/@td-design/react-native/-/react-native-5.1.1.tgz#06bdd7bd2df82633946d381593d9ad0021ccdf0b"
-  integrity sha512-ubRtGblkfQuYA9kaUJCaQDfQYPkIQmsU/wYV0XNCt16pkH5Lc+hsxAuJYXGiIovF79YOyjRrKV9VIjYjJ2eZsw==
+"@td-design/react-native@^5.2.0":
+  version "5.2.0"
+  resolved "https://registry.npmmirror.com/@td-design/react-native/-/react-native-5.2.0.tgz#7828910811c169a4829db170773c6c47e33bd71b"
+  integrity sha512-M/l8DG96EKzMhM9ZY8t3UFoE8HXCxAOH8tZBFCCs2iU6219KWvWuhqeie1ifC3KNB/8WEmkztjEBqLhklaXAZg==
   dependencies:
     "@shopify/restyle" "2.4.2"
     "@td-design/rn-hooks" "^2.7.3"
@@ -4694,6 +4694,11 @@ data-uri-to-buffer@^5.0.1:
   version "5.0.1"
   resolved "https://registry.npmmirror.com/data-uri-to-buffer/-/data-uri-to-buffer-5.0.1.tgz#db89a9e279c2ffe74f50637a59a32fb23b3e4d7c"
   integrity sha512-a9l6T1qqDogvvnw0nKlfZzqsyikEBZBClF39V3TFoKhDtGBqHu2HkuomJc02j5zft8zrUaXEuoicLeW54RkzPg==
+
+dayjs@^1.11.10:
+  version "1.11.10"
+  resolved "https://registry.npmmirror.com/dayjs/-/dayjs-1.11.10.tgz#68acea85317a6e164457d6d6947564029a6a16a0"
+  integrity sha512-vjAczensTgRcqDERK0SR2XMwsF/tSvnvlv6VcF2GIhg6Sx4yOIt/irsr1RDJsKiIyBzJDpCoXiWWq28MqH2cnQ==
 
 dayjs@^1.11.9, dayjs@^1.8.15:
   version "1.11.9"
@@ -9866,10 +9871,10 @@ react-native-flipper@0.212.0:
   resolved "https://registry.npmmirror.com/react-native-flipper/-/react-native-flipper-0.212.0.tgz#b3fdd47676ecd09a25edd77a1466acace6276762"
   integrity sha512-bDRfIgE3v/jjEEdnvGP0T6maDD+bXhDAQ/SZUYTKd/CQ6YIU1c0EF+e0urU62LNMv6XEFQKz226McdddyVhYZA==
 
-react-native-gesture-handler@^2.12.1:
-  version "2.12.1"
-  resolved "https://registry.npmmirror.com/react-native-gesture-handler/-/react-native-gesture-handler-2.12.1.tgz#f11a99fb95169810c6886fad5efa01a17fd81660"
-  integrity sha512-deqh36bw82CFUV9EC4tTo2PP1i9HfCOORGS3Zmv71UYhEZEHkzZv18IZNPB+2Awzj45vLIidZxGYGFxHlDSQ5A==
+react-native-gesture-handler@^2.13.1:
+  version "2.13.1"
+  resolved "https://registry.npmmirror.com/react-native-gesture-handler/-/react-native-gesture-handler-2.13.1.tgz#bad89caacd62c4560b9953b02f85f37ee42d5d4c"
+  integrity sha512-hW454X7sjuiBN+lobqw63pmT3boAmTl5OP6zQLq83iEe4T6PcHZ9lxzgCrebtgmutY8cJfq9rM2dOUVh9WBcww==
   dependencies:
     "@egjs/hammerjs" "^2.0.17"
     hoist-non-react-statics "^3.3.0"
@@ -9892,10 +9897,10 @@ react-native-pager-view@^6.2.1:
   resolved "https://registry.npmmirror.com/react-native-pager-view/-/react-native-pager-view-6.2.1.tgz#985d21bbb7d7bc012f4c142dedbb98ce4bdea104"
   integrity sha512-fZ8chez5J+w831nSnbtK8hwlCiMy1DgpFv8xG6ajXLsAI8uMkGvP554QDIDNlUoCuVwMf7OFyd32Y2Nm2Iaj9Q==
 
-react-native-reanimated@^3.5.2:
-  version "3.5.2"
-  resolved "https://registry.npmmirror.com/react-native-reanimated/-/react-native-reanimated-3.5.2.tgz#c7b4e70ee3210e26e6326d3e43f9299590898c5d"
-  integrity sha512-Uv9imJ6ZC7F/tTSpjjfo/0AZlw19Lag63+MUqF6p483LOoRkYtYP3JmtVV402mQWfhL1LPMeyAu/1spRjPKCCQ==
+react-native-reanimated@^3.5.4:
+  version "3.5.4"
+  resolved "https://registry.npmmirror.com/react-native-reanimated/-/react-native-reanimated-3.5.4.tgz#a6c2b0c43b6dad246f5d276213974afedb8e3fc7"
+  integrity sha512-8we9LLDO1o4Oj9/DICeEJ2K1tjfqkJagqQUglxeUAkol/HcEJ6PGxIrpBcNryLqCDYEcu6FZWld/FzizBIw6bg==
   dependencies:
     "@babel/plugin-transform-object-assign" "^7.16.7"
     "@babel/preset-typescript" "^7.16.7"
@@ -9943,10 +9948,10 @@ react-native-shadow-2@^7.0.8:
   dependencies:
     colord "2.9.2"
 
-react-native-svg@^13.13.0:
-  version "13.13.0"
-  resolved "https://registry.npmmirror.com/react-native-svg/-/react-native-svg-13.13.0.tgz#23dedb4594dcc44128d63fa5b13c49534187fef5"
-  integrity sha512-L8y8uEiMG0Tr++Nb2+24wlMuv18+bmq/CMoFFtTUlEqVvGCoK2ea8WamPl/9bV8gjL+Rngg5NqEBvKS23sbYoA==
+react-native-svg@^13.14.0:
+  version "13.14.0"
+  resolved "https://registry.npmmirror.com/react-native-svg/-/react-native-svg-13.14.0.tgz#879930cfe10e877e51ebb77dfcc2cd65fc6b0d21"
+  integrity sha512-27ZnxUkHgWICimhuj6MuqBkISN53lVvgWJB7pIypjXysAyM+nqgQBPh4vXg+7MbqLBoYvR4PiBgKfwwGAqVxHg==
   dependencies:
     css-select "^5.1.0"
     css-tree "^1.1.3"
