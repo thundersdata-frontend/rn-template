@@ -1461,20 +1461,20 @@
   resolved "https://registry.npmmirror.com/@sdcx/keyboard-insets/-/keyboard-insets-0.1.0.tgz#752de2cf2415146aac2e53e39116023ada102337"
   integrity sha512-qWIFJZYKw4ucPbqWWG1jFIquvOsaflPJejoRtfdATNwy0RGcCv1zsdHGAZy9XbDADvztNt9+IDSPdEs632xPag==
 
-"@sdcx/nested-scroll@^0.8.0":
-  version "0.8.0"
-  resolved "https://registry.npmmirror.com/@sdcx/nested-scroll/-/nested-scroll-0.8.0.tgz#3ffcfedace9f1014c48f82fc460d1a3f189d592e"
-  integrity sha512-QyhIu1dC5cJ+DBgvLsXhUh1C0u+OOrV0yEPazQMp1bsVrGY6KyVhuHcduOutEXaxZfu6lR4KqkVFgkRVD6JI4w==
+"@sdcx/nested-scroll@^0.10.0":
+  version "0.10.0"
+  resolved "https://registry.npmmirror.com/@sdcx/nested-scroll/-/nested-scroll-0.10.0.tgz#1a36eb00af2c6827908d49c6a8934b7c24881eca"
+  integrity sha512-vQnk4KJmGAgy0bkXTfFiQHqzgXuQ5quJPfOHDJrejdfOZBpQmO134xXllme+t4Q6b7FptdZpmcpYvl+04gyqow==
 
-"@sdcx/pull-to-refresh@^0.8.0":
-  version "0.8.0"
-  resolved "https://registry.npmmirror.com/@sdcx/pull-to-refresh/-/pull-to-refresh-0.8.0.tgz#ade6081fa120cb40b499aafd5a11a079d8f08e70"
-  integrity sha512-CZNZk4yil8qFPGZV5XBMl/+MeqQpHgisOA2iCKFrx03XDQTU/1vgtaCbH7vAZTnq6raMjvUFElQEFDWDwuZdKQ==
+"@sdcx/pull-to-refresh@^0.13.0":
+  version "0.13.0"
+  resolved "https://registry.npmmirror.com/@sdcx/pull-to-refresh/-/pull-to-refresh-0.13.0.tgz#8efe543359d3d9f3ea03cc433990e46eaebe9ddd"
+  integrity sha512-BQa5xL+3wynDnIl5vimyHx7WJRV+PZKHafgwvdhJowzQy4aJYBobBF1AJZPCQV+xt1Y8QOUILiiudbPxEbNlNg==
 
-"@shopify/flash-list@^1.5.0":
-  version "1.5.0"
-  resolved "https://registry.npmmirror.com/@shopify/flash-list/-/flash-list-1.5.0.tgz#f1cf3c4f9bb706a58c3d1f794ddfaedb5872f431"
-  integrity sha512-XeocevDIXastr6jh3TPo1MzV5XkdqTyWtw/j8kUhz9EOBc2SzNWbpJWyzrAsYKlqYNrnxxs0P9C0amlX2jaQnw==
+"@shopify/flash-list@^1.6.1":
+  version "1.6.1"
+  resolved "https://registry.npmmirror.com/@shopify/flash-list/-/flash-list-1.6.1.tgz#7a46d8ec4e125b8b7bf686777d932c7c950e00c7"
+  integrity sha512-SlBlpP7+zol6D1SKaf402aS30Qgwdjwb8/Qn2CupYwXnTcu2l8TiXB766vcsIvKTqUO7ELfQnCwCq8NXx55FsQ==
   dependencies:
     recyclerlistview "4.2.0"
     tslib "2.4.0"
@@ -1541,10 +1541,10 @@
   dependencies:
     color "^4.2.3"
 
-"@td-design/react-native@^5.1.1":
-  version "5.1.1"
-  resolved "https://registry.npmmirror.com/@td-design/react-native/-/react-native-5.1.1.tgz#06bdd7bd2df82633946d381593d9ad0021ccdf0b"
-  integrity sha512-ubRtGblkfQuYA9kaUJCaQDfQYPkIQmsU/wYV0XNCt16pkH5Lc+hsxAuJYXGiIovF79YOyjRrKV9VIjYjJ2eZsw==
+"@td-design/react-native@^5.2.0":
+  version "5.2.0"
+  resolved "https://registry.npmmirror.com/@td-design/react-native/-/react-native-5.2.0.tgz#7828910811c169a4829db170773c6c47e33bd71b"
+  integrity sha512-M/l8DG96EKzMhM9ZY8t3UFoE8HXCxAOH8tZBFCCs2iU6219KWvWuhqeie1ifC3KNB/8WEmkztjEBqLhklaXAZg==
   dependencies:
     "@shopify/restyle" "2.4.2"
     "@td-design/rn-hooks" "^2.7.3"
@@ -1896,10 +1896,10 @@
     "@typescript-eslint/types" "6.5.0"
     eslint-visitor-keys "^3.4.1"
 
-"@wuba/react-native-echarts@^1.2.3":
-  version "1.2.3"
-  resolved "https://registry.npmmirror.com/@wuba/react-native-echarts/-/react-native-echarts-1.2.3.tgz#cc06cedb63ba502dae129bec86b159a57967e229"
-  integrity sha512-uAgv8Zgb5jklauHQd/usObL1azmZCX8UXAp1vo9me3UmGOkDlDLd2SYkVhkQPXdkkW7LeC565SqE4Yfl4op4xg==
+"@wuba/react-native-echarts@^1.2.5":
+  version "1.2.5"
+  resolved "https://registry.npmmirror.com/@wuba/react-native-echarts/-/react-native-echarts-1.2.5.tgz#06cc7bbbf675fc334daaaaa0b8300b72b7530f93"
+  integrity sha512-5tDmLXO4n2hLmGIZSCdnkIEHTwMeW94W2VGE/Y94euFOgw1bSE551TQCAo1gmczXuErzT9SyCdZQkFn4KheQ6Q==
   dependencies:
     "@xmldom/xmldom" "^0.8.6"
     entities "^4.4.0"
@@ -2313,10 +2313,10 @@ aws4@^1.8.0:
   resolved "https://registry.npmmirror.com/aws4/-/aws4-1.12.0.tgz#ce1c9d143389679e253b314241ea9aa5cec980d3"
   integrity sha512-NmWvPnx0F1SfrQbYwOi7OeaNGokp9XhzNioJ/CSBs8Qa4vxug81mhJEAVZwxXuBmYB5KDRfMq/F3RR0BIU7sWg==
 
-axios@^1.5.0:
-  version "1.5.0"
-  resolved "https://registry.npmmirror.com/axios/-/axios-1.5.0.tgz#f02e4af823e2e46a9768cfc74691fdd0517ea267"
-  integrity sha512-D4DdjDo5CY50Qms0qGQTTw6Q44jl7zRwY7bthds06pUGfChBCTcQs+N743eFWGEd6pRTMd6A+I87aWyFV5wiZQ==
+axios@^1.5.1:
+  version "1.5.1"
+  resolved "https://registry.npmmirror.com/axios/-/axios-1.5.1.tgz#11fbaa11fc35f431193a9564109c88c1f27b585f"
+  integrity sha512-Q28iYCWzNHjAm+yEAot5QaAMxhMghWLFVf7rRdwhUI+c2jix2DUXjAHXVi+s1ibs3mjPO/cCgbA++3BjD0vP/A==
   dependencies:
     follow-redirects "^1.15.0"
     form-data "^4.0.0"
@@ -3201,6 +3201,11 @@ data-uri-to-buffer@3:
   version "3.0.1"
   resolved "https://registry.npmmirror.com/data-uri-to-buffer/-/data-uri-to-buffer-3.0.1.tgz#594b8973938c5bc2c33046535785341abc4f3636"
   integrity sha512-WboRycPNsVw3B3TL559F7kuBUM4d8CgMEvk6xEJlOp7OBPjt6G7z8WMWlD2rOFZLk6OYfFIUGsCOWzcQH9K2og==
+
+dayjs@^1.11.10:
+  version "1.11.10"
+  resolved "https://registry.npmmirror.com/dayjs/-/dayjs-1.11.10.tgz#68acea85317a6e164457d6d6947564029a6a16a0"
+  integrity sha512-vjAczensTgRcqDERK0SR2XMwsF/tSvnvlv6VcF2GIhg6Sx4yOIt/irsr1RDJsKiIyBzJDpCoXiWWq28MqH2cnQ==
 
 dayjs@^1.11.9, dayjs@^1.8.15:
   version "1.11.9"
@@ -5636,10 +5641,10 @@ joi@^17.2.1:
     "@sideway/formula" "^3.0.1"
     "@sideway/pinpoint" "^2.0.0"
 
-jotai@^2.4.1:
-  version "2.4.1"
-  resolved "https://registry.npmmirror.com/jotai/-/jotai-2.4.1.tgz#16f469f0a50f5fc34bcf033dffcaa582a10089d0"
-  integrity sha512-S4CTLpsZV+LABBXL5PgkMl+5jK3ljfbWmcLqtN7CQ2vio/Hrg3T6IKk/vf2/9hnp1imTPDsaFv7D54de/7Sa+w==
+jotai@^2.4.2:
+  version "2.4.2"
+  resolved "https://registry.npmmirror.com/jotai/-/jotai-2.4.2.tgz#85610d82d247a7b19de7cce82e8d3ddf007f8d4d"
+  integrity sha512-90jXVOd9h6gi5JXk558M+wnJfaaVN2WegcNOCfiFbWboNaDl6DkRgiY/K1oeqTfYJmq8yM7XPsL99LAvcOPqhw==
 
 "js-tokens@^3.0.0 || ^4.0.0", js-tokens@^4.0.0:
   version "4.0.0"
