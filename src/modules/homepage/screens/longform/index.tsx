@@ -1,7 +1,5 @@
-import { useEffect } from 'react';
 import { ScrollView } from 'react-native';
 
-import { useNavigation } from '@react-navigation/native';
 import { KeyboardInsetsView } from '@sdcx/keyboard-insets';
 import {
   Box,
@@ -10,7 +8,6 @@ import {
   Form,
   helpers,
   Input,
-  Modal,
   NumberKeyboard,
   Radio,
   Stepper,
@@ -23,8 +20,6 @@ import {
 } from '@td-design/react-native';
 import ImagePicker from '@td-design/react-native-image-picker';
 import { DatePickerItem, PickerItem } from '@td-design/react-native-picker';
-import { useSafeState } from '@td-design/rn-hooks';
-import { type FieldData } from 'rc-field-form/es/interface';
 
 import { Container } from '@/components/Container';
 
@@ -69,35 +64,9 @@ const residences = [
 
 export function LongForm() {
   const [form] = useForm();
-  const navigation = useNavigation();
-  const [hasUnsavedChanges, setHasUnsavedChanges] = useSafeState(false);
-
-  useEffect(() => {
-    navigation.addListener('beforeRemove', e => {
-      if (!hasUnsavedChanges) return;
-
-      e.preventDefault();
-
-      Modal.confirm({
-        title: '放弃编辑',
-        content: '您还有尚未保存的修改，确定放弃编辑吗？',
-        okText: '确定',
-        cancelText: '继续编辑',
-        onOk() {
-          navigation.dispatch(e.data.action);
-        },
-      });
-    });
-  }, [hasUnsavedChanges]);
-
-  const handleFieldsChange = (changedFields: FieldData[]) => {
-    setHasUnsavedChanges(changedFields.length > 0);
-  };
 
   const handleFinish = (values: Store) => {
     console.log(values);
-    // 提交成功后将标志位复位
-    setHasUnsavedChanges(false);
   };
 
   const handleFinishFailed = (errorInfo: ValidateErrorEntity<Store>) => {
@@ -114,12 +83,7 @@ export function LongForm() {
           keyboardDismissMode="on-drag"
         >
           <WingBlank>
-            <Form
-              form={form}
-              onFieldsChange={handleFieldsChange}
-              onFinish={handleFinish}
-              onFinishFailed={handleFinishFailed}
-            >
+            <Form form={form} onFinish={handleFinish} onFinishFailed={handleFinishFailed}>
               <FormItem name="username" rules={[{ required: true, message: '请输入用户名' }]}>
                 <InputItem required label="姓名" placeholder="请输入姓名" inputStyle={{ textAlign: 'right' }} />
               </FormItem>

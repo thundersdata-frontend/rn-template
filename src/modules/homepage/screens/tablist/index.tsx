@@ -2,7 +2,7 @@ import { useEffect } from 'react';
 import { TouchableOpacity } from 'react-native';
 
 import { NavigationProp, useNavigation } from '@react-navigation/native';
-import { Indicator, Text } from '@td-design/react-native';
+import { Text } from '@td-design/react-native';
 import Tabs from '@td-design/react-native-tabs';
 import { useSafeState } from '@td-design/rn-hooks';
 
@@ -35,7 +35,7 @@ export const TabListDemo = () => {
 
   return (
     <Container>
-      <Tabs scenes={routes} initialPage={1} lazy renderLazyPlaceholder={() => <Indicator.UIActivityIndicator />} />
+      <Tabs scenes={routes} initialPage={1} />
     </Container>
   );
 };
