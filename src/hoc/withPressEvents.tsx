@@ -1,4 +1,4 @@
-import { ComponentType, useRef } from 'react';
+import { ComponentType, PropsWithChildren, useRef } from 'react';
 import { GestureResponderEvent } from 'react-native';
 
 type PressEventHandler = null | ((event: GestureResponderEvent) => void);
@@ -16,8 +16,10 @@ interface EnhancedTouchableProps {
  * @param Component 只能是Touchable组件，包括：TouchableOpacity、TouchableHighlight、TouchableWithoutFeedback、TouchableNativeFeedback、Pressable
  * @returns
  */
-export default function withPressEvents<P extends EnhancedTouchableProps>(Component: ComponentType<P>) {
-  const EnhancedTouchable = ({ onPress, onPressIn, onPressOut, onLongPress, ...props }: P) => {
+export default function withPressEvents<P extends PropsWithChildren<EnhancedTouchableProps>>(
+  Component: ComponentType<P>
+) {
+  const EnhancedTouchable = ({ onPress, onPressIn, onPressOut, onLongPress, children, ...props }: P) => {
     // 使用useRef保存触摸开始的位置(pressInPointRef)和时间(pressInTimeRef)
     const pressInPointRef = useRef({ startX: 0, startY: 0 });
     const pressInTimeRef = useRef(0);
@@ -65,7 +67,9 @@ export default function withPressEvents<P extends EnhancedTouchableProps>(Compon
         onPress={handlePress}
         onLongPress={handleLongPress}
         onPressOut={handlePressOut}
-      />
+      >
+        {children}
+      </Component>
     );
   };
   return EnhancedTouchable;
