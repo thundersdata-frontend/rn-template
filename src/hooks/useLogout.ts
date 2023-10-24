@@ -1,7 +1,8 @@
 import { useMemoizedFn } from '@td-design/rn-hooks';
 import { useSetAtom } from 'jotai';
+import { RESET } from 'jotai/utils';
 
-import { RESET, signedInAtom, tokenAtom, userInfoAtom } from '@/atoms';
+import { signedInAtom, tokenAtom, userInfoAtom } from '@/atoms';
 
 export default function useLogout() {
   const updateUserInfo = useSetAtom(userInfoAtom);
