@@ -4,43 +4,16 @@ import { atomWithStorage, createJSONStorage } from 'jotai/utils';
 
 export const storage = new MMKV();
 
-export function getValueInStorage<Value>(key: string, initialValue: Value) {
-  const type = typeof initialValue;
-  switch (type) {
-    case 'object':
-      const value = storage.getString(key);
-      if (!value) return initialValue;
-      try {
-        return JSON.parse(value);
-      } catch (error) {
-        console.error(error);
-        return initialValue;
-      }
-
-    case 'string':
-      return storage.getString(key) || initialValue;
-
-    case 'number':
-      return storage.getNumber(key) || initialValue;
-
-    case 'boolean':
-      return storage.getBoolean(key) || initialValue;
-
-    default:
-      return storage.contains(key) ? storage.getString(key) : initialValue;
-  }
-}
-
-function getItem<T>(key: string): T | null {
+export function getMMKVItem<T>(key: string): T | null {
   const value = storage.getString(key);
   return value ? JSON.parse(value) : null;
 }
 
-function setItem<T>(key: string, value: T) {
+export function setMMKVItem<T>(key: string, value: T) {
   storage.set(key, JSON.stringify(value));
 }
 
-function removeItem(key: string) {
+export function removeMMKVItem(key: string) {
   storage.delete(key);
 }
 
@@ -49,9 +22,9 @@ export const atomWithMMKV = <T>(key: string, initialValue: T) =>
     key,
     initialValue,
     createJSONStorage<T>(() => ({
-      getItem,
-      setItem,
-      removeItem,
+      getItem: getMMKVItem,
+      setItem: setMMKVItem,
+      removeItem: removeMMKVItem,
     }))
   );
 
