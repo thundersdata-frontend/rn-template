@@ -66,11 +66,6 @@ target 'rnTemplate' do
     :app_path => "#{Pod::Config.instance.installation_root}/.."
   )
 
-  target 'rnTemplateTests' do
-    inherit! :complete
-    # Pods for testing
-  end
-
   post_install do |installer|
     # https://github.com/facebook/react-native/blob/main/scripts/react_native_pods.rb#L197-L202
     react_native_post_install(
