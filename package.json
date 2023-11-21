@@ -89,7 +89,7 @@
     "@react-native/metro-config": "^0.72.11",
     "@react-navigation/devtools": "^6.0.20",
     "@td-design/pont-engine": "1.1.4",
-    "@td-design/svgicon-cli": "^1.6.0",
+    "@td-design/svgicon-cli": "^1.7.2",
     "@trivago/prettier-plugin-sort-imports": "^4.3.0",
     "@tsconfig/react-native": "^3.0.2",
     "@types/lodash-es": "^4.17.11",

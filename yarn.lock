@@ -3259,10 +3259,10 @@
   dependencies:
     lodash-es "^4.17.21"
 
-"@td-design/svgicon-cli@^1.6.0":
-  version "1.6.0"
-  resolved "https://registry.npmmirror.com/@td-design/svgicon-cli/-/svgicon-cli-1.6.0.tgz#9f5d0b19799bc4a10c2144350849a2b1648ecf03"
-  integrity sha512-BisMdUedzegpjaL1cS97o5Xc8/wc7XcjHiQ/RNDgTZO3DjeRFIjA+0JWC3bVe/z1YxiEmCJaK+KUlmgmIch0Pg==
+"@td-design/svgicon-cli@^1.7.2":
+  version "1.7.2"
+  resolved "https://registry.npmmirror.com/@td-design/svgicon-cli/-/svgicon-cli-1.7.2.tgz#3afb87a9ec698f72f35a9b284cb8e0cfc06f07a9"
+  integrity sha512-Ayx33RfCzbl2h7rfDHviThB0Z2G3Ibn3KiXRM4F97smglrVdnwm9f5kSVas/s/Eb1XTS016wyBdw7duvJWZ+Lg==
   dependencies:
     colors "^1.4.0"
     glob "^10.3.3"
