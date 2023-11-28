@@ -3,7 +3,8 @@
 /* eslint-disable */
 import React, { FC } from 'react';
 import { ViewProps } from 'react-native';
-import { GProps, SvgCss } from 'react-native-svg';
+import { GProps } from 'react-native-svg';
+import { SvgCss } from 'react-native-svg/css';
 
 import { helpers } from '@td-design/react-native';
 
