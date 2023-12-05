@@ -10,7 +10,7 @@ export function getMMKVItem<T>(key: string): T | null {
 }
 
 export function setMMKVItem<T>(key: string, value: T) {
-  storage.set(key, JSON.stringify(value));
+  storage.set(key, value as unknown as string);
 }
 
 export function removeMMKVItem(key: string) {
@@ -23,9 +23,10 @@ export const atomWithMMKV = <T>(key: string, initialValue: T) =>
     initialValue,
     createJSONStorage<T>(() => ({
       getItem: getMMKVItem,
-      setItem: setMMKVItem,
+      setItem: setMMKVItem, // createJSONStorage 会自动调用 JSON.stringify
       removeItem: removeMMKVItem,
-    }))
+    })),
+    { getOnInit: true }
   );
 
 // 用户信息Atom
