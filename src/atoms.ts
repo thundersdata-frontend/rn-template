@@ -4,9 +4,8 @@ import { atomWithStorage, createJSONStorage } from 'jotai/utils';
 
 export const storage = new MMKV();
 
-export function getMMKVItem<T>(key: string): T | null {
-  const value = storage.getString(key);
-  return value ? JSON.parse(value) : null;
+export function getMMKVItem<T>(key: string): T {
+  return storage.getString(key) as unknown as T;
 }
 
 export function setMMKVItem<T>(key: string, value: T) {
@@ -22,7 +21,7 @@ export const atomWithMMKV = <T>(key: string, initialValue: T) =>
     key,
     initialValue,
     createJSONStorage<T>(() => ({
-      getItem: getMMKVItem,
+      getItem: getMMKVItem, // createJSONStorage 会自动调用 JSON.parse
       setItem: setMMKVItem, // createJSONStorage 会自动调用 JSON.stringify
       removeItem: removeMMKVItem,
     })),
