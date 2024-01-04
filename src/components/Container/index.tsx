@@ -17,7 +17,7 @@ export const Container: FC<PropsWithChildren<{ hasHeader?: boolean; inTab?: bool
   const styles = StyleSheet.create({
     container: {
       flex: 1,
-      backgroundColor: backgroundColor || theme.colors.white,
+      backgroundColor: backgroundColor,
       position: 'relative',
     },
   });
