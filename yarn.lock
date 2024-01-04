@@ -3170,10 +3170,10 @@
   resolved "https://registry.npmmirror.com/@sdcx/nested-scroll/-/nested-scroll-0.14.0.tgz#d0f6f07f50eff64eb22aa2da6967e29494c00a97"
   integrity sha512-sSjZ8apHCLZto3VQUHcOnV+dVq0hdQOcPWjmBNoe/0W1VxoDhujgW7OiRexTpsTUc3m7PfRzhPIx8IO8og7JjQ==
 
-"@sdcx/pull-to-refresh@^0.20.0":
-  version "0.20.0"
-  resolved "https://registry.npmmirror.com/@sdcx/pull-to-refresh/-/pull-to-refresh-0.20.0.tgz#cce2b4f3d0b02baa4c67852a6428eb00b102aee9"
-  integrity sha512-W6SzLeyNOGA8/YWsvGrVNWxo7jkr9kpelttRQAB7dEcbwECTUagbK2zA4UNJZoeCnr2Gp5rn4yAje9zplfTscQ==
+"@sdcx/pull-to-refresh@^0.21.0":
+  version "0.21.0"
+  resolved "https://registry.npmmirror.com/@sdcx/pull-to-refresh/-/pull-to-refresh-0.21.0.tgz#5635c0642dc23084b8ff6c36bc6b6d93e0da553b"
+  integrity sha512-QZZqtItw/lJdCe29roX6ahgC3i8pQRa+sRZ9aSvNHosYgozanuzB2Oq12wmyILxQio/SIr/eI+OQxmJhKmSk9g==
 
 "@segment/loosely-validate-event@^2.0.0":
   version "2.0.0"
@@ -3250,15 +3250,15 @@
     translation.js "^0.7.5"
     typescript "^4.8.3"
 
-"@td-design/react-native-image-picker@^1.7.1":
-  version "1.7.1"
-  resolved "https://registry.npmmirror.com/@td-design/react-native-image-picker/-/react-native-image-picker-1.7.1.tgz#b8e74be142cdc148b259e0327eca04ad08e36c21"
-  integrity sha512-PajOc3c8RqFovVapJeJWXVPS0/xh9FZyvbrjEqDivyVC6sUZjY+Hki8pdpbmAgcumFgnQzuDr+9ZM4Q2fi0o7w==
+"@td-design/react-native-image-picker@^1.7.2":
+  version "1.7.2"
+  resolved "https://registry.npmmirror.com/@td-design/react-native-image-picker/-/react-native-image-picker-1.7.2.tgz#4ad21ebf98d9781b36c7eb38c2002422da1ce193"
+  integrity sha512-UlusetaZbebNDK7Fful79mmK+iENItmy4sVndBqXBespyQ5/kKgvtU0i7Z2pm74AQtMIVN6TsErrFU8jTLpRGg==
 
-"@td-design/react-native-picker@^2.3.3":
-  version "2.3.3"
-  resolved "https://registry.npmmirror.com/@td-design/react-native-picker/-/react-native-picker-2.3.3.tgz#43735c4fe2cecde66e241b81bd7312fac0785959"
-  integrity sha512-tkQ7sVFTJg0XaEv7hkbsOr0CCWr88gudHmrOtQ8pw8AatcIAReUbZsVF6iUE5WAz8YHAE+2cv6Tfv/0Fx6v/gg==
+"@td-design/react-native-picker@^2.4.2":
+  version "2.4.2"
+  resolved "https://registry.npmmirror.com/@td-design/react-native-picker/-/react-native-picker-2.4.2.tgz#e55d25c0b6245d6ecacc009b9041c476932a739f"
+  integrity sha512-6EA/Jbh96DGtIQ/gWwU3QffmcLsO/wfAagy1AnZyr8SLBxs5PNuhYqyo1K5Y4/kJenCNJaq5Sq2pNm/8NFHK4A==
   dependencies:
     array-tree-filter "^2.1.0"
     dayjs "^1.11.9"
@@ -3272,10 +3272,10 @@
   dependencies:
     color "^4.2.3"
 
-"@td-design/react-native@^5.4.3":
-  version "5.4.3"
-  resolved "https://registry.npmmirror.com/@td-design/react-native/-/react-native-5.4.3.tgz#61e93ae9cd75792c6c8acc16ce5b1f4711787a0c"
-  integrity sha512-Dq7Iw3rdNgwzUzZtFsTSpGDvHtl4rTh4DsfmvNwui+NmrpdbkO3HcEU1wowuHl3azuxMwD33flA1Gz1582DOVg==
+"@td-design/react-native@^5.5.3":
+  version "5.5.3"
+  resolved "https://registry.npmmirror.com/@td-design/react-native/-/react-native-5.5.3.tgz#ca91e32a95ec9bbea208f2d2b4f6dcc341b82d0c"
+  integrity sha512-NZLHtg8+V0lrkV22dMX3PspO7063BNhnfue7p6Zkoa/XP86J2pNjOaOPPVYr8HNtYfXqCZxB8c44dyqvoVCf8A==
   dependencies:
     "@shopify/restyle" "2.4.2"
     "@td-design/rn-hooks" "^2.7.3"
@@ -3447,10 +3447,10 @@
   resolved "https://registry.npmmirror.com/@types/prop-types/-/prop-types-15.7.5.tgz#5f19d2b85a98e9558036f6a3cacc8819420f05cf"
   integrity sha512-JCB8C6SnDoQf0cNycqd/35A7MjcnK+ZTqE7judS6o7utxUCg6imJg3QK2qzHKszlTjcj2cn+NwMB2i96ubpj7w==
 
-"@types/react-native@^0.72.7":
-  version "0.72.7"
-  resolved "https://registry.npmmirror.com/@types/react-native/-/react-native-0.72.7.tgz#9479b6f68934a410b7b1b45a77336ae93b3d9a53"
-  integrity sha512-LvxJD7VINBiJVcY9UgUVcmPMPiKGO5jHjPM6JrchfP+z1zx0AENL6UOGng1ueaHTRROMTVxZRzO7WVi6DFrMyw==
+"@types/react-native@^0.72.8":
+  version "0.72.8"
+  resolved "https://registry.npmmirror.com/@types/react-native/-/react-native-0.72.8.tgz#eb6238fab289f5f132f7ccf138bdfe6f21ed93e1"
+  integrity sha512-St6xA7+EoHN5mEYfdWnfYt0e8u6k2FR0P9s2arYgakQGFgU1f9FlPrIEcj0X24pLCF5c5i3WVuLCUdiCYHmOoA==
   dependencies:
     "@react-native/virtualized-lists" "^0.72.4"
     "@types/react" "*"
@@ -3464,10 +3464,10 @@
     "@types/scheduler" "*"
     csstype "^3.0.2"
 
-"@types/react@^18.2.39":
-  version "18.2.39"
-  resolved "https://registry.npmmirror.com/@types/react/-/react-18.2.39.tgz#744bee99e053ad61fe74eb8b897f3ab5b19a7e25"
-  integrity sha512-Oiw+ppED6IremMInLV4HXGbfbG6GyziY3kqAwJYOR0PNbkYDmLWQA3a95EhdSmamsvbkJN96ZNN+YD+fGjzSBA==
+"@types/react@^18.2.46":
+  version "18.2.46"
+  resolved "https://registry.npmmirror.com/@types/react/-/react-18.2.46.tgz#f04d6c528f8f136ea66333bc66abcae46e2680df"
+  integrity sha512-nNCvVBcZlvX4NU1nRRNV/mFl1nNRuTuslAJglQsq+8ldXe5Xv0Wd2f7WTE3jOxhLH2BFfiZGC6GCp+kHQbgG+w==
   dependencies:
     "@types/prop-types" "*"
     "@types/scheduler" "*"
