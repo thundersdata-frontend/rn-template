@@ -451,7 +451,6 @@
 					"\"${PODS_CONFIGURATION_BUILD_DIR}/react-native-blob-util\"",
 					"\"${PODS_CONFIGURATION_BUILD_DIR}/react-native-config\"",
 					"\"${PODS_CONFIGURATION_BUILD_DIR}/react-native-image-picker\"",
-					"\"${PODS_CONFIGURATION_BUILD_DIR}/react-native-image-resizer\"",
 					"\"${PODS_CONFIGURATION_BUILD_DIR}/react-native-mmkv\"",
 					"\"${PODS_CONFIGURATION_BUILD_DIR}/react-native-pager-view\"",
 					"\"${PODS_CONFIGURATION_BUILD_DIR}/react-native-restart\"",
@@ -563,7 +562,6 @@
 					"\"${PODS_CONFIGURATION_BUILD_DIR}/react-native-blob-util\"",
 					"\"${PODS_CONFIGURATION_BUILD_DIR}/react-native-config\"",
 					"\"${PODS_CONFIGURATION_BUILD_DIR}/react-native-image-picker\"",
-					"\"${PODS_CONFIGURATION_BUILD_DIR}/react-native-image-resizer\"",
 					"\"${PODS_CONFIGURATION_BUILD_DIR}/react-native-mmkv\"",
 					"\"${PODS_CONFIGURATION_BUILD_DIR}/react-native-pager-view\"",
 					"\"${PODS_CONFIGURATION_BUILD_DIR}/react-native-restart\"",
@@ -657,7 +655,8 @@
 				);
 				OTHER_LDFLAGS = (
 					"$(inherited)",
-					" ",
+					"-Wl",
+					"-ld_classic",
 				);
 				REACT_NATIVE_PATH = "${PODS_ROOT}/../../node_modules/react-native";
 				SDKROOT = iphoneos;
@@ -731,7 +730,8 @@
 				);
 				OTHER_LDFLAGS = (
 					"$(inherited)",
-					" ",
+					"-Wl",
+					"-ld_classic",
 				);
 				REACT_NATIVE_PATH = "${PODS_ROOT}/../../node_modules/react-native";
 				SDKROOT = iphoneos;

@@ -20,14 +20,19 @@ const FormContent = () => {
   const { error, clearError, submitFormFailed, forgetPassword, beforeSendSms, smsSend } = useAuthService();
 
   return (
-    <Form form={form} onFinish={forgetPassword} onFinishFailed={submitFormFailed} onValuesChange={clearError}>
+    <Form
+      form={form}
+      bordered={false}
+      onFinish={forgetPassword}
+      onFinishFailed={submitFormFailed}
+      onValuesChange={clearError}
+    >
       <FormItem name="phone" rules={mobilePhoneRules}>
         <Input placeholder="请输入手机号" leftIcon={<Icon name="mobile" color={theme.colors.icon} />} allowClear />
       </FormItem>
       <WhiteSpace size="x6" />
       <FormItem name="code" rules={[{ required: true, message: '请输入验证码' }]}>
         <CountDown
-          bordered
           leftIcon={<Icon name="sms" color={theme.colors.icon} />}
           onBefore={() => beforeSendSms(form.getFieldValue('phone'))}
           onSend={() => smsSend({ mobile: form.getFieldValue('phone'), type: SmsTypeEnum.修改密码 })}

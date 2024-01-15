@@ -20,7 +20,13 @@ const FormContent = () => {
   const { error, clearError, loading, beforeSendSms, smsSend, submitFormFailed, register } = useAuthService();
 
   return (
-    <Form form={form} onFinish={register} onFinishFailed={submitFormFailed} onValuesChange={clearError}>
+    <Form
+      form={form}
+      bordered={false}
+      onFinish={register}
+      onFinishFailed={submitFormFailed}
+      onValuesChange={clearError}
+    >
       <FormItem
         name="username"
         rules={[
@@ -37,7 +43,6 @@ const FormContent = () => {
       <WhiteSpace size="x6" />
       <FormItem name="code" rules={[{ required: true, message: '请输入验证码' }]}>
         <CountDown
-          bordered
           leftIcon={<Icon name="sms" color={theme.colors.icon} />}
           onBefore={() => beforeSendSms(form.getFieldValue('phone'))}
           onSend={() => smsSend({ mobile: form.getFieldValue('phone'), type: SmsTypeEnum.注册 })}

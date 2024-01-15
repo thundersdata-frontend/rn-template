@@ -19,7 +19,7 @@ function TestForm() {
   const { form, onFinish, onFinishFailed } = useShareModelService.useModel();
   return (
     <Box>
-      <Form form={form} onFinish={onFinish} onFinishFailed={onFinishFailed}>
+      <Form form={form} bordered={false} onFinish={onFinish} onFinishFailed={onFinishFailed}>
         <FormItem name="username" rules={[{ required: true, message: '请输入用户名' }]}>
           <Input placeholder="请输入用户名" />
         </FormItem>

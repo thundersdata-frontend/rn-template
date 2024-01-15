@@ -20,7 +20,13 @@ const FormContent = () => {
   const { error, clearError, submitFormFailed, modifyPassword } = useAuthService();
 
   return (
-    <Form form={form} onFinish={modifyPassword} onFinishFailed={submitFormFailed} onValuesChange={clearError}>
+    <Form
+      form={form}
+      bordered={false}
+      onFinish={modifyPassword}
+      onFinishFailed={submitFormFailed}
+      onValuesChange={clearError}
+    >
       <FormItem
         name="oldPassword"
         rules={[
