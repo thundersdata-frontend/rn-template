@@ -2,6 +2,7 @@ import Image from 'react-native-fast-image';
 
 import { NavigationProp, useNavigation } from '@react-navigation/native';
 import { ActionSheet, Avatar, helpers, Input, List, Modal, Text, WingBlank } from '@td-design/react-native';
+import { File } from '@td-design/react-native-image-picker/lib/typescript/type';
 import { useAtomValue } from 'jotai';
 
 import { userInfoAtom } from '@/atoms';

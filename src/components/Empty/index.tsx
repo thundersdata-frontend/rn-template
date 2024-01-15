@@ -1,4 +1,5 @@
 import { FC } from 'react';
+import { ImageRequireSource } from 'react-native';
 import Image, { Source } from 'react-native-fast-image';
 
 import { BackgroundColorProps, LayoutProps } from '@shopify/restyle';
@@ -10,7 +11,7 @@ const { px } = helpers;
 type EmptyProps = BackgroundColorProps<Theme> &
   LayoutProps<Theme> & {
     /** 图片地址 */
-    source?: number | Source;
+    source?: Source | ImageRequireSource;
     /** 图片宽度 */
     imgWidth?: number;
     /** 图片高度 */
@@ -48,9 +49,7 @@ export const Empty: FC<EmptyProps> = ({
             {subText}
           </Text>
         )}
-        {showButton && buttonProps && (
-          <Button style={{ marginTop: px(24) }} type="primary" width={px(326)} {...buttonProps} />
-        )}
+        {showButton && buttonProps && <Button type="primary" width={px(326)} {...buttonProps} />}
       </Flex>
     );
   };

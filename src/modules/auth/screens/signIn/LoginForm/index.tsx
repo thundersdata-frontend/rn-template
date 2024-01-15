@@ -34,7 +34,13 @@ const FormContent = ({ isSmsLogin }: { isSmsLogin: boolean }) => {
     useAuthService(isSmsLogin);
 
   return (
-    <Form form={form} onFinish={handleFinish} onFinishFailed={submitFormFailed} onValuesChange={handleFormValueChange}>
+    <Form
+      form={form}
+      bordered={false}
+      onFinish={handleFinish}
+      onFinishFailed={submitFormFailed}
+      onValuesChange={handleFormValueChange}
+    >
       {isSmsLogin ? (
         <Box>
           <FormItem name="phone" rules={mobilePhoneRules}>
@@ -48,7 +54,6 @@ const FormContent = ({ isSmsLogin }: { isSmsLogin: boolean }) => {
           <WhiteSpace size="x6" />
           <FormItem name="sms" rules={[{ required: true, message: '请输入验证码' }]}>
             <CountDown
-              bordered
               leftIcon={<Icon name="sms" color={theme.colors.icon} />}
               onBefore={() => beforeSendSms(form.getFieldValue('phone'))}
               onSend={() => smsSend({ mobile: form.getFieldValue('phone'), type: SmsTypeEnum.登录 })}

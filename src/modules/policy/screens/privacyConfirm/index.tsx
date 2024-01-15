@@ -24,7 +24,6 @@ export const PrivacyConfirm = () => {
   const updateConfirm = useSetAtom(confirmedAtom);
 
   const handleOk = () => {
-    // TODO 在这里init各种SDK
     updateConfirm(true);
     navigation.navigate('SignIn');
   };

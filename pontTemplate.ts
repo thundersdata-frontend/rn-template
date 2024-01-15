@@ -1,5 +1,4 @@
-import * as Pont from '@td-design/pont-engine';
-import { CodeGenerator, Interface, Property } from '@td-design/pont-engine';
+import Pont, { CodeGenerator, Interface, Property } from '@td-design/pont-engine';
 
 export class FileStructures extends Pont.FileStructures {
   getDataSourcesTs() {
@@ -99,7 +98,7 @@ export default class MyGenerator extends CodeGenerator {
     let typeWithValue = `= ${this.getInitialValue(typeName, isDefsType, false)}`;
 
     if (prop.dataType.typeName === baseName) {
-      typeWithValue = `= {}`;
+      typeWithValue = '= {}';
     }
 
     let propName = prop.name;
@@ -144,19 +143,23 @@ export default class MyGenerator extends CodeGenerator {
     const paramsCode = inter.getParamsCode();
     const bodyParamsCode = inter.getBodyParamsCode();
     const hasGetParams = !!inter.parameters.filter(param => param.in !== 'body').length;
-    let requestParams = bodyParamsCode ? `bodyParams: ${bodyParamsCode}, params: Params` : `params: Params`;
+    let requestParams = bodyParamsCode ? `bodyParams: ${bodyParamsCode}, params: Params` : 'params: Params';
 
     if (!hasGetParams) {
       requestParams = bodyParamsCode ? `bodyParams: ${bodyParamsCode}` : '';
     }
 
     return `
+      /** 请求参数 */ 
       export ${paramsCode}
 
+      /** 请求结果 */ 
       export type Response = ${inter.responseType}
 
-      export const init: Response;
-      export const url: string;
+      /** 用于取消请求 */ 
+      export const controller: AbortController;
+
+      /** 请求方法 */
       export function fetch(${requestParams}): Promise<Response>;
     `;
   }
@@ -168,16 +171,13 @@ export default class MyGenerator extends CodeGenerator {
     const bodyParamsCode = inter.getBodyParamsCode();
     // 判断是否有params参数
     const hasGetParams = !!inter.parameters.filter(param => param.in !== 'body').length;
-    let requestParams = bodyParamsCode ? `data = {}, params = {}` : `params = {}`;
-    let requestStr = bodyParamsCode ? `data, params` : `params`;
+    let requestParams = bodyParamsCode ? 'data = {}, params = {}' : 'params = {}';
+    let requestStr = bodyParamsCode ? 'data, params' : 'params';
     if (!hasGetParams) {
-      requestParams = bodyParamsCode ? `data = {}` : 'params = {}';
-      requestStr = bodyParamsCode ? `data` : 'params';
+      requestParams = bodyParamsCode ? 'data = {}' : 'params = {}';
+      requestStr = bodyParamsCode ? 'data' : 'params';
     }
     const requestObj = this.getRequest(bodyParamsCode, inter.method);
-
-    const { typeName, isDefsType } = inter.response;
-    const initValue = this.getInitialValue(typeName, isDefsType);
 
     let defsStr = '';
     if (inter.response.isDefsType) {
@@ -192,14 +192,9 @@ export default class MyGenerator extends CodeGenerator {
       import { initRequest } from '../../../../common';
       import Config from 'react-native-config';
 
-      const backEndUrl = Config['${this.dataSource.name}'];
-
-      /** 初始值 */
-      export const initialValue = ${initValue};
-      /** 接口地址 */
-      export const url = "${inter.path}";
       /** 用于取消请求 */ 
       export const controller = new AbortController();
+
       /** 请求方法，异常情况需要自己在业务端进行处理 */
       export async function fetch(${requestParams}) {
         const request = initRequest();
@@ -207,8 +202,8 @@ export default class MyGenerator extends CodeGenerator {
 
         const {data: result} = await request<AjaxResponse>({
           method: '${requestObj.method}',
-          baseURL: backEndUrl,
-          url: url,
+          baseURL: Config['${this.dataSource.name}'],
+          url: "${inter.path}",
           ${requestStr},
           signal: controller.signal,
         });

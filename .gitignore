@@ -22,6 +22,7 @@ DerivedData
 *.dSYM.zip
 fir-*.png
 *.xcuserstate
+ios/.xcode.env.local
 
 # Android/IntelliJ
 #
@@ -31,6 +32,7 @@ build/
 local.properties
 *.iml
 .expo
+.cxx/
 
 # node.js
 #
@@ -50,15 +52,17 @@ buck-out/
 # For more information about the recommended setup visit:
 # https://docs.fastlane.tools/best-practices/source-control/
 
-*/fastlane/report.xml
-*/fastlane/Preview.html
-*/fastlane/screenshots
+**/fastlane/report.xml
+**/fastlane/Preview.html
+**/fastlane/screenshots
+**/fastlane/test_output
 
 # Bundle artifact
 *.jsbundle
 
-# CocoaPods
+# Ruby / CocoaPods
 /ios/Pods/
+/vendor/bundle/
 Podfile.lock
 
 .mocks/
@@ -68,3 +72,10 @@ Podfile.lock
 ios/tmp.xcconfig
 
 *.tar.gz
+
+# testing
+/coverage
+# Expo
+.expo
+dist/
+web-build/

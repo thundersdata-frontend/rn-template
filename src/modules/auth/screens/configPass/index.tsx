@@ -20,7 +20,13 @@ const FormContent: FC<{ onFinish: (values: Store) => void }> = ({ onFinish }) =>
   const { error, clearError, submitFormFailed } = useAuthService();
 
   return (
-    <Form form={form} onFinish={onFinish} onFinishFailed={submitFormFailed} onValuesChange={clearError}>
+    <Form
+      form={form}
+      bordered={false}
+      onFinish={onFinish}
+      onFinishFailed={submitFormFailed}
+      onValuesChange={clearError}
+    >
       <FormItem name="password" rules={passwordRules}>
         <Input
           placeholder="请输入密码"

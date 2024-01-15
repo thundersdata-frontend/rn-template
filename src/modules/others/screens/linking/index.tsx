@@ -22,7 +22,7 @@ export function LinkingFormDemo() {
 
   return (
     <Container>
-      <Form form={form} onFinish={onFinish}>
+      <Form form={form} bordered={false} onFinish={onFinish}>
         <FormItem name="username" rules={[{ required: true, message: '请输入用户名' }]}>
           <Input placeholder="请输入用户名" />
         </FormItem>

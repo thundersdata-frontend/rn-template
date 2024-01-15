@@ -3,13 +3,6 @@ declare module '*.jpg';
 declare module '*.webp';
 declare module '*.gif';
 
-interface File {
-  fileName: string;
-  fileType: string;
-  uri: string;
-  fileSize?: number;
-}
-
 interface Page<T> {
   list: Array<T>;
   page: number;
@@ -33,7 +26,7 @@ interface Token {
   ispassword?: boolean;
 }
 
-interface AjaxResponse<T = any> {
+interface AjaxResponse<T = unknown> {
   code: number;
   success: boolean;
   message: string;

@@ -156,8 +156,8 @@ export function IndexedBar<T extends Obj>({
   return (
     <>
       <FlashList
-        {...restProps}
         nestedScrollEnabled
+        {...restProps}
         ref={listRef}
         data={list as T[]}
         estimatedItemSize={itemHeight}

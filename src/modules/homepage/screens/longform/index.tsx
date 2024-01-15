@@ -85,16 +85,10 @@ export function LongForm() {
           <WingBlank>
             <Form form={form} onFinish={handleFinish} onFinishFailed={handleFinishFailed}>
               <FormItem name="username" rules={[{ required: true, message: '请输入用户名' }]}>
-                <InputItem required label="姓名" placeholder="请输入姓名" inputStyle={{ textAlign: 'right' }} />
+                <InputItem placeholder="请输入姓名" inputStyle={{ textAlign: 'right' }} />
               </FormItem>
               <FormItem name="email" rules={[{ required: true, message: '请输入邮箱' }]}>
-                <InputItem
-                  keyboardType="email-address"
-                  required
-                  label="邮箱"
-                  placeholder="请输入邮箱"
-                  inputStyle={{ textAlign: 'right' }}
-                />
+                <InputItem keyboardType="email-address" placeholder="请输入邮箱" inputStyle={{ textAlign: 'right' }} />
               </FormItem>
               <FormListItem title="性别" name="gender" required rules={[{ required: true, message: '请选择性别' }]}>
                 <Radio
@@ -166,8 +160,6 @@ export function LongForm() {
                 <InputItem
                   returnKeyType="done"
                   keyboardType="url"
-                  required
-                  label="个人网站"
                   placeholder="请输入个人网站"
                   inputStyle={{ textAlign: 'right' }}
                 />

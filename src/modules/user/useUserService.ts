@@ -1,4 +1,5 @@
 import { Toast } from '@td-design/react-native';
+import { File } from '@td-design/react-native-image-picker/lib/typescript/type';
 import { useMemoizedFn } from '@td-design/rn-hooks';
 import { useSetAtom } from 'jotai';
 
