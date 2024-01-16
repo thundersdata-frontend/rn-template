@@ -1,4 +1,4 @@
-import { Toast } from '@td-design/react-native';
+import { type File, Toast } from '@td-design/react-native';
 import { useMemoizedFn } from '@td-design/rn-hooks';
 import { useSetAtom } from 'jotai';
 
@@ -7,8 +7,6 @@ import { useCustomRequest } from '@/hooks/useCustomRequest';
 import { useError } from '@/hooks/useError';
 import { useNotify } from '@/hooks/useNotify';
 import { mockChangeAvatar, mockFetchUserInfo, mockUpdateUsername } from '@/modules/mock';
-
-// import { uploadFile } from '@/utils/upload';
 
 export function useUserService() {
   const { successNotify, failNotify } = useNotify();

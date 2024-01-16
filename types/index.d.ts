@@ -3,13 +3,6 @@ declare module '*.jpg';
 declare module '*.webp';
 declare module '*.gif';
 
-interface File {
-  fileName: string;
-  fileType: string;
-  uri: string;
-  fileSize?: number;
-}
-
 interface Page<T> {
   list: Array<T>;
   page: number;

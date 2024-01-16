@@ -8,8 +8,10 @@ import {
   Button,
   Checkbox,
   Form,
+  FormItem,
+  FormListItem,
   helpers,
-  Input,
+  InputItem,
   Modal,
   NumberKeyboard,
   Radio,
@@ -17,6 +19,8 @@ import {
   type Store,
   Switch,
   Text,
+  TextArea,
+  useForm,
   type ValidateErrorEntity,
   WhiteSpace,
   WingBlank,
@@ -28,8 +32,6 @@ import { type FieldData } from 'rc-field-form/es/interface';
 
 import { Container } from '@/components/Container';
 
-const { FormItem, FormListItem, useForm } = Form;
-const { InputItem, TextArea } = Input;
 const { NumberKeyboardItem } = NumberKeyboard;
 const { px, ONE_PIXEL } = helpers;
 const residences = [

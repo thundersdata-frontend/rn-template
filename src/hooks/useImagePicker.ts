@@ -6,6 +6,7 @@ import {
   launchCamera as launchRNCamera,
 } from 'react-native-image-picker';
 
+import { File } from '@td-design/react-native';
 import { useBoolean, useMemoizedFn } from '@td-design/rn-hooks';
 
 export interface ImagePickerProps {

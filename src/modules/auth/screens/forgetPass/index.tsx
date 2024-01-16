@@ -2,7 +2,7 @@
  * 忘记密码页面
  */
 import { NavigationProp, useNavigation } from '@react-navigation/native';
-import { Box, Button, CountDown, Form, Input, useTheme, WhiteSpace } from '@td-design/react-native';
+import { Box, Button, CountDown, Form, FormItem, Input, useForm, useTheme, WhiteSpace } from '@td-design/react-native';
 
 import Icon from '@/components/Icon';
 import { SmsTypeEnum } from '@/enums';
@@ -11,8 +11,6 @@ import { ErrorMessage } from '@/modules/auth/components/ErrorMessage';
 import { useAuthService } from '@/modules/auth/useAuthService';
 import { AppTheme } from '@/theme';
 import { mobilePhoneRules, passwordRules } from '@/utils/validators';
-
-const { FormItem, useForm } = Form;
 
 const FormContent = () => {
   const [form] = useForm();

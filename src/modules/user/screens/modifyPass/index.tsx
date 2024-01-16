@@ -2,7 +2,18 @@
  * 通过手机号登录时，设置登录密码
  */
 import { KeyboardInsetsView } from '@sdcx/keyboard-insets';
-import { Box, Button, Form, helpers, Input, useTheme, WhiteSpace, WingBlank } from '@td-design/react-native';
+import {
+  Box,
+  Button,
+  Form,
+  FormItem,
+  helpers,
+  Input,
+  useForm,
+  useTheme,
+  WhiteSpace,
+  WingBlank,
+} from '@td-design/react-native';
 
 import { Container } from '@/components/Container';
 import Icon from '@/components/Icon';
@@ -12,7 +23,6 @@ import { AppTheme } from '@/theme';
 import { passwordPattern } from '@/utils/validators';
 
 const { px } = helpers;
-const { FormItem, useForm } = Form;
 
 const FormContent = () => {
   const theme = useTheme<AppTheme>();
