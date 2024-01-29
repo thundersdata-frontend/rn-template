@@ -39,11 +39,7 @@ function LongList({ orderDate }: { orderDate: Date }) {
   );
 
   return (
-    <LargeList
-      keyExtractor={item => item.id + ''}
-      estimatedItemSize={200}
-      {...{ renderItem, data, loadMore, refresh, loading }}
-    />
+    <LargeList keyExtractor={'id'} estimatedItemSize={200} {...{ renderItem, data, loadMore, refresh, loading }} />
   );
 }
 

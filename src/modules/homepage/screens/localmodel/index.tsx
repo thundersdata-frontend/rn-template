@@ -1,10 +1,9 @@
-import { Box, Button, Form, Input, WhiteSpace } from '@td-design/react-native';
+import { Box, Button, Form, FormItem, Input, WhiteSpace } from '@td-design/react-native';
 
 import { Container } from '@/components/Container';
 
 import useShareModelService from './useShareModelService';
 
-const { FormItem } = Form;
 export function LocalModelDemo() {
   return (
     <Container>

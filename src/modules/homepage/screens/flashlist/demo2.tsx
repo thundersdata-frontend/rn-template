@@ -68,7 +68,7 @@ export function FlashListDemo2() {
     <Container>
       <LargeList
         getItemType={item => item.type}
-        keyExtractor={item => item.id + ''}
+        keyExtractor={'id'}
         estimatedItemSize={40}
         {...{ renderItem, data, refresh, loadMore, loading }}
       />

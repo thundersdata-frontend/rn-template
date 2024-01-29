@@ -3,7 +3,7 @@
  */
 import { FC } from 'react';
 
-import { Box, Button, Form, Input, type Store, useTheme, WhiteSpace } from '@td-design/react-native';
+import { Box, Button, Form, FormItem, Input, type Store, useForm, useTheme, WhiteSpace } from '@td-design/react-native';
 
 import Icon from '@/components/Icon';
 import { AuthTemplate } from '@/modules/auth/components/AuthTemplate';
@@ -11,8 +11,6 @@ import { ErrorMessage } from '@/modules/auth/components/ErrorMessage';
 import { useAuthService } from '@/modules/auth/useAuthService';
 import { AppTheme } from '@/theme';
 import { passwordRules } from '@/utils/validators';
-
-const { FormItem, useForm } = Form;
 
 const FormContent: FC<{ onFinish: (values: Store) => void }> = ({ onFinish }) => {
   const [form] = useForm();

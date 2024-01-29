@@ -12,9 +12,7 @@ install! 'cocoapods', :deterministic_uuids => false
 platform :ios, '13.0'
 prepare_react_native_project!
 
-if ENV['NO_FLIPPER'] == "1"
-  pod 'OpenSSL-Universal'
-end
+pod 'SDWebImageWebPCoder'
 
 # If you are using a `react-native-flipper` your iOS build will fail when `NO_FLIPPER=1` is set.
 # because `react-native-flipper` depends on (FlipperKit,...) that will be excluded

@@ -48,7 +48,7 @@ export function FlashListDemo1() {
   return (
     <Container>
       <LargeList
-        keyExtractor={item => item.id + ''}
+        keyExtractor={'id'}
         estimatedItemSize={200}
         renderSeparator={() => <WhiteSpace />}
         renderEmpty={height => <Empty height={height} />}

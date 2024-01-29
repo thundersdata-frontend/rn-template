@@ -2,7 +2,6 @@
 
 #import <React/RCTBundleURLProvider.h>
 #import "RNBootSplash.h" // <- add the header import
-#import "SDImageCodersManager.h"
 #import <SDWebImageWebPCoder/SDImageWebPCoder.h>  // <- add webp support for ios8+ ~ ios13
 #import <CodePush/CodePush.h> // <- add code push import
 #import "ShortcutModule.h"

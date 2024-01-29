@@ -1,15 +1,13 @@
 import { useEffect } from 'react';
 
 import { RouteProp, useRoute } from '@react-navigation/native';
-import { Button, Form, Input, Store, WhiteSpace } from '@td-design/react-native';
+import { Button, Form, FormItem, Input, Store, useForm, WhiteSpace } from '@td-design/react-native';
 
 import { Container } from '@/components/Container';
 
-const { FormItem } = Form;
-
 export function LinkingFormDemo() {
   const route = useRoute<RouteProp<AppParamList, 'LinkingFormDemo'>>();
-  const [form] = Form.useForm();
+  const [form] = useForm();
 
   useEffect(() => {
     const { username, password } = route.params;

@@ -1,10 +1,11 @@
 import { useEffect } from 'react';
-import { ActivityIndicator } from 'react-native';
+import { ActivityIndicator, ViewStyle } from 'react-native';
 
 import { RefreshControl } from '@sdcx/pull-to-refresh';
 import { FlashList, FlashListProps } from '@shopify/flash-list';
 import { Box, Center, Flex, helpers, Indicator, Text, useTheme } from '@td-design/react-native';
 import { useSafeState } from '@td-design/rn-hooks';
+import { uniqBy } from 'lodash-es';
 
 import { AppTheme } from '@/theme';
 
@@ -60,6 +61,8 @@ export function LargeList<T>({
   renderFooter,
   renderSeparator,
   onEndReachedThreshold = 0.2,
+  keyExtractor,
+  style,
   ...restProps
 }: Omit<
   FlashListProps<T>,
@@ -73,11 +76,13 @@ export function LargeList<T>({
   | 'onEndReached'
   | 'onEndReachedThreshold'
   | 'estimatedItemSize'
+  | 'keyExtractor'
 > & {
   data?: Page<T>;
   loading?: boolean;
-  refresh: () => Promise<void>;
-  loadMore: () => Promise<void>;
+  keyExtractor: keyof T;
+  refresh: () => Promise<unknown>;
+  loadMore: () => Promise<unknown>;
   renderHeader?: () => JSX.Element | null;
   renderFooter?: () => JSX.Element | null;
   renderEmpty?: (height?: number) => JSX.Element | null;
@@ -85,6 +90,7 @@ export function LargeList<T>({
   onRefresh?: () => void;
   onEndReachedThreshold?: number;
   estimatedItemSize: number;
+  style?: ViewStyle;
 }) {
   const theme = useTheme<AppTheme>();
 
@@ -97,12 +103,13 @@ export function LargeList<T>({
   useEffect(() => {
     if (!data) return;
 
-    const { page, pageSize, total, list = [] } = data;
+    const { page, pageSize, total = 0 } = data;
     const noMoreData = page * pageSize >= total;
+
     if (page === 1) {
-      setList(list);
+      setList(data.list || []);
     } else {
-      setList(prev => [...prev, ...list]);
+      setList(prev => uniqBy([...prev, ...(data.list || [])], keyExtractor));
     }
     setNoMoreData(noMoreData);
   }, [data]);
@@ -184,10 +191,11 @@ export function LargeList<T>({
           itemVisiblePercentThreshold: 50,
           minimumViewTime: 1000,
         }}
-        contentContainerStyle={{ padding: theme.spacing.x2 }}
+        contentContainerStyle={style ? style : { padding: theme.spacing.x3 }}
         onEndReached={onEndReached}
         onEndReachedThreshold={onEndReachedThreshold}
         refreshControl={<RefreshControl refreshing={refreshing} onRefresh={onRefresh} />}
+        keyExtractor={(item, i) => `${i}-${item[keyExtractor]}`}
       />
     </Box>
   );

@@ -6,10 +6,12 @@ import {
   CountDown,
   Flex,
   Form,
+  FormItem,
   Input,
   Radio,
   Text,
   Theme,
+  useForm,
   useTheme,
   WhiteSpace,
 } from '@td-design/react-native';
@@ -23,8 +25,6 @@ import { AppTheme } from '@/theme';
 import { mobilePhoneRules } from '@/utils/validators';
 
 import { LoginTab } from '../LoginTab';
-
-const { FormItem, useForm } = Form;
 
 const FormContent = ({ isSmsLogin }: { isSmsLogin: boolean }) => {
   const navigation = useNavigation<NavigationProp<AuthStackParamList & CommonStackParamList, 'SignIn'>>();
