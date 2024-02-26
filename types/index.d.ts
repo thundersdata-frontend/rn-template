@@ -10,10 +10,15 @@ interface File {
   fileSize?: number;
 }
 
-interface Page<T> {
-  list: Array<T>;
+type QueryKey = [string, Obj] | [string];
+
+interface PageParams {
   page: number;
   pageSize: number;
+}
+
+interface Page<T> extends PageParams {
+  list: Array<T>;
   total: number;
   totalPage?: number;
 }

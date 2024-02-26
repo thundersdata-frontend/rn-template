@@ -11,11 +11,13 @@ import { ContactsDemo } from '@/modules/homepage/screens/contacts';
 import { FlashListDemo } from '@/modules/homepage/screens/flashlist';
 import { FlashListDemo1 } from '@/modules/homepage/screens/flashlist/demo1';
 import { FlashListDemo2 } from '@/modules/homepage/screens/flashlist/demo2';
+import { FlashListDemo3 } from '@/modules/homepage/screens/flashlist/demo3';
 import { LocalModelDemo } from '@/modules/homepage/screens/localmodel';
 import { LongForm } from '@/modules/homepage/screens/longform';
 import { NavigationModal } from '@/modules/homepage/screens/modal';
 import { LocalImageDemo } from '@/modules/homepage/screens/pictures/demo1';
 import { OnlineImageDemo } from '@/modules/homepage/screens/pictures/demo2';
+import { GetDetailDemo1 } from '@/modules/homepage/screens/query/demo1';
 import { TabListDemo } from '@/modules/homepage/screens/tablist';
 import { TextDemo } from '@/modules/homepage/screens/text';
 import { WaterfallListDemo } from '@/modules/homepage/screens/waterfall';
@@ -121,6 +123,13 @@ const MAIN_SCREENS = [
     },
   },
   {
+    name: 'FlashListDemo3',
+    component: FlashListDemo3,
+    options: {
+      title: 'FlashListDemo3示例',
+    },
+  },
+  {
     name: 'WaterfallListDemo',
     component: WaterfallListDemo,
     options: {
@@ -195,6 +204,13 @@ const MAIN_SCREENS = [
     component: DetailDemo,
     options: {
       title: 'RESTFUL传参示例',
+    },
+  },
+  {
+    name: 'GetDetailDemo1',
+    component: GetDetailDemo1,
+    options: {
+      title: 'useCustomQuery示例',
     },
   },
 ];

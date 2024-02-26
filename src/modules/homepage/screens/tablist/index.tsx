@@ -28,9 +28,9 @@ export const TabListDemo = () => {
   }, [orderDate]);
 
   const routes = [
-    { key: 'first', title: 'First', component: <LongList orderDate={orderDate} /> },
-    { key: 'second', title: 'Second', component: <LongList orderDate={orderDate} /> },
-    { key: 'third', title: 'Third', component: <LongList orderDate={orderDate} /> },
+    { key: 'first', title: 'First', component: <LongList orderDate={orderDate} uniqKey="first" /> },
+    { key: 'second', title: 'Second', component: <LongList orderDate={orderDate} uniqKey="second" /> },
+    { key: 'third', title: 'Third', component: <LongList orderDate={orderDate} uniqKey="third" /> },
   ];
 
   return (

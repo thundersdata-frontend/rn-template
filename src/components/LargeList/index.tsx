@@ -1,11 +1,9 @@
-import { useEffect } from 'react';
-import { ActivityIndicator, ViewStyle } from 'react-native';
+import { ViewStyle } from 'react-native';
 
 import { RefreshControl } from '@sdcx/pull-to-refresh';
 import { FlashList, FlashListProps } from '@shopify/flash-list';
 import { Box, Center, Flex, helpers, Indicator, Text, useTheme } from '@td-design/react-native';
 import { useSafeState } from '@td-design/rn-hooks';
-import { uniqBy } from 'lodash-es';
 
 import { AppTheme } from '@/theme';
 
@@ -55,6 +53,8 @@ export function LargeList<T>({
   loadMore,
   loading,
   estimatedItemSize,
+  noMoreData,
+  loadingMore,
   renderItem,
   renderEmpty,
   renderHeader,
@@ -78,16 +78,17 @@ export function LargeList<T>({
   | 'estimatedItemSize'
   | 'keyExtractor'
 > & {
-  data?: Page<T>;
+  data?: T[];
   loading?: boolean;
   keyExtractor: keyof T;
   refresh: () => Promise<unknown>;
-  loadMore: () => Promise<unknown>;
+  loadMore: () => void;
   renderHeader?: () => JSX.Element | null;
   renderFooter?: () => JSX.Element | null;
   renderEmpty?: (height?: number) => JSX.Element | null;
   renderSeparator?: () => JSX.Element | null;
-  onRefresh?: () => void;
+  noMoreData: boolean;
+  loadingMore: boolean;
   onEndReachedThreshold?: number;
   estimatedItemSize: number;
   style?: ViewStyle;
@@ -96,23 +97,6 @@ export function LargeList<T>({
 
   const [height, setHeight] = useSafeState(0);
   const [refreshing, setRefreshing] = useSafeState(false);
-  const [loadingMore, setLoadingMore] = useSafeState(false);
-  const [noMoreData, setNoMoreData] = useSafeState(false);
-  const [list, setList] = useSafeState<T[]>([]);
-
-  useEffect(() => {
-    if (!data) return;
-
-    const { page, pageSize, total = 0 } = data;
-    const noMoreData = page * pageSize >= total;
-
-    if (page === 1) {
-      setList(data.list || []);
-    } else {
-      setList(prev => uniqBy([...prev, ...(data.list || [])], keyExtractor));
-    }
-    setNoMoreData(noMoreData);
-  }, [data]);
 
   const onRefresh = async () => {
     setRefreshing(true);
@@ -120,11 +104,9 @@ export function LargeList<T>({
     setRefreshing(false);
   };
 
-  const onEndReached = async () => {
+  const onEndReached = () => {
     if (refreshing || loadingMore || noMoreData) return;
-    setLoadingMore(true);
-    await loadMore();
-    setLoadingMore(false);
+    loadMore();
   };
 
   // 列表数据为空的时候渲染的组件
@@ -141,7 +123,7 @@ export function LargeList<T>({
     if (loadingMore) {
       return (
         <Flex paddingVertical={'x2'} alignItems={'center'} justifyContent={'center'}>
-          <ActivityIndicator size={'small'} />
+          <Indicator.UIActivityIndicator color={theme.colors.primary200} size={helpers.px(24)} />
           <Text variant={'p1'} color="gray400">
             正在加载更多...
           </Text>
@@ -178,7 +160,7 @@ export function LargeList<T>({
       <FlashList
         nestedScrollEnabled
         {...restProps}
-        data={list}
+        data={data}
         renderItem={renderItem}
         showsVerticalScrollIndicator={false}
         estimatedItemSize={estimatedItemSize}

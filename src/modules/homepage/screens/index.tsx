@@ -17,6 +17,8 @@ export function Homepage() {
     <Container hasHeader={false}>
       <ScrollView>
         <WingBlank>
+          <Button title="useCustomQuery示例" onPress={() => navigation.navigate('GetDetailDemo1')} />
+          <WhiteSpace />
           <Button title="局部共享数据示例" onPress={() => navigation.navigate('LocalModelDemo')} />
           <WhiteSpace />
           <Button title="FlashList示例" onPress={() => navigation.navigate('FlashListDemo')} />

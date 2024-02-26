@@ -3,15 +3,17 @@ import { Box, Text, WhiteSpace } from '@td-design/react-native';
 import { Container } from '@/components/Container';
 import { Empty } from '@/components/Empty';
 import { LargeList } from '@/components/LargeList';
-import { useRefreshService } from '@/hooks/useRefreshService';
+import { useInfiniteScroll } from '@/hooks/useInfiniteScroll';
 
 interface DataType {
   id: number;
   name: string;
 }
 
-function fetchData({ page = 1, pageSize = 10, ...rest }: PageParams & Obj): Promise<Page<DataType>> {
-  console.log('aaaa', rest.test);
+function fetchData(params: PageParams & Obj): Promise<Page<DataType>> {
+  console.log('aaaa', params);
+  const { page, pageSize } = params;
+
   return new Promise(resolve => {
     setTimeout(() => {
       resolve({
@@ -27,17 +29,22 @@ function fetchData({ page = 1, pageSize = 10, ...rest }: PageParams & Obj): Prom
   });
 }
 
-export function FlashListDemo1() {
+export function FlashListDemo3() {
   const renderItem = ({ item }: { item: DataType }) => (
     <Box height={200} alignItems="center" justifyContent={'center'} backgroundColor={'func200'}>
       <Text>{item.name}</Text>
     </Box>
   );
 
-  const { data, loading, noMoreData, loadMore, loadingMore, refresh } = useRefreshService(fetchData, {
-    queryKey: ['flashlist-demo1', { test: '123' }],
-    enabled: true,
-  });
+  /**
+   * 这种写法，就是说d实际上是useInfiniteScroll里面service传过来的参数，即page和pageSize，然后加上name才是真正的参数。
+   */
+  const { data, loading, loadingMore, noMoreData, refresh, loadMore } = useInfiniteScroll(d =>
+    fetchData({
+      ...d,
+      name: 'aaa',
+    })
+  );
 
   return (
     <Container>

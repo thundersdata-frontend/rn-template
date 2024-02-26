@@ -22,4 +22,5 @@
 -keep class com.swmansion.reanimated.** { *; }
 -keep class com.facebook.react.turbomodule.** { *; }
 
+# 注意，这里的包名要和你的项目包名一致，否则会出现react-native-config无法读取.env文件的问题
 -keep class com.rntemplate.BuildConfig { *; }

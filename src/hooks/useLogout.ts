@@ -4,7 +4,7 @@ import { RESET } from 'jotai/utils';
 
 import { signedInAtom, tokenAtom, userInfoAtom } from '@/atoms';
 
-export default function useLogout() {
+export function useLogout() {
   const updateUserInfo = useSetAtom(userInfoAtom);
   const updateSignedIn = useSetAtom(signedInAtom);
   const updateToken = useSetAtom(tokenAtom);

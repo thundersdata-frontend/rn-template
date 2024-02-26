@@ -1,6 +1,6 @@
 import { StyleSheet } from 'react-native';
 
-import { Box, Text } from '@td-design/react-native';
+import { Box, Button, Text } from '@td-design/react-native';
 import { Image } from 'expo-image';
 
 import { Container } from '@/components/Container';
@@ -47,7 +47,10 @@ function fetchData({ page = 1, pageSize = 10 }: { page: number; pageSize: number
 }
 
 export function FlashListDemo2() {
-  const { data, loading, refresh, loadMore } = useRefreshService<DataType>(fetchData);
+  const { data, loading, noMoreData, loadMore, loadingMore, refresh } = useRefreshService<DataType>(fetchData, {
+    queryKey: ['flashlist-demo2'],
+    enabled: false,
+  });
 
   const renderItem = ({ item }: { item: DataType }) => {
     if (item.type === 'text') {
@@ -59,18 +62,19 @@ export function FlashListDemo2() {
     }
     return (
       <Box height={item.height} overflow={'hidden'} margin="x1">
-        <Image source={{ uri: item.url }} style={StyleSheet.absoluteFill} resizeMode="cover" />
+        <Image source={{ uri: item.url }} style={StyleSheet.absoluteFill} contentFit="cover" />
       </Box>
     );
   };
 
   return (
     <Container>
+      <Button title="开始加载" onPress={refresh} />
       <LargeList
         getItemType={item => item.type}
         keyExtractor={'id'}
         estimatedItemSize={40}
-        {...{ renderItem, data, refresh, loadMore, loading }}
+        {...{ renderItem, data, refresh, loadMore, loading, loadingMore, noMoreData }}
       />
     </Container>
   );

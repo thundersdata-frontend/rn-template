@@ -10,8 +10,8 @@ interface DataType {
   name: string;
 }
 
-function fetchData({ page = 1, pageSize = 10 }: { page: number; pageSize: number }): Promise<Page<DataType>> {
-  console.log('aaaa');
+function fetchData({ page = 1, pageSize = 10, orderDate }: PageParams & Obj): Promise<Page<DataType>> {
+  console.log('aaaa', orderDate);
   return new Promise(resolve => {
     setTimeout(() => {
       resolve({
@@ -27,9 +27,12 @@ function fetchData({ page = 1, pageSize = 10 }: { page: number; pageSize: number
   });
 }
 
-function LongList({ orderDate }: { orderDate: Date }) {
-  const { data, refresh, loadMore, loading } = useRefreshService<DataType>(fetchData, {
-    refreshDeps: [orderDate],
+/**
+ * 当在Tabs下使用时，需要保证每个Tab下的组件的queryKey是唯一的，否则会出现切换Tab时数据错乱的问题
+ */
+function LongList({ orderDate, uniqKey }: { orderDate: Date; uniqKey: string }) {
+  const { data, loading, noMoreData, loadMore, loadingMore, refresh } = useRefreshService<DataType>(fetchData, {
+    queryKey: [`LongList-${uniqKey}`, { orderDate }],
   });
 
   const renderItem = ({ item }: { item: DataType }) => (
@@ -39,7 +42,11 @@ function LongList({ orderDate }: { orderDate: Date }) {
   );
 
   return (
-    <LargeList keyExtractor={'id'} estimatedItemSize={200} {...{ renderItem, data, loadMore, refresh, loading }} />
+    <LargeList
+      keyExtractor={'id'}
+      estimatedItemSize={200}
+      {...{ renderItem, data, loadMore, refresh, loading, loadingMore, noMoreData }}
+    />
   );
 }
 

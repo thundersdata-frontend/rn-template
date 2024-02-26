@@ -5,8 +5,8 @@ import { useAtomValue } from 'jotai';
 
 import { userInfoAtom } from '@/atoms';
 import { Container } from '@/components/Container';
-import useImagePicker from '@/hooks/useImagePicker';
-import useLogout from '@/hooks/useLogout';
+import { useImagePicker } from '@/hooks/useImagePicker';
+import { useLogout } from '@/hooks/useLogout';
 import { useUserService } from '@/modules/user/useUserService';
 
 const { px } = helpers;

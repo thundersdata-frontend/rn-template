@@ -24,7 +24,9 @@ function fetchData(): Promise<Page<Contact>> {
 }
 
 export function ContactsDemo() {
-  const { data, refresh, loading } = useRefreshService<Contact>(fetchData);
+  const { data, refresh, loading } = useRefreshService(fetchData, {
+    queryKey: ['contacts'],
+  });
 
   const renderFooter = (length: number) => (
     <Center height={40}>
@@ -35,7 +37,7 @@ export function ContactsDemo() {
   return (
     <Container>
       <IndexedBar
-        data={data?.list ?? []}
+        data={data}
         indexHeight={22}
         itemHeight={44}
         headerHeight={40}

@@ -19,7 +19,7 @@ export interface ImagePickerProps {
   cameraRationale?: Rationale;
 }
 
-export default function useImagePicker({
+export function useImagePicker({
   options = {
     mediaType: 'photo',
     includeBase64: true,

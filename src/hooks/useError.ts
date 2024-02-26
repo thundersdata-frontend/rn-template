@@ -2,7 +2,7 @@ import { useMemoizedFn } from '@td-design/rn-hooks';
 
 import { LoginFailureEnum } from '@/enums';
 
-import useLogout from './useLogout';
+import { useLogout } from './useLogout';
 
 export function useError() {
   const logout = useLogout();

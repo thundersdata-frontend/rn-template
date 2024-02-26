@@ -11,6 +11,7 @@ export function FlashListDemo() {
       <Center>
         <Button title="Demo1" onPress={() => navigation.navigate('FlashListDemo1')} />
         <Button title="Demo2" onPress={() => navigation.navigate('FlashListDemo2')} />
+        <Button title="Demo3" onPress={() => navigation.navigate('FlashListDemo3')} />
       </Center>
     </Container>
   );

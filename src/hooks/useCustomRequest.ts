@@ -5,7 +5,7 @@ import { useAtomValue } from 'jotai';
 import { signedInAtom } from '@/atoms';
 import { LoginFailureEnum } from '@/enums';
 
-import useLogout from './useLogout';
+import { useLogout } from './useLogout';
 import { useNotify } from './useNotify';
 
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
