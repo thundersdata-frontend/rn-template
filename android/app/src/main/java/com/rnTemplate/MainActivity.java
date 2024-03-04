@@ -31,11 +31,11 @@ public class MainActivity extends ReactActivity {
 			savedInstanceState.remove("android:fragments");
 		}
     // 初始化启动页
-    RNBootSplash.init(this);
+    RNBootSplash.init(this, R.style.BootTheme);
     super.onCreate(savedInstanceState);
     // 初始化状态栏
     // 必须在super.onCreate方法之后，不然在顶部会出现app name
-    RNBars.init(this, "light-content", false);
+    RNBars.init(this, false);
     // Layout edge-to-edge
     WindowCompat.setDecorFitsSystemWindows(getWindow(), false);
   }

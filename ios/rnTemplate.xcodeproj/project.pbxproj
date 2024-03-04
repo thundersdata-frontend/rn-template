@@ -13,8 +13,8 @@
 		3AE9805A8A844094A65144BB /* PingFang SC Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = AE61A03338114090B68F1533 /* PingFang SC Regular.ttf */; };
 		63D437B531BA62F29DA1AD42 /* ExpoModulesProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C206673ACE404DC79918FE7 /* ExpoModulesProvider.swift */; };
 		642F6AE428D54C5EBD2FC698 /* Roboto-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 3674E1151718448A9EF2D16C /* Roboto-Regular.ttf */; };
+		7458B01EC723F04A9CE624EA /* libPods-rnTemplate.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 7B26A10EFB26461C3E1C1475 /* libPods-rnTemplate.a */; };
 		81AB9BB82411601600AC10FF /* BootSplash.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 81AB9BB72411601600AC10FF /* BootSplash.storyboard */; };
-		D696E55C50CEB83D11198125 /* Pods_rnTemplate.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6618759674CDEC38C3486726 /* Pods_rnTemplate.framework */; };
 		E446969C29F680DE00DEC513 /* RNExitApp.m in Sources */ = {isa = PBXBuildFile; fileRef = E4F9314729A8625100F33780 /* RNExitApp.m */; };
 		E44696A029F6812800DEC513 /* ClipboardModule.m in Sources */ = {isa = PBXBuildFile; fileRef = E446969D29F6812800DEC513 /* ClipboardModule.m */; };
 		E44696A129F6812800DEC513 /* ShortcutModule.m in Sources */ = {isa = PBXBuildFile; fileRef = E446969E29F6812800DEC513 /* ShortcutModule.m */; };
@@ -33,7 +33,7 @@
 		3674E1151718448A9EF2D16C /* Roboto-Regular.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "Roboto-Regular.ttf"; path = "../assets/fonts/Roboto-Regular.ttf"; sourceTree = "<group>"; };
 		3B4392A12AC88292D35C810B /* Pods-rnTemplate.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-rnTemplate.debug.xcconfig"; path = "Target Support Files/Pods-rnTemplate/Pods-rnTemplate.debug.xcconfig"; sourceTree = "<group>"; };
 		5709B34CF0A7D63546082F79 /* Pods-rnTemplate.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-rnTemplate.release.xcconfig"; path = "Target Support Files/Pods-rnTemplate/Pods-rnTemplate.release.xcconfig"; sourceTree = "<group>"; };
-		6618759674CDEC38C3486726 /* Pods_rnTemplate.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_rnTemplate.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		7B26A10EFB26461C3E1C1475 /* libPods-rnTemplate.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-rnTemplate.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		81AB9BB72411601600AC10FF /* BootSplash.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = BootSplash.storyboard; path = rnTemplate/BootSplash.storyboard; sourceTree = "<group>"; };
 		AE61A03338114090B68F1533 /* PingFang SC Regular.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "PingFang SC Regular.ttf"; path = "../assets/fonts/PingFang SC Regular.ttf"; sourceTree = "<group>"; };
 		E446969D29F6812800DEC513 /* ClipboardModule.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ClipboardModule.m; sourceTree = "<group>"; };
@@ -51,7 +51,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				D696E55C50CEB83D11198125 /* Pods_rnTemplate.framework in Frameworks */,
+				7458B01EC723F04A9CE624EA /* libPods-rnTemplate.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -89,7 +89,7 @@
 			isa = PBXGroup;
 			children = (
 				ED297162215061F000B7C4FE /* JavaScriptCore.framework */,
-				6618759674CDEC38C3486726 /* Pods_rnTemplate.framework */,
+				7B26A10EFB26461C3E1C1475 /* libPods-rnTemplate.a */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
