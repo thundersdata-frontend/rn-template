@@ -1,12 +1,12 @@
 import { NavigationProp, useNavigation } from '@react-navigation/native';
-import { ActionSheet, Avatar, helpers, Input, List, Modal, Text, WingBlank } from '@td-design/react-native';
+import { ActionSheet, Avatar, type File, helpers, Input, List, Modal, Text, WingBlank } from '@td-design/react-native';
 import { Image } from 'expo-image';
 import { useAtomValue } from 'jotai';
 
 import { userInfoAtom } from '@/atoms';
 import { Container } from '@/components/Container';
 import { useImagePicker } from '@/hooks/useImagePicker';
-import { useLogout } from '@/hooks/useLogout';
+import useLogout from '@/hooks/useLogout';
 import { useUserService } from '@/modules/user/useUserService';
 
 const { px } = helpers;

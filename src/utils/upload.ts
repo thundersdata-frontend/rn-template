@@ -1,6 +1,7 @@
 import RNFetchBlob from 'react-native-blob-util';
 import Config from 'react-native-config';
 
+import { type File } from '@td-design/react-native';
 import { isEmpty } from 'lodash-es';
 
 import { getMMKVItem } from '@/atoms';

@@ -1,5 +1,6 @@
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 
+import { CustomHeader } from '@/components/CustomHeader';
 import { ConfigPass } from '@/modules/auth/screens/configPass';
 import { ForgetPass } from '@/modules/auth/screens/forgetPass';
 import { Register } from '@/modules/auth/screens/register';
@@ -17,7 +18,6 @@ import { LongForm } from '@/modules/homepage/screens/longform';
 import { NavigationModal } from '@/modules/homepage/screens/modal';
 import { LocalImageDemo } from '@/modules/homepage/screens/pictures/demo1';
 import { OnlineImageDemo } from '@/modules/homepage/screens/pictures/demo2';
-import { GetDetailDemo1 } from '@/modules/homepage/screens/query/demo1';
 import { TabListDemo } from '@/modules/homepage/screens/tablist';
 import { TextDemo } from '@/modules/homepage/screens/text';
 import { WaterfallListDemo } from '@/modules/homepage/screens/waterfall';
@@ -206,13 +206,6 @@ const MAIN_SCREENS = [
       title: 'RESTFUL传参示例',
     },
   },
-  {
-    name: 'GetDetailDemo1',
-    component: GetDetailDemo1,
-    options: {
-      title: 'useCustomQuery示例',
-    },
-  },
 ];
 
 const MODAL_SCREENS = [
@@ -252,6 +245,7 @@ export default function AppStack({ confirmed, signedIn }: { confirmed: boolean; 
         animation: 'slide_from_right',
         animationDuration: 200,
         headerBackTitleVisible: false,
+        header: CustomHeader,
       }}
     >
       {!confirmed && <Stack.Screen name="PrivacyConfirm" component={PrivacyConfirm} options={{ headerShown: false }} />}

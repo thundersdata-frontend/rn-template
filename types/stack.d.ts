@@ -37,10 +37,10 @@ type MainStackParamList = {
   ModifyPassword: undefined;
   ModifyPasswordResult: undefined;
   ImageCrop: {
-    file: File;
+    file: any;
     width?: number;
     height?: number;
-    callback?: (file: File) => Promise<void>;
+    callback?: (file: any) => Promise<void>;
   };
   TextDemo: undefined;
   NotFound: undefined;

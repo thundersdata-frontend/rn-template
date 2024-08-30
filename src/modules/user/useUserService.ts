@@ -1,10 +1,9 @@
-import { Toast } from '@td-design/react-native';
+import { type File, Toast } from '@td-design/react-native';
 import { useMemoizedFn } from '@td-design/rn-hooks';
 import { useSetAtom } from 'jotai';
 
 import { userInfoAtom } from '@/atoms';
-import { useCustomMutate } from '@/hooks/useCustomMutate';
-import { useCustomQuery } from '@/hooks/useCustomQuery';
+import { useCustomRequest } from '@/hooks/useCustomRequest';
 import { useNotify } from '@/hooks/useNotify';
 import { mockChangeAvatar, mockFetchUserInfo, mockUpdateUsername } from '@/modules/mock';
 
@@ -12,13 +11,13 @@ export function useUserService() {
   const { successNotify, failNotify } = useNotify();
   const updateUserInfo = useSetAtom(userInfoAtom);
 
-  const { mutate: _changeAvatar } = useCustomMutate(mockChangeAvatar, {
+  const { run: _changeAvatar } = useCustomRequest(mockChangeAvatar, {
     onBefore() {
       Toast.process('提交中...');
     },
     onSuccess(_, params) {
       updateUserInfo({
-        profilePicture: params?.profilePicture,
+        profilePicture: params[0]?.profilePicture,
       });
       successNotify('修改头像成功');
     },
@@ -30,13 +29,13 @@ export function useUserService() {
     },
   });
 
-  const { mutate: _updateNickname } = useCustomMutate(mockUpdateUsername, {
+  const { run: _updateNickname } = useCustomRequest(mockUpdateUsername, {
     onBefore() {
       Toast.process('提交中...');
     },
     onSuccess(_, params) {
       updateUserInfo({
-        userName: params?.userName,
+        userName: params[0]?.userName,
       });
       successNotify('修改昵称成功');
     },
@@ -48,7 +47,7 @@ export function useUserService() {
     },
   });
 
-  const { loading: refreshing, refetch: refreshUserInfo } = useCustomQuery(mockFetchUserInfo, {
+  const { loading: refreshing, refresh: refreshUserInfo } = useCustomRequest(mockFetchUserInfo, {
     queryKey: ['fetchUserInfo'],
     enabled: false,
     onSuccess(data) {
@@ -58,7 +57,6 @@ export function useUserService() {
 
   // 修改头像
   const changeAvatar = async (file: File) => {
-    // const data = await uploadFile(file);
     const newValues = {
       profilePicture: file.uri,
     };

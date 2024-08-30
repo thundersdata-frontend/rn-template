@@ -1,4 +1,4 @@
-import { useRef } from 'react';
+import { useEffect, useRef } from 'react';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 
 import {
@@ -25,6 +25,12 @@ export default function CustomPullRefreshHeader({
   const stateRef = useRef<PullToRefreshState>(PullToRefreshStateIdle);
 
   const insets = useSafeAreaInsets();
+
+  useEffect(() => {
+    setTimeout(() => {
+      lottieRef.current?.play(progress);
+    }, 10);
+  });
 
   const handleOffsetChanged = useMemoizedFn((event: PullToRefreshOffsetChangedEvent) => {
     const { offset } = event.nativeEvent;

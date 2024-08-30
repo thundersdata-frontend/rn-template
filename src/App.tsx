@@ -8,7 +8,6 @@ import { SafeAreaProvider } from 'react-native-safe-area-context';
 import NiceModal from '@ebay/nice-modal-react';
 import { useFlipper } from '@react-navigation/devtools';
 import { DarkTheme, DefaultTheme, NavigationContainer } from '@react-navigation/native';
-import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 import { helpers, ThemeProvider } from '@td-design/react-native';
 import { useMount } from '@td-design/rn-hooks';
 import { useAtomValue } from 'jotai';
@@ -21,8 +20,6 @@ import { darkTheme, lightTheme } from '@/theme';
 import { Fallback } from './components/Fallback';
 import { useShortcut } from './hooks/useShortcut';
 import Stack from './stacks';
-
-const queryClient = new QueryClient();
 
 const Main = () => {
   useFlipper(navigationRef);
@@ -44,26 +41,24 @@ const Main = () => {
   const signedIn = useAtomValue(signedInAtom);
 
   return (
-    <QueryClientProvider client={queryClient}>
-      <SafeAreaProvider>
-        <GestureHandlerRootView style={{ flex: 1 }}>
-          <ThemeProvider theme={theme === 'dark' ? darkTheme : lightTheme}>
-            <NiceModal.Provider>
-              <NavigationContainer
-                ref={navigationRef}
-                linking={linking}
-                fallback={<Fallback />}
-                theme={theme === 'dark' ? DarkTheme : DefaultTheme}
-                onReady={() => setReady(true)}
-              >
-                <Stack {...{ confirmed, signedIn }} />
-              </NavigationContainer>
-            </NiceModal.Provider>
-          </ThemeProvider>
-        </GestureHandlerRootView>
-        {Platform.OS === 'android' && <NavigationBar barStyle="dark-content" />}
-      </SafeAreaProvider>
-    </QueryClientProvider>
+    <SafeAreaProvider>
+      <GestureHandlerRootView style={{ flex: 1 }}>
+        <ThemeProvider theme={theme === 'dark' ? darkTheme : lightTheme}>
+          <NiceModal.Provider>
+            <NavigationContainer
+              ref={navigationRef}
+              linking={linking}
+              fallback={<Fallback />}
+              theme={theme === 'dark' ? DarkTheme : DefaultTheme}
+              onReady={() => setReady(true)}
+            >
+              <Stack {...{ confirmed, signedIn }} />
+            </NavigationContainer>
+          </NiceModal.Provider>
+        </ThemeProvider>
+      </GestureHandlerRootView>
+      {Platform.OS === 'android' && <NavigationBar barStyle="dark-content" />}
+    </SafeAreaProvider>
   );
 };
 

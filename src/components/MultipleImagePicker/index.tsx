@@ -39,7 +39,7 @@ export const MultipleImagePicker: FC<{
 
         return (
           <Box position="relative" key={item} marginBottom={'x3'}>
-            <Image source={{ uri: item }} style={{ width, height }} />
+            <Image source={{ uri: item }} style={{ width, height }} contentFit="contain" />
             <EnhancedTouchableOpacity
               onPress={() => handleDelete(index)}
               style={{

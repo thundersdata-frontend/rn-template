@@ -10,20 +10,24 @@ interface DataType {
   name: string;
 }
 
-function fetchData(params: PageParams & Obj): Promise<Page<DataType>> {
-  console.log('aaaa', params);
+function fetchData(params: PageParams & Obj): Promise<AjaxResponse<Page<DataType>>> {
   const { page, pageSize } = params;
 
   return new Promise(resolve => {
     setTimeout(() => {
       resolve({
-        page,
-        pageSize,
-        total: 30,
-        totalPage: 3,
-        list: Array(10)
-          .fill('')
-          .map((_, index) => ({ id: (page - 1) * pageSize + index, name: `Cell${(page - 1) * pageSize + index}` })),
+        code: 20000,
+        success: true,
+        data: {
+          page,
+          pageSize,
+          total: 30,
+          totalPage: 3,
+          list: Array(10)
+            .fill('')
+            .map((_, index) => ({ id: (page - 1) * pageSize + index, name: `Cell${(page - 1) * pageSize + index}` })),
+        },
+        message: '',
       });
     }, 2000);
   });

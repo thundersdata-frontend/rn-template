@@ -1,6 +1,6 @@
-import { FC } from 'react';
+import { FC, ReactNode } from 'react';
 
-import { Toast } from '@td-design/react-native';
+import { type File, Toast } from '@td-design/react-native';
 import ImagePicker from '@td-design/react-native-image-picker';
 
 import { uploadFile } from '@/utils/upload';
@@ -14,8 +14,9 @@ interface CustomImagePickerProps {
   value?: string;
   needUploadOss?: boolean;
   showUploadImg?: boolean;
-  onUpload?: () => void;
+  onUpload?: (file: File) => void;
   onUploadFinish?: (uri?: string) => void;
+  brief?: ReactNode;
 }
 
 export const MAX_FILE_SIZE_NUMBER = 4;
@@ -33,37 +34,32 @@ export const SingleImagePicker: FC<CustomImagePickerProps> = ({
   needUploadOss,
   onUpload,
   onUploadFinish,
+  brief,
 }) => {
   return (
-    <ImagePicker
-      showUploadImg={showUploadImg}
-      width={width}
-      height={height}
-      value={value}
-      onUpload={async file => {
-        try {
-          // if (file.fileType.includes('image/') && file?.fileSize && file?.fileSize > MAX_FILE_SIZE) {
-          //   const { name, uri } = await ImageResizer.createResizedImage(file.uri, 1024 * 2, 1024 * 2, 'JPEG', 100);
-          //   onUpload?.();
-          //   if (needUploadOss) {
-          //     return uploadFile({ fileName: name, uri, fileType: 'image/jpg' });
-          //   }
-          //   return Promise.resolve(uri);
-          // }
-
-          onUpload?.();
-          if (needUploadOss) {
-            return uploadFile(file);
+    <>
+      <ImagePicker
+        showUploadImg={showUploadImg}
+        width={width}
+        height={height}
+        value={value}
+        onUpload={async file => {
+          try {
+            onUpload?.(file);
+            if (needUploadOss) {
+              return uploadFile(file);
+            }
+            return Promise.resolve(file?.uri);
+          } catch (err) {
+            console.error(err);
           }
-          return Promise.resolve(file?.uri);
-        } catch (err) {
-          console.error(err);
-        }
-      }}
-      onGrantFail={() => Toast.middle({ content: '对不起，授权失败' })}
-      onAfterUpload={onUploadFinish}
-    >
-      <ImgCard title={title} />
-    </ImagePicker>
+        }}
+        onGrantFail={() => Toast.middle({ content: '对不起，授权失败' })}
+        onAfterUpload={onUploadFinish}
+      >
+        <ImgCard title={title} width={width} height={height} />
+      </ImagePicker>
+      {brief}
+    </>
   );
 };

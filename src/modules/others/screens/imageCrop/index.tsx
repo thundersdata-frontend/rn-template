@@ -2,7 +2,7 @@ import { useEffect, useRef } from 'react';
 
 import { NavigationProp, RouteProp, useNavigation, useRoute } from '@react-navigation/native';
 import { ImageCropView, ImageCropViewRef } from '@sdcx/image-crop';
-import { Text } from '@td-design/react-native';
+import { type File, Text } from '@td-design/react-native';
 
 import { Container } from '@/components/Container';
 import { EnhancedPressable } from '@/components/EnhancedTouchable';
@@ -10,7 +10,7 @@ import { EnhancedPressable } from '@/components/EnhancedTouchable';
 export function ImageCrop() {
   const navigation = useNavigation<NavigationProp<AppParamList>>();
   const route = useRoute<RouteProp<AppParamList, 'ImageCrop'>>();
-  const file = route.params?.file;
+  const file = route.params?.file as File;
 
   const cropRef = useRef<ImageCropViewRef>(null);
 
@@ -39,7 +39,7 @@ export function ImageCrop() {
     await route.params?.callback?.({
       ...file,
       uri: imageUri,
-    });
+    } as File);
     navigation.goBack();
   };
 

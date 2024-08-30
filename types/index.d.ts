@@ -3,13 +3,6 @@ declare module '*.jpg';
 declare module '*.webp';
 declare module '*.gif';
 
-interface File {
-  fileName: string;
-  fileType: string;
-  uri: string;
-  fileSize?: number;
-}
-
 type QueryKey = [string, Obj] | [string];
 
 interface PageParams {
@@ -46,3 +39,5 @@ interface AjaxResponse<T = unknown> {
 }
 
 type Obj = Record<string, any>;
+
+type ReactText = string | number;

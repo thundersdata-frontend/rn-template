@@ -3,13 +3,7 @@ module.exports = {
     browser: true,
     es2021: true,
   },
-  extends: [
-    'eslint:recommended',
-    'plugin:@typescript-eslint/recommended',
-    'plugin:react/recommended',
-    'prettier',
-    'plugin:@tanstack/eslint-plugin-query/recommended',
-  ],
+  extends: ['eslint:recommended', 'plugin:@typescript-eslint/recommended', 'plugin:react/recommended', 'prettier'],
   parser: '@typescript-eslint/parser',
   overrides: [
     {
@@ -41,6 +35,8 @@ module.exports = {
     camelcase: 'error',
     'spaced-comment': 'error',
     quotes: ['error', 'single'],
+    '@typescript-eslint/ban-ts-comment': 'off',
+    '@typescript-eslint/no-explicit-any': 'off',
     'no-duplicate-imports': 'error',
     'no-case-declarations': 'off',
     'no-restricted-syntax': [

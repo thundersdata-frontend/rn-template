@@ -26,12 +26,12 @@ const FormContent = () => {
       onValuesChange={clearError}
     >
       <FormItem name="phone" rules={mobilePhoneRules}>
-        <Input placeholder="请输入手机号" leftIcon={<Icon name="mobile" color={theme.colors.icon} />} allowClear />
+        <Input placeholder="请输入手机号" left={<Icon name="mobile" color={theme.colors.icon} />} allowClear />
       </FormItem>
       <WhiteSpace size="x6" />
       <FormItem name="code" rules={[{ required: true, message: '请输入验证码' }]}>
         <CountDown
-          leftIcon={<Icon name="sms" color={theme.colors.icon} />}
+          left={<Icon name="sms" color={theme.colors.icon} />}
           onBefore={() => beforeSendSms(form.getFieldValue('phone'))}
           onSend={() => smsSend({ mobile: form.getFieldValue('phone'), type: SmsTypeEnum.修改密码 })}
         />
@@ -41,7 +41,7 @@ const FormContent = () => {
         <Input
           placeholder="请输入密码"
           inputType="password"
-          leftIcon={<Icon name="password" color={theme.colors.icon} />}
+          left={<Icon name="password" color={theme.colors.icon} />}
         />
       </FormItem>
       <WhiteSpace size="x6" />
@@ -64,7 +64,7 @@ const FormContent = () => {
         <Input
           placeholder="请再次输入密码"
           inputType="password"
-          leftIcon={<Icon name="password" color={theme.colors.icon} />}
+          left={<Icon name="password" color={theme.colors.icon} />}
         />
       </FormItem>
       <Box height={32} marginTop="x1">

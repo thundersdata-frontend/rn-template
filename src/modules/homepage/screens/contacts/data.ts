@@ -382,7 +382,7 @@ export const contactsData: Contact[] = [
   },
   {
     firstName: 'Neil',
-    lastName: "O'Neill",
+    lastName: 'ONeill',
   },
   {
     firstName: 'Marvin',

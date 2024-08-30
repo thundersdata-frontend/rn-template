@@ -3,7 +3,7 @@ import { ViewStyle } from 'react-native';
 import { RefreshControl } from '@sdcx/pull-to-refresh';
 import { FlashList, FlashListProps } from '@shopify/flash-list';
 import { Box, Center, Flex, helpers, Indicator, Text, useTheme } from '@td-design/react-native';
-import { useSafeState } from '@td-design/rn-hooks';
+import { useMemoizedFn, useSafeState } from '@td-design/rn-hooks';
 
 import { AppTheme } from '@/theme';
 
@@ -99,15 +99,21 @@ export function LargeList<T>({
   const [refreshing, setRefreshing] = useSafeState(false);
 
   const onRefresh = async () => {
-    setRefreshing(true);
-    await refresh(); // 刷新数据
-    setRefreshing(false);
+    try {
+      setRefreshing(true);
+      await refresh();
+      setRefreshing(false);
+    } catch (error) {
+      setRefreshing(false);
+    }
   };
 
   const onEndReached = () => {
     if (refreshing || loadingMore || noMoreData) return;
     loadMore();
   };
+
+  const keyExtractorFn = useMemoizedFn((item: T, i: number) => `${i}-${item[keyExtractor]}`);
 
   // 列表数据为空的时候渲染的组件
   const ListEmptyComponent = refreshing ? null : renderEmpty?.(height);
@@ -158,10 +164,11 @@ export function LargeList<T>({
   return (
     <Box style={{ flex: 1 }} onLayout={event => setHeight(event.nativeEvent.layout.height)}>
       <FlashList
-        nestedScrollEnabled
         {...restProps}
+        nestedScrollEnabled
         data={data}
         renderItem={renderItem}
+        showsHorizontalScrollIndicator={false}
         showsVerticalScrollIndicator={false}
         estimatedItemSize={estimatedItemSize}
         ListEmptyComponent={ListEmptyComponent}
@@ -173,11 +180,11 @@ export function LargeList<T>({
           itemVisiblePercentThreshold: 50,
           minimumViewTime: 1000,
         }}
+        refreshControl={<RefreshControl refreshing={refreshing} onRefresh={onRefresh} />}
         contentContainerStyle={style ? style : { padding: theme.spacing.x3 }}
         onEndReached={onEndReached}
         onEndReachedThreshold={onEndReachedThreshold}
-        refreshControl={<RefreshControl refreshing={refreshing} onRefresh={onRefresh} />}
-        keyExtractor={(item, i) => `${i}-${item[keyExtractor]}`}
+        keyExtractor={keyExtractorFn}
       />
     </Box>
   );

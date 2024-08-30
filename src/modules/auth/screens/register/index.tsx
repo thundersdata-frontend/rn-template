@@ -32,16 +32,16 @@ const FormContent = () => {
           { pattern: /^[a-z0-9A-Z0-9\-_@]+$/, message: '用户名格式不正确' },
         ]}
       >
-        <Input placeholder="请输入用户名" leftIcon={<Icon name="user" color={theme.colors.icon} />} allowClear />
+        <Input placeholder="请输入用户名" left={<Icon name="user" color={theme.colors.icon} />} allowClear />
       </FormItem>
       <WhiteSpace size="x6" />
       <FormItem name="phone" rules={mobilePhoneRules}>
-        <Input placeholder="请输入手机号" leftIcon={<Icon name="mobile" color={theme.colors.icon} />} allowClear />
+        <Input placeholder="请输入手机号" left={<Icon name="mobile" color={theme.colors.icon} />} allowClear />
       </FormItem>
       <WhiteSpace size="x6" />
       <FormItem name="code" rules={[{ required: true, message: '请输入验证码' }]}>
         <CountDown
-          leftIcon={<Icon name="sms" color={theme.colors.icon} />}
+          left={<Icon name="sms" color={theme.colors.icon} />}
           onBefore={() => beforeSendSms(form.getFieldValue('phone'))}
           onSend={() => smsSend({ mobile: form.getFieldValue('phone'), type: SmsTypeEnum.注册 })}
         />
@@ -51,7 +51,7 @@ const FormContent = () => {
         <Input
           placeholder="请输入密码"
           inputType="password"
-          leftIcon={<Icon name="password" color={theme.colors.icon} />}
+          left={<Icon name="password" color={theme.colors.icon} />}
         />
       </FormItem>
       <WhiteSpace size="x6" />
@@ -74,7 +74,7 @@ const FormContent = () => {
         <Input
           placeholder="请再次输入密码"
           inputType="password"
-          leftIcon={<Icon name="password" color={theme.colors.icon} />}
+          left={<Icon name="password" color={theme.colors.icon} />}
         />
       </FormItem>
       <Box height={32} marginTop="x1">

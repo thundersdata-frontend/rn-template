@@ -3,25 +3,29 @@ import { Box, Text, WhiteSpace } from '@td-design/react-native';
 import { Container } from '@/components/Container';
 import { Empty } from '@/components/Empty';
 import { LargeList } from '@/components/LargeList';
-import { useRefreshService } from '@/hooks/useRefreshService';
+import { useInfiniteScroll } from '@/hooks/useInfiniteScroll';
 
 interface DataType {
   id: number;
   name: string;
 }
 
-function fetchData({ page = 1, pageSize = 10, ...rest }: PageParams & Obj): Promise<Page<DataType>> {
-  console.log('aaaa', rest.test);
+function fetchData({ page = 1, pageSize = 10 }: PageParams & Obj): Promise<AjaxResponse<Page<DataType>>> {
   return new Promise(resolve => {
     setTimeout(() => {
       resolve({
-        page,
-        pageSize,
-        total: 30,
-        totalPage: 3,
-        list: Array(10)
-          .fill('')
-          .map((_, index) => ({ id: (page - 1) * pageSize + index, name: `Cell${(page - 1) * pageSize + index}` })),
+        code: 200,
+        success: true,
+        message: '获取数据成功',
+        data: {
+          page,
+          pageSize,
+          total: 30,
+          totalPage: 3,
+          list: Array(10)
+            .fill('')
+            .map((_, index) => ({ id: (page - 1) * pageSize + index, name: `Cell${(page - 1) * pageSize + index}` })),
+        },
       });
     }, 2000);
   });
@@ -34,10 +38,9 @@ export function FlashListDemo1() {
     </Box>
   );
 
-  const { data, loading, noMoreData, loadMore, loadingMore, refresh } = useRefreshService(fetchData, {
-    queryKey: ['flashlist-demo1', { test: '123' }],
-    enabled: true,
-  });
+  const { data, loading, noMoreData, loadMore, loadingMore, refresh } = useInfiniteScroll(fetchData);
+
+  console.log(loading, loadingMore, noMoreData);
 
   return (
     <Container>
