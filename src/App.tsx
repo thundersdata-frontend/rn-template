@@ -5,7 +5,6 @@ import codePush from 'react-native-code-push';
 import { GestureHandlerRootView } from 'react-native-gesture-handler';
 import { SafeAreaProvider } from 'react-native-safe-area-context';
 
-import NiceModal from '@ebay/nice-modal-react';
 import { useFlipper } from '@react-navigation/devtools';
 import { DarkTheme, DefaultTheme, NavigationContainer } from '@react-navigation/native';
 import { helpers, ThemeProvider } from '@td-design/react-native';
@@ -44,17 +43,15 @@ const Main = () => {
     <SafeAreaProvider>
       <GestureHandlerRootView style={{ flex: 1 }}>
         <ThemeProvider theme={theme === 'dark' ? darkTheme : lightTheme}>
-          <NiceModal.Provider>
-            <NavigationContainer
-              ref={navigationRef}
-              linking={linking}
-              fallback={<Fallback />}
-              theme={theme === 'dark' ? DarkTheme : DefaultTheme}
-              onReady={() => setReady(true)}
-            >
-              <Stack {...{ confirmed, signedIn }} />
-            </NavigationContainer>
-          </NiceModal.Provider>
+          <NavigationContainer
+            ref={navigationRef}
+            linking={linking}
+            fallback={<Fallback />}
+            theme={theme === 'dark' ? DarkTheme : DefaultTheme}
+            onReady={() => setReady(true)}
+          >
+            <Stack {...{ confirmed, signedIn }} />
+          </NavigationContainer>
         </ThemeProvider>
       </GestureHandlerRootView>
       {Platform.OS === 'android' && <NavigationBar barStyle="dark-content" />}

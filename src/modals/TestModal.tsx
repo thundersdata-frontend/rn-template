@@ -1,16 +1,13 @@
-import NiceModal, { useModal } from '@ebay/nice-modal-react';
-import { Box, Modal, Text } from '@td-design/react-native';
+import { Box, Button, Text } from '@td-design/react-native';
+import { ImperativeModalChildrenProps } from '@td-design/react-native/lib/typescript/modal/type';
 
-const TestModal = ({ content, position }: { content: string; position?: 'center' | 'bottom' | 'fullscreen' }) => {
-  const modal = useModal();
-
+const TestModal = (props: ImperativeModalChildrenProps<{ content: string }>) => {
   return (
-    <Modal position={position} visible={modal.visible} onClose={() => modal.remove()}>
-      <Box height={120} backgroundColor="func100">
-        <Text variant="h1">{content}</Text>
-      </Box>
-    </Modal>
+    <Box height={120} backgroundColor="func100">
+      <Text variant="h1">{props.content}</Text>
+      <Button title="关闭弹窗" onPress={() => props.closeModal?.()} />
+    </Box>
   );
 };
 
-export default NiceModal.create(TestModal);
+export default TestModal;

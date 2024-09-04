@@ -2193,11 +2193,6 @@
     "@types/conventional-commits-parser" "^5.0.0"
     chalk "^5.3.0"
 
-"@ebay/nice-modal-react@^1.2.13":
-  version "1.2.13"
-  resolved "https://registry.npmmirror.com/@ebay/nice-modal-react/-/nice-modal-react-1.2.13.tgz#7e8229fe3a48a11f27cd7f5e21190d82d6f609ce"
-  integrity sha512-jx8xIWe/Up4tpNuM02M+rbnLoxdngTGk3Y8LjJsLGXXcSoKd/+eZStZcAlIO/jwxyz/bhPZnpqPJZWAmhOofuA==
-
 "@egjs/hammerjs@^2.0.17":
   version "2.0.17"
   resolved "https://registry.npmmirror.com/@egjs/hammerjs/-/hammerjs-2.0.17.tgz#5dc02af75a6a06e4c2db0202cae38c9263895124"
@@ -3483,10 +3478,10 @@
   dependencies:
     color "^4.2.3"
 
-"@td-design/react-native@^5.9.0":
-  version "5.9.0"
-  resolved "https://registry.npmmirror.com/@td-design/react-native/-/react-native-5.9.0.tgz#6e94a7d816e25a9de6493921709397a7a34c4fb2"
-  integrity sha512-Yt3syNfCLL32n1R/omXxV896vmqJBLzofflHdyXTSipEHFMiIu9V87xjO50pWBMfhMM6iXVqojtUI+fmD4FlVA==
+"@td-design/react-native@^5.9.4":
+  version "5.9.4"
+  resolved "https://registry.npmmirror.com/@td-design/react-native/-/react-native-5.9.4.tgz#631ff0147ec4fa5dce593939dae1f715b7ca70f4"
+  integrity sha512-9hSSB0tBVLmdv2B5SczKdPXU9RkxmOIOuOXk3Xx7op8Qxxy5NAzytlwDu0XKOPOX0YgtItArMFCFmDvh4x+l7g==
   dependencies:
     "@shopify/restyle" "2.4.2"
     "@td-design/rn-hooks" "^2.8.1"
