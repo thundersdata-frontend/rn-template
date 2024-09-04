@@ -1,9 +1,11 @@
-import { Box, Text } from '@td-design/react-native';
+import { Box, Button, Text } from '@td-design/react-native';
+import { ImperativeModalChildrenProps } from '@td-design/react-native/lib/typescript/modal/type';
 
-const TestModal = ({ content }: { content: string; position?: 'center' | 'bottom' | 'fullscreen' }) => {
+const TestModal = (props: ImperativeModalChildrenProps<{ content: string }>) => {
   return (
     <Box height={120} backgroundColor="func100">
-      <Text variant="h1">{content}</Text>
+      <Text variant="h1">{props.content}</Text>
+      <Button title="关闭弹窗" onPress={() => props.closeModal?.()} />
     </Box>
   );
 };
