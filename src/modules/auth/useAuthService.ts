@@ -153,7 +153,9 @@ export function useAuthService(isSmsLogin = true) {
       Keyboard.dismiss();
       const data = await mockResetPassword(values);
       if (data) {
-        navigation?.canGoBack() && navigation.goBack();
+        if (navigation?.canGoBack()) {
+          navigation.goBack();
+        }
       } else {
         setError('对不起，重置密码失败');
       }

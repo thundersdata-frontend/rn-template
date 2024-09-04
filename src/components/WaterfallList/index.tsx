@@ -1,10 +1,9 @@
-import { useEffect } from 'react';
-import { ActivityIndicator } from 'react-native';
+import { ActivityIndicator, ViewStyle } from 'react-native';
 
 import { RefreshControl } from '@sdcx/pull-to-refresh';
 import { MasonryFlashList, MasonryFlashListProps } from '@shopify/flash-list';
 import { Box, Center, Flex, helpers, Indicator, Text, useTheme } from '@td-design/react-native';
-import { useSafeState } from '@td-design/rn-hooks';
+import { useMemoizedFn, useSafeState } from '@td-design/rn-hooks';
 
 import { AppTheme } from '@/theme';
 
@@ -16,6 +15,8 @@ export function WaterfallList<T>({
   refresh,
   loadMore,
   loading,
+  loadingMore,
+  noMoreData,
   numColumns,
   estimatedItemSize,
   renderItem,
@@ -23,7 +24,9 @@ export function WaterfallList<T>({
   renderHeader,
   renderFooter,
   renderSeparator,
-  onEndReachedThreshold = 0.15,
+  onEndReachedThreshold = 0.2,
+  keyExtractor,
+  style,
   ...restProps
 }: Omit<
   MasonryFlashListProps<T>,
@@ -36,51 +39,45 @@ export function WaterfallList<T>({
   | 'onEndReached'
   | 'onEndReachedThreshold'
   | 'estimatedItemSize'
+  | 'keyExtractor'
 > & {
-  data?: Page<T>;
+  data?: T[];
   loading: boolean;
-  refresh: () => Promise<void>;
-  loadMore: () => Promise<void>;
+  keyExtractor: keyof T;
+  refresh: () => Promise<unknown>;
+  loadMore: () => void;
   renderHeader?: () => JSX.Element | null;
   renderFooter?: () => JSX.Element | null;
   renderEmpty?: (height?: number) => JSX.Element | null;
   renderSeparator?: () => JSX.Element | null;
   onEndReachedThreshold?: number;
   estimatedItemSize: number;
+  noMoreData: boolean;
+  loadingMore: boolean;
+  style?: ViewStyle;
 }) {
   const theme = useTheme<AppTheme>();
+
   const [height, setHeight] = useSafeState(0);
   const [refreshing, setRefreshing] = useSafeState(false);
-  const [loadingMore, setLoadingMore] = useSafeState(false);
-  const [noMoreData, setNoMoreData] = useSafeState(false);
-  const [list, setList] = useSafeState<T[]>([]);
-
-  useEffect(() => {
-    if (!data) return;
-
-    const { page, pageSize, total, list = [] } = data;
-    const noMoreData = page * pageSize >= total;
-    if (page === 1) {
-      setList(list);
-    } else {
-      setList(prev => [...prev, ...list]);
-    }
-    setNoMoreData(noMoreData);
-  }, [data]);
 
   const onRefresh = async () => {
-    setRefreshing(true);
-    await refresh();
-    setRefreshing(false);
+    try {
+      setRefreshing(true);
+      await refresh();
+      setRefreshing(false);
+    } catch (error) {
+      console.error(error);
+      setRefreshing(false);
+    }
   };
 
-  const onEndReached = async () => {
+  const onEndReached = () => {
     if (refreshing || loadingMore || noMoreData) return;
-    setLoadingMore(true);
-    await loadMore();
-    setLoadingMore(false);
+    loadMore();
   };
 
+  const keyExtractorFn = useMemoizedFn((item: T, i: number) => `${i}-${item[keyExtractor]}`);
   // 列表数据为空的时候渲染的组件
   const ListEmptyComponent = refreshing ? null : renderEmpty?.(height);
 
@@ -131,9 +128,11 @@ export function WaterfallList<T>({
     <Box style={{ flex: 1 }} onLayout={event => setHeight(event.nativeEvent.layout.height)}>
       <MasonryFlashList
         {...restProps}
-        data={list}
+        nestedScrollEnabled
+        data={data}
         numColumns={numColumns}
         renderItem={renderItem}
+        showsHorizontalScrollIndicator={false}
         showsVerticalScrollIndicator={false}
         estimatedItemSize={estimatedItemSize}
         ListEmptyComponent={ListEmptyComponent}
@@ -146,8 +145,10 @@ export function WaterfallList<T>({
           minimumViewTime: 1000,
         }}
         refreshControl={<RefreshControl refreshing={refreshing} onRefresh={onRefresh} />}
+        contentContainerStyle={style ? style : { padding: theme.spacing.x3 }}
         onEndReached={onEndReached}
         onEndReachedThreshold={onEndReachedThreshold}
+        keyExtractor={keyExtractorFn}
       />
     </Box>
   );

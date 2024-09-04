@@ -35,6 +35,9 @@ module.exports = {
     camelcase: 'error',
     'spaced-comment': 'error',
     quotes: ['error', 'single'],
+    '@typescript-eslint/ban-ts-comment': 'off',
+    '@typescript-eslint/no-explicit-any': 'off',
+    '@typescript-eslint/no-require-imports': 'off',
     'no-duplicate-imports': 'error',
     'no-case-declarations': 'off',
     'no-restricted-syntax': [

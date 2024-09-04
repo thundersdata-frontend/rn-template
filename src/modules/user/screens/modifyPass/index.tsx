@@ -47,7 +47,7 @@ const FormContent = () => {
         <Input
           placeholder="请输入原密码"
           inputType="password"
-          leftIcon={<Icon name="password" color={theme.colors.icon} />}
+          left={<Icon name="password" color={theme.colors.icon} />}
         />
       </FormItem>
       <WhiteSpace size="x6" />
@@ -64,7 +64,7 @@ const FormContent = () => {
         <Input
           placeholder="密码必须包含字母数字6-20位"
           inputType="password"
-          leftIcon={<Icon name="password" color={theme.colors.icon} />}
+          left={<Icon name="password" color={theme.colors.icon} />}
         />
       </FormItem>
       <WhiteSpace size="x6" />
@@ -86,7 +86,7 @@ const FormContent = () => {
         <Input
           placeholder="请再次输入新密码"
           inputType="password"
-          leftIcon={<Icon name="password" color={theme.colors.icon} />}
+          left={<Icon name="password" color={theme.colors.icon} />}
         />
       </FormItem>
       <Box height={px(32)} marginTop="x1">

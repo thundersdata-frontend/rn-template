@@ -2,7 +2,7 @@ import { Center, Text } from '@td-design/react-native';
 
 import { Container } from '@/components/Container';
 import { IndexedBar } from '@/components/IndexedBar';
-import { useRefreshService } from '@/hooks/useRefreshService';
+import { useInfiniteScroll } from '@/hooks/useInfiniteScroll';
 
 import ContactCell from './ContactCell';
 import ContactDivider from './ContactDivider';
@@ -10,21 +10,26 @@ import ContactHeader from './ContactHeader';
 import ContactSectionHeader from './ContactSectionHeader';
 import { Contact, contactsData } from './data';
 
-function fetchData(): Promise<Page<Contact>> {
+function fetchData(): Promise<AjaxResponse<Page<Contact>>> {
   return new Promise(resolve => {
     setTimeout(() => {
       resolve({
-        page: 1,
-        pageSize: 9999999999,
-        total: 9999999999,
-        list: contactsData,
+        code: 200,
+        success: true,
+        message: '获取数据成功',
+        data: {
+          page: 1,
+          pageSize: 9999999999,
+          total: 9999999999,
+          list: contactsData,
+        },
       });
     }, 2000);
   });
 }
 
 export function ContactsDemo() {
-  const { data, refresh, loading } = useRefreshService<Contact>(fetchData);
+  const { data, refresh, loading } = useInfiniteScroll(fetchData);
 
   const renderFooter = (length: number) => (
     <Center height={40}>
@@ -35,7 +40,7 @@ export function ContactsDemo() {
   return (
     <Container>
       <IndexedBar
-        data={data?.list ?? []}
+        data={data}
         indexHeight={22}
         itemHeight={44}
         headerHeight={40}

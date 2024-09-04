@@ -39,3 +39,6 @@ export const signedInAtom = atomWithMMKV<boolean>('signedIn', false);
 
 // 登录token
 export const tokenAtom = atomWithMMKV<Token>('token', {});
+
+/** 当前登录用户拥有的权限列表 */
+export const permissionAtom = atomWithMMKV<string[]>('permissions', []);

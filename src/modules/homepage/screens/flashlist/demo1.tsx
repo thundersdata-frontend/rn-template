@@ -3,29 +3,29 @@ import { Box, Text, WhiteSpace } from '@td-design/react-native';
 import { Container } from '@/components/Container';
 import { Empty } from '@/components/Empty';
 import { LargeList } from '@/components/LargeList';
-import { useRefreshService } from '@/hooks/useRefreshService';
+import { useInfiniteScroll } from '@/hooks/useInfiniteScroll';
 
 interface DataType {
   id: number;
   name: string;
 }
 
-function fetchData({
-  page = 1,
-  pageSize = 10,
-  ...rest
-}: { page: number; pageSize: number } & Obj): Promise<Page<DataType>> {
-  console.log(page, pageSize, rest);
+function fetchData({ page = 1, pageSize = 10 }: PageParams & Obj): Promise<AjaxResponse<Page<DataType>>> {
   return new Promise(resolve => {
     setTimeout(() => {
       resolve({
-        page,
-        pageSize,
-        total: 30,
-        totalPage: 3,
-        list: Array(10)
-          .fill('')
-          .map((_, index) => ({ id: (page - 1) * pageSize + index, name: `Cell${(page - 1) * pageSize + index}` })),
+        code: 200,
+        success: true,
+        message: '获取数据成功',
+        data: {
+          page,
+          pageSize,
+          total: 30,
+          totalPage: 3,
+          list: Array(10)
+            .fill('')
+            .map((_, index) => ({ id: (page - 1) * pageSize + index, name: `Cell${(page - 1) * pageSize + index}` })),
+        },
       });
     }, 2000);
   });
@@ -38,21 +38,18 @@ export function FlashListDemo1() {
     </Box>
   );
 
-  const { data, loading, refresh, loadMore } = useRefreshService(params =>
-    fetchData({
-      ...params,
-      type: 1,
-    })
-  );
+  const { data, loading, noMoreData, loadMore, loadingMore, refresh } = useInfiniteScroll(fetchData);
+
+  console.log(loading, loadingMore, noMoreData);
 
   return (
     <Container>
       <LargeList
-        keyExtractor={item => item.id + ''}
+        keyExtractor={'id'}
         estimatedItemSize={200}
         renderSeparator={() => <WhiteSpace />}
         renderEmpty={height => <Empty height={height} />}
-        {...{ renderItem, data, refresh, loadMore, loading }}
+        {...{ renderItem, data, refresh, loadMore, loading, loadingMore, noMoreData }}
       />
     </Container>
   );

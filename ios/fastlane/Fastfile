@@ -58,6 +58,7 @@ platform :ios do
     ENV['USE_HERMES'] = "1"
     ENV["NO_FLIPPER"] = "1"
     ENV['PRODUCTION'] == "1"
+    ENV['USE_FRAMEWORKS'] = "static"
 
     # 删除 Podfile.lock 文件
     FileUtils.rm_f(File.join(__dir__, "..", "Podfile.lock"))

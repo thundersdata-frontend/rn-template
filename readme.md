@@ -289,6 +289,13 @@ cd android && ./gradlew clean
 https://repo1.maven.org/maven2/com/facebook/react/react-native-artifacts/#{version}/react-native-artifacts-#{version}-hermes-ios-#{build_type.to_s}.tar.gz
 ```
 
+比如：
+
+```code
+https://repo1.maven.org/maven2/com/facebook/react/react-native-artifacts/0.72.10/react-native-artifacts-0.72.10-hermes-ios-debug.tar.gz
+https://repo1.maven.org/maven2/com/facebook/react/react-native-artifacts/0.72.10/react-native-artifacts-0.72.10-hermes-ios-release.tar.gz
+```
+
 首先通过链接: [hermes-engine 压缩包](https://pan.baidu.com/s/1GxiMght61h9o8dzEUHUy8g?pwd=c1ag) 下载压缩包， 然后把安装包放在`ios/fastlane`目录下，然后执行以下命令:
 
 ```code

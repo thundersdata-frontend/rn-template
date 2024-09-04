@@ -38,8 +38,8 @@ export function replace<T extends keyof AppParamList>(name: T, params?: AppParam
  * 返回上个页面
  */
 export function goBack() {
-  if (navigationRef.isReady()) {
-    navigationRef.canGoBack() && navigationRef.goBack();
+  if (navigationRef.isReady() && navigationRef.canGoBack()) {
+    navigationRef.goBack();
   }
 }
 

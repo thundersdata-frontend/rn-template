@@ -6,7 +6,7 @@ import {
   launchCamera as launchRNCamera,
 } from 'react-native-image-picker';
 
-import { File } from '@td-design/react-native';
+import { type File } from '@td-design/react-native';
 import { useBoolean, useMemoizedFn } from '@td-design/rn-hooks';
 
 export interface ImagePickerProps {
@@ -20,7 +20,7 @@ export interface ImagePickerProps {
   cameraRationale?: Rationale;
 }
 
-export default function useImagePicker({
+export function useImagePicker({
   options = {
     mediaType: 'photo',
     includeBase64: true,
@@ -29,20 +29,6 @@ export default function useImagePicker({
     durationLimit: 15,
     videoQuality: 'high',
   },
-  cameraRationale = {
-    title: '获取摄像头权限',
-    message: '若不允许，您将无法使用摄像头功能',
-    buttonPositive: '同意',
-    buttonNegative: '取消',
-    buttonNeutral: '下次再说',
-  },
-  libraryRationale = {
-    title: '获取读取文件权限',
-    message: '若不允许，您将无法访问相册',
-    buttonPositive: '同意',
-    buttonNegative: '取消',
-    buttonNeutral: '下次再说',
-  },
   onFinish,
 }: ImagePickerProps) {
   const [visible, { setFalse: onClose, setTrue: onShow }] = useBoolean(false);
@@ -50,10 +36,7 @@ export default function useImagePicker({
   /** 打开相册 */
   const launchLibrary = async () => {
     if (Platform.OS === 'android') {
-      const result = await PermissionsAndroid.request(
-        PermissionsAndroid.PERMISSIONS.READ_EXTERNAL_STORAGE,
-        libraryRationale
-      );
+      const result = await PermissionsAndroid.request(PermissionsAndroid.PERMISSIONS.READ_EXTERNAL_STORAGE);
       if (result !== 'granted') return;
     }
     const response = await launchImageLibrary(options);
@@ -63,7 +46,7 @@ export default function useImagePicker({
   /** 打开摄像头 */
   const launchCamera = async () => {
     if (Platform.OS === 'android') {
-      const result = await PermissionsAndroid.request(PermissionsAndroid.PERMISSIONS.CAMERA, cameraRationale);
+      const result = await PermissionsAndroid.request(PermissionsAndroid.PERMISSIONS.CAMERA);
       if (result !== 'granted') return;
     }
     const response = await launchRNCamera(options);

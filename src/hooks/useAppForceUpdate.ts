@@ -124,6 +124,7 @@ async function appForceUpdate(androidDownloadUrl: string, appStoreUrl: string, v
         android.actionViewIntent(result.path(), 'application/vnd.android.package-archive');
       }
     } catch (error) {
+      console.error(error);
       Toast.middle({ content: '下载失败' });
     } finally {
       Toast.hide();
@@ -137,6 +138,7 @@ async function appForceUpdate(androidDownloadUrl: string, appStoreUrl: string, v
       }
       Linking.openURL(appStoreUrl);
     } catch (error) {
+      console.error(error);
       Toast.middle({ content: '跳转App Store失败' });
     }
   }

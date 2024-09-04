@@ -3,8 +3,13 @@ import Config from 'react-native-config';
 import axios from 'axios';
 import dayjs from 'dayjs';
 import { isEmpty } from 'lodash-es';
+import qs from 'qs';
 
 import { getMMKVItem, setMMKVItem } from './atoms';
+
+axios.defaults.paramsSerializer = function (params) {
+  return qs.stringify(params, { indices: false });
+};
 
 const codeMessage: Record<number, string> = {
   400: '用户没有权限（令牌错误）',

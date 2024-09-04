@@ -3,10 +3,13 @@ declare module '*.jpg';
 declare module '*.webp';
 declare module '*.gif';
 
-interface Page<T> {
-  list: Array<T>;
+interface PageParams {
   page: number;
   pageSize: number;
+}
+
+interface Page<T> extends PageParams {
+  list: Array<T>;
   total: number;
   totalPage?: number;
 }
@@ -34,3 +37,5 @@ interface AjaxResponse<T = unknown> {
 }
 
 type Obj = Record<string, any>;
+
+type ReactText = string | number;

@@ -9,6 +9,7 @@ import { userInfoAtom } from '@/atoms';
 import { Container } from '@/components/Container';
 import CustomPullRefreshHeader from '@/components/CustomPullRefreshHeader';
 
+import bgWebp from '../assets/bg.webp';
 import { useUserService } from '../useUserService';
 
 const { px } = helpers;
@@ -25,7 +26,7 @@ export function Mine() {
         header={<CustomPullRefreshHeader refreshing={refreshing} onRefresh={refreshUserInfo} hasHeader={false} />}
       >
         <ScrollView nestedScrollEnabled>
-          <ImageBackground source={require('../assets/bg.webp')} style={{ width: '100%', height: px(210) }}>
+          <ImageBackground source={bgWebp} style={{ width: '100%', height: px(210) }}>
             <Flex style={{ height: px(202), paddingLeft: px(21), paddingTop: px(110) }}>
               <Avatar
                 size={AVATAR_SIZE}

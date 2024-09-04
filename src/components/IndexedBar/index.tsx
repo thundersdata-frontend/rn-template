@@ -49,7 +49,7 @@ export function IndexedBar<T extends Obj>({
   indexHeight: number;
   itemHeight: number;
   extractKey: string;
-  refresh: () => Promise<void>;
+  refresh: () => Promise<unknown>;
   renderIndex: (item: string) => JSX.Element;
   renderItem: (item: T) => JSX.Element;
   renderHeader?: () => JSX.Element | null;
@@ -110,8 +110,8 @@ export function IndexedBar<T extends Obj>({
   };
 
   const handlePress = useMemoizedFn((index: number) => {
-    setCurrentIndex(index - 1);
-    const indice = indices[index - 1];
+    setCurrentIndex(index);
+    const indice = indices[index];
     listRef.current?.scrollToIndex({ index: indice, animated: true });
   });
 

@@ -5,14 +5,14 @@ import { Image } from 'expo-image';
 
 import { Container } from '@/components/Container';
 import { WaterfallList } from '@/components/WaterfallList';
-import { useRefreshService } from '@/hooks/useRefreshService';
+import { useInfiniteScroll } from '@/hooks/useInfiniteScroll';
 
 interface DataType {
   imageUrl: string;
   height: number;
 }
 
-function fetchData({ page, pageSize }: { page: number; pageSize: number }): Promise<Page<DataType>> {
+function fetchData({ page, pageSize }: { page: number; pageSize: number }): Promise<AjaxResponse<Page<DataType>>> {
   const data = [
     'https://images.dog.ceo/breeds/husky/20180901_150234.jpg',
     'https://images.dog.ceo/breeds/husky/20180904_185604.jpg',
@@ -419,44 +419,48 @@ function fetchData({ page, pageSize }: { page: number; pageSize: number }): Prom
   return new Promise(resolve => {
     setTimeout(() => {
       resolve({
-        page,
-        pageSize,
-        total: data.length,
-        totalPage: Math.ceil(data.length / pageSize),
-        list: data.slice((page - 1) * pageSize, page * pageSize).map(item => ({
-          imageUrl: item,
-          height: Math.random() > 0.5 ? 150 : 250,
-        })),
+        code: 200,
+        message: 'success',
+        data: {
+          page,
+          pageSize,
+          total: data.length,
+          totalPage: Math.ceil(data.length / pageSize),
+          list: data.slice((page - 1) * pageSize, page * pageSize).map(item => ({
+            imageUrl: item,
+            height: Math.random() > 0.5 ? 150 : 250,
+          })),
+        },
+        success: true,
       });
     }, 2000);
   });
 }
 
 export function WaterfallListDemo() {
-  const { data, refresh, loadMore, loading } = useRefreshService<DataType>(fetchData, {
-    defaultParams: [{ page: 1, pageSize: 30 }],
-  });
+  const { data, loading, noMoreData, loadMore, loadingMore, refresh } = useInfiniteScroll(fetchData);
 
   const renderItem = ({ item }: { item: DataType }) => {
     return (
       <Box height={item.height} overflow={'hidden'} margin="x1">
-        <Image source={{ uri: item.imageUrl }} style={StyleSheet.absoluteFill} resizeMode="cover" />
+        <Image source={{ uri: item.imageUrl }} style={StyleSheet.absoluteFill} contentFit="cover" />
       </Box>
     );
   };
+
+  // console.log(loading, loadingMore, noMoreData);
 
   return (
     <Container>
       <WaterfallList
         numColumns={2}
-        keyExtractor={item => item.imageUrl}
+        keyExtractor={'imageUrl'}
         estimatedItemSize={150}
         optimizeItemArrangement
         overrideItemLayout={(layout, item) => {
           layout.size = item.height;
         }}
-        showsVerticalScrollIndicator={false}
-        {...{ renderItem, data, refresh, loadMore, loading }}
+        {...{ renderItem, data, refresh, loadMore, loading, loadingMore, noMoreData }}
       />
     </Container>
   );

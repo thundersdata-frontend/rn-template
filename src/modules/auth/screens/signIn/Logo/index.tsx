@@ -3,6 +3,8 @@ import { Image } from 'expo-image';
 
 import { AppTheme } from '@/theme';
 
+import logoWebp from '../../../assets/logo.webp';
+
 const { px } = helpers;
 export function Logo() {
   const theme = useTheme<AppTheme>();
@@ -10,7 +12,7 @@ export function Logo() {
   return (
     <Box marginLeft="x6" marginBottom={'x6'} marginTop={'x10'}>
       <Image
-        source={require('../../../assets/logo.webp')}
+        source={logoWebp}
         style={{
           width: px(72),
           height: px(72),

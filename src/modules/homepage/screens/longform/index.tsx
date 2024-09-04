@@ -13,7 +13,7 @@ import {
   helpers,
   InputItem,
   Modal,
-  NumberKeyboard,
+  NumberKeyboardItem,
   Radio,
   Stepper,
   type Store,
@@ -32,7 +32,6 @@ import { type FieldData } from 'rc-field-form/es/interface';
 
 import { Container } from '@/components/Container';
 
-const { NumberKeyboardItem } = NumberKeyboard;
 const { px, ONE_PIXEL } = helpers;
 const residences = [
   {
@@ -128,7 +127,7 @@ export function LongForm() {
               <FormItem name="email" rules={[{ required: true, message: '请输入邮箱' }]}>
                 <InputItem keyboardType="email-address" placeholder="请输入邮箱" inputStyle={{ textAlign: 'right' }} />
               </FormItem>
-              <FormListItem title="性别" name="gender" required rules={[{ required: true, message: '请选择性别' }]}>
+              <FormListItem label="性别" name="gender" required rules={[{ required: true, message: '请选择性别' }]}>
                 <Radio
                   options={[
                     { label: '男', value: '1' },
@@ -137,18 +136,18 @@ export function LongForm() {
                   ]}
                 />
               </FormListItem>
-              <FormListItem title="年龄" name="age" required rules={[{ required: true, message: '请选择年龄' }]}>
+              <FormListItem label="年龄" name="age" required rules={[{ required: true, message: '请选择年龄' }]}>
                 <Stepper min={0} />
               </FormListItem>
               <FormListItem
-                title="身份证号"
+                label="身份证号"
                 name="idcard"
                 required
                 rules={[{ required: true, message: '请输入身份证号' }]}
               >
                 <NumberKeyboardItem type="idcard" placeholder="请输入身份证号" inputStyle={{ textAlign: 'right' }} />
               </FormListItem>
-              <FormListItem title="爱好" name="favorites" required rules={[{ required: true, message: '请选择爱好' }]}>
+              <FormListItem label="爱好" name="favorites" required rules={[{ required: true, message: '请选择爱好' }]}>
                 <Checkbox
                   showCheckAll={false}
                   options={[
@@ -159,7 +158,7 @@ export function LongForm() {
                 />
               </FormListItem>
               <FormListItem
-                title="出生地"
+                label="出生地"
                 name="residences"
                 required
                 rules={[{ required: true, message: '请选择出生地' }]}
@@ -167,17 +166,17 @@ export function LongForm() {
                 <PickerItem cascade data={residences} style={{ height: px(32) }} />
               </FormListItem>
               <FormListItem
-                title="出生日期"
+                label="出生日期"
                 name="birthday"
                 required
                 rules={[{ required: true, message: '请选择出生日期' }]}
               >
                 <DatePickerItem style={{ height: px(32) }} />
               </FormListItem>
-              <FormListItem title="公开个人资料" name="public" valuePropName="checked">
+              <FormListItem label="公开个人资料" name="public" valuePropName="checked">
                 <Switch />
               </FormListItem>
-              <FormListItem name="avatar" title="个人头像">
+              <FormListItem name="avatar" label="个人头像">
                 <ImagePicker onGrantFail={() => console.log('111')}>
                   <Box
                     width="100%"

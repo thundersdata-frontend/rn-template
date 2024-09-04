@@ -5,9 +5,11 @@ import { useAtomValue } from 'jotai';
 
 import { userInfoAtom } from '@/atoms';
 import { Container } from '@/components/Container';
-import useImagePicker from '@/hooks/useImagePicker';
+import { useImagePicker } from '@/hooks/useImagePicker';
 import useLogout from '@/hooks/useLogout';
 import { useUserService } from '@/modules/user/useUserService';
+
+import modalConfirmWebp from '../../assets/modal_confirm.webp';
 
 const { px } = helpers;
 export function Settings() {
@@ -25,12 +27,7 @@ export function Settings() {
 
   const handleLogout = () => {
     Modal.confirm({
-      icon: (
-        <Image
-          source={require('../../assets/modal_confirm.webp')}
-          style={{ width: px(55), height: px(55), marginTop: px(36) }}
-        />
-      ),
+      icon: <Image source={modalConfirmWebp} style={{ width: px(55), height: px(55), marginTop: px(36) }} />,
       title: '退出登录',
       content: '确定要退出登录吗？',
       onOk: logout,

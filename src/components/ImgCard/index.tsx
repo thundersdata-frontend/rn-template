@@ -1,30 +1,36 @@
 import { FC } from 'react';
+import { StyleProp, ViewStyle } from 'react-native';
 
 import { Box, helpers, Text } from '@td-design/react-native';
-import { Image } from 'expo-image';
+
+import UploadSvg from './assets/card-img-default.webp';
 
 const { px } = helpers;
-export const ImgCard: FC<{ title: string; uri?: string }> = ({ title, uri }) => {
+export const ImgCard: FC<{
+  title?: string;
+  width?: number;
+  height?: number;
+  style?: StyleProp<ViewStyle>;
+}> = ({ title, width = px(100), height = px(100), style }) => {
   return (
     <Box
       borderWidth={1}
       borderColor="border"
       borderStyle="dashed" // only works when borderRadius is configured.
       borderRadius="x1"
-      width={px(164)}
-      height={px(102)}
+      width={width}
+      height={height}
       backgroundColor="gray50"
       justifyContent="center"
       alignItems="center"
+      style={style}
     >
-      {uri ? (
-        <Image source={{ uri }} style={{ width: px(144), height: px(70) }} />
-      ) : (
-        <Image source={require('./assets/card-img-default.webp')} style={{ width: px(144), height: px(70) }} />
+      <UploadSvg />
+      {!!title && (
+        <Text variant="p2" color="gray500" marginTop="x1">
+          {title}
+        </Text>
       )}
-      <Text variant="p2" color="gray500" marginTop="x1">
-        {title}
-      </Text>
     </Box>
   );
 };
