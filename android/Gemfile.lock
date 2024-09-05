@@ -255,7 +255,7 @@ PLATFORMS
   arm64-darwin-22
 
 DEPENDENCIES
-  activesupport (>= 6.1.7.3, < 7.1.0)
+  activesupport (>= 6.1.7.5, < 7.1.0)
   fastlane
   fastlane-plugin-fir_cli
 

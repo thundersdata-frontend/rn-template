@@ -20,6 +20,7 @@
 		E44696A129F6812800DEC513 /* ShortcutModule.m in Sources */ = {isa = PBXBuildFile; fileRef = E446969E29F6812800DEC513 /* ShortcutModule.m */; };
 		E4F9313F29A8616E00F33780 /* Config.xcconfig in Resources */ = {isa = PBXBuildFile; fileRef = E4F9313E29A8616E00F33780 /* Config.xcconfig */; };
 		E4F9314529A861FC00F33780 /* Bridge.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4F9314429A861FC00F33780 /* Bridge.swift */; };
+		E9BD703ACA89C41A9E785919 /* PrivacyInfo.xcprivacy in Resources */ = {isa = PBXBuildFile; fileRef = A6890D147F4E32DA6FEF93F8 /* PrivacyInfo.xcprivacy */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -35,6 +36,7 @@
 		5709B34CF0A7D63546082F79 /* Pods-rnTemplate.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-rnTemplate.release.xcconfig"; path = "Target Support Files/Pods-rnTemplate/Pods-rnTemplate.release.xcconfig"; sourceTree = "<group>"; };
 		7B26A10EFB26461C3E1C1475 /* libPods-rnTemplate.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-rnTemplate.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		81AB9BB72411601600AC10FF /* BootSplash.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = BootSplash.storyboard; path = rnTemplate/BootSplash.storyboard; sourceTree = "<group>"; };
+		A6890D147F4E32DA6FEF93F8 /* PrivacyInfo.xcprivacy */ = {isa = PBXFileReference; includeInIndex = 1; name = PrivacyInfo.xcprivacy; path = rnTemplate/PrivacyInfo.xcprivacy; sourceTree = "<group>"; };
 		AE61A03338114090B68F1533 /* PingFang SC Regular.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "PingFang SC Regular.ttf"; path = "../assets/fonts/PingFang SC Regular.ttf"; sourceTree = "<group>"; };
 		E446969D29F6812800DEC513 /* ClipboardModule.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ClipboardModule.m; sourceTree = "<group>"; };
 		E446969E29F6812800DEC513 /* ShortcutModule.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ShortcutModule.m; sourceTree = "<group>"; };
@@ -81,6 +83,7 @@
 				81AB9BB72411601600AC10FF /* BootSplash.storyboard */,
 				13B07FB71A68108700A75B9A /* main.m */,
 				E4F9314429A861FC00F33780 /* Bridge.swift */,
+				A6890D147F4E32DA6FEF93F8 /* PrivacyInfo.xcprivacy */,
 			);
 			name = rnTemplate;
 			sourceTree = "<group>";
@@ -219,6 +222,7 @@
 				13B07FBF1A68108700A75B9A /* Images.xcassets in Resources */,
 				3AE9805A8A844094A65144BB /* PingFang SC Regular.ttf in Resources */,
 				642F6AE428D54C5EBD2FC698 /* Roboto-Regular.ttf in Resources */,
+				E9BD703ACA89C41A9E785919 /* PrivacyInfo.xcprivacy in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -589,7 +593,7 @@
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
-				CLANG_CXX_LANGUAGE_STANDARD = "c++17";
+				CLANG_CXX_LANGUAGE_STANDARD = "c++20";
 				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_ENABLE_MODULES = YES;
 				CLANG_ENABLE_OBJC_ARC = YES;
@@ -668,6 +672,7 @@
 				);
 				REACT_NATIVE_PATH = "${PODS_ROOT}/../../node_modules/react-native";
 				SDKROOT = iphoneos;
+				USE_HERMES = true;
 			};
 			name = Debug;
 		};
@@ -677,7 +682,7 @@
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
-				CLANG_CXX_LANGUAGE_STANDARD = "c++17";
+				CLANG_CXX_LANGUAGE_STANDARD = "c++20";
 				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_ENABLE_MODULES = YES;
 				CLANG_ENABLE_OBJC_ARC = YES;
@@ -751,6 +756,7 @@
 				);
 				REACT_NATIVE_PATH = "${PODS_ROOT}/../../node_modules/react-native";
 				SDKROOT = iphoneos;
+				USE_HERMES = true;
 				VALIDATE_PRODUCT = YES;
 			};
 			name = Release;
