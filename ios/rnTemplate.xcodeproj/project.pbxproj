@@ -36,7 +36,7 @@
 		5709B34CF0A7D63546082F79 /* Pods-rnTemplate.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-rnTemplate.release.xcconfig"; path = "Target Support Files/Pods-rnTemplate/Pods-rnTemplate.release.xcconfig"; sourceTree = "<group>"; };
 		7B26A10EFB26461C3E1C1475 /* libPods-rnTemplate.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-rnTemplate.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		81AB9BB72411601600AC10FF /* BootSplash.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = BootSplash.storyboard; path = rnTemplate/BootSplash.storyboard; sourceTree = "<group>"; };
-		A6890D147F4E32DA6FEF93F8 /* PrivacyInfo.xcprivacy */ = {isa = PBXFileReference; includeInIndex = 1; name = PrivacyInfo.xcprivacy; path = rnTemplate/PrivacyInfo.xcprivacy; sourceTree = "<group>"; };
+		A6890D147F4E32DA6FEF93F8 /* PrivacyInfo.xcprivacy */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xml; name = PrivacyInfo.xcprivacy; path = rnTemplate/PrivacyInfo.xcprivacy; sourceTree = "<group>"; };
 		AE61A03338114090B68F1533 /* PingFang SC Regular.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "PingFang SC Regular.ttf"; path = "../assets/fonts/PingFang SC Regular.ttf"; sourceTree = "<group>"; };
 		E446969D29F6812800DEC513 /* ClipboardModule.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ClipboardModule.m; sourceTree = "<group>"; };
 		E446969E29F6812800DEC513 /* ShortcutModule.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ShortcutModule.m; sourceTree = "<group>"; };
@@ -369,6 +369,7 @@
 				DEVELOPMENT_TEAM = 3JFB8G72VV;
 				ENABLE_BITCODE = NO;
 				INFOPLIST_FILE = rnTemplate/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.4;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -388,12 +389,6 @@
 					"\"${PODS_CONFIGURATION_BUILD_DIR}/ExpoImage\"",
 					"\"${PODS_CONFIGURATION_BUILD_DIR}/ExpoKeepAwake\"",
 					"\"${PODS_CONFIGURATION_BUILD_DIR}/ExpoModulesCore\"",
-					"\"${PODS_CONFIGURATION_BUILD_DIR}/Flipper\"",
-					"\"${PODS_CONFIGURATION_BUILD_DIR}/Flipper-Boost-iOSX\"",
-					"\"${PODS_CONFIGURATION_BUILD_DIR}/Flipper-Fmt\"",
-					"\"${PODS_CONFIGURATION_BUILD_DIR}/Flipper-Folly\"",
-					"\"${PODS_CONFIGURATION_BUILD_DIR}/Flipper-PeerTalk\"",
-					"\"${PODS_CONFIGURATION_BUILD_DIR}/FlipperKit\"",
 					"\"${PODS_CONFIGURATION_BUILD_DIR}/JWT\"",
 					"\"${PODS_CONFIGURATION_BUILD_DIR}/MMKV\"",
 					"\"${PODS_CONFIGURATION_BUILD_DIR}/MMKVCore\"",
@@ -486,6 +481,7 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = 3JFB8G72VV;
 				INFOPLIST_FILE = rnTemplate/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.4;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",

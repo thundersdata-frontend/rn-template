@@ -7,10 +7,14 @@ import expo.modules.ReactNativeHostWrapper
 import android.app.Application
 import com.facebook.react.PackageList
 import com.facebook.react.ReactApplication
+import com.facebook.react.ReactHost
 import com.facebook.react.ReactNativeHost
 import com.facebook.react.ReactPackage
+import com.facebook.react.defaults.DefaultNewArchitectureEntryPoint.load
+import com.facebook.react.defaults.DefaultReactHost.getDefaultReactHost
 import com.facebook.react.defaults.DefaultNewArchitectureEntryPoint
 import com.facebook.react.defaults.DefaultReactNativeHost
+import com.facebook.react.flipper.ReactNativeFlipper
 import com.facebook.soloader.SoLoader
 import java.util.List
 
@@ -22,28 +26,27 @@ import com.shortcut.ShortcutPackage
 class MainApplication : Application(), ReactApplication {
 
   override val reactNativeHost: ReactNativeHost =
-      object : DefaultReactNativeHost(this) {
-        override fun getUseDeveloperSupport(): Boolean = BuildConfig.DEBUG
+      ReactNativeHostWrapper(this, object : DefaultReactNativeHost(this) {
 
-        override fun getPackages(): List<ReactPackage> =
+        override fun getPackages(): MutableList<ReactPackage>? =
           PackageList(this).packages.apply {
             // Packages that cannot be autolinked yet can be added manually here, for example:
-            add(new RNExitAppPackage())
-            add(new ClipboardPackage())
-            add(new ShortcutPackage())
+            add(RNExitAppPackage()) // Changed to Kotlin syntax
+            add(ClipboardPackage())  // Changed to Kotlin syntax
+            add(ShortcutPackage())    // Changed to Kotlin syntax
           }
 
-        override fun getJSMainModuleName: String = ".expo/.virtual-metro-entry"
+        override fun getJSMainModuleName(): String = ".expo/.virtual-metro-entry"
 
-        @Override
-        protected String getJSBundleFile() {
-          return CodePush.getJSBundleFile()
+        override fun getJSBundleFile(): String? {
+            return CodePush.getJSBundleFile()
         }
 
-        override fun isNewArchEnabled: Boolean = BuildConfig.IS_NEW_ARCHITECTURE_ENABLED
+        override fun getUseDeveloperSupport(): Boolean = BuildConfig.DEBUG
 
-        override fun isHermesEnabled: Boolean = BuildConfig.IS_HERMES_ENABLED
-      }
+        override val isNewArchEnabled: Boolean = BuildConfig.IS_NEW_ARCHITECTURE_ENABLED
+        override val isHermesEnabled: Boolean = BuildConfig.IS_HERMES_ENABLED
+      })
 
   override val reactHost: ReactHost
     get() = getDefaultReactHost(this.applicationContext, reactNativeHost)
@@ -54,6 +57,15 @@ class MainApplication : Application(), ReactApplication {
     if (BuildConfig.IS_NEW_ARCHITECTURE_ENABLED) {
       load()
     }
-    ReactNativeFlipper.initializeFlipper(this, reactNativeHost.reactInstanceManager)
+    ApplicationLifecycleDispatcher.onApplicationCreate(this)
+
+    if (BuildConfig.DEBUG) {
+      ReactNativeFlipper.initializeFlipper(this, reactNativeHost.reactInstanceManager)
+    }
+  }
+
+  override fun onConfigurationChanged(newConfig: Configuration) {
+    super.onConfigurationChanged(newConfig)
+    ApplicationLifecycleDispatcher.onConfigurationChanged(this, newConfig)
   }
 }

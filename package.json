@@ -88,7 +88,6 @@
     "@react-native/eslint-config": "0.73.2",
     "@react-native/metro-config": "0.73.5",
     "@react-native/typescript-config": "0.73.1",
-    "@react-navigation/devtools": "^6.0.27",
     "@td-design/pont-engine": "1.1.4",
     "@td-design/svgicon-cli": "^1.7.2",
     "@trivago/prettier-plugin-sort-imports": "^4.3.0",
@@ -117,7 +116,6 @@
     "prettier": "^3.3.3",
     "prettier-plugin-packagejson": "^2.5.2",
     "react-native-clean-project": "^4.0.3",
-    "react-native-flipper": "0.264.0",
     "react-native-svg-transformer": "^1.5.0",
     "shelljs": "^0.8.5",
     "typescript": "5.5.4"

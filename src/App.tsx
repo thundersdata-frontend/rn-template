@@ -5,7 +5,6 @@ import codePush from 'react-native-code-push';
 import { GestureHandlerRootView } from 'react-native-gesture-handler';
 import { SafeAreaProvider } from 'react-native-safe-area-context';
 
-import { useFlipper } from '@react-navigation/devtools';
 import { DarkTheme, DefaultTheme, NavigationContainer } from '@react-navigation/native';
 import { helpers, ThemeProvider } from '@td-design/react-native';
 import { useMount } from '@td-design/rn-hooks';
@@ -21,7 +20,6 @@ import { useShortcut } from './hooks/useShortcut';
 import Stack from './stacks';
 
 const Main = () => {
-  useFlipper(navigationRef);
   const { initShortcut, setReady } = useShortcut();
   const theme = useColorScheme();
 
