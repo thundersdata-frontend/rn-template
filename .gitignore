@@ -80,3 +80,5 @@ dist/
 web-build/
 
 .env
+
+.yarn
