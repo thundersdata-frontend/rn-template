@@ -61,7 +61,7 @@ export default function CustomPullRefreshHeader({
     >
       <Lottie
         ref={lottieRef}
-        style={{ height: 50 }}
+        style={{ height: 50, width: 50 }} // <- 这里一定要设置宽和高，缺一不可，否则会出现动画不显示的问题
         source={require('./square-loading.json')}
         autoPlay={false}
         speed={1}
