@@ -36,12 +36,17 @@
 
 - (NSURL *)sourceURLForBridge:(RCTBridge *)bridge
 {
-#if DEBUG
-  return [[RCTBundleURLProvider sharedSettings] jsBundleURLForBundleRoot:@".expo/.virtual-metro-entry"];
-#else
-  // return [[NSBundle mainBundle] URLForResource:@"main" withExtension:@"jsbundle"];
-  return [CodePush bundleURL];
-#endif
+  return [self bundleURL];
+}
+
+- (NSURL *)bundleURL
+{
+  #if DEBUG
+    return [[RCTBundleURLProvider sharedSettings] jsBundleURLForBundleRoot:@".expo/.virtual-metro-entry"];
+  #else
+    // return [[NSBundle mainBundle] URLForResource:@"main" withExtension:@"jsbundle"];
+    return [CodePush bundleURL];
+  #endif
 }
 
 // Explicitly define remote notification delegates to ensure compatibility with some third-party libraries
@@ -60,16 +65,9 @@
   [ShortcutModule onShortcutItemPress:shortcutItem completionHandler:completionHandler];
 }
 
-- (UIView *)createRootViewWithBridge:(RCTBridge *)bridge
-                          moduleName:(NSString *)moduleName
-                           initProps:(NSDictionary *)initProps {
-  UIView *rootView = [super createRootViewWithBridge:bridge
-                                          moduleName:moduleName
-                                           initProps:initProps];
-
+// ⬇️ Add this before file @end (for react-native 0.74+)
+- (void)customizeRootView:(RCTRootView *)rootView {
   [RNBootSplash initWithStoryboard:@"BootSplash" rootView:rootView]; // ⬅️ initialize the splash screen
-
-  return rootView;
 }
 
 @end

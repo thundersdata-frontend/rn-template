@@ -1,6 +1,6 @@
 import { Platform, useColorScheme } from 'react-native';
 import { NavigationBar } from 'react-native-bars';
-import { hide as hideSplash } from 'react-native-bootsplash';
+import BootSplash from 'react-native-bootsplash';
 import codePush from 'react-native-code-push';
 import { GestureHandlerRootView } from 'react-native-gesture-handler';
 import { SafeAreaProvider } from 'react-native-safe-area-context';
@@ -30,7 +30,7 @@ const Main = () => {
     };
 
     init().finally(async () => {
-      await hideSplash({ fade: true });
+      await BootSplash.hide({ fade: true });
     });
   });
 
