@@ -22,7 +22,7 @@ DerivedData
 *.dSYM.zip
 fir-*.png
 *.xcuserstate
-ios/.xcode.env.local
+**/.xcode.env.local
 
 # Android/IntelliJ
 #
@@ -60,7 +60,7 @@ buck-out/
 *.jsbundle
 
 # Ruby / CocoaPods
-/ios/Pods/
+**/Pods/
 /vendor/bundle/
 Podfile.lock
 
@@ -81,4 +81,10 @@ web-build/
 
 .env
 
-.yarn
+# Yarn
+.yarn/*
+!.yarn/patches
+!.yarn/plugins
+!.yarn/releases
+!.yarn/sdks
+!.yarn/versions
